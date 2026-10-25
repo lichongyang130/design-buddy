@@ -1,6 +1,8 @@
 /* ============================================================
    共享内核：持久化存储、IndexedDB 媒体库、弹窗、下载、工具函数
    五个页面统一引用，所有演示数据改为真实状态并跨刷新保留。
+   注意：core 保持零导入（避免与共享分包形成循环依赖）；
+   模型白名单的消费与迁移在 settings.js / main.js 完成。
    ============================================================ */
 
 const LS_KEY = 'design-buddy-state-v1'
@@ -99,7 +101,9 @@ export function defaultSettings() {
     shortcuts: { search: '⌘K', newGamma: '⌘N', send: '⌘Enter', upload: '⌘U' },
     personalize: { smartSuggest: true, autoTitle: true, weeklyReport: false },
     memories: ['偏好中文回答', '演示文稿默认 16:9'],
-    model: '标准模型',
+    // 真实可用模型由 discover-models 脚本探测后写死到 model-config.js；
+    // 空串由 settings.js 启动迁移补齐为白名单首个模型
+    model: '',
     agents: [{ id: 'ag-1', name: '写作助手', on: true }, { id: 'ag-2', name: '代码审查员', on: true }],
     assistant: { name: 'Buddy', voice: '温暖女声' },
     devices: [{ id: 'dv-1', name: 'MacBook Pro', current: true }],

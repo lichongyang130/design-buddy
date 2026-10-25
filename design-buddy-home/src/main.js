@@ -9,6 +9,7 @@ import './rail-flyout.js'
 import { requireAuth } from './auth.js'
 requireAuth()
 import { store, toast, openModal, confirmModal, uid, fmtDate } from './core.js'
+import { AVAILABLE_MODELS } from './model-config.js'
 import {
   initGlobalUI,
   openPalette,
@@ -299,12 +300,10 @@ function createGamma({ prompt, origin = 'prompt', template = null, silent = fals
 }
 
 function runGeneration(gamma) {
-  // 设置 → 模型：不同模型真实改变生成节奏与步骤
-  const model = store.state.settings.model || '标准模型'
-  const pace = model === '极速模型' ? 240 : model === '高级模型' ? 760 : 480
-  const steps = model === '高级模型'
-    ? ['理解提示词', '规划页面结构', `${gamma.type}内容生成`, '深度推理与校对', '视觉与排版优化']
-    : ['理解提示词', '规划页面结构', `${gamma.type}内容生成`, '视觉与排版优化']
+  // 设置 → 模型：真实模型 id 来自 model-config.js 写死的可用白名单
+  const model = store.state.settings.model || AVAILABLE_MODELS[0]?.id || '本地演示模型'
+  const pace = 480
+  const steps = ['理解提示词', '规划页面结构', `${gamma.type}内容生成`, '视觉与排版优化']
   const { bodyEl, footEl } = openModal({
     title: `正在创作 · ${gamma.type}`,
     footer: `<span class="gen-model-tag">${model}</span><button class="btn btn-ghost" data-close disabled>最小化</button>`,

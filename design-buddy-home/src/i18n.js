@@ -266,13 +266,17 @@ const DICT = {
   'dy.ag.confirmMsg': { zh: '确定删除该智能体吗？', 'zh-TW': '確定刪除該智能體嗎？', en: 'Delete this agent?', ja: 'このエージェントを削除しますか？' },
   'dy.ag.promptName': { zh: '智能体名称', 'zh-TW': '智能體名稱', en: 'Agent name', ja: 'エージェント名' },
 
-  /* ---------- 模型（存储值仍为中文枚举） ---------- */
-  'dy.mdl.standard': { zh: '标准模型', 'zh-TW': '標準模型', en: 'Standard model', ja: '標準モデル' },
-  'dy.mdl.standardDesc': { zh: '均衡的速度与质量，日常创作首选', 'zh-TW': '均衡的速度與品質，日常創作首選', en: 'Balanced speed and quality for everyday work', ja: '速度と品質のバランス、日常制作に最適' },
-  'dy.mdl.premium': { zh: '高级模型', 'zh-TW': '高級模型', en: 'Advanced model', ja: '高性能モデル' },
-  'dy.mdl.premiumDesc': { zh: '更强的推理与长文能力，消耗更多积分', 'zh-TW': '更強的推理與長文能力，消耗更多點數', en: 'Stronger reasoning and long-form ability; costs more credits', ja: '高い推論・長文性能、クレジット消費増' },
-  'dy.mdl.fast': { zh: '极速模型', 'zh-TW': '極速模型', en: 'Turbo model', ja: '高速モデル' },
-  'dy.mdl.fastDesc': { zh: '最快响应，适合简单任务', 'zh-TW': '最快回應，適合簡單任務', en: 'Fastest response for simple tasks', ja: '最速応答、シンプルな作業向け' },
+  /* ---------- 模型：白名单由 discover-models 脚本实测后写死 ---------- */
+  'dy.mdl.availableDesc': {
+    zh: '连通性实测通过，可用于创作', 'zh-TW': '連通性實測通過，可用於創作',
+    en: 'Passed live connectivity test, ready for creation', ja: '接続テスト合格、創作に使用できます',
+  },
+  'dy.mdl.empty': {
+    zh: '尚未发现可用模型。请在有网络的环境运行 npm run discover-models，系统会自动探测并写死可用模型列表。',
+    'zh-TW': '尚未發現可用模型。請在有網路的環境執行 npm run discover-models，系統會自動探測並寫死可用模型列表。',
+    en: 'No available models yet. Run npm run discover-models in a networked environment to probe and hardcode the model list automatically.',
+    ja: '利用可能なモデルがまだありません。ネットワーク接続のある環境で npm run discover-models を実行すると、自動で検出して固定リストに書き出します。',
+  },
   'dy.mdl.switched': { zh: '已切换到{model}', 'zh-TW': '已切換到{model}', en: 'Switched to {model}', ja: '{model} に切り替えました' },
 
   /* ---------- 助理（语音存储值仍为中文枚举） ---------- */
@@ -356,13 +360,6 @@ export const DYN_SELECT_I18N = {
 export function dynOptionLabel(path, value, fallbackLabel, lang) {
   const token = DYN_SELECT_I18N[path]?.[value]
   return token ? t(token, lang) : fallbackLabel
-}
-
-/* 模型：存储值为中文枚举，仅翻译显示 */
-const MODEL_I18N = { 标准模型: 'dy.mdl.standard', 高级模型: 'dy.mdl.premium', 极速模型: 'dy.mdl.fast' }
-export function modelLabel(canonical, lang) {
-  const token = MODEL_I18N[canonical]
-  return token ? t(token, lang) : canonical
 }
 
 export function t(token, lang) {

@@ -1,6 +1,7 @@
 /* 冒烟：遍历设置 14 组、首页各弹窗、媒体灯箱 / AI 生成、模板详情弹层，捕获运行时错误。 */
 
 import { loadPage, click, input, tick } from './helpers.mjs'
+import { AVAILABLE_MODELS } from '../src/model-config.js'
 
 const results = []
 const check = (name, ok, extra) => results.push([name, !!ok, extra])
@@ -26,9 +27,14 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   check('font family change applied', doc.documentElement.dataset.appFont === 'mono')
   click(w, [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === 'models'))
   await tick()
-  click(w, doc.querySelector('[data-model="高级模型"]'))
-  await tick()
-  check('model switch persisted', JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).settings.model === '高级模型')
+  if (AVAILABLE_MODELS.length) {
+    const target = AVAILABLE_MODELS[AVAILABLE_MODELS.length - 1].id
+    click(w, [...doc.querySelectorAll('[data-model]')].find((b) => b.dataset.model === target))
+    await tick()
+    check('model switch persisted', JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).settings.model === target)
+  } else {
+    check('model empty state renders without errors', !!doc.querySelector('#view-placeholder .modal-copy'))
+  }
   click(w, [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === 'data'))
   await tick()
   click(w, doc.querySelector('[data-act="export"]'))

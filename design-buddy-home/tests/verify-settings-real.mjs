@@ -7,6 +7,7 @@
 import { loadPage, click, input, tick, readState } from './helpers.mjs'
 import { resolveLinkTarget } from '../src/settings-effects.js'
 import { SKILL_REGISTRY } from '../src/skill-registry.js'
+import { AVAILABLE_MODELS } from '../src/model-config.js'
 
 let passed = 0
 const fails = []
@@ -123,13 +124,20 @@ const pickOption = async (w, wrap, label) => {
   const imageSel = vp.querySelector('select[data-bind="imageMode"]')
   check('i18n: EN image mode options', [...imageSel.options].map((o) => o.textContent).join('|') === 'Illustration|Photo|Classic SVG')
   vp = await openSection('models')
-  check('i18n: EN model titles',
-    [...vp.querySelectorAll('.setting-row h3')].map((h) => h.textContent).join('|') === 'Standard model|Advanced model|Turbo model')
-  click(w, vp.querySelector('[data-model="高级模型"]'))
-  await tick()
-  check('i18n: model switch toast localized',
-    [...doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('Advanced model')))
-  check('i18n: model stored canonical chinese', readState(storage).settings.model === '高级模型')
+  if (AVAILABLE_MODELS.length) {
+    const modelIds = AVAILABLE_MODELS.map((m) => m.id)
+    check('i18n: model rows match hardcoded available list',
+      [...vp.querySelectorAll('[data-model]')].map((b) => b.dataset.model).join('|') === modelIds.join('|'))
+    const firstId = modelIds[0]
+    click(w, [...vp.querySelectorAll('[data-model]')].find((b) => b.dataset.model === firstId))
+    await tick()
+    check('i18n: model switch toast localized',
+      [...doc.querySelectorAll('.toast')].some((t) => t.textContent.includes(firstId)))
+    check('i18n: model id persisted', readState(storage).settings.model === firstId)
+  } else {
+    // 尚未跑 discover-models：诚实空态，不放假模型
+    check('i18n: empty model state shown in EN', vp.textContent.includes('No available models yet'))
+  }
   vp = await openSection('memory')
   check('i18n: EN memory heading and placeholder',
     vp.querySelector('h3')?.textContent === 'Memory notes'
@@ -161,7 +169,8 @@ const pickOption = async (w, wrap, label) => {
   check('i18n: ZH dynamic section restored',
     vp.querySelector('.settings-section-label')?.textContent === '数据管理'
     && vp.querySelector('[data-act="reset"]')?.textContent === '重置')
-  check('i18n: canonical model survives language roundtrip', readState(storage).settings.model === '高级模型')
+  check('i18n: selected model survives language roundtrip',
+    readState(storage).settings.model === (AVAILABLE_MODELS[0]?.id ?? ''))
   // 恢复通用视图，避免影响后续通用区测试
   click(w, [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === 'general'))
   await tick()

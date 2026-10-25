@@ -11,12 +11,19 @@ import { initGlobalUI, applyAppearance, openUpgrade } from './global-ui.js'
 import {
   previewLockScreen, testWakeLock, wakeLockState, pwaState, installPwa, testProxyConnection,
 } from './settings-effects.js'
-import { t, tt, optionLabel, dynOptionLabel, modelLabel } from './i18n.js'
+import { t, tt, optionLabel, dynOptionLabel } from './i18n.js'
+import { AVAILABLE_MODELS } from './model-config.js'
 
 initGlobalUI()
 
 // 配图模式与模板页共享同一持久化字段，默认绘本插画
 store.state.imageMode ??= 'illustration'
+// 旧版本存储的中文档位模型名（标准模型等）已下线：不在写死白名单内时迁移到首个可用模型
+// 注意：此处位于模块顶部，s() 等 const 助手尚未初始化，只能直接走 store.state
+if (!AVAILABLE_MODELS.some((m) => m.id === store.state.settings.model)) {
+  store.state.settings.model = AVAILABLE_MODELS[0]?.id ?? ''
+  store.save()
+}
 
 const $ = (sel, root = document) => root.querySelector(sel)
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)]
@@ -382,12 +389,10 @@ const SECTION_BUILDERS = {
   `, sectionLabel('agents')),
 
   models: () => card(
-    [
-      ['标准模型', 'dy.mdl.standard', 'dy.mdl.standardDesc'],
-      ['高级模型', 'dy.mdl.premium', 'dy.mdl.premiumDesc'],
-      ['极速模型', 'dy.mdl.fast', 'dy.mdl.fastDesc'],
-    ].map(([v, titleTok, descTok]) => row(t(titleTok, curLang()), t(descTok, curLang()), `
-      <button class="switch ${s().model === v ? 'is-on' : ''}" data-model="${v}"><span class="switch-knob"></span></button>`)).join(''),
+    AVAILABLE_MODELS.length
+      ? AVAILABLE_MODELS.map((m) => row(esc(m.id), t('dy.mdl.availableDesc', curLang()), `
+        <button class="switch ${s().model === m.id ? 'is-on' : ''}" data-model="${esc(m.id)}"><span class="switch-knob"></span></button>`)).join('')
+      : `<p class="modal-copy">${t('dy.mdl.empty', curLang())}</p>`,
     sectionLabel('models'),
   ),
 
@@ -503,7 +508,7 @@ viewPlaceholder.addEventListener('click', async (e) => {
     s().model = modelBtn.dataset.model
     store.save()
     renderSection('models', '模型')
-    toast(tt('dy.mdl.switched', curLang(), { model: modelLabel(s().model, curLang()) }))
+    toast(tt('dy.mdl.switched', curLang(), { model: s().model }))
     return
   }
 
