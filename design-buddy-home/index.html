@@ -268,8 +268,11 @@
               </div>
               <div class="toolbar-right">
                 <div class="img-menu-wrap">
-                  <button class="tool-btn tool-btn-flat" id="img-menu-btn" type="button" aria-label="插入图片" aria-haspopup="true" aria-expanded="false">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  <button class="img-mode-btn" id="img-menu-btn" type="button" aria-label="图片模式" aria-haspopup="true" aria-expanded="false">
+                    <svg class="icon img-ic-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <svg class="icon img-ic-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" hidden><line x1="2" y1="2" x2="22" y2="22"/><path d="M21 15l-5-5L5 21"/><path d="M21 12V5a2 2 0 0 0-2-2H9"/><path d="M3 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>
+                    <span id="img-mode-label">自动</span>
+                    <svg class="icon tiny" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                   </button>
 
                   <!-- 图片模式上弹菜单 -->
@@ -277,9 +280,6 @@
                     <p class="img-pop-title">图片</p>
                     <div class="img-options" role="radiogroup" aria-label="图片模式">
                       <button class="img-option is-selected" type="button" role="radio" aria-checked="true" data-img-mode="自动">
-                        <span class="img-check">
-                          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        </span>
                         <span class="img-thumb thumb-auto">
                           <span class="art-card art-card-back"><span class="art-lines"></span></span>
                           <span class="art-card art-card-front">
@@ -294,9 +294,6 @@
                       </button>
 
                       <button class="img-option" type="button" role="radio" aria-checked="false" data-img-mode="添加图片">
-                        <span class="img-check">
-                          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        </span>
                         <span class="img-thumb thumb-add">
                           <span class="art-half art-half-text"><span class="art-lines"></span></span>
                           <span class="art-half art-half-pic">
@@ -311,9 +308,6 @@
                       </button>
 
                       <button class="img-option" type="button" role="radio" aria-checked="false" data-img-mode="图片幻灯片">
-                        <span class="img-check">
-                          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        </span>
                         <span class="img-thumb thumb-slide">
                           <span class="art-lines art-lines-light"></span>
                           <span class="art-sun"></span>
@@ -326,9 +320,6 @@
                       </button>
 
                       <button class="img-option" type="button" role="radio" aria-checked="false" data-img-mode="不添加图片">
-                        <span class="img-check">
-                          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        </span>
                         <span class="img-thumb thumb-none">
                           <span class="art-lines"></span>
                           <span class="art-bars"><i></i><i></i><i></i></span>

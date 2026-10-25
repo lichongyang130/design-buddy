@@ -532,6 +532,19 @@ document.addEventListener('keydown', (event) => {
 
 const imgBtn = $('#img-menu-btn')
 const imgPopover = $('#img-popover')
+const IMG_BTN_LABELS = {
+  自动: '自动',
+  添加图片: '添加图片',
+  图片幻灯片: '图片幻灯片',
+  不添加图片: '无图片',
+}
+function syncImgBtn() {
+  $('#img-mode-label').textContent = IMG_BTN_LABELS[ui.imgMode] ?? ui.imgMode
+  const isNone = ui.imgMode === '不添加图片'
+  imgBtn.querySelector('.img-ic-on').hidden = isNone
+  imgBtn.querySelector('.img-ic-off').hidden = !isNone
+}
+syncImgBtn()
 const imgPopoverIsOpen = () => !imgPopover.hidden
 function openImgPopover() {
   if (popoverIsOpen()) closePopover()
@@ -563,6 +576,7 @@ $$('.img-option').forEach((option) => {
     })
     ui.imgMode = option.dataset.imgMode
     store.save()
+    syncImgBtn()
     toast(`图片模式：${ui.imgMode}`)
     closeImgPopover()
   })
