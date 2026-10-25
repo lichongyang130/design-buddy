@@ -1,0 +1,175 @@
+/* 冒烟：遍历设置 14 组、首页各弹窗、媒体灯箱 / AI 生成、模板详情弹层，捕获运行时错误。 */
+
+import { loadPage, click, input, tick } from './helpers.mjs'
+
+const results = []
+const check = (name, ok, extra) => results.push([name, !!ok, extra])
+
+/* ---------------- 设置：14 组全部渲染 ---------------- */
+{
+  const { doc, w, errors } = await loadPage('/settings.html')
+  const keys = ['general', 'profile', 'billing', 'appearance', 'shortcuts', 'personalize',
+    'memory', 'agents', 'models', 'assistant', 'devices', 'data', 'apps', 'security']
+  for (const key of keys) {
+    const nav = [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === key)
+    click(w, nav)
+    await tick()
+    const visible = key === 'general' ? !doc.querySelector('#view-general').hidden : !doc.querySelector('#view-placeholder').hidden
+    check(`settings section ${key} renders`, visible && errors.length === 0, errors)
+  }
+  click(w, [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === 'appearance'))
+  await tick()
+  const fontSel = doc.querySelector('[data-bind="settings.fontFamily"]')
+  fontSel.value = 'mono'
+  fontSel.dispatchEvent(new w.Event('change', { bubbles: true }))
+  await tick()
+  check('font family change applied', doc.documentElement.dataset.appFont === 'mono')
+  click(w, [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === 'models'))
+  await tick()
+  click(w, doc.querySelector('[data-model="高级模型"]'))
+  await tick()
+  check('model switch persisted', JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).settings.model === '高级模型')
+  click(w, [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === 'data'))
+  await tick()
+  click(w, doc.querySelector('[data-act="export"]'))
+  check('export action runs', errors.length === 0, errors)
+}
+
+/* ---------------- 首页：参数 / 权限 / 引用 / Max 门槛 / 空白新建 ---------------- */
+{
+  const { doc, w, errors } = await loadPage('/index.html')
+  click(w, doc.querySelector('.tool-btn[aria-label="调整参数"]'))
+  await tick()
+  check('params modal opens', !!doc.querySelector('.modal-mask'))
+  const range = doc.querySelector('#p-creativity')
+  input(w, range, '4')
+  range.dispatchEvent(new w.Event('input', { bubbles: true }))
+  click(w, doc.querySelector('.modal-foot [data-ok]'))
+  await tick()
+  check('params saved', JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).settings.params.creativity === 4)
+
+  click(w, doc.querySelector('#add-menu-btn'))
+  await tick()
+  click(w, doc.querySelector('[data-action="访问权限"]'))
+  await tick()
+  check('permission modal opens', doc.querySelector('.modal-head h3')?.textContent.includes('访问权限'))
+  click(w, doc.querySelector('[data-perm="full"]'))
+  await tick()
+  check('permission persisted', JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).settings.permission === 'full')
+
+  click(w, doc.querySelector('#add-menu-btn'))
+  await tick()
+  click(w, doc.querySelector('[data-action="引用对话中的文件"]'))
+  await tick()
+  const refButtons = doc.querySelectorAll('[data-ref]')
+  check('reference picker lists media', refButtons.length === 15)
+  click(w, refButtons[0])
+  await tick()
+  check('attachment chip added', doc.querySelectorAll('.attach-chip').length === 1)
+
+  click(w, doc.querySelector('#mode-menu-btn'))
+  await tick()
+  click(w, doc.querySelector('[data-mode="Max"]'))
+  await tick()
+  check('max gated for free plan', !!doc.querySelector('.modal-mask'))
+  click(w, doc.querySelector('.modal-foot [data-act="cancel"]'))
+  await tick()
+
+  const gammaCount = JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).gammas.length
+  click(w, doc.querySelector('.topbar-right .pill'))
+  await tick()
+  check('blank gamma created without credits flow', JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).gammas.length === gammaCount + 1)
+
+  click(w, doc.querySelector('.help-fab'))
+  await tick()
+  check('help modal opens', doc.querySelector('.modal-head h3')?.textContent.includes('帮助'))
+  click(w, doc.querySelector('.modal-close'))
+  await tick()
+  const footerIcons = [...doc.querySelectorAll('.rail-footer .footer-icon')]
+  click(w, footerIcons[0])
+  await tick()
+  check('invite modal opens', doc.querySelector('.modal-head h3')?.textContent.includes('邀请'))
+  click(w, doc.querySelector('.modal-close'))
+  click(w, footerIcons[1])
+  await tick()
+  check('messages modal opens', doc.querySelector('.modal-head h3')?.textContent.includes('消息'))
+  check('home smoke no errors', errors.length === 0, errors)
+}
+
+/* ---------------- 媒体：灯箱 + AI 生成 ---------------- */
+{
+  const { doc, w, errors } = await loadPage('/media.html')
+  click(w, doc.querySelector('.media-item'))
+  await tick()
+  check('lightbox opens', !!doc.querySelector('.lightbox-mask'))
+  click(w, doc.querySelector('.lb-close'))
+  await tick()
+
+  click(w, doc.querySelector('#create-ai-btn'))
+  await tick()
+  click(w, doc.querySelector('[data-demo="AI 生成图片"]'))
+  await tick()
+  input(w, doc.querySelector('#ai-prompt'), '科技发布会主视觉')
+  click(w, doc.querySelector('.modal-foot [data-ok]'))
+  await tick(40)
+  const state = JSON.parse(w.localStorage.getItem('design-buddy-state-v1'))
+  check('ai generation adds media', state.media.some((m) => m.name.includes('科技发布会') && m.dataUrl?.startsWith('data:image/svg')))
+  check('media smoke no errors', errors.length === 0, errors)
+}
+
+/* ---------------- 主题：侧栏字体 / 指令弹窗 ---------------- */
+{
+  const { doc, w, errors } = await loadPage('/themes.html')
+  click(w, doc.querySelector('[data-demo="自定义字体"]'))
+  await tick()
+  check('font modal opens', !!doc.querySelector('[data-font]'))
+  click(w, doc.querySelector('[data-font="song"]'))
+  await tick()
+  check('font choice persisted', JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).settings.fontFamily === 'song')
+  click(w, doc.querySelector('[data-demo="自定义指令"]'))
+  await tick()
+  input(w, doc.querySelector('#instr-text'), '默认 16:9')
+  click(w, doc.querySelector('.modal-foot [data-ok]'))
+  await tick()
+  check('instruction persisted', JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).instructions === '默认 16:9')
+  check('themes smoke no errors', errors.length === 0, errors)
+}
+
+/* ---------------- 模板：详情弹层交互 + 空态 ---------------- */
+{
+  const { doc, w, errors } = await loadPage('/templates.html')
+  click(w, [...doc.querySelectorAll('[data-demo]')].find((n) => n.dataset.demo === '由您创建'))
+  await tick()
+  check('mine view empty state', doc.querySelector('#tpl-empty')?.hidden === false)
+  // 回到工作区模板视图再打开详情
+  click(w, [...doc.querySelectorAll('[data-demo]')].find((n) => n.dataset.demo === '工作区模板'))
+  await tick()
+
+  click(w, doc.querySelector('.tpl-card'))
+  await tick()
+  check('detail overlay opens', !!doc.querySelector('.td-mask'))
+  check('detail panel has use button', !!doc.querySelector('#td-use'))
+  // 轮播缩略图切换
+  const thumbs = doc.querySelectorAll('.td-thumb')
+  click(w, thumbs[3])
+  await tick()
+  check('carousel thumb switches detail', doc.querySelector('.td-head h2')?.textContent === '朱砂册页')
+  // Esc 关闭
+  doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
+  await tick()
+  check('esc closes detail', !doc.querySelector('.td-mask'))
+  // 深链直达
+  click(w, doc.querySelector('.tpl-card'))
+  await tick()
+  check('reopen detail works', !!doc.querySelector('.td-mask'))
+  click(w, doc.querySelector('.td-close'))
+  check('templates smoke no errors', errors.length === 0, errors)
+}
+
+let failed = 0
+for (const [name, ok, extra] of results) {
+  console.log(`${ok ? 'PASS' : 'FAIL'}  ${name}${extra && !ok ? '  ' + JSON.stringify(extra) : ''}`)
+  if (!ok) failed += 1
+}
+console.log(failed ? `\n${failed} SMOKE CHECK(S) FAILED` : `\nALL ${results.length} SMOKE CHECKS PASSED`)
+process.exitCode = failed ? 1 : 0

@@ -4,7 +4,7 @@
    ============================================================ */
 
 import './rail-flyout.js'
-import { store, toast, openModal, confirmModal, uid, fmtDate } from './core.js'
+import { store, toast, openModal, confirmModal, uid, fmtDate, copyText } from './core.js'
 import { initGlobalUI, openUpgrade } from './global-ui.js'
 
 initGlobalUI()
@@ -54,6 +54,139 @@ const TEMPLATES = [
 ]
 
 const FOLDER_ICON = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>`
+
+/* ---------------- 模板详情元数据（描述 / 最适合 / 样式色 / 主题） ---------------- */
+
+const RATIO_LABEL = { 演示文稿: '16:9', 文档: 'A4', 社交轮播卡片: '1:1' }
+
+const TPL_META = {
+  渔港日记: {
+    desc: 'A quiet editorial layout built around harbor photography and warm sea-side tones, designed for stories that unfold like a hand-kept diary.',
+    fits: ['travel journals and city guides', 'cultural and heritage storytelling', 'seafood and hospitality brand stories', 'photo-led editorial essays'],
+    colors: ['#1f5f6b', '#5fa8b5', '#f0e2c8'], themes: ['人文', '旅行'],
+  },
+  水墨亭: {
+    desc: 'An ink-wash inspired template with generous whitespace and serif headlines, echoing the calm rhythm of a traditional Chinese pavilion.',
+    fits: ['art exhibitions and gallery guides', 'cultural lectures and salons', 'tea and lifestyle branding', 'book launch presentations'],
+    colors: ['#2c3a36', '#8aa39b', '#f4f1ea'], themes: ['艺术', '文化'],
+  },
+  Overtime: {
+    desc: 'A playful retro deck for year-end reviews, pairing bold condensed type with sticker-like accents that keep retrospectives light and energetic.',
+    fits: ['annual and quarterly reviews', 'team retrospectives', 'training session recaps', 'internal all-hands meetings'],
+    colors: ['#e8603c', '#2b2f38', '#f6c959'], themes: ['商业', '培训'],
+  },
+  朱砂册页: {
+    desc: 'Cinnabar red accents on rice-paper neutrals, a social carousel format that turns tea ceremonies and cultural events into scrollable albums.',
+    fits: ['event invitations', 'festival and holiday campaigns', 'cultural institution promotions', 'social media carousels'],
+    colors: ['#b03a2e', '#efe7d8', '#3d4a42'], themes: ['艺术', '文化'],
+  },
+  讲堂: {
+    desc: 'A clear educational deck with structured lesson blocks and calm greens, made for multi-week courses and science communication.',
+    fits: ['online courses and curriculum decks', 'education program overviews', 'workshop and seminar materials', 'science communication'],
+    colors: ['#3f7d5c', '#e6efe8', '#1f3d2e'], themes: ['教育', '科技'],
+  },
+  国潮商务路演: {
+    desc: 'Modern guochao styling meets a serious investor deck: dark premium canvases, gold accents and data-forward slides for high-stakes pitches.',
+    fits: ['investor fundraising pitches', 'product launch keynotes', 'technology roadshows', 'business plan competitions'],
+    colors: ['#14213d', '#c9a24b', '#e9ecef'], themes: ['商业', '科技'],
+  },
+  Quire: {
+    desc: 'A restrained document template for surveys and reports, using a deep navy cover, fine rules and readable long-form typography.',
+    fits: ['industry research reports', 'market survey documents', 'annual summaries', 'consulting deliverables'],
+    colors: ['#27314f', '#8b93a7', '#f4f6fa'], themes: ['商业', '餐饮'],
+  },
+  'Full Record': {
+    desc: 'An editorial portfolio document with full-bleed imagery and confident captions, built to document a body of work cover to cover.',
+    fits: ['creator and photographer portfolios', 'brand books and guidelines', 'project case studies', 'agency credentials'],
+    colors: ['#1d1f24', '#b9b2a6', '#f7f5f0'], themes: ['艺术', '商业'],
+  },
+  'Fit Check': {
+    desc: 'A playful retro-kitsch lookbook presentation: pistachio-mint ground, poster-weight condensed caps, rounded keylined photo frames, candy-pink pill stickers, argyle ribbon borders, and product cutouts on pastel fields.',
+    fits: ['fashion collection and drop launches', 'lookbooks and wholesale previews', 'brand and campaign pitches to buyers', 'creator and stylist portfolios', 'student design and merch presentations'],
+    colors: ['#a9d8bb', '#1f2d24', '#ef8fb0'], themes: ['艺术', '商业'],
+  },
+  'First Edition': {
+    desc: 'A zine-style first edition layout with salt-and-lemon freshness: bright paper tones, oversized numerals and collectible cover energy.',
+    fits: ['magazine and zine launches', 'brand editorial series', 'product launch lookbooks', 'limited edition releases'],
+    colors: ['#f2e3a0', '#2e3a34', '#e77f67'], themes: ['艺术', '文化'],
+  },
+  'The Web Between Us': {
+    desc: 'A bold cyan social carousel that visualizes technology and ecology together, with spider-web line art and high-contrast editorial type.',
+    fits: ['technology explainers', 'digital awareness campaigns', 'social content series', 'creative tech portfolios'],
+    colors: ['#27b8e6', '#0e2433', '#f2f7fa'], themes: ['科技', '艺术'],
+  },
+  'Soft Current': {
+    desc: 'A gentle health-awareness deck with soft organic shapes and warm skin-tone palettes, handling sensitive topics with calm and clarity.',
+    fits: ['healthcare awareness campaigns', 'wellness education programs', 'nonprofit advocacy decks', 'course materials'],
+    colors: ['#7fb6a8', '#f3d9c6', '#33504a'], themes: ['医疗', '教育'],
+  },
+  'Spark and Fire': {
+    desc: 'A warm event deck lit by flame-orange accents, structured for workshops and training sessions that need energy without clutter.',
+    fits: ['workshop and training decks', 'event programs and agendas', 'community meetups', 'internal kick-offs'],
+    colors: ['#e8702a', '#233047', '#f6e7d8'], themes: ['培训', '活动'],
+  },
+  Scintilla: {
+    desc: 'A science-forward presentation about pollinators, pairing macro-photo style artwork with clean diagrams and luminous blue highlights.',
+    fits: ['science education lessons', 'ecology and research reports', 'school and university projects', 'research showcases'],
+    colors: ['#3a7bd5', '#e8f1fb', '#1d3557'], themes: ['教育', '科技'],
+  },
+  'Sisyphus Riso': {
+    desc: 'A risograph-inspired deck in limited duotone inks, turning stubborn business topics into motivating, poster-worthy slides.',
+    fits: ['training and workshop decks', 'business planning reviews', 'keynote presentations', 'team motivation sessions'],
+    colors: ['#e0552f', '#2b4a7a', '#f4ecd8'], themes: ['培训', '商业'],
+  },
+  'Rebuilding the Past': {
+    desc: 'An architecture and heritage report template with documentary photography, muted stone tones and precise drawing-style layouts.',
+    fits: ['architecture portfolios', 'heritage preservation reports', 'construction project reviews', 'urban planning studies'],
+    colors: ['#8c8578', '#3e4148', '#ece9e2'], themes: ['建筑', '报告'],
+  },
+  Metamorphosis: {
+    desc: 'A transformative social carousel with surreal gradient fields and fluid shapes, designed for brand campaigns that signal change.',
+    fits: ['brand transformation campaigns', 'art and design showcases', 'product reveal carousels', 'social media series'],
+    colors: ['#8b5cf6', '#f472b6', '#1f2430'], themes: ['艺术', '品牌'],
+  },
+  Luminal: {
+    desc: 'A quiet, light-filled portfolio deck where imagery floats in negative space, suited to refined creative showcases.',
+    fits: ['creative and design portfolios', 'gallery exhibition decks', 'project showcases', 'design reviews'],
+    colors: ['#c9d6e3', '#41566f', '#fbfcfd'], themes: ['艺术', '作品集'],
+  },
+  'Inner Weather': {
+    desc: 'A document-style health template that reads like a calm guidebook, with soft section dividers and approachable medical typography.',
+    fits: ['course handouts and workbooks', 'health and wellness guides', 'patient education documents', 'self-paced learning docs'],
+    colors: ['#9fc3b8', '#f6efe6', '#405e55'], themes: ['教育', '医疗'],
+  },
+  Hush: {
+    desc: 'A dignified annual report document for institutes and nonprofits, pairing understated type with generous impact photography.',
+    fits: ['annual and impact reports', 'nonprofit year reviews', 'donor update documents', 'institute publications'],
+    colors: ['#4a5568', '#c0564f', '#f3f1ec'], themes: ['报告', '文化'],
+  },
+  Buzzer: {
+    desc: 'A trivia-night event deck with retro game-board energy, bold cards and quick-read prompts that keep a live audience engaged.',
+    fits: ['event and game-night decks', 'community program materials', 'F&B promotions', 'interactive workshops'],
+    colors: ['#d64545', '#1f2d4d', '#f5c542'], themes: ['活动', '餐饮'],
+  },
+  Vista: {
+    desc: 'An airy travel and hospitality deck with panoramic image frames, evoking the open horizons of a retreat venue.',
+    fits: ['travel and tourism decks', 'retreat and venue pitches', 'hospitality promotions', 'architecture showcases'],
+    colors: ['#5b8e7d', '#e9ddc7', '#2f4858'], themes: ['旅行', '建筑'],
+  },
+  'Open House': {
+    desc: 'A clean real-estate marketing deck with property-forward layouts, warm domestic neutrals and clear call-to-action closing slides.',
+    fits: ['property launch decks', 'real estate marketing', 'open house event materials', 'sales and listing presentations'],
+    colors: ['#b08968', '#f1e9dd', '#3d4044'], themes: ['建筑', '营销'],
+  },
+  'Monsoon Modern': {
+    desc: 'A seasonal campaign carousel blending modernist grids with rain-washed indigos, made for collaborative making and storytelling.',
+    fits: ['seasonal marketing campaigns', 'brand storytelling carousels', 'event invitations', 'social content series'],
+    colors: ['#3957a8', '#7fb2e5', '#f2eadf'], themes: ['活动', '品牌'],
+  },
+}
+
+const DEFAULT_META = {
+  desc: '由你创建的自定义模板，保存了封面配色与内容结构，可随时套用于新的创作。',
+  fits: ['快速启动同类型创作', '保持团队视觉统一', '沉淀常用页面结构', '一键生成新 gamma'],
+  colors: ['#3b6ef6', '#1e2b4d', '#98a1b2'], themes: ['自定义', '品牌'],
+}
 
 const view = {
   scope: 'workspace', // workspace | recent | mine | archived
@@ -288,8 +421,182 @@ grid.addEventListener('click', (event) => {
   const card = event.target.closest('.tpl-card')
   if (!card) return
   const tpl = allTemplates().find((t) => t.name === card.dataset.name)
-  if (tpl) useTemplate(tpl)
+  if (tpl) openTemplateDetail(tpl)
 })
+
+/* ---------------- 模板详情预览弹层（按截图 1:1） ---------------- */
+
+store.state.templateStyles ??= {}
+
+function coverInner(tpl) {
+  return `${tpl.custom ? '<span class="tc-custom-tag">我的模板</span>' : ''}
+    ${tpl.a ? `<span class="tc-a">${tpl.a}</span>` : ''}
+    ${tpl.b ? `<span class="tc-b">${tpl.b}</span>` : ''}`
+}
+
+function openTemplateDetail(tpl) {
+  const list = allTemplates()
+  let idx = list.findIndex((t) => t.name === tpl.name)
+  if (idx < 0) idx = 0
+
+  const mask = document.createElement('div')
+  mask.className = 'td-mask'
+  mask.innerHTML = `
+    <button class="td-back" type="button">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      返回模板
+    </button>
+    <button class="td-close" type="button" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+    <div class="td-left">
+      <div class="td-stage"><div class="td-slide" id="td-slide"></div></div>
+      <div class="td-carousel-wrap">
+        <button class="td-arrow" id="td-prev" type="button" aria-label="上一个">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="td-carousel" id="td-carousel"></div>
+        <button class="td-arrow" id="td-next" type="button" aria-label="下一个">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+    <aside class="td-panel" id="td-panel"></aside>`
+  document.body.append(mask)
+  document.body.style.overflow = 'hidden'
+
+  const slide = mask.querySelector('#td-slide')
+  const panel = mask.querySelector('#td-panel')
+  const carousel = mask.querySelector('#td-carousel')
+
+  carousel.innerHTML = list.map((t, i) => `
+    <button class="td-thumb" data-i="${i}" type="button">
+      <span class="tpl-cover ${t.cls ?? 'tpl-custom'}" ${t.cover ? `style="--custom-cover:${t.cover}"` : ''}>${coverInner(t)}</span>
+      <span class="td-thumb-name">${t.name}</span>
+    </button>`).join('')
+
+  function render() {
+    const t = list[idx]
+    const meta = TPL_META[t.name] ?? DEFAULT_META
+    const styleIdx = store.state.templateStyles[t.name] ?? 0
+    slide.innerHTML = `<div class="tpl-cover ${t.cls ?? 'tpl-custom'}" ${t.cover ? `style="--custom-cover:${t.cover}"` : ''}>${coverInner(t)}</div>`
+
+    panel.innerHTML = `
+      <div class="td-head">
+        <h2>${t.name}</h2>
+        <button class="td-share" id="td-share" title="分享模板" type="button">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </button>
+      </div>
+      <p class="td-meta">${t.format} · ${RATIO_LABEL[t.format] ?? '16:9'}</p>
+
+      <div class="td-provider">
+        <span class="td-g-badge">G</span>
+        <span>由 Gamma 提供</span>
+      </div>
+
+      <p class="td-desc">${meta.desc}</p>
+
+      <h4>最适合</h4>
+      <ul class="td-fits">${meta.fits.map((f) => `<li>${f}</li>`).join('')}</ul>
+
+      <h4>样式</h4>
+      <div class="td-style-row">
+        <button class="td-dots" id="td-dots" type="button" aria-haspopup="true" aria-expanded="false">
+          ${meta.colors.map((c, i) => `<span class="td-dot ${i === styleIdx ? 'is-picked' : ''}" style="background:${c}"></span>`).join('')}
+          <svg class="icon tiny" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="td-style-menu" id="td-style-menu" hidden>
+          ${meta.colors.map((c, i) => `
+            <button type="button" data-style="${i}">
+              <span class="td-dot ${i === styleIdx ? 'is-picked' : ''}" style="background:${c}"></span>
+              样式 ${String.fromCharCode(65 + i)}${i === styleIdx ? ' ✓' : ''}
+            </button>`).join('')}
+        </div>
+      </div>
+
+      <h4>分类</h4>
+      <div class="td-tags">${t.cats.map((c) => `<span class="td-tag">${c}</span>`).join('')}</div>
+
+      <h4>主题</h4>
+      <div class="td-tags td-tags-outline">${meta.themes.map((c) => `<span class="td-tag">${c}</span>`).join('')}</div>
+
+      <div class="td-use-wrap">
+        <button class="td-use" id="td-use" type="button">使用模板</button>
+      </div>`
+
+    carousel.querySelectorAll('.td-thumb').forEach((el, i) => el.classList.toggle('is-active', i === idx))
+    carousel.querySelector('.td-thumb.is-active')?.scrollIntoView?.({ behavior: 'smooth', inline: 'center', block: 'nearest' })
+
+    panel.querySelector('#td-share').addEventListener('click', () => {
+      copyText(`${location.origin}${location.pathname}?tpl=${encodeURIComponent(t.name)}`)
+    })
+
+    const dotsBtn = panel.querySelector('#td-dots')
+    const styleMenu = panel.querySelector('#td-style-menu')
+    dotsBtn.addEventListener('click', (e) => {
+      e.stopPropagation()
+      styleMenu.hidden = !styleMenu.hidden
+      dotsBtn.setAttribute('aria-expanded', String(!styleMenu.hidden))
+    })
+    styleMenu.addEventListener('click', (e) => {
+      const row = e.target.closest('[data-style]')
+      if (!row) return
+      store.state.templateStyles[t.name] = Number(row.dataset.style)
+      store.save()
+      styleMenu.hidden = true
+      render()
+    })
+
+    panel.querySelector('#td-use').addEventListener('click', () => {
+      close()
+      useTemplate(t)
+    })
+  }
+
+  function go(delta) {
+    idx = (idx + delta + list.length) % list.length
+    render()
+  }
+
+  function close() {
+    mask.remove()
+    document.body.style.overflow = ''
+    document.removeEventListener('keydown', onKey)
+    document.removeEventListener('click', onDocClick)
+  }
+
+  function onKey(e) {
+    if (e.key === 'Escape') close()
+    if (e.key === 'ArrowRight') go(1)
+    if (e.key === 'ArrowLeft') go(-1)
+  }
+
+  function onDocClick(e) {
+    const menu = mask.querySelector('#td-style-menu')
+    if (menu && !menu.hidden && !e.target.closest('.td-style-row')) {
+      menu.hidden = true
+      mask.querySelector('#td-dots')?.setAttribute('aria-expanded', 'false')
+    }
+  }
+
+  mask.querySelector('#td-prev').addEventListener('click', () => go(-1))
+  mask.querySelector('#td-next').addEventListener('click', () => go(1))
+  carousel.addEventListener('click', (e) => {
+    const thumb = e.target.closest('.td-thumb')
+    if (thumb) {
+      idx = Number(thumb.dataset.i)
+      render()
+    }
+  })
+  mask.querySelector('.td-back').addEventListener('click', close)
+  mask.querySelector('.td-close').addEventListener('click', close)
+  mask.addEventListener('click', (e) => { if (e.target === mask) close() })
+  document.addEventListener('click', onDocClick)
+  document.addEventListener('keydown', onKey)
+
+  render()
+}
 
 /* ---------------- 自建模板 ---------------- */
 
@@ -379,3 +686,12 @@ grid.addEventListener('contextmenu', (event) => {
 /* 帮助 FAB（data-demo="帮助"）由 global-ui 委托统一处理 */
 
 applyView()
+
+/* 分享深链：?tpl=模板名 直达详情弹层 */
+{
+  const name = new URLSearchParams(location.search).get('tpl')
+  if (name) {
+    const tpl = allTemplates().find((t) => t.name === name)
+    if (tpl) openTemplateDetail(tpl)
+  }
+}
