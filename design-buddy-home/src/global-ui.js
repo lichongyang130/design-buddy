@@ -6,6 +6,7 @@
 import './features.css'
 import { store, openModal, confirmModal, toast, copyText, fmtDate, uid } from './core.js'
 import { initSettingsEffects, speak, activeAgents } from './settings-effects.js'
+import { currentUser, logout } from './auth.js'
 
 /* ---------------- 外观设置全局生效 ---------------- */
 
@@ -456,10 +457,63 @@ export function openPalette() {
 
 /* ---------------- 初始化（每页调用一次） ---------------- */
 
+/* ---------------- 账号弹窗（rail 底部头像） ---------------- */
+
+const PROVIDER_LABEL = {
+  email: '邮箱账号',
+  google: 'Google · 本地演示身份',
+  github: 'GitHub · 本地演示身份',
+}
+
+function nameInitials(name) {
+  const n = (name || '').trim()
+  if (!n) return '?'
+  // 中文名取末两位以内字符，英文取首字母
+  return /[\u4e00-\u9fa5]/.test(n) ? n.slice(0, 2) : n.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase()
+}
+
+export function openAccount() {
+  const user = currentUser()
+  if (!user) {
+    location.replace('auth.html')
+    return
+  }
+  const { close, bodyEl, footEl } = openModal({
+    title: '账号',
+    footer: '<button class="btn btn-ghost" data-close>关闭</button><button class="btn btn-danger" data-logout>退出登录</button>',
+  })
+  bodyEl.innerHTML = `
+    <div class="account-head">
+      <span class="avatar ${user.color} account-avatar">${nameInitials(user.name)}</span>
+      <div class="account-meta">
+        <div class="account-name">${user.name}</div>
+        <div class="account-email">${user.email}</div>
+        <span class="account-provider">${PROVIDER_LABEL[user.provider] ?? '邮箱账号'}</span>
+      </div>
+    </div>
+    <p class="modal-copy">账号信息保存在本浏览器（localStorage），不会上传到任何服务器。</p>`
+  footEl.querySelector('[data-close]').addEventListener('click', close)
+  footEl.querySelector('[data-logout]').addEventListener('click', async () => {
+    const ok = await confirmModal('退出登录', '退出后需要重新登录才能继续使用，确定退出吗？', '退出登录')
+    if (!ok) return
+    logout()
+    location.replace('auth.html')
+  })
+}
+
 export function initGlobalUI() {
   applyAppearance()
   store.subscribe(applyAppearance)
   initSettingsEffects()
+
+  // rail 底部头像 → 账号弹窗（五页通用）
+  document.addEventListener('click', (e) => {
+    const avatar = e.target.closest('.rail-footer .avatar')
+    if (avatar) {
+      e.preventDefault()
+      openAccount()
+    }
+  })
 
   // 快捷键统一由 settings-effects 调度；首页无搜索框时通过事件打开命令面板
   document.addEventListener('db:open-palette', openPalette)

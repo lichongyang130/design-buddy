@@ -6,6 +6,8 @@
    ============================================================ */
 
 import './rail-flyout.js'
+import { requireAuth } from './auth.js'
+requireAuth()
 import { store, toast, openModal, confirmModal, uid, fmtDate } from './core.js'
 import {
   initGlobalUI,

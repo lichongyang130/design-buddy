@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>登录 / 注册 — Design Buddy</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e2b4d'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="stylesheet" href="/src/styles.css" />
+  <link rel="stylesheet" href="/src/auth.css" />
+</head>
+<body class="auth-body">
+  <main class="auth-shell">
+    <!-- 左侧品牌区 -->
+    <section class="auth-hero">
+      <a class="auth-brand" href="index.html">
+        <span class="brand-logo">G</span>
+        <b>Design Buddy</b>
+      </a>
+      <h1 data-i18n="hero.title">把灵感变成演示、文档与主题</h1>
+      <p data-i18n="hero.sub">950 套原创模板、本地优先的创作工作台。登录后同步你的工作区、模板编辑与媒体库。</p>
+      <ul class="auth-points">
+        <li><span>🔒</span><span data-i18n="hero.p1">账号与作品仅保存在本浏览器，零后端、零追踪</span></li>
+        <li><span>⚡</span><span data-i18n="hero.p2">离线可用，登录状态本地保持 30 天</span></li>
+        <li><span>🎨</span><span data-i18n="hero.p3">支持 Google、GitHub 与邮箱三种方式</span></li>
+      </ul>
+    </section>
+
+    <!-- 右侧表单卡 -->
+    <section class="auth-card-wrap">
+      <div class="auth-lang">
+        <button type="button" class="auth-lang-btn is-active" data-auth-lang="zh">中文</button>
+        <button type="button" class="auth-lang-btn" data-auth-lang="en">EN</button>
+      </div>
+      <div class="auth-card">
+        <div class="auth-tabs" role="tablist">
+          <button type="button" class="auth-tab is-active" data-tab="login" data-i18n="tab.login">登录</button>
+          <button type="button" class="auth-tab" data-tab="register" data-i18n="tab.register">注册</button>
+        </div>
+
+        <div class="auth-providers">
+          <button type="button" class="provider-btn" data-provider="google">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.54-5.17 3.54-8.87z"/>
+              <path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.95-2.91l-3.88-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09A12 12 0 0 0 12 24z"/>
+              <path fill="#FBBC05" d="M5.27 14.29A7.2 7.2 0 0 1 4.88 12c0-.8.14-1.57.39-2.29V6.62H1.29a12 12 0 0 0 0 10.76l3.98-3.09z"/>
+              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42A11.97 11.97 0 0 0 12 0 12 12 0 0 0 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"/>
+            </svg>
+            <span data-i18n="provider.google">使用 Google 继续</span>
+          </button>
+          <button type="button" class="provider-btn" data-provider="github">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="#1f2328" aria-hidden="true">
+              <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .3.21.67.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/>
+            </svg>
+            <span data-i18n="provider.github">使用 GitHub 继续</span>
+          </button>
+        </div>
+
+        <div class="auth-divider"><span data-i18n="divider">或使用邮箱</span></div>
+
+        <form class="auth-form" id="auth-form" novalidate>
+          <div class="field" data-field="name" hidden>
+            <label data-i18n="field.name">昵称</label>
+            <input type="text" id="f-name" autocomplete="nickname" placeholder="例如：林小满" />
+            <p class="field-error" data-err="name"></p>
+          </div>
+          <div class="field" data-field="email">
+            <label data-i18n="field.email">邮箱</label>
+            <input type="email" id="f-email" autocomplete="email" placeholder="you@example.com" />
+            <p class="field-error" data-err="email"></p>
+          </div>
+          <div class="field" data-field="password">
+            <label data-i18n="field.password">密码</label>
+            <div class="pw-wrap">
+              <input type="password" id="f-password" autocomplete="current-password" placeholder="至少 8 位，含字母" />
+              <button type="button" class="pw-toggle" id="pw-toggle" aria-label="显示密码">显示</button>
+            </div>
+            <p class="field-error" data-err="password"></p>
+          </div>
+          <div class="field" data-field="confirm" hidden>
+            <label data-i18n="field.confirm">确认密码</label>
+            <input type="password" id="f-confirm" autocomplete="new-password" placeholder="再次输入密码" />
+            <p class="field-error" data-err="confirm"></p>
+          </div>
+
+          <div class="auth-row">
+            <label class="remember">
+              <input type="checkbox" id="f-remember" checked />
+              <span data-i18n="field.remember">30 天内自动登录</span>
+            </label>
+            <button type="button" class="link-btn" id="forgot-btn" data-i18n="field.forgot">忘记密码？</button>
+          </div>
+
+          <p class="form-alert" id="form-alert" hidden></p>
+          <button type="submit" class="btn btn-primary auth-submit" id="auth-submit">
+            <span data-i18n="tab.login">登录</span>
+          </button>
+          <p class="auth-terms" data-i18n="terms">继续即代表同意本地演示条款：数据仅存储在当前浏览器，清除浏览器数据将同时清除账号。</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- 提供商诚实说明弹窗 -->
+  <div class="modal-mask" id="provider-modal" hidden>
+    <div class="modal-box">
+      <h3 class="modal-title" id="provider-title">Google 登录</h3>
+      <p class="modal-copy" id="provider-copy"></p>
+      <div class="field">
+        <label id="provider-name-label">显示昵称</label>
+        <input type="text" id="provider-name" />
+      </div>
+      <div class="modal-foot">
+        <button class="btn btn-ghost" data-close type="button" data-i18n="common.cancel">取消</button>
+        <button class="btn btn-primary" id="provider-ok" type="button">继续本地演示登录</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/auth-page.js"></script>
+</body>
+</html>

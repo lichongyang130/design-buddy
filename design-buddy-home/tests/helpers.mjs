@@ -6,6 +6,7 @@ import { pathToFileURL } from 'node:url'
 import path from 'node:path'
 import fs from 'node:fs'
 import os from 'node:os'
+import { _seedSessionForTests, AUTH_KEY } from '../src/auth.js'
 
 export const base = 'http://127.0.0.1:5174'
 export const DIST = path.resolve(new URL('../dist', import.meta.url).pathname)
@@ -44,6 +45,12 @@ export async function loadPage(file, { storage, freshCopy = false } = {}) {
 
   const errors = []
   w.addEventListener('error', (e) => errors.push(e.message))
+
+  // 预置有效登录会话：页面入口的 requireAuth 守卫默认放行。
+  // 需要未登录态的测试在 loadPage 后显式 storage.removeItem(AUTH_KEY)。
+  if (w.localStorage.getItem(AUTH_KEY) === null) _seedSessionForTests(w.localStorage)
+
+
 
   let entry = path.join(DIST, jsPath)
   if (freshCopy) {

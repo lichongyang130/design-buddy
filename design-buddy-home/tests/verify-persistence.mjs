@@ -2,6 +2,7 @@
    jsdom 无 IndexedDB，媒体上传自动走 dataURL 降级路径。 */
 
 import { loadPage, readState, click, input, tick } from './helpers.mjs'
+import { AUTH_KEY } from '../src/auth.js'
 
 const results = []
 const check = (name, ok, extra) => results.push([name, !!ok, extra])
@@ -346,15 +347,20 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   // 密度设置真实改变文档根节点数据属性（CSS 据此收紧间距）
   check('density applies to document root', doc.documentElement.dataset.density === 'compact')
 
-  // 头像缩写真实同步到侧栏头像
+  // 头像缩写：登录用户缩写优先，未登录回退设置值；设置值始终持久化
   click(w, [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === 'profile'))
   await tick()
   const initialsInput = doc.querySelector('[data-bind="settings.profile.initials"]')
-  input(w, initialsInput, 'AB')
+  input(w, initialsInput, 'CD')
   initialsInput.dispatchEvent(new w.Event('input', { bubbles: true }))
   await tick()
-  check('profile initials sync to avatars', doc.querySelector('.avatar')?.textContent === 'AB')
-  check('profile initials persisted', readState(storage).settings.profile.initials === 'AB')
+  check('logged-in initials override settings value', doc.querySelector('.avatar')?.textContent === '测试')
+  check('profile initials persisted while logged in', readState(storage).settings.profile.initials === 'CD')
+  storage.removeItem(AUTH_KEY)
+  input(w, initialsInput, 'CD')
+  initialsInput.dispatchEvent(new w.Event('input', { bubbles: true }))
+  await tick()
+  check('anonymous avatar falls back to settings initials', doc.querySelector('.avatar')?.textContent === 'CD')
 
   // 界面语言真实切换设置页导航文案
   click(w, [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === 'general'))

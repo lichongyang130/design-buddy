@@ -8,6 +8,7 @@
 import { store, toast, openModal } from './core.js'
 import { configureArt } from './template-engine.js'
 import { applyI18n, LANG_HTML } from './i18n.js'
+import { currentUser } from './auth.js'
 
 const s = () => store.state.settings
 let inited = false
@@ -17,9 +18,19 @@ let lockMask = null
 
 /* ---------------- 个人主页：头像缩写 / 工作区名 ---------------- */
 
+function userInitials(name) {
+  const n = String(name || '').trim()
+  if (!n) return ''
+  // 中文取前两个字符，英文取各单词首字母
+  return /[\u4e00-\u9fa5]/.test(n)
+    ? n.slice(0, 2)
+    : n.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase()
+}
+
 function applyIdentity() {
-  // 头像缩写五页实时同步；显示名称在消息弹窗的助理身份中消费
-  const initials = String(s().profile.initials || 'DB').slice(0, 2)
+  // 登录用户缩写优先；未登录回退到设置 → 个人主页的自定义缩写
+  const user = currentUser()
+  const initials = String(user ? userInitials(user.name) : s().profile.initials || 'DB').slice(0, 2)
   document.querySelectorAll('.avatar').forEach((el) => { el.textContent = initials })
 }
 

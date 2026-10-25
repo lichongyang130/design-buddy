@@ -14,6 +14,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         home: resolve(import.meta.dirname, 'index.html'),
+        auth: resolve(import.meta.dirname, 'auth.html'),
         templates: resolve(import.meta.dirname, 'templates.html'),
         themes: resolve(import.meta.dirname, 'themes.html'),
         settings: resolve(import.meta.dirname, 'settings.html'),
