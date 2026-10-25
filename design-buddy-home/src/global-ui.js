@@ -463,6 +463,7 @@ const PROVIDER_LABEL = {
   email: '邮箱账号',
   google: 'Google · 本地演示身份',
   github: 'GitHub · 本地演示身份',
+  guest: '游客模式 · 本地演示',
 }
 
 function nameInitials(name) {

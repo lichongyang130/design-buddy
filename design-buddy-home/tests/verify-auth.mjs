@@ -7,7 +7,7 @@
 
 import { loadPage, click, input, tick } from './helpers.mjs'
 import {
-  registerWithEmail, loginWithEmail, loginWithProvider, currentUser,
+  registerWithEmail, loginWithEmail, loginWithProvider, loginAsGuest, currentUser,
   logout, requireAuth, validateRegistration, hashPassword, AUTH_KEY,
 } from '../src/auth.js'
 
@@ -90,6 +90,17 @@ globalThis.sessionStorage = memStorage()
   check('provider: github creates separate account', gh.provider === 'github' && gh.id !== g.id)
   logout()
   check('provider: logout ends session', currentUser() === null)
+
+  // 游客模式：一键直接进入
+  const guest = loginAsGuest()
+  check('guest: creates flagged local guest with active session',
+    guest.provider === 'guest' && guest.guest === true && currentUser()?.id === 'u-guest')
+  check('guest: no password secrets on the account',
+    !('hash' in guest) && !('salt' in guest) && mem._dump().users.find((u) => u.id === 'u-guest').hash === undefined)
+  const guest2 = loginAsGuest()
+  check('guest: repeat entry reuses the same account', guest2.id === guest.id)
+  logout()
+  check('guest: logout ends session', currentUser() === null)
 
   // 路由守卫
   const calls = []
@@ -237,6 +248,22 @@ globalThis.sessionStorage = memStorage()
   await tick(200)
   check('auth page: valid login starts session',
     JSON.parse(storage.getItem(AUTH_KEY)).session !== null)
+
+  // 游客直接进入：干净态下一键创建游客会话
+  storage.removeItem(AUTH_KEY)
+  const guestBtn = doc.querySelector('#guest-entry')
+  check('auth page: guest entry button rendered', !!guestBtn && guestBtn.textContent.includes('直接进入'))
+  click(w, doc.querySelector('[data-auth-lang="en"]'))
+  await tick()
+  check('auth page: guest cta localized to english', guestBtn.textContent === 'Continue as guest →')
+  click(w, doc.querySelector('[data-auth-lang="zh"]'))
+  await tick()
+  click(w, guestBtn)
+  await tick(200)
+  const guestState = JSON.parse(storage.getItem(AUTH_KEY))
+  check('auth page: guest entry creates guest account + session',
+    guestState?.session !== null && guestState.users.some((u) => u.provider === 'guest'))
+  check('auth page: guest entry marks entry ready', doc.documentElement.dataset.authOk === '1')
 }
 
 console.log(`\n${fails.length === 0 ? `ALL ${passed} AUTH CHECKS PASSED` : `${fails.length} FAILED: ${fails.join('; ')}`}`)

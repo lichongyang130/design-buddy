@@ -227,6 +227,30 @@ export function loginWithProvider(provider) {
   return user
 }
 
+// 游客模式：无需注册的真实本地会话，重复「直接进入」复用同一游客账号
+export function loginAsGuest() {
+  const store = readStore(localStorage)
+  let user = store.users.find((u) => u.provider === 'guest')
+  if (!user) {
+    user = {
+      id: 'u-guest',
+      name: '游客',
+      email: 'guest@design-buddy.local',
+      provider: 'guest',
+      color: 'av-lavender',
+      createdAt: Date.now(),
+      lastLoginAt: Date.now(),
+      demo: true,
+      guest: true,
+    }
+    store.users.push(user)
+  }
+  user.lastLoginAt = Date.now()
+  writeStore(localStorage, store)
+  makeSession(user, true)
+  return user
+}
+
 /* ---------------- 路由守卫 ---------------- */
 
 export function requireAuth(redirect) {

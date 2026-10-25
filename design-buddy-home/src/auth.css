@@ -168,6 +168,26 @@
   margin-top: 16px; font-size: 12px; line-height: 1.7;
   color: var(--text-3); text-align: center;
 }
+
+/* 游客直接进入：弱化的虚线幽灵按钮，不与主登录路径抢视觉 */
+.auth-guest-btn {
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px dashed var(--line);
+  background: transparent;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-3);
+  transition: color .15s ease, border-color .15s ease, background .15s ease;
+}
+.auth-guest-btn:hover {
+  color: var(--navy);
+  border-color: var(--blue);
+  background: var(--blue-bg);
+}
+.auth-guest-btn:active { transform: translateY(1px); }
 .form-alert {
   background: #fdeaea; color: #c0392b; border-radius: 10px;
   padding: 10px 14px; font-size: 13px; font-weight: 600; margin-bottom: 14px;

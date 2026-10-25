@@ -4,7 +4,7 @@
    ============================================================ */
 
 import {
-  registerWithEmail, loginWithEmail, loginWithProvider, currentUser,
+  registerWithEmail, loginWithEmail, loginWithProvider, loginAsGuest, currentUser,
 } from './auth.js'
 
 const DICT = {
@@ -22,6 +22,7 @@ const DICT = {
     'field.confirm': '确认密码', 'field.remember': '30 天内自动登录',
     'field.forgot': '忘记密码？',
     terms: '继续即代表同意本地演示条款：数据仅存储在当前浏览器，清除浏览器数据将同时清除账号。',
+    'guest.cta': '暂不登录，直接进入 →',
     'common.cancel': '取消',
     'ph.name': '例如：林小满',
     'ph.email': 'you@example.com',
@@ -54,6 +55,7 @@ const DICT = {
     'field.confirm': 'Confirm password', 'field.remember': 'Keep me signed in for 30 days',
     'field.forgot': 'Forgot password?',
     terms: 'By continuing you accept the local demo terms: data lives only in this browser, and clearing browser data removes the account too.',
+    'guest.cta': 'Continue as guest →',
     'common.cancel': 'Cancel',
     'ph.name': 'e.g. Maya Lin',
     'ph.email': 'you@example.com',
@@ -252,6 +254,12 @@ $('#auth-form').addEventListener('submit', async (e) => {
       alert.textContent = err.message
     }
   }
+})
+
+// 游客模式：一键创建本地游客会话后直接进入（同样经过路由守卫，不是假入口）
+$('#guest-entry').addEventListener('click', () => {
+  loginAsGuest()
+  enterApp()
 })
 
 applyLang()
