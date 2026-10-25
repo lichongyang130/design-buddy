@@ -212,12 +212,9 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   await tick()
   check('style switch recolors deck', doc.querySelector('.dp-page').getAttribute('style') !== before)
   check('style card picked state', styleCards[1] && doc.querySelectorAll('.td-style-card')[1].classList.contains('is-picked'))
-  // 轮播窗口切换模板
-  const thumbs = doc.querySelectorAll('.td-thumb')
-  check('windowed carousel 12 thumbs', thumbs.length === 12)
-  click(w, thumbs[5])
-  await tick()
-  check('carousel switches template', doc.querySelector('.td-head h2').textContent === thumbs[5].querySelector('.td-thumb-name').textContent)
+  // 底部其他案例轮播行已按需求移除，舞台更干净
+  check('other-cases carousel row removed',
+    !doc.querySelector('.td-carousel-wrap') && doc.querySelectorAll('.td-thumb').length === 0)
 
   // 弹层内中英切换
   const zhText = doc.querySelector('.dp-page [data-edit]')?.textContent

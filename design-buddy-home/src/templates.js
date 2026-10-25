@@ -745,7 +745,6 @@ function openTemplateDetail(tpl) {
   let pageIdx = 0
   let autoplay = false
   let timer = null
-  const THUMB_WINDOW = 12
   const PAGE_WINDOW = 9
 
   const mask = document.createElement('div')
@@ -879,15 +878,6 @@ function openTemplateDetail(tpl) {
       </div>
       <div class="td-progress"><i id="td-progress-i"></i></div>
       <div class="td-pages" id="td-pages"></div>
-      <div class="td-carousel-wrap">
-        <button class="td-arrow" id="td-prev" type="button" aria-label="上一个模板">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <div class="td-carousel" id="td-carousel"></div>
-        <button class="td-arrow" id="td-next" type="button" aria-label="下一个模板">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
     </div>
     </div>`
   document.body.append(mask)
@@ -895,7 +885,6 @@ function openTemplateDetail(tpl) {
 
   const deckEl = mask.querySelector('#td-deck')
   const panel = mask.querySelector('#td-panel')
-  const carousel = mask.querySelector('#td-carousel')
   const pageCountEl = mask.querySelector('#td-page-count')
   const frameEl = mask.querySelector('#td-frame')
   const progressEl = mask.querySelector('#td-progress-i')
@@ -954,7 +943,7 @@ function openTemplateDetail(tpl) {
     mask.querySelector('#td-topbar-title').textContent = displayTpl(t, locale).name
     mask.querySelectorAll('#td-form-switch [data-form]').forEach((b) =>
       b.classList.toggle('is-active', b.dataset.form === form))
-    const slideOnly = mask.querySelectorAll('.td-deck-bar, .td-page-arrow, .td-progress, .td-pages, .td-carousel-wrap')
+    const slideOnly = mask.querySelectorAll('.td-deck-bar, .td-page-arrow, .td-progress, .td-pages')
     if (form === 'doc') {
       // 文档形态：整篇纵向滚动、图文流式，不再分页
       deckEl.classList.add('is-doc')
@@ -1168,19 +1157,6 @@ function openTemplateDetail(tpl) {
     const nums = Array.from({ length: Math.min(PAGE_WINDOW, total) }, (_, k) => start + k)
     pagesStrip.innerHTML = nums.map((n) =>
       `<button type="button" class="td-page-dot ${n === pageIdx ? 'is-active' : ''}" data-page="${n}">${n + 1}</button>`).join('')
-  }
-
-  function renderCarousel() {
-    const total = list.length
-    const start = Math.max(0, Math.min(idx - 5, total - THUMB_WINDOW))
-    const nums = Array.from({ length: Math.min(THUMB_WINDOW, total) }, (_, k) => start + k)
-    carousel.innerHTML = nums.map((i) => {
-      const t = list[i]
-      return `<button class="td-thumb ${i === idx ? 'is-active' : ''}" data-i="${i}" type="button">
-        ${coverHTML(t)}
-        <span class="td-thumb-name">${displayTpl(t, lang()).name}</span>
-      </button>`
-    }).join('')
   }
 
   function syncLangButtons() {
@@ -1429,7 +1405,6 @@ function openTemplateDetail(tpl) {
 
   function render() {
     renderDeck()
-    renderCarousel()
     renderPanel()
   }
 
@@ -1437,22 +1412,6 @@ function openTemplateDetail(tpl) {
     const deck = buildDeck(cur())
     pageIdx = (pageIdx + delta + deck.pages.length) % deck.pages.length
     renderDeck()
-  }
-
-  function switchTemplate(nextIdx) {
-    stopAuto()
-    idx = (nextIdx + list.length) % list.length
-    pageIdx = 0
-    // 历史记录绑定当前模板的字段键，换模板后必须清空，避免撤销串台
-    undoStack.length = 0
-    redoStack.length = 0
-    activeTab = 'brief'
-    syncHistoryButtons()
-    render()
-  }
-
-  function goTemplate(delta) {
-    switchTemplate(idx + delta)
   }
 
   function close() {
@@ -1513,13 +1472,6 @@ function openTemplateDetail(tpl) {
     stopAuto()
     setTemplateLang(btn.dataset.lang)
     render()
-  })
-  mask.querySelector('#td-prev').addEventListener('click', () => goTemplate(-1))
-  mask.querySelector('#td-next').addEventListener('click', () => goTemplate(1))
-  carousel.addEventListener('click', (e) => {
-    const thumb = e.target.closest('.td-thumb')
-    if (!thumb) return
-    switchTemplate(Number(thumb.dataset.i))
   })
   mask.querySelector('.td-back').addEventListener('click', close)
   mask.querySelector('.td-close').addEventListener('click', close)

@@ -301,11 +301,9 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   check('style card selection persisted',
     JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).templateStyles['渔港日记'] === 2)
   check('style card shows picked ring', doc.querySelectorAll('.td-style-card')[2].classList.contains('is-picked'))
-  // 轮播缩略图切换
-  const thumbs = doc.querySelectorAll('.td-thumb')
-  click(w, thumbs[3])
-  await tick()
-  check('carousel thumb switches detail', doc.querySelector('.td-head h2')?.textContent === '朱砂册页')
+  // 底部其他案例缩略图行已移除
+  check('other-cases strip removed',
+    !doc.querySelector('.td-carousel-wrap') && doc.querySelectorAll('.td-thumb').length === 0)
   // Esc 关闭
   doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
   await tick()

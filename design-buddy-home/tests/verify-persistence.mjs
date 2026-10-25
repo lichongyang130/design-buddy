@@ -254,8 +254,9 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   await tick()
   check('template detail overlay opens', !!doc.querySelector('.td-mask'))
   check('detail shows template name', doc.querySelector('.td-head h2')?.textContent === '渔港日记')
-  // 轮播改为窗口化（12 个缩略图），幻灯页浏览器就位
-  check('detail carousel is windowed', doc.querySelectorAll('.td-thumb').length === 12)
+  // 底部其他案例轮播行已移除，幻灯页浏览器就位
+  check('detail other-cases row removed',
+    !doc.querySelector('.td-carousel-wrap') && doc.querySelectorAll('.td-thumb').length === 0)
   check('detail deck renders a page', !!doc.querySelector('.td-deck .dp-page'))
   check('detail has page count', /01 \/ \d\d/.test(doc.querySelector('#td-page-count')?.textContent ?? ''))
   check('detail has framework badge', !!doc.querySelector('#td-frame')?.textContent)
@@ -286,10 +287,12 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   click(w, doc.querySelector('#td-page-prev'))
   await tick()
 
-  // 轮播切换到下一个模板
-  click(w, doc.querySelector('#td-next'))
+  // 切换模板改为关闭弹层后从卡片网格打开第二个模板（轮播行已移除）
+  doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
   await tick()
-  check('next arrow switches template', doc.querySelector('.td-head h2')?.textContent === '水墨亭')
+  click(w, cards[1])
+  await tick()
+  check('grid reopen switches template', doc.querySelector('.td-head h2')?.textContent === '水墨亭')
   // 样式选择可切换并持久化
   click(w, doc.querySelector('#td-dots'))
   await tick()
