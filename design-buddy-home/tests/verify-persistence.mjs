@@ -64,6 +64,50 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   click(w, doc.querySelector('.palette-mask'))
 }
 
+/* ---------------- 1b. gamma 详情：归入文件夹 + 共享开关 ---------------- */
+{
+  const { doc, w, errors, storage } = await loadPage('/index.html')
+  // 先创作一个 gamma
+  input(w, doc.querySelector('#prompt-input'), '详情操作测试')
+  click(w, doc.querySelector('#send-btn'))
+  await tick()
+  // 打开「最近的 Design Buddy」列表
+  const nav = [...doc.querySelectorAll('[data-nav]')].find((n) => n.textContent.includes('最近的 Design Buddy'))
+  click(w, nav)
+  await tick()
+  click(w, doc.querySelector('.gamma-item'))
+  await tick()
+  check('gamma detail modal opens', !!doc.querySelector('.modal-mask #detail-folder'))
+  check('detail has share button', !!doc.querySelector('#detail-share'))
+  // 共享
+  click(w, doc.querySelector('#detail-share'))
+  await tick()
+  check('share flag persisted', readState(storage).gammas.some((g) => g.shared && g.prompt.includes('详情操作测试')))
+  // 归入文件夹（先建文件夹）——按弹窗栈顺序关闭最上层的详情，再关列表
+  const masksBefore = [...doc.querySelectorAll('.modal-mask')]
+  click(w, masksBefore.at(-1).querySelector('[data-close]'))
+  await tick()
+  const masksLeft = [...doc.querySelectorAll('.modal-mask')]
+  if (masksLeft.length) click(w, masksLeft.at(-1).querySelector('.modal-close'))
+  await tick()
+  click(w, doc.querySelector('.folder-link'))
+  await tick()
+  input(w, doc.querySelector('#folder-name'), '详情文件夹')
+  click(w, doc.querySelector('.modal-foot [data-ok]'))
+  await tick()
+  click(w, nav)
+  await tick()
+  click(w, doc.querySelector('.gamma-item'))
+  await tick()
+  const folderSelect = doc.querySelector('#detail-folder')
+  const opt = [...folderSelect.options].find((o) => o.textContent === '详情文件夹')
+  folderSelect.value = opt.value
+  folderSelect.dispatchEvent(new w.Event('change', { bubbles: true }))
+  await tick()
+  check('folder assignment persisted', readState(storage).gammas.some((g) => g.folderId && g.prompt.includes('详情操作测试')))
+  check('folder count updated in sidebar', [...doc.querySelectorAll('.folder-row')].some((r) => r.textContent.includes('详情文件夹') && r.textContent.includes('1')))
+}
+
 /* ---------------- 2. 刷新还原：全新模块图读同一份 localStorage ---------------- */
 {
   const first = await loadPage('/index.html')
@@ -72,10 +116,11 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   await tick()
   check('gamma exists before refresh', readState(first.storage).gammas.some((g) => g.prompt.includes('刷新前的提示词')))
 
+  const creditsBefore = readState(first.storage).credits
   const reloaded = await loadPage('/index.html', { storage: first.storage, freshCopy: true })
   await tick()
   check('reload restores gammas', readState(reloaded.storage).gammas.some((g) => g.prompt.includes('刷新前的提示词')))
-  check('reload restores credits', readState(reloaded.storage).credits === 230)
+  check('reload restores credits', readState(reloaded.storage).credits === creditsBefore)
   check('reload renders workspace label', reloaded.doc.querySelector('.workspace-name').textContent === '品牌设计组')
 }
 

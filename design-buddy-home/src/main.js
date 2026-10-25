@@ -719,8 +719,9 @@ function bindGammaList(bodyEl, { trash = false } = {}) {
     })
     row.addEventListener('click', (e) => {
       if (e.target.closest('.gamma-actions')) return
-      const { bodyEl: b2 } = openModal({
+      const { bodyEl: b2, footEl } = openModal({
         title: g.title,
+        wide: true,
         body: `
           <p class="modal-copy">${g.prompt || '（空白 Design Buddy，暂无提示词）'}</p>
           <p class="hint" style="margin-top:10px">
@@ -728,9 +729,33 @@ function bindGammaList(bodyEl, { trash = false } = {}) {
             ${g.expert ? ` · 专家：${g.expert}` : ''}${g.template ? ` · 模板：${g.template}` : ''}
           </p>
           ${g.attachments.length ? `<p class="hint" style="margin-top:6px">附件：${g.attachments.map((a) => a.name).join('、')}</p>` : ''}
-          <p class="hint" style="margin-top:6px">创建于 ${fmtDate(g.createdAt)}</p>`,
+          <p class="hint" style="margin-top:6px">创建于 ${fmtDate(g.createdAt)}</p>
+          <div class="field" style="margin-top:16px">
+            <label>归入文件夹</label>
+            <select id="detail-folder">
+              <option value="">未分组</option>
+              ${store.state.folders.map((f) => `<option value="${f.id}" ${g.folderId === f.id ? 'selected' : ''}>${f.name}</option>`).join('')}
+            </select>
+          </div>`,
+        footer: `
+          <button class="btn btn-ghost" id="detail-share">${g.shared ? '取消共享' : '共享给协作成员'}</button>
+          <button class="btn btn-primary" data-close>完成</button>`,
       })
-      b2
+      b2.querySelector('#detail-folder').addEventListener('change', (ev) => {
+        g.folderId = ev.target.value || null
+        g.updatedAt = Date.now()
+        store.save()
+        renderFolders()
+        toast(g.folderId ? '已归入文件夹' : '已移回未分组')
+      })
+      footEl.querySelector('#detail-share').addEventListener('click', (ev) => {
+        g.shared = !g.shared
+        g.updatedAt = Date.now()
+        store.save()
+        ev.currentTarget.textContent = g.shared ? '取消共享' : '共享给协作成员'
+        toast(g.shared ? '已共享，可在「与您共享」中查看' : '已取消共享')
+      })
+      footEl.querySelector('[data-close]').addEventListener('click', () => footEl.closest('.modal-mask').remove())
     })
   })
 }
