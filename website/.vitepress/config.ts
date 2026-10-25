@@ -341,6 +341,11 @@ export default withMermaid({
     // `srcDir` puts the Vite root inside the disposable generated tree, whose
     // own `public/` no tracked asset can live in.
     publicDir: resolve(import.meta.dirname, '../public'),
+    // Sandbox preview proxy host; only applied when the env var is present, so
+    // local and CI runs keep Vite's default host checking.
+    server: process.env.VITE_ALLOWED_HOST
+      ? { allowedHosts: [process.env.VITE_ALLOWED_HOST] }
+      : undefined,
     plugins: [
       {
         name: 'deepseek-harness-doc-projector',

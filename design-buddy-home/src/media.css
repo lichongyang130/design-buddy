@@ -1,0 +1,915 @@
+/* ============================================================
+   媒体库页 — 侧栏 + 升级横幅 + 选项卡/筛选 + 媒体网格
+   ============================================================ */
+
+.media-sidebar {
+  width: 286px;
+}
+
+/* 侧栏悬停提示（截图中“图形”上的小气泡） */
+.has-tooltip {
+  position: relative;
+}
+
+.has-tooltip::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) scale(0.96);
+  background: var(--navy);
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 7px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 40;
+}
+
+.has-tooltip:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* ---------------- 页头 ---------------- */
+
+.media-main {
+  background: var(--bg);
+}
+
+.media-head {
+  padding: 24px 30px 0;
+}
+
+.media-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.media-title .icon {
+  width: 22px;
+  height: 22px;
+  color: var(--navy);
+}
+
+.media-subtitle {
+  margin-top: 7px;
+  font-size: 14px;
+  color: var(--text-3);
+}
+
+.media-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+/* 新建 AI 拆分按钮 */
+.split-wrap {
+  position: relative;
+}
+
+.split-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 8px 0 16px;
+  border-radius: 999px;
+  background: var(--navy);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(20, 34, 70, 0.25);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.split-btn:hover {
+  background: #2a3a63;
+  transform: translateY(-1px);
+}
+
+.split-btn .icon {
+  width: 17px;
+  height: 17px;
+}
+
+.ai-badge {
+  background: #5b82f5;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 6px;
+  padding: 2px 7px;
+  letter-spacing: 0.4px;
+}
+
+.split-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.split-caret {
+  width: 14px;
+  height: 14px;
+}
+
+.split-menu {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 8px);
+  min-width: 178px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 16px 42px rgba(23, 43, 92, 0.18);
+  padding: 6px;
+  z-index: 40;
+  animation: pop-in 0.14s ease both;
+}
+
+.split-menu[hidden] {
+  display: none;
+}
+
+.split-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: var(--navy-soft);
+}
+
+.split-menu button:hover {
+  background: var(--line-soft);
+}
+
+.upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.upload-btn:hover {
+  border-color: #c8d3e6;
+  transform: translateY(-1px);
+}
+
+.upload-btn .icon {
+  width: 17px;
+  height: 17px;
+}
+
+/* ---------------- Plus 升级横幅 ---------------- */
+
+.plus-banner {
+  margin: 22px 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border: 1.5px solid #b9ccf5;
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 18px 22px;
+  box-shadow: 0 8px 24px rgba(59, 110, 246, 0.08);
+}
+
+.plus-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.plus-desc {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.plus-cta {
+  flex: none;
+  height: 40px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: 1px solid #c7d3ea;
+  background: var(--surface);
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+
+.plus-cta:hover {
+  background: var(--blue-bg);
+}
+
+/* ---------------- 选项卡 ---------------- */
+
+.media-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 22px 30px 0;
+}
+
+.media-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy-soft);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.media-tab .icon {
+  width: 17px;
+  height: 17px;
+}
+
+.media-tab:hover {
+  background: var(--line-soft);
+}
+
+.media-tab.is-active {
+  background: var(--blue-bg);
+  color: var(--blue-deep);
+}
+
+.media-tab.is-active .icon {
+  color: var(--blue-deep);
+}
+
+/* ---------------- 筛选行 ---------------- */
+
+.media-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 30px 8px;
+}
+
+.filter-selects {
+  display: flex;
+  gap: 22px;
+}
+
+.m-select {
+  position: relative;
+}
+
+.m-select-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--navy-soft);
+  transition: background 0.15s ease;
+}
+
+.m-select-btn:hover {
+  background: var(--line-soft);
+}
+
+.m-select-btn .icon {
+  width: 14px;
+  height: 14px;
+  color: var(--text-3);
+}
+
+.m-select.is-open .m-select-btn .icon {
+  transform: rotate(180deg);
+}
+
+.m-select-menu {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 6px);
+  min-width: 168px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 16px 42px rgba(23, 43, 92, 0.16);
+  padding: 6px;
+  z-index: 40;
+  animation: pop-in 0.14s ease both;
+}
+
+.m-select-menu[hidden] {
+  display: none;
+}
+
+.m-select-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: var(--navy-soft);
+}
+
+.m-select-menu button:hover {
+  background: var(--line-soft);
+}
+
+.m-select-menu button.is-selected {
+  color: var(--blue-deep);
+  font-weight: 600;
+  background: var(--blue-bg);
+}
+
+.filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  color: var(--navy-soft);
+  transition: background 0.15s ease;
+}
+
+.icon-btn:hover {
+  background: var(--line-soft);
+}
+
+.icon-btn .icon {
+  width: 19px;
+  height: 19px;
+}
+
+.icon-btn.is-desc .icon {
+  transform: rotate(180deg);
+}
+
+.pick-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 15px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--navy);
+  transition: all 0.15s ease;
+}
+
+.pick-btn .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.pick-btn:hover {
+  border-color: #b9ccf5;
+}
+
+.pick-btn.is-picking {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+
+/* ---------------- 媒体网格 ---------------- */
+
+.media-section {
+  padding: 14px 30px 60px;
+}
+
+.month-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  padding: 8px 0 14px;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.media-item {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.media-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(23, 43, 92, 0.18);
+}
+
+.media-item.is-selected {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* 右下角图片类型角标 */
+.media-badge {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  width: 24px;
+  height: 20px;
+  border-radius: 5px;
+  background: rgba(12, 16, 26, 0.62);
+  display: grid;
+  place-items: center;
+  z-index: 3;
+  backdrop-filter: blur(2px);
+}
+
+.media-badge .icon {
+  width: 13px;
+  height: 13px;
+  color: #fff;
+}
+
+/* 选择模式下的左上角勾选框 */
+.pick-check {
+  position: absolute;
+  left: 7px;
+  top: 7px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: rgba(12, 16, 26, 0.45);
+  z-index: 3;
+  display: none;
+  place-items: center;
+}
+
+.pick-check .icon {
+  width: 13px;
+  height: 13px;
+  color: #fff;
+}
+
+.media-grid.is-picking .pick-check {
+  display: grid;
+}
+
+.media-item.is-selected .pick-check {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+/* 收藏星标 */
+.fav-star {
+  position: absolute;
+  left: 7px;
+  bottom: 7px;
+  z-index: 3;
+  color: #f5b91e;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+}
+
+.fav-star .icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* ============================================================
+   9 套缩略图
+   ============================================================ */
+
+/* --- 生日卡 1：奶油底 + 彩色字 + 柠檬蛋糕 --- */
+.m-bd1 {
+  background: #fdf4e0;
+}
+
+.m-bd1::before,
+.m-bd2::before,
+.m-bd3::before {
+  content: 'Happy\A birthday';
+  white-space: pre;
+  position: absolute;
+  top: 9%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'Brush Script MT', 'Segoe Script', 'Snell Roundhand', cursive;
+  font-weight: 700;
+  line-height: 1.05;
+  z-index: 2;
+}
+
+.m-bd1::before {
+  font-size: clamp(12px, 1.5vw, 19px);
+  background: linear-gradient(95deg, #e0457b, #f0932b, #3b6ef6, #1f9d7e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.m-bd2 {
+  background: #0d7c86;
+}
+
+.m-bd2::before {
+  font-size: clamp(12px, 1.5vw, 19px);
+  color: #ff8a3d;
+  text-shadow: 1px 1px 0 #ffe08a;
+}
+
+.m-bd3 {
+  background: #f8dce7;
+}
+
+.m-bd3::before {
+  font-size: clamp(12px, 1.5vw, 19px);
+  color: #d9638f;
+}
+
+/* 蛋糕公共结构 */
+.cake {
+  position: absolute;
+  left: 50%;
+  bottom: 12%;
+  transform: translateX(-50%);
+  width: 46%;
+  height: 42%;
+  z-index: 2;
+}
+
+.cake .plate {
+  position: absolute;
+  bottom: 0;
+  left: -12%;
+  width: 124%;
+  height: 16%;
+  border-radius: 50%;
+  background: #cfd6e4;
+}
+
+.cake .tier {
+  position: absolute;
+  left: 8%;
+  width: 84%;
+  border-radius: 8px 8px 4px 4px;
+}
+
+.cake .tier-top {
+  bottom: 12%;
+  height: 46%;
+  background: linear-gradient(180deg, #ffe9a8, #f4c84d);
+}
+
+.cake .tier-bottom {
+  bottom: 4%;
+  left: 0;
+  width: 100%;
+  height: 42%;
+  background: linear-gradient(180deg, #fff3d6, #f0d99a);
+}
+
+.cake .cream {
+  position: absolute;
+  top: -5px;
+  left: 6%;
+  right: 6%;
+  height: 10px;
+  background: radial-gradient(circle at 6px 6px, #fff 5px, transparent 6px) repeat-x;
+  background-size: 12px 10px;
+}
+
+.cake .candle {
+  position: absolute;
+  bottom: 56%;
+  left: 50%;
+  width: 5px;
+  height: 26%;
+  background: #6fb7e8;
+  border-radius: 2px;
+}
+
+.cake .flame {
+  position: absolute;
+  bottom: 84%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 11px;
+  border-radius: 50% 50% 50% 0;
+  background: radial-gradient(circle at 50% 70%, #ffe27a, #f08a24);
+  transform-origin: bottom center;
+  animation: flicker 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+  from { transform: translateX(-50%) rotate(-4deg) scale(1); }
+  to { transform: translateX(-50%) rotate(5deg) scale(1.08); }
+}
+
+/* 彩纸碎屑 */
+.confetti {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle 3px at 12% 62%, #ff6b6b 99%, transparent),
+    radial-gradient(circle 3px at 86% 58%, #4dabf7 99%, transparent),
+    radial-gradient(circle 3px at 22% 30%, #ffd43b 99%, transparent),
+    radial-gradient(circle 3px at 76% 26%, #69db7c 99%, transparent),
+    radial-gradient(circle 2.5px at 68% 70%, #da77f2 99%, transparent),
+    radial-gradient(circle 2.5px at 30% 74%, #4dabf7 99%, transparent);
+}
+
+/* --- 4. 暗紫空间 --- */
+.m-room {
+  background:
+    radial-gradient(ellipse 70% 42% at 50% 0%, rgba(128, 90, 220, 0.55), transparent 70%),
+    linear-gradient(180deg, #17122e 0%, #0c0918 100%);
+}
+
+.m-room::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(128, 90, 220, 0.35), transparent 42%),
+    repeating-linear-gradient(90deg, transparent 0 22%, rgba(150, 120, 240, 0.18) 22% 23%);
+  clip-path: polygon(12% 100%, 88% 100%, 64% 42%, 36% 42%);
+}
+
+.m-room::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 16%;
+  transform: translateX(-50%);
+  width: 26%;
+  height: 10%;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #b79cff, #6d4fd0);
+  box-shadow: 0 0 26px 8px rgba(140, 100, 240, 0.45);
+}
+
+/* --- 5. 代码屏幕 --- */
+.m-code {
+  background: #0b1020;
+}
+
+.m-code::before {
+  content: '';
+  position: absolute;
+  left: 10%;
+  top: 18%;
+  width: 62%;
+  height: 60%;
+  background:
+    repeating-linear-gradient(180deg,
+      #3ddc97 0 3px, transparent 3px 10px),
+    repeating-linear-gradient(180deg,
+      transparent 0 14px, rgba(96, 130, 220, 0.55) 14px 16px, transparent 16px 24px);
+  border-radius: 4px;
+  opacity: 0.85;
+}
+
+.m-code::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 8%;
+  background: linear-gradient(180deg, #7c5cff, #31d0e0);
+  box-shadow: 0 0 18px rgba(90, 120, 255, 0.7);
+}
+
+/* --- 6. 键盘特写 --- */
+.m-keys {
+  background: #0d0f16;
+}
+
+.m-keys::before {
+  content: '';
+  position: absolute;
+  inset: 8% 6%;
+  background:
+    radial-gradient(circle 2.5px at 72% 62%, #e03e3e 99%, transparent),
+    repeating-linear-gradient(90deg, #1c2030 0 18%, #262b3e 18% 19.5%),
+    repeating-linear-gradient(180deg, #1c2030 0 30%, #262b3e 30% 32%);
+  border-radius: 6px;
+  box-shadow: inset 0 0 30px rgba(90, 70, 200, 0.35);
+}
+
+.m-keys::after {
+  content: 'T\A Y\A G\A H\A B\A N';
+  white-space: pre;
+  position: absolute;
+  inset: 14% 9%;
+  font-size: clamp(8px, 1vw, 12px);
+  font-weight: 700;
+  color: #9aa4bd;
+  word-spacing: 34px;
+  line-height: 2.1;
+  letter-spacing: 1px;
+}
+
+/* --- 7. 笔记本（紫色光晕） --- */
+.m-laptop {
+  background: radial-gradient(ellipse at 50% 30%, #232a52, #0a0c16 70%);
+}
+
+.m-laptop::before {
+  content: '';
+  position: absolute;
+  left: 24%;
+  top: 18%;
+  width: 52%;
+  height: 52%;
+  border-radius: 6px 6px 2px 2px;
+  background: linear-gradient(160deg, #4a3fbf, #1c1b46);
+  border: 2px solid #3a3470;
+  box-shadow: 0 0 30px rgba(110, 90, 240, 0.55);
+}
+
+.m-laptop::after {
+  content: '';
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  bottom: 16%;
+  height: 8%;
+  border-radius: 0 0 10px 10px;
+  background: #2a2f45;
+  transform: perspective(300px) rotateX(38deg);
+}
+
+/* --- 8. 桌面笔记本（聚光） --- */
+.m-desk {
+  background:
+    radial-gradient(ellipse 60% 40% at 70% 18%, rgba(255, 230, 190, 0.28), transparent 70%),
+    linear-gradient(180deg, #14121c, #08070d);
+}
+
+.m-desk::before {
+  content: '';
+  position: absolute;
+  left: 30%;
+  bottom: 20%;
+  width: 44%;
+  height: 40%;
+  border-radius: 4px;
+  background: linear-gradient(160deg, #2b2740, #12101c);
+  border: 2px solid #35304c;
+  transform: perspective(260px) rotateY(-14deg);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.55);
+}
+
+.m-desk::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22%;
+  background: linear-gradient(180deg, #1d1a28, #0b0a12);
+}
+
+/* --- 9. 国风厅堂画 --- */
+.m-paint {
+  background: linear-gradient(180deg, #e9dcc2, #d9c49f);
+}
+
+.m-paint::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, #9e3b2e 0 6%, transparent 6% 94%, #9e3b2e 94%),
+    repeating-linear-gradient(90deg, transparent 0 18%, rgba(120, 60, 40, 0.28) 18% 19%);
+}
+
+.m-paint::after {
+  content: '';
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  bottom: 14%;
+  height: 46%;
+  background:
+    radial-gradient(circle 7px at 22% 26%, #6b3a28 99%, transparent),
+    radial-gradient(circle 7px at 50% 22%, #7a4a30 99%, transparent),
+    radial-gradient(circle 7px at 78% 28%, #5f3322 99%, transparent),
+    linear-gradient(180deg, transparent 42%, #7a3f2e 43% 100%);
+  border-radius: 6px 6px 0 0;
+  opacity: 0.9;
+}
+
+/* ---------------- 空态 ---------------- */
+
+.media-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 80px 0;
+  color: var(--text-3);
+  font-size: 14px;
+}
+
+.media-empty-ic {
+  width: 62px;
+  height: 62px;
+  border-radius: 17px;
+  background: var(--line-soft);
+  display: grid;
+  place-items: center;
+  color: #b3bccb;
+}
+
+.media-empty-ic .icon {
+  width: 28px;
+  height: 28px;
+}
+
+/* ---------------- 响应式 ---------------- */
+
+@media (max-width: 1500px) {
+  .media-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1150px) {
+  .media-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .media-sidebar {
+    display: none;
+  }
+
+  .media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .media-head,
+  .plus-banner,
+  .media-tabs,
+  .media-filters,
+  .media-section {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .media-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-selects {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

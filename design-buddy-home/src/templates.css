@@ -1,0 +1,1138 @@
+/* ============================================================
+   探索模板页 — 侧栏筛选器 + 模板网格 + 24 套纯 CSS 封面
+   ============================================================ */
+
+.tpl-sidebar {
+  width: 286px;
+}
+
+.side-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  padding: 2px 10px 10px;
+}
+
+/* ---------------- 筛选器 ---------------- */
+
+.filter-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  padding: 18px 10px 6px;
+}
+
+.filter-group {
+  margin-bottom: 4px;
+}
+
+.filter-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  transition: background 0.15s ease;
+}
+
+.filter-head:hover {
+  background: var(--line-soft);
+}
+
+.chev {
+  width: 17px;
+  height: 17px;
+  transition: transform 0.2s ease;
+}
+
+.filter-group.collapsed .chev {
+  transform: rotate(180deg);
+}
+
+.filter-group.collapsed .filter-body {
+  display: none;
+}
+
+.filter-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 2px 6px 8px;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: var(--navy-soft);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.filter-option:hover {
+  background: var(--line-soft);
+}
+
+.filter-option input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--blue);
+  flex: none;
+  cursor: pointer;
+}
+
+.opt-icon {
+  width: 17px;
+  height: 17px;
+  color: #4a556b;
+}
+
+.filter-option .count {
+  margin-left: auto;
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+
+.cat-extra {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.cat-toggle {
+  align-self: flex-start;
+  padding: 8px 8px 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue);
+  background: none;
+  border: none;
+}
+
+.cat-toggle:hover {
+  text-decoration: underline;
+}
+
+/* ---------------- 页头与工具条 ---------------- */
+
+.tpl-main {
+  background: var(--bg);
+}
+
+.tpl-page-head {
+  padding: 22px 30px 0;
+}
+
+.tpl-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.tpl-title .icon {
+  width: 22px;
+  height: 22px;
+  color: var(--navy);
+}
+
+.tpl-subtitle {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--text-3);
+}
+
+.tpl-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 30px 22px;
+}
+
+.tpl-search {
+  position: relative;
+  width: min(380px, 46%);
+  display: flex;
+  align-items: center;
+}
+
+.tpl-search .icon {
+  position: absolute;
+  left: 14px;
+  width: 17px;
+  height: 17px;
+  color: var(--text-3);
+  pointer-events: none;
+}
+
+.tpl-search input {
+  width: 100%;
+  height: 42px;
+  padding: 0 16px 0 42px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  font: inherit;
+  color: var(--text);
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tpl-search input:focus {
+  outline: none;
+  border-color: #b9ccf5;
+  box-shadow: 0 0 0 3px rgba(59, 110, 246, 0.12);
+}
+
+.tpl-search input::placeholder {
+  color: #a4adc0;
+}
+
+.sort-wrap {
+  position: relative;
+}
+
+.sort-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 9px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--navy);
+  transition: background 0.15s ease;
+}
+
+.sort-btn:hover {
+  background: var(--line-soft);
+}
+
+.sort-btn .icon {
+  width: 17px;
+  height: 17px;
+}
+
+.sort-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  min-width: 168px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 14px 36px rgba(23, 43, 92, 0.16);
+  padding: 6px;
+  z-index: 40;
+}
+
+.sort-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: var(--navy-soft);
+}
+
+.sort-option:hover {
+  background: var(--line-soft);
+}
+
+.sort-option.is-selected {
+  color: var(--blue-deep);
+  font-weight: 600;
+  background: var(--blue-bg);
+}
+
+/* ---------------- 模板网格 ---------------- */
+
+.tpl-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 22px 18px;
+  padding: 0 30px 48px;
+  align-content: start;
+}
+
+.tpl-card {
+  min-width: 0;
+  cursor: pointer;
+}
+
+.tpl-cover {
+  position: relative;
+  aspect-ratio: 1.68 / 1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.tpl-card:hover .tpl-cover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(23, 43, 92, 0.18);
+}
+
+.tc-a,
+.tc-b {
+  position: absolute;
+  z-index: 2;
+  max-width: 82%;
+}
+
+.tc-a {
+  top: 12px;
+  left: 12px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.tc-b {
+  left: 12px;
+  bottom: 10px;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  opacity: 0.85;
+}
+
+.tpl-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 9px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+}
+
+.tpl-name .icon {
+  width: 14px;
+  height: 14px;
+  color: var(--text-3);
+  flex: none;
+}
+
+.tpl-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 90px 0;
+  color: var(--text-3);
+  font-size: 15px;
+  grid-column: 1 / -1;
+}
+
+/* ============================================================
+   24 套封面主题
+   ============================================================ */
+
+/* 1 渔港日记 — 港口工业海报 */
+.tpl-shipu {
+  background: #e8e7e2;
+}
+.tpl-shipu .tc-a {
+  font-size: 26px;
+  color: #c8281c;
+  letter-spacing: 4px;
+}
+.tpl-shipu .tc-a::after {
+  content: '浦';
+  background: #f4c20d;
+  color: #1a1a1a;
+  padding: 0 3px;
+  margin-left: 2px;
+}
+.tpl-shipu .tc-b {
+  color: #1a1a1a;
+  font-size: 10px;
+  letter-spacing: 7px;
+  opacity: 1;
+}
+.tpl-shipu::before {
+  content: '';
+  position: absolute;
+  right: 8px;
+  top: 10px;
+  width: 34%;
+  height: 56%;
+  background:
+    linear-gradient(160deg, rgba(20, 26, 32, 0.82), rgba(20, 26, 32, 0.55)),
+    repeating-linear-gradient(90deg, #39424c 0 3px, transparent 3px 7px);
+  clip-path: polygon(0 28%, 100% 0, 100% 100%, 0 100%);
+}
+.tpl-shipu::after {
+  content: '9/16';
+  position: absolute;
+  left: 10px;
+  bottom: 26px;
+  background: #f4c20d;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 4px;
+  z-index: 2;
+}
+
+/* 2 水墨亭 — 澄湖水墨 */
+.tpl-ink {
+  background: linear-gradient(180deg, #efe9db, #e2d9c6);
+}
+.tpl-ink .tc-a {
+  writing-mode: vertical-rl;
+  font-size: 17px;
+  font-weight: 600;
+  color: #3c3830;
+  letter-spacing: 6px;
+  font-family: 'Songti SC', 'SimSun', serif;
+}
+.tpl-ink::before {
+  content: '';
+  position: absolute;
+  right: 6%;
+  bottom: 14%;
+  width: 58%;
+  height: 46%;
+  background:
+    radial-gradient(ellipse 60% 40% at 60% 30%, rgba(70, 74, 80, 0.5), transparent 70%),
+    linear-gradient(165deg, transparent 55%, rgba(60, 64, 70, 0.35) 56%, transparent 60%),
+    linear-gradient(150deg, transparent 62%, rgba(60, 64, 70, 0.28) 63%, transparent 67%);
+}
+.tpl-ink::after {
+  content: '';
+  position: absolute;
+  left: 30%;
+  top: 22%;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: #b04a3a;
+}
+
+/* 3 Overtime — 年终大复盘 */
+.tpl-overtime {
+  background:
+    repeating-linear-gradient(0deg, rgba(66, 104, 190, 0.1) 0 1px, transparent 1px 16px),
+    repeating-linear-gradient(90deg, rgba(66, 104, 190, 0.1) 0 1px, transparent 1px 16px),
+    #f7f9fd;
+}
+.tpl-overtime .tc-a {
+  right: 10px;
+  left: 10px;
+  text-align: center;
+  font-size: 17px;
+  color: #1d3570;
+  letter-spacing: 1px;
+}
+.tpl-overtime .tc-b {
+  right: 10px;
+  text-align: center;
+  color: #d05a3c;
+}
+.tpl-overtime::before {
+  content: '';
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  width: 22px;
+  height: 22px;
+  background: conic-gradient(from 0deg, #e8a33d 0 25%, transparent 25% 50%, #e8a33d 50% 75%, transparent 75%);
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+}
+
+/* 4 朱砂册页 — 茶事雅集 */
+.tpl-cinnabar {
+  background: #f2ead9;
+}
+.tpl-cinnabar .tc-a {
+  writing-mode: vertical-rl;
+  right: 12px;
+  left: auto;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  color: #2f4a3c;
+  font-family: 'Songti SC', 'SimSun', serif;
+}
+.tpl-cinnabar::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 38%;
+  background: linear-gradient(180deg, #a32b22, #7f1f18);
+}
+.tpl-cinnabar::after {
+  content: '';
+  position: absolute;
+  left: 8%;
+  top: 18%;
+  width: 26%;
+  height: 34%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #f6efe2, #e4d4b8 70%);
+  box-shadow: 14px 26px 0 -6px #e4d4b8, -8px 34px 0 -8px #efe4cd;
+}
+
+/* 5 讲堂 — 城市生态六周观察课 */
+.tpl-lecture {
+  background: linear-gradient(100deg, #0d1410 0 56%, #1d2e22 56% 78%, #3a4a3c 78%);
+}
+.tpl-lecture .tc-a {
+  font-size: 12.5px;
+  color: #eef3ec;
+  max-width: 52%;
+  line-height: 1.5;
+}
+.tpl-lecture .tc-b {
+  color: rgba(238, 243, 236, 0.6);
+}
+.tpl-lecture::before {
+  content: '';
+  position: absolute;
+  right: 4%;
+  top: 12%;
+  width: 20%;
+  height: 76%;
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0 2px, transparent 2px 9px);
+}
+
+/* 6 国潮商务路演 */
+.tpl-guochao {
+  background: #0b0d10;
+  border: 1px solid rgba(212, 175, 92, 0.55);
+}
+.tpl-guochao .tc-a {
+  font-size: 9.5px;
+  color: #d4af5c;
+  font-weight: 700;
+  max-width: 90%;
+  text-align: center;
+  left: 8%;
+  right: 8%;
+}
+.tpl-guochao .tc-b {
+  display: flex;
+  gap: 6px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  opacity: 1;
+}
+.tpl-guochao .tc-b::before,
+.tpl-guochao .tc-b::after,
+.tpl-guochao .tc-b {
+  color: #d4af5c;
+}
+.tpl-guochao .tc-b {
+  font-size: 0;
+  justify-content: space-between;
+}
+.tpl-guochao .tc-b::before {
+  content: '52家';
+  font-size: 8px;
+  border: 1px solid rgba(212, 175, 92, 0.6);
+  padding: 3px 6px;
+  border-radius: 3px;
+}
+.tpl-guochao::after {
+  content: '860万元   71%';
+  position: absolute;
+  right: 10px;
+  bottom: 13px;
+  z-index: 2;
+  font-size: 8px;
+  font-weight: 700;
+  color: #d4af5c;
+  word-spacing: 10px;
+}
+
+/* 7 Quire — Back of House */
+.tpl-quire {
+  background: linear-gradient(160deg, #1b2c4a, #0e1a30);
+}
+.tpl-quire .tc-a {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 15px;
+  color: #f2f4f8;
+  font-weight: 700;
+}
+.tpl-quire .tc-b {
+  color: rgba(242, 244, 248, 0.65);
+  letter-spacing: 1px;
+}
+.tpl-quire::before {
+  content: '';
+  position: absolute;
+  right: -30px;
+  bottom: -34px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 1px solid rgba(242, 244, 248, 0.28);
+  box-shadow:
+    0 0 0 9px transparent,
+    inset 0 0 0 9px transparent;
+  background: repeating-radial-gradient(circle, transparent 0 7px, rgba(242, 244, 248, 0.22) 7px 8px);
+}
+
+/* 8 Full Record — Amara Osei */
+.tpl-fullrecord {
+  background: linear-gradient(90deg, #0f5c46 0 22%, #dfe2df 22% 58%, #b9bcb6 58%);
+}
+.tpl-fullrecord .tc-a {
+  left: 28%;
+  font-family: Georgia, serif;
+  font-size: 11px;
+  color: #23302b;
+}
+.tpl-fullrecord .tc-b {
+  left: 28%;
+  color: #5a6b62;
+}
+.tpl-fullrecord::before {
+  content: '';
+  position: absolute;
+  left: 8%;
+  top: 14%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #f0b413;
+}
+
+/* 9 Fit Check — HOMEROOM */
+.tpl-fitcheck {
+  background: #bfe3c9;
+  border: 2px dashed #ef8fb0;
+}
+.tpl-fitcheck .tc-a {
+  right: 10px;
+  left: auto;
+  font-size: 13px;
+  color: #1f2d24;
+}
+.tpl-fitcheck .tc-b {
+  right: 12px;
+  color: #47604f;
+}
+.tpl-fitcheck::before {
+  content: '';
+  position: absolute;
+  left: 14%;
+  bottom: 12%;
+  width: 26%;
+  height: 58%;
+  border-radius: 16px 16px 6px 6px;
+  background: linear-gradient(180deg, #f2c4cf, #d98aa0);
+  box-shadow: 34px 6px 0 -2px #8fb7c9;
+}
+
+/* 10 First Edition — Salt and Lemon */
+.tpl-firstedition {
+  background: linear-gradient(90deg, #9a978f 0 26%, #f1ede2 26% 72%, #85827b 72%);
+}
+.tpl-firstedition .tc-a {
+  left: 30%;
+  font-family: Georgia, serif;
+  font-size: 10.5px;
+  color: #4a463d;
+  text-align: center;
+}
+.tpl-firstedition .tc-b {
+  left: 30%;
+  color: #7a7468;
+}
+.tpl-firstedition::before {
+  content: '';
+  position: absolute;
+  left: 34%;
+  bottom: 16%;
+  width: 34%;
+  height: 30%;
+  background:
+    linear-gradient(135deg, transparent 46%, #6e7a5e 47% 53%, transparent 54%),
+    radial-gradient(circle at 70% 30%, #c9d3a8 0 26%, transparent 27%);
+  opacity: 0.7;
+}
+
+/* 11 The Web Between Us */
+.tpl-web {
+  background: linear-gradient(160deg, #18c3e0, #0a97bd);
+}
+.tpl-web .tc-a {
+  font-size: 14px;
+  color: #0c2b4a;
+  letter-spacing: 0.5px;
+}
+.tpl-web::before {
+  content: '';
+  position: absolute;
+  right: 12%;
+  bottom: 8%;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #123a63, #08223f);
+  box-shadow:
+    0 0 0 2px rgba(8, 34, 63, 0.4),
+    -26px -18px 0 -14px #08223f,
+    24px -20px 0 -15px #08223f;
+}
+.tpl-web::after {
+  content: '';
+  position: absolute;
+  right: 6%;
+  bottom: 4%;
+  width: 70px;
+  height: 70px;
+  background:
+    linear-gradient(45deg, transparent 49.4%, rgba(8, 34, 63, 0.55) 49.6% 50.4%, transparent 50.6%),
+    linear-gradient(-45deg, transparent 49.4%, rgba(8, 34, 63, 0.55) 49.6% 50.4%, transparent 50.6%),
+    linear-gradient(0deg, transparent 49.4%, rgba(8, 34, 63, 0.45) 49.6% 50.4%, transparent 50.6%);
+}
+
+/* 12 Soft Current — Migraine */
+.tpl-soft {
+  background: linear-gradient(90deg, #f3efe2 0 58%, #1f6b63 58%);
+}
+.tpl-soft .tc-a {
+  max-width: 50%;
+  font-size: 11px;
+  color: #23403c;
+  line-height: 1.45;
+}
+.tpl-soft::before {
+  content: '';
+  position: absolute;
+  right: 12%;
+  top: 18%;
+  width: 34px;
+  height: 44px;
+  border-radius: 46% 46% 50% 50%;
+  background: #e8c39e;
+  box-shadow: inset 8px 0 0 -2px rgba(120, 90, 60, 0.25);
+}
+.tpl-soft::after {
+  content: '';
+  position: absolute;
+  right: 9%;
+  top: 12%;
+  width: 42px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid rgba(243, 239, 226, 0.75);
+  border-left-color: transparent;
+}
+
+/* 13 Spark and Fire */
+.tpl-spark {
+  background: #1f4fe0;
+}
+.tpl-spark .tc-b {
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 2px;
+}
+.tpl-spark::before {
+  content: '';
+  position: absolute;
+  left: 16%;
+  bottom: 14%;
+  width: 22px;
+  height: 46px;
+  border-radius: 12px 12px 4px 4px;
+  background: #f4f6fb;
+  box-shadow: 62px 4px 0 -1px #f4f6fb;
+}
+.tpl-spark::after {
+  content: '';
+  position: absolute;
+  left: 14%;
+  bottom: 52%;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #f4f6fb;
+  box-shadow: 62px 4px 0 -1px #f4f6fb;
+  filter: drop-shadow(0 -14px 12px rgba(255, 190, 90, 0.8));
+}
+
+/* 14 Scintilla — pollinators */
+.tpl-scintilla {
+  background: #5b3cc4;
+}
+.tpl-scintilla .tc-a {
+  font-size: 11.5px;
+  color: #ffd84d;
+  max-width: 62%;
+  line-height: 1.4;
+}
+.tpl-scintilla .tc-b {
+  color: rgba(255, 255, 255, 0.7);
+}
+.tpl-scintilla::before {
+  content: '';
+  position: absolute;
+  right: 12%;
+  bottom: 16%;
+  width: 30px;
+  height: 20px;
+  border-radius: 50%;
+  background: repeating-linear-gradient(90deg, #ffd84d 0 4px, #3b2386 4px 7px);
+  box-shadow:
+    -8px -2px 0 -4px rgba(255, 255, 255, 0.7),
+    8px -2px 0 -4px rgba(255, 255, 255, 0.7);
+}
+.tpl-scintilla::after {
+  content: '✿';
+  position: absolute;
+  right: 8%;
+  top: 10%;
+  color: rgba(255, 216, 77, 0.7);
+  font-size: 20px;
+}
+
+/* 15 Sisyphus Riso */
+.tpl-sisyphus {
+  background: #f6e3ec;
+}
+.tpl-sisyphus .tc-a {
+  bottom: 10px;
+  top: auto;
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  color: #24305e;
+  max-width: 70%;
+}
+.tpl-sisyphus::before {
+  content: '';
+  position: absolute;
+  left: 12%;
+  top: 30%;
+  width: 62%;
+  height: 46%;
+  background: #2f4aa8;
+  clip-path: polygon(0 100%, 100% 100%, 78% 0);
+}
+.tpl-sisyphus::after {
+  content: '';
+  position: absolute;
+  right: 16%;
+  top: 16%;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffb05c, #e06a1f);
+}
+
+/* 16 Rebuilding the Past */
+.tpl-rebuilding {
+  background: #f4f1ea;
+}
+.tpl-rebuilding .tc-a {
+  font-family: Georgia, serif;
+  font-size: 12px;
+  color: #c0392b;
+}
+.tpl-rebuilding::before {
+  content: '';
+  position: absolute;
+  left: 12%;
+  right: 10%;
+  bottom: 14%;
+  height: 42%;
+  background:
+    repeating-linear-gradient(90deg, #9bb0c4 0 5px, transparent 5px 11px),
+    linear-gradient(180deg, transparent 55%, #c9d4de 56%);
+  clip-path: polygon(0 100%, 0 62%, 8% 62%, 8% 40%, 16% 40%, 16% 55%, 26% 55%, 26% 30%, 34% 30%, 34% 50%, 46% 50%, 46% 22%, 54% 22%, 54% 48%, 66% 48%, 66% 36%, 76% 36%, 76% 58%, 88% 58%, 88% 44%, 100% 44%, 100% 100%);
+}
+.tpl-rebuilding::after {
+  content: '';
+  position: absolute;
+  left: 14%;
+  bottom: 56%;
+  width: 70%;
+  height: 2px;
+  background: rgba(192, 57, 43, 0.5);
+}
+
+/* 17 Metamorphosis */
+.tpl-metamorphosis {
+  background: #f5c518;
+}
+.tpl-metamorphosis::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -54%);
+  width: 34px;
+  height: 46px;
+  background:
+    radial-gradient(ellipse 12px 20px at 30% 40%, #1a1a1a 60%, transparent 62%),
+    radial-gradient(ellipse 12px 20px at 70% 40%, #f7f3e3 60%, transparent 62%);
+}
+.tpl-metamorphosis::after {
+  content: '';
+  position: absolute;
+  left: 22%;
+  top: 34%;
+  width: 18px;
+  height: 26px;
+  border-radius: 50% 10% 50% 10%;
+  background: #1a1a1a;
+  box-shadow: 78px 8px 0 -6px #f7f3e3;
+}
+.tpl-metamorphosis .tc-b {
+  color: #4a3a05;
+  letter-spacing: 3px;
+}
+
+/* 18 Luminal — quiet cascade */
+.tpl-luminal {
+  background:
+    radial-gradient(circle at 78% 26%, rgba(255, 220, 160, 0.5) 0 6px, transparent 7px),
+    radial-gradient(circle at 64% 60%, rgba(255, 220, 160, 0.35) 0 4px, transparent 5px),
+    radial-gradient(circle at 86% 70%, rgba(255, 220, 160, 0.4) 0 5px, transparent 6px),
+    linear-gradient(160deg, #1a1712, #05060a);
+}
+.tpl-luminal .tc-a {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: #e9e4d8;
+}
+.tpl-luminal .tc-b {
+  color: rgba(233, 228, 216, 0.55);
+}
+
+/* 19 Inner Weather */
+.tpl-inner {
+  background: #e8eef6;
+}
+.tpl-inner .tc-b {
+  color: #7d8aa0;
+  letter-spacing: 2px;
+}
+.tpl-inner::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 16%;
+  transform: translateX(-50%);
+  width: 38px;
+  height: 56px;
+  border-radius: 46% 46% 40% 40%;
+  background: radial-gradient(circle at 50% 30%, #fdfdfd, #d9e0ea);
+  box-shadow: 0 10px 18px rgba(80, 100, 130, 0.18);
+}
+.tpl-inner::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  top: 18%;
+  width: 22%;
+  height: 56%;
+  background: repeating-linear-gradient(0deg, #d06a5a 0 2px, transparent 2px 9px);
+  opacity: 0.8;
+}
+
+/* 20 Hush — Brierley Institute */
+.tpl-hush {
+  background: linear-gradient(180deg, #2a3f66 0%, #6d7ea6 46%, #e8a85f 72%, #f3d9a8 100%);
+}
+.tpl-hush .tc-a {
+  left: 8%;
+  right: 8%;
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  color: #f4f1e8;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+.tpl-hush::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 22%;
+  height: 2px;
+  background: rgba(244, 241, 232, 0.7);
+}
+
+/* 21 Buzzer — Trivia Night */
+.tpl-buzzer {
+  background:
+    radial-gradient(ellipse 30% 60% at 30% 0%, rgba(120, 190, 255, 0.35), transparent 70%),
+    radial-gradient(ellipse 30% 60% at 72% 0%, rgba(120, 190, 255, 0.3), transparent 70%),
+    #0b1d3a;
+}
+.tpl-buzzer .tc-a {
+  left: 8%;
+  right: 8%;
+  text-align: center;
+  font-size: 16px;
+  color: #ffd84d;
+  letter-spacing: 1px;
+}
+.tpl-buzzer .tc-b {
+  left: 8%;
+  right: 8%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.75);
+}
+.tpl-buzzer::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 18%;
+  background: repeating-linear-gradient(90deg, #1d9fe0 0 12px, #0e5a86 12px 16px);
+  border-radius: 4px;
+}
+
+/* 22 Vista — Kalai Retreat */
+.tpl-vista {
+  background: linear-gradient(180deg, #8fa68b 0%, #40594a 42%, #17352a 78%);
+}
+.tpl-vista .tc-a {
+  font-family: Georgia, serif;
+  font-size: 12px;
+  color: #f0efe4;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+.tpl-vista::before {
+  content: '';
+  position: absolute;
+  left: 12%;
+  bottom: 18%;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #234436;
+  box-shadow: 44px 6px 0 -4px #1d3a2e, 22px -8px 0 -6px #2a5140;
+}
+.tpl-vista::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22%;
+  background: #0f271e;
+}
+
+/* 23 Open House — 214 Birchwood Lane */
+.tpl-openhouse {
+  background: linear-gradient(180deg, #cfe3e6 0 48%, #b89a72 48% 62%, #8a6a48 62%);
+}
+.tpl-openhouse .tc-a {
+  font-family: Georgia, serif;
+  font-size: 11px;
+  color: #f7f4ec;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+.tpl-openhouse::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 24%;
+  transform: translateX(-50%);
+  width: 46%;
+  height: 34%;
+  background: #7a4f2e;
+  clip-path: polygon(0 100%, 0 38%, 50% 0, 100% 38%, 100% 100%);
+  box-shadow: inset 0 0 0 100px rgba(0, 0, 0, 0.05);
+}
+.tpl-openhouse::after {
+  content: '';
+  position: absolute;
+  left: 46%;
+  bottom: 24%;
+  width: 8%;
+  height: 16%;
+  background: #e9d9b8;
+}
+
+/* 24 Monsoon Modern */
+.tpl-monsoon {
+  background: linear-gradient(160deg, #f0742f, #d94f1c);
+}
+.tpl-monsoon .tc-a {
+  font-size: 11px;
+  color: #fff6ea;
+  max-width: 60%;
+  line-height: 1.4;
+}
+.tpl-monsoon::before {
+  content: '';
+  position: absolute;
+  right: 8%;
+  bottom: 12%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50% 50% 50% 0;
+  background: #2f7d5c;
+  box-shadow:
+    -18px -14px 0 -8px #4ca37d,
+    14px -18px 0 -10px #246047;
+}
+.tpl-monsoon::after {
+  content: '';
+  position: absolute;
+  right: 14%;
+  bottom: 40%;
+  width: 3px;
+  height: 30px;
+  background: #246047;
+}
+
+/* ---------------- 响应式 ---------------- */
+
+@media (max-width: 1400px) {
+  .tpl-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1100px) {
+  .tpl-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .tpl-sidebar {
+    display: none;
+  }
+
+  .tpl-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tpl-page-head,
+  .tpl-toolbar {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .tpl-grid {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}

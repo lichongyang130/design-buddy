@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design Buddy — 随时准备好，等您开始</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e2b4d'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- ============ 最左侧窄图标栏 ============ -->
+      <nav class="rail" aria-label="模块导航">
+        <div class="rail-top">
+          <a class="brand-logo" href="index.html" aria-label="Design Buddy">G</a>
+          <a href="index.html" class="rail-item rail-item-active" aria-current="page">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1z"/></svg>
+            <span>首页</span>
+          </a>
+          <a href="media.html" class="rail-item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>媒体</span>
+          </a>
+          <a href="templates.html" class="rail-item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            <span>模板</span>
+          </a>
+          <a href="themes.html" class="rail-item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2a10 10 0 1 0 0 20 2.5 2.5 0 0 0 0-5 2.5 2.5 0 0 1 0-5h2a6 6 0 0 0 6-6 10 10 0 0 0-8-4z"/></svg>
+            <span>主题</span>
+          </a>
+          <a href="settings.html" class="rail-item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span>设置</span>
+          </a>
+          <div class="more-wrap">
+            <button class="rail-item" type="button" aria-haspopup="true" aria-expanded="false">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+              <span>更多</span>
+            </button>
+            <div class="more-flyout" hidden role="menu" aria-label="更多功能">
+              <button class="menu-row" type="button" role="menuitem" data-more="技能">
+                <svg class="icon menu-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+                <span class="menu-label">技能</span>
+              </button>
+              <button class="menu-row" type="button" role="menuitem" data-more="专家">
+                <svg class="icon menu-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="11" rx="3.5"/><path d="M12 8V4.5M9.5 4.5h5"/><circle cx="9.6" cy="13" r="1.3" fill="currentColor" stroke="none"/><circle cx="14.4" cy="13" r="1.3" fill="currentColor" stroke="none"/><path d="M9.5 16.2h5"/></svg>
+                <span class="menu-label">专家</span>
+              </button>
+              <button class="menu-row" type="button" role="menuitem" data-more="连接器">
+                <svg class="icon menu-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                <span class="menu-label">连接器</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="rail-footer">
+          <button class="footer-icon" type="button" aria-label="邀请成员">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+          </button>
+          <button class="footer-icon" type="button" aria-label="消息">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </button>
+          <span class="avatar avatar-green">RW</span>
+        </div>
+      </nav>
+
+      <!-- ============ 左侧工作区侧栏 ============ -->
+      <aside class="sidebar">
+        <div class="sidebar-inner">
+          <button class="workspace-switch" type="button">
+            <span class="avatar avatar-green">RW</span>
+            <span class="workspace-meta">
+              <span class="workspace-name">ruoxuan li's Workspace</span>
+              <span class="workspace-plan">Free</span>
+            </span>
+            <svg class="icon chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+
+          <nav class="side-nav" aria-label="主导航">
+            <a href="#" class="nav-item nav-item-active" data-nav>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <span>创建</span>
+            </a>
+            <a href="#" class="nav-item" data-nav>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span>最近的对话记录</span>
+            </a>
+            <a href="#" class="nav-item" data-nav>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+              <span>最近的 gammas</span>
+            </a>
+
+            <div class="nav-divider"></div>
+
+            <a href="#" class="nav-item" data-nav id="nav-search">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <span>搜索</span>
+              <kbd class="kbd">⌘K</kbd>
+            </a>
+            <a href="#" class="nav-item" data-nav>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <span>全部</span>
+            </a>
+            <a href="#" class="nav-item" data-nav>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span>与您共享</span>
+            </a>
+            <a href="#" class="nav-item" data-nav>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span>网站</span>
+            </a>
+            <a href="#" class="nav-item" data-nav>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              <span>API 已生成</span>
+            </a>
+
+            <div class="folders">
+              <p class="folders-label">文件夹</p>
+              <div class="folder-card">
+                <div class="skeleton-row">
+                  <svg class="icon folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                  <span class="skeleton-bar"></span>
+                </div>
+                <div class="skeleton-row">
+                  <svg class="icon folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                  <span class="skeleton-bar short"></span>
+                </div>
+                <p class="folder-hint">将相关的 gammas 分组，并一次性全部分享。</p>
+                <a href="#" class="folder-link">创建文件夹</a>
+              </div>
+            </div>
+
+            <a href="#" class="nav-item" data-nav>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              <span>垃圾箱</span>
+            </a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- ============ 主区域 ============ -->
+      <main class="main">
+        <header class="topbar">
+          <button class="pill pill-upgrade" type="button">
+            <svg class="icon sparkle" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2zM19 15l.9 2.6L22.5 18.5l-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9L19 15z"/></svg>
+            升级获得更多 AI 功能
+          </button>
+          <div class="topbar-right">
+            <button class="pill" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              从空白新建
+            </button>
+            <div class="credits" title="剩余积分">
+              <svg class="icon sparkle navy" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2zM19 15l.9 2.6L22.5 18.5l-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9L19 15z"/></svg>
+              <strong>236</strong>
+            </div>
+          </div>
+        </header>
+
+        <div class="content">
+          <img class="mascot" src="/mascot.png" alt="Design Buddy 企鹅吉祥物" />
+          <h1 class="hero-title">随时准备好，等您开始</h1>
+
+          <!-- 提示词输入卡片 -->
+          <section class="prompt-card" aria-label="AI 创作输入">
+            <textarea
+              id="prompt-input"
+              rows="2"
+              placeholder="创建一个 4 页幻灯片的 [event] 邀请函：活动介绍、时间与地点、议程安排以及如何回复确认。设计要充满节日气氛。"
+            ></textarea>
+            <div class="prompt-toolbar">
+              <div class="toolbar-left">
+                <div class="add-menu-wrap">
+                  <button class="tool-btn" id="add-menu-btn" type="button" aria-label="添加内容" aria-haspopup="true" aria-expanded="false">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  </button>
+
+                  <!-- 上弹菜单 -->
+                  <div class="popover" id="add-popover" hidden>
+                    <!-- 主菜单 -->
+                    <div class="popover-panel popover-main" role="menu">
+                      <button class="menu-row" type="button" role="menuitem" data-action="添加文件">
+                        <svg class="icon menu-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                        <span class="menu-label">添加文件</span>
+                        <svg class="icon menu-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                      </button>
+                      <button class="menu-row" type="button" role="menuitem" data-action="引用对话中的文件">
+                        <svg class="icon menu-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8.8a3.2 3.2 0 1 0 3.2 3.2V11.2"/></svg>
+                        <span class="menu-label">引用对话中的文件</span>
+                        <svg class="icon menu-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                      </button>
+
+                      <div class="menu-divider"></div>
+
+                      <button class="menu-row" type="button" role="menuitem" data-action="模式">
+                        <svg class="icon menu-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4l5 5L8 21H3v-5L15 4z"/><path d="M13 6l5 5"/><path d="M18 2l1.2 2.8L22 6l-2.8 1.2L18 10l-1.2-2.8L14 6l2.8-1.2L18 2z"/></svg>
+                        <span class="menu-label">模式</span>
+                        <svg class="icon menu-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                      </button>
+                      <button class="menu-row menu-row-parent" id="expert-row" type="button" aria-haspopup="true" aria-expanded="false">
+                        <svg class="icon menu-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="11" rx="3.5"/><path d="M12 8V4.5M9.5 4.5h5"/><circle cx="9.6" cy="13" r="1.3" fill="currentColor" stroke="none"/><circle cx="14.4" cy="13" r="1.3" fill="currentColor" stroke="none"/><path d="M9.5 16.2h5"/></svg>
+                        <span class="menu-label">专家</span>
+                        <svg class="icon menu-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                      </button>
+                      <button class="menu-row" type="button" role="menuitem" data-action="技能">
+                        <svg class="icon menu-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+                        <span class="menu-label">技能</span>
+                        <svg class="icon menu-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                      </button>
+                      <button class="menu-row" type="button" role="menuitem" data-action="连接器">
+                        <svg class="icon menu-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                        <span class="menu-label">连接器</span>
+                        <svg class="icon menu-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                      </button>
+
+                      <div class="menu-divider"></div>
+
+                      <div class="popover-footer">
+                        <button class="access-plus" type="button" aria-label="新建" data-action="新建">
+                          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </button>
+                        <button class="access-btn" type="button" data-action="访问权限">
+                          <svg class="icon access-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                          <span>允许完全访问</span>
+                          <svg class="icon tiny" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- 专家子菜单 -->
+                    <div class="popover-panel popover-sub" id="expert-sub" hidden role="menu" aria-label="选择专家">
+                      <label class="expert-search">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="search" id="expert-search-input" placeholder="搜索专家" autocomplete="off" />
+                      </label>
+
+                      <div class="expert-list" id="expert-list">
+                        <button class="expert-item" type="button" role="menuitem" data-expert="全栈开发专家">
+                          <span class="expert-avatar av-purple">全</span>
+                          <span class="expert-name">全栈开发专家</span>
+                        </button>
+                        <button class="expert-item" type="button" role="menuitem" data-expert="软件开发团队">
+                          <span class="expert-avatar av-navy">团</span>
+                          <span class="expert-name">软件开发团队</span>
+                        </button>
+                        <button class="expert-item" type="button" role="menuitem" data-expert="高级开发工程师">
+                          <span class="expert-avatar av-orange">高</span>
+                          <span class="expert-name">高级开发工程师</span>
+                        </button>
+                        <button class="expert-item" type="button" role="menuitem" data-expert="微信小程序开发者">
+                          <span class="expert-avatar av-lavender">微</span>
+                          <span class="expert-name">微信小程序开发者</span>
+                        </button>
+                        <button class="expert-item" type="button" role="menuitem" data-expert="高级全栈工程师">
+                          <span class="expert-avatar av-blue">程</span>
+                          <span class="expert-name">高级全栈工程师</span>
+                        </button>
+                      </div>
+
+                      <div class="menu-divider"></div>
+
+                      <button class="menu-row summon-row" type="button" data-action="召唤更多专家">
+                        <svg class="icon menu-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        <span class="menu-label">召唤更多专家</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <button class="tool-btn tool-btn-flat" type="button" aria-label="调整参数">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+                </button>
+              </div>
+              <div class="toolbar-right">
+                <div class="img-menu-wrap">
+                  <button class="tool-btn tool-btn-flat" id="img-menu-btn" type="button" aria-label="插入图片" aria-haspopup="true" aria-expanded="false">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  </button>
+
+                  <!-- 图片模式上弹菜单 -->
+                  <div class="popover img-popover" id="img-popover" hidden role="menu" aria-label="图片模式">
+                    <p class="img-pop-title">图片</p>
+                    <div class="img-options" role="radiogroup" aria-label="图片模式">
+                      <button class="img-option is-selected" type="button" role="radio" aria-checked="true" data-img-mode="自动">
+                        <span class="img-check">
+                          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span class="img-thumb thumb-auto">
+                          <span class="art-card art-card-back"><span class="art-lines"></span></span>
+                          <span class="art-card art-card-front">
+                            <span class="art-sun"></span>
+                            <span class="art-hill"></span>
+                          </span>
+                        </span>
+                        <span class="img-text">
+                          <span class="img-name">自动</span>
+                          <span class="img-desc">根据主题智能匹配</span>
+                        </span>
+                      </button>
+
+                      <button class="img-option" type="button" role="radio" aria-checked="false" data-img-mode="添加图片">
+                        <span class="img-check">
+                          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span class="img-thumb thumb-add">
+                          <span class="art-half art-half-text"><span class="art-lines"></span></span>
+                          <span class="art-half art-half-pic">
+                            <span class="art-sun"></span>
+                            <span class="art-hill"></span>
+                          </span>
+                        </span>
+                        <span class="img-text">
+                          <span class="img-name">添加图片</span>
+                          <span class="img-desc">图文并茂</span>
+                        </span>
+                      </button>
+
+                      <button class="img-option" type="button" role="radio" aria-checked="false" data-img-mode="图片幻灯片">
+                        <span class="img-check">
+                          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span class="img-thumb thumb-slide">
+                          <span class="art-lines art-lines-light"></span>
+                          <span class="art-sun"></span>
+                          <span class="art-hill"></span>
+                        </span>
+                        <span class="img-text">
+                          <span class="img-name">图片幻灯片</span>
+                          <span class="img-desc">每张幻灯片对应一张图片，文字保持可编辑状态。</span>
+                        </span>
+                      </button>
+
+                      <button class="img-option" type="button" role="radio" aria-checked="false" data-img-mode="不添加图片">
+                        <span class="img-check">
+                          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span class="img-thumb thumb-none">
+                          <span class="art-lines"></span>
+                          <span class="art-bars"><i></i><i></i><i></i></span>
+                        </span>
+                        <span class="img-text">
+                          <span class="img-name">不添加图片</span>
+                          <span class="img-desc">保留您附加的所有图片</span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="mode-menu-wrap">
+                  <button class="mode-btn" id="mode-menu-btn" type="button" aria-haspopup="true" aria-expanded="false">
+                    <svg class="icon sparkle small" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2zM19 15l.9 2.6L22.5 18.5l-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9L19 15z"/></svg>
+                    <span id="mode-label">标准</span>
+                    <svg class="icon tiny" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                  </button>
+
+                  <!-- 努力模式上弹菜单 -->
+                  <div class="popover-panel effort-popover" id="effort-popover" hidden role="menu" aria-label="努力">
+                    <p class="effort-title">努力</p>
+                    <div class="effort-options" role="radiogroup" aria-label="努力程度">
+                      <button class="effort-option" type="button" role="radio" aria-checked="false" data-mode="Lite">
+                        <span class="effort-dots dots-lite" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                        <span class="effort-text">
+                          <span class="effort-name">Lite</span>
+                          <span class="effort-desc">适用于简单任务的基础模式</span>
+                        </span>
+                      </button>
+
+                      <button class="effort-option is-selected" type="button" role="radio" aria-checked="true" data-mode="标准">
+                        <span class="effort-dots dots-standard" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                        <span class="effort-text">
+                          <span class="effort-name">标准</span>
+                          <span class="effort-desc">适合日常工作的均衡效能</span>
+                        </span>
+                      </button>
+
+                      <button class="effort-option" type="button" role="radio" aria-checked="false" data-mode="Max">
+                        <span class="effort-dots dots-max" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                        <span class="effort-text">
+                          <span class="effort-name">Max</span>
+                          <span class="effort-desc">对重要工作全力以赴</span>
+                        </span>
+                        <span class="pro-badge">PRO</span>
+                      </button>
+                    </div>
+                    <div class="effort-footer">越多的需求将消耗更多的使用额度</div>
+                  </div>
+                </div>
+                <button class="tool-btn" type="button" aria-label="语音输入">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+                </button>
+                <button class="send-btn" id="send-btn" type="button" disabled aria-label="发送">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- 创作类型 -->
+          <div class="type-chips" role="group" aria-label="创作类型">
+            <button class="chip chip-active" type="button" data-chip>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              演示文稿
+            </button>
+            <button class="chip" type="button" data-chip>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+              文档
+            </button>
+            <button class="chip" type="button" data-chip>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="M7 4v16M17 4v16"/></svg>
+              轮播图
+            </button>
+            <button class="chip" type="button" data-chip>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              图片
+            </button>
+            <button class="chip" type="button" data-chip>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l3.5-1 11-11a2.12 2.12 0 0 0-3-3l-11 11L3 21z"/><line x1="14" y1="7" x2="17" y2="10"/></svg>
+              美化
+            </button>
+            <button class="chip" type="button" data-chip>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              导入
+            </button>
+          </div>
+
+          <!-- 推荐模板 -->
+          <h2 class="section-label">推荐模板</h2>
+          <div class="template-row">
+            <article class="template-card" data-template="Graha">
+              <div class="cover cover-graha">
+                <span class="cover-kicker">GRAHA</span>
+                <span class="cover-title">NINE MOONS</span>
+                <span class="cover-tag">51 REVIEW</span>
+                <span class="planet"></span>
+              </div>
+              <p class="template-name">Graha</p>
+            </article>
+            <article class="template-card" data-template="Jelly Canvas">
+              <div class="cover cover-jelly">
+                <span class="coin"></span>
+                <span class="jelly-cross"></span>
+                <span class="cover-title dark">PONDLIGHT 3</span>
+              </div>
+              <p class="template-name">Jelly Canvas</p>
+            </article>
+            <article class="template-card" data-template="Olympus">
+              <div class="cover cover-olympus">
+                <span class="temple"></span>
+                <span class="cover-bar">HEROES, MONSTERS, AND MISTAKES</span>
+              </div>
+              <p class="template-name">Olympus</p>
+            </article>
+            <article class="template-card" data-template="Terrace Set">
+              <div class="cover cover-terrace">
+                <span class="badge-421">421</span>
+                <span class="stack s1"></span>
+                <span class="stack s2"></span>
+                <span class="cover-title serif">A gig tonight,<br />on a rooftop near you.</span>
+              </div>
+              <p class="template-name">Terrace Set</p>
+            </article>
+            <article class="template-card" data-template="Reliquary">
+              <div class="cover cover-reliquary">
+                <span class="candle c1"></span>
+                <span class="candle c2"></span>
+                <span class="candle c3"></span>
+                <span class="cover-title serif brown">The Reliquary<br />Collection</span>
+              </div>
+              <p class="template-name">Reliquary</p>
+            </article>
+            <article class="template-card" data-template="Altitude">
+              <div class="cover cover-altitude">
+                <span class="wave w1"></span>
+                <span class="wave w2"></span>
+                <span class="cover-kicker light">Q3 business</span>
+                <span class="cover-title light">review</span>
+              </div>
+              <p class="template-name">Altitude</p>
+            </article>
+          </div>
+
+          <button class="pill pill-outline" type="button">查看所有模板</button>
+        </div>
+
+        <button class="help-fab" type="button" aria-label="帮助">?</button>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

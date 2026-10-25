@@ -1,0 +1,576 @@
+/* ============================================================
+   主题页 — 选项卡 + 搜索 + 18 套标准主题配色卡片
+   ============================================================ */
+
+.tint-sidebar {
+  background: #f4f7fc;
+}
+
+.beta-badge {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 600;
+  color: #7c3aed;
+  background: #ede9fe;
+  border-radius: 999px;
+  padding: 1px 8px;
+  line-height: 1.6;
+}
+
+/* ---------------- 页头 ---------------- */
+
+.th-main {
+  background: var(--bg);
+}
+
+.th-page-head {
+  padding: 24px 30px 0;
+}
+
+.th-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.th-heading .icon {
+  width: 22px;
+  height: 22px;
+  color: var(--navy);
+}
+
+.th-subtitle {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-3);
+}
+
+.th-create {
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: var(--blue-deep);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(47, 91, 214, 0.28);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.th-create:hover {
+  background: #2449b0;
+  transform: translateY(-1px);
+}
+
+.th-create .icon {
+  width: 17px;
+  height: 17px;
+}
+
+/* ---------------- 工具条：选项卡 + 搜索 ---------------- */
+
+.th-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 30px 20px;
+}
+
+.th-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.th-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--navy-soft);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.th-tab .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.th-tab:hover {
+  background: var(--line-soft);
+}
+
+.th-tab.is-active {
+  background: var(--blue);
+  color: #fff;
+}
+
+.th-tab.is-active:hover {
+  background: var(--blue);
+}
+
+.g-mark {
+  width: 17px;
+  height: 17px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.22);
+  display: grid;
+  place-items: center;
+  font-size: 10.5px;
+  font-weight: 800;
+}
+
+.th-search {
+  position: relative;
+  width: min(390px, 42%);
+  display: flex;
+  align-items: center;
+}
+
+.th-search .icon {
+  position: absolute;
+  left: 14px;
+  width: 17px;
+  height: 17px;
+  color: var(--text-3);
+  pointer-events: none;
+}
+
+.th-search input {
+  width: 100%;
+  height: 40px;
+  padding: 0 16px 0 42px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  font: inherit;
+  color: var(--text);
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.th-search input:focus {
+  outline: none;
+  border-color: #b9ccf5;
+  box-shadow: 0 0 0 3px rgba(59, 110, 246, 0.12);
+}
+
+.th-search input::placeholder {
+  color: #a4adc0;
+}
+
+/* ---------------- 主题卡片网格 ---------------- */
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 20px 18px;
+  padding: 0 30px 48px;
+  align-content: start;
+}
+
+.theme-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  cursor: pointer;
+}
+
+.theme-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(23, 43, 92, 0.16);
+}
+
+.theme-preview {
+  aspect-ratio: 1.55 / 1;
+  padding: 13px;
+  display: flex;
+  background: var(--th-bg);
+}
+
+.theme-slide {
+  flex: 1;
+  min-width: 0;
+  border-radius: 8px;
+  padding: 13px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  background: var(--th-slide);
+  box-shadow: 0 6px 16px rgba(18, 30, 58, 0.14);
+  border: var(--th-slide-border, 0);
+}
+
+.th-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--th-title);
+  line-height: 1.25;
+}
+
+.th-body {
+  font-size: 11px;
+  color: var(--th-body);
+}
+
+.th-link {
+  color: var(--th-link);
+  font-weight: 700;
+}
+
+.theme-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 10px 9px 14px;
+}
+
+.theme-name {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-2);
+}
+
+.theme-more {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--text-3);
+  transition: background 0.13s ease;
+}
+
+.theme-more:hover {
+  background: var(--line-soft);
+  color: var(--navy);
+}
+
+.theme-more .icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* 卡片“…”菜单 */
+.card-menu {
+  position: absolute;
+  right: 10px;
+  bottom: 46px;
+  min-width: 148px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 16px 42px rgba(23, 43, 92, 0.2);
+  padding: 6px;
+  z-index: 30;
+  animation: pop-in 0.14s ease both;
+}
+
+.card-menu[hidden] {
+  display: none;
+}
+
+.card-menu button {
+  width: 100%;
+  display: block;
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--navy-soft);
+}
+
+.card-menu button:hover {
+  background: var(--line-soft);
+}
+
+.card-menu button.danger {
+  color: #d64545;
+}
+
+.card-menu button.danger:hover {
+  background: #fdf0f0;
+}
+
+/* 空态 */
+.th-empty {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 96px 0;
+  color: var(--text-3);
+  font-size: 14.5px;
+}
+
+.th-empty-ic {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: var(--line-soft);
+  display: grid;
+  place-items: center;
+  color: #b3bccb;
+}
+
+.th-empty-ic .icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* ============================================================
+   18 套主题：每套只声明配色变量，结构完全一致
+   ============================================================ */
+
+/* 1 Pearl — 浅灰底白卡 */
+.th-pearl {
+  --th-bg: #e9ebf0;
+  --th-slide: #ffffff;
+  --th-title: #232b3d;
+  --th-body: #98a1b2;
+  --th-link: #2f5bd6;
+}
+
+/* 2 Vortex — 纯黑 */
+.th-vortex {
+  --th-bg: #0b0b0e;
+  --th-slide: #17181d;
+  --th-slide-border: 1px solid rgba(255, 255, 255, 0.1);
+  --th-title: #f2f3f5;
+  --th-body: #aab0bc;
+  --th-link: #7cc4ff;
+}
+
+/* 3 Clementa — 暖沙 */
+.th-clementa {
+  --th-bg: #d8c19d;
+  --th-slide: #f7eedd;
+  --th-title: #5a3d22;
+  --th-body: #a0815c;
+  --th-link: #e07b2f;
+}
+
+/* 4 Stratos — 深蓝极光 */
+.th-stratos {
+  --th-bg:
+    radial-gradient(circle at 78% 18%, rgba(120, 90, 220, 0.55), transparent 55%),
+    radial-gradient(circle at 18% 85%, rgba(46, 110, 214, 0.5), transparent 55%),
+    linear-gradient(140deg, #0b1026, #131f47 60%, #241d4d);
+  --th-slide: rgba(10, 16, 36, 0.72);
+  --th-slide-border: 1px solid rgba(255, 255, 255, 0.14);
+  --th-title: #eef2ff;
+  --th-body: #b9c2da;
+  --th-link: #6db3ff;
+}
+
+/* 5 Nova — 淡蓝流体 */
+.th-nova {
+  --th-bg:
+    radial-gradient(circle at 82% 22%, rgba(120, 170, 255, 0.55), transparent 48%),
+    radial-gradient(circle at 12% 80%, rgba(190, 215, 255, 0.7), transparent 50%),
+    linear-gradient(140deg, #dbe9ff, #f4f8ff 55%, #ccd9f6);
+  --th-slide: rgba(255, 255, 255, 0.95);
+  --th-title: #41568f;
+  --th-body: #9aa6bd;
+  --th-link: #3b6ef6;
+}
+
+/* 6 Twilight — 暮色粉云 */
+.th-twilight {
+  --th-bg:
+    radial-gradient(circle at 80% 18%, rgba(255, 225, 200, 0.85), transparent 50%),
+    linear-gradient(150deg, #f6d9cc, #e6b3c3 55%, #c6b2d8);
+  --th-slide: rgba(255, 255, 255, 0.92);
+  --th-title: #4a4356;
+  --th-body: #9a93a4;
+  --th-link: #d2604f;
+}
+
+/* 7 Coral Glow — 珊瑚粉 */
+.th-coral-glow {
+  --th-bg: linear-gradient(145deg, #f7c9d0, #f1a4b4);
+  --th-slide: #ffffff;
+  --th-title: #a03d52;
+  --th-body: #b08a93;
+  --th-link: #d6455f;
+}
+
+/* 8 Mercury — 水银银白 */
+.th-mercury {
+  --th-bg:
+    radial-gradient(circle at 75% 20%, rgba(255, 255, 255, 0.9), transparent 45%),
+    linear-gradient(135deg, #e3e7ee, #f7fafc 50%, #d4dae4);
+  --th-slide: #ffffff;
+  --th-title: #5b6472;
+  --th-body: #9aa2b0;
+  --th-link: #5b7bb4;
+}
+
+/* 9 Ashrose — 灰玫瑰 */
+.th-ashrose {
+  --th-bg:
+    radial-gradient(circle at 80% 25%, rgba(214, 196, 224, 0.65), transparent 50%),
+    linear-gradient(150deg, #dcd6da, #c7c0cb 60%, #e6dfd9);
+  --th-slide: #fbfaf8;
+  --th-title: #6b6470;
+  --th-body: #a49ca6;
+  --th-link: #8a7bb0;
+}
+
+/* 10 Spectrum — 全息彩虹 */
+.th-spectrum {
+  --th-bg: linear-gradient(120deg, #ffd6e8, #d8c9ff 28%, #bfe3ff 52%, #c9f0dd 74%, #fff0c2);
+  --th-slide: rgba(255, 255, 255, 0.92);
+  --th-title: #3b6ef6;
+  --th-body: #9aa6bd;
+  --th-link: #8b5cf6;
+}
+
+/* 11 Chisel — 米白雕刻 */
+.th-chisel {
+  --th-bg: #efe9df;
+  --th-slide: #fbf8f2;
+  --th-title: #1f2430;
+  --th-body: #a0988c;
+  --th-link: #1f2430;
+}
+
+/* 12 Stardust — 黑底星尘 */
+.th-stardust {
+  --th-bg:
+    radial-gradient(circle at 22% 26%, rgba(255, 214, 140, 0.9) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 68% 18%, rgba(255, 255, 255, 0.8) 0 1.3px, transparent 2px),
+    radial-gradient(circle at 82% 62%, rgba(255, 214, 140, 0.7) 0 1.4px, transparent 2px),
+    radial-gradient(circle at 38% 72%, rgba(255, 255, 255, 0.55) 0 1.2px, transparent 2px),
+    #0a0a0f;
+  --th-slide: #15151d;
+  --th-slide-border: 1px solid rgba(255, 255, 255, 0.08);
+  --th-title: #f5f2ea;
+  --th-body: #b6b0a4;
+  --th-link: #ff9a3d;
+}
+
+/* 13 Seafoam — 海泡绿 */
+.th-seafoam {
+  --th-bg: linear-gradient(150deg, #cdeee2, #a9e0cd);
+  --th-slide: #ffffff;
+  --th-title: #17453c;
+  --th-body: #8fa89f;
+  --th-link: #1f9d7e;
+}
+
+/* 14 Nebulae — 星云深紫（渐变标题） */
+.th-nebulae {
+  --th-bg:
+    radial-gradient(circle at 28% 22%, rgba(108, 65, 200, 0.75), transparent 58%),
+    radial-gradient(circle at 78% 80%, rgba(40, 90, 190, 0.55), transparent 55%),
+    #08070f;
+  --th-slide: rgba(16, 12, 30, 0.72);
+  --th-slide-border: 1px solid rgba(255, 255, 255, 0.1);
+  --th-title: #cbb8ff;
+  --th-body: #c3bbd6;
+  --th-link: #7cc4ff;
+}
+
+.th-nebulae .th-title {
+  background: linear-gradient(92deg, #b79cff, #7cd8ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 15 Creme — 奶油 */
+.th-creme {
+  --th-bg: #e2d2b2;
+  --th-slide: #f8f0df;
+  --th-title: #4a3820;
+  --th-body: #a8906a;
+  --th-link: #9a6f2e;
+}
+
+/* 16 Lux — 墨绿鎏金 */
+.th-lux {
+  --th-bg: linear-gradient(150deg, #17403a, #0d2b26);
+  --th-slide: rgba(12, 46, 40, 0.78);
+  --th-slide-border: 1px solid rgba(240, 226, 192, 0.18);
+  --th-title: #f0e2c0;
+  --th-body: #cfc4a6;
+  --th-link: #ef8a6b;
+}
+
+/* 17 Consultant — 商务灰蓝 */
+.th-consultant {
+  --th-bg: #e7e9ee;
+  --th-slide: #ffffff;
+  --th-title: #233252;
+  --th-body: #98a1b2;
+  --th-link: #2f5bd6;
+}
+
+/* 18 Marine — 海蓝 */
+.th-marine {
+  --th-bg: #8f9abb;
+  --th-slide: #1c2747;
+  --th-slide-border: 1px solid rgba(255, 255, 255, 0.1);
+  --th-title: #f2f4fa;
+  --th-body: #aeb8d2;
+  --th-link: #a9c2ff;
+}
+
+/* ---------------- 响应式 ---------------- */
+
+@media (max-width: 1400px) {
+  .theme-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1100px) {
+  .theme-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .tint-sidebar {
+    display: none;
+  }
+
+  .theme-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .th-page-head,
+  .th-toolbar {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .th-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .th-search {
+    width: 100%;
+  }
+}
