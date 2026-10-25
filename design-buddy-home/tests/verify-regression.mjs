@@ -1,7 +1,17 @@
 /* 结构与基础交互回归（任务一~九的既有验收） */
-import { loadPage, click } from './helpers.mjs'
+import fs from 'node:fs'
+import path from 'node:path'
+import { loadPage, click, DIST } from './helpers.mjs'
 
 const results = []
+
+// 打包 CSS 静态断言（jsdom 不计算外部样式表，直接校验产物文本）
+const cssBundle = fs.readdirSync(path.join(DIST, 'assets'))
+  .filter((f) => f.endsWith('.css'))
+  .map((f) => fs.readFileSync(path.join(DIST, 'assets', f), 'utf8'))
+  .join('\n')
+results.push(['css: expert submenu no 118px offset', !cssBundle.includes('margin-top:118px') && /\.popover-sub\{[^}]*margin-top:0/.test(cssBundle.replace(/\s+/g, ''))])
+results.push(['css: ws menu card restyled', cssBundle.includes('.ws-menu') && cssBundle.includes('border-radius:22px')])
 
 // 首页：既有结构 + 三个弹层
 {

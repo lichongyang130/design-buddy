@@ -53,6 +53,10 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   check('full-access button removed from popover', !doc.querySelector('.access-btn'))
   check('popover has no full-access label', !doc.body.textContent.includes('允许完全访问'))
   check('footer keeps new plus button', !!doc.querySelector('.popover-footer .access-plus'))
+  // 专家子菜单与主菜单顶部对齐（不再有 118px 下压偏移）
+  click(w, doc.querySelector('#expert-row'))
+  await tick()
+  check('expert submenu opens', !doc.querySelector('#expert-sub').hidden)
   // 底部「新建」按钮仍可点击并给出反馈
   click(w, doc.querySelector('.popover-footer .access-plus'))
   await tick()

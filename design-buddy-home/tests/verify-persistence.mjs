@@ -27,6 +27,23 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   click(w, [...doc.querySelectorAll('[data-chip]')].find((c) => c.textContent.trim() === '文档'))
   check('chip choice persists', readState(storage).ui.type === '文档')
 
+  // 工作区下拉：截图式白色卡片（设置 / 邀请 / 方案价格 + 新建）
+  click(w, doc.querySelector('.workspace-switch'))
+  await tick()
+  const wsMenu = doc.querySelector('.ws-menu')
+  check('ws menu card opens', !!wsMenu && !wsMenu.hidden)
+  check('ws menu has settings entry', wsMenu.querySelector('[data-ws-settings]')?.textContent === '设置')
+  check('ws menu has invite entry', wsMenu.querySelector('[data-ws-invite] span')?.textContent === '邀请团队成员')
+  check('ws menu has pricing entry', wsMenu.querySelector('[data-ws-upgrade] span')?.textContent === '方案和价格')
+  check('ws menu shows member count', /1 名成员/.test(wsMenu.querySelector('.ws-head-sub')?.textContent ?? ''))
+  check('ws menu single workspace hides switch list', !wsMenu.querySelector('[data-ws]'))
+  // 邀请入口打开真实弹窗
+  click(w, wsMenu.querySelector('[data-ws-invite]'))
+  await tick()
+  check('ws invite opens modal', !!doc.querySelector('.modal-mask'))
+  click(w, doc.querySelector('.modal-close'))
+  await tick()
+
   // 工作区新建 + 切换
   click(w, doc.querySelector('.workspace-switch'))
   click(w, doc.querySelector('[data-ws-new]'))
@@ -37,6 +54,14 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   const wsState = readState(storage)
   check('workspace created and activated', wsState.workspaces.length === 2 && wsState.activeWorkspaceId === wsState.workspaces[1].id)
   check('workspace switcher label updates', doc.querySelector('.workspace-name').textContent === '品牌设计组')
+  // 多工作区后菜单出现切换列表，成员数随之更新
+  click(w, doc.querySelector('.workspace-switch'))
+  await tick()
+  const wsMenu2 = doc.querySelector('.ws-menu')
+  check('multi workspace shows switch rows', wsMenu2.querySelectorAll('[data-ws]').length === 2)
+  check('member count tracks workspaces', /2 名成员/.test(wsMenu2.querySelector('.ws-head-sub')?.textContent ?? ''))
+  click(w, doc.querySelector('.workspace-switch'))
+  await tick()
 
   // 文件夹创建
   click(w, doc.querySelector('.folder-link'))

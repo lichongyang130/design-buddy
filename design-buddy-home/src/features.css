@@ -308,25 +308,102 @@
   font-size: 13.5px;
 }
 
-/* ---------------- 工作区下拉 ---------------- */
+/* ---------------- 工作区下拉（白色大圆角卡片） ---------------- */
 
 .ws-menu {
   position: absolute;
-  top: calc(100% + 8px);
-  left: 8px;
-  right: 8px;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 296px;
   background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 13px;
-  box-shadow: 0 16px 42px rgba(23, 43, 92, 0.18);
-  padding: 6px;
-  z-index: 50;
-  animation: pop-in 0.14s ease both;
+  border: none;
+  border-radius: 22px;
+  box-shadow: 0 24px 64px rgba(17, 28, 54, 0.22), 0 6px 18px rgba(17, 28, 54, 0.1);
+  padding: 12px;
+  z-index: 80;
+  animation: ws-pop 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: top left;
+}
+
+@keyframes ws-pop {
+  from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .ws-menu[hidden] { display: none; }
 
-.ws-menu .modal-list-item { padding: 9px 10px; border-radius: 9px; }
+.ws-menu .menu-divider {
+  margin: 10px 4px;
+  border-top: 1px solid var(--line);
+}
+
+/* 头部：头像 + 名称/套餐 + 设置 */
+.ws-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 6px 2px;
+}
+.ws-head-avatar {
+  width: 46px;
+  height: 46px;
+  font-size: 17px;
+  flex: none;
+}
+.ws-head-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  flex: 1;
+}
+.ws-head-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ws-head-sub {
+  font-size: 13px;
+  color: var(--text-3);
+}
+.ws-settings {
+  flex: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--blue-deep, #3b6ef6);
+  color: var(--blue-deep, #3b6ef6);
+  font-size: 14px;
+  font-weight: 700;
+  transition: background 0.15s ease;
+}
+.ws-settings:hover { background: rgba(59, 110, 246, 0.08); }
+
+/* 大行操作项（邀请 / 方案价格） */
+.ws-action {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 10px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy);
+  text-align: left;
+  transition: background 0.13s ease;
+}
+.ws-action:hover { background: #f2f4f8; }
+.ws-action .icon {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  color: var(--navy);
+}
+
+.ws-menu .modal-list-item { padding: 10px; border-radius: 10px; }
 .ws-check { color: var(--blue-deep); font-weight: 800; width: 16px; }
 
 /* ---------------- 附件标签 ---------------- */

@@ -1204,11 +1204,11 @@ a:focus-visible {
   flex: none;
 }
 
-/* 子菜单与主菜单的「专家」行大致齐高 */
+/* 子菜单与主菜单顶部对齐（同为 flex-start，不再手动下压） */
 .popover-sub {
   width: 296px;
   flex: none;
-  margin-top: 118px;
+  margin-top: 0;
 }
 
 .popover-sub[hidden] {

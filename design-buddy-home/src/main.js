@@ -64,20 +64,54 @@ function buildWorkspaceMenu() {
       if (!menu.hidden && !menu.contains(e.target) && e.target !== sw) menu.hidden = true
     })
   }
+  const active = store.state.workspaces.find((w) => w.id === store.state.activeWorkspaceId) ?? store.state.workspaces[0]
+  const avatarText = sw.querySelector('.avatar')?.textContent ?? (active.name[0] || 'W')
+  const multi = store.state.workspaces.length > 1
   menu.innerHTML = `
+    <div class="ws-head">
+      <span class="avatar avatar-green ws-head-avatar">${avatarText}</span>
+      <span class="ws-head-meta">
+        <b class="ws-head-name">${active.name}</b>
+        <span class="ws-head-sub">${active.plan === 'pro' ? 'Pro' : 'Free'} · ${store.state.workspaces.length} 名成员</span>
+      </span>
+      <button class="ws-settings" type="button" data-ws-settings>设置</button>
+    </div>
+    <div class="menu-divider"></div>
+    <button class="ws-action" type="button" data-ws-invite>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+      <span>邀请团队成员</span>
+    </button>
+    <button class="ws-action" type="button" data-ws-upgrade>
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2zM19 15l.9 2.6L22.5 18.5l-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9L19 15z"/></svg>
+      <span>方案和价格</span>
+    </button>
+    ${multi ? `
+    <div class="menu-divider"></div>
     ${store.state.workspaces.map((w) => `
-      <button class="modal-list-item" data-ws="${w.id}">
+      <button class="modal-list-item ws-switch-row" data-ws="${w.id}" type="button">
         <span class="ws-check">${w.id === store.state.activeWorkspaceId ? '✓' : ''}</span>
         <span class="grow">
           <span class="primary">${w.name}</span>
           <span class="secondary">${w.plan === 'pro' ? 'Pro' : 'Free'} 计划</span>
         </span>
-      </button>`).join('')}
+      </button>`).join('')}` : ''}
     <div class="menu-divider"></div>
-    <button class="modal-list-item" data-ws-new>
+    <button class="modal-list-item" type="button" data-ws-new>
       <span class="grow"><span class="primary">＋ 新建工作区</span></span>
     </button>`
 
+  menu.querySelector('[data-ws-settings]').addEventListener('click', () => {
+    menu.hidden = true
+    location.href = 'settings.html'
+  })
+  menu.querySelector('[data-ws-invite]').addEventListener('click', () => {
+    menu.hidden = true
+    openInvite()
+  })
+  menu.querySelector('[data-ws-upgrade]').addEventListener('click', () => {
+    menu.hidden = true
+    openUpgrade()
+  })
   menu.querySelectorAll('[data-ws]').forEach((btn) => {
     btn.addEventListener('click', () => {
       store.state.activeWorkspaceId = btn.dataset.ws
