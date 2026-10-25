@@ -1,0 +1,16 @@
+{
+  "name": "Design Buddy",
+  "short_name": "Design Buddy",
+  "description": "本地优先的演示文稿、文档与主题创作工具",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1e2b4d",
+  "theme_color": "#1e2b4d",
+  "lang": "zh-CN",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

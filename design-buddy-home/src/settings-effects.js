@@ -7,6 +7,7 @@
 
 import { store, toast, openModal } from './core.js'
 import { configureArt } from './template-engine.js'
+import { applyI18n, LANG_HTML } from './i18n.js'
 
 const s = () => store.state.settings
 let inited = false
@@ -108,7 +109,18 @@ function applyAutoStart() {
   }
 }
 
-/* ---------------- 链接打开方式：全局外链委托 ---------------- */
+/* ---------------- 链接打开方式：全局外链委托（三态策略） ---------------- */
+
+// 纯策略函数：返回 'blank'（新标签）或 'self'（当前标签），便于单测与复用
+export function resolveLinkTarget(rawUrl, policy = s()?.linkOpen ?? '智能打开') {
+  const url = String(rawUrl || '')
+  const external = /^https?:\/\//.test(url)
+  if (!external) return 'self' // 应用内相对链接永远留在当前标签
+  if (policy === '始终在浏览器打开') return 'blank'
+  if (policy === '始终在应用内打开') return 'self'
+  // 智能打开：外链新标签（带 noopener 安全护栏），内链当前标签
+  return 'blank'
+}
 
 function bindLinkPolicy() {
   document.addEventListener('click', (e) => {
@@ -116,11 +128,10 @@ function bindLinkPolicy() {
     if (!a) return
     const url = a.getAttribute('href') || ''
     if (!/^https?:\/\//.test(url)) return
-    const policy = s().linkOpen
-    if (policy === '始终在浏览器打开') {
+    if (resolveLinkTarget(url, s().linkOpen) === 'blank') {
       e.preventDefault()
       window.open(url, '_blank', 'noopener')
-    } else if (policy === '始终在应用内打开') {
+    } else {
       e.preventDefault()
       location.href = url
     }
@@ -189,50 +200,13 @@ function bindAutoLock() {
   armLockTimer()
 }
 
-/* ---------------- 界面语言：设置页即时双语（含繁/日字典） ---------------- */
-
-const I18N_DICT = {
-  '简体中文': {
-    'nav.general': '通用', 'nav.profile': '个人主页', 'nav.billing': '套餐与积分', 'nav.appearance': '外观',
-    'nav.shortcuts': '快捷键', 'nav.personalize': '个性化', 'nav.memory': '记忆与进化', 'nav.agents': '智能体',
-    'nav.models': '模型', 'nav.assistant': '助理', 'nav.devices': '设备连接', 'nav.data': '数据管理',
-    'nav.apps': '应用管理', 'nav.security': '安全中心',
-  },
-  '繁體中文': {
-    'nav.general': '通用', 'nav.profile': '個人主頁', 'nav.billing': '套餐與積分', 'nav.appearance': '外觀',
-    'nav.shortcuts': '快捷鍵', 'nav.personalize': '個人化', 'nav.memory': '記憶與進化', 'nav.agents': '智能體',
-    'nav.models': '模型', 'nav.assistant': '助理', 'nav.devices': '裝置連接', 'nav.data': '資料管理',
-    'nav.apps': '應用管理', 'nav.security': '安全中心',
-  },
-  English: {
-    'nav.general': 'General', 'nav.profile': 'Profile', 'nav.billing': 'Plan & credits', 'nav.appearance': 'Appearance',
-    'nav.shortcuts': 'Shortcuts', 'nav.personalize': 'Personalization', 'nav.memory': 'Memory', 'nav.agents': 'Agents',
-    'nav.models': 'Models', 'nav.assistant': 'Assistant', 'nav.devices': 'Devices', 'nav.data': 'Data',
-    'nav.apps': 'Apps', 'nav.security': 'Security',
-  },
-  '日本語': {
-    'nav.general': '一般', 'nav.profile': 'プロフィール', 'nav.billing': 'プラン', 'nav.appearance': '外観',
-    'nav.shortcuts': 'ショートカット', 'nav.personalize': '個人設定', 'nav.memory': 'メモリー', 'nav.agents': 'エージェント',
-    'nav.models': 'モデル', 'nav.assistant': 'アシスタント', 'nav.devices': 'デバイス', 'nav.data': 'データ',
-    'nav.apps': 'アプリ', 'nav.security': 'セキュリティ',
-  },
-}
-const NAV_KEY_BY_LABEL = {
-  通用: 'nav.general', 个人主页: 'nav.profile', 套餐与积分: 'nav.billing', 外观: 'nav.appearance',
-  快捷键: 'nav.shortcuts', 个性化: 'nav.personalize', 记忆与进化: 'nav.memory', 智能体: 'nav.agents',
-  模型: 'nav.models', 助理: 'nav.assistant', 设备连接: 'nav.devices', 数据管理: 'nav.data',
-  应用管理: 'nav.apps', 安全中心: 'nav.security',
-}
+/* ---------------- 界面语言：真实 i18n，五页共享导航与设置页全量文案 ---------------- */
 
 function applyLanguage() {
   const lang = s().language || '简体中文'
-  document.documentElement.lang = lang === 'English' ? 'en' : lang === '日本語' ? 'ja' : 'zh'
-  const dict = I18N_DICT[lang] ?? I18N_DICT['简体中文']
-  document.querySelectorAll('[data-settings]').forEach((item) => {
-    const key = NAV_KEY_BY_LABEL[item.dataset.label] || item.dataset.i18n
-    if (key && dict[key]) item.textContent = dict[key]
-  })
+  applyI18n(lang)
 }
+
 
 /* ---------------- 网络代理：真实作为素材请求基址 ---------------- */
 
@@ -243,6 +217,121 @@ function applyProxy() {
   } else {
     configureArt({ base: '' }) // 直接连接 / 系统代理（由浏览器接管）均用相对路径
   }
+}
+
+/* ---------------- 开机自启的 Web 等价：PWA 安装 ---------------- */
+
+let deferredPrompt = null
+let pwaInstalled = false
+if (typeof window !== 'undefined') {
+  try {
+    pwaInstalled = !!(window.matchMedia?.('(display-mode: standalone)').matches
+      || window.navigator?.standalone === true)
+  } catch { pwaInstalled = false }
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault()
+    deferredPrompt = e
+  })
+  window.addEventListener('appinstalled', () => {
+    deferredPrompt = null
+    pwaInstalled = true
+    document.dispatchEvent(new CustomEvent('db:pwa-changed'))
+  })
+}
+
+export function pwaState() {
+  if (pwaInstalled) return 'installed'
+  if (deferredPrompt) return 'installable'
+  return 'unsupported'
+}
+
+export async function installPwa() {
+  if (pwaInstalled) return { ok: false, reason: 'installed' }
+  if (!deferredPrompt) return { ok: false, reason: 'unsupported' }
+  deferredPrompt.prompt()
+  const choice = await deferredPrompt.userChoice
+  if (choice.outcome === 'accepted') deferredPrompt = null
+  document.dispatchEvent(new CustomEvent('db:pwa-changed'))
+  return { ok: choice.outcome === 'accepted', reason: choice.outcome }
+}
+
+/* ---------------- 唤醒锁：手动测试 + 状态查询 ---------------- */
+
+export function wakeLockState() {
+  if (!('wakeLock' in navigator)) return 'unsupported'
+  if (!s().keepAwake) return 'disabled'
+  return wakeLock ? 'active' : 'idle'
+}
+
+export async function testWakeLock() {
+  if (!('wakeLock' in navigator)) return { state: 'unsupported' }
+  if (!s().keepAwake) return { state: 'disabled' }
+  try {
+    const wl = await navigator.wakeLock.request('screen')
+    wakeLock = wl
+    wl.addEventListener('release', () => { if (wakeLock === wl) wakeLock = null })
+    return { state: 'active' }
+  } catch (err) {
+    return { state: 'failed', message: String(err?.message || err) }
+  }
+}
+
+/* ---------------- 锁屏运行：立即体验，三种策略真实分叉 ---------------- */
+
+export function previewLockScreen() {
+  const mode = s().lockScreen
+  if (mode === '始终允许') {
+    toast('锁屏后远程控制与后台 Agent 任务继续运行，不会中断')
+    return 'allowed'
+  }
+  if (mode === '仅充电时允许') {
+    if (!navigator.getBattery) {
+      // 浏览器不暴露电池状态时采取保守策略：锁定，与「关闭」行为一致
+      showLockMask()
+      return 'locked'
+    }
+    navigator.getBattery().then((bat) => {
+      if (bat.charging) toast('充电中：锁屏后任务继续运行')
+      else showLockMask()
+    })
+    return 'battery-check'
+  }
+  showLockMask()
+  return 'locked'
+}
+
+/* ---------------- 网络代理：真实连通性测试 ---------------- */
+
+export async function testProxyConnection() {
+  const mode = s().proxy
+  let base = ''
+  if (mode === '自定义代理') {
+    const url = String(s().proxyUrl || '').trim()
+    if (!url) return { ok: false, reason: 'empty' }
+    try { new URL(url) } catch { return { ok: false, reason: 'bad-url' } }
+    base = url.replace(/\/$/, '')
+  }
+  // Node/旧环境 fetch 不接受相对 URL，统一用 origin 补全为绝对地址
+  const target = new URL(`${base}/art/manifest.json`, location.origin).href
+  const ctl = new AbortController()
+  const timer = setTimeout(() => ctl.abort(), 6000)
+  const t0 = performance.now()
+  try {
+    const res = await fetch(target, { signal: ctl.signal })
+    clearTimeout(timer)
+    return { ok: res.ok, status: res.status, ms: Math.round(performance.now() - t0), target, mode }
+  } catch (err) {
+    clearTimeout(timer)
+    return { ok: false, reason: err?.name === 'AbortError' ? 'timeout' : 'network', target, mode }
+  }
+}
+
+/* ---------------- Service Worker：支撑 PWA 安装与离线外壳 ---------------- */
+
+function registerServiceWorker() {
+  if (!('serviceWorker' in navigator)) return
+  if (location.protocol !== 'https:' && !['localhost', '127.0.0.1'].includes(location.hostname)) return
+  navigator.serviceWorker.register('sw.js').catch(() => { /* 测试环境或权限受限时静默 */ })
 }
 
 /* ---------------- 每周报告：真实数据统计弹窗 ---------------- */
@@ -327,6 +416,7 @@ export function initSettingsEffects() {
   bindLinkPolicy()
   bindAutoLock()
   applyAutoStart()
+  registerServiceWorker()
   weeklyReportCheck()
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible' && s().keepAwake) applyWakeLock()

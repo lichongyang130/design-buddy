@@ -1148,3 +1148,28 @@
   padding: 5px 12px;
   border-radius: 999px;
 }
+
+/* ============================================================
+   任务二十五：技能商店（安装 / 更新 / 风险标识）
+   ============================================================ */
+.skills-section-label {
+  font-size: 12px; font-weight: 700; letter-spacing: .08em;
+  color: var(--text-3, #7a8490); text-transform: uppercase;
+  margin: 16px 0 8px;
+}
+.skills-section-label:first-child { margin-top: 0; }
+.skill-actions { display: flex; align-items: center; gap: 10px; flex: none; }
+.skill-update-btn, .skill-install-btn {
+  padding: 6px 14px; font-size: 12.5px; font-weight: 600; border-radius: 8px; cursor: pointer;
+}
+.skill-update-btn { border: 1px solid #12bfa2; color: #0f8a6d; background: #e3f6f1; }
+.skill-update-btn:hover { background: #d2f0e8; }
+.skill-install-btn { border: 0; background: var(--navy, #1e2b4d); color: #fff; }
+.skill-install-btn:hover { opacity: .9; }
+.version-tag {
+  margin-left: 6px; font-size: 11px; font-weight: 600; color: var(--text-3, #7a8490);
+  background: var(--line-soft, #eef1f5); border-radius: 999px; padding: 1px 8px;
+}
+.update-pill { background: #fff3e0 !important; color: #b26a00 !important; }
+.risk-pill { background: #fdeaea !important; color: #c0392b !important; }
+.trusted-pill { background: #e3f6f1 !important; color: #0f8a6d !important; }

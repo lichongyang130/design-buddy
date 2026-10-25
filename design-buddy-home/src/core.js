@@ -31,10 +31,10 @@ export function defaultState() {
       { id: 'ex-5', name: '高级全栈工程师', color: 'av-blue', desc: '架构评审与技术选型', pinned: false },
     ],
     skills: [
-      { id: 'sk-1', name: 'PPT 大纲生成', desc: '根据主题自动生成演示大纲', enabled: true },
-      { id: 'sk-2', name: '文案润色', desc: '优化表达与语气', enabled: true },
-      { id: 'sk-3', name: '数据图表化', desc: '把数字转成图表建议', enabled: false },
-      { id: 'sk-4', name: '中英互译', desc: '专业级双语翻译', enabled: true },
+      { id: 'sk-1', name: 'PPT 大纲生成', desc: '根据主题自动生成演示大纲', enabled: true, version: '1.0.0' },
+      { id: 'sk-2', name: '文案润色', desc: '优化表达与语气', enabled: true, version: '1.0.0' },
+      { id: 'sk-3', name: '数据图表化', desc: '把数字转成图表建议', enabled: false, version: '1.0.0' },
+      { id: 'sk-4', name: '中英互译', desc: '专业级双语翻译', enabled: true, version: '1.0.0' },
     ],
     connectors: [
       { id: 'cn-1', name: 'Google Drive', connected: true },
@@ -126,6 +126,10 @@ function migrate(saved) {
   const next = { ...d, ...saved }
   for (const key of Object.keys(d)) {
     if (next[key] === undefined) next[key] = d[key]
+  }
+  // 旧存储中的技能没有版本号：补 1.0.0 基线，使「技能自动更新」可检测升级
+  if (Array.isArray(next.skills)) {
+    next.skills = next.skills.map((sk) => (sk.version ? sk : { ...sk, version: '1.0.0' }))
   }
   const ds = d.settings
   const ss = saved.settings ?? {}

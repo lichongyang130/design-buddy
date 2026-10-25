@@ -6,6 +6,9 @@
 import './rail-flyout.js'
 import { store, toast, confirmModal, downloadFile, uid } from './core.js'
 import { initGlobalUI, applyAppearance, openUpgrade } from './global-ui.js'
+import {
+  previewLockScreen, testWakeLock, wakeLockState, pwaState, installPwa, testProxyConnection,
+} from './settings-effects.js'
 
 initGlobalUI()
 
@@ -124,9 +127,11 @@ function bindGeneral() {
 
   const slider = $('#font-slider')
   slider.value = ZOOM_LEVELS.indexOf(s().fontScale) >= 0 ? ZOOM_LEVELS.indexOf(s().fontScale) : 2
+  const levelLabel = $('#font-level-label')
   const paint = () => {
     const pct = (Number(slider.value) / Number(slider.max)) * 100
     slider.style.background = `linear-gradient(90deg, var(--navy) ${pct}%, #d7dce5 ${pct}%)`
+    if (levelLabel) levelLabel.textContent = FONT_LEVELS[Number(slider.value)]
   }
   slider.addEventListener('input', () => {
     s().fontScale = ZOOM_LEVELS[Number(slider.value)]
@@ -136,6 +141,94 @@ function bindGeneral() {
     toast(`字体大小：${FONT_LEVELS[Number(slider.value)]}`)
   })
   paint()
+}
+
+/* ---------------- 九项设置的真实行为接线（可当场验证） ---------------- */
+
+const WAKE_STATE_TEXT = {
+  unsupported: '当前浏览器不支持',
+  disabled: '开关已关闭',
+  idle: '未激活',
+  active: '已激活 · 屏幕保持唤醒',
+  failed: '激活被拒绝',
+}
+const PWA_STATE_TEXT = {
+  installed: '已安装为桌面应用',
+  installable: '可安装',
+  unsupported: '当前环境不可安装',
+}
+
+function bindRealSettings() {
+  // 锁屏运行：立即体验三种策略的真实分叉
+  $('#lock-test-btn')?.addEventListener('click', () => {
+    previewLockScreen()
+  })
+
+  // 唤醒锁：用户手势内请求，状态实时回显
+  const wakeChip = $('#wakelock-state')
+  const paintWake = (extra) => {
+    if (!wakeChip) return
+    const state = extra ?? wakeLockState()
+    wakeChip.textContent = WAKE_STATE_TEXT[state] ?? state
+    wakeChip.dataset.state = state
+  }
+  paintWake()
+  $('#wakelock-test-btn')?.addEventListener('click', async () => {
+    const r = await testWakeLock()
+    paintWake(r.state)
+    if (r.state === 'active') toast('唤醒锁已激活，任务运行期间屏幕不会休眠')
+    else if (r.state === 'unsupported') toast('当前浏览器不支持 Screen Wake Lock API')
+    else if (r.state === 'disabled') toast('请先开启「运行时防止系统休眠」开关')
+    else toast(`唤醒锁激活失败：${r.message ?? '权限被拒绝'}`)
+  })
+
+  // 开机自启：Web 等价物 = 安装 PWA 桌面应用
+  const pwaChip = $('#pwa-state')
+  const pwaBtn = $('#pwa-install-btn')
+  const paintPwa = () => {
+    const state = pwaState()
+    if (pwaChip) {
+      pwaChip.textContent = PWA_STATE_TEXT[state] ?? state
+      pwaChip.dataset.state = state
+    }
+    if (pwaBtn) {
+      pwaBtn.disabled = state !== 'installable'
+      pwaBtn.textContent = state === 'installed' ? '已安装，打开桌面应用' : '安装为桌面应用'
+    }
+  }
+  paintPwa()
+  document.addEventListener('db:pwa-changed', paintPwa)
+  pwaBtn?.addEventListener('click', async () => {
+    const r = await installPwa()
+    if (r.ok) toast('已安装，可在系统设置中把 Design Buddy 加入登录项')
+    else if (r.reason === 'installed') toast('应用已安装，请从桌面或启动台打开')
+    else toast('当前浏览器未提供安装入口，请使用浏览器菜单中的「安装应用」')
+    paintPwa()
+  })
+
+  // 网络代理：真实发起清单请求验证连通性与延迟
+  const proxyChip = $('#proxy-state')
+  $('#proxy-test-btn')?.addEventListener('click', async () => {
+    if (proxyChip) {
+      proxyChip.textContent = '测试中…'
+      proxyChip.dataset.state = 'testing'
+    }
+    const r = await testProxyConnection()
+    if (!proxyChip) return
+    if (r.ok) {
+      proxyChip.textContent = `连接成功 · ${r.ms}ms · HTTP ${r.status}`
+      proxyChip.dataset.state = 'ok'
+      toast(`代理连接正常（${r.ms}ms）`)
+    } else {
+      const reason = {
+        empty: '请先填写代理地址', 'bad-url': '代理地址格式不正确',
+        timeout: '连接超时（6 秒）', network: '无法连接到代理',
+      }[r.reason] ?? '连接失败'
+      proxyChip.textContent = reason
+      proxyChip.dataset.state = 'fail'
+      toast(reason)
+    }
+  })
 }
 
 /* ---------------- 13 个动态设置组 ---------------- */
@@ -475,3 +568,4 @@ viewPlaceholder.addEventListener('click', async (e) => {
 /* ---------------- 启动 ---------------- */
 
 bindGeneral()
+bindRealSettings()

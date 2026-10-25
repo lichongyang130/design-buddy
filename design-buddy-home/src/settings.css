@@ -370,3 +370,62 @@
     width: 100%;
   }
 }
+
+/* ============================================================
+   任务二十五：九项设置的真实反馈控件（测试按钮 / 状态徽标 / 预览）
+   ============================================================ */
+
+.setting-controls { display: flex; align-items: center; gap: 10px; flex: none; }
+.setting-test-line { display: flex; align-items: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+.setting-honest-hint {
+  margin: 8px 0 0; font-size: 12px; line-height: 1.6;
+  color: var(--text-3, #7a8490); background: #f4f6f9;
+  border-radius: 8px; padding: 8px 10px;
+}
+.setting-test-btn {
+  padding: 6px 14px; font-size: 12.5px; font-weight: 600;
+  border-radius: 8px; border: 1px solid #d7dce5; background: #fff;
+  color: var(--navy, #1e2b4d); cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+.setting-test-btn:hover { border-color: var(--navy, #1e2b4d); background: #f6f8fc; }
+.setting-test-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+.state-chip {
+  font-size: 12px; font-weight: 600; padding: 4px 11px;
+  border-radius: 999px; background: #eef1f5; color: #6b7480;
+  white-space: nowrap;
+}
+.state-chip[data-state='ok'], .state-chip[data-state='active'], .state-chip[data-state='installed'] {
+  background: #e3f6f1; color: #0f8a6d;
+}
+.state-chip[data-state='fail'], .state-chip[data-state='failed'] {
+  background: #fdeaea; color: #c0392b;
+}
+.state-chip[data-state='testing'] { background: #e8f0fe; color: #2b59c3; }
+.state-chip[data-state='unsupported'], .state-chip[data-state='disabled'] {
+  background: #f2f2f4; color: #8a939d;
+}
+
+.policy-test-link {
+  display: inline-block; margin-top: 8px;
+  font-size: 12.5px; font-weight: 600; color: var(--navy, #1e2b4d);
+  text-decoration: none; border-bottom: 1px solid currentColor;
+}
+.policy-test-link:hover { opacity: .7; }
+
+.font-preview {
+  margin: 8px 0 0; font-size: 14px; color: var(--text-3, #7a8490);
+  font-weight: 600; letter-spacing: .02em;
+}
+.range-value {
+  display: inline-block; min-width: 42px; text-align: center;
+  font-size: 12.5px; font-weight: 700; color: var(--navy, #1e2b4d);
+  background: #eef1f5; border-radius: 999px; padding: 3px 10px; margin-bottom: 8px;
+}
+.font-size-control { display: flex; flex-direction: column; align-items: stretch; min-width: 230px; }
+
+/* 不支持 zoom 的浏览器（旧版 Firefox）回退：根字号随 --font-scale 缩放 */
+@supports not (zoom: 1) {
+  html { font-size: calc(16px * var(--font-scale, 1)); }
+}

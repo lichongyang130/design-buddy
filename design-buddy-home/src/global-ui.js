@@ -4,7 +4,7 @@
    ============================================================ */
 
 import './features.css'
-import { store, openModal, toast, copyText, fmtDate, uid } from './core.js'
+import { store, openModal, confirmModal, toast, copyText, fmtDate, uid } from './core.js'
 import { initSettingsEffects, speak, activeAgents } from './settings-effects.js'
 
 /* ---------------- 外观设置全局生效 ---------------- */
@@ -47,8 +47,9 @@ export function applyAppearance() {
   root.style.setProperty('--app-font', FONT_STACKS[s.fontFamily] ?? FONT_STACKS.system)
   root.dataset.appFont = s.fontFamily
 
-  // 字号（Chromium/Electron 支持 zoom；作为整体缩放）
+  // 字号：现代浏览器用 zoom 整体缩放；同时写 CSS 变量供不支持 zoom 的环境回退
   document.body.style.zoom = String(s.fontScale)
+  root.style.setProperty('--font-scale', String(s.fontScale))
 
   // 主题色
   const themeId = s.appearance.themeId || store.state.appliedTheme
@@ -195,29 +196,65 @@ export function openMessages() {
 
 /* ---------------- 技能 / 连接器 / 专家库 ---------------- */
 
+import {
+  SKILL_REGISTRY, availableToInstall, hasUpdate, registryEntry, SEED_SKILL_VERSION,
+} from './skill-registry.js'
+
 export function openSkills() {
-  const { bodyEl } = openModal({
+  const { bodyEl, footEl } = openModal({
     title: '技能',
     body: '<div id="skills-root"></div>',
+    footer: '<button class="btn btn-ghost" data-check-update type="button">检查更新</button>',
   })
   const root = bodyEl.querySelector('#skills-root')
+  const foot = footEl
+
+  const applyUpdate = (sk) => {
+    const reg = registryEntry(sk.name)
+    if (!reg || !hasUpdate(sk)) return false
+    sk.version = reg.version
+    return true
+  }
+
   const render = () => {
     const trusted = store.state.settings.trustedSkills
     const autoUpdate = store.state.settings.skillAutoUpdate
+    const installed = store.state.skills
+    const catalog = availableToInstall(installed)
     root.innerHTML = `
-      ${autoUpdate ? '' : '<p class="modal-copy" style="margin:0 0 10px">技能自动更新已暂停，可在设置中恢复。</p>'}
-      <div class="modal-list">${store.state.skills.map((sk) => `
-      <label class="modal-list-item">
+      ${autoUpdate ? '' : '<p class="modal-copy" style="margin:0 0 10px">技能自动更新已暂停，可在设置中恢复，或使用下方「检查更新」手动升级。</p>'}
+      <p class="skills-section-label">已安装（${installed.length}）</p>
+      <div class="modal-list">${installed.map((sk) => {
+        const updatable = hasUpdate(sk)
+        const reg = registryEntry(sk.name)
+        return `
+      <div class="modal-list-item">
         <div class="grow">
-          <div class="primary">${sk.name}${trusted ? '' : ' <span class="count-pill">未信任</span>'}</div>
+          <div class="primary">${sk.name}${trusted ? '' : ' <span class="count-pill">未信任</span>'}
+            ${updatable ? `<span class="count-pill update-pill" data-update-pill="${sk.id}">可更新 v${reg.version}</span>` : `<span class="version-tag">v${sk.version || SEED_SKILL_VERSION}</span>`}</div>
           <div class="secondary">${sk.desc}</div>
         </div>
-        <span class="mini-switch ${sk.enabled ? 'is-on' : ''}" data-sk="${sk.id}"></span>
-      </label>`).join('')}</div>`
+        <div class="skill-actions">
+          ${updatable && !autoUpdate ? `<button class="btn btn-ghost skill-update-btn" data-update-sk="${sk.id}" type="button">更新</button>` : ''}
+          <span class="mini-switch ${sk.enabled ? 'is-on' : ''}" data-sk="${sk.id}"></span>
+        </div>
+      </div>`
+      }).join('')}</div>
+      <p class="skills-section-label">可安装（${catalog.length}）</p>
+      <div class="modal-list">${catalog.map((reg) => `
+      <div class="modal-list-item">
+        <div class="grow">
+          <div class="primary">${reg.name}${reg.risk === 'review' ? ' <span class="count-pill risk-pill">高风险</span>' : ' <span class="count-pill trusted-pill">可信</span>'}</div>
+          <div class="secondary">${reg.desc} · v${reg.version}</div>
+        </div>
+        <button class="btn btn-primary skill-install-btn" data-install="${reg.id}" type="button">安装</button>
+      </div>`).join('')}</div>`
+
+    // 启用/停用：信任门控保留（未开启信任技能时不允许启用）；实时读开关，避免闭包过期
     root.querySelectorAll('[data-sk]').forEach((el) => {
       el.addEventListener('click', () => {
         const sk = store.state.skills.find((x) => x.id === el.dataset.sk)
-        if (!trusted) {
+        if (!store.state.settings.trustedSkills) {
           toast('请先在「设置 → 通用」中开启信任技能，再启用技能')
           return
         }
@@ -227,8 +264,64 @@ export function openSkills() {
         render()
       })
     })
+    // 手动更新单个技能
+    root.querySelectorAll('[data-update-sk]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const sk = store.state.skills.find((x) => x.id === btn.dataset.updateSk)
+        if (sk && applyUpdate(sk)) {
+          store.save()
+          toast(`${sk.name} 已更新到 v${sk.version}`)
+          render()
+        }
+      })
+    })
+    // 安装：可信 + 自动安装开关 → 直接装；高风险或未开信任 → 必须手动确认
+    root.querySelectorAll('[data-install]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const reg = SKILL_REGISTRY.find((r) => r.id === btn.dataset.install)
+        if (!reg) return
+        // 实时读取开关：弹窗常驻期间用户可能刚在设置里改了信任状态
+        const canAuto = store.state.settings.trustedSkills && reg.risk === 'trusted'
+        if (!canAuto) {
+          const ok = await confirmModal(
+            reg.risk === 'review' ? '安装高风险技能' : '安装技能',
+            reg.risk === 'review'
+              ? `「${reg.name}」涉及外部数据访问或代为执行操作，高风险技能始终需要手动确认。确认安装吗？`
+              : `自动安装可信技能未开启，确认手动安装「${reg.name}」吗？`,
+            '确认安装',
+          )
+          if (!ok) return
+        }
+        store.state.skills.push({
+          id: uid('sk'), name: reg.name, desc: reg.desc, enabled: true, version: reg.version,
+        })
+        store.save()
+        toast(canAuto ? `可信技能「${reg.name}」已自动安装` : `技能「${reg.name}」已安装`)
+        render()
+      })
+    })
   }
+
+  // 手动检查更新（自动更新关闭时的主路径；开启时也可重复执行）
+  const checkUpdates = (silent = false) => {
+    const updated = []
+    for (const sk of store.state.skills) {
+      if (applyUpdate(sk)) updated.push(sk)
+    }
+    if (updated.length) {
+      store.save()
+      toast(`已更新 ${updated.length} 个技能：${updated.map((x) => x.name).join('、')}`)
+      render()
+    } else if (!silent) {
+      toast('所有技能均为最新版本')
+    }
+    return updated.length
+  }
+
   render()
+  // 自动更新：打开弹窗即视为空闲时刻，自动消费所有可用升级
+  if (store.state.settings.skillAutoUpdate) checkUpdates(true)
+  foot?.querySelector('[data-check-update]')?.addEventListener('click', () => checkUpdates(false))
 }
 
 export function openExperts() {
