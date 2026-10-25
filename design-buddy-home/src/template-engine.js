@@ -371,16 +371,21 @@ export const LAYOUTS = [
   'big-stat', 'quote', 'timeline', 'process', 'comparison', 'table', 'cards', 'gallery',
   'team', 'testimonial', 'pricing', 'bars', 'line-chart', 'map', 'faq', 'logos', 'index-list', 'closing',
 ]
-const IMAGE_LAYOUTS = new Set(['cover', 'divider', 'hero', 'split', 'two-image', 'triple-grid', 'cards', 'gallery', 'team', 'testimonial', 'quote', 'closing'])
 
-function slotNeed(layout) {
-  if (layout === 'gallery') return 4
-  if (layout === 'triple-grid' || layout === 'team') return 3
-  if (layout === 'two-image') return 2
-  return IMAGE_LAYOUTS.has(layout) ? 1 : 0
+// 每种版式消耗的配图槽位数：除 map 自带场景插画外，所有页面至少 1 个图位
+export function slotNeed(layout) {
+  switch (layout) {
+    case 'gallery': return 4
+    case 'triple-grid':
+    case 'team':
+    case 'cards':
+    case 'pricing': return 3
+    case 'two-image': return 2
+    case 'map': return 0 // map 版式自带程序化地图插画
+    default: return 1
+  }
 }
 
-const IMAGE_CONVERT = { table: 'cards', faq: 'split', logos: 'hero', bars: 'two-image', pricing: 'triple-grid', 'big-stat': 'split', 'line-chart': 'hero', comparison: 'cards', stats: 'cards', timeline: 'split', process: 'triple-grid' }
 
 function makePage(rng, layout, i) {
   return {
@@ -422,16 +427,7 @@ function buildPages(rng, tpl) {
   if (n >= 22) seq[n - 2] = 'index-list'
   seq.push('closing')
 
-  let totalSlots = seq.reduce((sum, l) => sum + slotNeed(l), 0)
-  if (totalSlots < tpl.imgCount) {
-    for (let i = 2; i < seq.length - 1 && totalSlots < tpl.imgCount; i++) {
-      const to = IMAGE_CONVERT[seq[i]]
-      if (!to || to === seq[i - 1] || to === seq[i + 1]) continue
-      totalSlots += slotNeed(to) - slotNeed(seq[i])
-      seq[i] = to
-    }
-  }
-
+  // 所有版式均含配图位（map 自带场景插画），槽位必然覆盖全部配图
   let cursor = 0
   return seq.map((layout, i) => {
     const page = makePage(rng, layout, i)
@@ -615,9 +611,11 @@ export function renderPageHTML(rawTpl, pageIndex, styleIdx = 0, locale = 'zh', e
         </div>`
       break
     case 'agenda':
-      inner = `<span class="dp-eyebrow">${T.eyebrow.contents}</span><h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
-        <ol class="dp-agenda">${T.sections.slice(0, Math.min(8, tpl.pageCount - 4)).map((s, k) =>
-        `<li><i>${String(k + 1).padStart(2, '0')}</i><span class="dp-editable" contenteditable="true" data-edit="agenda${k}">${ed(`agenda${k}`, s)}</span></li>`).join('')}</ol>`
+      inner = `<div class="dp-split-grid"><div class="dp-main-col">
+          <span class="dp-eyebrow">${T.eyebrow.contents}</span><h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+          <ol class="dp-agenda">${T.sections.slice(0, Math.min(8, tpl.pageCount - 4)).map((s, k) =>
+        `<li><i>${String(k + 1).padStart(2, '0')}</i><span class="dp-editable" contenteditable="true" data-edit="agenda${k}">${ed(`agenda${k}`, s)}</span></li>`).join('')}</ol>
+        </div><div class="dp-side-art">${img(0)}</div></div>`
       break
     case 'divider':
       inner = `<div class="dp-divider-art">${img(0)}</div>
@@ -642,37 +640,48 @@ export function renderPageHTML(rawTpl, pageIndex, styleIdx = 0, locale = 'zh', e
         <p class="dp-lead dp-editable" contenteditable="true" data-edit="sub">${ed('sub', T.subtitles[page.subIdx])}</p>`
       break
     case 'stats':
-      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3><div class="dp-stats">${[0, 1, 2, 3].map((k) => `
-        <div class="dp-stat">
-          <b class="dp-editable" contenteditable="true" data-edit="stat-value${k}">${ed(`stat-value${k}`, `${60 + ((page.no * 7 + k * 13) % 38)}%`)}</b>
-          <span class="dp-editable" contenteditable="true" data-edit="stat-label${k}">${ed(`stat-label${k}`, T.stats[(page.no + k) % T.stats.length])}</span>
-        </div>`).join('')}</div><p${edAttr('body0')}>${ed('body0', T.bodies[page.bodyIdx[0]])}</p>`
+      inner = `<div class="dp-split-grid"><div class="dp-main-col">
+          <h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3><div class="dp-stats">${[0, 1, 2, 3].map((k) => `
+          <div class="dp-stat">
+            <b class="dp-editable" contenteditable="true" data-edit="stat-value${k}">${ed(`stat-value${k}`, `${60 + ((page.no * 7 + k * 13) % 38)}%`)}</b>
+            <span class="dp-editable" contenteditable="true" data-edit="stat-label${k}">${ed(`stat-label${k}`, T.stats[(page.no + k) % T.stats.length])}</span>
+          </div>`).join('')}</div><p${edAttr('body0')}>${ed('body0', T.bodies[page.bodyIdx[0]])}</p>
+        </div><div class="dp-side-art">${img(0)}</div></div>`
       break
     case 'big-stat':
-      inner = `<span class="dp-eyebrow dp-editable" contenteditable="true" data-edit="eyebrow">${ed('eyebrow', T.stats[page.statLabelIdx])}</span>
-        <b class="dp-big-stat dp-editable" contenteditable="true" data-edit="stat-value0">${ed('stat-value0', `${page.statNum}%`)}</b><p class="dp-lead dp-editable" contenteditable="true" data-edit="sub">${ed('sub', T.subtitles[page.subIdx])}</p><p${edAttr('body0')}>${ed('body0', T.bodies[page.bodyIdx[0]])}</p>`
+      inner = `<div class="dp-split-grid"><div class="dp-main-col dp-main-center">
+          <span class="dp-eyebrow dp-editable" contenteditable="true" data-edit="eyebrow">${ed('eyebrow', T.stats[page.statLabelIdx])}</span>
+          <b class="dp-big-stat dp-editable" contenteditable="true" data-edit="stat-value0">${ed('stat-value0', `${page.statNum}%`)}</b><p class="dp-lead dp-editable" contenteditable="true" data-edit="sub">${ed('sub', T.subtitles[page.subIdx])}</p><p${edAttr('body0')}>${ed('body0', T.bodies[page.bodyIdx[0]])}</p>
+        </div><div class="dp-side-art dp-side-round">${img(0)}</div></div>`
       break
     case 'quote':
       inner = `<div class="dp-quote-art">${img(0)}</div>
         <blockquote class="dp-editable" contenteditable="true" data-edit="quote">${ed('quote', T.quotes[page.quoteIdx])}</blockquote><span class="dp-eyebrow dp-editable" contenteditable="true" data-edit="quote-source">${ed('quote-source', `— ${display.name}`)}</span>`
       break
     case 'timeline':
-      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
-        <div class="dp-timeline">${T.steps.map((s, k) => `<div class="dp-tl-item"><i></i><b>${String(k + 1).padStart(2, '0')}</b><span class="dp-editable" contenteditable="true" data-edit="step${k}">${ed(`step${k}`, s)}</span></div>`).join('')}</div>`
+      inner = `<div class="dp-split-grid"><div class="dp-main-col">
+          <h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+          <div class="dp-timeline">${T.steps.map((s, k) => `<div class="dp-tl-item"><i></i><b>${String(k + 1).padStart(2, '0')}</b><span class="dp-editable" contenteditable="true" data-edit="step${k}">${ed(`step${k}`, s)}</span></div>`).join('')}</div>
+        </div><div class="dp-side-art">${img(0)}</div></div>`
       break
     case 'process':
-      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
-        <div class="dp-process">${T.steps.map((s, k) => `<div class="dp-step"><b>${k + 1}</b><span class="dp-editable" contenteditable="true" data-edit="step${k}">${ed(`step${k}`, s)}</span></div>`).join('')}</div>`
+      inner = `<div class="dp-split-grid"><div class="dp-main-col">
+          <h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+          <div class="dp-process">${T.steps.map((s, k) => `<div class="dp-step"><b>${k + 1}</b><span class="dp-editable" contenteditable="true" data-edit="step${k}">${ed(`step${k}`, s)}</span></div>`).join('')}</div>
+        </div><div class="dp-side-art">${img(0)}</div></div>`
       break
     case 'comparison':
       inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+        <div class="dp-banner-art">${img(0)}</div>
         <div class="dp-compare"><div class="dp-col"><h4 class="dp-editable" contenteditable="true" data-edit="cmp-left-title">${ed('cmp-left-title', T.compare.leftTitle)}</h4><ul>${T.compare.left.map((s, k) => `<li class="dp-editable" contenteditable="true" data-edit="cmp-l${k}">${ed(`cmp-l${k}`, s)}</li>`).join('')}</ul></div>
         <div class="dp-col dp-col-hot"><h4 class="dp-editable" contenteditable="true" data-edit="cmp-right-title">${ed('cmp-right-title', T.compare.rightTitle)}</h4><ul>${T.compare.right.map((s, k) => `<li class="dp-editable" contenteditable="true" data-edit="cmp-r${k}">${ed(`cmp-r${k}`, s)}</li>`).join('')}</ul></div></div>`
       break
     case 'table':
-      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
-        <table class="dp-table"><thead><tr>${T.tableHead.map((h, k) => `<th class="dp-editable" contenteditable="true" data-edit="th${k}">${ed(`th${k}`, h)}</th>`).join('')}</tr></thead>
-        <tbody>${T.tableDims.map((s, k) => `<tr><td class="dp-editable" contenteditable="true" data-edit="cell-${k}-0">${ed(`cell-${k}-0`, s)}</td><td class="dp-editable" contenteditable="true" data-edit="cell-${k}-1">${ed(`cell-${k}-1`, `${60 + k * 7}%`)}</td><td class="dp-editable" contenteditable="true" data-edit="cell-${k}-2">${ed(`cell-${k}-2`, `${85 + k * 3}%`)}</td><td class="dp-editable" contenteditable="true" data-edit="cell-${k}-3">${ed(`cell-${k}-3`, T.roles[k])}</td></tr>`).join('')}</tbody></table>`
+      inner = `<div class="dp-split-grid"><div class="dp-main-col">
+          <h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+          <table class="dp-table"><thead><tr>${T.tableHead.map((h, k) => `<th class="dp-editable" contenteditable="true" data-edit="th${k}">${ed(`th${k}`, h)}</th>`).join('')}</tr></thead>
+          <tbody>${T.tableDims.map((s, k) => `<tr><td class="dp-editable" contenteditable="true" data-edit="cell-${k}-0">${ed(`cell-${k}-0`, s)}</td><td class="dp-editable" contenteditable="true" data-edit="cell-${k}-1">${ed(`cell-${k}-1`, `${60 + k * 7}%`)}</td><td class="dp-editable" contenteditable="true" data-edit="cell-${k}-2">${ed(`cell-${k}-2`, `${85 + k * 3}%`)}</td><td class="dp-editable" contenteditable="true" data-edit="cell-${k}-3">${ed(`cell-${k}-3`, T.roles[k])}</td></tr>`).join('')}</tbody></table>
+        </div><div class="dp-side-art">${img(0)}</div></div>`
       break
     case 'cards':
       inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
@@ -693,37 +702,46 @@ export function renderPageHTML(rawTpl, pageIndex, styleIdx = 0, locale = 'zh', e
     case 'pricing':
       inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
         <div class="dp-pricing">
-        ${T.plans.map((s, k) => `<div class="dp-price ${k === 1 ? 'is-hot' : ''}"><h4 class="dp-editable" contenteditable="true" data-edit="plan${k}">${ed(`plan${k}`, s)}</h4><b class="dp-editable" contenteditable="true" data-edit="price${k}">${ed(`price${k}`, k === 0 ? (locale === 'en' ? '$299' : '¥299') : k === 1 ? (locale === 'en' ? '$899' : '¥899') : (locale === 'en' ? '$1999' : '¥1999'))}</b><span>${T.perMonth}</span><ul>${T.planFeatures(k).map((f, j) => `<li class="dp-editable" contenteditable="true" data-edit="feat-${k}-${j}">${ed(`feat-${k}-${j}`, f)}</li>`).join('')}</ul><button type="button" class="dp-editable" contenteditable="true" data-edit="cta${k}">${ed(`cta${k}`, T.choosePlan)}</button></div>`).join('')}</div>`
+        ${T.plans.map((s, k) => `<div class="dp-price ${k === 1 ? 'is-hot' : ''}"><div class="dp-price-art">${img(k)}</div><h4 class="dp-editable" contenteditable="true" data-edit="plan${k}">${ed(`plan${k}`, s)}</h4><b class="dp-editable" contenteditable="true" data-edit="price${k}">${ed(`price${k}`, k === 0 ? (locale === 'en' ? '$299' : '¥299') : k === 1 ? (locale === 'en' ? '$899' : '¥899') : (locale === 'en' ? '$1999' : '¥1999'))}</b><span>${T.perMonth}</span><ul>${T.planFeatures(k).map((f, j) => `<li class="dp-editable" contenteditable="true" data-edit="feat-${k}-${j}">${ed(`feat-${k}-${j}`, f)}</li>`).join('')}</ul><button type="button" class="dp-editable" contenteditable="true" data-edit="cta${k}">${ed(`cta${k}`, T.choosePlan)}</button></div>`).join('')}</div>`
       break
     case 'bars':
-      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
-        <div class="dp-bars">${T.stats.slice(0, 6).map((s, k) => { const v = 45 + ((page.no * 11 + k * 13) % 50); return `<div class="dp-bar-row"><span class="dp-editable" contenteditable="true" data-edit="bar-label${k}">${ed(`bar-label${k}`, s)}</span><div class="dp-bar"><i style="height:${v}%"></i></div><b class="dp-editable" contenteditable="true" data-edit="bar-value${k}">${ed(`bar-value${k}`, `${v}%`)}</b></div>` }).join('')}</div>`
+      inner = `<div class="dp-split-grid"><div class="dp-main-col">
+          <h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+          <div class="dp-bars">${T.stats.slice(0, 6).map((s, k) => { const v = 45 + ((page.no * 11 + k * 13) % 50); return `<div class="dp-bar-row"><span class="dp-editable" contenteditable="true" data-edit="bar-label${k}">${ed(`bar-label${k}`, s)}</span><div class="dp-bar"><i style="height:${v}%"></i></div><b class="dp-editable" contenteditable="true" data-edit="bar-value${k}">${ed(`bar-value${k}`, `${v}%`)}</b></div>` }).join('')}</div>
+        </div><div class="dp-side-art">${img(0)}</div></div>`
       break
     case 'line-chart':
-      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
-        <svg class="dp-line" viewBox="0 0 600 260" preserveAspectRatio="none">
-          <polyline points="${Array.from({ length: 9 }, (_, k) => `${30 + k * 67},${210 - ((page.no * 17 + k * 19) % 160)}`).join(' ')}" fill="none" stroke="var(--dp-accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          ${Array.from({ length: 9 }, (_, k) => `<circle cx="${30 + k * 67}" cy="${210 - ((page.no * 17 + k * 19) % 160)}" r="6" fill="var(--dp-paper)" stroke="var(--dp-accent)" stroke-width="3"/>`).join('')}
-        </svg><p class="dp-lead dp-editable" contenteditable="true" data-edit="sub">${ed('sub', T.subtitles[page.subIdx])}</p>`
+      inner = `<div class="dp-split-grid"><div class="dp-main-col">
+          <h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+          <svg class="dp-line" viewBox="0 0 600 260" preserveAspectRatio="none">
+            <polyline points="${Array.from({ length: 9 }, (_, k) => `${30 + k * 67},${210 - ((page.no * 17 + k * 19) % 160)}`).join(' ')}" fill="none" stroke="var(--dp-accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            ${Array.from({ length: 9 }, (_, k) => `<circle cx="${30 + k * 67}" cy="${210 - ((page.no * 17 + k * 19) % 160)}" r="6" fill="var(--dp-paper)" stroke="var(--dp-accent)" stroke-width="3"/>`).join('')}
+          </svg><p class="dp-lead dp-editable" contenteditable="true" data-edit="sub">${ed('sub', T.subtitles[page.subIdx])}</p>
+        </div><div class="dp-side-art">${img(0)}</div></div>`
       break
     case 'map':
       inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
-        <div class="dp-map">${svgWrap(`map-${tpl.id}-${page.no}`, `<path d="M40 240 L120 120 L190 180 L260 80 L360 160" fill="none" stroke="var(--dp-accent)" stroke-width="6" stroke-linecap="round"/>
+        <div class="dp-map dp-art">${svgWrap(`map-${tpl.id}-${page.no}`, `<path d="M40 240 L120 120 L190 180 L260 80 L360 160" fill="none" stroke="var(--dp-accent)" stroke-width="6" stroke-linecap="round"/>
           ${[120, 180, 80, 160].map((y, k) => `<circle cx="${[120, 190, 260, 360][k]}" cy="${y}" r="12" fill="var(--dp-accent2)"/>`).join('')}`, palette[1])}</div>
         <p class="dp-lead dp-editable" contenteditable="true" data-edit="map-lead">${ed('map-lead', T.mapLead)}</p>`
       break
     case 'faq':
-      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
-        <div class="dp-faq">${T.faqs.slice(0, 4).map((q, k) => `<details ${k === 0 ? 'open' : ''}><summary class="dp-editable" contenteditable="true" data-edit="faq-q${k}">${ed(`faq-q${k}`, q)}</summary><p class="dp-editable" contenteditable="true" data-edit="faq-a${k}">${ed(`faq-a${k}`, T.bodies[k % T.bodies.length])}</p></details>`).join('')}</div>`
+      inner = `<div class="dp-split-grid"><div class="dp-main-col">
+          <h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+          <div class="dp-faq">${T.faqs.slice(0, 4).map((q, k) => `<details ${k === 0 ? 'open' : ''}><summary class="dp-editable" contenteditable="true" data-edit="faq-q${k}">${ed(`faq-q${k}`, q)}</summary><p class="dp-editable" contenteditable="true" data-edit="faq-a${k}">${ed(`faq-a${k}`, T.bodies[k % T.bodies.length])}</p></details>`).join('')}</div>
+        </div><div class="dp-side-art">${img(0)}</div></div>`
       break
     case 'logos':
       inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+        <div class="dp-banner-art">${img(0)}</div>
         <div class="dp-logos">${Array.from({ length: 8 }, (_, k) => `<span class="dp-editable" contenteditable="true" data-edit="logo${k}">${ed(`logo${k}`, `${EN_A[k % EN_A.length]} ${EN_B[(k + page.no) % EN_B.length]}`)}</span>`).join('')}</div>
         <p class="dp-lead dp-editable" contenteditable="true" data-edit="logos-lead">${ed('logos-lead', T.logosLead)}</p>`
       break
     case 'index-list':
-      inner = `<span class="dp-eyebrow">${T.eyebrow.appendix}</span><h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
-        <ul class="dp-index">${T.sections.map((s, k) => `<li><span class="dp-editable" contenteditable="true" data-edit="index${k}">${ed(`index${k}`, s)}</span><i>${String(k + 3).padStart(2, '0')}</i></li>`).join('')}</ul>`
+      inner = `<div class="dp-split-grid"><div class="dp-main-col">
+          <span class="dp-eyebrow">${T.eyebrow.appendix}</span><h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+          <ul class="dp-index">${T.sections.map((s, k) => `<li><span class="dp-editable" contenteditable="true" data-edit="index${k}">${ed(`index${k}`, s)}</span><i>${String(k + 3).padStart(2, '0')}</i></li>`).join('')}</ul>
+        </div><div class="dp-side-art">${img(0)}</div></div>`
       break
     case 'closing':
       inner = `<div class="dp-end-art">${img(0)}</div>

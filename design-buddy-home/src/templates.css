@@ -2053,3 +2053,61 @@
   color: #fff;
 }
 .tpl-lang button:not(.is-active):hover { color: var(--navy, #1e2b4d); }
+
+/* ============================================================
+   全页配图：侧图网格 / 顶部横幅 / 定价卡缩略图
+   ============================================================ */
+
+.dp-split-grid {
+  display: flex;
+  gap: 4%;
+  flex: 1;
+  min-height: 0;
+}
+.dp-main-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: inherit;
+  justify-content: center;
+}
+.dp-main-center { justify-content: center; }
+.dp-side-art {
+  flex: none;
+  width: 34%;
+  display: flex;
+  min-height: 0;
+}
+.dp-side-art .dp-art {
+  width: 100%;
+  height: 100%;
+}
+.dp-side-round .dp-art {
+  border-radius: 999px;
+}
+.dp-banner-art {
+  flex: none;
+  height: 24%;
+  min-height: 0;
+}
+.dp-banner-art .dp-art {
+  height: 100%;
+}
+.dp-price-art {
+  height: 26%;
+  min-height: 0;
+  margin-bottom: 1.2cqw;
+}
+.dp-price-art .dp-art {
+  height: 100%;
+}
+/* 地图版式复用 dp-art 外壳时不要内边距 */
+.dp-map.dp-art {
+  padding: 0;
+}
+
+@media (max-width: 760px) {
+  .dp-split-grid { flex-direction: column; gap: 10px; }
+  .dp-side-art { width: 100%; height: 30%; }
+}

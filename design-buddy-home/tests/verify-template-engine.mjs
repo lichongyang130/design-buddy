@@ -4,7 +4,7 @@
    ============================================================ */
 
 import {
-  buildCatalog, buildDeck, renderPageHTML, metaFor, coverStyle, displayTpl,
+  buildCatalog, buildDeck, renderPageHTML, metaFor, coverStyle, displayTpl, slotNeed,
   CATEGORY_LIST, FRAMEWORKS, LAYOUTS,
 } from '../src/template-engine.js'
 import { loadPage, click, input, tick, readState } from './helpers.mjs'
@@ -53,22 +53,38 @@ for (const t of sample) {
   for (let i = 1; i < deck.pages.length; i++) if (deck.pages[i].layout === deck.pages[i - 1].layout) adjacent = false
   check(`deck ${t.name} no adjacent repeat layout`, adjacent)
   deck.pages.forEach((p) => layoutSeen.add(p.layout))
-  // 每张配图至少被使用一次
+  // 每张配图至少被使用一次（按各版式真实槽位数 slotNeed 统计）
   const used = new Set()
-  const IMG = new Set(['cover', 'divider', 'hero', 'split', 'two-image', 'triple-grid', 'cards', 'gallery', 'team', 'testimonial', 'quote', 'closing'])
   deck.pages.forEach((p) => {
-    if (!IMG.has(p.layout)) return
-    const need = p.layout === 'gallery' ? 4 : ['triple-grid', 'team'].includes(p.layout) ? 3 : p.layout === 'two-image' ? 2 : 1
-    for (let k = 0; k < need; k++) used.add((p.imgStart + k) % deck.images.length)
+    for (let k = 0; k < slotNeed(p.layout); k++) used.add((p.imgStart + k) % deck.images.length)
   })
   check(`deck ${t.name} every image used at least once`, used.size === t.imgCount, [...used].join(','))
-  // 渲染全部页面不炸
-  const html = deck.pages.map((_, i) => renderPageHTML(t, i, i % 3)).join('')
+  // 渲染全部页面不炸，且每一页都含配图（map 自带 dp-art 场景插画）
+  const pageHtmls = deck.pages.map((_, i) => renderPageHTML(t, i, i % 3))
+  const html = pageHtmls.join('')
   check(`deck ${t.name} all pages render`, html.includes('dp-page') && html.includes('data-layout'))
+  check(`deck ${t.name} every page has artwork`, pageHtmls.every((h) => h.includes('dp-art')))
+  check(`deck ${t.name} no page without image slot`, deck.pages.every((p) => slotNeed(p.layout) >= 1 || p.layout === 'map'))
   const meta = metaFor(t)
   check(`deck ${t.name} meta spec consistent`, meta.spec.pages === t.pageCount && meta.spec.images === t.imgCount && meta.colors.length === 3)
 }
 check('all 26 layouts covered across sample', layoutSeen.size === 26, [...layoutSeen].join(','))
+
+// 全量 950 套：每一页都必须有配图位，且图片槽位不少于配图数
+{
+  let pagesWithoutArt = 0
+  let slotStarved = 0
+  for (const t of catalog) {
+    const d = buildDeck(t)
+    const slots = d.pages.reduce((s, p) => s + slotNeed(p.layout), 0)
+    if (slots < t.imgCount) slotStarved++
+    d.pages.forEach((p, i) => {
+      if (p.layout !== 'map' && !renderPageHTML(t, i).includes('dp-art')) pagesWithoutArt++
+    })
+  }
+  check('all 950 decks: zero pages without artwork', pagesWithoutArt === 0, `pages=${pagesWithoutArt}`)
+  check('all 950 decks: slots cover every image', slotStarved === 0, `starved=${slotStarved}`)
+}
 
 // 精选模板也能生成 deck（由名称哈希推导）
 const curatedLike = { id: 'x1', name: '渔港日记', a: '石', b: 'SHIPU', format: '演示文稿', cats: ['文化'] }
