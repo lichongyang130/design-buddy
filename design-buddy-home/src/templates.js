@@ -35,7 +35,7 @@ const TEMPLATES = [
   { name: '国潮商务路演', cls: 'tpl-guochao', a: '用调度效率提升每一块算力的产出', b: '', format: '演示文稿', cats: ['融资演讲稿', '商业规划'] },
   { name: 'Quire', cls: 'tpl-quire', a: 'Back of House', b: '2026 RESTAURANT SURVEY', format: '文档', cats: ['报告', '餐饮'] },
   { name: 'Full Record', cls: 'tpl-fullrecord', a: 'Amara Osei', b: 'FULL RECORD', format: '文档', cats: ['作品集', '品牌设计'] },
-  { name: 'Fit Check', cls: 'tpl-fitcheck', a: 'HOMEROOM', b: 'GENERAL UNIFORM POLICY', format: '社交轮播卡片', cats: ['营销材料', '零售'] },
+  { name: 'Fit Check', cls: 'tpl-fitcheck', a: 'HOMEROOM', b: 'GENERAL UNIFORM POLICY', format: '演示文稿', cats: ['融资演讲稿', '营销材料', '作品集'] },
   { name: 'First Edition', cls: 'tpl-firstedition', a: 'Salt and Lemon', b: 'FIRST EDITION', format: '文档', cats: ['作品集', '艺术'] },
   { name: 'The Web Between Us', cls: 'tpl-web', a: 'THE WEB BETWEEN US', b: '', format: '社交轮播卡片', cats: ['科技', '艺术'] },
   { name: 'Soft Current', cls: 'tpl-soft', a: 'Migraine is more than a headache', b: '', format: '社交轮播卡片', cats: ['医疗健康', '课程'] },
@@ -521,6 +521,19 @@ function openTemplateDetail(tpl) {
       <h4>主题</h4>
       <div class="td-tags td-tags-outline">${meta.themes.map((c) => `<span class="td-tag">${c}</span>`).join('')}</div>
 
+      <h4>样式</h4>
+      <div class="td-style-cards">
+        ${meta.colors.map((c, i) => `
+          <button class="td-style-card ${i === styleIdx ? 'is-picked' : ''}" type="button" data-style-card="${i}">
+            <span class="td-style-slide">
+              <i style="background:${c}"></i>
+              <i style="background:${meta.colors[(i + 1) % meta.colors.length]}"></i>
+              <i style="background:${meta.colors[(i + 2) % meta.colors.length]}"></i>
+            </span>
+            <span class="td-style-name">样式 ${String.fromCharCode(65 + i)}</span>
+          </button>`).join('')}
+      </div>
+
       <div class="td-use-wrap">
         <button class="td-use" id="td-use" type="button">使用模板</button>
       </div>`
@@ -546,6 +559,15 @@ function openTemplateDetail(tpl) {
       store.save()
       styleMenu.hidden = true
       render()
+    })
+
+    // 底部样式变体卡片：与色点下拉共用同一份持久化状态
+    panel.querySelectorAll('[data-style-card]').forEach((card) => {
+      card.addEventListener('click', () => {
+        store.state.templateStyles[t.name] = Number(card.dataset.styleCard)
+        store.save()
+        render()
+      })
     })
 
     panel.querySelector('#td-use').addEventListener('click', () => {

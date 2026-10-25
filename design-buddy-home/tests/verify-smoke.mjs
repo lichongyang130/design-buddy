@@ -149,6 +149,14 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   await tick()
   check('detail overlay opens', !!doc.querySelector('.td-mask'))
   check('detail panel has use button', !!doc.querySelector('#td-use'))
+  check('detail has two style sections (dots + cards)',
+    !!doc.querySelector('#td-dots') && doc.querySelectorAll('.td-style-card').length === 3)
+  // 底部样式变体卡片可点击并持久化
+  click(w, doc.querySelectorAll('.td-style-card')[2])
+  await tick()
+  check('style card selection persisted',
+    JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).templateStyles['渔港日记'] === 2)
+  check('style card shows picked ring', doc.querySelectorAll('.td-style-card')[2].classList.contains('is-picked'))
   // 轮播缩略图切换
   const thumbs = doc.querySelectorAll('.td-thumb')
   click(w, thumbs[3])
