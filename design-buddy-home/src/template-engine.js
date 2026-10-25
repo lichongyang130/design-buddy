@@ -1,9 +1,10 @@
 /* ============================================================
-   模板生成引擎（纯前端、确定性）
+   模板生成引擎（纯前端、确定性、中英双语、内容可编辑）
    - 19 个类别 × 每类 50 套 = 950 套生成模板（+24 套手工精选）
    - 每套：20–30 个页面、10–15 张独家程序化 SVG 配图
    - 50 种框架，同一类别内 50 套模板框架互不重复
-   - 全部由种子随机数驱动，刷新后结果完全一致，无网络依赖
+   - locale: 'zh' | 'en'，所有文案按语言查表，种子随机保证一致
+   - renderPageHTML 支持 edits 映射，所有文字带 data-edit 稳定键
    ============================================================ */
 
 /* ---------------- 确定性随机 ---------------- */
@@ -35,6 +36,14 @@ const int = (rng, min, max) => min + Math.floor(rng() * (max - min + 1))
 export const VISIBLE_CATS = ['课程', '提案', '报告', '融资演讲稿', '营销材料', '培训', '商业规划', '活动']
 export const HIDDEN_CATS = ['作品集', '品牌设计', '教育', '科技', '医疗健康', '艺术', '文化', '旅游', '餐饮', '零售', '建筑']
 export const CATEGORY_LIST = [...VISIBLE_CATS, ...HIDDEN_CATS]
+
+export const CAT_EN = {
+  课程: 'Courses', 提案: 'Proposals', 报告: 'Reports', 融资演讲稿: 'Fundraising', 营销材料: 'Marketing',
+  培训: 'Training', 商业规划: 'Business Planning', 活动: 'Events', 作品集: 'Portfolios', 品牌设计: 'Brand Design',
+  教育: 'Education', 科技: 'Technology', 医疗健康: 'Healthcare', 艺术: 'Art', 文化: 'Culture',
+  旅游: 'Travel', 餐饮: 'F&B', 零售: 'Retail', 建筑: 'Architecture',
+}
+export const catLabel = (cat, locale) => (locale === 'en' ? (CAT_EN[cat] ?? cat) : cat)
 
 /* ---------------- 调色板（20 套：bg/paper/ink/muted/accent/accent2） ---------------- */
 
@@ -68,10 +77,10 @@ const FONT_PAIRS = [
   { head: '"PingFang SC", "Microsoft YaHei", sans-serif', body: '"PingFang SC", "Microsoft YaHei", sans-serif' },
   { head: 'Georgia, "Times New Roman", "Noto Serif SC", serif', body: 'Georgia, "Noto Serif SC", serif' },
   { head: '"Arial Narrow", "PingFang SC", sans-serif', body: '"PingFang SC", "Microsoft YaHei", sans-serif' },
-  { head: '"Kaiti SC", "STKaiti", "Noto Serif SC", serif', body: '"PingFang SC", "Microsoft YaHei", sans-serif' },
+  { head: '"Kaiti SC", STKaiti, "Noto Serif SC", serif', body: '"PingFang SC", "Microsoft YaHei", sans-serif' },
 ]
 
-/* ---------------- 50 种框架（同类内绝不重复） ---------------- */
+/* ---------------- 50 种框架（中英双名，同类内绝不重复） ---------------- */
 
 const FW_NAMES = [
   '杂志编辑网格', '极简留白体系', '瑞士国际网格', '粗野海报框架', '暗色玻璃拟态',
@@ -85,22 +94,43 @@ const FW_NAMES = [
   '渐变光晕框架', '等距网格框架', '放射极轴框架', '模块化卡片墙', '封面冲击框架',
   '双色调 Riso 框架', '玻璃卡片框架', '手绘画板框架', '未来主义框架', '东方雅致框架',
 ]
+const FW_NAMES_EN = [
+  'Magazine Editorial Grid', 'Minimal Whitespace System', 'Swiss International Grid', 'Brutalist Poster Frame', 'Dark Glassmorphism',
+  'Neo-Chinese Whitespace', 'Rounded Card Matrix', 'Bento Modular Grid', 'Full-Bleed Image Frame', 'Split Narrative Frame',
+  'Dashboard Data Grid', 'Magazine Spread Frame', 'Collage Journal Frame', 'Memphis Pop-Color Frame', 'Bauhaus Composition Frame',
+  'Japanese Vertical Frame', 'Cyber Neon Frame', 'Soft Organic Shapes', 'Archive Document Frame', 'Roadshow Spotlight Frame',
+  'Training Step Frame', 'Timeline Narrative Frame', 'Gallery Exhibition Frame', 'Retail Window Frame', 'Restaurant Menu Frame',
+  'Travel Album Frame', 'Healthcare Infographic Frame', 'Tech Blueprint Frame', 'Education Course Frame', 'Brand Manual Frame',
+  'Portfolio Index Frame', 'Event Poster Frame', 'Fundraising Data Frame', 'Consulting Report Frame', 'Proposal Comparison Frame',
+  'Social Card Stream', 'Vertical Story Frame', 'Dark Mode Frame', 'Paper Texture Frame', 'High-Contrast Mono Frame',
+  'Gradient Glow Frame', 'Isometric Grid Frame', 'Radial Polar Frame', 'Modular Card Wall', 'Cover Impact Frame',
+  'Duotone Riso Frame', 'Glass Card Frame', 'Hand-Drawn Canvas', 'Futurist Frame', 'Oriental Elegance Frame',
+]
 const IMG_FRAMES = ['rect', 'round', 'keylined', 'polaroid', 'arch', 'soft']
+const IMG_FRAME_LABEL = {
+  zh: { rect: '直角', round: '圆角', keylined: '描边', polaroid: '宝丽来', arch: '拱门', soft: '柔光' },
+  en: { rect: 'rectangular', round: 'rounded', keylined: 'key-lined', polaroid: 'polaroid', arch: 'arched', soft: 'soft-glow' },
+}
 const HEADINGS = ['serif', 'sans', 'serif', 'sans', 'condensed']
 const RADII = [0, 4, 8, 12, 16, 20, 24]
 const GRIDS = ['12 栏编辑网格', '8 栏秩序网格', '模块化网格', 'Bento 便当格', '非对称网格', '文档式单栏']
+const GRIDS_EN = ['12-column editorial grid', '8-column ordered grid', 'modular grid', 'Bento grid', 'asymmetric grid', 'document single column']
 
 export const FRAMEWORKS = FW_NAMES.map((name, i) => ({
   id: `fw-${String(i + 1).padStart(2, '0')}`,
   name,
+  nameEn: FW_NAMES_EN[i],
   deco: (i % 12) + 1,
   imgFrame: IMG_FRAMES[i % IMG_FRAMES.length],
   heading: HEADINGS[i % HEADINGS.length],
   radius: RADII[i % RADII.length],
   grid: GRIDS[i % GRIDS.length],
+  gridEn: GRIDS_EN[i % GRIDS_EN.length],
 }))
+export const fwLabel = (fw, locale) => (locale === 'en' ? fw.nameEn : fw.name)
+export const gridLabel = (fw, locale) => (locale === 'en' ? fw.gridEn : fw.grid)
 
-/* ---------------- 文案词库 ---------------- */
+/* ---------------- 中文词库 ---------------- */
 
 const ADJ = ['灵动', '沉静', '先锋', '温润', '高效', '克制', '鲜活', '专业', '松弛', '明朗',
   '雅致', '大胆', '细腻', '澎湃', '轻盈', '厚重', '清新', '摩登', '东方', '现代',
@@ -128,27 +158,117 @@ const CAT_NOUNS = {
   建筑: ['方案册', '营造录', '空间志', '建筑集', '改造案', '图纸集', '场地册', '栖居稿', '结构录', '城市册'],
 }
 
+const EN_ADJ = ['Agile', 'Serene', 'Pioneering', 'Warm', 'Efficient', 'Restrained', 'Vivid', 'Professional', 'Relaxed', 'Bright',
+  'Elegant', 'Bold', 'Delicate', 'Surging', 'Light', 'Solid', 'Fresh', 'Modern', 'Oriental', 'Contemporary',
+  'Minimal', 'Rich', 'Rational', 'Passionate', 'Calm']
+
+const CAT_NOUNS_EN = {
+  课程: ['Masterclass', 'Bootcamp', 'Course', 'Workshop', 'Academy', 'Seminar', 'Micro-Course', 'Lab', 'Lecture Series', 'Program'],
+  提案: ['Proposal', 'Pitch Book', 'Bid Deck', 'Partnership Plan', 'Brief', 'Tender Pack', 'Requirements Doc', 'Concept Plan', 'Delivery Plan', 'Blueprint'],
+  报告: ['White Paper', 'Observatory', 'Yearbook', 'Survey', 'Retro Report', 'Quarterly', 'Review', 'Insight Report', 'Assessment', 'Data Journal'],
+  融资演讲稿: ['Roadshow Deck', 'Fundraising Deck', 'Pitch', 'Investment Memo', 'Venture Deck', 'Business Case', 'Growth Deck', 'Valuation Story', 'Expansion Deck', 'Launch Deck'],
+  营销材料: ['Brand Book', 'Promo Kit', 'Campaign Pack', 'Social Kit', 'Comms Plan', 'Asset Library', 'Media Plan', 'Buzz Kit', 'Acquisition Deck', 'Refresh Pack'],
+  培训: ['Onboarding Pack', 'Trainer Kit', 'Bootcamp Deck', 'Coaching Notes', 'Drill Book', 'Enablement Pack', 'Practice Deck', 'Learner Guide', 'Pass-Through Set', 'Morning Class'],
+  商业规划: ['Plan Book', 'Battle Map', 'Roadmap', 'Blueprint', 'Growth Plan', 'Layout Journal', 'Operating Plan', 'Breakthrough Deck', 'Annual Plan', 'Strategy Map'],
+  活动: ['Invitation', 'Run-of-Show', 'Summit Deck', 'Pop-Up Plan', 'Gala Pack', 'Salon Notes', 'Expo Kit', 'Tour Deck', 'Opening Pack', 'Theme Deck'],
+  作品集: ['Portfolio', 'Selected Works', 'Creation Journal', 'Project Collection', 'Greatest Hits', 'Sketchbook', 'Achievement Book', 'Design Journal', 'Image Collection', 'Awards Book'],
+  品牌设计: ['Brand Manual', 'Visual Journal', 'Identity Book', 'VI Guidelines', 'Refresh Journal', 'Image Book', 'Standards Pack', 'Tone Deck', 'Logo Set', 'Brand Journal'],
+  教育: ['Courseware', 'Lesson Plan', 'Class Notes', 'Lab Book', 'Primer', 'School Pack', 'Study Tour Journal', 'Curriculum', 'Teaching Kit', 'Academy Book'],
+  科技: ['Product Deck', 'Tech White Paper', 'Launch Deck', 'Blueprint Journal', 'Geek Book', 'Algorithm Journal', 'Hardware Case', 'Platform Deck', 'Intelligence Pack', 'Frontier Report'],
+  医疗健康: ['Science Book', 'Health Journal', 'Care Notes', 'Clinic Deck', 'Healing Pack', 'Clinical Book', 'Care Report', 'Mind-Body Journal', 'Prevention Book', 'Recovery Journal'],
+  艺术: ['Exhibition Book', 'Art Album', 'Installation Notes', 'Performance Deck', 'Crossover Pack', 'Aesthetics Journal', 'Creation Deck', 'Collection Notes', 'Curation Plan', 'Art Journal'],
+  文化: ['Lore Journal', 'Heritage Book', 'Gathering Notes', 'Memory Book', 'Humanities Draft', 'Roots Collection', 'Legacy Journal', 'City Stories', 'Seasonal Journal', 'Heritage Collection'],
+  旅游: ['Travel Journal', 'Guidebook', 'Retreat Pack', 'Roam Notes', 'Hidden Places', 'Journey Draft', 'Destination Book', 'Light Pack', 'Stay Journal', 'Landscape Journal'],
+  餐饮: ['Menu Collection', 'Recipe Book', 'Flavor Journal', 'Food Tour Notes', 'Banquet Plan', 'Bake Book', 'Tea Pack', 'Chef Journal', 'Ingredient Journal', 'Bites Book'],
+  零售: ['Display Book', 'Selection Pack', 'Store Deck', 'Window Journal', 'New Arrivals', 'Merch Plan', 'Customer Journal', 'Retail Pack', 'FMCG Pack', 'Store Manual'],
+  建筑: ['Scheme Book', 'Construction Journal', 'Space Journal', 'Architecture Set', 'Renovation Plan', 'Drawing Set', 'Site Book', 'Dwelling Draft', 'Structure Journal', 'City Book'],
+}
+
 const EN_A = ['Aurora', 'Silent', 'Bold', 'Gentle', 'Urban', 'Golden', 'North', 'Echo', 'Lumen', 'Vivid', 'Orbit', 'Paper']
 const EN_B = ['Studio', 'Notes', 'Series', 'Journal', 'Report', 'Collective', 'Edition', 'Lab', 'Atlas', 'Folio', 'Review', 'Bureau']
 
-const SECTION_TITLES = ['市场洞察', '核心数据', '方案概览', '执行路径', '案例展示', '团队介绍', '节奏规划',
-  '风险与应对', '投入与回报', '用户之声', '竞品对照', '常见问题', '行动清单', '里程碑', '资源配置', '体验流程', '视觉体系', '增长策略']
-const SUBTITLES = ['用清晰的结构呈现关键判断', '把复杂信息拆解为可执行的步骤', '以数据支撑每一个结论',
-  '让叙事节奏与视觉节奏保持一致', '从问题出发，以行动收尾', '兼顾专业表达与阅读愉悦感', '为跨部门协作提供统一语境']
-const BODY_LINES = ['围绕核心目标拆解关键动作，确保每一页都服务于同一个叙事主线。',
-  '结合一线调研与公开数据，呈现可验证、可追溯的判断依据。',
-  '通过分阶段的里程碑设计，让长期目标落到可检查的节点上。',
-  '视觉层级与信息层级同步规划，重点内容始终处于视觉焦点。',
-  '预留可替换的内容模块，便于团队在实际项目中快速调整。',
-  '每个章节配备小结与行动项，读完即可进入下一步执行。']
-const STAT_LABELS = ['覆盖用户', '同比增长', '满意度', '交付项目', '活跃客户', '复购率', '完课率', '转化率', '留存率', 'NPS 评分']
-const QUOTES = ['真正打动人的，从来不是信息的堆叠，而是被认真组织过的秩序。',
-  '好的框架让内容自己说话，让读者在不知不觉中被说服。',
-  '把每一次表达都当作一次产品设计，细节会替你赢得信任。',
-  '复杂的事情简单说，简单的事情认真做，认真的事情重复做。']
-const STEPS = ['发现机会', '定义问题', '共创方案', '快速验证', '规模落地', '持续优化']
-const TEAM_ROLES = ['项目负责人', '策略顾问', '视觉设计', '数据分析师', '内容主笔', '运营专家']
-const FAQ_Q = ['这个方案适合什么样的团队？', '落地周期通常需要多久？', '如何衡量项目的实际效果？', '已有系统能否平滑接入？', '预算有限时如何分阶段推进？', '团队需要配合哪些资源？']
+/* ---------------- 双语文案表 ---------------- */
+
+const I18N = {
+  zh: {
+    sections: ['市场洞察', '核心数据', '方案概览', '执行路径', '案例展示', '团队介绍', '节奏规划',
+      '风险与应对', '投入与回报', '用户之声', '竞品对照', '常见问题', '行动清单', '里程碑', '资源配置', '体验流程', '视觉体系', '增长策略'],
+    subtitles: ['用清晰的结构呈现关键判断', '把复杂信息拆解为可执行的步骤', '以数据支撑每一个结论',
+      '让叙事节奏与视觉节奏保持一致', '从问题出发，以行动收尾', '兼顾专业表达与阅读愉悦感', '为跨部门协作提供统一语境'],
+    bodies: ['围绕核心目标拆解关键动作，确保每一页都服务于同一个叙事主线。',
+      '结合一线调研与公开数据，呈现可验证、可追溯的判断依据。',
+      '通过分阶段的里程碑设计，让长期目标落到可检查的节点上。',
+      '视觉层级与信息层级同步规划，重点内容始终处于视觉焦点。',
+      '预留可替换的内容模块，便于团队在实际项目中快速调整。',
+      '每个章节配备小结与行动项，读完即可进入下一步执行。'],
+    stats: ['覆盖用户', '同比增长', '满意度', '交付项目', '活跃客户', '复购率', '完课率', '转化率', '留存率', 'NPS 评分'],
+    quotes: ['真正打动人的，从来不是信息的堆叠，而是被认真组织过的秩序。',
+      '好的框架让内容自己说话，让读者在不知不觉中被说服。',
+      '把每一次表达都当作一次产品设计，细节会替你赢得信任。',
+      '复杂的事情简单说，简单的事情认真做，认真的事情重复做。'],
+    steps: ['发现机会', '定义问题', '共创方案', '快速验证', '规模落地', '持续优化'],
+    roles: ['项目负责人', '策略顾问', '视觉设计', '数据分析师', '内容主笔', '运营专家'],
+    faqs: ['这个方案适合什么样的团队？', '落地周期通常需要多久？', '如何衡量项目的实际效果？', '已有系统能否平滑接入？', '预算有限时如何分阶段推进？', '团队需要配合哪些资源？'],
+    eyebrow: { contents: '目录', gallery: '图集', appendix: '附录' },
+    closing: '谢谢观看',
+    mapLead: '覆盖 4 个重点区域，按季度滚动推进。',
+    logosLead: '他们已经在用同一套框架沉淀团队表达。',
+    feedback: '反馈',
+    compare: {
+      leftTitle: '传统做法', rightTitle: '本方案',
+      left: ['信息分散、口径不一', '重复制作、耗时费力', '视觉缺乏统一规范'],
+      right: ['统一框架、口径清晰', '模块复用、快速迭代', '成套视觉、专业一致'],
+    },
+    tableHead: ['维度', '现状', '目标', '负责方'],
+    tableDims: ['效率', '成本', '体验', '增长'],
+    teamNames: ['林一舟', '苏晚晴', '陈墨'],
+    plans: ['入门版', '专业版', '旗舰版'],
+    perMonth: '/ 月',
+    planFeatures: (k) => [
+      [`核心模板 ${20 + k * 10} 套`, `协作席位 ${3 + k * 5} 个`, k === 2 ? '专属顾问服务' : '社区支持'],
+    ][0],
+    choosePlan: '选择方案',
+  },
+  en: {
+    sections: ['Market Insights', 'Key Metrics', 'Solution Overview', 'Execution Roadmap', 'Case Studies', 'The Team', 'Cadence Planning',
+      'Risks & Mitigation', 'Investment & Return', 'Voice of Customer', 'Competitive Comparison', 'FAQ', 'Action Checklist', 'Milestones', 'Resource Allocation', 'Experience Flow', 'Visual System', 'Growth Strategy'],
+    subtitles: ['Key judgments presented with a clear, calm structure.', 'Complexity broken down into executable steps.',
+      'Every conclusion backed by traceable data.', 'Narrative rhythm and visual rhythm kept in sync.',
+      'Start from the problem, finish with an action.', 'Professional rigor paired with reading pleasure.', 'One shared language for cross-team collaboration.'],
+    bodies: ['Key actions are broken down around the core goal so every slide serves one narrative thread.',
+      'Frontline research and public data combine into verifiable, traceable judgments.',
+      'Phased milestones turn long-term goals into checkable checkpoints.',
+      'Visual hierarchy and information hierarchy are planned together, keeping key content in focus.',
+      'Swappable content modules let teams adapt quickly in real projects.',
+      'Each chapter closes with a summary and action items, ready for the next step.'],
+    stats: ['Users Reached', 'YoY Growth', 'Satisfaction', 'Projects Delivered', 'Active Clients', 'Repurchase Rate', 'Completion Rate', 'Conversion', 'Retention', 'NPS Score'],
+    quotes: ['What moves people is never piled-up information, but carefully organized order.',
+      'A strong framework lets the content speak for itself and persuades without pressure.',
+      'Treat every presentation as product design — the details earn the trust.',
+      'Make the complex simple, take the simple seriously, and repeat what matters.'],
+    steps: ['Spot Opportunity', 'Define Problem', 'Co-Create', 'Validate Fast', 'Scale Rollout', 'Keep Optimizing'],
+    roles: ['Project Lead', 'Strategy Advisor', 'Visual Designer', 'Data Analyst', 'Lead Writer', 'Operations Expert'],
+    faqs: ['Which teams is this solution built for?', 'How long does implementation usually take?', 'How do we measure real impact?', 'Can existing systems integrate smoothly?', 'How do we phase it with a limited budget?', 'What resources should our team contribute?'],
+    eyebrow: { contents: 'CONTENTS', gallery: 'GALLERY', appendix: 'APPENDIX' },
+    closing: 'Thank You',
+    mapLead: 'Covering four key regions, rolled out quarter by quarter.',
+    logosLead: 'Teams already use this framework to sharpen their storytelling.',
+    feedback: 'feedback',
+    compare: {
+      leftTitle: 'Legacy Approach', rightTitle: 'This Solution',
+      left: ['Scattered info, inconsistent claims', 'Duplicated work, slow production', 'No unified visual standard'],
+      right: ['One framework, one clear voice', 'Reusable modules, fast iteration', 'Cohesive visuals, professional finish'],
+    },
+    tableHead: ['Dimension', 'Current', 'Target', 'Owner'],
+    tableDims: ['Efficiency', 'Cost', 'Experience', 'Growth'],
+    teamNames: ['Lin Yizhou', 'Su Wanqing', 'Chen Mo'],
+    plans: ['Starter', 'Pro', 'Enterprise'],
+    perMonth: '/mo',
+    planFeatures: (k) => [
+      `${20 + k * 10} core templates`, `${3 + k * 5} collaboration seats`, k === 2 ? 'Dedicated advisor' : 'Community support'],
+    choosePlan: 'Choose Plan',
+  },
+}
 
 /* ---------------- 程序化 SVG 配图（12 种母题） ---------------- */
 
@@ -231,7 +351,6 @@ ${Array.from({ length: 4 }, (_, k) => `<circle cx="${int(r, 60, 340)}" cy="${int
 function buildImages(rng, tpl) {
   const pal = PALETTES[tpl.pal ?? 0]
   const order = [...ART_KINDS.keys()]
-  // 洗牌：保证 12 种母题先各出现一次，再按洗牌结果循环，避免相邻重复
   for (let i = order.length - 1; i > 0; i--) {
     const j = Math.floor(rng() * (i + 1))
     ;[order[i], order[j]] = [order[j], order[i]]
@@ -261,30 +380,26 @@ function slotNeed(layout) {
   return IMAGE_LAYOUTS.has(layout) ? 1 : 0
 }
 
-// 槽位不足时，把纯数据版式替换为同语义的图片版式以补足配图位
 const IMAGE_CONVERT = { table: 'cards', faq: 'split', logos: 'hero', bars: 'two-image', pricing: 'triple-grid', 'big-stat': 'split', 'line-chart': 'hero', comparison: 'cards', stats: 'cards', timeline: 'split', process: 'triple-grid' }
 
-function makePage(rng, tpl, layout, i) {
-  const title = SECTION_TITLES[i % SECTION_TITLES.length]
+function makePage(rng, layout, i) {
   return {
     layout,
     no: i + 1,
-    title: layout === 'cover' ? tpl.a : title,
-    sub: pick(rng, SUBTITLES),
-    body: [pick(rng, BODY_LINES), pick(rng, BODY_LINES)],
-    statLabel: STAT_LABELS[i % STAT_LABELS.length],
-    statValue: `${int(rng, 62, 98)}%`,
-    quote: pick(rng, QUOTES),
-    step: STEPS[i % STEPS.length],
-    role: TEAM_ROLES[i % TEAM_ROLES.length],
-    faq: FAQ_Q[i % FAQ_Q.length],
+    titleIdx: i % I18N.zh.sections.length,
+    subIdx: int(rng, 0, I18N.zh.subtitles.length - 1),
+    bodyIdx: [int(rng, 0, I18N.zh.bodies.length - 1), int(rng, 0, I18N.zh.bodies.length - 1)],
+    statLabelIdx: i % I18N.zh.stats.length,
+    statNum: int(rng, 62, 98),
+    quoteIdx: int(rng, 0, I18N.zh.quotes.length - 1),
+    roleIdx: i % I18N.zh.roles.length,
+    faqIdx: i % I18N.zh.faqs.length,
     imgStart: 0,
   }
 }
 
-function buildPages(rng, tpl, images) {
+function buildPages(rng, tpl) {
   const n = tpl.pageCount
-  // divider / index-list 为结构页，不进随机袋，杜绝相邻重复
   const middle = LAYOUTS.slice(2, -1).filter((l) => l !== 'divider' && l !== 'index-list')
   const bag = [...middle]
   for (let i = bag.length - 1; i > 0; i--) {
@@ -301,17 +416,15 @@ function buildPages(rng, tpl, images) {
   }
   while (seq.length < n - 1) {
     const pos = seq.length
-    // 每 6 页插入一个章节分隔页，形成节奏
     if (pos % 6 === 0) seq.push('divider')
     else seq.push(nextLayout(seq[seq.length - 1]))
   }
   if (n >= 22) seq[n - 2] = 'index-list'
   seq.push('closing')
 
-  // 槽位兜底：保证图片位不少于配图数，让每张图至少出现一次
   let totalSlots = seq.reduce((sum, l) => sum + slotNeed(l), 0)
-  if (totalSlots < images.length) {
-    for (let i = 2; i < seq.length - 1 && totalSlots < images.length; i++) {
+  if (totalSlots < tpl.imgCount) {
+    for (let i = 2; i < seq.length - 1 && totalSlots < tpl.imgCount; i++) {
       const to = IMAGE_CONVERT[seq[i]]
       if (!to || to === seq[i - 1] || to === seq[i + 1]) continue
       totalSlots += slotNeed(to) - slotNeed(seq[i])
@@ -319,10 +432,9 @@ function buildPages(rng, tpl, images) {
     }
   }
 
-  // 全局轮转游标分配配图，顺序消费，覆盖全部图片后再循环
   let cursor = 0
   return seq.map((layout, i) => {
-    const page = makePage(rng, tpl, layout, i)
+    const page = makePage(rng, layout, i)
     page.imgStart = cursor
     cursor += slotNeed(layout)
     return page
@@ -336,7 +448,6 @@ const deckCache = new Map()
 
 function normalize(tpl) {
   if (tpl.gen) return tpl
-  // 精选 / 自建模板：由名称哈希推导出引擎参数
   const seed = hashStr(`db:${tpl.name}`)
   const rng = mulberry32(seed)
   return {
@@ -351,13 +462,32 @@ function normalize(tpl) {
   }
 }
 
+const CURATED_EN = {
+  渔港日记: 'Harbor Diary', 水墨亭: 'Ink Pavilion', 朱砂册页: 'Cinnabar Folio', 讲堂: 'Lecture Hall',
+  国潮商务路演: 'Guochao Business Roadshow',
+}
+
+export function displayTpl(tpl, locale = 'zh') {
+  if (locale !== 'en') return { name: tpl.name, a: tpl.a, b: tpl.b }
+  if (tpl.gen) {
+    const ci = CATEGORY_LIST.indexOf(tpl.cats[0])
+    const i = tpl.serial % 50
+    const enName = `${EN_ADJ[i % EN_ADJ.length]} ${CAT_NOUNS_EN[tpl.cats[0]][i % 10]}`
+    return {
+      name: enName,
+      a: `${enName} · ${CAT_EN[tpl.cats[0]]}`,
+      b: tpl.b,
+    }
+  }
+  return { name: CURATED_EN[tpl.name] ?? tpl.name, a: CURATED_EN[tpl.name] ?? tpl.a ?? tpl.name, b: tpl.b }
+}
+
 export function buildCatalog() {
   if (catalogCache.length) return catalogCache
   let serial = 0
   for (let ci = 0; ci < CATEGORY_LIST.length; ci++) {
     const primary = CATEGORY_LIST[ci]
     const nouns = CAT_NOUNS[primary]
-    // 同类 50 套的框架洗牌排列，保证框架互不重复
     const fwOrder = [...FRAMEWORKS.keys()]
     const catRng = mulberry32(hashStr(`cat:${primary}`))
     for (let i = fwOrder.length - 1; i > 0; i--) {
@@ -390,26 +520,47 @@ export function buildCatalog() {
   return catalogCache
 }
 
-export function buildDeck(rawTpl) {
+export function buildDeck(rawTpl, locale = 'zh') {
   const tpl = normalize(rawTpl)
-  if (deckCache.has(tpl.id ?? tpl.name)) return deckCache.get(tpl.id ?? tpl.name)
+  const key = `${tpl.id ?? tpl.name}::${locale}`
+  if (deckCache.has(key)) return deckCache.get(key)
   const rng = mulberry32(tpl.seed)
   const images = buildImages(rng, tpl)
-  const pages = buildPages(rng, tpl, images)
-  const deck = { tpl, pages, images, framework: FRAMEWORKS[tpl.fw], palette: PALETTES[tpl.pal], fonts: FONT_PAIRS[tpl.font] }
-  deckCache.set(tpl.id ?? tpl.name, deck)
+  const pages = buildPages(rng, tpl)
+  const deck = {
+    tpl, pages, images, locale,
+    framework: FRAMEWORKS[tpl.fw],
+    palette: PALETTES[tpl.pal],
+    fonts: FONT_PAIRS[tpl.font],
+    display: displayTpl(tpl, locale),
+  }
+  deckCache.set(key, deck)
   return deck
 }
 
 /* ---------------- 元数据 ---------------- */
 
-export function metaFor(rawTpl) {
+export function metaFor(rawTpl, locale = 'zh') {
   const tpl = normalize(rawTpl)
   const pal = PALETTES[tpl.pal]
   const fw = FRAMEWORKS[tpl.fw]
   const cat = tpl.cats?.[0] ?? '商业规划'
+  if (locale === 'en') {
+    return {
+      desc: `A ${CAT_EN[cat] ?? cat} template built on the “${fw.nameEn}” framework, using a ${fw.gridEn} and ${IMG_FRAME_LABEL.en[fw.imgFrame]} image treatment. The full deck contains ${tpl.pageCount} slides and ${tpl.imgCount} original illustrations, with no repeated slide layout — swap in your own content directly.`,
+      fits: [
+        `End-to-end storytelling for ${CAT_EN[cat] ?? cat} scenarios`,
+        'Team collaboration with one visual standard',
+        'High-polish reporting materials in minutes',
+        'Edit slide by slide while keeping the layout skeleton',
+      ],
+      colors: [pal[4], pal[5], pal[2]],
+      themes: [CAT_EN[cat] ?? cat, fw.heading === 'serif' ? 'Editorial' : 'Modern'],
+      spec: { pages: tpl.pageCount, images: tpl.imgCount, framework: fw.nameEn, grid: fw.gridEn },
+    }
+  }
   return {
-    desc: `基于「${fw.name}」搭建的 ${cat} 模板，采用${fw.grid}与「${fw.imgFrame}」图像框处理，全套 ${tpl.pageCount} 页、${tpl.imgCount} 张独家配图，页面版式互不重复，可直接替换为你的真实内容。`,
+    desc: `基于「${fw.name}」搭建的 ${cat} 模板，采用${fw.grid}与「${IMG_FRAME_LABEL.zh[fw.imgFrame]}」图像框处理，全套 ${tpl.pageCount} 页、${tpl.imgCount} 张独家配图，页面版式互不重复，可直接替换为你的真实内容。`,
     fits: [
       `${cat}场景的完整叙事交付`,
       '需要统一视觉规范的团队协作',
@@ -434,32 +585,23 @@ export function coverDeco(rawTpl) {
   return FRAMEWORKS[normalize(rawTpl).fw].deco
 }
 
-/* ---------------- 页面渲染 ---------------- */
+/* ---------------- 页面渲染（支持 edits 内联编辑） ---------------- */
 
-function art(deck, index, cls = '') {
+function art(deck, index) {
   const svg = deck.images[((index % deck.images.length) + deck.images.length) % deck.images.length]
-  return `<div class="dp-art ${cls}">${svg}</div>`
+  return `<div class="dp-art">${svg}</div>`
 }
 
-function statBlocks(deck, page) {
-  return [0, 1, 2, 3].map((k) => `
-    <div class="dp-stat">
-      <b>${60 + ((page.no * 7 + k * 13) % 38)}%</b>
-      <span>${STAT_LABELS[(page.no + k) % STAT_LABELS.length]}</span>
-    </div>`).join('')
-}
-
-function bodyText(page, n = 2) {
-  return Array.from({ length: n }, (_, k) => `<p>${page.body[k % page.body.length]}</p>`).join('')
-}
-
-export function renderPageHTML(rawTpl, pageIndex, styleIdx = 0) {
-  const deck = buildDeck(rawTpl)
-  const { tpl, pages, framework, palette, fonts } = deck
+export function renderPageHTML(rawTpl, pageIndex, styleIdx = 0, locale = 'zh', edits = {}) {
+  const deck = buildDeck(rawTpl, locale)
+  const { tpl, pages, framework, palette, fonts, display } = deck
+  const T = I18N[locale]
   const page = pages[pageIndex]
   const accent = styleIdx === 0 ? palette[4] : styleIdx === 1 ? palette[5] : palette[2]
   const rootVars = `--dp-bg:${palette[0]};--dp-paper:${palette[1]};--dp-ink:${palette[2]};--dp-muted:${palette[3]};--dp-accent:${accent};--dp-accent2:${palette[5]};--dp-radius:${framework.radius}px;--dp-head:${fonts.head};--dp-body:${fonts.body};`
   const img = (slot) => art(deck, (page.imgStart + slot) % deck.images.length)
+  const ed = (key, fallback) => (edits[key] != null && edits[key] !== '' ? edits[key] : fallback)
+  const edAttr = (key) => ` class="dp-editable" contenteditable="true" data-edit="${key}"`
   const L = page.layout
   let inner = ''
 
@@ -467,124 +609,128 @@ export function renderPageHTML(rawTpl, pageIndex, styleIdx = 0) {
     case 'cover':
       inner = `<div class="dp-cover-art">${img(0)}</div>
         <div class="dp-cover-text">
-          <span class="dp-eyebrow">${tpl.cats?.[0] ?? '模板'} · ${framework.name}</span>
-          <h2>${tpl.a}</h2>
-          <p>${tpl.b}</p>
+          <span class="dp-eyebrow dp-editable" contenteditable="true" data-edit="cover-eyebrow">${ed('cover-eyebrow', `${catLabel(tpl.cats?.[0] ?? (locale === 'en' ? 'Template' : '模板'), locale)} · ${fwLabel(framework, locale)}`)}</span>
+          <h2${edAttr('cover-title')}>${ed('cover-title', display.a)}</h2>
+          <p${edAttr('cover-sub')}>${ed('cover-sub', display.b ?? '')}</p>
         </div>`
       break
     case 'agenda':
-      inner = `<span class="dp-eyebrow">CONTENTS</span><h3>${page.title}</h3>
-        <ol class="dp-agenda">${SECTION_TITLES.slice(0, Math.min(8, tpl.pageCount - 4)).map((s, k) =>
-        `<li><i>${String(k + 1).padStart(2, '0')}</i><span>${s}</span></li>`).join('')}</ol>`
+      inner = `<span class="dp-eyebrow">${T.eyebrow.contents}</span><h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+        <ol class="dp-agenda">${T.sections.slice(0, Math.min(8, tpl.pageCount - 4)).map((s, k) =>
+        `<li><i>${String(k + 1).padStart(2, '0')}</i><span class="dp-editable" contenteditable="true" data-edit="agenda${k}">${ed(`agenda${k}`, s)}</span></li>`).join('')}</ol>`
       break
     case 'divider':
       inner = `<div class="dp-divider-art">${img(0)}</div>
         <span class="dp-big-no">${String(page.no).padStart(2, '0')}</span>
-        <h3>${page.title}</h3><p>${page.sub}</p>`
+        <h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3><p${edAttr('sub')}>${ed('sub', T.subtitles[page.subIdx])}</p>`
       break
     case 'hero':
       inner = `<div class="dp-hero-art">${img(0)}</div>
-        <div class="dp-hero-copy"><span class="dp-eyebrow">${page.statLabel}</span><h3>${page.title}</h3>${bodyText(page, 1)}</div>`
+        <div class="dp-hero-copy"><span class="dp-eyebrow dp-editable" contenteditable="true" data-edit="eyebrow">${ed('eyebrow', T.stats[page.statLabelIdx])}</span><h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3><p${edAttr('body0')}>${ed('body0', T.bodies[page.bodyIdx[0]])}</p></div>`
       break
     case 'split':
       inner = `<div class="dp-split-art">${img(0)}</div>
-        <div class="dp-split-copy"><span class="dp-eyebrow">${framework.grid}</span><h3>${page.title}</h3>${bodyText(page)}</div>`
+        <div class="dp-split-copy"><span class="dp-eyebrow">${gridLabel(framework, locale)}</span><h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3><p${edAttr('body0')}>${ed('body0', T.bodies[page.bodyIdx[0]])}</p><p${edAttr('body1')}>${ed('body1', T.bodies[page.bodyIdx[1]])}</p></div>`
       break
     case 'two-image':
-      inner = `<h3>${page.title}</h3><p class="dp-lead">${page.sub}</p>
-        <div class="dp-two">${img(0)}${img(1)}</div>${bodyText(page, 1)}`
+      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3><p class="dp-lead dp-editable" contenteditable="true" data-edit="sub">${ed('sub', T.subtitles[page.subIdx])}</p>
+        <div class="dp-two">${img(0)}${img(1)}</div><p${edAttr('body0')}>${ed('body0', T.bodies[page.bodyIdx[0]])}</p>`
       break
     case 'triple-grid':
-      inner = `<h3>${page.title}</h3>
+      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
         <div class="dp-triple">${img(0)}${img(1)}${img(2)}</div>
-        <p class="dp-lead">${page.sub}</p>`
+        <p class="dp-lead dp-editable" contenteditable="true" data-edit="sub">${ed('sub', T.subtitles[page.subIdx])}</p>`
       break
     case 'stats':
-      inner = `<h3>${page.title}</h3><div class="dp-stats">${statBlocks(deck, page)}</div>${bodyText(page, 1)}`
+      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3><div class="dp-stats">${[0, 1, 2, 3].map((k) => `
+        <div class="dp-stat">
+          <b class="dp-editable" contenteditable="true" data-edit="stat-value${k}">${ed(`stat-value${k}`, `${60 + ((page.no * 7 + k * 13) % 38)}%`)}</b>
+          <span class="dp-editable" contenteditable="true" data-edit="stat-label${k}">${ed(`stat-label${k}`, T.stats[(page.no + k) % T.stats.length])}</span>
+        </div>`).join('')}</div><p${edAttr('body0')}>${ed('body0', T.bodies[page.bodyIdx[0]])}</p>`
       break
     case 'big-stat':
-      inner = `<span class="dp-eyebrow">${page.statLabel}</span>
-        <b class="dp-big-stat">${page.statValue}</b><p class="dp-lead">${page.sub}</p>${bodyText(page, 1)}`
+      inner = `<span class="dp-eyebrow dp-editable" contenteditable="true" data-edit="eyebrow">${ed('eyebrow', T.stats[page.statLabelIdx])}</span>
+        <b class="dp-big-stat dp-editable" contenteditable="true" data-edit="stat-value0">${ed('stat-value0', `${page.statNum}%`)}</b><p class="dp-lead dp-editable" contenteditable="true" data-edit="sub">${ed('sub', T.subtitles[page.subIdx])}</p><p${edAttr('body0')}>${ed('body0', T.bodies[page.bodyIdx[0]])}</p>`
       break
     case 'quote':
       inner = `<div class="dp-quote-art">${img(0)}</div>
-        <blockquote>“${page.quote}”</blockquote><span class="dp-eyebrow">— ${tpl.name}</span>`
+        <blockquote class="dp-editable" contenteditable="true" data-edit="quote">${ed('quote', T.quotes[page.quoteIdx])}</blockquote><span class="dp-eyebrow dp-editable" contenteditable="true" data-edit="quote-source">${ed('quote-source', `— ${display.name}`)}</span>`
       break
     case 'timeline':
-      inner = `<h3>${page.title}</h3>
-        <div class="dp-timeline">${STEPS.map((s, k) => `<div class="dp-tl-item"><i></i><b>${String(k + 1).padStart(2, '0')}</b><span>${s}</span></div>`).join('')}</div>`
+      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+        <div class="dp-timeline">${T.steps.map((s, k) => `<div class="dp-tl-item"><i></i><b>${String(k + 1).padStart(2, '0')}</b><span class="dp-editable" contenteditable="true" data-edit="step${k}">${ed(`step${k}`, s)}</span></div>`).join('')}</div>`
       break
     case 'process':
-      inner = `<h3>${page.title}</h3>
-        <div class="dp-process">${STEPS.map((s, k) => `<div class="dp-step"><b>${k + 1}</b><span>${s}</span></div>`).join('')}</div>`
+      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+        <div class="dp-process">${T.steps.map((s, k) => `<div class="dp-step"><b>${k + 1}</b><span class="dp-editable" contenteditable="true" data-edit="step${k}">${ed(`step${k}`, s)}</span></div>`).join('')}</div>`
       break
     case 'comparison':
-      inner = `<h3>${page.title}</h3>
-        <div class="dp-compare"><div class="dp-col"><h4>传统做法</h4><ul><li>信息分散、口径不一</li><li>重复制作、耗时费力</li><li>视觉缺乏统一规范</li></ul></div>
-        <div class="dp-col dp-col-hot"><h4>本方案</h4><ul><li>统一框架、口径清晰</li><li>模块复用、快速迭代</li><li>成套视觉、专业一致</li></ul></div></div>`
+      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+        <div class="dp-compare"><div class="dp-col"><h4 class="dp-editable" contenteditable="true" data-edit="cmp-left-title">${ed('cmp-left-title', T.compare.leftTitle)}</h4><ul>${T.compare.left.map((s, k) => `<li class="dp-editable" contenteditable="true" data-edit="cmp-l${k}">${ed(`cmp-l${k}`, s)}</li>`).join('')}</ul></div>
+        <div class="dp-col dp-col-hot"><h4 class="dp-editable" contenteditable="true" data-edit="cmp-right-title">${ed('cmp-right-title', T.compare.rightTitle)}</h4><ul>${T.compare.right.map((s, k) => `<li class="dp-editable" contenteditable="true" data-edit="cmp-r${k}">${ed(`cmp-r${k}`, s)}</li>`).join('')}</ul></div></div>`
       break
     case 'table':
-      inner = `<h3>${page.title}</h3>
-        <table class="dp-table"><thead><tr><th>维度</th><th>现状</th><th>目标</th><th>负责方</th></tr></thead>
-        <tbody>${['效率', '成本', '体验', '增长'].map((s, k) => `<tr><td>${s}</td><td>${60 + k * 7}%</td><td>${85 + k * 3}%</td><td>${TEAM_ROLES[k]}</td></tr>`).join('')}</tbody></table>`
+      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+        <table class="dp-table"><thead><tr>${T.tableHead.map((h, k) => `<th class="dp-editable" contenteditable="true" data-edit="th${k}">${ed(`th${k}`, h)}</th>`).join('')}</tr></thead>
+        <tbody>${T.tableDims.map((s, k) => `<tr><td class="dp-editable" contenteditable="true" data-edit="cell-${k}-0">${ed(`cell-${k}-0`, s)}</td><td class="dp-editable" contenteditable="true" data-edit="cell-${k}-1">${ed(`cell-${k}-1`, `${60 + k * 7}%`)}</td><td class="dp-editable" contenteditable="true" data-edit="cell-${k}-2">${ed(`cell-${k}-2`, `${85 + k * 3}%`)}</td><td class="dp-editable" contenteditable="true" data-edit="cell-${k}-3">${ed(`cell-${k}-3`, T.roles[k])}</td></tr>`).join('')}</tbody></table>`
       break
     case 'cards':
-      inner = `<h3>${page.title}</h3>
-        <div class="dp-cards">${[0, 1, 2].map((k) => `<article class="dp-card">${img(k)}<h4>${SECTION_TITLES[(page.no + k) % SECTION_TITLES.length]}</h4><p>${page.body[k % 2]}</p></article>`).join('')}</div>`
+      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+        <div class="dp-cards">${[0, 1, 2].map((k) => `<article class="dp-card">${img(k)}<h4 class="dp-editable" contenteditable="true" data-edit="card-title${k}">${ed(`card-title${k}`, T.sections[(page.no + k) % T.sections.length])}</h4><p class="dp-editable" contenteditable="true" data-edit="card-body${k}">${ed(`card-body${k}`, T.bodies[page.bodyIdx[k % 2]])}</p></article>`).join('')}</div>`
       break
     case 'gallery':
-      inner = `<span class="dp-eyebrow">GALLERY</span><h3>${page.title}</h3>
+      inner = `<span class="dp-eyebrow">${T.eyebrow.gallery}</span><h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
         <div class="dp-gallery">${img(0)}${img(1)}${img(2)}${img(3)}</div>`
       break
     case 'team':
-      inner = `<h3>${page.title}</h3>
-        <div class="dp-team">${[0, 1, 2].map((k) => `<figure>${img(k)}<figcaption><b>${['林一舟', '苏晚晴', '陈墨'][k]}</b><span>${TEAM_ROLES[(page.no + k) % TEAM_ROLES.length]}</span></figcaption></figure>`).join('')}</div>`
+      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+        <div class="dp-team">${[0, 1, 2].map((k) => `<figure>${img(k)}<figcaption><b class="dp-editable" contenteditable="true" data-edit="team-name${k}">${ed(`team-name${k}`, T.teamNames[k])}</b><span class="dp-editable" contenteditable="true" data-edit="team-role${k}">${ed(`team-role${k}`, T.roles[(page.no + k) % T.roles.length])}</span></figcaption></figure>`).join('')}</div>`
       break
     case 'testimonial':
       inner = `<div class="dp-testi-art">${img(0)}</div>
-        <blockquote class="dp-testi">“${page.quote}”</blockquote><p>— ${pick(mulberry32(tpl.seed + page.no), TEAM_ROLES)}反馈</p>`
+        <blockquote class="dp-testi dp-editable" contenteditable="true" data-edit="quote">${ed('quote', T.quotes[page.quoteIdx])}</blockquote><p class="dp-editable" contenteditable="true" data-edit="testi-source">${ed('testi-source', `— ${pick(mulberry32(tpl.seed + page.no), T.roles)} ${T.feedback}`)}</p>`
       break
     case 'pricing':
-      inner = `<h3>${page.title}</h3>
+      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
         <div class="dp-pricing">
-        ${['入门版', '专业版', '旗舰版'].map((s, k) => `<div class="dp-price ${k === 1 ? 'is-hot' : ''}"><h4>${s}</h4><b>¥${[299, 899, 1999][k]}</b><span>/ 月</span><ul><li>核心模板 ${20 + k * 10} 套</li><li>协作席位 ${3 + k * 5} 个</li><li>${k === 2 ? '专属顾问服务' : '社区支持'}</li></ul><button type="button">选择方案</button></div>`).join('')}</div>`
+        ${T.plans.map((s, k) => `<div class="dp-price ${k === 1 ? 'is-hot' : ''}"><h4 class="dp-editable" contenteditable="true" data-edit="plan${k}">${ed(`plan${k}`, s)}</h4><b class="dp-editable" contenteditable="true" data-edit="price${k}">${ed(`price${k}`, k === 0 ? (locale === 'en' ? '$299' : '¥299') : k === 1 ? (locale === 'en' ? '$899' : '¥899') : (locale === 'en' ? '$1999' : '¥1999'))}</b><span>${T.perMonth}</span><ul>${T.planFeatures(k).map((f, j) => `<li class="dp-editable" contenteditable="true" data-edit="feat-${k}-${j}">${ed(`feat-${k}-${j}`, f)}</li>`).join('')}</ul><button type="button" class="dp-editable" contenteditable="true" data-edit="cta${k}">${ed(`cta${k}`, T.choosePlan)}</button></div>`).join('')}</div>`
       break
     case 'bars':
-      inner = `<h3>${page.title}</h3>
-        <div class="dp-bars">${STAT_LABELS.slice(0, 6).map((s, k) => { const v = 45 + ((page.no * 11 + k * 13) % 50); return `<div class="dp-bar-row"><span>${s}</span><div class="dp-bar"><i style="height:${v}%"></i></div><b>${v}%</b></div>` }).join('')}</div>`
+      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+        <div class="dp-bars">${T.stats.slice(0, 6).map((s, k) => { const v = 45 + ((page.no * 11 + k * 13) % 50); return `<div class="dp-bar-row"><span class="dp-editable" contenteditable="true" data-edit="bar-label${k}">${ed(`bar-label${k}`, s)}</span><div class="dp-bar"><i style="height:${v}%"></i></div><b class="dp-editable" contenteditable="true" data-edit="bar-value${k}">${ed(`bar-value${k}`, `${v}%`)}</b></div>` }).join('')}</div>`
       break
     case 'line-chart':
-      inner = `<h3>${page.title}</h3>
+      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
         <svg class="dp-line" viewBox="0 0 600 260" preserveAspectRatio="none">
           <polyline points="${Array.from({ length: 9 }, (_, k) => `${30 + k * 67},${210 - ((page.no * 17 + k * 19) % 160)}`).join(' ')}" fill="none" stroke="var(--dp-accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
           ${Array.from({ length: 9 }, (_, k) => `<circle cx="${30 + k * 67}" cy="${210 - ((page.no * 17 + k * 19) % 160)}" r="6" fill="var(--dp-paper)" stroke="var(--dp-accent)" stroke-width="3"/>`).join('')}
-        </svg><p class="dp-lead">${page.sub}</p>`
+        </svg><p class="dp-lead dp-editable" contenteditable="true" data-edit="sub">${ed('sub', T.subtitles[page.subIdx])}</p>`
       break
     case 'map':
-      inner = `<h3>${page.title}</h3>
+      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
         <div class="dp-map">${svgWrap(`map-${tpl.id}-${page.no}`, `<path d="M40 240 L120 120 L190 180 L260 80 L360 160" fill="none" stroke="var(--dp-accent)" stroke-width="6" stroke-linecap="round"/>
           ${[120, 180, 80, 160].map((y, k) => `<circle cx="${[120, 190, 260, 360][k]}" cy="${y}" r="12" fill="var(--dp-accent2)"/>`).join('')}`, palette[1])}</div>
-        <p class="dp-lead">覆盖 4 个重点区域，按季度滚动推进。</p>`
+        <p class="dp-lead dp-editable" contenteditable="true" data-edit="map-lead">${ed('map-lead', T.mapLead)}</p>`
       break
     case 'faq':
-      inner = `<h3>${page.title}</h3>
-        <div class="dp-faq">${FAQ_Q.slice(0, 4).map((q, k) => `<details ${k === 0 ? 'open' : ''}><summary>${q}</summary><p>${BODY_LINES[k % BODY_LINES.length]}</p></details>`).join('')}</div>`
+      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+        <div class="dp-faq">${T.faqs.slice(0, 4).map((q, k) => `<details ${k === 0 ? 'open' : ''}><summary class="dp-editable" contenteditable="true" data-edit="faq-q${k}">${ed(`faq-q${k}`, q)}</summary><p class="dp-editable" contenteditable="true" data-edit="faq-a${k}">${ed(`faq-a${k}`, T.bodies[k % T.bodies.length])}</p></details>`).join('')}</div>`
       break
     case 'logos':
-      inner = `<h3>${page.title}</h3>
-        <div class="dp-logos">${Array.from({ length: 8 }, (_, k) => `<span>${EN_A[k % EN_A.length]} ${EN_B[(k + page.no) % EN_B.length]}</span>`).join('')}</div>
-        <p class="dp-lead">他们已经在用同一套框架沉淀团队表达。</p>`
+      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+        <div class="dp-logos">${Array.from({ length: 8 }, (_, k) => `<span class="dp-editable" contenteditable="true" data-edit="logo${k}">${ed(`logo${k}`, `${EN_A[k % EN_A.length]} ${EN_B[(k + page.no) % EN_B.length]}`)}</span>`).join('')}</div>
+        <p class="dp-lead dp-editable" contenteditable="true" data-edit="logos-lead">${ed('logos-lead', T.logosLead)}</p>`
       break
     case 'index-list':
-      inner = `<span class="dp-eyebrow">APPENDIX</span><h3>${page.title}</h3>
-        <ul class="dp-index">${SECTION_TITLES.map((s, k) => `<li><span>${s}</span><i>${String(k + 3).padStart(2, '0')}</i></li>`).join('')}</ul>`
+      inner = `<span class="dp-eyebrow">${T.eyebrow.appendix}</span><h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
+        <ul class="dp-index">${T.sections.map((s, k) => `<li><span class="dp-editable" contenteditable="true" data-edit="index${k}">${ed(`index${k}`, s)}</span><i>${String(k + 3).padStart(2, '0')}</i></li>`).join('')}</ul>`
       break
     case 'closing':
       inner = `<div class="dp-end-art">${img(0)}</div>
-        <h3>谢谢观看</h3><p>${tpl.a}</p><span class="dp-eyebrow">${tpl.b}</span>`
+        <h3 class="dp-editable" contenteditable="true" data-edit="closing-title">${ed('closing-title', T.closing)}</h3><p class="dp-editable" contenteditable="true" data-edit="closing-sub">${ed('closing-sub', display.a)}</p><span class="dp-eyebrow dp-editable" contenteditable="true" data-edit="closing-eyebrow">${ed('closing-eyebrow', display.b ?? '')}</span>`
       break
     default:
-      inner = `<h3>${page.title}</h3>${bodyText(page)}`
+      inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3><p${edAttr('body0')}>${ed('body0', T.bodies[page.bodyIdx[0]])}</p><p${edAttr('body1')}>${ed('body1', T.bodies[page.bodyIdx[1]])}</p>`
   }
 
   return `<div class="dp-page ifr-${framework.imgFrame} head-${framework.heading} lay-${L}" style="${rootVars}" data-layout="${L}" data-no="${page.no}">

@@ -8,10 +8,51 @@ import { store, toast, openModal, confirmModal, uid, fmtDate, copyText } from '.
 import { initGlobalUI, openUpgrade } from './global-ui.js'
 import {
   buildCatalog, buildDeck, renderPageHTML, metaFor, coverStyle, coverDeco,
-  VISIBLE_CATS, HIDDEN_CATS,
+  displayTpl, catLabel, VISIBLE_CATS, HIDDEN_CATS,
 } from './template-engine.js'
 
 initGlobalUI()
+
+/* 语言状态（持久化）：zh | en */
+store.state.templateLang ??= 'zh'
+const lang = () => (store.state.templateLang === 'en' ? 'en' : 'zh')
+const UI = {
+  zh: {
+    loadMore: '加载更多', shown: (a, b) => `已显示 ${a} / ${b} 套`,
+    badge: (p, i) => `${p} 页 · ${i} 图`,
+    empty: {
+      recent: ['还没有用过模板', '套用任意模板后，它会自动出现在「最近」里。'],
+      mine: ['还没有自建模板', '点击侧栏底部的「新建模板」，把常用结构沉淀下来。'],
+      archived: ['归档中没有模板', '自建模板可在卡片菜单中归档，之后在这里恢复。'],
+      workspace: ['没有匹配的模板', '试试调整筛选或搜索关键词。'],
+    },
+    panel: {
+      back: '返回模板', provider: '由 Design Buddy 提供', bestFor: '最适合', style: '样式',
+      category: '分类', theme: '主题', spec: '规格', pages: '个页面', images: '张配图',
+      use: '使用模板', resetEdits: '重置本模板编辑', noEditsHint: '点击幻灯中的任意文字即可直接编辑，修改会自动保存。',
+      autoplay: '自动播放',
+    },
+    showMore: (n) => `显示更多 ${n}`, collapse: '收起',
+  },
+  en: {
+    loadMore: 'Load more', shown: (a, b) => `Showing ${a} / ${b}`,
+    badge: (p, i) => `${p} slides · ${i} imgs`,
+    empty: {
+      recent: ['No templates used yet', 'Once you apply a template, it shows up here in Recent.'],
+      mine: ['No custom templates yet', 'Use “New template” at the bottom of the sidebar to save your own.'],
+      archived: ['Archive is empty', 'Custom templates can be archived from the card menu and restored here.'],
+      workspace: ['No matching templates', 'Try adjusting filters or search keywords.'],
+    },
+    panel: {
+      back: 'Back to templates', provider: 'Provided by Design Buddy', bestFor: 'Best for', style: 'Style',
+      category: 'Category', theme: 'Theme', spec: 'Specs', pages: 'slides', images: 'images',
+      use: 'Use template', resetEdits: 'Reset edits', noEditsHint: 'Click any text in the slides to edit it — changes save automatically.',
+      autoplay: 'Autoplay',
+    },
+    showMore: (n) => `Show more ${n}`, collapse: 'Collapse',
+  },
+}
+const uiText = () => UI[lang()]
 
 const $ = (sel, root = document) => root.querySelector(sel)
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)]
@@ -191,6 +232,33 @@ const view = {
   sort: 'date',
 }
 
+function setTemplateLang(next) {
+  if (next === lang()) return
+  store.state.templateLang = next
+  store.save()
+  updateCategoryLabels()
+  syncToolbarLang()
+  applyView()
+}
+
+/* 工具栏语言切换（与详情弹层内的切换共享同一状态） */
+const toolbarLang = document.createElement('div')
+toolbarLang.className = 'td-lang tpl-lang'
+toolbarLang.setAttribute('role', 'group')
+toolbarLang.setAttribute('aria-label', 'Language')
+toolbarLang.innerHTML = '<button type="button" data-lang="zh">中文</button><button type="button" data-lang="en">EN</button>'
+$('.sort-wrap').before(toolbarLang)
+function syncToolbarLang() {
+  toolbarLang.querySelectorAll('[data-lang]').forEach((b) => {
+    b.classList.toggle('is-active', b.dataset.lang === lang())
+  })
+}
+toolbarLang.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-lang]')
+  if (btn) setTemplateLang(btn.dataset.lang)
+})
+syncToolbarLang()
+
 /* ---------------- 类别清单 ---------------- */
 
 const categoryBody = $('#category-body')
@@ -200,9 +268,16 @@ function categoryRow(name, count) {
   label.className = 'filter-option'
   label.innerHTML = `
     <input type="checkbox" value="${name}" />
-    <span>${name}</span>
+    <span class="cat-label" data-cat="${name}">${catLabel(name, lang())}</span>
     ${count ? `<span class="count">${count}</span>` : ''}`
   return label
+}
+
+function updateCategoryLabels() {
+  categoryBody.querySelectorAll('.cat-label').forEach((el) => {
+    el.textContent = catLabel(el.dataset.cat, lang())
+  })
+  catToggle.textContent = extraWrap.hidden ?uiText().showMore(CATEGORIES_HIDDEN.length) :uiText().collapse
 }
 
 // 类别计数由目录动态统计（每类 50 套生成模板 + 手工精选命中项）
@@ -225,7 +300,7 @@ categoryBody.appendChild(catToggle)
 catToggle.addEventListener('click', () => {
   const expanded = !extraWrap.hidden
   extraWrap.hidden = expanded
-  catToggle.textContent = expanded ? `显示更多 ${CATEGORIES_HIDDEN.length}` : '收起'
+  catToggle.textContent = expanded ?uiText().showMore(CATEGORIES_HIDDEN.length) :uiText().collapse
 })
 
 /* ---------------- 数据集合 ---------------- */
@@ -272,8 +347,8 @@ function coverClass(tpl) {
 
 function pageBadge(tpl) {
   if (!tpl.gen) return ''
-  const meta = metaFor(tpl)
-  return `<span class="tc-page-badge">${meta.spec.pages} 页 · ${meta.spec.images} 图</span>`
+  const meta = metaFor(tpl, lang())
+  return `<span class="tc-page-badge">${uiText().badge(meta.spec.pages, meta.spec.images)}</span>`
 }
 
 function renderGrid(items) {
@@ -282,21 +357,15 @@ function renderGrid(items) {
   grid.innerHTML = visible.map((tpl) => `
     <article class="tpl-card" data-name="${tpl.name}" ${tpl.custom ? `data-custom="${tpl.id}"` : ''}>
       ${coverHTML(tpl)}
-      <p class="tpl-name">${FOLDER_ICON}<span>${tpl.name}</span></p>
+      <p class="tpl-name">${FOLDER_ICON}<span>${displayTpl(tpl, lang()).name}</span></p>
     </article>`).join('')
   const none = items.length === 0
   empty.hidden = !none
   grid.hidden = none
   updateLoadMore(items.length)
   if (none) {
-    const map = {
-      recent: ['还没有用过模板', '套用任意模板后，它会自动出现在「最近」里。'],
-      mine: ['还没有自建模板', '点击侧栏底部的「新建模板」，把常用结构沉淀下来。'],
-      archived: ['归档中没有模板', '自建模板可在卡片菜单中归档，之后在这里恢复。'],
-      workspace: ['没有匹配的模板', '试试调整筛选或搜索关键词。'],
-    }
-    const [title, copy] = map[view.scope]
-    empty.querySelector('p').textContent = `${title}。${copy}`
+    const [title, copy] = uiText().empty[view.scope]
+    empty.querySelector('p').textContent = lang() === 'en' ? `${title}. ${copy}` : `${title}。${copy}`
   }
 }
 
@@ -304,14 +373,15 @@ function renderGrid(items) {
 const moreWrap = document.createElement('div')
 moreWrap.className = 'tpl-more-wrap'
 moreWrap.hidden = true
-moreWrap.innerHTML = `<button class="btn btn-ghost" id="tpl-more" type="button">加载更多</button><p class="tpl-more-count" id="tpl-more-count"></p>`
+moreWrap.innerHTML = `<button class="btn btn-ghost" id="tpl-more" type="button">${UI.zh.loadMore}</button><p class="tpl-more-count" id="tpl-more-count"></p>`
 grid.after(moreWrap)
 
 function updateLoadMore(total) {
   const hasMore = pageLimit < total
   moreWrap.hidden = !hasMore
+  moreWrap.querySelector('#tpl-more').textContent =uiText().loadMore
   if (hasMore) {
-    moreWrap.querySelector('#tpl-more-count').textContent = `已显示 ${Math.min(pageLimit, total)} / ${total} 套`
+    moreWrap.querySelector('#tpl-more-count').textContent =uiText().shown(Math.min(pageLimit, total), total)
   }
 }
 
@@ -329,7 +399,10 @@ function applyView() {
   let items = scopedTemplates().filter((tpl) => {
     const formatOk = view.format === 'all' || tpl.format === view.format
     const catOk = view.categories.size === 0 || tpl.cats.some((c) => view.categories.has(c))
-    const queryOk = !view.query || tpl.name.toLowerCase().includes(view.query)
+    const queryOk = !view.query
+      || tpl.name.toLowerCase().includes(view.query)
+      || displayTpl(tpl, 'en').name.toLowerCase().includes(view.query)
+      || (tpl.a ?? '').toLowerCase().includes(view.query)
     return formatOk && catOk && queryOk
   })
   if (view.sort === 'name') items = [...items].sort((a, b) => a.name.localeCompare(b.name, 'zh-Hans-CN'))
@@ -476,10 +549,11 @@ function coverInner(tpl) {
 
 function coverHTML(tpl) {
   if (tpl.gen) {
+    const d = displayTpl(tpl, lang())
     return `<div class="tpl-cover tpl-gen" data-deco="${coverDeco(tpl)}" style="${coverStyle(tpl)}">
       <span class="tc-deco" aria-hidden="true"></span>
-      ${tpl.a ? `<span class="tc-a">${tpl.a}</span>` : ''}
-      ${tpl.b ? `<span class="tc-b">${tpl.b}</span>` : ''}
+      ${d.a ? `<span class="tc-a">${d.a}</span>` : ''}
+      ${d.b ? `<span class="tc-b">${d.b}</span>` : ''}
       ${pageBadge(tpl)}
     </div>`
   }
@@ -499,9 +573,9 @@ function openTemplateDetail(tpl) {
   const mask = document.createElement('div')
   mask.className = 'td-mask'
   mask.innerHTML = `
-    <button class="td-back" type="button">
+    <button class="td-back" id="td-back" type="button">
       <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-      返回模板
+      <span id="td-back-label">返回模板</span>
     </button>
     <button class="td-close" type="button" aria-label="关闭">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -510,9 +584,13 @@ function openTemplateDetail(tpl) {
       <div class="td-deck-bar">
         <span class="td-frame-badge" id="td-frame"></span>
         <span class="td-page-count" id="td-page-count"></span>
+        <div class="td-lang" id="td-lang" role="group" aria-label="Language">
+          <button type="button" data-lang="zh">中文</button>
+          <button type="button" data-lang="en">EN</button>
+        </div>
         <button class="td-autoplay" id="td-autoplay" type="button" aria-pressed="false">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          <span>自动播放</span>
+          <span id="td-autoplay-label">自动播放</span>
         </button>
       </div>
       <div class="td-stage" id="td-stage">
@@ -552,6 +630,15 @@ function openTemplateDetail(tpl) {
   const cur = () => list[idx]
   const styleIdxOf = (t) => store.state.templateStyles[t.name] ?? 0
 
+  /* 内联编辑持久化：templateEdits[模板名][语言][页码][字段键] */
+  store.state.templateEdits ??= {}
+  const editRoot = (tpl) => (store.state.templateEdits[tpl.name] ??= {})
+  const pageEdits = (tpl, locale, pi) => ((editRoot(tpl)[locale] ??= {})[pi] ??= {})
+  const hasEdits = (tpl, locale) => {
+    const root = editRoot(tpl)[locale]
+    return !!root && Object.values(root).some((m) => m && Object.keys(m).length)
+  }
+
   function stopAuto() {
     if (timer) { clearInterval(timer); timer = null }
     autoplay = false
@@ -568,15 +655,36 @@ function openTemplateDetail(tpl) {
 
   function renderDeck() {
     const t = cur()
-    const deck = buildDeck(t)
+    const locale = lang()
+    const deck = buildDeck(t, locale)
     if (pageIdx >= deck.pages.length) pageIdx = 0
-    deckEl.innerHTML = renderPageHTML(t, pageIdx, styleIdxOf(t))
+    const edits = pageEdits(t, locale, pageIdx)
+    deckEl.innerHTML = renderPageHTML(t, pageIdx, styleIdxOf(t), locale, edits)
     deckEl.querySelector('.dp-page')?.classList.add('is-shown')
     pageCountEl.textContent = `${String(pageIdx + 1).padStart(2, '0')} / ${String(deck.pages.length).padStart(2, '0')}`
-    frameEl.textContent = deck.framework.name
+    frameEl.textContent = metaFor(t, locale).spec.framework
     progressEl.style.width = `${((pageIdx + 1) / deck.pages.length) * 100}%`
     renderPageStrip(deck.pages.length)
+    syncLangButtons()
   }
+
+  // 编辑内容：input 实时保存，粘贴仅保留纯文本
+  deckEl.addEventListener('input', (e) => {
+    const el = e.target.closest?.('[data-edit]')
+    if (!el) return
+    const no = Number(deckEl.querySelector('.dp-page')?.dataset.no ?? pageIdx + 1) - 1
+    pageEdits(cur(), lang(), no)[el.dataset.edit] = el.textContent
+    store.save()
+    const resetBtn = panel.querySelector('#td-reset-edits')
+    if (resetBtn) resetBtn.hidden = false
+  })
+  deckEl.addEventListener('paste', (e) => {
+    if (!e.target.closest?.('[data-edit]')) return
+    e.preventDefault()
+    const text = (e.clipboardData).getData('text/plain')
+    try { document.execCommand('insertText', false, text) } catch { el_insertFallback(e.target, text) }
+  })
+  function el_insertFallback(el, text) { el.textContent = `${el.textContent}${text}` }
 
   function renderPageStrip(total) {
     const start = Math.max(0, Math.min(pageIdx - 4, total - PAGE_WINDOW))
@@ -593,19 +701,30 @@ function openTemplateDetail(tpl) {
       const t = list[i]
       return `<button class="td-thumb ${i === idx ? 'is-active' : ''}" data-i="${i}" type="button">
         ${coverHTML(t)}
-        <span class="td-thumb-name">${t.name}</span>
+        <span class="td-thumb-name">${displayTpl(t, lang()).name}</span>
       </button>`
     }).join('')
   }
 
+  function syncLangButtons() {
+    mask.querySelectorAll('#td-lang [data-lang]').forEach((b) => {
+      b.classList.toggle('is-active', b.dataset.lang === lang())
+    })
+    mask.querySelector('#td-back-label').textContent =uiText().panel.back
+    mask.querySelector('#td-autoplay-label').textContent =uiText().panel.autoplay
+  }
+
   function renderPanel() {
     const t = cur()
-    const meta = TPL_META[t.name] ?? metaFor(t)
-    const spec = metaFor(t).spec
+    const locale = lang()
+    const P =uiText().panel
+    const meta = TPL_META[t.name] ?? metaFor(t, locale)
+    const spec = metaFor(t, locale).spec
     const styleIdx = styleIdxOf(t)
+    const styleWord = locale === 'en' ? 'Style' : '样式'
     panel.innerHTML = `
       <div class="td-head">
-        <h2>${t.name}</h2>
+        <h2>${displayTpl(t, locale).name}</h2>
         <button class="td-share" id="td-share" title="分享模板" type="button">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
         </button>
@@ -614,15 +733,15 @@ function openTemplateDetail(tpl) {
 
       <div class="td-provider">
         <span class="td-g-badge">G</span>
-        <span>由 Design Buddy 提供</span>
+        <span>${P.provider}</span>
       </div>
 
       <p class="td-desc">${meta.desc}</p>
 
-      <h4>最适合</h4>
+      <h4>${P.bestFor}</h4>
       <ul class="td-fits">${meta.fits.map((f) => `<li>${f}</li>`).join('')}</ul>
 
-      <h4>样式</h4>
+      <h4>${P.style}</h4>
       <div class="td-style-row">
         <button class="td-dots" id="td-dots" type="button" aria-haspopup="true" aria-expanded="false">
           ${meta.colors.map((c, i) => `<span class="td-dot ${i === styleIdx ? 'is-picked' : ''}" style="background:${c}"></span>`).join('')}
@@ -632,18 +751,18 @@ function openTemplateDetail(tpl) {
           ${meta.colors.map((c, i) => `
             <button type="button" data-style="${i}">
               <span class="td-dot ${i === styleIdx ? 'is-picked' : ''}" style="background:${c}"></span>
-              样式 ${String.fromCharCode(65 + i)}${i === styleIdx ? ' ✓' : ''}
+              ${styleWord} ${String.fromCharCode(65 + i)}${i === styleIdx ? ' ✓' : ''}
             </button>`).join('')}
         </div>
       </div>
 
-      <h4>分类</h4>
-      <div class="td-tags">${t.cats.map((c) => `<span class="td-tag">${c}</span>`).join('')}</div>
+      <h4>${P.category}</h4>
+      <div class="td-tags">${t.cats.map((c) => `<span class="td-tag">${catLabel(c, locale)}</span>`).join('')}</div>
 
-      <h4>主题</h4>
+      <h4>${P.theme}</h4>
       <div class="td-tags td-tags-outline">${meta.themes.map((c) => `<span class="td-tag">${c}</span>`).join('')}</div>
 
-      <h4>样式</h4>
+      <h4>${P.style}</h4>
       <div class="td-style-cards">
         ${meta.colors.map((c, i) => `
           <button class="td-style-card ${i === styleIdx ? 'is-picked' : ''}" type="button" data-style-card="${i}">
@@ -652,23 +771,34 @@ function openTemplateDetail(tpl) {
               <i style="background:${meta.colors[(i + 1) % meta.colors.length]}"></i>
               <i style="background:${meta.colors[(i + 2) % meta.colors.length]}"></i>
             </span>
-            <span class="td-style-name">样式 ${String.fromCharCode(65 + i)}</span>
+            <span class="td-style-name">${styleWord} ${String.fromCharCode(65 + i)}</span>
           </button>`).join('')}
       </div>
 
-      <h4>规格</h4>
+      <h4>${P.spec}</h4>
       <div class="td-spec">
-        <div><b>${spec.pages}</b><span>个页面</span></div>
-        <div><b>${spec.images}</b><span>张配图</span></div>
-        <div class="td-spec-fw"><b>${spec.framework}</b><span>设计框架 · ${spec.grid}</span></div>
+        <div><b>${spec.pages}</b><span>${P.pages}</span></div>
+        <div><b>${spec.images}</b><span>${P.images}</span></div>
+        <div class="td-spec-fw"><b>${spec.framework}</b><span>${spec.grid}</span></div>
       </div>
 
+      <p class="td-edit-hint">${P.noEditsHint}</p>
+      <button class="td-reset-edits" id="td-reset-edits" type="button" hidden>${P.resetEdits}</button>
+
       <div class="td-use-wrap">
-        <button class="td-use" id="td-use" type="button">使用模板</button>
+        <button class="td-use" id="td-use" type="button">${P.use}</button>
       </div>`
+
+    if (hasEdits(t, locale)) panel.querySelector('#td-reset-edits').hidden = false
 
     panel.querySelector('#td-share').addEventListener('click', () => {
       copyText(`${location.origin}${location.pathname}?tpl=${encodeURIComponent(t.name)}`)
+    })
+    panel.querySelector('#td-reset-edits').addEventListener('click', () => {
+      delete editRoot(t)[locale]
+      store.save()
+      render()
+      toast(locale === 'en' ? 'Edits reset' : '已重置本模板编辑')
     })
 
     const dotsBtn = panel.querySelector('#td-dots')
@@ -727,9 +857,12 @@ function openTemplateDetail(tpl) {
   }
 
   function onKey(e) {
+    // 正在编辑文字时，Esc 先退出编辑而不是关掉整个弹层
+    const editing = e.target?.closest?.('.dp-editable')
+    if (e.key === 'Escape' && editing) { editing.blur(); return }
     if (e.key === 'Escape') close()
-    if (e.key === 'ArrowRight') goPage(1)
-    if (e.key === 'ArrowLeft') goPage(-1)
+    if (e.key === 'ArrowRight' && !editing) goPage(1)
+    if (e.key === 'ArrowLeft' && !editing) goPage(-1)
   }
 
   function onDocClick(e) {
@@ -749,6 +882,13 @@ function openTemplateDetail(tpl) {
     renderDeck()
   })
   autoBtn.addEventListener('click', () => (autoplay ? stopAuto() : startAuto()))
+  mask.querySelector('#td-lang').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-lang]')
+    if (!btn || btn.dataset.lang === lang()) return
+    stopAuto()
+    setTemplateLang(btn.dataset.lang)
+    render()
+  })
   mask.querySelector('#td-prev').addEventListener('click', () => goTemplate(-1))
   mask.querySelector('#td-next').addEventListener('click', () => goTemplate(1))
   carousel.addEventListener('click', (e) => {

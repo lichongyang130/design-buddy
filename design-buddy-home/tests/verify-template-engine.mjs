@@ -4,10 +4,10 @@
    ============================================================ */
 
 import {
-  buildCatalog, buildDeck, renderPageHTML, metaFor, coverStyle,
+  buildCatalog, buildDeck, renderPageHTML, metaFor, coverStyle, displayTpl,
   CATEGORY_LIST, FRAMEWORKS, LAYOUTS,
 } from '../src/template-engine.js'
-import { loadPage, click, input, tick } from './helpers.mjs'
+import { loadPage, click, input, tick, readState } from './helpers.mjs'
 
 let passed = 0
 const fails = []
@@ -76,10 +76,43 @@ const cDeck = buildDeck(curatedLike)
 check('curated template gets generated deck', cDeck.pages.length >= 20 && cDeck.images.length >= 10)
 check('curated deck renders', renderPageHTML(curatedLike, 0).includes('lay-cover'))
 
+/* ---------------- 双语 ---------------- */
+
+const zhDeck = buildDeck(catalog[10], 'zh')
+const enDeck = buildDeck(catalog[10], 'en')
+const zhSampleHtml = zhDeck.pages.map((_, i) => renderPageHTML(catalog[10], i, 0, 'zh')).join('')
+const enSampleHtml = enDeck.pages.map((_, i) => renderPageHTML(catalog[10], i, 0, 'en')).join('')
+check('zh deck contains Chinese text', /[一-龥]/.test(zhSampleHtml))
+check('en deck has no Chinese copy', !/[一-龥]/.test(enSampleHtml.replace(/Design Buddy/g, '')))
+check('en deck contains English section words', /Market|Solution|Milestones|Team|Growth/.test(enSampleHtml))
+check('displayTpl zh name', displayTpl(catalog[10], 'zh').name === catalog[10].name)
+check('displayTpl en name differs', displayTpl(catalog[10], 'en').name !== catalog[10].name && /^[A-Za-z]/.test(displayTpl(catalog[10], 'en').name))
+check('en meta spec uses english framework', /[A-Za-z]/.test(metaFor(catalog[10], 'en').spec.framework))
+check('zh meta spec uses chinese framework', /[一-龥]/.test(metaFor(catalog[10], 'zh').spec.framework))
+check('curated en display falls back gracefully', displayTpl(curatedLike, 'en').name.length > 0)
+
+/* ---------------- 可编辑字段 ---------------- */
+
+const editSample = [catalog[0], catalog[77], catalog[250], catalog[512], catalog[949]]
+for (const t of editSample) {
+  const d = buildDeck(t, 'zh')
+  const allHtml = d.pages.map((_, i) => renderPageHTML(t, i)).join('')
+  check(`editable fields on every page (${t.name})`, d.pages.every((_, i) => (renderPageHTML(t, i).match(/data-edit=/g) || []).length >= 1))
+  check(`editable elements are contenteditable (${t.name})`, allHtml.includes('contenteditable="true"'))
+}
+const edited = renderPageHTML(catalog[10], 0, 0, 'zh', { 'cover-title': '定制标题ABC' })
+check('edits override default copy', edited.includes('定制标题ABC'))
+const editedEn = renderPageHTML(catalog[10], 2, 0, 'en', { title: 'Custom Title XYZ' })
+check('english edits override', editedEn.includes('Custom Title XYZ'))
+// 编辑键在同版式内稳定
+const r1 = renderPageHTML(catalog[10], 2)
+const r2 = renderPageHTML(catalog[10], 2)
+check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|') === r2.match(/data-edit="[^"]+"/g).join('|'))
+
 /* ---------------- 页面级交互 ---------------- */
 
 {
-  const { doc, w, errors } = await loadPage('/templates.html')
+  const { doc, w, errors, storage } = await loadPage('/templates.html')
   check('templates page no errors', errors.length === 0, errors)
   check('first grid page shows 24 curated cards', doc.querySelectorAll('.tpl-card').length === 24)
   check('load more visible', !doc.querySelector('.tpl-more-wrap').hidden)
@@ -165,8 +198,47 @@ check('curated deck renders', renderPageHTML(curatedLike, 0).includes('lay-cover
   click(w, thumbs[5])
   await tick()
   check('carousel switches template', doc.querySelector('.td-head h2').textContent === thumbs[5].querySelector('.td-thumb-name').textContent)
+
+  // 弹层内中英切换
+  const zhText = doc.querySelector('.dp-page [data-edit]')?.textContent
+  click(w, doc.querySelector('#td-lang [data-lang="en"]'))
+  await tick()
+  check('deck lang toggle renders english', doc.querySelector('#td-lang [data-lang="en"]').classList.contains('is-active'))
+  check('english deck copy shown', !/[一-龥]/.test(doc.querySelector('.dp-page').textContent.replace(/Design Buddy/g, '')))
+  check('panel localized to english', doc.querySelector('#td-use').textContent === 'Use template')
+  const persistedLang = readState(storage).templateLang
+  check('language persisted', persistedLang === 'en')
+
+  // 内联编辑：改文字 → input → 写入 localStorage
+  const field = doc.querySelector('.dp-page [data-edit]')
+  const editKey = field.dataset.edit
+  field.textContent = 'Edited in browser'
+  field.dispatchEvent(new w.Event('input', { bubbles: true }))
+  await tick()
+  const st = readState(storage)
+  check('inline edit persisted', JSON.stringify(st.templateEdits).includes('Edited in browser'))
+  check('reset edit button appears', !doc.querySelector('#td-reset-edits').hidden)
+  // 翻页后回来仍保留
+  click(w, doc.querySelector('#td-page-next')); await tick()
+  click(w, doc.querySelector('#td-page-prev')); await tick()
+  const again = [...doc.querySelectorAll('.dp-page [data-edit]')].find((e) => e.dataset.edit === editKey)
+  check('inline edit survives page navigation', again?.textContent === 'Edited in browser')
+  // 重置
+  click(w, doc.querySelector('#td-reset-edits')); await tick()
+  const afterReset = [...doc.querySelectorAll('.dp-page [data-edit]')].find((e) => e.dataset.edit === editKey)
+  check('reset restores default copy', afterReset?.textContent !== 'Edited in browser')
+  // 工具栏语言控件同步
+  check('toolbar lang control exists', !!doc.querySelector('.tpl-lang [data-lang="zh"]'))
+
   doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
   await tick()
+
+  // 工具栏切换语言：网格与侧栏随之英文化
+  click(w, doc.querySelector('.tpl-lang [data-lang="zh"]'))
+  await tick()
+  check('toolbar toggle back to chinese', doc.querySelector('.tpl-lang [data-lang="zh"]').classList.contains('is-active'))
+  check('grid back to chinese name', /[一-龥]/.test(doc.querySelector('.tpl-name span').textContent))
+  check('category label chinese', /[一-龥]/.test(doc.querySelector('.cat-label').textContent))
 }
 
 console.log(`\n${fails.length === 0 ? `ALL ${passed} TEMPLATE ENGINE CHECKS PASSED` : `${fails.length} FAILED: ${fails.join('; ')}`}`)
