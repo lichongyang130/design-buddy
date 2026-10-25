@@ -13,8 +13,9 @@ const def = (key, zh, en, q) => [key, { zh, en, q: q || en }]
 
 export const ART_CONCEPTS = Object.fromEntries([
   /* ---------------- 共享池 ---------------- */
-  ...['01', '02', '03', '04', '05', '06', '07', '08'].map((n, i) =>
-    def(`shared.portrait.${n}`, `手绘人物 ${n}`, `Illustrated portrait ${n}`, `open peeps person portrait ${i + 1}`)),
+  ...['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16']
+    .map((n, i) =>
+      def(`shared.portrait.${n}`, `手绘人物 ${n}`, `Illustrated portrait ${n}`, `open peeps person portrait ${i + 1}`)),
   def('shared.map', '手绘地图', 'Illustrated map', 'hand drawn map illustration'),
   def('shared.logowall', '品牌标志墙', 'Brand logo wall', 'minimal logo marks collection'),
   def('shared.teamwork', '团队协作', 'Teamwork', 'team collaboration flat illustration'),
@@ -210,7 +211,8 @@ export const CONCEPT_POOLS = {
   建筑: ['arch.building', 'arch.blueprint', 'arch.crane', 'arch.skyline', 'arch.interior', 'arch.bridge'],
 }
 
-const PORTRAIT_KEYS = ['01', '02', '03', '04', '05', '06', '07', '08'].map((n) => `shared.portrait.${n}`)
+const PORTRAIT_KEYS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16']
+  .map((n) => `shared.portrait.${n}`)
 
 // 版式级固定概念：人物页用共享肖像，地图页用插画地图，标志墙用品牌集合
 const PINNED = {

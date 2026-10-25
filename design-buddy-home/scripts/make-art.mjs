@@ -20,10 +20,15 @@ const W = 800, H = 600
 const INK = '#2f3a44'
 const PAPERS = ['#fbf4e9', '#eef5f1', '#f3eef8', '#eaf1fb', '#fdf0ec', '#f1f6ea']
 const ACCENTS = ['#2a9d8f', '#ef6f6c', '#f4a261', '#3d5a80', '#8ab17d', '#9b8ede', '#e78bb0', '#6cb4d8']
-const SKIN = ['#f2c9a0', '#e0ac7e', '#c68863', '#8d5a3b', '#5f3d28']
-const HAIR = ['#3b2a20', '#6b4423', '#1f1c1a', '#b07a3d', '#d9d3c8', '#7a5c8e']
+// 肤色：靠前为偏白皙的欧美常见肤色，整体仍覆盖多种族
+const SKIN = ['#f7dcc4', '#f2c9a0', '#ecc39b', '#e0ac7e', '#c68863', '#a96f4e', '#8d5a3b', '#5f3d28']
+// 发色：加入金/亚麻/草莓金/红棕/银灰等西式常见发色
+const HAIR = ['#e6c36e', '#d9b45c', '#c98a5b', '#b05a43', '#8a4b32', '#7a5a3e', '#6b4423', '#3b2a20', '#1f1c1a', '#c9cdd2', '#7a5c8e']
+// 瞳色：蓝/绿/榛/棕/灰，欧美插画常见
+const EYES = ['#4a7fb5', '#5f8f5e', '#8a7a4a', '#6b4a34', '#6d7b85', '#2f3a44']
 const SHIRTS = ['#2a9d8f', '#ef6f6c', '#f4a261', '#3d5a80', '#9b8ede', '#e78bb0']
 const PANTS = ['#3d5a80', '#5b5166', '#41644a', '#7a4a3b']
+const FASHION = ['#5b7fa6', '#7d6b9e', '#c26a5f', '#4f8a7f', '#d99a5b', '#8a94a6']
 
 const ST = `stroke="${INK}" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"`
 const ST6 = `stroke="${INK}" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"`
@@ -68,6 +73,66 @@ function svgDoc(inner) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">${inner}</svg>`
 }
 
+/* ---------------- 西式五官（眉/彩色瞳仁/鼻梁/雀斑/胡须），头心 (cx,cy)、半径 r ---------------- */
+function face(cx, cy, r, o = {}) {
+  const k = r / 56
+  const dx = 18 * k, ey = -3 * k, eyeR = 5.6 * k
+  const skinDeep = o.skinDeep || INK
+  let s = ''
+  // 耳朵
+  s += circ(cx - r * 0.97, cy + 3 * k, 8 * k, o.skin, ST6) + circ(cx + r * 0.97, cy + 3 * k, 8 * k, o.skin, ST6)
+  if (o.earrings) {
+    s += circ(cx - r * 0.97, cy + 14 * k, 3.4 * k, '#e0a94b', ST6)
+    s += circ(cx + r * 0.97, cy + 14 * k, 3.4 * k, '#e0a94b', ST6)
+  }
+  // 胡须：先画在下颌，五官叠在其上
+  if (o.beard === 'full') {
+    s += path(`M ${cx - r * 0.84} ${cy + 4 * k} Q ${cx - r * 0.9} ${cy + r * 0.95} ${cx} ${cy + r * 1.04}
+      Q ${cx + r * 0.9} ${cy + r * 0.95} ${cx + r * 0.84} ${cy + 4 * k}
+      Q ${cx + r * 0.66} ${cy + r * 0.6} ${cx} ${cy + r * 0.64}
+      Q ${cx - r * 0.66} ${cy + r * 0.6} ${cx - r * 0.84} ${cy + 4 * k} Z`, o.beardColor || HAIR[2], ST6)
+  } else if (o.beard === 'stubble') {
+    s += path(`M ${cx - r * 0.78} ${cy + 7 * k} Q ${cx} ${cy + r * 0.95} ${cx + r * 0.78} ${cy + 7 * k}
+      Q ${cx} ${cy + r * 0.46} ${cx - r * 0.78} ${cy + 7 * k} Z`, o.beardColor || INK, 'opacity="0.26"')
+  }
+  // 眉毛（西式更明显的眉弓）
+  const brow = `fill="none" stroke="${o.hairColor || HAIR[0]}" stroke-width="${4.6 * k}" stroke-linecap="round"`
+  const by = cy + ey - 10 * k
+  s += `<path d="M ${cx - dx - 8 * k} ${by} Q ${cx - dx} ${by - 4 * k} ${cx - dx + 8 * k} ${by}" ${brow}/>`
+  s += `<path d="M ${cx + dx - 8 * k} ${by} Q ${cx + dx} ${by - 4 * k} ${cx + dx + 8 * k} ${by}" ${brow}/>`
+  // 彩色瞳仁 + 瞳孔 + 高光
+  const eye = (ex) => circ(ex, cy + ey, eyeR, o.eyeColor || EYES[0], ST6)
+    + circ(ex, cy + ey, eyeR * 0.44, INK)
+    + circ(ex - eyeR * 0.3, cy + ey - eyeR * 0.32, eyeR * 0.2, '#fff')
+  s += eye(cx - dx) + eye(cx + dx)
+  if (o.glasses) {
+    s += circ(cx - dx, cy + ey, eyeR + 5 * k, 'none', ST6) + circ(cx + dx, cy + ey, eyeR + 5 * k, 'none', ST6)
+    s += `<line x1="${cx - dx + eyeR + 5 * k}" y1="${cy + ey}" x2="${cx + dx - eyeR - 5 * k}" y2="${cy + ey}" ${ST6}/>`
+  }
+  // 鼻梁（比点状鼻更立体）
+  s += `<path d="M ${cx} ${cy + 7 * k} q ${3.6 * k} ${7.5 * k} ${-2.6 * k} ${10.5 * k}" fill="none" stroke="${skinDeep}" stroke-width="${3.4 * k}" stroke-linecap="round" opacity="0.55"/>`
+  // 雀斑
+  if (o.freckles) {
+    const f = (fx, fy) => circ(cx + fx * k, cy + fy * k, 1.7 * k, INK, 'opacity="0.45"')
+    s += f(-12, 12) + f(-7, 16) + f(-16, 17) + f(12, 12) + f(7, 16) + f(16, 17) + f(-3, 15) + f(3, 15)
+  }
+  // 嘴：微笑或开口笑
+  if (o.smile === 'open') {
+    s += path(`M ${cx - 13 * k} ${cy + 20 * k} Q ${cx} ${cy + 31 * k} ${cx + 13 * k} ${cy + 20 * k}
+      Q ${cx} ${cy + 25 * k} ${cx - 13 * k} ${cy + 20 * k} Z`, '#c9635f', ST6)
+  } else {
+    s += `<path d="M ${cx - 12.5 * k} ${cy + 20 * k} Q ${cx} ${cy + 28.5 * k} ${cx + 12.5 * k} ${cy + 20 * k}" fill="none" ${ST6}/>`
+  }
+  if (o.beard === 'mustache') {
+    s += path(`M ${cx - 2 * k} ${cy + 16.5 * k} q ${-11 * k} ${-6 * k} ${-17 * k} ${1 * k} q ${9 * k} ${6.5 * k} ${17 * k} ${1.5 * k} Z`, o.beardColor || HAIR[2], ST6)
+    s += path(`M ${cx + 2 * k} ${cy + 16.5 * k} q ${11 * k} ${-6 * k} ${17 * k} ${1 * k} q ${-9 * k} ${6.5 * k} ${-17 * k} ${1.5 * k} Z`, o.beardColor || HAIR[2], ST6)
+  }
+  // 腮红
+  s += circ(cx - 25 * k, cy + 11 * k, 5.5 * k, '#ef6f6c', 'opacity="0.32"')
+  s += circ(cx + 25 * k, cy + 11 * k, 5.5 * k, '#ef6f6c', 'opacity="0.32"')
+  return s
+}
+
 /* ---------------- 人物（全身，脚在原点，高约 260） ---------------- */
 function person(o = {}) {
   const skin = o.skin || SKIN[0], shirt = o.shirt || SHIRTS[0], pantsC = o.pants || PANTS[0]
@@ -97,42 +162,104 @@ function person(o = {}) {
   // 脖子与头
   s += rr(-13, -222, 26, 26, 8, skin, ST6)
   s += circ(0, -248, 44, skin, ST)
-  // 发型
+  // 发型（含西式大背头/波浪/马尾/光头）
   if (hair === 'short') s += path('M -42 -258 A 44 44 0 0 1 42 -258 L 42 -272 A 44 44 0 0 0 -42 -272 Z', hairC)
+  if (hair === 'wavy') s += path('M -44 -256 Q -30 -278 -8 -270 Q 12 -282 30 -268 Q 42 -262 44 -254 L 44 -268 A 44 44 0 0 0 -44 -268 Z', hairC, ST6)
+  if (hair === 'slick') s += path('M -42 -260 A 44 44 0 0 1 42 -260 L 40 -274 Q 20 -282 0 -278 Q -22 -282 -40 -274 Z', hairC, ST6)
   if (hair === 'cap') s += path('M -46 -258 A 46 40 0 0 1 46 -258 L 40 -272 L -40 -272 Z', '#3d5a80', ST6) + rr(-52, -266, 104, 14, 7, '#3d5a80', ST6)
   if (hair === 'bob') s += path('M -46 -252 A 46 46 0 0 1 46 -252 L 48 -214 Q 44 -206 36 -210 L -36 -210 Q -44 -206 -48 -214 Z', hairC, ST6)
   if (hair === 'bun') s += path('M -44 -254 A 44 44 0 0 1 44 -254 L 40 -216 L -40 -216 Z', hairC, ST6) + circ(0, -296, 16, hairC, ST6)
   if (hair === 'curly') s += [-40, -20, 0, 20, 40].map((x) => circ(x, -280, 18, hairC, ST6)).join('') + circ(-44, -258, 14, hairC, ST6) + circ(44, -258, 14, hairC, ST6)
   if (hair === 'long') s += path('M -46 -252 A 46 46 0 0 1 46 -252 L 52 -196 Q 40 -190 36 -200 L -36 -200 Q -40 -190 -52 -196 Z', hairC, ST6)
-  // 脸
-  s += circ(-15, -248, 3.6, INK) + circ(15, -248, 3.6, INK)
-  s += `<path d="M -12 -232 Q 0 -222 12 -232" fill="none" ${ST6}/>`
-  s += circ(-24, -238, 5, '#ef6f6c', 'opacity="0.35"') + circ(24, -238, 5, '#ef6f6c', 'opacity="0.35"')
-  if (o.glasses) s += circ(-15, -248, 10, 'none', ST6) + circ(15, -248, 10, 'none', ST6) + ln(-5, -248, 5, -248)
+  if (hair === 'ponytail') s += path('M -42 -258 A 44 44 0 0 1 42 -258 L 40 -270 A 44 44 0 0 0 -40 -270 Z', hairC, ST6) + path('M 34 -262 Q 66 -252 58 -214 Q 52 -206 46 -212 Q 48 -240 30 -252 Z', hairC, ST6)
+  if (hair === 'bald') s += path('M -40 -262 A 40 40 0 0 1 40 -262 L 38 -270 A 40 40 0 0 0 -38 -270 Z', hairC, ST6)
+  // 西式五官
+  s += face(0, -248, 44, {
+    skin, skinDeep: SKIN[Math.max(0, SKIN.indexOf(skin) - 1)],
+    hairColor: hairC, eyeColor: o.eyeColor, glasses: o.glasses,
+    freckles: o.freckles, beard: o.beard, beardColor: hairC,
+    smile: o.smile, earrings: o.earrings,
+  })
   return s
 }
 
-/* 半身肖像（供 shared.portrait.*） */
-function bust(seed) {
+/* 半身肖像（供 shared.portrait.*，偏西方人物特征）
+   按概念序号轮转特征，保证 16 人阵容覆盖全部西式发型/瞳色/发色/服装，而非随机扎堆 */
+const BUST_HAIRS = ['wavy', 'long', 'slick', 'bob', 'curly', 'bun', 'ponytail', 'braid', 'short', 'bald',
+  'wavy', 'long', 'slick', 'bob', 'curly', 'bald']
+const BUST_BEARDS = ['none', 'none', 'stubble', 'none', 'none', 'mustache', 'none', 'none', 'full', 'stubble',
+  'full', 'none', 'mustache', 'none', 'none', 'stubble']
+function bust(seed, key = '') {
   const r = rng(seed)
-  const skin = pick(r, SKIN), shirt = pick(r, SHIRTS), hairC = pick(r, HAIR)
-  const hair = pick(r, ['short', 'bob', 'bun', 'curly', 'long', 'cap'])
+  const n = Math.max(0, Number(key.slice(-2)) - 1)
+  const skin = SKIN[(n * 3 + (r() > 0.5 ? 1 : 0)) % SKIN.length]
+  const skinDeep = SKIN[Math.max(0, SKIN.indexOf(skin) - 1)]
+  const hairC = HAIR[n % HAIR.length]
+  const eyeColor = EYES[n % EYES.length]
+  const hair = BUST_HAIRS[n]
+  const beard = BUST_BEARDS[n]
+  const freckles = n % 3 === 1
+  const glasses = n % 4 === 3
+  const earrings = n % 5 === 2
+  const smile = n % 2 === 0 ? 'open' : 'smile'
+  const outfit = ['tee', 'hoodie', 'blazer', 'collar'][n % 4]
+  const cloth = FASHION[n % FASHION.length]
   const bgC = pick(r, ACCENTS)
+  const CX = 400, CY = 226, RR = 56
   let s = circ(400, 300, 240, bgC, 'opacity="0.22"')
-  s += g('translate(400 470) scale(1.15)',
-    rr(-96, -150, 192, 160, 60, shirt, ST)
-    + rr(-16, -176, 32, 30, 10, skin, ST6)
-    + circ(0, -212, 56, skin, ST))
-  // 发型（肖像坐标：头心 400,226）
+
+  /* 服装（translate(400 470) scale(1.15) 局部坐标） */
+  let outfitSvg = rr(-16, -176, 32, 30, 10, skin, ST6)
+  if (outfit === 'tee') {
+    outfitSvg = rr(-96, -150, 192, 160, 60, cloth, ST)
+      + path('M -22 -152 Q 0 -132 22 -152 L 16 -168 L -16 -168 Z', skin, ST6)
+      + outfitSvg
+  } else if (outfit === 'hoodie') {
+    outfitSvg = rr(-96, -150, 192, 160, 60, cloth, ST)
+      + path('M -34 -156 Q 0 -118 34 -156 L 26 -172 Q 0 -150 -26 -172 Z', skinDeep, ST6)
+      + rr(-44, -70, 88, 34, 12, 'none', ST6)
+      + rr(-16, -176, 32, 30, 10, skin, ST6)
+  } else if (outfit === 'blazer') {
+    outfitSvg = rr(-96, -150, 192, 160, 60, '#f4f1ec', ST6)
+      + path('M -96 -146 L -26 -150 L -8 -92 L -40 -60 Z', cloth, ST)
+      + path('M 96 -146 L 26 -150 L 8 -92 L 40 -60 Z', cloth, ST)
+      + path('M -20 -150 L 0 -122 L 20 -150 Z', '#fff', ST6)
+      + rr(-5, -124, 10, 70, 4, cloth)
+      + rr(-16, -176, 32, 30, 10, skin, ST6)
+  } else {
+    outfitSvg = rr(-96, -150, 192, 160, 60, cloth, ST)
+      + path('M -24 -150 L 0 -128 L 24 -150 L 16 -166 L 0 -154 L -16 -166 Z', '#fff', ST6)
+      + circ(0, -104, 4, '#fff', ST6) + circ(0, -84, 4, '#fff', ST6)
+      + rr(-16, -176, 32, 30, 10, skin, ST6)
+  }
+  s += g('translate(400 470) scale(1.15)', outfitSvg)
+
+  /* 后层长发/马尾/辫子先于头部 */
+  if (hair === 'long') s += path('M 342 218 A 58 58 0 0 1 458 218 L 466 286 Q 450 294 444 280 L 356 280 Q 350 294 334 286 Z', hairC, ST6)
+  if (hair === 'ponytail') s += path('M 438 196 Q 492 188 496 240 Q 498 276 470 282 Q 462 252 444 240 Z', hairC, ST6)
+  if (hair === 'braid') s += [0, 1, 2, 3].map((i) => circ(400, 268 + i * 22, 15 - i * 1.6, hairC, ST6)).join('') + path('M 384 176 Q 400 162 416 176 L 412 200 L 388 200 Z', hairC, ST6)
+  // 脖子与头
+  s += rr(384, 268, 32, 30, 10, skin, ST6)
+  s += circ(CX, CY, RR, skin, ST)
+
+  /* 发型（肖像绝对坐标，头心 400,226 r56） */
   if (hair === 'short') s += path('M 346 214 A 56 56 0 0 1 454 214 L 454 196 A 56 56 0 0 0 346 196 Z', hairC)
-  if (hair === 'cap') s += path('M 340 212 A 58 50 0 0 1 460 212 L 452 192 L 348 192 Z', '#3d5a80', ST6) + rr(334, 202, 132, 16, 8, '#3d5a80', ST6)
+  if (hair === 'wavy') s += path('M 344 216 Q 358 176 386 184 Q 408 168 430 184 Q 448 178 456 200 L 456 192 A 56 56 0 0 0 344 192 Z', hairC, ST6)
+  if (hair === 'slick') s += path('M 346 212 A 56 56 0 0 1 454 212 L 450 188 Q 420 170 400 176 Q 376 170 350 188 Z', hairC, ST6)
+    + path('M 366 196 Q 386 184 404 190', 'none', `stroke="${skinDeep}" stroke-width="3" fill="none" opacity="0.7"`)
   if (hair === 'bob') s += path('M 342 218 A 58 58 0 0 1 458 218 L 462 268 Q 456 278 446 270 L 354 270 Q 344 278 338 268 Z', hairC, ST6)
   if (hair === 'bun') s += path('M 344 216 A 56 56 0 0 1 456 216 L 450 266 L 350 266 Z', hairC, ST6) + circ(400, 152, 20, hairC, ST6)
   if (hair === 'curly') s += [356, 378, 400, 422, 444].map((x) => circ(x, 178, 22, hairC, ST6)).join('') + circ(346, 210, 16, hairC, ST6) + circ(454, 210, 16, hairC, ST6)
-  if (hair === 'long') s += path('M 342 218 A 58 58 0 0 1 458 218 L 466 286 Q 450 292 444 280 L 356 280 Q 350 292 334 286 Z', hairC, ST6)
-  s += circ(382, 226, 4.5, INK) + circ(418, 226, 4.5, INK)
-  s += `<path d="M 386 246 Q 400 258 414 246" fill="none" ${ST6}/>`
-  s += circ(370, 238, 6, '#ef6f6c', 'opacity="0.35"') + circ(430, 238, 6, '#ef6f6c', 'opacity="0.35"')
+  if (hair === 'bald') s += path('M 348 206 A 54 54 0 0 1 452 206 L 448 196 A 54 54 0 0 0 352 196 Z', hairC, ST6)
+  // long / ponytail / braid 的顶发
+  if (hair === 'long' || hair === 'ponytail' || hair === 'braid') {
+    s += path('M 346 214 A 56 56 0 0 1 454 214 L 452 194 A 56 56 0 0 0 348 194 Z', hairC, ST6)
+  }
+
+  /* 西式五官 */
+  s += face(CX, CY, RR, {
+    skin, skinDeep, hairColor: hairC, eyeColor, glasses, freckles, beard, beardColor: hairC, smile, earrings,
+  })
   return s
 }
 
@@ -524,8 +651,11 @@ function withPerson(key, propName, opts = {}) {
   const personX = left ? 280 : 520
   return g(`translate(${personX} 470) scale(0.95)`, person({
     skin: pick(r, SKIN), shirt: pick(r, SHIRTS), pants: pick(r, PANTS),
-    hair: pick(r, ['short', 'cap', 'bob', 'bun', 'curly', 'long']), hairColor: pick(r, HAIR),
-    pose: opts.pose || 'stand', glasses: r() > 0.7,
+    hair: pick(r, ['short', 'wavy', 'slick', 'cap', 'bob', 'bun', 'curly', 'long', 'ponytail', 'bald']),
+    hairColor: pick(r, HAIR), eyeColor: pick(r, EYES),
+    pose: opts.pose || 'stand', glasses: r() > 0.7, freckles: r() > 0.75,
+    beard: r() > 0.7 ? pick(r, ['stubble', 'full', 'mustache']) : 'none',
+    smile: r() > 0.5 ? 'open' : 'smile',
   })) + P[propName](propX, 330, 1, c)
 }
 function propOnly(key, propName, scale = 1) {
@@ -713,7 +843,7 @@ async function main() {
   for (const key of keys) {
     const seed = hash(key)
     let inner
-    if (key.startsWith('shared.portrait.')) inner = bust(seed)
+    if (key.startsWith('shared.portrait.')) inner = bust(seed, key)
     else if (key === 'shared.map') inner = mapScene(seed)
     else if (key === 'shared.logowall') inner = logoWallScene(seed)
     else {

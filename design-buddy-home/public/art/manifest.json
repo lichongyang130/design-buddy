@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-10-25T10:07:31.154Z",
+  "generatedAt": "2026-10-25T12:03:57.384Z",
   "note": "由 scripts/asset-pipeline.mjs 生成。引擎在素材缺失时自动回退内联 SVG，因此空清单不影响任何页面渲染。",
   "sources": [
     {
@@ -1291,6 +1291,78 @@
     "arch.bridge": {
       "illustration": {
         "src": "/art/illustration/arch.bridge.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.portrait.09": {
+      "illustration": {
+        "src": "/art/illustration/shared.portrait.09.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.portrait.10": {
+      "illustration": {
+        "src": "/art/illustration/shared.portrait.10.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.portrait.11": {
+      "illustration": {
+        "src": "/art/illustration/shared.portrait.11.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.portrait.12": {
+      "illustration": {
+        "src": "/art/illustration/shared.portrait.12.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.portrait.13": {
+      "illustration": {
+        "src": "/art/illustration/shared.portrait.13.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.portrait.14": {
+      "illustration": {
+        "src": "/art/illustration/shared.portrait.14.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.portrait.15": {
+      "illustration": {
+        "src": "/art/illustration/shared.portrait.15.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.portrait.16": {
+      "illustration": {
+        "src": "/art/illustration/shared.portrait.16.svg",
         "author": "Design Buddy",
         "license": "CC0 1.0",
         "provider": "inline-svg",

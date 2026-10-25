@@ -502,9 +502,13 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
     if (keys.length < 5 || keys.some((k) => !ART_CONCEPTS[k])) badPools++
   }
   check('every pool key resolves and pools non-trivial', badPools === 0)
-  for (const n of ['01', '02', '03', '04', '05', '06', '07', '08']) {
+  const PORTRAIT_NUMS = Array.from({ length: 16 }, (_, i) => String(i + 1).padStart(2, '0'))
+  for (const n of PORTRAIT_NUMS) {
     check(`shared portrait ${n} defined`, !!ART_CONCEPTS[`shared.portrait.${n}`])
   }
+  check('portrait roster bilingual labels', PORTRAIT_NUMS.every((n) =>
+    /[\u4e00-\u9fa5]/.test(ART_CONCEPTS[`shared.portrait.${n}`].zh)
+    && /^Illustrated portrait \d+$/.test(ART_CONCEPTS[`shared.portrait.${n}`].en)))
   check('shared map and logowall defined', !!ART_CONCEPTS['shared.map'] && !!ART_CONCEPTS['shared.logowall'])
 
   const t = catalog[0]
