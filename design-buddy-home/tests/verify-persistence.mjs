@@ -336,6 +336,13 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   await tick()
   check('dynamic select persisted', readState(storage).settings.appearance.density === 'compact')
 
+  const imageMode = doc.querySelector('[data-bind="imageMode"]')
+  check('image mode select exists in appearance settings', !!imageMode)
+  imageMode.value = 'photo'
+  imageMode.dispatchEvent(new w.Event('change', { bubbles: true }))
+  await tick()
+  check('image mode persisted at top level', readState(storage).imageMode === 'photo')
+
   click(w, [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === 'memory'))
   await tick()
   input(w, doc.querySelector('#mem-input'), '测试记忆条目')

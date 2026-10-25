@@ -7,6 +7,8 @@
    - renderPageHTML 支持 edits 映射，所有文字带 data-edit 稳定键
    ============================================================ */
 
+import { conceptFor, conceptLabel } from './art-concepts.js'
+
 /* ---------------- 确定性随机 ---------------- */
 
 export function hashStr(s) {
@@ -583,9 +585,56 @@ export function coverDeco(rawTpl) {
 
 /* ---------------- 页面渲染（支持 edits 内联编辑） ---------------- */
 
-function art(deck, index) {
-  const svg = deck.images[((index % deck.images.length) + deck.images.length) % deck.images.length]
-  return `<div class="dp-art">${svg}</div>`
+/* ---------------- 真实配图模式（P1） ----------------
+   mode: 'svg'（经典内联 SVG，默认）| 'illustration'（绘本插画）| 'photo'（真实照片）
+   manifest: { [conceptKey]: { illustration?: string, photo?: string } }，由 public/art/manifest.json 提供
+   overrides: 用户单页换图，键 `${deckId}:${pageNo}:${slot}`，值为 dataUrl 或素材 URL
+   素材缺失时自动回退内联 SVG，保证离线/旧数据永不白屏 */
+const ART_MODES = ['svg', 'illustration', 'photo']
+let artConfig = { mode: 'svg', manifest: {}, overrides: {} }
+
+export function configureArt(opts = {}) {
+  artConfig = {
+    mode: ART_MODES.includes(opts.mode) ? opts.mode : artConfig.mode,
+    manifest: opts.manifest ?? artConfig.manifest,
+    overrides: opts.overrides ?? artConfig.overrides,
+  }
+}
+export const getArtMode = () => artConfig.mode
+export const getArtManifest = () => artConfig.manifest
+
+export function setArtOverride(deckId, pageNo, slot, src) {
+  artConfig.overrides[`${deckId}:${pageNo}:${slot}`] = src
+}
+export function clearArtOverride(deckId, pageNo, slot) {
+  delete artConfig.overrides[`${deckId}:${pageNo}:${slot}`]
+}
+
+const escAttr = (v) => String(v ?? '').replace(/&/g, '&amp;').replace(/"/g, '&quot;')
+
+function art(deck, index, page = null, slot = 0, locale = 'zh') {
+  const i = ((index % deck.images.length) + deck.images.length) % deck.images.length
+  const svg = deck.images[i]
+  const fallback = `<div class="dp-art">${svg}</div>`
+  if (artConfig.mode === 'svg' || !page) return fallback
+  const key = conceptFor(deck.tpl, page, slot)
+  let src = artConfig.overrides[`${deck.tpl.id}:${page.no}:${slot}`]
+  if (!src) {
+    const entry = artConfig.manifest[key]
+    src = artConfig.mode === 'photo' ? entry?.photo : entry?.illustration
+  }
+  if (!src) return fallback
+  const alt = escAttr(conceptLabel(key, locale))
+  return `<div class="dp-art dp-art-img"><img loading="lazy" src="${escAttr(src)}" alt="${alt}"></div>`
+}
+
+// map 版式：素材清单含 shared.map 时用真实插画地图，否则保留程序化 SVG
+function mapArt(deck, page, fallbackSvg, locale) {
+  if (artConfig.mode === 'svg') return fallbackSvg
+  const src = artConfig.overrides[`${deck.tpl.id}:${page.no}:0`]
+    || (artConfig.mode === 'photo' ? artConfig.manifest['shared.map']?.photo : artConfig.manifest['shared.map']?.illustration)
+  if (!src) return fallbackSvg
+  return `<img loading="lazy" src="${escAttr(src)}" alt="${escAttr(conceptLabel('shared.map', locale))}">`
 }
 
 export function renderPageHTML(rawTpl, pageIndex, styleIdx = 0, locale = 'zh', edits = {}) {
@@ -595,7 +644,7 @@ export function renderPageHTML(rawTpl, pageIndex, styleIdx = 0, locale = 'zh', e
   const page = pages[pageIndex]
   const accent = styleIdx === 0 ? palette[4] : styleIdx === 1 ? palette[5] : palette[2]
   const rootVars = `--dp-bg:${palette[0]};--dp-paper:${palette[1]};--dp-ink:${palette[2]};--dp-muted:${palette[3]};--dp-accent:${accent};--dp-accent2:${palette[5]};--dp-radius:${framework.radius}px;--dp-head:${fonts.head};--dp-body:${fonts.body};`
-  const img = (slot) => art(deck, (page.imgStart + slot) % deck.images.length)
+  const img = (slot) => art(deck, (page.imgStart + slot) % deck.images.length, page, slot, locale)
   const ed = (key, fallback) => (edits[key] != null && edits[key] !== '' ? edits[key] : fallback)
   const edAttr = (key) => ` class="dp-editable" contenteditable="true" data-edit="${key}"`
   const L = page.layout
@@ -721,8 +770,8 @@ export function renderPageHTML(rawTpl, pageIndex, styleIdx = 0, locale = 'zh', e
       break
     case 'map':
       inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
-        <div class="dp-map dp-art">${svgWrap(`map-${tpl.id}-${page.no}`, `<path d="M40 240 L120 120 L190 180 L260 80 L360 160" fill="none" stroke="var(--dp-accent)" stroke-width="6" stroke-linecap="round"/>
-          ${[120, 180, 80, 160].map((y, k) => `<circle cx="${[120, 190, 260, 360][k]}" cy="${y}" r="12" fill="var(--dp-accent2)"/>`).join('')}`, palette[1])}</div>
+        <div class="dp-map dp-art">${mapArt(deck, page, svgWrap(`map-${tpl.id}-${page.no}`, `<path d="M40 240 L120 120 L190 180 L260 80 L360 160" fill="none" stroke="var(--dp-accent)" stroke-width="6" stroke-linecap="round"/>
+          ${[120, 180, 80, 160].map((y, k) => `<circle cx="${[120, 190, 260, 360][k]}" cy="${y}" r="12" fill="var(--dp-accent2)"/>`).join('')}`, palette[1]), locale)}</div>
         <p class="dp-lead dp-editable" contenteditable="true" data-edit="map-lead">${ed('map-lead', T.mapLead)}</p>`
       break
     case 'faq':

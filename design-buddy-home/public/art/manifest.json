@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "generatedAt": null,
+  "note": "由 scripts/asset-pipeline.mjs 生成。引擎在素材缺失时自动回退内联 SVG，因此空清单不影响任何页面渲染。",
+  "sources": [
+    { "id": "openverse", "license": "CC 系列授权，按条目保留作者与许可信息", "keyRequired": false },
+    { "id": "pixabay", "license": "Pixabay Content License，可商用免署名", "keyRequired": true, "env": "PIXABAY_KEY" },
+    { "id": "pexels", "license": "Pexels License，可商用免署名", "keyRequired": true, "env": "PEXELS_KEY" },
+    { "id": "undraw", "license": "MIT，免费可商用", "keyRequired": false },
+    { "id": "openpeeps", "license": "CC0，手绘人物肖像", "keyRequired": false },
+    { "id": "open-doodles", "license": "CC0，手绘涂鸦", "keyRequired": false }
+  ],
+  "concepts": {}
+}

@@ -5,8 +5,10 @@
 
 import {
   buildCatalog, buildDeck, renderPageHTML, metaFor, coverStyle, displayTpl, slotNeed,
+  configureArt, getArtMode, setArtOverride, clearArtOverride,
   CATEGORY_LIST, FRAMEWORKS, LAYOUTS,
 } from '../src/template-engine.js'
+import { conceptFor, ART_CONCEPTS, CONCEPT_POOLS } from '../src/art-concepts.js'
 import { loadPage, click, input, tick, readState } from './helpers.mjs'
 
 let passed = 0
@@ -255,6 +257,73 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   check('toolbar toggle back to chinese', doc.querySelector('.tpl-lang [data-lang="zh"]').classList.contains('is-active'))
   check('grid back to chinese name', /[一-龥]/.test(doc.querySelector('.tpl-name span').textContent))
   check('category label chinese', /[一-龥]/.test(doc.querySelector('.cat-label').textContent))
+}
+
+/* ---------------- P1 真实配图：语义概念层 + 图片模式 ---------------- */
+{
+  check('concept pools cover all 19 categories', Object.keys(CONCEPT_POOLS).length === 19)
+  let badPools = 0
+  for (const keys of Object.values(CONCEPT_POOLS)) {
+    if (keys.length < 5 || keys.some((k) => !ART_CONCEPTS[k])) badPools++
+  }
+  check('every pool key resolves and pools non-trivial', badPools === 0)
+  for (const n of ['01', '02', '03', '04', '05', '06', '07', '08']) {
+    check(`shared portrait ${n} defined`, !!ART_CONCEPTS[`shared.portrait.${n}`])
+  }
+  check('shared map and logowall defined', !!ART_CONCEPTS['shared.map'] && !!ART_CONCEPTS['shared.logowall'])
+
+  const t = catalog[0]
+  const d = buildDeck(t)
+  const teamPage = d.pages.find((p) => p.layout === 'team')
+  check('team layout pins shared portrait concept', !!teamPage && conceptFor(t, teamPage, 0).startsWith('shared.portrait.'))
+  const c1 = conceptFor(t, teamPage, 0)
+  check('conceptFor is deterministic', conceptFor(t, teamPage, 0) === c1)
+  const mapPage = d.pages.find((p) => p.layout === 'map')
+  if (mapPage) check('map layout pins map concept', conceptFor(t, mapPage) === 'shared.map')
+  const logosPage = d.pages.find((p) => p.layout === 'logos')
+  if (logosPage) check('logos layout pins logowall concept', conceptFor(t, logosPage) === 'shared.logowall')
+  const regularPage = d.pages.find((p) => !['team', 'testimonial', 'map', 'logos'].includes(p.layout))
+  const regularKey = conceptFor(t, regularPage, 0)
+  check('regular page concept belongs to its category pool', CONCEPT_POOLS[t.cats[0]].includes(regularKey))
+  const regularIdx = d.pages.indexOf(regularPage)
+
+  check('default svg mode has no img tag', !renderPageHTML(t, regularIdx).includes('<img'))
+  configureArt({ mode: 'illustration', manifest: { [regularKey]: { illustration: '/art/illustration/x.svg', photo: '/art/photo/x.jpg' } } })
+  const illHtml = renderPageHTML(t, regularIdx)
+  check('illustration mode emits img with illustration src', illHtml.includes('dp-art-img') && illHtml.includes('src="/art/illustration/x.svg"'))
+  configureArt({ mode: 'photo' })
+  check('photo mode prefers photo src', renderPageHTML(t, regularIdx).includes('src="/art/photo/x.jpg"'))
+  configureArt({ mode: 'illustration', manifest: {} })
+  const fallbackHtml = renderPageHTML(t, regularIdx)
+  check('missing manifest entry falls back to inline svg', !fallbackHtml.includes('<img') && fallbackHtml.includes('dp-art'))
+  configureArt({ mode: 'svg', manifest: { [regularKey]: { illustration: '/art/x.svg' } } })
+  check('svg mode never emits img', !renderPageHTML(t, regularIdx).includes('<img'))
+
+  configureArt({ mode: 'illustration', manifest: { [regularKey]: { illustration: '/art/x.svg' } } })
+  setArtOverride(t.id, regularPage.no, 0, 'data:text/plain,override')
+  check('per-page override wins over manifest', renderPageHTML(t, regularIdx).includes('src="data:text/plain,override"'))
+  clearArtOverride(t.id, regularPage.no, 0)
+  check('override cleared restores manifest src', renderPageHTML(t, regularIdx).includes('src="/art/x.svg"'))
+
+  if (mapPage) {
+    const mi = d.pages.indexOf(mapPage)
+    configureArt({ mode: 'illustration', manifest: { 'shared.map': { illustration: '/art/map.svg' } } })
+    check('map uses real illustrated map when available', renderPageHTML(t, mi).includes('src="/art/map.svg"'))
+  }
+
+  // 全量 950 套：插画模式 + 空清单不报错，每页仍有 dp-art（SVG 兜底）
+  configureArt({ mode: 'illustration', manifest: {}, overrides: {} })
+  let renderBad = 0
+  for (const tpl of catalog) {
+    const deck = buildDeck(tpl)
+    for (let i = 0; i < deck.pages.length; i++) {
+      if (!renderPageHTML(tpl, i).includes('dp-art')) renderBad++
+    }
+  }
+  check('all 950 decks render with artwork in illustration mode', renderBad === 0, `bad=${renderBad}`)
+
+  configureArt({ mode: 'svg', manifest: {}, overrides: {} })
+  check('art config reset to svg after tests', getArtMode() === 'svg')
 }
 
 console.log(`\n${fails.length === 0 ? `ALL ${passed} TEMPLATE ENGINE CHECKS PASSED` : `${fails.length} FAILED: ${fails.join('; ')}`}`)

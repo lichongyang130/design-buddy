@@ -2111,3 +2111,22 @@
   .dp-split-grid { flex-direction: column; gap: 10px; }
   .dp-side-art { width: 100%; height: 30%; }
 }
+
+/* ---------------- 真实配图模式（P1）：<img> 嵌入与 SVG 同构 ---------------- */
+.dp-art-img {
+  display: flex;
+  background: var(--dp-paper);
+}
+.dp-art-img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.dp-map.dp-art img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: inherit;
+}

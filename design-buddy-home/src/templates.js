@@ -8,13 +8,21 @@ import { store, toast, openModal, confirmModal, uid, fmtDate, copyText } from '.
 import { initGlobalUI, openUpgrade } from './global-ui.js'
 import {
   buildCatalog, buildDeck, renderPageHTML, metaFor, coverStyle, coverDeco,
-  displayTpl, catLabel, VISIBLE_CATS, HIDDEN_CATS,
+  displayTpl, catLabel, VISIBLE_CATS, HIDDEN_CATS, configureArt,
 } from './template-engine.js'
 
 initGlobalUI()
 
 /* 语言状态（持久化）：zh | en */
 store.state.templateLang ??= 'zh'
+/* 配图模式（持久化）：illustration 绘本插画（默认）| photo 真实照片 | svg 经典 SVG */
+store.state.imageMode ??= 'illustration'
+configureArt({ mode: store.state.imageMode })
+// 加载构建期素材清单；缺失/离线时静默失败，引擎自动回退内联 SVG
+fetch(`${import.meta.env.BASE_URL}art/manifest.json`)
+  .then((r) => (r.ok ? r.json() : null))
+  .then((m) => { if (m?.concepts) configureArt({ manifest: m.concepts }) })
+  .catch(() => {})
 const lang = () => (store.state.templateLang === 'en' ? 'en' : 'zh')
 const UI = {
   zh: {
@@ -656,6 +664,7 @@ function openTemplateDetail(tpl) {
   function renderDeck() {
     const t = cur()
     const locale = lang()
+    configureArt({ mode: store.state.imageMode ?? 'illustration' })
     const deck = buildDeck(t, locale)
     if (pageIdx >= deck.pages.length) pageIdx = 0
     const edits = pageEdits(t, locale, pageIdx)

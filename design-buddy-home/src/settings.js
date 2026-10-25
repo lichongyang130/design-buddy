@@ -9,6 +9,9 @@ import { initGlobalUI, applyAppearance, openUpgrade } from './global-ui.js'
 
 initGlobalUI()
 
+// 配图模式与模板页共享同一持久化字段，默认绘本插画
+store.state.imageMode ??= 'illustration'
+
 const $ = (sel, root = document) => root.querySelector(sel)
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)]
 const s = () => store.state.settings
@@ -159,6 +162,9 @@ const SECTION_BUILDERS = {
     ${row('界面密度', '', selectHtml('settings.appearance.density', [['comfortable', '舒适'], ['compact', '紧凑']]))}
     ${row('字体', '', selectHtml('settings.fontFamily', [
       ['system', '系统默认'], ['song', '宋体'], ['hei', '黑体'], ['georgia', 'Georgia 衬线'], ['mono', '等宽字体'],
+    ]))}
+    ${row('模板配图模式', '绘本插画为默认；素材未就绪的页面自动回退经典 SVG，不会白屏', selectHtml('imageMode', [
+      ['illustration', '绘本插画'], ['photo', '真实照片'], ['svg', '经典 SVG'],
     ]))}
     ${row('减弱动效', '降低弹窗与过渡动画强度', switchHtml('settings.appearance.reduceMotion'))}
   `, '外观'),
