@@ -11,6 +11,7 @@ import { initGlobalUI, applyAppearance, openUpgrade } from './global-ui.js'
 import {
   previewLockScreen, testWakeLock, wakeLockState, pwaState, installPwa, testProxyConnection,
 } from './settings-effects.js'
+import { t, tt, optionLabel, dynOptionLabel, modelLabel } from './i18n.js'
 
 initGlobalUI()
 
@@ -20,6 +21,10 @@ store.state.imageMode ??= 'illustration'
 const $ = (sel, root = document) => root.querySelector(sel)
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)]
 const s = () => store.state.settings
+// 当前界面语言（存储为语言本名，缺省简体中文）
+const curLang = () => s().language || '简体中文'
+// 当前停留的设置组 key，语言切换时据此重绘动态视图
+let activeSection = 'general'
 
 /* ---------------- 通用工具：按路径读写 state ---------------- */
 
@@ -50,10 +55,11 @@ function switchHtml(path) {
     aria-checked="${on}" data-bind-switch="${path}"><span class="switch-knob"></span></button>`
 }
 
-function selectHtml(path, options) {
+function selectHtml(path, options, kind = path) {
   const cur = getPath(path)
+  const lang = curLang()
   return `<select data-bind="${path}">
-    ${options.map(([v, label]) => `<option value="${esc(v)}" ${v === cur ? 'selected' : ''}>${label}</option>`).join('')}
+    ${options.map(([v, label]) => `<option value="${esc(v)}" ${v === cur ? 'selected' : ''}>${dynOptionLabel(kind, v, label, lang)}</option>`).join('')}
   </select>`
 }
 
@@ -67,52 +73,66 @@ function card(inner, label) {
 
 /* ---------------- 通用视图（原 HTML 结构）绑定 ---------------- */
 
-const GENERAL_SELECTS = [
-  ['settings.language', '语言'],
-  ['settings.linkOpen', '链接打开方式'],
-  ['settings.lockScreen', '允许锁屏运行'],
-  ['settings.proxy', '网络代理'],
-]
-const GENERAL_SWITCHES = [
-  'settings.keepAwake',
-  'settings.autoStart',
-  'settings.trustedSkills',
-  'settings.skillAutoUpdate',
+// 四个下拉的存储路径与标题 token；枚举下拉的存储值始终是中文枚举（旧数据契约不变）
+const SELECT_KIND_META = {
+  language: { path: 'settings.language', labelToken: 'set.language' },
+  linkOpen: { path: 'settings.linkOpen', labelToken: 'set.linkOpen' },
+  lockScreen: { path: 'settings.lockScreen', labelToken: 'set.lockScreen' },
+  proxy: { path: 'settings.proxy', labelToken: 'set.proxy' },
+}
+// 四个开关：DOM 顺序与路径、标题 token 一一对应
+const SWITCH_META = [
+  ['settings.keepAwake', 'set.keepAwake'],
+  ['settings.autoStart', 'set.autoStart'],
+  ['settings.trustedSkills', 'set.trustedSkills'],
+  ['settings.skillAutoUpdate', 'set.skillAutoUpdate'],
 ]
 const ZOOM_LEVELS = [0.85, 0.925, 1, 1.08, 1.17]
-const FONT_LEVELS = ['很小', '小', '默认', '大', '很大']
+const FONT_TOKENS = ['font.tiny', 'font.small', 'font.normal', 'font.large', 'font.huge']
+const fontLabel = (i) => t(FONT_TOKENS[i], curLang())
 
 function bindGeneral() {
-  $$('[data-select]').forEach((wrap, i) => {
-    const [path] = GENERAL_SELECTS[i]
-    $('.select-value', wrap).textContent = getPath(path)
+  $$('[data-select]').forEach((wrap) => {
+    const kind = wrap.dataset.selectKind
+    const meta = SELECT_KIND_META[kind]
+    if (!meta) return
+    const valueEl = $('.select-value', wrap)
+    // 语言名直接显示；枚举值翻译为当前语言
+    const paint = () => {
+      const val = getPath(meta.path)
+      valueEl.textContent = kind === 'language' ? val : optionLabel(kind, val, curLang())
+    }
+    paint()
     wrap.addEventListener('click', (event) => {
       const opt = event.target.closest('.select-option')
       if (!opt) return
-      setPath(path, opt.textContent.trim())
-      $('.select-value', wrap).textContent = opt.textContent.trim()
+      // 语言选项存母语名；枚举选项存 data-value 中的中文枚举
+      const canonical = kind === 'language' ? opt.textContent.trim() : opt.dataset.value
+      setPath(meta.path, canonical)
+      paint()
       $$('.select-option', wrap).forEach((o) => {
         const on = o === opt
         o.classList.toggle('is-selected', on)
         o.setAttribute('aria-selected', String(on))
       })
-      toast(`已保存：${GENERAL_SELECTS[i][1]} → ${opt.textContent.trim()}`)
+      const shown = kind === 'language' ? canonical : optionLabel(kind, canonical, curLang())
+      toast(tt('toast.saved', curLang(), { label: t(meta.labelToken, curLang()), value: shown }))
     })
   })
 
   $$('[data-switch]').forEach((sw, i) => {
-    const path = GENERAL_SWITCHES[i]
+    const [path, labelToken] = SWITCH_META[i]
     sw.addEventListener('click', () => {
       const on = !getPath(path)
       setPath(path, on)
       sw.classList.toggle('is-on', on)
       sw.setAttribute('aria-checked', String(on))
-      toast(`${sw.dataset.label}：${on ? '开启' : '关闭'}`)
+      toast(tt(on ? 'toast.switchOn' : 'toast.switchOff', curLang(), { label: t(labelToken, curLang()) }))
     })
   })
 
   // 网络代理：选择「自定义代理」时展开真实 URL 输入，作为素材请求基址立即生效
-  const proxyWrap = $$('[data-select]')[GENERAL_SELECTS.findIndex(([p]) => p === 'settings.proxy')]
+  const proxyWrap = $$('[data-select]').find((w) => w.dataset.selectKind === 'proxy')
   if (proxyWrap) {
     const input = document.createElement('input')
     input.type = 'url'
@@ -133,32 +153,24 @@ function bindGeneral() {
   const paint = () => {
     const pct = (Number(slider.value) / Number(slider.max)) * 100
     slider.style.background = `linear-gradient(90deg, var(--navy) ${pct}%, #d7dce5 ${pct}%)`
-    if (levelLabel) levelLabel.textContent = FONT_LEVELS[Number(slider.value)]
+    if (levelLabel) levelLabel.textContent = fontLabel(Number(slider.value))
   }
   slider.addEventListener('input', () => {
     s().fontScale = ZOOM_LEVELS[Number(slider.value)]
     store.save()
     applyAppearance()
     paint()
-    toast(`字体大小：${FONT_LEVELS[Number(slider.value)]}`)
+    toast(tt('toast.font', curLang(), { level: fontLabel(Number(slider.value)) }))
   })
   paint()
 }
 
 /* ---------------- 九项设置的真实行为接线（可当场验证） ---------------- */
 
-const WAKE_STATE_TEXT = {
-  unsupported: '当前浏览器不支持',
-  disabled: '开关已关闭',
-  idle: '未激活',
-  active: '已激活 · 屏幕保持唤醒',
-  failed: '激活被拒绝',
-}
-const PWA_STATE_TEXT = {
-  installed: '已安装为桌面应用',
-  installable: '可安装',
-  unsupported: '当前环境不可安装',
-}
+// 唤醒锁 / PWA 状态：state 键直接对应 i18n token（wake.* / pwa.*）
+const wakeStateText = (state) => t(`wake.${state}`, curLang())
+const pwaStateText = (state) => t(`pwa.${state}`, curLang())
+const proxyReasonText = (reason) => t(`proxy.reason.${reason}`, curLang())
 
 function bindRealSettings() {
   // 锁屏运行：立即体验三种策略的真实分叉
@@ -171,17 +183,17 @@ function bindRealSettings() {
   const paintWake = (extra) => {
     if (!wakeChip) return
     const state = extra ?? wakeLockState()
-    wakeChip.textContent = WAKE_STATE_TEXT[state] ?? state
+    wakeChip.textContent = wakeStateText(state)
     wakeChip.dataset.state = state
   }
   paintWake()
   $('#wakelock-test-btn')?.addEventListener('click', async () => {
     const r = await testWakeLock()
     paintWake(r.state)
-    if (r.state === 'active') toast('唤醒锁已激活，任务运行期间屏幕不会休眠')
-    else if (r.state === 'unsupported') toast('当前浏览器不支持 Screen Wake Lock API')
-    else if (r.state === 'disabled') toast('请先开启「运行时防止系统休眠」开关')
-    else toast(`唤醒锁激活失败：${r.message ?? '权限被拒绝'}`)
+    if (r.state === 'active') toast(t('toast.wakeActive', curLang()))
+    else if (r.state === 'unsupported') toast(t('toast.wakeUnsupported', curLang()))
+    else if (r.state === 'disabled') toast(t('toast.wakeDisabled', curLang()))
+    else toast(tt('toast.wakeFail', curLang(), { detail: r.message ?? t('wake.failed', curLang()) }))
   })
 
   // 开机自启：Web 等价物 = 安装 PWA 桌面应用
@@ -190,45 +202,79 @@ function bindRealSettings() {
   const paintPwa = () => {
     const state = pwaState()
     if (pwaChip) {
-      pwaChip.textContent = PWA_STATE_TEXT[state] ?? state
+      pwaChip.textContent = pwaStateText(state)
       pwaChip.dataset.state = state
     }
     if (pwaBtn) {
       pwaBtn.disabled = state !== 'installable'
-      pwaBtn.textContent = state === 'installed' ? '已安装，打开桌面应用' : '安装为桌面应用'
+      pwaBtn.textContent = state === 'installed'
+        ? t('set.pwaInstalled', curLang())
+        : t('set.installPwa', curLang())
     }
   }
   paintPwa()
   document.addEventListener('db:pwa-changed', paintPwa)
   pwaBtn?.addEventListener('click', async () => {
     const r = await installPwa()
-    if (r.ok) toast('已安装，可在系统设置中把 Design Buddy 加入登录项')
-    else if (r.reason === 'installed') toast('应用已安装，请从桌面或启动台打开')
-    else toast('当前浏览器未提供安装入口，请使用浏览器菜单中的「安装应用」')
+    if (r.ok) toast(t('toast.pwaDone', curLang()))
+    else if (r.reason === 'installed') toast(t('toast.pwaAlready', curLang()))
+    else toast(t('toast.pwaNoEntry', curLang()))
     paintPwa()
   })
 
   // 网络代理：真实发起清单请求验证连通性与延迟
   const proxyChip = $('#proxy-state')
+  let proxyLast = null
+  const paintProxy = (r) => {
+    if (!proxyChip || !r) return
+    if (r.ok) {
+      proxyChip.textContent = tt('proxy.success', curLang(), { ms: r.ms, status: r.status })
+      proxyChip.dataset.state = 'ok'
+    } else {
+      proxyChip.textContent = proxyReasonText(r.reason ?? 'fail')
+      proxyChip.dataset.state = 'fail'
+    }
+  }
   $('#proxy-test-btn')?.addEventListener('click', async () => {
     if (proxyChip) {
-      proxyChip.textContent = '测试中…'
+      proxyChip.textContent = t('state.testing', curLang())
       proxyChip.dataset.state = 'testing'
     }
     const r = await testProxyConnection()
+    proxyLast = r
     if (!proxyChip) return
     if (r.ok) {
-      proxyChip.textContent = `连接成功 · ${r.ms}ms · HTTP ${r.status}`
+      proxyChip.textContent = tt('proxy.success', curLang(), { ms: r.ms, status: r.status })
       proxyChip.dataset.state = 'ok'
-      toast(`代理连接正常（${r.ms}ms）`)
+      toast(tt('toast.proxyOk', curLang(), { ms: r.ms }))
     } else {
-      const reason = {
-        empty: '请先填写代理地址', 'bad-url': '代理地址格式不正确',
-        timeout: '连接超时（6 秒）', network: '无法连接到代理',
-      }[r.reason] ?? '连接失败'
+      const reason = proxyReasonText(r.reason ?? 'fail')
       proxyChip.textContent = reason
       proxyChip.dataset.state = 'fail'
       toast(reason)
+    }
+  })
+
+  // 语言切换时，把已产生的动态状态与下拉显示同步到新语言（只在语言真的变化时触发）
+  let lastLang = curLang()
+  store.subscribe(() => {
+    if (curLang() === lastLang) return
+    lastLang = curLang()
+    $$('[data-select]').forEach((wrap) => {
+      const kind = wrap.dataset.selectKind
+      const meta = SELECT_KIND_META[kind]
+      if (!meta) return
+      const val = getPath(meta.path)
+      $('.select-value', wrap).textContent = kind === 'language' ? val : optionLabel(kind, val, curLang())
+    })
+    paintWake()
+    paintPwa()
+    paintProxy(proxyLast)
+    const slider = $('#font-slider')
+    if (slider) $('#font-level-label').textContent = fontLabel(Number(slider.value))
+    // 停留在 13 个动态设置组时，整组按新语言重渲染（事件代理挂在容器上，无需重绑）
+    if (activeSection !== 'general' && !viewPlaceholder.hidden) {
+      renderSection(activeSection)
     }
   })
 }
@@ -246,126 +292,142 @@ function standardThemeOptions() {
     ['th-seafoam', 'Seafoam'], ['th-nebulae', 'Nebulae'], ['th-creme', 'Creme'], ['th-lux', 'Lux'],
     ['th-consultant', 'Consultant'], ['th-marine', 'Marine'],
   ]
-  const customs = store.state.customThemes.map((t) => [t.id, `自定义 · ${t.name}`])
-  return [['', '跟随系统默认'], ...standard, ...customs]
+  const customs = store.state.customThemes.map((th) => [th.id, tt('dy.app.customTheme', curLang(), { name: th.name })])
+  return [['', t('dy.app.themeSystem', curLang())], ...standard, ...customs]
+}
+
+// 动态设置组 key → 侧栏导航 token（卡片标题复用导航文案）
+const SECTION_NAV_TOKEN = {
+  profile: 'nav.profile', billing: 'nav.billing', appearance: 'nav.appearance',
+  shortcuts: 'nav.shortcuts', personalize: 'nav.personalize', memory: 'nav.memory',
+  agents: 'nav.agents', models: 'nav.models', assistant: 'nav.assistant',
+  devices: 'nav.devices', data: 'nav.data', apps: 'nav.apps', security: 'nav.security',
+}
+const sectionLabel = (key) => t(SECTION_NAV_TOKEN[key], curLang())
+const SHORTCUT_LABEL_TOKEN = {
+  search: 'dy.sk.search', newGamma: 'dy.sk.newGamma', send: 'dy.sk.send', upload: 'dy.sk.upload',
 }
 
 const SECTION_BUILDERS = {
   profile: () => card(`
-    ${row('显示名称', '侧栏与头像旁展示的名字', textHtml('settings.profile.name'))}
-    ${row('头像缩写', '两字符以内', textHtml('settings.profile.initials'))}
-    ${row('个人简介', '', '<textarea data-bind="settings.profile.bio" rows="3">' + esc(s().profile.bio) + '</textarea>')}
-  `, '个人主页'),
+    ${row(t('dy.profile.nameTitle', curLang()), t('dy.profile.nameDesc', curLang()), textHtml('settings.profile.name'))}
+    ${row(t('dy.profile.initialsTitle', curLang()), t('dy.profile.initialsDesc', curLang()), textHtml('settings.profile.initials'))}
+    ${row(t('dy.profile.bioTitle', curLang()), '', '<textarea data-bind="settings.profile.bio" rows="3">' + esc(s().profile.bio) + '</textarea>')}
+  `, sectionLabel('profile')),
 
   billing: () => {
     const ws = store.state.workspaces.find((w) => w.id === store.state.activeWorkspaceId)
+    const lang = curLang()
+    const total = store.state.gammas.filter((g) => !g.deleted).length
+    const trash = store.state.gammas.filter((g) => g.deleted).length
     return card(`
-      ${row('当前套餐', ws.plan === 'pro' ? 'Pro 已解锁全部模式' : 'Free 计划，可随时升级',
+      ${row(t('dy.bill.planTitle', lang), ws.plan === 'pro' ? t('dy.bill.planPro', lang) : t('dy.bill.planFree', lang),
         `<strong>${ws.plan === 'pro' ? 'Pro' : 'Free'}</strong>`)}
-      ${row('剩余积分', '每次创作按模式消耗 1 / 3 / 8 积分', `<strong>${store.state.credits}</strong>`)}
-      ${row('已创建 Design Buddy', `共 ${store.state.gammas.filter((g) => !g.deleted).length} 个，垃圾箱 ${store.state.gammas.filter((g) => g.deleted).length} 个`,
-        '<button class="btn btn-primary" data-act="upgrade">升级 / 充值</button>')}
-    `, '套餐与积分')
+      ${row(t('dy.bill.creditsTitle', lang), t('dy.bill.creditsDesc', lang), `<strong>${store.state.credits}</strong>`)}
+      ${row(t('dy.bill.gammaTitle', lang), tt('dy.bill.gammaDesc', lang, { total, trash }),
+        `<button class="btn btn-primary" data-act="upgrade">${t('dy.bill.upgrade', lang)}</button>`)}
+    `, sectionLabel('billing'))
   },
 
   appearance: () => card(`
-    ${row('主题', '与主题页的应用操作实时同步', selectHtml('settings.appearance.themeId', standardThemeOptions()))}
-    ${row('界面密度', '', selectHtml('settings.appearance.density', [['comfortable', '舒适'], ['compact', '紧凑']]))}
-    ${row('字体', '', selectHtml('settings.fontFamily', [
+    ${row(t('dy.app.themeTitle', curLang()), t('dy.app.themeDesc', curLang()), selectHtml('settings.appearance.themeId', standardThemeOptions()))}
+    ${row(t('dy.app.densityTitle', curLang()), '', selectHtml('settings.appearance.density', [['comfortable', '舒适'], ['compact', '紧凑']]))}
+    ${row(t('dy.app.fontTitle', curLang()), '', selectHtml('settings.fontFamily', [
       ['system', '系统默认'], ['song', '宋体'], ['hei', '黑体'], ['georgia', 'Georgia 衬线'], ['mono', '等宽字体'],
     ]))}
-    ${row('模板配图模式', '绘本插画为默认；素材未就绪的页面自动回退经典 SVG，不会白屏', selectHtml('imageMode', [
+    ${row(t('dy.app.imageModeTitle', curLang()), t('dy.app.imageModeDesc', curLang()), selectHtml('imageMode', [
       ['illustration', '绘本插画'], ['photo', '真实照片'], ['svg', '经典 SVG'],
     ]))}
-    ${row('减弱动效', '降低弹窗与过渡动画强度', switchHtml('settings.appearance.reduceMotion'))}
-  `, '外观'),
+    ${row(t('dy.app.reduceMotionTitle', curLang()), t('dy.app.reduceMotionDesc', curLang()), switchHtml('settings.appearance.reduceMotion'))}
+  `, sectionLabel('appearance')),
 
   shortcuts: () => card(
     Object.entries(s().shortcuts).map(([key, val]) => row(
-      { search: '全局搜索', newGamma: '新建 Design Buddy', send: '发送提示词', upload: '上传媒体' }[key] ?? key,
-      '点击右侧按钮后按下新的组合键',
+      SHORTCUT_LABEL_TOKEN[key] ? t(SHORTCUT_LABEL_TOKEN[key], curLang()) : key,
+      t('dy.sk.desc', curLang()),
       `<button class="btn btn-ghost" data-shortcut="${key}">${esc(val)}</button>`,
     )).join(''),
-    '快捷键',
+    sectionLabel('shortcuts'),
   ),
 
   personalize: () => card(`
-    ${row('智能建议', '根据上下文主动给出创作建议', switchHtml('settings.personalize.smartSuggest'))}
-    ${row('自动命名', '为新 Design Buddy 自动生成标题', switchHtml('settings.personalize.autoTitle'))}
-    ${row('每周报告', '每周一汇总创作数据', switchHtml('settings.personalize.weeklyReport'))}
-  `, '个性化'),
+    ${row(t('dy.pers.smartTitle', curLang()), t('dy.pers.smartDesc', curLang()), switchHtml('settings.personalize.smartSuggest'))}
+    ${row(t('dy.pers.autoTitle', curLang()), t('dy.pers.autoDesc', curLang()), switchHtml('settings.personalize.autoTitle'))}
+    ${row(t('dy.pers.weeklyTitle', curLang()), t('dy.pers.weeklyDesc', curLang()), switchHtml('settings.personalize.weeklyReport'))}
+  `, sectionLabel('personalize')),
 
   memory: () => card(`
     <div class="setting-row"><div class="setting-info">
-      <h3>记忆条目</h3><p>Buddy 在每次创作中遵循的长期偏好，可随时增删。</p>
+      <h3>${t('dy.mem.itemsTitle', curLang())}</h3><p>${t('dy.mem.itemsDesc', curLang())}</p>
       <div class="memory-list" id="memory-list">
-        ${s().memories.map((m, i) => `<span class="mem-chip">${esc(m)}<button type="button" data-mem-del="${i}" aria-label="删除">×</button></span>`).join('')}
+        ${s().memories.map((m, i) => `<span class="mem-chip">${esc(m)}<button type="button" data-mem-del="${i}" aria-label="${t('dy.common.delete', curLang())}">×</button></span>`).join('')}
       </div>
       <div class="msg-form" style="margin-top:10px">
-        <input type="text" id="mem-input" placeholder="添加一条记忆，例如：输出避免使用 emoji" />
-        <button class="btn btn-primary" id="mem-add" type="button">添加</button>
+        <input type="text" id="mem-input" placeholder="${t('dy.mem.inputPh', curLang())}" />
+        <button class="btn btn-primary" id="mem-add" type="button">${t('dy.mem.add', curLang())}</button>
       </div>
     </div></div>
     <div class="setting-row"><div class="setting-info" style="flex:1">
-      <h3>自定义指令</h3>
+      <h3>${t('dy.mem.instTitle', curLang())}</h3>
       <textarea data-bind="instructions" rows="3" style="width:100%;margin-top:8px">${esc(store.state.instructions)}</textarea>
     </div></div>
-  `, '记忆与进化'),
+  `, sectionLabel('memory')),
 
   agents: () => card(`
-    ${s().agents.map((ag) => row(ag.name, '可在创作菜单中召唤的智能体',
+    ${s().agents.map((ag) => row(ag.name, t('dy.ag.desc', curLang()),
       `<button class="switch ${ag.on ? 'is-on' : ''}" data-agent-toggle="${ag.id}"><span class="switch-knob"></span></button>
-       <button class="icon-mini" data-agent-del="${ag.id}" title="删除"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>`
+       <button class="icon-mini" data-agent-del="${ag.id}" title="${t('dy.common.delete', curLang())}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>`
     )).join('')}
-    <div class="setting-row"><button class="btn btn-ghost" data-act="add-agent" type="button">＋ 添加智能体</button></div>
-  `, '智能体'),
+    <div class="setting-row"><button class="btn btn-ghost" data-act="add-agent" type="button">${t('dy.ag.add', curLang())}</button></div>
+  `, sectionLabel('agents')),
 
   models: () => card(
     [
-      ['标准模型', '均衡的速度与质量，日常创作首选'],
-      ['高级模型', '更强的推理与长文能力，消耗更多积分'],
-      ['极速模型', '最快响应，适合简单任务'],
-    ].map(([v, desc]) => row(v, desc, `
+      ['标准模型', 'dy.mdl.standard', 'dy.mdl.standardDesc'],
+      ['高级模型', 'dy.mdl.premium', 'dy.mdl.premiumDesc'],
+      ['极速模型', 'dy.mdl.fast', 'dy.mdl.fastDesc'],
+    ].map(([v, titleTok, descTok]) => row(t(titleTok, curLang()), t(descTok, curLang()), `
       <button class="switch ${s().model === v ? 'is-on' : ''}" data-model="${v}"><span class="switch-knob"></span></button>`)).join(''),
-    '模型',
+    sectionLabel('models'),
   ),
 
   assistant: () => card(`
-    ${row('助理名称', '', textHtml('settings.assistant.name'))}
-    ${row('语音', '用于语音播报与朗读', selectHtml('settings.assistant.voice', [
+    ${row(t('dy.asst.nameTitle', curLang()), '', textHtml('settings.assistant.name'))}
+    ${row(t('dy.asst.voiceTitle', curLang()), t('dy.asst.voiceDesc', curLang()), selectHtml('settings.assistant.voice', [
       ['温暖女声', '温暖女声'], ['沉稳男声', '沉稳男声'], ['清亮女声', '清亮女声'], ['中性合成音', '中性合成音'],
     ]))}
-  `, '助理'),
+  `, sectionLabel('assistant')),
 
   devices: () => card(`
-    ${s().devices.map((d) => row(d.name, d.current ? '当前设备' : '最近登录设备',
-      d.current ? '<span class="count-pill">本机</span>' : `<button class="btn btn-ghost" data-device-del="${d.id}">移除</button>`)).join('')}
-  `, '设备连接'),
+    ${s().devices.map((d) => row(d.name, d.current ? t('dy.dev.current', curLang()) : t('dy.dev.recent', curLang()),
+      d.current ? `<span class="count-pill">${t('dy.dev.local', curLang())}</span>` : `<button class="btn btn-ghost" data-device-del="${d.id}">${t('dy.dev.remove', curLang())}</button>`)).join('')}
+  `, sectionLabel('devices')),
 
   data: () => card(`
-    ${row('导出数据', '把全部工作区、Design Buddy、主题与设置下载为 JSON 文件',
-      '<button class="btn btn-primary" data-act="export" type="button">导出 JSON</button>')}
-    ${row('导入数据', '从之前导出的 JSON 恢复，将覆盖当前本地数据',
-      '<button class="btn btn-ghost" data-act="import" type="button">选择文件导入</button>')}
-    ${row('重置应用', '清空本地全部数据并恢复初始演示状态',
-      '<button class="btn btn-danger" data-act="reset" type="button">重置</button>')}
-  `, '数据管理'),
+    ${row(t('dy.data.exportTitle', curLang()), t('dy.data.exportDesc', curLang()),
+      `<button class="btn btn-primary" data-act="export" type="button">${t('dy.data.exportBtn', curLang())}</button>`)}
+    ${row(t('dy.data.importTitle', curLang()), t('dy.data.importDesc', curLang()),
+      `<button class="btn btn-ghost" data-act="import" type="button">${t('dy.data.importBtn', curLang())}</button>`)}
+    ${row(t('dy.data.resetTitle', curLang()), t('dy.data.resetDesc', curLang()),
+      `<button class="btn btn-danger" data-act="reset" type="button">${t('dy.data.resetBtn', curLang())}</button>`)}
+  `, sectionLabel('data')),
 
   apps: () => card(`
-    ${s().apps.map((ap) => row(ap.name, '在创作类型中显示该应用',
+    ${s().apps.map((ap) => row(ap.name, t('dy.apps.desc', curLang()),
       `<button class="switch ${ap.on ? 'is-on' : ''}" data-app-toggle="${ap.id}"><span class="switch-knob"></span></button>`)).join('')}
-    <div class="setting-row"><button class="btn btn-ghost" data-act="add-app" type="button">＋ 添加应用</button></div>
-  `, '应用管理'),
+    <div class="setting-row"><button class="btn btn-ghost" data-act="add-app" type="button">${t('dy.apps.add', curLang())}</button></div>
+  `, sectionLabel('apps')),
 
   security: () => card(`
-    ${row('两步验证', '登录新设备时要求额外验证码', switchHtml('settings.security.twoFA'))}
-    ${row('会话超时', '无操作多久后自动锁定', selectHtml('settings.security.sessionTimeout', [
+    ${row(t('dy.sec.twoFaTitle', curLang()), t('dy.sec.twoFaDesc', curLang()), switchHtml('settings.security.twoFA'))}
+    ${row(t('dy.sec.timeoutTitle', curLang()), t('dy.sec.timeoutDesc', curLang()), selectHtml('settings.security.sessionTimeout', [
       ['15 分钟', '15 分钟'], ['30 分钟', '30 分钟'], ['1 小时', '1 小时'], ['永不', '永不'],
     ]))}
-  `, '安全中心'),
+  `, sectionLabel('security')),
 }
 
 function renderSection(key, label) {
+  activeSection = key
   $$('[data-settings]').forEach((item) => item.classList.toggle('nav-item-active', item.dataset.settings === key))
   if (key === 'general') {
     viewGeneral.hidden = false
@@ -374,7 +436,9 @@ function renderSection(key, label) {
   }
   viewGeneral.hidden = true
   viewPlaceholder.hidden = false
-  viewPlaceholder.innerHTML = SECTION_BUILDERS[key]?.() ?? card(`<p class="modal-copy">「${label}」暂无可配置项。</p>`, label)
+  const localizedLabel = SECTION_NAV_TOKEN[key] ? sectionLabel(key) : label
+  viewPlaceholder.innerHTML = SECTION_BUILDERS[key]?.()
+    ?? card(`<p class="modal-copy">${tt('ph.empty', curLang(), { label: localizedLabel })}</p>`, localizedLabel)
 }
 
 /* ---------------- 侧栏导航 / 搜索 ---------------- */
@@ -421,7 +485,7 @@ viewPlaceholder.addEventListener('change', (e) => {
   if (!bind) return
   setPath(bind.dataset.bind, bind.value)
   applyAppearance()
-  toast('设置已保存')
+  toast(t('toast.settingSaved', curLang()))
 })
 
 viewPlaceholder.addEventListener('click', async (e) => {
@@ -439,7 +503,7 @@ viewPlaceholder.addEventListener('click', async (e) => {
     s().model = modelBtn.dataset.model
     store.save()
     renderSection('models', '模型')
-    toast(`已切换到${s().model}`)
+    toast(tt('dy.mdl.switched', curLang(), { model: modelLabel(s().model, curLang()) }))
     return
   }
 
@@ -453,7 +517,7 @@ viewPlaceholder.addEventListener('click', async (e) => {
   }
   if (e.target.closest('[data-agent-del]')) {
     const id = e.target.closest('[data-agent-del]').dataset.agentDel
-    const ok = await confirmModal('删除智能体', '确定删除该智能体吗？', '删除')
+    const ok = await confirmModal(t('dy.ag.confirmTitle', curLang()), t('dy.ag.confirmMsg', curLang()), t('dy.common.delete', curLang()))
     if (!ok) return
     s().agents = s().agents.filter((x) => x.id !== id)
     store.save()
@@ -474,7 +538,7 @@ viewPlaceholder.addEventListener('click', async (e) => {
     s().devices = s().devices.filter((x) => x.id !== id)
     store.save()
     renderSection('devices', '设备连接')
-    toast('设备已移除')
+    toast(t('dy.dev.removed', curLang()))
     return
   }
 
@@ -488,7 +552,7 @@ viewPlaceholder.addEventListener('click', async (e) => {
   if (e.target.closest('#mem-add')) {
     const input = $('#mem-input')
     const val = input.value.trim()
-    if (!val) return toast('请输入记忆内容')
+    if (!val) return toast(t('dy.mem.emptyToast', curLang()))
     s().memories.push(val)
     store.save()
     renderSection('memory', '记忆与进化')
@@ -498,7 +562,7 @@ viewPlaceholder.addEventListener('click', async (e) => {
   if (e.target.closest('[data-shortcut]')) {
     const btn = e.target.closest('[data-shortcut]')
     const key = btn.dataset.shortcut
-    btn.textContent = '请按下组合键…'
+    btn.textContent = t('dy.sk.press', curLang())
     const capture = (ev) => {
       ev.preventDefault()
       const parts = []
@@ -513,7 +577,7 @@ viewPlaceholder.addEventListener('click', async (e) => {
         store.save()
         document.removeEventListener('keydown', capture, true)
         renderSection('shortcuts', '快捷键')
-        toast('快捷键已更新')
+        toast(t('dy.sk.updated', curLang()))
       }
     }
     document.addEventListener('keydown', capture, true)
@@ -524,17 +588,18 @@ viewPlaceholder.addEventListener('click', async (e) => {
   if (!act) return
   if (act.dataset.act === 'upgrade') openUpgrade()
   if (act.dataset.act === 'add-agent' || act.dataset.act === 'add-app') {
-    const name = prompt(act.dataset.act === 'add-agent' ? '智能体名称' : '应用名称')
+    const isAgent = act.dataset.act === 'add-agent'
+    const name = prompt(t(isAgent ? 'dy.ag.promptName' : 'dy.apps.promptName', curLang()))
     if (!name?.trim()) return
-    if (act.dataset.act === 'add-agent') s().agents.push({ id: uid('ag'), name: name.trim(), on: true })
+    if (isAgent) s().agents.push({ id: uid('ag'), name: name.trim(), on: true })
     else s().apps.push({ id: uid('ap'), name: name.trim(), on: true })
     store.save()
-    renderSection(act.dataset.act === 'add-agent' ? 'agents' : 'apps', act.dataset.act === 'add-agent' ? '智能体' : '应用管理')
-    toast('已添加')
+    renderSection(isAgent ? 'agents' : 'apps', isAgent ? '智能体' : '应用管理')
+    toast(t('dy.common.added', curLang()))
   }
   if (act.dataset.act === 'export') {
     downloadFile(`design-buddy-${new Date().toISOString().slice(0, 10)}.json`, store.exportJson())
-    toast('数据已导出')
+    toast(t('dy.data.exported', curLang()))
   }
   if (act.dataset.act === 'import') {
     const file = document.createElement('input')
@@ -547,9 +612,9 @@ viewPlaceholder.addEventListener('click', async (e) => {
           store.importJson(reader.result)
           applyAppearance()
           renderSection('data', '数据管理')
-          toast('导入成功，本地数据已恢复')
+          toast(t('dy.data.importOk', curLang()))
         } catch {
-          toast('导入失败：文件格式不正确')
+          toast(t('dy.data.importFail', curLang()))
         }
       }
       reader.readAsText(file.files[0])
@@ -557,7 +622,7 @@ viewPlaceholder.addEventListener('click', async (e) => {
     file.click()
   }
   if (act.dataset.act === 'reset') {
-    confirmModal('重置应用', '将清空全部本地数据并恢复初始状态，确定继续吗？', '全部重置').then((ok) => {
+    confirmModal(t('dy.data.resetTitle', curLang()), t('dy.data.resetConfirmMsg', curLang()), t('dy.data.resetConfirmBtn', curLang())).then((ok) => {
       if (!ok) return
       store.reset()
       location.reload()

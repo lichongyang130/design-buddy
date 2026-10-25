@@ -54,6 +54,118 @@ const pickOption = async (w, wrap, label) => {
   await pickOption(w, selects()[0], '简体中文')
   check('i18n: back to simplified chinese', railHome.textContent === '首页')
 
+  /* ----- 1b. 常规/权限区四语言全覆盖 + 枚举存储契约 + 图标保留 ----- */
+  // 英文：整区可见文案真实切换
+  await pickOption(w, selects()[0], 'English')
+  check('i18n: EN nav group labels',
+    [...doc.querySelectorAll('.settings-group')].map((g) => g.textContent).join('|') === 'Settings|Features|Data & security')
+  check('i18n: EN search placeholder', doc.querySelector('#settings-search').placeholder === 'Search settings')
+  check('i18n: EN font preview', doc.querySelector('#font-preview').textContent === 'Design Buddy font preview Aa')
+  check('i18n: EN slider aria-label', doc.querySelector('#font-slider').getAttribute('aria-label') === 'Font size')
+  check('i18n: EN test buttons',
+    doc.querySelector('#wakelock-test-btn').textContent === 'Test wake lock'
+    && doc.querySelector('#proxy-test-btn').textContent === 'Test connection'
+    && doc.querySelector('#pwa-install-btn').textContent === 'Install as desktop app')
+  check('i18n: EN honest hint localized', doc.querySelector('#pwa-hint').textContent.startsWith('Browsers cannot'))
+  check('i18n: EN enum option labels',
+    [...selects()[1].querySelectorAll('.select-option')].map((o) => o.textContent.trim()).join('|')
+      === 'Smart open|Always in-app|Always in browser')
+  check('i18n: EN lock enum options',
+    [...selects()[2].querySelectorAll('.select-option')].map((o) => o.textContent.trim()).join('|')
+      === 'Off|Always allow|While charging')
+  // 英文下选择枚举：显示翻译、存储仍是中文枚举（逻辑与旧数据契约不变）
+  await pickOption(w, selects()[1], 'Always in browser')
+  check('i18n: enum displays translated value', selects()[1].querySelector('.select-value').textContent === 'Always in browser')
+  check('i18n: enum stores canonical chinese', readState(storage).settings.linkOpen === '始终在浏览器打开')
+  check('i18n: enum option keeps canonical data-value',
+    selects()[1].querySelectorAll('.select-option')[2].dataset.value === '始终在浏览器打开')
+  // 导航图标在语言切换后不被 textContent 覆盖
+  check('i18n: settings nav icons survive language switch',
+    doc.querySelectorAll('.settings-nav .nav-item svg').length === doc.querySelectorAll('.settings-nav .nav-item').length)
+  // 日文：选项与状态本地化
+  await pickOption(w, selects()[0], '日本語')
+  check('i18n: JA proxy enum options',
+    [...selects()[3].querySelectorAll('.select-option')].map((o) => o.textContent.trim()).join('|')
+      === '直接接続|システムプロキシ|カスタムプロキシ')
+  check('i18n: JA untested chip', doc.querySelector('#proxy-state').textContent === '未テスト')
+  // 繁中：字体预览与下拉显示
+  await pickOption(w, selects()[0], '繁體中文')
+  check('i18n: ZH-TW font preview', doc.querySelector('#font-preview').textContent.includes('字級預覽'))
+  check('i18n: ZH-TW enum display', selects()[1].querySelector('.select-value').textContent === '始終在瀏覽器開啟')
+  check('i18n: stored canonical unchanged across languages', readState(storage).settings.linkOpen === '始终在浏览器打开')
+  // 回简中，恢复后续测试的中文环境
+  await pickOption(w, selects()[0], '简体中文')
+  check('i18n: ZH enum display restored', selects()[1].querySelector('.select-value').textContent === '始终在浏览器打开')
+  await pickOption(w, selects()[1], '智能打开')
+
+  /* ----- 1c. 13 个动态设置组：四语渲染 + 原生 select 存储契约 + 切语言即时重绘 ----- */
+  const openSection = async (key) => {
+    click(w, [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === key))
+    await tick()
+    return doc.querySelector('#view-placeholder')
+  }
+  await pickOption(w, selects()[0], 'English')
+  check('i18n: EN document title', doc.title === 'Settings — Design Buddy')
+  check('i18n: EN nav aria labels',
+    doc.querySelector('nav.rail').getAttribute('aria-label') === 'Main navigation'
+    && doc.querySelector('#settings-nav').getAttribute('aria-label') === 'Settings navigation'
+    && doc.querySelector('.more-flyout').getAttribute('aria-label') === 'More menu')
+  let vp = await openSection('appearance')
+  check('i18n: EN dynamic section label', vp.querySelector('.settings-section-label')?.textContent === 'Appearance')
+  check('i18n: EN dynamic row title', vp.querySelector('.setting-row h3')?.textContent === 'Theme')
+  const densitySel = vp.querySelector('select[data-bind="settings.appearance.density"]')
+  check('i18n: EN dynamic select options translated',
+    [...densitySel.options].map((o) => o.textContent).join('|') === 'Comfortable|Compact')
+  densitySel.value = 'compact'
+  densitySel.dispatchEvent(new w.Event('change', { bubbles: true }))
+  await tick()
+  check('i18n: dynamic select stores canonical value', readState(storage).settings.appearance.density === 'compact')
+  const imageSel = vp.querySelector('select[data-bind="imageMode"]')
+  check('i18n: EN image mode options', [...imageSel.options].map((o) => o.textContent).join('|') === 'Illustration|Photo|Classic SVG')
+  vp = await openSection('models')
+  check('i18n: EN model titles',
+    [...vp.querySelectorAll('.setting-row h3')].map((h) => h.textContent).join('|') === 'Standard model|Advanced model|Turbo model')
+  click(w, vp.querySelector('[data-model="高级模型"]'))
+  await tick()
+  check('i18n: model switch toast localized',
+    [...doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('Advanced model')))
+  check('i18n: model stored canonical chinese', readState(storage).settings.model === '高级模型')
+  vp = await openSection('memory')
+  check('i18n: EN memory heading and placeholder',
+    vp.querySelector('h3')?.textContent === 'Memory notes'
+    && vp.querySelector('#mem-input')?.placeholder === 'Add a note, e.g. avoid emoji in output')
+  input(w, vp.querySelector('#mem-input'), 'i18n-memory-note')
+  click(w, vp.querySelector('#mem-add'))
+  await tick()
+  check('i18n: memory add still works under EN', readState(storage).settings.memories.includes('i18n-memory-note'))
+  vp = await openSection('security')
+  const timeoutSel = vp.querySelector('select[data-bind="settings.security.sessionTimeout"]')
+  check('i18n: EN timeout options translated',
+    [...timeoutSel.options].map((o) => o.textContent).join('|') === '15 minutes|30 minutes|1 hour|Never')
+  timeoutSel.value = '永不'
+  timeoutSel.dispatchEvent(new w.Event('change', { bubbles: true }))
+  await tick()
+  check('i18n: timeout stored canonical chinese', readState(storage).settings.security.sessionTimeout === '永不')
+  vp = await openSection('data')
+  check('i18n: EN data action buttons',
+    [...vp.querySelectorAll('button')].map((b) => b.textContent).join('|') === 'Export JSON|Choose file to import|Reset')
+  // 停留在动态组时切日语：整组即时重绘，无需重新点击侧栏
+  await pickOption(w, selects()[0], '日本語')
+  vp = doc.querySelector('#view-placeholder')
+  check('i18n: JA live re-render of dynamic section',
+    vp.querySelector('.settings-section-label')?.textContent === 'データ'
+    && vp.querySelector('[data-act="export"]')?.textContent === 'JSONを書き出す')
+  // 回简中：动态组中文恢复，模型枚举仍为中文存储
+  await pickOption(w, selects()[0], '简体中文')
+  vp = doc.querySelector('#view-placeholder')
+  check('i18n: ZH dynamic section restored',
+    vp.querySelector('.settings-section-label')?.textContent === '数据管理'
+    && vp.querySelector('[data-act="reset"]')?.textContent === '重置')
+  check('i18n: canonical model survives language roundtrip', readState(storage).settings.model === '高级模型')
+  // 恢复通用视图，避免影响后续通用区测试
+  click(w, [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === 'general'))
+  await tick()
+
   /* ----- 2. 链接打开方式：DOM 级真实委托 ----- */
   const openCalls = []
   w.open = (url) => { openCalls.push(url); return null }
@@ -219,6 +331,23 @@ const pickOption = async (w, wrap, label) => {
     [...fresh.doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('最新版本')))
   click(fresh.w, fresh.doc.querySelector('.modal-close'))
   await tick()
+
+  // 跨页面语言生效：全新加载（模拟真实浏览器导航）的其他页面 rail 跟随设置
+  const fSelect = fresh.doc.querySelectorAll('[data-select]')[0]
+  click(fresh.w, fSelect.querySelector('.select-btn'))
+  await tick()
+  click(fresh.w, [...fSelect.querySelectorAll('.select-option')].find((o) => o.textContent.trim() === 'English'))
+  await tick(120)
+  check('i18n: language choice persisted for cross-page', readState(storage).settings.language === 'English')
+  const media = await loadPage('/media.html', { storage, freshCopy: true })
+  await tick(150)
+  check('i18n: fresh media page rail follows english',
+    media.doc.documentElement.lang === 'en'
+    && media.doc.querySelector('[data-i18n="rail.media"]')?.textContent === 'Media')
+  const home = await loadPage('/index.html', { storage, freshCopy: true })
+  await tick(150)
+  check('i18n: fresh home page rail follows english',
+    home.doc.querySelector('[data-i18n="rail.home"]')?.textContent === 'Home')
 
   check('settings real effects: no runtime errors', errors.length === 0, JSON.stringify(errors))
 }

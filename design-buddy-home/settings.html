@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>设置 — Design Buddy</title>
+    <title data-i18n="page.settings">设置 — Design Buddy</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e2b4d'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E" />
     <link rel="stylesheet" href="/src/styles.css" />
     <link rel="stylesheet" href="/src/settings.css" />
@@ -13,7 +13,7 @@
   <body>
     <div class="app">
       <!-- ============ 最左侧窄图标栏 ============ -->
-      <nav class="rail" aria-label="模块导航">
+      <nav class="rail" aria-label="模块导航" data-i18n-aria="aria.moduleNav">
         <div class="rail-top">
           <a class="brand-logo" href="index.html" aria-label="Design Buddy">G</a>
           <a href="index.html" class="rail-item">
@@ -41,7 +41,7 @@
               <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
               <span data-i18n="rail.more">更多</span>
             </button>
-            <div class="more-flyout" hidden role="menu" aria-label="更多功能">
+            <div class="more-flyout" hidden role="menu" aria-label="更多功能" data-i18n-aria="aria.moreMenu">
               <button class="menu-row" type="button" role="menuitem" data-more="技能">
                 <svg class="icon menu-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
                 <span class="menu-label" data-i18n="menu.skills">技能</span>
@@ -73,70 +73,70 @@
         <div class="sidebar-inner">
           <label class="settings-search">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input id="settings-search" type="search" placeholder="搜索设置项" autocomplete="off" />
+            <input id="settings-search" type="search" placeholder="搜索设置项" data-i18n-ph="set.searchPh" autocomplete="off" />
           </label>
 
-          <nav class="settings-nav" id="settings-nav" aria-label="设置导航">
-            <p class="settings-group" data-group>设置</p>
-            <a href="#" class="nav-item nav-item-active" data-settings="general" data-i18n="nav.general" data-label="通用">
+          <nav class="settings-nav" id="settings-nav" aria-label="设置导航" data-i18n-aria="aria.settingsNav">
+            <p class="settings-group" data-group data-i18n="group.settings">设置</p>
+            <a href="#" class="nav-item nav-item-active" data-settings="general"  data-label="通用">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-              <span>通用</span>
+              <span data-i18n="nav.general">通用</span>
             </a>
-            <a href="#" class="nav-item" data-settings="profile" data-i18n="nav.profile" data-label="个人主页">
+            <a href="#" class="nav-item" data-settings="profile"  data-label="个人主页">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              <span>个人主页</span>
+              <span data-i18n="nav.profile">个人主页</span>
             </a>
-            <a href="#" class="nav-item" data-settings="billing" data-i18n="nav.billing" data-label="套餐与积分">
+            <a href="#" class="nav-item" data-settings="billing"  data-label="套餐与积分">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              <span>套餐与积分</span>
+              <span data-i18n="nav.billing">套餐与积分</span>
             </a>
-            <a href="#" class="nav-item" data-settings="appearance" data-i18n="nav.appearance" data-label="外观">
+            <a href="#" class="nav-item" data-settings="appearance"  data-label="外观">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2a10 10 0 1 0 0 20 2.5 2.5 0 0 0 0-5 2.5 2.5 0 0 1 0-5h2a6 6 0 0 0 6-6 10 10 0 0 0-8-4z"/></svg>
-              <span>外观</span>
+              <span data-i18n="nav.appearance">外观</span>
             </a>
-            <a href="#" class="nav-item" data-settings="shortcuts" data-i18n="nav.shortcuts" data-label="快捷键">
+            <a href="#" class="nav-item" data-settings="shortcuts"  data-label="快捷键">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2.5"/><line x1="6" y1="10" x2="6" y2="10"/><line x1="10" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="14" y2="10"/><line x1="18" y1="10" x2="18" y2="10"/><line x1="7" y1="14" x2="17" y2="14"/></svg>
-              <span>快捷键</span>
+              <span data-i18n="nav.shortcuts">快捷键</span>
             </a>
 
-            <p class="settings-group" data-group>功能</p>
-            <a href="#" class="nav-item" data-settings="personalize" data-i18n="nav.personalize" data-label="个性化">
+            <p class="settings-group" data-group data-i18n="group.features">功能</p>
+            <a href="#" class="nav-item" data-settings="personalize"  data-label="个性化">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 1 3 3"/></svg>
-              <span>个性化</span>
+              <span data-i18n="nav.personalize">个性化</span>
             </a>
-            <a href="#" class="nav-item" data-settings="memory" data-i18n="nav.memory" data-label="记忆与进化">
+            <a href="#" class="nav-item" data-settings="memory"  data-label="记忆与进化">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg>
-              <span>记忆与进化</span>
+              <span data-i18n="nav.memory">记忆与进化</span>
             </a>
-            <a href="#" class="nav-item" data-settings="agents" data-i18n="nav.agents" data-label="智能体">
+            <a href="#" class="nav-item" data-settings="agents"  data-label="智能体">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="11" rx="3.5"/><path d="M12 8V4.5M9.5 4.5h5"/><circle cx="9.6" cy="13" r="1.3" fill="currentColor" stroke="none"/><circle cx="14.4" cy="13" r="1.3" fill="currentColor" stroke="none"/><path d="M9.5 16.2h5"/></svg>
-              <span>智能体</span>
+              <span data-i18n="nav.agents">智能体</span>
             </a>
-            <a href="#" class="nav-item" data-settings="models" data-i18n="nav.models" data-label="模型">
+            <a href="#" class="nav-item" data-settings="models"  data-label="模型">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-              <span>模型</span>
+              <span data-i18n="nav.models">模型</span>
             </a>
-            <a href="#" class="nav-item" data-settings="assistant" data-i18n="nav.assistant" data-label="助理">
+            <a href="#" class="nav-item" data-settings="assistant"  data-label="助理">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
-              <span>助理</span>
+              <span data-i18n="nav.assistant">助理</span>
             </a>
-            <a href="#" class="nav-item" data-settings="devices" data-i18n="nav.devices" data-label="设备连接">
+            <a href="#" class="nav-item" data-settings="devices"  data-label="设备连接">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="11" rx="2"/><path d="M2 19h14"/><rect x="17" y="9" width="5" height="12" rx="1.6"/></svg>
-              <span>设备连接</span>
+              <span data-i18n="nav.devices">设备连接</span>
             </a>
 
-            <p class="settings-group" data-group>数据与安全</p>
-            <a href="#" class="nav-item" data-settings="data" data-i18n="nav.data" data-label="数据管理">
+            <p class="settings-group" data-group data-i18n="group.data">数据与安全</p>
+            <a href="#" class="nav-item" data-settings="data"  data-label="数据管理">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>
-              <span>数据管理</span>
+              <span data-i18n="nav.data">数据管理</span>
             </a>
-            <a href="#" class="nav-item" data-settings="apps" data-i18n="nav.apps" data-label="应用管理">
+            <a href="#" class="nav-item" data-settings="apps"  data-label="应用管理">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-              <span>应用管理</span>
+              <span data-i18n="nav.apps">应用管理</span>
             </a>
-            <a href="#" class="nav-item" data-settings="security" data-i18n="nav.security" data-label="安全中心">
+            <a href="#" class="nav-item" data-settings="security"  data-label="安全中心">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-              <span>安全中心</span>
+              <span data-i18n="nav.security">安全中心</span>
             </a>
           </nav>
         </div>
@@ -152,7 +152,7 @@
               <div class="setting-info">
                 <h3 data-i18n="set.language">语言</h3>
               </div>
-              <div class="select" data-select>
+              <div class="select" data-select data-select-kind="language">
                 <button class="select-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
                   <span class="select-value">简体中文</span>
                   <svg class="icon tiny" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -170,17 +170,17 @@
               <div class="setting-info">
                 <h3 data-i18n="set.linkOpen">链接打开方式</h3>
                 <p data-i18n="set.linkOpenDesc">设置 Design Buddy 对话中链接的默认打开策略。</p>
-                <a class="policy-test-link" id="link-policy-test" href="https://example.com/" rel="noopener">测试链接 ↗</a>
+                <a class="policy-test-link" id="link-policy-test" href="https://example.com/" rel="noopener" data-i18n="set.testLink">测试链接 ↗</a>
               </div>
-              <div class="select" data-select>
+              <div class="select" data-select data-select-kind="linkOpen">
                 <button class="select-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
                   <span class="select-value">智能打开</span>
                   <svg class="icon tiny" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
                 <div class="select-menu" hidden role="listbox">
-                  <button class="select-option is-selected" type="button" role="option" aria-selected="true">智能打开</button>
-                  <button class="select-option" type="button" role="option" aria-selected="false">始终在应用内打开</button>
-                  <button class="select-option" type="button" role="option" aria-selected="false">始终在浏览器打开</button>
+                  <button class="select-option is-selected" type="button" role="option" aria-selected="true" data-value="智能打开" data-i18n="opt.smartOpen">智能打开</button>
+                  <button class="select-option" type="button" role="option" aria-selected="false" data-value="始终在应用内打开" data-i18n="opt.inApp">始终在应用内打开</button>
+                  <button class="select-option" type="button" role="option" aria-selected="false" data-value="始终在浏览器打开" data-i18n="opt.browser">始终在浏览器打开</button>
                 </div>
               </div>
             </div>
@@ -188,16 +188,16 @@
             <div class="setting-row">
               <div class="setting-info">
                 <h3 data-i18n="set.fontSize">字体大小</h3>
-                <p class="font-preview" id="font-preview">Design Buddy 字体预览 Aa 字号</p>
+                <p class="font-preview" id="font-preview" data-i18n="set.fontPreview">Design Buddy 字体预览 Aa 字号</p>
               </div>
               <div class="font-size-control">
                 <span class="range-value" id="font-level-label">默认</span>
-                <input class="range" id="font-slider" type="range" min="0" max="4" step="1" value="2" aria-label="字体大小" />
+                <input class="range" id="font-slider" type="range" min="0" max="4" step="1" value="2" aria-label="字体大小" data-i18n-aria="set.fontSlider" />
                 <div class="range-ticks" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
                 <div class="range-labels" aria-hidden="true">
-                  <span style="left: 0%">小</span>
-                  <span style="left: 25%">默认</span>
-                  <span style="left: 100%">大</span>
+                  <span style="left: 0%" data-i18n="font.small">小</span>
+                  <span style="left: 25%" data-i18n="font.normal">默认</span>
+                  <span style="left: 100%" data-i18n="font.large">大</span>
                 </div>
               </div>
             </div>
@@ -209,18 +209,18 @@
               <div class="setting-info">
                 <h3 data-i18n="set.lockScreen">允许锁屏运行</h3>
                 <p data-i18n="set.lockScreenDesc">选择锁屏后的运行方式，保障远程控制与后台 Agent 任务持续执行。</p>
-                <button class="btn btn-ghost setting-test-btn" id="lock-test-btn" type="button">立即体验锁屏</button>
+                <button class="btn btn-ghost setting-test-btn" id="lock-test-btn" type="button" data-i18n="set.tryLock">立即体验锁屏</button>
               </div>
               <div class="setting-controls">
-                <div class="select" data-select>
+                <div class="select" data-select data-select-kind="lockScreen">
                   <button class="select-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
                     <span class="select-value">关闭</span>
                     <svg class="icon tiny" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                   </button>
                   <div class="select-menu" hidden role="listbox">
-                    <button class="select-option is-selected" type="button" role="option" aria-selected="true">关闭</button>
-                    <button class="select-option" type="button" role="option" aria-selected="false">始终允许</button>
-                    <button class="select-option" type="button" role="option" aria-selected="false">仅充电时允许</button>
+                    <button class="select-option is-selected" type="button" role="option" aria-selected="true" data-value="关闭" data-i18n="opt.off">关闭</button>
+                    <button class="select-option" type="button" role="option" aria-selected="false" data-value="始终允许" data-i18n="opt.alwaysAllow">始终允许</button>
+                    <button class="select-option" type="button" role="option" aria-selected="false" data-value="仅充电时允许" data-i18n="opt.chargingOnly">仅充电时允许</button>
                   </div>
                 </div>
               </div>
@@ -231,8 +231,8 @@
                 <h3 data-i18n="set.keepAwake">运行时防止系统休眠</h3>
                 <p data-i18n="set.keepAwakeDesc">在 Design Buddy 运行任务时，让电脑保持唤醒状态。</p>
                 <div class="setting-test-line">
-                  <button class="btn btn-ghost setting-test-btn" id="wakelock-test-btn" type="button">测试唤醒锁</button>
-                  <span class="state-chip" id="wakelock-state">未测试</span>
+                  <button class="btn btn-ghost setting-test-btn" id="wakelock-test-btn" type="button" data-i18n="set.testWakeLock">测试唤醒锁</button>
+                  <span class="state-chip" id="wakelock-state" data-i18n="state.untested">未测试</span>
                 </div>
               </div>
               <button class="switch is-on" type="button" role="switch" aria-checked="true" data-switch data-label="运行时防止系统休眠">
@@ -245,10 +245,10 @@
                 <h3 data-i18n="set.autoStart">开机自动启动</h3>
                 <p data-i18n="set.autoStartDesc">开启后 Design Buddy 会在你登录电脑后自动启动。</p>
                 <div class="setting-test-line">
-                  <button class="btn btn-ghost setting-test-btn" id="pwa-install-btn" type="button">安装为桌面应用</button>
-                  <span class="state-chip" id="pwa-state">检测中…</span>
+                  <button class="btn btn-ghost setting-test-btn" id="pwa-install-btn" type="button" data-i18n="set.installPwa">安装为桌面应用</button>
+                  <span class="state-chip" id="pwa-state" data-i18n="state.detecting">检测中…</span>
                 </div>
-                <p class="setting-honest-hint" id="pwa-hint">浏览器无法直接修改系统登录项；安装为桌面应用后，可在系统设置中把它加入登录项，即获得等价的开机自启。</p>
+                <p class="setting-honest-hint" id="pwa-hint" data-i18n="set.pwaHint">浏览器无法直接修改系统登录项；安装为桌面应用后，可在系统设置中把它加入登录项，即获得等价的开机自启。</p>
               </div>
               <button class="switch" type="button" role="switch" aria-checked="false" data-switch data-label="开机自动启动">
                 <span class="switch-knob"></span>
@@ -260,20 +260,20 @@
                 <h3 data-i18n="set.proxy">网络代理</h3>
                 <p data-i18n="set.proxyDesc">网络异常时可切换连接方式，修改后立即生效</p>
                 <div class="setting-test-line">
-                  <button class="btn btn-ghost setting-test-btn" id="proxy-test-btn" type="button">测试连接</button>
-                  <span class="state-chip" id="proxy-state">未测试</span>
+                  <button class="btn btn-ghost setting-test-btn" id="proxy-test-btn" type="button" data-i18n="set.testProxy">测试连接</button>
+                  <span class="state-chip" id="proxy-state" data-i18n="state.untested">未测试</span>
                 </div>
               </div>
               <div class="setting-controls">
-                <div class="select" data-select>
+                <div class="select" data-select data-select-kind="proxy">
                   <button class="select-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
                     <span class="select-value">直接连接</span>
                     <svg class="icon tiny" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                   </button>
                   <div class="select-menu" hidden role="listbox">
-                    <button class="select-option is-selected" type="button" role="option" aria-selected="true">直接连接</button>
-                    <button class="select-option" type="button" role="option" aria-selected="false">系统代理</button>
-                    <button class="select-option" type="button" role="option" aria-selected="false">自定义代理</button>
+                    <button class="select-option is-selected" type="button" role="option" aria-selected="true" data-value="直接连接" data-i18n="opt.direct">直接连接</button>
+                    <button class="select-option" type="button" role="option" aria-selected="false" data-value="系统代理" data-i18n="opt.systemProxy">系统代理</button>
+                    <button class="select-option" type="button" role="option" aria-selected="false" data-value="自定义代理" data-i18n="opt.customProxy">自定义代理</button>
                   </div>
                 </div>
               </div>
@@ -303,13 +303,13 @@
 
         <!-- 其他设置组：统一占位视图 -->
         <div class="settings-view" id="view-placeholder" hidden>
-          <p class="settings-section-label" id="placeholder-label">外观</p>
+          <p class="settings-section-label" id="placeholder-label" data-i18n="nav.appearance">外观</p>
           <section class="settings-card placeholder-card">
             <div class="placeholder-ic">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
             </div>
-            <h3 id="placeholder-title">「外观」设置组</h3>
-            <p id="placeholder-copy">该设置组正在建设中，稍后将在正式版本中开放。</p>
+            <h3 id="placeholder-title" data-i18n="ph.viewTitleStatic">「外观」设置组</h3>
+            <p id="placeholder-copy" data-i18n="ph.viewCopy">该设置组正在建设中，稍后将在正式版本中开放。</p>
           </section>
         </div>
 

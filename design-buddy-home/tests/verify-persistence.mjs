@@ -382,7 +382,8 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
 
   // 自定义代理：切换后出现 URL 输入并持久化为素材基址
   const proxySelect = doc.querySelectorAll('[data-select]')[3]
-  click(w, [...proxySelect.querySelectorAll('.select-option')].find((o) => o.textContent.trim() === '自定义代理'))
+  // 枚举选项已按界面语言翻译显示，按稳定的中文枚举 data-value 选取（存储契约不变）
+  click(w, proxySelect.querySelector('.select-option[data-value="自定义代理"]'))
   await tick()
   const proxyUrlInput = doc.querySelector('.proxy-url-input')
   check('custom proxy reveals url input', !!proxyUrlInput && !proxyUrlInput.hidden)
