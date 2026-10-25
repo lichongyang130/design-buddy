@@ -2243,14 +2243,6 @@
   box-shadow: 0 4px 12px rgba(214, 51, 108, 0.3);
 }
 .td-use-ribbon:hover { background: #c2285f; }
-.td-api-btn {
-  display: inline-flex; align-items: center;
-  background: rgba(255, 255, 255, 0.75); color: #b02f6b;
-  border: 1px solid #f3b4cd; border-radius: 8px;
-  padding: 7px 12px; font-size: 12.5px; font-weight: 700; cursor: pointer;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-}
-.td-api-btn:hover { background: #fff; }
 
 .td-body { flex: 1; min-height: 0; display: flex; }
 .td-mask.panel-collapsed .td-panel { display: none; }
@@ -2565,4 +2557,251 @@
   .db-doc .doc-bigstat { flex-direction: column; align-items: flex-start; }
   .db-doc .doc-bigstat .dp-art { width: 100%; }
   .db-doc .doc-bars li { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* ============================================================
+   任务二十七：模板查看器按最新截图 1:1 重构
+   深色顶栏（G 标识 + 演示拆分按钮 + … 菜单 + 头像）/
+   粉桃色共享带 / 模板设置面板（测试版头、蓝提示、说明/图片 tab、
+   视觉气质等三段引导、N 条幻灯片级别说明）/ 浮动工具条 / 制作徽章
+   ============================================================ */
+
+/* ---------- 整体舞台暖深色底 ---------- */
+.td-mask { background: #26211c; }
+
+/* ---------- 深色顶栏 ---------- */
+.td-topbar {
+  flex: none; height: 52px; padding: 0 16px;
+  background: #15171c; border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  justify-content: space-between;
+}
+.td-topbar-left { gap: 10px; }
+.td-topbar .td-brand-mark {
+  width: 32px; height: 32px; border-radius: 9px; border: 0; cursor: pointer;
+  display: grid; place-items: center; padding: 0; gap: 0;
+  background: var(--navy, #1e2b4d); color: #fff;
+  font-size: 17px; font-weight: 800; letter-spacing: -0.5px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+.td-topbar .td-brand-mark:hover { background: var(--navy, #1e2b4d); filter: brightness(1.15); }
+.td-crumb-sep { color: rgba(255, 255, 255, 0.45); flex: none; }
+.td-topbar-title { font-size: 15px; max-width: 420px; }
+
+/* 演示拆分按钮与弹出菜单 */
+.td-present-split, .td-more-wrap, .td-use-wrap { position: relative; }
+.td-present-split .td-present {
+  border-radius: 9px 0 0 9px; margin-right: -1px;
+  background: #3b6ef6; border-color: #3b6ef6; color: #fff;
+  padding: 7px 14px;
+}
+.td-present-split .td-present:hover { background: #2f5bd6; }
+.td-present-caret {
+  height: 32px; width: 30px; border: 1px solid #3b6ef6;
+  border-radius: 0 9px 9px 0; background: #3b6ef6; color: #fff;
+  display: grid; place-items: center; cursor: pointer;
+}
+.td-present-caret:hover { background: #2f5bd6; }
+.td-more-btn {
+  width: 36px; height: 36px; border-radius: 50%; border: 0;
+  background: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.85);
+  display: grid; place-items: center; cursor: pointer;
+}
+.td-more-btn:hover { background: rgba(255, 255, 255, 0.16); }
+.td-top-avatar {
+  border: 0; background: transparent; padding: 2px; cursor: pointer;
+  display: grid; place-items: center;
+}
+.td-top-avatar .avatar {
+  width: 32px; height: 32px; font-size: 13px; margin: 0;
+  border-radius: 50%; cursor: pointer;
+}
+.td-pop-menu {
+  position: absolute; top: calc(100% + 8px); right: 0; z-index: 40;
+  min-width: 190px; padding: 6px;
+  background: #fff; border-radius: 12px;
+  box-shadow: 0 18px 48px rgba(8, 12, 24, 0.28);
+  border: 1px solid #e6e9f0;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.td-pop-menu[hidden] { display: none; }
+.td-present-menu { min-width: 210px; }
+.td-pop-menu button {
+  display: flex; align-items: center; gap: 10px;
+  width: 100%; text-align: left; border: 0; background: transparent;
+  padding: 9px 10px; border-radius: 8px;
+  font-size: 13.5px; font-weight: 600; color: #2b3547; cursor: pointer;
+}
+.td-pop-menu button:hover { background: #f3f6fd; }
+.td-pop-menu button svg { flex: none; color: #6b7480; }
+/* 关闭项保留 td-close 类以复用旧处理器，这里覆盖旧顶栏圆形幽灵样式 */
+.td-pop-menu button.td-close {
+  width: auto; height: auto; border-radius: 8px;
+  color: #2b3547; display: flex; place-items: initial;
+}
+.td-pop-menu button.td-close:hover { background: #f3f6fd; color: #2b3547; }
+.td-pop-menu hr { border: 0; border-top: 1px solid #eef1f6; margin: 4px 2px; }
+.td-present-menu { left: 0; right: auto; }
+
+/* ---------- 粉桃色共享带 ---------- */
+.td-ribbon {
+  flex: none; min-height: 46px; padding: 7px 16px;
+  background: linear-gradient(90deg, #ffe7da 0%, #ffdce9 55%, #ffd3e5 100%);
+  border-bottom: 1px solid #f4c3d6;
+}
+.td-ribbon-settings {
+  background: #232b3d; color: #fff; border: 0;
+  border-radius: 999px; padding: 8px 18px;
+  font-size: 13px; font-weight: 700;
+}
+.td-ribbon-settings:hover { background: #2f3a52; }
+.td-ribbon-center { color: #8a4b62; gap: 9px; }
+.td-add-ws {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255, 255, 255, 0.75); color: #2f5bd6;
+  border: 1px solid #7ea4f4; border-radius: 999px;
+  padding: 7px 16px; font-size: 13px; font-weight: 700; cursor: pointer;
+}
+.td-add-ws:hover { background: #fff; box-shadow: 0 4px 14px rgba(47, 91, 214, 0.18); }
+.td-use-ribbon {
+  background: #232b3d; color: #fff; border: 0;
+  border-radius: 999px; padding: 9px 18px;
+  font-size: 13px; font-weight: 700;
+  box-shadow: 0 6px 16px rgba(35, 43, 61, 0.32);
+}
+.td-use-ribbon:hover { background: #2f3a52; }
+.td-use-menu { min-width: 200px; }
+
+/* ---------- 左侧模板设置面板 ---------- */
+.td-panel { width: 340px; }
+.tdp-head {
+  flex: none; display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 18px 10px;
+}
+.tdp-title-row { display: flex; align-items: center; gap: 8px; }
+.tdp-title-row strong { font-size: 16px; color: #232b3d; }
+.tdp-beta {
+  padding: 2px 8px; border-radius: 999px;
+  background: #f0e9ff; color: #7a4fd0;
+  font-size: 11px; font-weight: 700;
+}
+.tdp-close {
+  width: 30px; height: 30px; border-radius: 8px; border: 0;
+  background: transparent; color: #8a939d; cursor: pointer;
+  display: grid; place-items: center;
+}
+.tdp-close:hover { background: #f3f5f9; color: #232b3d; }
+.tdp-notice {
+  flex: none; margin: 0 16px 12px; padding: 11px 13px;
+  display: flex; gap: 9px; align-items: flex-start;
+  background: #e8f1fd; border-radius: 10px;
+  color: #2b5aa8; font-size: 12.5px; line-height: 1.65;
+}
+.tdp-notice svg { flex: none; margin-top: 2px; }
+.tdp-tabs {
+  flex: none; padding: 0 16px; gap: 6px; border-bottom: 1px solid #eceef1;
+}
+.tdp-tab {
+  border-radius: 9px 9px 0 0; padding: 10px 14px;
+  font-size: 13.5px; color: #8a939d; border-bottom: 2px solid transparent;
+}
+.tdp-tab svg { opacity: 0.75; }
+.tdp-tab.is-active { color: #232b3d; border-bottom-color: #3b6ef6; }
+.tdp-pane { padding: 16px 18px 26px; }
+
+/* 三段引导文案 */
+.tdp-guide { display: flex; flex-direction: column; gap: 6px; }
+.tdp-guide h3 {
+  font-size: 14.5px; font-weight: 800; color: #232b3d;
+  margin: 10px 0 2px;
+}
+.tdp-guide h3:first-child { margin-top: 0; }
+.tdp-guide p {
+  margin: 0 0 6px; font-size: 12.5px; line-height: 1.85; color: #5b6472;
+}
+.tdp-slide-jump {
+  position: sticky; bottom: -8px; z-index: 3;
+  align-self: flex-start; margin: 12px 0 4px;
+  background: #ffe1ef; color: #c2377a; border: 0;
+  border-radius: 999px; padding: 8px 16px;
+  font-size: 12.5px; font-weight: 700; cursor: pointer;
+  box-shadow: 0 6px 18px rgba(194, 55, 122, 0.22);
+}
+.tdp-slide-jump:hover { background: #ffd3e7; }
+.tdp-slide-notes h4 {
+  font-size: 13.5px; font-weight: 800; color: #232b3d; margin: 14px 0 8px;
+}
+.tdp-slide-notes ol {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.tdp-slide-notes li {
+  padding: 10px 12px; border-radius: 10px;
+  background: #f7f9fc; border: 1px solid #eef1f6;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.tdp-slide-notes li b { font-size: 12.5px; color: #2f5bd6; font-weight: 800; }
+.tdp-slide-notes li span { font-size: 12px; line-height: 1.7; color: #5b6472; }
+
+/* 高级区收纳进 details，保持截图首屏干净 */
+.tdp-advanced {
+  margin-top: 18px; border-top: 1px solid #eceef1; padding-top: 12px;
+}
+.tdp-advanced summary {
+  cursor: pointer; font-size: 13px; font-weight: 800; color: #232b3d;
+  list-style: none; display: flex; align-items: center; gap: 6px;
+}
+.tdp-advanced summary::before {
+  content: ''; width: 7px; height: 7px;
+  border-right: 2px solid #8a939d; border-bottom: 2px solid #8a939d;
+  transform: rotate(45deg); transition: transform .15s ease;
+}
+.tdp-advanced[open] summary::before { transform: rotate(-135deg); }
+.tdp-advanced summary::-webkit-details-marker { display: none; }
+.tdp-advanced .td-head { margin-top: 14px; }
+
+/* ---------- 浮动编辑工具条与舞台控制 ---------- */
+.td-left { position: relative; padding-top: 58px; }
+.td-toolbar {
+  position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+  z-index: 6; gap: 6px;
+  background: rgba(18, 21, 28, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px; padding: 5px 8px;
+  backdrop-filter: blur(8px);
+}
+.td-tool { border-radius: 999px; border-color: transparent; padding: 6px 12px; }
+.td-add-block { border-radius: 999px; }
+.td-deck-bar {
+  position: absolute; left: 26px; bottom: 14px; z-index: 6;
+  background: rgba(18, 21, 28, 0.78); border-radius: 999px;
+  padding: 6px 14px; backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* 由 Design Buddy 制作徽章 */
+.td-made-by {
+  position: absolute; right: 26px; bottom: 14px; z-index: 6;
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #fff; color: #232b3d;
+  border-radius: 999px; padding: 7px 14px;
+  font-size: 12.5px; font-weight: 800;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+}
+.td-made-by svg { color: #3b6ef6; }
+
+/* 详情层内弹窗必须盖过查看器（z-130） */
+.td-mask ~ .modal-mask { z-index: 200; }
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 1200px) {
+  .td-panel { width: 300px; }
+  .td-topbar-title { max-width: 240px; }
+}
+@media (max-width: 960px) {
+  .td-body { flex-direction: column; overflow-y: auto; }
+  .td-panel { width: 100%; border-right: 0; border-bottom: 1px solid #e6e8ec; }
+  .tdp-slide-jump { position: static; }
+  .td-toolbar { position: static; transform: none; margin: 0 auto 8px; flex-wrap: wrap; justify-content: center; }
+  .td-deck-bar { position: static; align-self: flex-start; margin-bottom: 8px; }
+  .td-made-by { position: static; align-self: flex-end; margin: 8px 0; }
+  .td-left { padding-top: 12px; }
 }

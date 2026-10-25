@@ -494,6 +494,121 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   check('editor: no runtime errors', errors.length === 0, JSON.stringify(errors))
 }
 
+/* ---------------- 任务二十七：查看器按截图重构（顶栏/共享带/设置面板） ---------------- */
+{
+  const { doc, w, errors, storage } = await loadPage('/templates.html')
+  await tick(120)
+  click(w, doc.querySelector('.tpl-card'))
+  await tick(200)
+  const q = (s) => doc.querySelector(s)
+  const qa = (s) => [...doc.querySelectorAll(s)]
+
+  // 深色顶栏：G 标识 + 面包屑标题 + 演示拆分按钮 + … 菜单 + 头像
+  check('viewer: brand mark and breadcrumb title',
+    q('.td-brand-mark')?.textContent === 'G' && !!q('#td-topbar-title')?.textContent)
+  check('viewer: present split button with caret', !!q('#td-present') && !!q('#td-present-caret'))
+  check('viewer: more menu and avatar present', !!q('#td-more') && !!q('#td-top-avatar .avatar'))
+  click(w, q('#td-more'))
+  await tick()
+  check('viewer: more menu holds topic/share/upgrade/close',
+    q('#td-more-menu')?.hidden === false
+    && ['#td-topic', '#td-share-top', '#td-upgrade', '#td-close'].every((id) => !!q(id)))
+  click(w, doc.body)
+  await tick()
+  check('viewer: more menu closes on outside click', q('#td-more-menu')?.hidden === true)
+
+  // 演示菜单两项真实动作
+  click(w, q('#td-present-caret'))
+  await tick()
+  check('viewer: present menu offers from-start and autoplay',
+    q('#td-present-menu')?.hidden === false && !!q('#td-present-start') && !!q('#td-present-auto'))
+  click(w, q('#td-present-auto'))
+  await tick()
+  check('viewer: autoplay starts from menu', q('#td-autoplay').classList.contains('is-on'))
+
+  // 粉桃色共享带
+  check('viewer: shared ribbon texts',
+    q('#td-shared-label')?.textContent === '此模板已与您共享'
+    && q('#td-add-ws-label')?.textContent === '添加到我的工作区'
+    && q('#td-ribbon-settings-label')?.textContent === '设置')
+  const gammaBefore = readState(storage)?.gammas?.length ?? 0
+  click(w, q('#td-add-workspace'))
+  await tick(150)
+  check('viewer: add-to-workspace really creates a gamma',
+    (readState(storage)?.gammas?.length ?? 0) === gammaBefore + 1 && !!doc.querySelector('.td-mask ~ .modal-mask'))
+  q('.modal-mask [data-close]')?.click()
+  await tick()
+  // 使用模板菜单
+  click(w, q('#td-use-ribbon'))
+  await tick()
+  check('viewer: use-template menu exposes create + JSON',
+    q('#td-use-menu')?.hidden === false && !!q('#td-use-new') && !!q('#td-api'))
+  click(w, doc.body)
+  await tick()
+
+  // 模板设置面板：测试版头 + 蓝提示 + 说明/图片 tab
+  check('viewer: panel header with beta badge',
+    q('.tdp-head strong')?.textContent === '模板设置' && q('.tdp-beta')?.textContent === '测试版')
+  check('viewer: viewer notice exact copy',
+    q('.tdp-notice')?.textContent.includes('只有编辑者才能编辑此模板的说明'))
+  check('viewer: brief/images tabs', qa('.tdp-tab').length === 2 && q('.tdp-tab[data-tab="brief"]')?.textContent.includes('说明'))
+
+  // 三段引导文案
+  const guideH3 = qa('.tdp-guide h3').map((h) => h.textContent)
+  check('viewer: three guidance sections',
+    ['视觉气质', '示范如何工作', '写作方式'].every((k) => guideH3.includes(k)))
+  check('viewer: guidance copy is real per-template text',
+    qa('.tdp-guide p').every((p) => p.textContent.length > 40))
+
+  // 幻灯片级别说明：数量与页数严格一致
+  const noteCount = qa('.tdp-slide-notes li').length
+  const pageTotal = Number(q('#td-page-count').textContent.split('/')[1].trim())
+  check('viewer: slide notes count equals page count', noteCount === pageTotal && noteCount >= 20)
+  check('viewer: slide jump badge shows count',
+    q('#td-slide-jump')?.textContent.includes(String(noteCount)))
+  check('viewer: each note carries layout label and guidance',
+    qa('.tdp-slide-notes li b').every((b) => b.textContent.includes('·'))
+    && qa('.tdp-slide-notes li span').every((s) => s.textContent.length > 10))
+
+  // 既有规格/样式能力收纳在高级区且仍可用
+  check('viewer: legacy spec/fits/style kept in advanced details',
+    !!q('.tdp-advanced .td-spec') && qa('.tdp-advanced .td-fits li').length === 4
+    && qa('.tdp-advanced .td-style-card').length === 3 && !!q('#td-use'))
+
+  // 面板 X 折叠，设置 pill 恢复
+  click(w, q('#td-panel-close'))
+  await tick()
+  check('viewer: panel close collapses panel', q('.td-mask').classList.contains('panel-collapsed'))
+  click(w, q('#td-settings-toggle'))
+  await tick()
+  check('viewer: settings pill reopens panel', !q('.td-mask').classList.contains('panel-collapsed'))
+
+  // 制作徽章（品牌约束：不得出现 Gamma 字样）
+  check('viewer: made-by badge names Design Buddy',
+    q('#td-made-by')?.textContent.includes('Design Buddy') && !q('#td-made-by')?.textContent.includes('Gamma'))
+
+  // 头像 → 账号弹窗
+  click(w, q('#td-top-avatar'))
+  await tick()
+  check('viewer: avatar opens account modal',
+    qa('.modal-box').some((m) => m.textContent.includes('账号')))
+  q('.modal-mask [data-close], .modal-close')?.click()
+  await tick()
+
+  // 英文版完整本地化
+  click(w, q('#td-lang [data-lang="en"]'))
+  await tick(150)
+  check('viewer: english localization of new chrome',
+    q('#td-present-label')?.textContent === 'Present'
+    && q('#td-shared-label')?.textContent === 'Shared with you'
+    && q('.tdp-head strong')?.textContent === 'Template settings'
+    && q('.tdp-guide h3')?.textContent === 'Visual tone'
+    && q('#td-made-label')?.textContent === 'Made by Design Buddy')
+  check('viewer: no runtime errors in new viewer', errors.length === 0, JSON.stringify(errors))
+  doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
+  await tick()
+}
+
 /* ---------------- P1 真实配图：语义概念层 + 图片模式 ---------------- */
 {
   check('concept pools cover all 19 categories', Object.keys(CONCEPT_POOLS).length === 19)

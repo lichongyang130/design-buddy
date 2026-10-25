@@ -4,10 +4,10 @@
    ============================================================ */
 
 import './rail-flyout.js'
-import { requireAuth } from './auth.js'
+import { requireAuth, currentUser } from './auth.js'
 requireAuth()
 import { store, toast, openModal, confirmModal, uid, fmtDate, copyText } from './core.js'
-import { initGlobalUI, openUpgrade } from './global-ui.js'
+import { initGlobalUI, openUpgrade, openAccount } from './global-ui.js'
 import {
   buildCatalog, buildDeck, renderPageHTML, renderDocumentHTML, metaFor, coverStyle, coverDeco,
   displayTpl, catLabel, VISIBLE_CATS, HIDDEN_CATS, configureArt, getArtBase,
@@ -53,6 +53,19 @@ const UI = {
       category: '分类', theme: '主题', spec: '规格', pages: '个页面', images: '张配图',
       use: '使用模板', resetEdits: '重置本模板编辑', noEditsHint: '点击幻灯中的任意文字即可直接编辑，修改会自动保存。',
       autoplay: '自动播放',
+      panelTitle: '模板设置', beta: '测试版',
+      viewerNotice: '您正在查看此模板。只有编辑者才能编辑此模板的说明。',
+      tabBrief: '说明', tabImages: '图片',
+      visualTone: '视觉气质', howItWorks: '示范如何工作', writingStyle: '写作方式',
+      slideNotes: (n) => `↓ ${n} 幻灯片级别说明`,
+      slideNotesTitle: '幻灯片级别说明',
+      sharedWithYou: '此模板已与您共享',
+      addToWorkspace: '添加到我的工作区',
+      settings: '设置', present: '演示', madeBy: '由 Design Buddy 制作',
+      advanced: '模板规格与样式设置',
+      moreTopic: '主题', moreShare: '分享模板', moreUpgrade: '升级到 Plus', moreClose: '关闭详情',
+      presentFromStart: '从头开始演示', presentAuto: '自动播放（2.6 秒/页）',
+      useNew: '使用此模板新建', useJson: '复制模板 JSON',
     },
     showMore: (n) => `显示更多 ${n}`, collapse: '收起',
     artPicker: {
@@ -75,6 +88,19 @@ const UI = {
       category: 'Category', theme: 'Theme', spec: 'Specs', pages: 'slides', images: 'images',
       use: 'Use template', resetEdits: 'Reset edits', noEditsHint: 'Click any text in the slides to edit it — changes save automatically.',
       autoplay: 'Autoplay',
+      panelTitle: 'Template settings', beta: 'Beta',
+      viewerNotice: 'You are viewing this template. Only editors can edit its guidance notes.',
+      tabBrief: 'Brief', tabImages: 'Images',
+      visualTone: 'Visual tone', howItWorks: 'How the sample works', writingStyle: 'Writing style',
+      slideNotes: (n) => `↓ ${n} slide-level notes`,
+      slideNotesTitle: 'Slide-level notes',
+      sharedWithYou: 'Shared with you',
+      addToWorkspace: 'Add to my workspace',
+      settings: 'Settings', present: 'Present', madeBy: 'Made by Design Buddy',
+      advanced: 'Specs & style settings',
+      moreTopic: 'Themes', moreShare: 'Share template', moreUpgrade: 'Upgrade to Plus', moreClose: 'Close detail',
+      presentFromStart: 'Present from first slide', presentAuto: 'Autoplay (2.6s/slide)',
+      useNew: 'Create with this template', useJson: 'Copy template JSON',
     },
     showMore: (n) => `Show more ${n}`, collapse: 'Collapse',
     artPicker: {
@@ -592,6 +618,126 @@ function coverHTML(tpl) {
   return `<div class="tpl-cover ${coverClass(tpl)}" ${tpl.cover ? `style="--custom-cover:${tpl.cover}"` : ''}>${coverInner(tpl)}</div>`
 }
 
+/* ---------------- 模板查看器：版式中文/英文名与逐页说明生成 ---------------- */
+
+const LAYOUT_NOTE_LABEL = {
+  zh: {
+    cover: '封面', agenda: '议程页', divider: '章节转场', hero: '主张页', split: '图文分栏',
+    'two-image': '双图对照', 'triple-grid': '三图网格', stats: '指标看板', 'big-stat': '核心大数字',
+    quote: '金句引用', timeline: '时间线', process: '流程步骤', comparison: '对照比较', table: '数据表格',
+    cards: '卡片组', gallery: '图库', team: '团队肖像', testimonial: '用户证言', pricing: '定价方案',
+    bars: '条形排行', 'line-chart': '折线趋势', map: '路线地图', faq: '常见问题', logos: '客户标识',
+    'index-list': '索引目录', closing: '收尾页',
+  },
+  en: {
+    cover: 'Cover', agenda: 'Agenda', divider: 'Section divider', hero: 'Hero statement', split: 'Text & image',
+    'two-image': 'Two images', 'triple-grid': 'Three-up grid', stats: 'KPI board', 'big-stat': 'Big number',
+    quote: 'Pull quote', timeline: 'Timeline', process: 'Process', comparison: 'Comparison', table: 'Data table',
+    cards: 'Card grid', gallery: 'Gallery', team: 'Team portraits', testimonial: 'Testimonial', pricing: 'Pricing',
+    bars: 'Bar ranking', 'line-chart': 'Line trend', map: 'Route map', faq: 'FAQ', logos: 'Logo wall',
+    'index-list': 'Index', closing: 'Closing',
+  },
+}
+
+// 每种版式的写作指引（中英），按页号取变体避免重复感
+const LAYOUT_NOTE_TEXT = {
+  zh: {
+    cover: ['用一句话亮出核心判断，副标题交代场景与文档身份，日期与署名保持克制。', '封面只回答「这是什么、给谁看」，其余信息留给议程页。'],
+    agenda: ['把全篇拆成 3–5 个章节，序号与后续转场页严格对应。', '议程条目用名词短语，每条不超过 8 个字。'],
+    divider: ['只放章节名与一句章节宣言，清空多余装饰，制造呼吸感。', '转场页是节奏标点，用大号序号提示读者叙事位置。'],
+    hero: ['先给结论再给理由，主张句控制在一行半以内，强调色只落在关键词。', '主张页承担全场最重要的判断，删掉一切支撑性细节。'],
+    split: ['左图右文（或反之）各讲一件事，正文三行以内，图片说明与正文互补不重复。', '分栏页保持视觉中轴对齐，文字块与图片块留白对称。'],
+    'two-image': ['两张图必须构成对照关系，标题点明比较维度，结论写进图注。', '用并列结构呈现「之前/之后」或「方案 A/B」。'],
+    'triple-grid': ['三格共用同一个判断框架，每格一个关键词加一句证据。', '三格文案保持相同句式与字数，形成节奏。'],
+    stats: ['每个指标带名称、数值与口径，最重要的一项用强调色。', '指标之间要有共同主题，避免无关数字拼盘。'],
+    'big-stat': ['只保留一个英雄数字，配一句解释它为什么重要。', '大数字页一页一结论，辅助信息压到页脚口径行。'],
+    quote: ['引用必须有出处，金句独立成行，字号大于正文小于标题。', '引用页用于停顿与说服，不要在同页堆第二个观点。'],
+    timeline: ['时间节点按同一粒度排列（季度/月份），已发生与计划中要视觉区分。', '每个节点一句话写动作，不写背景。'],
+    process: ['步骤按先后编号，每步一个动词开头，标明输入与产出。', '流程页最多 5 步，更复杂的流程拆成两页。'],
+    comparison: ['对照表固定比较维度，优势项用强调色但不夸大。', '左右两列逐项对齐，读者扫视即可得出结论。'],
+    table: ['表头先行、数据右对齐，超过 7 行考虑分页或摘要。', '表格只放决策所需数据，完整数据放附录。'],
+    cards: ['卡片标题保持同一词性，正文同一句式，便于横向扫读。', '每张卡片一个独立信息单元，卡片之间不互相依赖。'],
+    gallery: ['图库每张图配一句说明，统一裁切比例与图注位置。', '用图库讲「系列感」而不是单图秀，图片风格必须统一。'],
+    team: ['每人一句角色定位加一项可信背书，肖像风格统一。', '团队页强调互补性：职能、经验与分工一目了然。'],
+    testimonial: ['证言写客户原话并署名职位，数据型证言优先于感受型。', '一条证言一个论点，多条证言用相同版式重复。'],
+    pricing: ['三档定价对齐功能维度，推荐档视觉前置但不隐藏其他档价格。', '定价页必须写明口径与计费周期。'],
+    bars: ['条形按数值排序，最大值与最小值给出解读。', '排行类图表保留刻度感，颜色只强调需要讨论的条目。'],
+    'line-chart': ['趋势线不超过三条，关键拐点加文字注释。', '坐标轴写清单位与时间范围，避免双轴误读。'],
+    map: ['地图只标与叙事相关的点位，路线用序号串联。', '每个点位配一句事实，不把地图当装饰。'],
+    faq: ['问题写成用户真实会问的原话，答案先结论后解释。', '一条问答一屏内读完，长答案拆成两条问题。'],
+    logos: ['客户标识统一灰度与高度，按行业或时间排序。', '标识墙是信任证据，下方可补一句客户规模数据。'],
+    'index-list': ['目录回收全部章节与页码，标题与转场页逐字一致。', '索引页帮助会后检索，条目编号与正文严格对应。'],
+    closing: ['收尾页重复核心主张并给出明确行动项与联系方式。', '最后一页只留一个号召动作，避免信息发散。'],
+  },
+  en: {
+    cover: ['Lead with the core judgement in one line; the subtitle states the context and document type.', 'The cover only answers “what is this and who is it for” — leave detail to the agenda.'],
+    agenda: ['Split the story into 3–5 chapters whose numbers match the divider pages exactly.', 'Keep agenda items as short noun phrases, under eight words each.'],
+    divider: ['Show only the chapter name and one chapter statement; strip extra decoration for breathing room.', 'Dividers are punctuation: a large numeral tells readers where they are.'],
+    hero: ['Conclusion first, reasoning second; keep the statement to one and a half lines with accent color on key words.', 'The hero carries the single most important claim — cut every supporting detail.'],
+    split: ['Each side covers one idea; body copy under three lines, captions complement rather than repeat.', 'Keep the visual axis aligned with symmetrical whitespace between text and image.'],
+    'two-image': ['The two images must contrast; the title names the comparison dimension, the verdict goes in captions.', 'Use parallel structure for before/after or option A/B stories.'],
+    'triple-grid': ['All three cells share one decision frame: one keyword plus one piece of evidence each.', 'Keep identical sentence patterns and lengths across cells for rhythm.'],
+    stats: ['Every metric needs a name, value and caliber note; highlight the most important one only.', 'Metrics must share a common theme — no unrelated number salad.'],
+    'big-stat': ['Keep one hero number with a single line explaining why it matters.', 'One conclusion per big-number page; supporting detail moves to the footer caliber line.'],
+    quote: ['Always attribute the quote; pull quotes sit alone, sized between headline and body.', 'Quote pages create pause and persuasion — never stack a second viewpoint.'],
+    timeline: ['Use one time granularity; visually distinguish past milestones from planned ones.', 'One action sentence per node, no background text.'],
+    process: ['Number steps in order, start each with a verb, and state inputs and outputs.', 'Maximum five steps per page; split longer processes across two pages.'],
+    comparison: ['Fix comparison dimensions in rows; accent strengths without overstating them.', 'Align columns row by row so the verdict is visible at a glance.'],
+    table: ['Headers first, numbers right-aligned; paginate or summarize beyond seven rows.', 'Tables hold decision-grade data only — full datasets go to the appendix.'],
+    cards: ['Match card titles in part of speech and body copy in sentence pattern for easy scanning.', 'Each card is one self-contained unit that never depends on its neighbors.'],
+    gallery: ['Every image gets a caption; unify crop ratios and caption placement.', 'A gallery sells a series, not a single hero — image style must stay consistent.'],
+    team: ['One role line plus one credible credential per person; portraits share one treatment.', 'Emphasize complementarity: functions, experience and division of labor at a glance.'],
+    testimonial: ['Use the client’s own words with name and title; prefer numeric proof over vague praise.', 'One argument per testimonial, repeated with the same layout.'],
+    pricing: ['Align tiers on the same feature dimensions; feature the recommended tier without hiding prices.', 'Always state the billing period and pricing caliber.'],
+    bars: ['Sort bars by value and interpret both the maximum and minimum.', 'Keep the scale honest; color only the item under discussion.'],
+    'line-chart': ['No more than three trend lines; annotate the key inflection points.', 'Label units and time range on both axes; avoid misleading dual axes.'],
+    map: ['Mark only points relevant to the story and connect the route with numbers.', 'Pair each pin with one fact — the map is evidence, not decoration.'],
+    faq: ['Write questions as users actually ask them; answers lead with the conclusion.', 'Each Q&A fits on one screen; split long answers into two questions.'],
+    logos: ['Unify logos in grayscale and height; sort by industry or tenure.', 'The logo wall is trust evidence — add one customer-scale fact below if possible.'],
+    'index-list': ['Recap every chapter with page numbers; titles match dividers word for word.', 'The index supports post-meeting lookup — numbering must match the body exactly.'],
+    closing: ['Restate the core claim and end with one clear call to action and contact route.', 'Leave a single call to action on the last page — nothing that dilutes it.'],
+  },
+}
+
+function layoutLabel(layout, locale) {
+  return LAYOUT_NOTE_LABEL[locale === 'en' ? 'en' : 'zh'][layout] ?? layout
+}
+
+function slideNoteFor(page, locale) {
+  const variants = LAYOUT_NOTE_TEXT[locale === 'en' ? 'en' : 'zh'][page.layout] ?? LAYOUT_NOTE_TEXT.zh.split
+  return variants[(page.no - 1) % variants.length]
+}
+
+// 视觉气质：基于真实调色板/框架/栅格生成，不写空话
+function buildVisualTone(t, deck, meta, locale) {
+  const fw = deck.framework
+  const [c1, c2, c3] = meta.colors
+  if (locale === 'en') {
+    return `Built for high-density live delivery and post-meeting reading. The “${fw.nameEn}” framework organizes every page on a ${fw.gridEn.toLowerCase()}: the deep ground tone (${c1}) holds the canvas, the information tone (${c2}) carries body surfaces and charts, and a single accent (${c3}) lands only on the page’s most important judgement. The full ${deck.pages.length}-slide deck shares one grid, axis set and image treatment, so cross-page rhythm stays consistent while no two slide layouts repeat.`
+  }
+  return `面向现场讲述与会后阅读的高密度演示。「${fw.name}」框架以${fw.grid}组织每一页：深底色（${c1}）安静托底，信息色（${c2}）承载信息面与图示，唯一的强调色（${c3}）只落在当页最重要的判断上。全套 ${deck.pages.length} 页共享同一套栅格、轴线与图像处理，跨页节奏一致，且没有任何两页版式重复。`
+}
+
+// 示范如何工作：基于真实页面结构（封面/议程/转场/目录/收尾数量）
+function buildHowItWorks(t, deck, locale) {
+  const n = deck.pages.length
+  const count = (l) => deck.pages.filter((p) => p.layout === l).length
+  const dividers = count('divider')
+  const hasIndex = count('index-list') > 0
+  const imgCount = deck.images ? deck.images.length : 0
+  if (locale === 'en') {
+    return `This sample is a complete ${n}-slide story: the cover and agenda set the narrative contract first${dividers ? `, ${dividers} section divider${dividers > 1 ? 's' : ''} break the content into clear chapters` : ''}${hasIndex ? ', and an index page before the closing recaps every chapter' : ''}. KPI boards, data tables, comparisons, native charts, team portraits and route maps each play their own role across ${imgCount} original illustrations. Click any text to replace it with your own — edits persist per page, in both languages.`
+  }
+  return `示范稿是一套 ${n} 页的完整叙事：封面与议程先立叙事契约${dividers ? `，${dividers} 个章节转场把内容切成清晰段落` : ''}${hasIndex ? '，收尾前的索引目录回收全部章节' : ''}；指标看板、数据表格、对照比较、原生图表、团队肖像与路线地图各司其职，贯穿 ${imgCount} 张原创配图。点击任意文字即可替换为你的真实内容，修改按页持久化，中英双语同步。`
+}
+
+function buildWritingStyle(locale) {
+  if (locale === 'en') {
+    return 'Lead with the judgement, then support it with numbers, mechanisms and sources. Keep headlines in sentence case — complete sentences instead of keyword fragments. Every chart and figure carries a caliber note and every claim a source; one argument per page, body copy within three lines, with detail moved to notes or the appendix. All copy is inline-editable and persists per slide; switch the whole deck between Chinese and English at any time.'
+  }
+  return '先给判断，再以序号、数据、机制与来源支撑；标题保持 sentence case，写完整句而不是堆短语。图表与数字必须带口径说明，引用标注来源；每页只讲一个主张，正文控制在三行以内，细节放进备注与附录。所有文案均可内联编辑并按页持久化，整套幻灯支持中英一键切换。'
+}
+
 function openTemplateDetail(tpl) {
   const list = allTemplates()
   let idx = list.findIndex((t) => t.name === tpl.name)
@@ -607,48 +753,77 @@ function openTemplateDetail(tpl) {
   mask.innerHTML = `
     <div class="td-topbar">
       <div class="td-topbar-left">
-        <button class="td-back" id="td-back" type="button">
-          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-          <span id="td-back-label">返回模板</span>
-        </button>
+        <button class="td-brand-mark td-back" id="td-brand" type="button" aria-label="Design Buddy">G</button>
+        <svg class="td-crumb-sep" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <span class="td-topbar-title" id="td-topbar-title"></span>
       </div>
       <div class="td-topbar-right">
-        <button class="td-top-btn" id="td-topic" type="button">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22a10 10 0 1 1 10-10c0 2.5-2 3-3.5 3H15a2.5 2.5 0 0 0-2 4c-.5 1.5-1 3-1 3z"/></svg>
-          主题
-        </button>
-        <button class="td-top-btn" id="td-share-top" type="button">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-          分享
-        </button>
-        <button class="td-top-btn td-present" id="td-present" type="button">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          演示
-        </button>
-        <button class="td-top-btn td-upgrade" id="td-upgrade" type="button">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-          升级
-        </button>
-        <button class="td-close" id="td-close" type="button" aria-label="关闭">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        <div class="td-present-split">
+          <button class="td-top-btn td-present" id="td-present" type="button">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <span id="td-present-label">演示</span>
+          </button>
+          <button class="td-present-caret" id="td-present-caret" type="button" aria-haspopup="true" aria-label="演示选项">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="td-pop-menu" id="td-present-menu" hidden>
+            <button type="button" data-present="start" id="td-present-start"></button>
+            <button type="button" data-present="auto" id="td-present-auto"></button>
+          </div>
+        </div>
+        <div class="td-more-wrap">
+          <button class="td-more-btn" id="td-more" type="button" aria-haspopup="true" aria-label="更多操作">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg>
+          </button>
+          <div class="td-pop-menu" id="td-more-menu" hidden>
+            <button type="button" id="td-topic">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22a10 10 0 1 1 10-10c0 2.5-2 3-3.5 3H15a2.5 2.5 0 0 0-2 4c-.5 1.5-1 3-1 3z"/></svg>
+              <span id="td-more-topic"></span>
+            </button>
+            <button type="button" id="td-share-top">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              <span id="td-more-share"></span>
+            </button>
+            <button type="button" id="td-upgrade">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+              <span id="td-more-upgrade"></span>
+            </button>
+            <hr/>
+            <button type="button" class="td-close" id="td-close">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+              <span id="td-more-close"></span>
+            </button>
+          </div>
+        </div>
+        <button class="td-top-avatar" id="td-top-avatar" type="button" aria-label="账号">
+          <span class="avatar av-blue" id="td-top-avatar-badge">D</span>
         </button>
       </div>
     </div>
     <div class="td-ribbon">
       <button class="td-ribbon-settings" id="td-settings-toggle" type="button">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-        设置
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83 1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span id="td-ribbon-settings-label"></span>
       </button>
       <span class="td-ribbon-center">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
-        您正在编辑模板
+        <span id="td-shared-label"></span>
+        <button class="td-add-ws" id="td-add-workspace" type="button">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span id="td-add-ws-label"></span>
+        </button>
       </span>
       <div class="td-ribbon-right">
-        <button class="td-use-ribbon" id="td-use-ribbon" type="button">使用模板
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <button class="td-api-btn" id="td-api" type="button">&lt;/&gt; API</button>
+        <div class="td-use-wrap">
+          <button class="td-use-ribbon" id="td-use-ribbon" type="button" aria-haspopup="true">
+            <span id="td-use-ribbon-label"></span>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="td-pop-menu td-use-menu" id="td-use-menu" hidden>
+            <button type="button" data-use="new" id="td-use-new"></button>
+            <button type="button" id="td-api"></button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="td-body">
@@ -697,6 +872,10 @@ function openTemplateDetail(tpl) {
         <button class="td-page-arrow" id="td-page-next" type="button" aria-label="下一页">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
+        <span class="td-made-by" id="td-made-by">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          <span id="td-made-label"></span>
+        </span>
       </div>
       <div class="td-progress"><i id="td-progress-i"></i></div>
       <div class="td-pages" id="td-pages"></div>
@@ -1005,11 +1184,35 @@ function openTemplateDetail(tpl) {
   }
 
   function syncLangButtons() {
+    const P = uiText().panel
     mask.querySelectorAll('#td-lang [data-lang]').forEach((b) => {
       b.classList.toggle('is-active', b.dataset.lang === lang())
     })
-    mask.querySelector('#td-back-label').textContent =uiText().panel.back
-    mask.querySelector('#td-autoplay-label').textContent =uiText().panel.autoplay
+    mask.querySelector('#td-autoplay-label').textContent = P.autoplay
+    // 顶栏 / 粉色带 / 面板固定文案随语言刷新
+    const setText = (id, txt) => { const el = mask.querySelector(id); if (el) el.textContent = txt }
+    setText('#td-present-label', P.present)
+    setText('#td-present-start', P.presentFromStart)
+    setText('#td-present-auto', P.presentAuto)
+    setText('#td-more-topic', P.moreTopic)
+    setText('#td-more-share', P.moreShare)
+    setText('#td-more-upgrade', P.moreUpgrade)
+    setText('#td-more-close', P.moreClose)
+    setText('#td-ribbon-settings-label', P.settings)
+    setText('#td-shared-label', P.sharedWithYou)
+    setText('#td-add-ws-label', P.addToWorkspace)
+    setText('#td-use-ribbon-label', P.use)
+    setText('#td-use-new', P.useNew)
+    setText('#td-api', P.useJson)
+    setText('#td-made-label', P.madeBy)
+    // 头像缩写：登录用户优先
+    const u = currentUser()
+    const badge = mask.querySelector('#td-top-avatar-badge')
+    if (badge) {
+      const n = (u?.name ?? '').trim()
+      badge.textContent = n ? (/[\u4e00-\u9fa5]/.test(n) ? n.slice(0, 2) : n.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase()) : 'D'
+      if (u?.color) badge.className = `avatar ${u.color}`
+    }
   }
 
   function renderPanel() {
@@ -1033,12 +1236,51 @@ function openTemplateDetail(tpl) {
     })
     const manifest = getArtManifest()
     panel.innerHTML = `
+      <div class="tdp-head">
+        <div class="tdp-title-row">
+          <strong>${P.panelTitle}</strong>
+          <span class="tdp-beta">${P.beta}</span>
+        </div>
+        <button class="tdp-close" id="td-panel-close" type="button" aria-label="${P.panelTitle}">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="tdp-notice">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>${P.viewerNotice}</span>
+      </div>
       <div class="tdp-tabs" role="tablist">
-        <button type="button" class="tdp-tab ${activeTab === 'brief' ? 'is-active' : ''}" data-tab="brief">${tabBrief}</button>
-        <button type="button" class="tdp-tab ${activeTab === 'images' ? 'is-active' : ''}" data-tab="images">${tabImages}<i>${artRows.length}</i></button>
+        <button type="button" class="tdp-tab ${activeTab === 'brief' ? 'is-active' : ''}" data-tab="brief">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2l1.9 5.8L20 9.7l-5.1 3.7L16.5 20 12 16.4 7.5 20l1.6-6.6L4 9.7l6.1-1.9z"/></svg>
+          ${P.tabBrief}
+        </button>
+        <button type="button" class="tdp-tab ${activeTab === 'images' ? 'is-active' : ''}" data-tab="images">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg>
+          ${P.tabImages}<i>${artRows.length}</i>
+        </button>
       </div>
 
       <div class="tdp-pane" data-pane="brief" ${activeTab !== 'brief' ? 'hidden' : ''}>
+      <section class="tdp-guide">
+        <h3>${P.visualTone}</h3>
+        <p>${buildVisualTone(t, deck, meta, locale)}</p>
+        <h3>${P.howItWorks}</h3>
+        <p>${buildHowItWorks(t, deck, locale)}</p>
+        <h3>${P.writingStyle}</h3>
+        <p>${buildWritingStyle(locale)}</p>
+      </section>
+      <button class="tdp-slide-jump" id="td-slide-jump" type="button">${P.slideNotes(deck.pages.length)}</button>
+      <section class="tdp-slide-notes" id="td-slide-notes">
+        <h4>${P.slideNotesTitle}</h4>
+        <ol>
+          ${deck.pages.map((p) => `<li>
+            <b>${String(p.no).padStart(2, '0')} · ${layoutLabel(p.layout, locale)}</b>
+            <span>${slideNoteFor(p, locale)}</span>
+          </li>`).join('')}
+        </ol>
+      </section>
+      <details class="tdp-advanced" ${hasEdits(t, locale) ? 'open' : ''}>
+        <summary>${P.advanced}</summary>
       <div class="td-head">
         <h2>${displayTpl(t, locale).name}</h2>
         <button class="td-share" id="td-share" title="分享模板" type="button">
@@ -1104,6 +1346,7 @@ function openTemplateDetail(tpl) {
       <div class="td-use-wrap">
         <button class="td-use" id="td-use" type="button">${P.use}</button>
       </div>
+      </details>
       </div>
 
       <div class="tdp-pane tdp-images" data-pane="images" ${activeTab !== 'images' ? 'hidden' : ''}>
@@ -1173,6 +1416,15 @@ function openTemplateDetail(tpl) {
       close()
       useTemplate(t)
     })
+
+    // 面板 X：收起左侧设置区（与粉色带「设置」开关同源）
+    panel.querySelector('#td-panel-close').addEventListener('click', () => {
+      mask.classList.add('panel-collapsed')
+    })
+    // 粉色徽章：滚动到逐页说明区
+    panel.querySelector('#td-slide-jump').addEventListener('click', () => {
+      panel.querySelector('#td-slide-notes')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
   }
 
   function render() {
@@ -1229,6 +1481,21 @@ function openTemplateDetail(tpl) {
       menu.hidden = true
       mask.querySelector('#td-dots')?.setAttribute('aria-expanded', 'false')
     }
+    // 顶栏 / 粉色带的弹出菜单：点到外部即收起
+    mask.querySelectorAll('.td-pop-menu').forEach((m) => {
+      if (!m.hidden && !e.target.closest(`#${m.id.replace('-menu', '-wrap')}, .td-present-split, .td-use-wrap`)) {
+        m.hidden = true
+      }
+    })
+  }
+
+  // 弹出菜单统一开关
+  function toggleMenu(menuId, btn) {
+    const menu = mask.querySelector(menuId)
+    const wasHidden = menu.hidden
+    mask.querySelectorAll('.td-pop-menu').forEach((m) => { m.hidden = true })
+    menu.hidden = !wasHidden
+    btn?.setAttribute('aria-expanded', String(!wasHidden))
   }
 
   mask.querySelector('#td-page-prev').addEventListener('click', () => goPage(-1))
@@ -1371,13 +1638,52 @@ function openTemplateDetail(tpl) {
     }
     autoplay ? stopAuto() : startAuto()
   })
-  mask.querySelector('#td-upgrade').addEventListener('click', () => openUpgrade())
-  mask.querySelector('#td-use-ribbon').addEventListener('click', () => {
+  mask.querySelector('#td-upgrade').addEventListener('click', () => { openUpgrade() })
+
+  // 顶栏「…」更多菜单 / 演示拆分按钮
+  mask.querySelector('#td-more').addEventListener('click', (e) => {
+    e.stopPropagation()
+    toggleMenu('#td-more-menu', mask.querySelector('#td-more'))
+  })
+  mask.querySelector('#td-present-caret').addEventListener('click', (e) => {
+    e.stopPropagation()
+    if (formOf(cur()) === 'doc') {
+      toast(lang() === 'en' ? 'Document view scrolls vertically — use slides for autoplay' : '文档形态为纵向滚动，自动演示请切回幻灯片')
+      return
+    }
+    toggleMenu('#td-present-menu', mask.querySelector('#td-present-caret'))
+  })
+  mask.querySelector('#td-present-menu').addEventListener('click', (e) => {
+    const item = e.target.closest('[data-present]')
+    if (!item) return
+    mask.querySelector('#td-present-menu').hidden = true
+    if (formOf(cur()) === 'doc') {
+      toast(lang() === 'en' ? 'Switch to slides to present' : '请先切换到幻灯片形态再演示')
+      return
+    }
+    if (item.dataset.present === 'start') { pageIdx = 0; renderDeck(); startAuto() }
+    else { autoplay ? stopAuto() : startAuto() }
+  })
+  // 顶栏头像 → 账号弹窗
+  mask.querySelector('#td-top-avatar').addEventListener('click', () => openAccount())
+
+  // 粉色带：添加到我的工作区（真实创建并保留在查看器内，弹窗浮于上层）
+  mask.querySelector('#td-add-workspace').addEventListener('click', () => {
+    useTemplate(cur())
+  })
+  // 使用模板 ▾：菜单选择
+  mask.querySelector('#td-use-ribbon').addEventListener('click', (e) => {
+    e.stopPropagation()
+    toggleMenu('#td-use-menu', mask.querySelector('#td-use-ribbon'))
+  })
+  mask.querySelector('#td-use-new').addEventListener('click', () => {
     const t = cur()
+    mask.querySelector('#td-use-menu').hidden = true
     close()
     useTemplate(t)
   })
   mask.querySelector('#td-api').addEventListener('click', () => {
+    mask.querySelector('#td-use-menu').hidden = true
     const locale = lang()
     const t = cur()
     const payload = JSON.stringify({
