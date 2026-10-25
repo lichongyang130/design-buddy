@@ -1,14 +1,1301 @@
 {
-  "version": 1,
-  "generatedAt": null,
+  "version": 2,
+  "generatedAt": "2026-10-25T10:07:31.154Z",
   "note": "由 scripts/asset-pipeline.mjs 生成。引擎在素材缺失时自动回退内联 SVG，因此空清单不影响任何页面渲染。",
   "sources": [
-    { "id": "openverse", "license": "CC 系列授权，按条目保留作者与许可信息", "keyRequired": false },
-    { "id": "pixabay", "license": "Pixabay Content License，可商用免署名", "keyRequired": true, "env": "PIXABAY_KEY" },
-    { "id": "pexels", "license": "Pexels License，可商用免署名", "keyRequired": true, "env": "PEXELS_KEY" },
-    { "id": "undraw", "license": "MIT，免费可商用", "keyRequired": false },
-    { "id": "openpeeps", "license": "CC0，手绘人物肖像", "keyRequired": false },
-    { "id": "open-doodles", "license": "CC0，手绘涂鸦", "keyRequired": false }
+    {
+      "id": "openverse",
+      "license": "CC 系列授权，按条目保留作者与许可信息",
+      "keyRequired": false
+    },
+    {
+      "id": "pixabay",
+      "license": "Pixabay Content License，可商用免署名",
+      "keyRequired": true,
+      "env": "PIXABAY_KEY"
+    },
+    {
+      "id": "pexels",
+      "license": "Pexels License，可商用免署名",
+      "keyRequired": true,
+      "env": "PEXELS_KEY"
+    },
+    {
+      "id": "undraw",
+      "license": "MIT，免费可商用",
+      "keyRequired": false
+    },
+    {
+      "id": "openpeeps",
+      "license": "CC0，手绘人物肖像",
+      "keyRequired": false
+    },
+    {
+      "id": "open-doodles",
+      "license": "CC0，手绘涂鸦",
+      "keyRequired": false
+    }
   ],
-  "concepts": {}
+  "concepts": {
+    "shared.portrait.01": {
+      "illustration": {
+        "src": "/art/illustration/shared.portrait.01.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.portrait.02": {
+      "illustration": {
+        "src": "/art/illustration/shared.portrait.02.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.portrait.03": {
+      "illustration": {
+        "src": "/art/illustration/shared.portrait.03.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.portrait.04": {
+      "illustration": {
+        "src": "/art/illustration/shared.portrait.04.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.portrait.05": {
+      "illustration": {
+        "src": "/art/illustration/shared.portrait.05.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.portrait.06": {
+      "illustration": {
+        "src": "/art/illustration/shared.portrait.06.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.portrait.07": {
+      "illustration": {
+        "src": "/art/illustration/shared.portrait.07.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.portrait.08": {
+      "illustration": {
+        "src": "/art/illustration/shared.portrait.08.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.map": {
+      "illustration": {
+        "src": "/art/illustration/shared.map.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.logowall": {
+      "illustration": {
+        "src": "/art/illustration/shared.logowall.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.teamwork": {
+      "illustration": {
+        "src": "/art/illustration/shared.teamwork.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "shared.growth": {
+      "illustration": {
+        "src": "/art/illustration/shared.growth.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "course.book": {
+      "illustration": {
+        "src": "/art/illustration/course.book.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "course.lightbulb": {
+      "illustration": {
+        "src": "/art/illustration/course.lightbulb.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "course.classroom": {
+      "illustration": {
+        "src": "/art/illustration/course.classroom.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "course.online": {
+      "illustration": {
+        "src": "/art/illustration/course.online.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "course.board": {
+      "illustration": {
+        "src": "/art/illustration/course.board.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "course.notebook": {
+      "illustration": {
+        "src": "/art/illustration/course.notebook.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "course.cap": {
+      "illustration": {
+        "src": "/art/illustration/course.cap.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "course.quiz": {
+      "illustration": {
+        "src": "/art/illustration/course.quiz.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "course.workshop": {
+      "illustration": {
+        "src": "/art/illustration/course.workshop.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "course.video": {
+      "illustration": {
+        "src": "/art/illustration/course.video.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "proposal.handshake": {
+      "illustration": {
+        "src": "/art/illustration/proposal.handshake.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "proposal.blueprint": {
+      "illustration": {
+        "src": "/art/illustration/proposal.blueprint.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "proposal.target": {
+      "illustration": {
+        "src": "/art/illustration/proposal.target.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "proposal.sign": {
+      "illustration": {
+        "src": "/art/illustration/proposal.sign.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "proposal.meeting": {
+      "illustration": {
+        "src": "/art/illustration/proposal.meeting.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "proposal.strategy": {
+      "illustration": {
+        "src": "/art/illustration/proposal.strategy.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "proposal.compass": {
+      "illustration": {
+        "src": "/art/illustration/proposal.compass.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "proposal.checklist": {
+      "illustration": {
+        "src": "/art/illustration/proposal.checklist.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "report.chart": {
+      "illustration": {
+        "src": "/art/illustration/report.chart.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "report.clipboard": {
+      "illustration": {
+        "src": "/art/illustration/report.clipboard.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "report.analytics": {
+      "illustration": {
+        "src": "/art/illustration/report.analytics.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "report.document": {
+      "illustration": {
+        "src": "/art/illustration/report.document.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "report.magnifier": {
+      "illustration": {
+        "src": "/art/illustration/report.magnifier.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "report.dashboard": {
+      "illustration": {
+        "src": "/art/illustration/report.dashboard.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "funding.rocket": {
+      "illustration": {
+        "src": "/art/illustration/funding.rocket.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "funding.growth": {
+      "illustration": {
+        "src": "/art/illustration/funding.growth.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "funding.piggy": {
+      "illustration": {
+        "src": "/art/illustration/funding.piggy.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "funding.investor": {
+      "illustration": {
+        "src": "/art/illustration/funding.investor.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "funding.trend": {
+      "illustration": {
+        "src": "/art/illustration/funding.trend.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "funding.coins": {
+      "illustration": {
+        "src": "/art/illustration/funding.coins.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "marketing.megaphone": {
+      "illustration": {
+        "src": "/art/illustration/marketing.megaphone.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "marketing.mobile": {
+      "illustration": {
+        "src": "/art/illustration/marketing.mobile.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "marketing.coupon": {
+      "illustration": {
+        "src": "/art/illustration/marketing.coupon.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "marketing.social": {
+      "illustration": {
+        "src": "/art/illustration/marketing.social.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "marketing.bag": {
+      "illustration": {
+        "src": "/art/illustration/marketing.bag.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "marketing.campaign": {
+      "illustration": {
+        "src": "/art/illustration/marketing.campaign.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "training.mentor": {
+      "illustration": {
+        "src": "/art/illustration/training.mentor.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "training.gears": {
+      "illustration": {
+        "src": "/art/illustration/training.gears.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "training.path": {
+      "illustration": {
+        "src": "/art/illustration/training.path.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "training.certificate": {
+      "illustration": {
+        "src": "/art/illustration/training.certificate.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "training.elearning": {
+      "illustration": {
+        "src": "/art/illustration/training.elearning.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "training.practice": {
+      "illustration": {
+        "src": "/art/illustration/training.practice.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "planning.chess": {
+      "illustration": {
+        "src": "/art/illustration/planning.chess.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "planning.roadmap": {
+      "illustration": {
+        "src": "/art/illustration/planning.roadmap.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "planning.orgchart": {
+      "illustration": {
+        "src": "/art/illustration/planning.orgchart.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "planning.calendar": {
+      "illustration": {
+        "src": "/art/illustration/planning.calendar.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "planning.briefcase": {
+      "illustration": {
+        "src": "/art/illustration/planning.briefcase.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "event.stage": {
+      "illustration": {
+        "src": "/art/illustration/event.stage.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "event.confetti": {
+      "illustration": {
+        "src": "/art/illustration/event.confetti.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "event.ticket": {
+      "illustration": {
+        "src": "/art/illustration/event.ticket.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "event.calendar": {
+      "illustration": {
+        "src": "/art/illustration/event.calendar.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "event.balloon": {
+      "illustration": {
+        "src": "/art/illustration/event.balloon.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "event.venue": {
+      "illustration": {
+        "src": "/art/illustration/event.venue.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "portfolio.palette": {
+      "illustration": {
+        "src": "/art/illustration/portfolio.palette.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "portfolio.camera": {
+      "illustration": {
+        "src": "/art/illustration/portfolio.camera.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "portfolio.grid": {
+      "illustration": {
+        "src": "/art/illustration/portfolio.grid.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "portfolio.desk": {
+      "illustration": {
+        "src": "/art/illustration/portfolio.desk.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "portfolio.frame": {
+      "illustration": {
+        "src": "/art/illustration/portfolio.frame.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "brand.mark": {
+      "illustration": {
+        "src": "/art/illustration/brand.mark.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "brand.guide": {
+      "illustration": {
+        "src": "/art/illustration/brand.guide.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "brand.swatches": {
+      "illustration": {
+        "src": "/art/illustration/brand.swatches.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "brand.type": {
+      "illustration": {
+        "src": "/art/illustration/brand.type.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "brand.packaging": {
+      "illustration": {
+        "src": "/art/illustration/brand.packaging.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "edu.bee": {
+      "illustration": {
+        "src": "/art/illustration/edu.bee.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "edu.butterfly": {
+      "illustration": {
+        "src": "/art/illustration/edu.butterfly.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "edu.flower": {
+      "illustration": {
+        "src": "/art/illustration/edu.flower.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "edu.hive": {
+      "illustration": {
+        "src": "/art/illustration/edu.hive.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "edu.microscope": {
+      "illustration": {
+        "src": "/art/illustration/edu.microscope.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "edu.globe": {
+      "illustration": {
+        "src": "/art/illustration/edu.globe.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "edu.apple": {
+      "illustration": {
+        "src": "/art/illustration/edu.apple.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "edu.pencil": {
+      "illustration": {
+        "src": "/art/illustration/edu.pencil.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "edu.atom": {
+      "illustration": {
+        "src": "/art/illustration/edu.atom.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "edu.dna": {
+      "illustration": {
+        "src": "/art/illustration/edu.dna.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "edu.telescope": {
+      "illustration": {
+        "src": "/art/illustration/edu.telescope.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "edu.sprout": {
+      "illustration": {
+        "src": "/art/illustration/edu.sprout.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "tech.robot": {
+      "illustration": {
+        "src": "/art/illustration/tech.robot.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "tech.circuit": {
+      "illustration": {
+        "src": "/art/illustration/tech.circuit.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "tech.chip": {
+      "illustration": {
+        "src": "/art/illustration/tech.chip.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "tech.cloud": {
+      "illustration": {
+        "src": "/art/illustration/tech.cloud.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "tech.phone": {
+      "illustration": {
+        "src": "/art/illustration/tech.phone.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "tech.satellite": {
+      "illustration": {
+        "src": "/art/illustration/tech.satellite.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "tech.vr": {
+      "illustration": {
+        "src": "/art/illustration/tech.vr.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "tech.code": {
+      "illustration": {
+        "src": "/art/illustration/tech.code.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "health.stethoscope": {
+      "illustration": {
+        "src": "/art/illustration/health.stethoscope.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "health.heart": {
+      "illustration": {
+        "src": "/art/illustration/health.heart.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "health.doctor": {
+      "illustration": {
+        "src": "/art/illustration/health.doctor.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "health.medicine": {
+      "illustration": {
+        "src": "/art/illustration/health.medicine.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "health.hospital": {
+      "illustration": {
+        "src": "/art/illustration/health.hospital.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "health.shield": {
+      "illustration": {
+        "src": "/art/illustration/health.shield.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "health.tooth": {
+      "illustration": {
+        "src": "/art/illustration/health.tooth.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "health.flask": {
+      "illustration": {
+        "src": "/art/illustration/health.flask.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "art.brush": {
+      "illustration": {
+        "src": "/art/illustration/art.brush.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "art.sculpture": {
+      "illustration": {
+        "src": "/art/illustration/art.sculpture.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "art.gallery": {
+      "illustration": {
+        "src": "/art/illustration/art.gallery.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "art.music": {
+      "illustration": {
+        "src": "/art/illustration/art.music.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "art.masks": {
+      "illustration": {
+        "src": "/art/illustration/art.masks.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "art.pottery": {
+      "illustration": {
+        "src": "/art/illustration/art.pottery.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "culture.lantern": {
+      "illustration": {
+        "src": "/art/illustration/culture.lantern.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "culture.temple": {
+      "illustration": {
+        "src": "/art/illustration/culture.temple.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "culture.scroll": {
+      "illustration": {
+        "src": "/art/illustration/culture.scroll.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "culture.tea": {
+      "illustration": {
+        "src": "/art/illustration/culture.tea.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "culture.dance": {
+      "illustration": {
+        "src": "/art/illustration/culture.dance.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "culture.museum": {
+      "illustration": {
+        "src": "/art/illustration/culture.museum.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "travel.airplane": {
+      "illustration": {
+        "src": "/art/illustration/travel.airplane.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "travel.suitcase": {
+      "illustration": {
+        "src": "/art/illustration/travel.suitcase.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "travel.passport": {
+      "illustration": {
+        "src": "/art/illustration/travel.passport.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "travel.beach": {
+      "illustration": {
+        "src": "/art/illustration/travel.beach.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "travel.mountain": {
+      "illustration": {
+        "src": "/art/illustration/travel.mountain.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "travel.camera": {
+      "illustration": {
+        "src": "/art/illustration/travel.camera.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "travel.pin": {
+      "illustration": {
+        "src": "/art/illustration/travel.pin.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "food.chef": {
+      "illustration": {
+        "src": "/art/illustration/food.chef.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "food.plate": {
+      "illustration": {
+        "src": "/art/illustration/food.plate.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "food.coffee": {
+      "illustration": {
+        "src": "/art/illustration/food.coffee.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "food.table": {
+      "illustration": {
+        "src": "/art/illustration/food.table.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "food.ingredients": {
+      "illustration": {
+        "src": "/art/illustration/food.ingredients.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "food.dessert": {
+      "illustration": {
+        "src": "/art/illustration/food.dessert.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "retail.storefront": {
+      "illustration": {
+        "src": "/art/illustration/retail.storefront.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "retail.cart": {
+      "illustration": {
+        "src": "/art/illustration/retail.cart.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "retail.gift": {
+      "illustration": {
+        "src": "/art/illustration/retail.gift.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "retail.tag": {
+      "illustration": {
+        "src": "/art/illustration/retail.tag.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "retail.boutique": {
+      "illustration": {
+        "src": "/art/illustration/retail.boutique.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "retail.parcel": {
+      "illustration": {
+        "src": "/art/illustration/retail.parcel.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "arch.building": {
+      "illustration": {
+        "src": "/art/illustration/arch.building.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "arch.blueprint": {
+      "illustration": {
+        "src": "/art/illustration/arch.blueprint.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "arch.crane": {
+      "illustration": {
+        "src": "/art/illustration/arch.crane.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "arch.skyline": {
+      "illustration": {
+        "src": "/art/illustration/arch.skyline.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "arch.interior": {
+      "illustration": {
+        "src": "/art/illustration/arch.interior.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    },
+    "arch.bridge": {
+      "illustration": {
+        "src": "/art/illustration/arch.bridge.svg",
+        "author": "Design Buddy",
+        "license": "CC0 1.0",
+        "provider": "inline-svg",
+        "sourceUrl": ""
+      }
+    }
+  }
 }

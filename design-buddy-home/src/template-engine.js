@@ -612,6 +612,13 @@ export function clearArtOverride(deckId, pageNo, slot) {
 
 const escAttr = (v) => String(v ?? '').replace(/&/g, '&amp;').replace(/"/g, '&quot;')
 
+// manifest 条目既支持裸 URL 字符串，也支持 { src, author, license } 对象
+const entrySrc = (entry, mode) => {
+  const v = entry?.[mode]
+  if (!v) return null
+  return typeof v === 'string' ? v : (v.src ?? null)
+}
+
 function art(deck, index, page = null, slot = 0, locale = 'zh') {
   const i = ((index % deck.images.length) + deck.images.length) % deck.images.length
   const svg = deck.images[i]
@@ -619,10 +626,7 @@ function art(deck, index, page = null, slot = 0, locale = 'zh') {
   if (artConfig.mode === 'svg' || !page) return fallback
   const key = conceptFor(deck.tpl, page, slot)
   let src = artConfig.overrides[`${deck.tpl.id}:${page.no}:${slot}`]
-  if (!src) {
-    const entry = artConfig.manifest[key]
-    src = artConfig.mode === 'photo' ? entry?.photo : entry?.illustration
-  }
+  if (!src) src = entrySrc(artConfig.manifest[key], artConfig.mode)
   if (!src) return fallback
   const alt = escAttr(conceptLabel(key, locale))
   return `<div class="dp-art dp-art-img"><img loading="lazy" src="${escAttr(src)}" alt="${alt}"></div>`
@@ -632,7 +636,7 @@ function art(deck, index, page = null, slot = 0, locale = 'zh') {
 function mapArt(deck, page, fallbackSvg, locale) {
   if (artConfig.mode === 'svg') return fallbackSvg
   const src = artConfig.overrides[`${deck.tpl.id}:${page.no}:0`]
-    || (artConfig.mode === 'photo' ? artConfig.manifest['shared.map']?.photo : artConfig.manifest['shared.map']?.illustration)
+    || entrySrc(artConfig.manifest['shared.map'], artConfig.mode)
   if (!src) return fallbackSvg
   return `<img loading="lazy" src="${escAttr(src)}" alt="${escAttr(conceptLabel('shared.map', locale))}">`
 }
