@@ -228,9 +228,37 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   await tick()
   check('template detail overlay opens', !!doc.querySelector('.td-mask'))
   check('detail shows template name', doc.querySelector('.td-head h2')?.textContent === '渔港日记')
-  check('detail carousel has all templates', doc.querySelectorAll('.td-thumb').length === 24)
+  // 轮播改为窗口化（12 个缩略图），幻灯页浏览器就位
+  check('detail carousel is windowed', doc.querySelectorAll('.td-thumb').length === 12)
+  check('detail deck renders a page', !!doc.querySelector('.td-deck .dp-page'))
+  check('detail has page count', /01 \/ \d\d/.test(doc.querySelector('#td-page-count')?.textContent ?? ''))
+  check('detail has framework badge', !!doc.querySelector('#td-frame')?.textContent)
+  check('detail spec block shown', doc.querySelectorAll('.td-spec > div').length === 3)
   check('detail shows fit list', doc.querySelectorAll('.td-fits li').length === 4)
   check('detail shows style dots', doc.querySelectorAll('.td-dot').length >= 3)
+  // 翻页交互：下一页改变页码与进度条
+  const pageNoBefore = doc.querySelector('#td-page-count').textContent
+  click(w, doc.querySelector('#td-page-next'))
+  await tick()
+  const pageNoAfter = doc.querySelector('#td-page-count').textContent
+  check('page next advances deck', pageNoAfter !== pageNoBefore && pageNoAfter.startsWith('02'))
+  check('progress bar advanced', doc.querySelector('#td-progress-i').style.width !== '0%' && !!doc.querySelector('#td-progress-i').style.width)
+  // 页码圆点可点击跳页
+  const dots = doc.querySelectorAll('.td-page-dot')
+  check('page strip has dots', dots.length >= 5)
+  click(w, dots[dots.length - 1])
+  await tick()
+  check('page dot jumps', doc.querySelector('.td-page-dot.is-active')?.textContent === dots[dots.length - 1].textContent)
+  // 自动播放开关
+  click(w, doc.querySelector('#td-autoplay'))
+  await tick()
+  check('autoplay toggles on', doc.querySelector('#td-autoplay').classList.contains('is-on'))
+  click(w, doc.querySelector('#td-autoplay'))
+  await tick()
+  check('autoplay toggles off', !doc.querySelector('#td-autoplay').classList.contains('is-on'))
+  // 回到第一页，避免影响后续模板切换断言
+  click(w, doc.querySelector('#td-page-prev'))
+  await tick()
 
   // 轮播切换到下一个模板
   click(w, doc.querySelector('#td-next'))

@@ -6,6 +6,10 @@
 import './rail-flyout.js'
 import { store, toast, openModal, confirmModal, uid, fmtDate, copyText } from './core.js'
 import { initGlobalUI, openUpgrade } from './global-ui.js'
+import {
+  buildCatalog, buildDeck, renderPageHTML, metaFor, coverStyle, coverDeco,
+  VISIBLE_CATS, HIDDEN_CATS,
+} from './template-engine.js'
 
 initGlobalUI()
 
@@ -14,17 +18,8 @@ const $$ = (sel, root = document) => [...root.querySelectorAll(sel)]
 
 /* ---------------- 内置 24 套模板 ---------------- */
 
-const CATEGORIES_VISIBLE = [
-  ['课程', 220],
-  ['提案', 181],
-  ['报告', 159],
-  ['融资演讲稿', 153],
-  ['营销材料', 140],
-  ['培训', 126],
-  ['商业规划', 116],
-  ['活动', 103],
-]
-const CATEGORIES_HIDDEN = ['作品集', '品牌设计', '教育', '科技', '医疗健康', '艺术', '文化', '旅游', '餐饮', '零售', '建筑']
+const CATEGORIES_VISIBLE = VISIBLE_CATS
+const CATEGORIES_HIDDEN = HIDDEN_CATS
 
 const TEMPLATES = [
   { name: '渔港日记', cls: 'tpl-shipu', a: '石', b: 'SHIPU', format: '演示文稿', cats: ['文化', '营销材料'] },
@@ -210,11 +205,16 @@ function categoryRow(name, count) {
   return label
 }
 
-for (const [name, count] of CATEGORIES_VISIBLE) categoryBody.appendChild(categoryRow(name, count))
+// 类别计数由目录动态统计（每类 50 套生成模板 + 手工精选命中项）
+const CAT_COUNTS = new Map()
+for (const t of allTemplates()) {
+  for (const c of t.cats ?? []) CAT_COUNTS.set(c, (CAT_COUNTS.get(c) ?? 0) + 1)
+}
+for (const name of CATEGORIES_VISIBLE) categoryBody.appendChild(categoryRow(name, CAT_COUNTS.get(name) ?? 0))
 const extraWrap = document.createElement('div')
 extraWrap.className = 'cat-extra'
 extraWrap.hidden = true
-for (const name of CATEGORIES_HIDDEN) extraWrap.appendChild(categoryRow(name))
+for (const name of CATEGORIES_HIDDEN) extraWrap.appendChild(categoryRow(name, CAT_COUNTS.get(name) ?? 0))
 categoryBody.appendChild(extraWrap)
 
 const catToggle = document.createElement('button')
@@ -232,7 +232,8 @@ catToggle.addEventListener('click', () => {
 
 function allTemplates() {
   const customs = (store.state.customTemplates ?? []).map((t) => ({ ...t, custom: true }))
-  return [...TEMPLATES, ...customs]
+  // 24 套手工精选在前，950 套引擎生成模板随后，自建模板最后
+  return [...TEMPLATES, ...buildCatalog(), ...customs]
 }
 
 function scopedTemplates() {
@@ -259,20 +260,34 @@ function scopedTemplates() {
 
 const grid = $('#tpl-grid')
 const empty = $('#tpl-empty')
+const PAGE_SIZE = 24
+let pageLimit = PAGE_SIZE
+let currentItems = []
+
+function coverClass(tpl) {
+  if (tpl.cls) return tpl.cls
+  if (tpl.gen) return 'tpl-gen'
+  return 'tpl-custom'
+}
+
+function pageBadge(tpl) {
+  if (!tpl.gen) return ''
+  const meta = metaFor(tpl)
+  return `<span class="tc-page-badge">${meta.spec.pages} 页 · ${meta.spec.images} 图</span>`
+}
 
 function renderGrid(items) {
-  grid.innerHTML = items.map((tpl) => `
+  currentItems = items
+  const visible = items.slice(0, pageLimit)
+  grid.innerHTML = visible.map((tpl) => `
     <article class="tpl-card" data-name="${tpl.name}" ${tpl.custom ? `data-custom="${tpl.id}"` : ''}>
-      <div class="tpl-cover ${tpl.cls ?? 'tpl-custom'}" ${tpl.cover ? `style="--custom-cover:${tpl.cover}"` : ''}>
-        ${tpl.custom ? '<span class="tc-custom-tag">我的模板</span>' : ''}
-        ${tpl.a ? `<span class="tc-a">${tpl.a}</span>` : ''}
-        ${tpl.b ? `<span class="tc-b">${tpl.b}</span>` : ''}
-      </div>
+      ${coverHTML(tpl)}
       <p class="tpl-name">${FOLDER_ICON}<span>${tpl.name}</span></p>
     </article>`).join('')
   const none = items.length === 0
   empty.hidden = !none
   grid.hidden = none
+  updateLoadMore(items.length)
   if (none) {
     const map = {
       recent: ['还没有用过模板', '套用任意模板后，它会自动出现在「最近」里。'],
@@ -285,7 +300,32 @@ function renderGrid(items) {
   }
 }
 
+/* 分页：加载更多 */
+const moreWrap = document.createElement('div')
+moreWrap.className = 'tpl-more-wrap'
+moreWrap.hidden = true
+moreWrap.innerHTML = `<button class="btn btn-ghost" id="tpl-more" type="button">加载更多</button><p class="tpl-more-count" id="tpl-more-count"></p>`
+grid.after(moreWrap)
+
+function updateLoadMore(total) {
+  const hasMore = pageLimit < total
+  moreWrap.hidden = !hasMore
+  if (hasMore) {
+    moreWrap.querySelector('#tpl-more-count').textContent = `已显示 ${Math.min(pageLimit, total)} / ${total} 套`
+  }
+}
+
+moreWrap.querySelector('#tpl-more').addEventListener('click', () => {
+  pageLimit += PAGE_SIZE
+  renderGrid(currentItems)
+  // 新卡片进入视口时的轻量动效
+  grid.querySelectorAll('.tpl-card').forEach((card, i) => {
+    if (i >= pageLimit - PAGE_SIZE) card.classList.add('is-fresh')
+  })
+})
+
 function applyView() {
+  pageLimit = PAGE_SIZE
   let items = scopedTemplates().filter((tpl) => {
     const formatOk = view.format === 'all' || tpl.format === view.format
     const catOk = view.categories.size === 0 || tpl.cats.some((c) => view.categories.has(c))
@@ -320,7 +360,7 @@ $$('input[name="format"]').forEach((radio) => {
 
 categoryBody.addEventListener('change', (event) => {
   const box = event.target
-  if (!(box instanceof HTMLInputElement) || box.type !== 'checkbox') return
+  if (!box || box.nodeName !== 'INPUT' || box.type !== 'checkbox') return
   if (box.checked) view.categories.add(box.value)
   else view.categories.delete(box.value)
   applyView()
@@ -434,10 +474,27 @@ function coverInner(tpl) {
     ${tpl.b ? `<span class="tc-b">${tpl.b}</span>` : ''}`
 }
 
+function coverHTML(tpl) {
+  if (tpl.gen) {
+    return `<div class="tpl-cover tpl-gen" data-deco="${coverDeco(tpl)}" style="${coverStyle(tpl)}">
+      <span class="tc-deco" aria-hidden="true"></span>
+      ${tpl.a ? `<span class="tc-a">${tpl.a}</span>` : ''}
+      ${tpl.b ? `<span class="tc-b">${tpl.b}</span>` : ''}
+      ${pageBadge(tpl)}
+    </div>`
+  }
+  return `<div class="tpl-cover ${coverClass(tpl)}" ${tpl.cover ? `style="--custom-cover:${tpl.cover}"` : ''}>${coverInner(tpl)}</div>`
+}
+
 function openTemplateDetail(tpl) {
   const list = allTemplates()
   let idx = list.findIndex((t) => t.name === tpl.name)
   if (idx < 0) idx = 0
+  let pageIdx = 0
+  let autoplay = false
+  let timer = null
+  const THUMB_WINDOW = 12
+  const PAGE_WINDOW = 9
 
   const mask = document.createElement('div')
   mask.className = 'td-mask'
@@ -450,13 +507,31 @@ function openTemplateDetail(tpl) {
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
     </button>
     <div class="td-left">
-      <div class="td-stage"><div class="td-slide" id="td-slide"></div></div>
+      <div class="td-deck-bar">
+        <span class="td-frame-badge" id="td-frame"></span>
+        <span class="td-page-count" id="td-page-count"></span>
+        <button class="td-autoplay" id="td-autoplay" type="button" aria-pressed="false">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <span>自动播放</span>
+        </button>
+      </div>
+      <div class="td-stage" id="td-stage">
+        <button class="td-page-arrow" id="td-page-prev" type="button" aria-label="上一页">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="td-deck" id="td-deck"></div>
+        <button class="td-page-arrow" id="td-page-next" type="button" aria-label="下一页">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div class="td-progress"><i id="td-progress-i"></i></div>
+      <div class="td-pages" id="td-pages"></div>
       <div class="td-carousel-wrap">
-        <button class="td-arrow" id="td-prev" type="button" aria-label="上一个">
+        <button class="td-arrow" id="td-prev" type="button" aria-label="上一个模板">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
         <div class="td-carousel" id="td-carousel"></div>
-        <button class="td-arrow" id="td-next" type="button" aria-label="下一个">
+        <button class="td-arrow" id="td-next" type="button" aria-label="下一个模板">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
       </div>
@@ -465,22 +540,69 @@ function openTemplateDetail(tpl) {
   document.body.append(mask)
   document.body.style.overflow = 'hidden'
 
-  const slide = mask.querySelector('#td-slide')
+  const deckEl = mask.querySelector('#td-deck')
   const panel = mask.querySelector('#td-panel')
   const carousel = mask.querySelector('#td-carousel')
+  const pageCountEl = mask.querySelector('#td-page-count')
+  const frameEl = mask.querySelector('#td-frame')
+  const progressEl = mask.querySelector('#td-progress-i')
+  const pagesStrip = mask.querySelector('#td-pages')
+  const autoBtn = mask.querySelector('#td-autoplay')
 
-  carousel.innerHTML = list.map((t, i) => `
-    <button class="td-thumb" data-i="${i}" type="button">
-      <span class="tpl-cover ${t.cls ?? 'tpl-custom'}" ${t.cover ? `style="--custom-cover:${t.cover}"` : ''}>${coverInner(t)}</span>
-      <span class="td-thumb-name">${t.name}</span>
-    </button>`).join('')
+  const cur = () => list[idx]
+  const styleIdxOf = (t) => store.state.templateStyles[t.name] ?? 0
 
-  function render() {
-    const t = list[idx]
-    const meta = TPL_META[t.name] ?? DEFAULT_META
-    const styleIdx = store.state.templateStyles[t.name] ?? 0
-    slide.innerHTML = `<div class="tpl-cover ${t.cls ?? 'tpl-custom'}" ${t.cover ? `style="--custom-cover:${t.cover}"` : ''}>${coverInner(t)}</div>`
+  function stopAuto() {
+    if (timer) { clearInterval(timer); timer = null }
+    autoplay = false
+    autoBtn.classList.remove('is-on')
+    autoBtn.setAttribute('aria-pressed', 'false')
+  }
+  function startAuto() {
+    stopAuto()
+    autoplay = true
+    autoBtn.classList.add('is-on')
+    autoBtn.setAttribute('aria-pressed', 'true')
+    timer = setInterval(() => goPage(1), 2600)
+  }
 
+  function renderDeck() {
+    const t = cur()
+    const deck = buildDeck(t)
+    if (pageIdx >= deck.pages.length) pageIdx = 0
+    deckEl.innerHTML = renderPageHTML(t, pageIdx, styleIdxOf(t))
+    deckEl.querySelector('.dp-page')?.classList.add('is-shown')
+    pageCountEl.textContent = `${String(pageIdx + 1).padStart(2, '0')} / ${String(deck.pages.length).padStart(2, '0')}`
+    frameEl.textContent = deck.framework.name
+    progressEl.style.width = `${((pageIdx + 1) / deck.pages.length) * 100}%`
+    renderPageStrip(deck.pages.length)
+  }
+
+  function renderPageStrip(total) {
+    const start = Math.max(0, Math.min(pageIdx - 4, total - PAGE_WINDOW))
+    const nums = Array.from({ length: Math.min(PAGE_WINDOW, total) }, (_, k) => start + k)
+    pagesStrip.innerHTML = nums.map((n) =>
+      `<button type="button" class="td-page-dot ${n === pageIdx ? 'is-active' : ''}" data-page="${n}">${n + 1}</button>`).join('')
+  }
+
+  function renderCarousel() {
+    const total = list.length
+    const start = Math.max(0, Math.min(idx - 5, total - THUMB_WINDOW))
+    const nums = Array.from({ length: Math.min(THUMB_WINDOW, total) }, (_, k) => start + k)
+    carousel.innerHTML = nums.map((i) => {
+      const t = list[i]
+      return `<button class="td-thumb ${i === idx ? 'is-active' : ''}" data-i="${i}" type="button">
+        ${coverHTML(t)}
+        <span class="td-thumb-name">${t.name}</span>
+      </button>`
+    }).join('')
+  }
+
+  function renderPanel() {
+    const t = cur()
+    const meta = TPL_META[t.name] ?? metaFor(t)
+    const spec = metaFor(t).spec
+    const styleIdx = styleIdxOf(t)
     panel.innerHTML = `
       <div class="td-head">
         <h2>${t.name}</h2>
@@ -534,12 +656,16 @@ function openTemplateDetail(tpl) {
           </button>`).join('')}
       </div>
 
+      <h4>规格</h4>
+      <div class="td-spec">
+        <div><b>${spec.pages}</b><span>个页面</span></div>
+        <div><b>${spec.images}</b><span>张配图</span></div>
+        <div class="td-spec-fw"><b>${spec.framework}</b><span>设计框架 · ${spec.grid}</span></div>
+      </div>
+
       <div class="td-use-wrap">
         <button class="td-use" id="td-use" type="button">使用模板</button>
       </div>`
-
-    carousel.querySelectorAll('.td-thumb').forEach((el, i) => el.classList.toggle('is-active', i === idx))
-    carousel.querySelector('.td-thumb.is-active')?.scrollIntoView?.({ behavior: 'smooth', inline: 'center', block: 'nearest' })
 
     panel.querySelector('#td-share').addEventListener('click', () => {
       copyText(`${location.origin}${location.pathname}?tpl=${encodeURIComponent(t.name)}`)
@@ -560,8 +686,6 @@ function openTemplateDetail(tpl) {
       styleMenu.hidden = true
       render()
     })
-
-    // 底部样式变体卡片：与色点下拉共用同一份持久化状态
     panel.querySelectorAll('[data-style-card]').forEach((card) => {
       card.addEventListener('click', () => {
         store.state.templateStyles[t.name] = Number(card.dataset.styleCard)
@@ -569,19 +693,33 @@ function openTemplateDetail(tpl) {
         render()
       })
     })
-
     panel.querySelector('#td-use').addEventListener('click', () => {
       close()
       useTemplate(t)
     })
   }
 
-  function go(delta) {
+  function render() {
+    renderDeck()
+    renderCarousel()
+    renderPanel()
+  }
+
+  function goPage(delta) {
+    const deck = buildDeck(cur())
+    pageIdx = (pageIdx + delta + deck.pages.length) % deck.pages.length
+    renderDeck()
+  }
+
+  function goTemplate(delta) {
+    stopAuto()
     idx = (idx + delta + list.length) % list.length
+    pageIdx = 0
     render()
   }
 
   function close() {
+    stopAuto()
     mask.remove()
     document.body.style.overflow = ''
     document.removeEventListener('keydown', onKey)
@@ -590,8 +728,8 @@ function openTemplateDetail(tpl) {
 
   function onKey(e) {
     if (e.key === 'Escape') close()
-    if (e.key === 'ArrowRight') go(1)
-    if (e.key === 'ArrowLeft') go(-1)
+    if (e.key === 'ArrowRight') goPage(1)
+    if (e.key === 'ArrowLeft') goPage(-1)
   }
 
   function onDocClick(e) {
@@ -602,14 +740,24 @@ function openTemplateDetail(tpl) {
     }
   }
 
-  mask.querySelector('#td-prev').addEventListener('click', () => go(-1))
-  mask.querySelector('#td-next').addEventListener('click', () => go(1))
+  mask.querySelector('#td-page-prev').addEventListener('click', () => goPage(-1))
+  mask.querySelector('#td-page-next').addEventListener('click', () => goPage(1))
+  pagesStrip.addEventListener('click', (e) => {
+    const dot = e.target.closest('[data-page]')
+    if (!dot) return
+    pageIdx = Number(dot.dataset.page)
+    renderDeck()
+  })
+  autoBtn.addEventListener('click', () => (autoplay ? stopAuto() : startAuto()))
+  mask.querySelector('#td-prev').addEventListener('click', () => goTemplate(-1))
+  mask.querySelector('#td-next').addEventListener('click', () => goTemplate(1))
   carousel.addEventListener('click', (e) => {
     const thumb = e.target.closest('.td-thumb')
-    if (thumb) {
-      idx = Number(thumb.dataset.i)
-      render()
-    }
+    if (!thumb) return
+    stopAuto()
+    idx = Number(thumb.dataset.i)
+    pageIdx = 0
+    render()
   })
   mask.querySelector('.td-back').addEventListener('click', close)
   mask.querySelector('.td-close').addEventListener('click', close)
