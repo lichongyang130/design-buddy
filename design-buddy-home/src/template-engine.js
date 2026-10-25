@@ -622,14 +622,15 @@ const entrySrc = (entry, mode) => {
 function art(deck, index, page = null, slot = 0, locale = 'zh') {
   const i = ((index % deck.images.length) + deck.images.length) % deck.images.length
   const svg = deck.images[i]
-  const fallback = `<div class="dp-art">${svg}</div>`
+  const key = conceptFor(deck.tpl, page ?? { layout: 'divider', no: 1 }, slot)
+  const artAttrs = `data-art-key="${escAttr(key)}" data-art-slot="${slot}" data-art-page="${page?.no ?? 1}" title="${locale === 'en' ? 'Click to replace artwork' : '点击替换配图'}"`
+  const fallback = `<div class="dp-art" ${artAttrs}>${svg}</div>`
   if (artConfig.mode === 'svg' || !page) return fallback
-  const key = conceptFor(deck.tpl, page, slot)
   let src = artConfig.overrides[`${deck.tpl.id}:${page.no}:${slot}`]
   if (!src) src = entrySrc(artConfig.manifest[key], artConfig.mode)
   if (!src) return fallback
   const alt = escAttr(conceptLabel(key, locale))
-  return `<div class="dp-art dp-art-img"><img loading="lazy" src="${escAttr(src)}" alt="${alt}"></div>`
+  return `<div class="dp-art dp-art-img" ${artAttrs}><img loading="lazy" src="${escAttr(src)}" alt="${alt}"></div>`
 }
 
 // map 版式：素材清单含 shared.map 时用真实插画地图，否则保留程序化 SVG
@@ -774,7 +775,7 @@ export function renderPageHTML(rawTpl, pageIndex, styleIdx = 0, locale = 'zh', e
       break
     case 'map':
       inner = `<h3${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h3>
-        <div class="dp-map dp-art">${mapArt(deck, page, svgWrap(`map-${tpl.id}-${page.no}`, `<path d="M40 240 L120 120 L190 180 L260 80 L360 160" fill="none" stroke="var(--dp-accent)" stroke-width="6" stroke-linecap="round"/>
+        <div class="dp-map dp-art" data-art-key="shared.map" data-art-slot="0" data-art-page="${page.no}" title="${locale === 'en' ? 'Click to replace artwork' : '点击替换配图'}">${mapArt(deck, page, svgWrap(`map-${tpl.id}-${page.no}`, `<path d="M40 240 L120 120 L190 180 L260 80 L360 160" fill="none" stroke="var(--dp-accent)" stroke-width="6" stroke-linecap="round"/>
           ${[120, 180, 80, 160].map((y, k) => `<circle cx="${[120, 190, 260, 360][k]}" cy="${y}" r="12" fill="var(--dp-accent2)"/>`).join('')}`, palette[1]), locale)}</div>
         <p class="dp-lead dp-editable" contenteditable="true" data-edit="map-lead">${ed('map-lead', T.mapLead)}</p>`
       break

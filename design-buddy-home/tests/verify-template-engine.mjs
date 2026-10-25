@@ -248,6 +248,86 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   // 工具栏语言控件同步
   check('toolbar lang control exists', !!doc.querySelector('.tpl-lang [data-lang="zh"]'))
 
+  /* P4 配图替换：点击配图 → 素材弹窗 → 换图/上传/恢复默认，全部持久化 */
+  await tick(120) // 等待 manifest 异步加载完成
+  const artEl = doc.querySelector('.td-deck .dp-art[data-art-key]')
+  check('artwork wrapper carries concept anchor', !!artEl && !!artEl.dataset.artKey && artEl.dataset.artSlot === '0')
+  const artPageNo = artEl.dataset.artPage
+  click(w, artEl)
+  await tick()
+  const picker = doc.querySelector('.modal-mask .art-picker-grid')
+  check('art picker opens with library grid', !!picker && picker.querySelectorAll('.art-pick').length >= 100)
+  check('art picker has upload and reset actions',
+    !!doc.querySelector('.art-picker-foot [data-art-upload]') && !!doc.querySelector('.art-picker-foot [data-art-reset]'))
+  const picks = [...picker.querySelectorAll('.art-pick')]
+  const currentPick = picks.find((p) => p.classList.contains('is-current'))
+  check('current artwork marked in picker', !!currentPick)
+  const alt = picks.find((p) => p !== currentPick)
+  const altSrc = alt.dataset.artSrc
+  click(w, alt)
+  await tick()
+  check('picker closes after choosing', !doc.querySelector('.modal-mask .art-picker-grid'))
+  const replaced = doc.querySelector(`.td-deck [data-art-page="${artPageNo}"][data-art-slot="0"] img`)
+  check('deck artwork swapped to chosen illustration', replaced?.getAttribute('src') === altSrc)
+  const st1 = readState(storage)
+  check('art override persisted to state', Object.values(st1.artOverrides).includes(altSrc))
+
+  // 重新打开 → 恢复默认
+  click(w, doc.querySelector('.td-deck .dp-art[data-art-key]'))
+  await tick()
+  check('picker reopens with current tag', !!doc.querySelector('.art-pick.is-current'))
+  click(w, doc.querySelector('.art-picker-foot [data-art-reset]'))
+  await tick()
+  check('reset closes picker', !doc.querySelector('.modal-mask .art-picker-grid'))
+  const afterResetImg = doc.querySelector(`.td-deck [data-art-page="${artPageNo}"][data-art-slot="0"] img`)
+  check('reset restores default illustration', afterResetImg?.getAttribute('src') !== altSrc)
+  check('override removed from state', !Object.values(readState(storage).artOverrides).includes(altSrc))
+
+  // 上传自有图片：构造 SVG File → dataURL 覆盖
+  click(w, doc.querySelector('.td-deck .dp-art[data-art-key]'))
+  await tick()
+  const fileInput = doc.querySelector('.art-picker-foot input[type="file"]')
+  check('upload input accepts images', !!fileInput && fileInput.accept.includes('image'))
+  const uploadFile = new w.File(['<svg xmlns="http://www.w3.org/2000/svg"></svg>'], 'mine.svg', { type: 'image/svg+xml' })
+  Object.defineProperty(fileInput, 'files', { value: [uploadFile], configurable: true })
+  fileInput.dispatchEvent(new w.Event('change', { bubbles: true }))
+  await tick(60)
+  const st2 = readState(storage)
+  check('uploaded data url persisted', Object.values(st2.artOverrides).some((v) => String(v).startsWith('data:image/svg')))
+  check('deck shows uploaded image', doc.querySelector(`.td-deck [data-art-page="${artPageNo}"][data-art-slot="0"] img`)
+    ?.getAttribute('src')?.startsWith('data:image/svg'))
+
+  // 刷新后覆盖仍生效（轮播中途切过模板，按名称重开同一套）
+  const tplName = doc.querySelector('.td-head h2').textContent
+  const reloaded = await loadPage('/templates.html', { storage })
+  await tick(120)
+  let reCard = [...reloaded.doc.querySelectorAll('.tpl-card')]
+    .find((c) => c.querySelector('.tpl-name span')?.textContent === tplName)
+  for (let n = 0; n < 12 && !reCard; n++) {
+    click(reloaded.w, reloaded.doc.querySelector('#tpl-more'))
+    await tick()
+    reCard = [...reloaded.doc.querySelectorAll('.tpl-card')]
+      .find((c) => c.querySelector('.tpl-name span')?.textContent === tplName)
+  }
+  check('same template reopened after reload', !!reCard, tplName)
+  click(reloaded.w, reCard)
+  await tick()
+  // 覆盖按页号持久化，重开详情默认在第 1 页，翻到被替换的那一页
+  let reloadTarget = reloaded.doc.querySelector(`.td-deck [data-art-page="${artPageNo}"][data-art-slot="0"] img`)
+  for (let n = 0; n < 8 && !reloadTarget; n++) {
+    click(reloaded.w, reloaded.doc.querySelector('#td-page-next'))
+    await tick()
+    reloadTarget = reloaded.doc.querySelector(`.td-deck [data-art-page="${artPageNo}"][data-art-slot="0"] img`)
+  }
+  check('upload override survives reload', reloadTarget?.getAttribute('src')?.startsWith('data:image/svg'))
+  // 收尾：恢复默认，避免污染后续断言
+  click(reloaded.w, reloaded.doc.querySelector(`.td-deck [data-art-page="${artPageNo}"]`))
+  await tick()
+  click(reloaded.w, reloaded.doc.querySelector('.art-picker-foot [data-art-reset]'))
+  await tick()
+  reloaded.w.dispatchEvent(new reloaded.w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
+  await tick()
+
   doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
   await tick()
 
@@ -287,7 +367,10 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   check('regular page concept belongs to its category pool', CONCEPT_POOLS[t.cats[0]].includes(regularKey))
   const regularIdx = d.pages.indexOf(regularPage)
 
-  check('default svg mode has no img tag', !renderPageHTML(t, regularIdx).includes('<img'))
+  const svgHtml = renderPageHTML(t, regularIdx)
+  check('default svg mode has no img tag', !svgHtml.includes('<img'))
+  check('svg fallback wrapper still carries art anchor', svgHtml.includes('data-art-key="') && svgHtml.includes('data-art-slot="0"'))
+  check('art anchor key matches concept', svgHtml.includes(`data-art-key="${regularKey}"`))
   configureArt({ mode: 'illustration', manifest: { [regularKey]: { illustration: '/art/illustration/x.svg', photo: '/art/photo/x.jpg' } } })
   const illHtml = renderPageHTML(t, regularIdx)
   check('illustration mode emits img with illustration src', illHtml.includes('dp-art-img') && illHtml.includes('src="/art/illustration/x.svg"'))

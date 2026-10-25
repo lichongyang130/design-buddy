@@ -9,7 +9,9 @@ import { initGlobalUI, openUpgrade } from './global-ui.js'
 import {
   buildCatalog, buildDeck, renderPageHTML, metaFor, coverStyle, coverDeco,
   displayTpl, catLabel, VISIBLE_CATS, HIDDEN_CATS, configureArt,
+  getArtManifest, setArtOverride, clearArtOverride,
 } from './template-engine.js'
+import { ART_CONCEPTS, conceptLabel } from './art-concepts.js'
 
 initGlobalUI()
 
@@ -17,9 +19,13 @@ initGlobalUI()
 store.state.templateLang ??= 'zh'
 /* 配图模式（持久化）：illustration 绘本插画（默认）| photo 真实照片 | svg 经典 SVG */
 store.state.imageMode ??= 'illustration'
-configureArt({ mode: store.state.imageMode })
+/* 单页换图覆盖（持久化）：键 `${deckId}:${pageNo}:${slot}` → 素材 URL/dataURL */
+store.state.artOverrides ??= {}
+configureArt({ mode: store.state.imageMode, overrides: store.state.artOverrides })
 // 加载构建期素材清单；缺失/离线时静默失败，引擎自动回退内联 SVG
-fetch(`${import.meta.env.BASE_URL}art/manifest.json`)
+// 用 document.baseURI 拼绝对地址，保证 jsdom/Node fetch 与子路径部署都能解析
+const manifestUrl = new URL('art/manifest.json', document.baseURI).href
+fetch(manifestUrl)
   .then((r) => (r.ok ? r.json() : null))
   .then((m) => { if (m?.concepts) configureArt({ manifest: m.concepts }) })
   .catch(() => {})
@@ -41,6 +47,11 @@ const UI = {
       autoplay: '自动播放',
     },
     showMore: (n) => `显示更多 ${n}`, collapse: '收起',
+    artPicker: {
+      title: '替换配图', hint: '从插画库选择，或上传自有图片',
+      upload: '上传图片', reset: '恢复默认', current: '当前', done: '配图已替换',
+      resetDone: '已恢复默认配图', empty: '素材库暂未就绪，仍可上传自有图片',
+    },
   },
   en: {
     loadMore: 'Load more', shown: (a, b) => `Showing ${a} / ${b}`,
@@ -58,6 +69,11 @@ const UI = {
       autoplay: 'Autoplay',
     },
     showMore: (n) => `Show more ${n}`, collapse: 'Collapse',
+    artPicker: {
+      title: 'Replace artwork', hint: 'Pick from the illustration library or upload your own image',
+      upload: 'Upload image', reset: 'Restore default', current: 'Current', done: 'Artwork replaced',
+      resetDone: 'Default artwork restored', empty: 'Library is not ready yet — you can still upload your own image',
+    },
   },
 }
 const uiText = () => UI[lang()]
@@ -664,7 +680,7 @@ function openTemplateDetail(tpl) {
   function renderDeck() {
     const t = cur()
     const locale = lang()
-    configureArt({ mode: store.state.imageMode ?? 'illustration' })
+    configureArt({ mode: store.state.imageMode ?? 'illustration', overrides: store.state.artOverrides })
     const deck = buildDeck(t, locale)
     if (pageIdx >= deck.pages.length) pageIdx = 0
     const edits = pageEdits(t, locale, pageIdx)
@@ -694,6 +710,88 @@ function openTemplateDetail(tpl) {
     try { document.execCommand('insertText', false, text) } catch { el_insertFallback(e.target, text) }
   })
   function el_insertFallback(el, text) { el.textContent = `${el.textContent}${text}` }
+
+  /* 配图替换（P4）：插画库选择 / 上传自有图 / 恢复默认，覆盖关系持久化 */
+  function openArtPicker(tpl, pageNo, slot, currentKey) {
+    const locale = lang()
+    const T = uiText().artPicker
+    const overrideKey = `${tpl.id}:${pageNo}:${slot}`
+    const manifest = getArtManifest()
+    const currentSrc = store.state.artOverrides[overrideKey]
+      || manifest[currentKey]?.illustration?.src || ''
+
+    const apply = (src) => {
+      store.state.artOverrides[overrideKey] = src
+      setArtOverride(tpl.id, pageNo, slot, src)
+      // 替换配图需要在绘本/照片模式下才可见，经典 SVG 模式自动切走
+      if (store.state.imageMode === 'svg') store.state.imageMode = 'illustration'
+      configureArt({ mode: store.state.imageMode, overrides: store.state.artOverrides })
+      store.save()
+      close()
+      renderDeck()
+      toast(T.done)
+    }
+    const doReset = () => {
+      delete store.state.artOverrides[overrideKey]
+      clearArtOverride(tpl.id, pageNo, slot)
+      store.save()
+      close()
+      renderDeck()
+      toast(T.resetDone)
+    }
+
+    const grid = document.createElement('div')
+    grid.className = 'art-picker-grid'
+    const hasLib = Object.keys(ART_CONCEPTS).some((k) => manifest[k]?.illustration?.src)
+    if (!hasLib) grid.innerHTML = `<p class="art-picker-empty">${T.empty}</p>`
+    for (const [key] of Object.entries(ART_CONCEPTS)) {
+      const src = manifest[key]?.illustration?.src
+      if (!src) continue
+      const btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'art-pick' + (src === currentSrc ? ' is-current' : '')
+      btn.dataset.artSrc = src
+      btn.innerHTML = `<img src="${src}" alt=""><span>${conceptLabel(key, locale)}</span>`
+      if (src === currentSrc) {
+        const tag = document.createElement('i')
+        tag.className = 'art-pick-tag'
+        tag.textContent = T.current
+        btn.append(tag)
+      }
+      btn.addEventListener('click', () => apply(src))
+      grid.append(btn)
+    }
+
+    const fileInput = document.createElement('input')
+    fileInput.type = 'file'
+    fileInput.accept = 'image/*'
+    fileInput.hidden = true
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files?.[0]
+      if (!file) return
+      const reader = new FileReader()
+      reader.onload = () => apply(String(reader.result))
+      reader.readAsDataURL(file)
+    })
+
+    const footer = document.createElement('div')
+    footer.className = 'art-picker-foot'
+    footer.innerHTML =
+      `<button type="button" class="btn btn-ghost" data-art-upload>${T.upload}</button>
+       <button type="button" class="btn btn-ghost" data-art-reset>${T.reset}</button>`
+    footer.querySelector('[data-art-upload]').addEventListener('click', () => fileInput.click())
+    footer.querySelector('[data-art-reset]').addEventListener('click', doReset)
+    footer.append(fileInput)
+
+    const { close } = openModal({ title: T.title, body: grid, footer, wide: true })
+  }
+
+  // 点击幻灯内任意配图外壳 → 打开换图弹窗（文字编辑区不在 dp-art 内，互不干扰）
+  deckEl.addEventListener('click', (e) => {
+    const artEl = e.target.closest?.('[data-art-key]')
+    if (!artEl || !deckEl.contains(artEl)) return
+    openArtPicker(cur(), Number(artEl.dataset.artPage), Number(artEl.dataset.artSlot), artEl.dataset.artKey)
+  })
 
   function renderPageStrip(total) {
     const start = Math.max(0, Math.min(pageIdx - 4, total - PAGE_WINDOW))
