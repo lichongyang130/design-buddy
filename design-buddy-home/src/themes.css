@@ -574,3 +574,449 @@
     width: 100%;
   }
 }
+
+/* ============================================================
+   新建主题：全屏编辑器（按截图 1:1）
+   ============================================================ */
+
+.te-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 130;
+  background: #17181c;
+  display: flex;
+  animation: td-mask-in 0.2s ease;
+}
+
+.te-x {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  z-index: 3;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #d8dbe2;
+}
+
+.te-x:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* 左侧白色面板 */
+.te-panel {
+  width: min(680px, 44vw);
+  min-width: 560px;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  flex: none;
+}
+
+.te-head {
+  padding: 22px 26px 12px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.te-name-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f4f5f7;
+  border-radius: 10px;
+  padding: 4px 8px 4px 16px;
+}
+
+.te-name {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  height: 40px;
+}
+
+.te-pencil {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--text-3);
+  flex: none;
+}
+
+.te-pencil:hover { background: #e7eaef; color: var(--navy); }
+
+.te-usage {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.te-usage b { color: var(--navy-soft); font-weight: 700; }
+
+.te-body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+/* 分组侧栏 */
+.te-nav {
+  width: 132px;
+  flex: none;
+  padding: 18px 12px;
+  border-right: 1px solid var(--line-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.te-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy-soft);
+  text-align: left;
+}
+
+.te-nav-item:hover { background: var(--line-soft); }
+
+.te-nav-item.is-active {
+  background: #dbe8ff;
+  color: var(--blue-deep);
+}
+
+.te-nav-ic {
+  width: 20px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex: none;
+}
+
+/* 内容区 */
+.te-content {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  padding: 26px 30px 40px;
+}
+
+.te-section-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 18px;
+}
+
+.te-text-title { margin-top: 34px; }
+
+.te-group-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+
+.te-sub-label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-2);
+  margin: 14px 0 8px;
+}
+
+.te-info {
+  display: inline-grid;
+  place-items: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid var(--text-3);
+  color: var(--text-3);
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 700;
+  vertical-align: 1px;
+}
+
+/* 颜色字段 */
+.te-field-row { margin-bottom: 14px; }
+
+.te-field-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+
+.te-field-row > .te-field-label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.te-aa-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #141518;
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 800;
+  border-radius: 6px;
+  padding: 3px 6px;
+}
+
+.te-color-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 7px 10px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.te-color-input:focus-within {
+  border-color: #b9ccf5;
+  box-shadow: 0 0 0 3px rgba(59, 110, 246, 0.12);
+}
+
+.te-swatch {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  flex: none;
+  cursor: pointer;
+  padding: 0;
+  background: #fff;
+}
+
+.te-swatch input[type="color"] {
+  width: 150%;
+  height: 150%;
+  transform: translate(-17%, -17%);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: none;
+}
+
+.te-color-input input[type="text"] {
+  flex: 1;
+  border: none;
+  outline: none;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+  min-width: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.te-default-tag {
+  font-size: 12.5px;
+  color: var(--text-3);
+  flex: none;
+}
+
+.te-reset {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #d64545;
+  flex: none;
+}
+
+.te-reset:hover { background: #fdeaea; }
+
+.te-accent-row { margin-bottom: 10px; }
+
+.te-add-color {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--blue);
+  color: var(--blue-deep);
+  font-size: 13.5px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 8px 18px;
+  margin-top: 4px;
+}
+
+.te-add-color:hover { background: var(--blue-bg); }
+
+.te-tip {
+  margin-top: 18px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--text-3);
+  background: var(--line-soft);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.te-content textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 11px 13px;
+  font: inherit;
+  font-family: 'SF Mono', Consolas, monospace;
+  font-size: 13px;
+  outline: none;
+  resize: vertical;
+}
+
+.te-content textarea:focus,
+.te-content input[type="text"]:focus,
+.te-content select:focus {
+  border-color: #b9ccf5;
+  box-shadow: 0 0 0 3px rgba(59, 110, 246, 0.12);
+}
+
+.te-content input[type="range"] { width: 100%; accent-color: var(--blue); }
+
+/* 底部按钮 */
+.te-foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 14px 26px;
+  border-top: 1px solid var(--line-soft);
+}
+
+/* 右侧实时预览 */
+.te-preview-wrap {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  overflow-y: auto;
+  padding: 64px 48px 48px;
+}
+
+.te-preview {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  --pv-accent: #f2f2f3;
+  --pv-title: #f2f2f3;
+  --pv-subtitle: #f2f2f3;
+  --pv-body: #e5e0df;
+  --pv-eyebrow: #f2f2f3;
+  --pv-slide: #0c0d10;
+  --pv-radius: 12px;
+  --pv-heading-font: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --pv-body-font: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.pv-card {
+  background: var(--pv-slide);
+  border-radius: var(--pv-radius);
+  padding: 44px 46px 40px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.pv-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--pv-eyebrow);
+  opacity: 0.65;
+  margin-bottom: 22px;
+  letter-spacing: 1px;
+}
+
+.pv-title {
+  font-family: var(--pv-heading-font);
+  font-size: 46px;
+  line-height: 1.18;
+  font-weight: 800;
+  color: var(--pv-title);
+  margin-bottom: 24px;
+}
+
+.pv-subtitle {
+  font-family: var(--pv-heading-font);
+  font-size: 34px;
+  line-height: 1.25;
+  font-weight: 800;
+  color: var(--pv-subtitle);
+  margin-bottom: 18px;
+}
+
+.pv-body {
+  font-family: var(--pv-body-font);
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: var(--pv-body);
+  opacity: 0.82;
+}
+
+.pv-body-2 { margin-top: 10px; }
+
+.pv-tags {
+  display: flex;
+  gap: 10px;
+  margin: 26px 0 22px;
+}
+
+.pv-tag {
+  font-size: 12.5px;
+  font-weight: 700;
+  border-radius: 7px;
+  padding: 6px 13px;
+}
+
+.pv-tag-solid {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.pv-tag-outline {
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+
+.pv-btns { display: flex; gap: 12px; }
+
+.pv-btn {
+  height: 42px;
+  padding: 0 22px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.pv-btn-primary {
+  background: var(--pv-accent);
+  color: #141518;
+}
+
+.pv-btn-secondary {
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+}
+
+@media (max-width: 1100px) {
+  .te-panel { min-width: 480px; width: 52vw; }
+  .pv-title { font-size: 34px; }
+  .te-preview-wrap { padding: 60px 24px 32px; }
+}

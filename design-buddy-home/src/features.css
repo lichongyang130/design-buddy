@@ -953,36 +953,6 @@
   padding: 3px 9px;
 }
 
-.th-creator {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  align-items: start;
-}
-
-.th-color-field {
-  display: grid;
-  grid-template-columns: 1fr auto 110px;
-  gap: 8px;
-  align-items: center;
-}
-
-.th-color-field label { margin-bottom: 0; }
-.th-color-field input[type="color"] {
-  width: 42px;
-  height: 36px;
-  padding: 2px;
-  border: 1px solid var(--line);
-  border-radius: 9px;
-  background: var(--surface);
-}
-
-.th-live {
-  min-height: 200px;
-  position: sticky;
-  top: 10px;
-}
-
 /* 媒体卡内的真实图片 */
 .media-item img {
   position: absolute;

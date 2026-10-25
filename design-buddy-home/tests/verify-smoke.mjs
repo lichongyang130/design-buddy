@@ -135,6 +135,43 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   check('themes smoke no errors', errors.length === 0, errors)
 }
 
+/* ---------------- 主题：全屏新建编辑器 ---------------- */
+{
+  const { doc, w, errors } = await loadPage('/themes.html')
+  click(w, doc.querySelector('#th-create'))
+  await tick()
+  check('theme editor opens', !!doc.querySelector('.te-mask'))
+  check('editor left panel + preview', !!doc.querySelector('.te-panel') && doc.querySelectorAll('.pv-card').length === 2)
+  check('editor nav has 7 tabs', doc.querySelectorAll('.te-nav-item').length === 7)
+  // 颜色改动 → 重置按钮出现 → 恢复默认
+  const accentPicker = doc.querySelector('[data-color="accent"]')
+  check('accent reset hidden at default', doc.querySelector('[data-reset="accent"]')?.hidden === true)
+  accentPicker.value = '#123456'
+  accentPicker.dispatchEvent(new w.Event('input', { bubbles: true }))
+  await tick()
+  check('accent reset appears after change', doc.querySelector('[data-reset="accent"]')?.hidden === false)
+  click(w, doc.querySelector('[data-reset="accent"]'))
+  await tick()
+  check('accent restored to default', doc.querySelector('[data-hex="accent"]')?.value === '#F2F2F3')
+  // 辅助点缀色增删
+  click(w, doc.querySelector('#te-add-accent'))
+  await tick()
+  check('aux color added', doc.querySelectorAll('[data-accent-color]').length === 1)
+  click(w, doc.querySelector('[data-accent-del]'))
+  await tick()
+  check('aux color removed', doc.querySelectorAll('[data-accent-color]').length === 0)
+  // 遍历其余分组，确保无渲染错误
+  for (const tab of ['font', 'logo', 'design', 'image', 'chart', 'css']) {
+    click(w, doc.querySelector(`[data-te-tab="${tab}"]`))
+    await tick()
+    check(`editor tab ${tab} renders`, doc.querySelector('.te-content')?.children.length > 0)
+  }
+  check('theme editor no errors', errors.length === 0, errors)
+  click(w, doc.querySelector('#te-cancel'))
+  await tick()
+  check('cancel closes editor', !doc.querySelector('.te-mask'))
+}
+
 /* ---------------- 模板：详情弹层交互 + 空态 ---------------- */
 {
   const { doc, w, errors } = await loadPage('/templates.html')

@@ -125,11 +125,31 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
 
   click(w, doc.querySelector('#th-create'))
   await tick()
-  input(w, doc.querySelector('#th-name'), '品牌靛蓝')
-  click(w, doc.querySelector('.modal-foot [data-ok]'))
+  check('full-screen theme editor opens', !!doc.querySelector('.te-mask'))
+  check('editor has 7 setting tabs', doc.querySelectorAll('.te-nav-item').length === 7)
+  check('editor shows color tab by default', doc.querySelector('.te-nav-item.is-active')?.dataset.teTab === 'color')
+  check('editor has 4 text color rows', doc.querySelectorAll('.te-field-row').length >= 4)
+  check('live preview rendered', !!doc.querySelector('.pv-card .pv-title'))
+  // 修改主要强调色并确认预览变量同步
+  const accentPicker = doc.querySelector('[data-color="accent"]')
+  accentPicker.value = '#3B6EF6'
+  accentPicker.dispatchEvent(new w.Event('input', { bubbles: true }))
+  await tick()
+  check('preview reacts to accent change', doc.querySelector('#te-preview').style.getPropertyValue('--pv-accent').trim().toUpperCase() === '#3B6EF6')
+  // 切到字体分组再切回，验证分组切换
+  click(w, doc.querySelector('[data-te-tab="font"]'))
+  await tick()
+  check('font tab renders selects', doc.querySelectorAll('select[data-draft]').length === 2)
+  click(w, doc.querySelector('[data-te-tab="color"]'))
+  await tick()
+  // 命名并保存
+  input(w, doc.querySelector('#te-name'), '品牌靛蓝')
+  click(w, doc.querySelector('#te-save'))
   await tick()
   const state1 = readState(storage)
   check('custom theme saved', state1.customThemes.some((t) => t.name === '品牌靛蓝'))
+  check('saved theme carries new vars shape', state1.customThemes[0].vars.accent != null && state1.customThemes[0].vars.body === '#E5E0DF')
+  check('editor closed after save', !doc.querySelector('.te-mask'))
   check('custom tab renders the card', doc.querySelectorAll('.theme-card').length === 1)
 
   click(w, doc.querySelector('.theme-card'))

@@ -53,7 +53,7 @@ export function applyAppearance() {
   const themeId = s.appearance.themeId || store.state.appliedTheme
   const custom = [...store.state.customThemes, ...store.state.archivedThemes].find((t) => t.id === themeId)
   let colors = null
-  if (custom?.vars) colors = { accent: custom.vars.link, heading: custom.vars.title }
+  if (custom?.vars) colors = { accent: custom.vars.accent ?? custom.vars.link, heading: custom.vars.title }
   else if (custom?.cls) colors = THEME_COLORS[custom.cls]
   else colors = THEME_COLORS[themeId] ?? null
   if (colors) {
