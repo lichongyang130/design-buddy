@@ -257,7 +257,7 @@ function runGeneration(gamma) {
   footEl.querySelector('[data-close]').addEventListener('click', () => {
     clearInterval(timer)
     footEl.querySelector('[data-close]').closest('.modal-mask').remove()
-    toast('创作已在后台完成，可在「最近的 gammas」查看')
+    toast('创作已在后台完成，可在「最近的 Design Buddy」查看')
   })
 }
 
@@ -280,7 +280,7 @@ function showResult(gamma, bodyEl, footEl) {
       input.focus()
       toast('提示词已填回输入框')
     } else {
-      toast('空白 gamma 请先输入提示词')
+      toast('空白 Design Buddy 请先输入提示词')
     }
   })
 }
@@ -687,7 +687,7 @@ function bindGammaList(bodyEl, { trash = false } = {}) {
     const g = store.state.gammas.find((x) => x.id === row.dataset.gamma)
     row.querySelector('[data-act="rename"]')?.addEventListener('click', (e) => {
       e.stopPropagation()
-      const name = prompt('重命名 gamma', g.title)
+      const name = prompt('重命名 Design Buddy', g.title)
       if (name && name.trim()) {
         g.title = name.trim()
         g.updatedAt = Date.now()
@@ -722,7 +722,7 @@ function bindGammaList(bodyEl, { trash = false } = {}) {
       const { bodyEl: b2 } = openModal({
         title: g.title,
         body: `
-          <p class="modal-copy">${g.prompt || '（空白 gamma，暂无提示词）'}</p>
+          <p class="modal-copy">${g.prompt || '（空白 Design Buddy，暂无提示词）'}</p>
           <p class="hint" style="margin-top:10px">
             ${TYPE_ICONS[g.type] ?? ''} ${g.type} · ${g.mode} 模式 · 图片：${g.imgMode}
             ${g.expert ? ` · 专家：${g.expert}` : ''}${g.template ? ` · 模板：${g.template}` : ''}
@@ -740,7 +740,7 @@ function openGammaList(title, list, opts = {}) {
   const render = () => {
     bodyEl.innerHTML = list.length
       ? `<div class="modal-list">${list.map(gammaRow).join('')}</div>`
-      : '<div class="empty-hint">暂时没有内容<br />在首页输入提示词，创作的 gamma 会出现在这里。</div>'
+      : '<div class="empty-hint">暂时没有内容<br />在首页输入提示词，创作的 Design Buddy 会出现在这里。</div>'
     bindGammaList(bodyEl, opts)
   }
   render()
@@ -780,11 +780,11 @@ $$('[data-nav]').forEach((item) => {
           }),
         )
         break
-      case '最近的 gammas':
-        openGammaList('最近的 gammas', alive)
+      case '最近的 Design Buddy':
+        openGammaList('最近的 Design Buddy', alive)
         break
       case '全部':
-        openGammaList('全部 gamma', alive)
+        openGammaList('全部 Design Buddy', alive)
         break
       case '与您共享':
         openGammaList('与您共享', alive.filter((g) => g.shared))
@@ -820,7 +820,7 @@ function renderFolders() {
           <span class="count-pill">${count}</span>
         </button>`
     }).join('')}
-    <p class="folder-hint">将相关的 gammas 分组，并一次性全部分享。</p>
+    <p class="folder-hint">将相关的 Design Buddy 分组，并一次性全部分享。</p>
     <a href="#" class="folder-link">${folders.length ? '新建文件夹' : '创建文件夹'}</a>`
 
   card.querySelector('.folder-link').addEventListener('click', (e) => {
@@ -856,14 +856,14 @@ function renderFolders() {
       const render = () => {
         bodyEl.innerHTML = list.length
           ? `<div class="modal-list">${list.map(gammaRow).join('')}</div>
-             <p class="hint" style="margin-top:12px">在 gamma 上可重命名或移出；移入其他文件夹可在 gamma 详情中操作。</p>`
-          : '<div class="empty-hint">这个文件夹还是空的<br />先创作 gamma，再在详情中归入此文件夹。</div>'
+             <p class="hint" style="margin-top:12px">在 Design Buddy 上可重命名或移出；移入其他文件夹可在 Design Buddy 详情中操作。</p>`
+          : '<div class="empty-hint">这个文件夹还是空的<br />先创作 Design Buddy，再在详情中归入此文件夹。</div>'
         bindGammaList(bodyEl)
       }
       render()
       const footEl = bodyEl.closest('.modal-mask').querySelector('.modal-foot')
       footEl.querySelector('[data-del]').addEventListener('click', () => {
-        confirmModal('删除文件夹', `删除「${f.name}」？其中的 gamma 不会被删除，会回到未分组状态。`).then((ok) => {
+        confirmModal('删除文件夹', `删除「${f.name}」？其中的 Design Buddy 不会被删除，会回到未分组状态。`).then((ok) => {
           if (!ok) return
           store.state.gammas.forEach((g) => {
             if (g.folderId === f.id) g.folderId = null
@@ -890,7 +890,7 @@ $$('[data-template]').forEach((card) => {
 
 function createBlankGamma() {
   const g = createGamma({ prompt: '', origin: 'blank', silent: true })
-  toast(`已新建空白 gamma「${g.title}」，可在「最近的 gammas」中找到`)
+  toast(`已新建空白 Design Buddy「${g.title}」，可在「最近的 Design Buddy」中找到`)
 }
 
 $('.pill-outline').addEventListener('click', () => { location.href = 'templates.html' })

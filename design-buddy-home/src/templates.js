@@ -184,7 +184,7 @@ const TPL_META = {
 
 const DEFAULT_META = {
   desc: '由你创建的自定义模板，保存了封面配色与内容结构，可随时套用于新的创作。',
-  fits: ['快速启动同类型创作', '保持团队视觉统一', '沉淀常用页面结构', '一键生成新 gamma'],
+  fits: ['快速启动同类型创作', '保持团队视觉统一', '沉淀常用页面结构', '一键生成新 Design Buddy'],
   colors: ['#3b6ef6', '#1e2b4d', '#98a1b2'], themes: ['自定义', '品牌'],
 }
 
@@ -407,7 +407,7 @@ function useTemplate(tpl) {
   const { close, bodyEl, footEl } = openModal({
     title: `已套用模板 · ${tpl.name}`,
     body: `
-      <p class="modal-copy">gamma 已创建并保存到当前工作区，消耗 ${cost} 积分（剩余 ${store.state.credits}）。</p>
+      <p class="modal-copy">Design Buddy 已创建并保存到当前工作区，消耗 ${cost} 积分（剩余 ${store.state.credits}）。</p>
       <p class="hint" style="margin-top:10px">创建时间：${fmtDate(now)}</p>
       <p class="hint">类型：${tpl.format} · 分类：${tpl.cats.join(' / ')}</p>`,
     footer: '<button class="btn btn-ghost" data-close>继续浏览</button><button class="btn btn-primary" data-go>回到首页查看</button>',
@@ -492,7 +492,7 @@ function openTemplateDetail(tpl) {
 
       <div class="td-provider">
         <span class="td-g-badge">G</span>
-        <span>由 Gamma 提供</span>
+        <span>由 Design Buddy 提供</span>
       </div>
 
       <p class="td-desc">${meta.desc}</p>

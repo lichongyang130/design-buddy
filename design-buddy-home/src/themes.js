@@ -326,7 +326,7 @@ function openCreator() {
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
           </button>
         </div>
-        <p class="te-usage"><b id="te-usage-count">0</b> 人 gammas 正在使用此主题。</p>
+        <p class="te-usage"><b id="te-usage-count">0</b> 人 Design Buddy 正在使用此主题。</p>
       </header>
       <div class="te-body">
         <nav class="te-nav" id="te-nav" aria-label="主题设置分组">
@@ -361,7 +361,7 @@ function openCreator() {
         <article class="pv-card">
           <p class="pv-label">排版</p>
           <h2 class="pv-subtitle">让每个想法都清晰表达</h2>
-          <p class="pv-body">选择标题字体和正文字体，然后调整每种文字样式的大小和颜色。Gamma 会在您的幻灯片中统一应用该层级结构。</p>
+          <p class="pv-body">选择标题字体和正文字体，然后调整每种文字样式的大小和颜色。Design Buddy 会在您的幻灯片中统一应用该层级结构。</p>
         </article>
       </div>
     </section>`
@@ -459,7 +459,7 @@ function openCreator() {
         <h3 class="te-section-title">标志</h3>
         <div class="field"><label>品牌名称</label><input type="text" data-draft="logoName" value="${draft.logoName}" placeholder="例如：Design Buddy" /></div>
         <div class="field"><label>缩写标志（两字符以内）</label><input type="text" data-draft="logoInitials" value="${draft.logoInitials}" maxlength="2" placeholder="DB" /></div>
-        <p class="te-tip">标志信息随主题保存，应用主题的 gamma 会在页眉处展示。</p>`
+        <p class="te-tip">标志信息随主题保存，应用主题的 Design Buddy 会在页眉处展示。</p>`
       bindDraftInputs()
     }
 

@@ -97,7 +97,7 @@ export function openUpgrade() {
       <div class="plan-card pro ${ws.plan === 'pro' ? 'is-picked' : ''}">
         <h4>Pro <span class="pro-tag">推荐</span></h4>
         <p>解锁 Max 与智能媒体搜索</p>
-        <ul><li>每月 2000 积分</li><li>Lite / 标准 / Max 全模式</li><li>Gamma 智能助手搜索</li></ul>
+        <ul><li>每月 2000 积分</li><li>Lite / 标准 / Max 全模式</li><li>Design Buddy 智能助手搜索</li></ul>
         <button class="btn btn-primary" data-plan="pro">${ws.plan === 'pro' ? '已开通' : '升级 Pro'}</button>
       </div>
     </div>
@@ -149,7 +149,7 @@ export function openInvite() {
     footer: '<button class="btn btn-ghost" data-close>关闭</button><button class="btn btn-primary" data-copy>复制邀请链接</button>',
   })
   bodyEl.innerHTML = `
-    <p class="modal-copy">发送下面的链接邀请同事协作，加入后可查看工作区内共享的 gamma。</p>
+    <p class="modal-copy">发送下面的链接邀请同事协作，加入后可查看工作区内共享的 Design Buddy。</p>
     <div class="invite-link">${link}</div>`
   footEl.querySelector('[data-copy]').addEventListener('click', () => copyText(link))
   footEl.querySelector('[data-close]').addEventListener('click', close)
@@ -275,7 +275,7 @@ export function openPalette() {
     <div class="palette" role="dialog" aria-modal="true">
       <div class="palette-search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input id="palette-input" placeholder="搜索页面、gamma、主题或操作…" />
+        <input id="palette-input" placeholder="搜索页面、Design Buddy、主题或操作…" />
       </div>
       <div class="palette-results" id="palette-results"></div>
     </div>`
@@ -286,7 +286,7 @@ export function openPalette() {
 
   const dataItems = [
     ...PAGE_ITEMS,
-    ...store.state.gammas.filter((g) => !g.deleted).map((g) => ({ label: g.title, icon: '📄', href: 'index.html', tag: 'Gamma' })),
+    ...store.state.gammas.filter((g) => !g.deleted).map((g) => ({ label: g.title, icon: '📄', href: 'index.html', tag: 'Design Buddy' })),
     ...store.state.media.map((m) => ({ label: m.name, icon: '🎬', href: 'media.html', tag: '媒体' })),
     { label: '升级套餐', icon: '✨', action: 'upgrade', tag: '操作' },
     { label: '帮助与快捷键', icon: '❓', action: 'help', tag: '操作' },

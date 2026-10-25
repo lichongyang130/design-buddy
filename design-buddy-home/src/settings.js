@@ -149,7 +149,7 @@ const SECTION_BUILDERS = {
       ${row('当前套餐', ws.plan === 'pro' ? 'Pro 已解锁全部模式' : 'Free 计划，可随时升级',
         `<strong>${ws.plan === 'pro' ? 'Pro' : 'Free'}</strong>`)}
       ${row('剩余积分', '每次创作按模式消耗 1 / 3 / 8 积分', `<strong>${store.state.credits}</strong>`)}
-      ${row('已创建 gamma', `共 ${store.state.gammas.filter((g) => !g.deleted).length} 个，垃圾箱 ${store.state.gammas.filter((g) => g.deleted).length} 个`,
+      ${row('已创建 Design Buddy', `共 ${store.state.gammas.filter((g) => !g.deleted).length} 个，垃圾箱 ${store.state.gammas.filter((g) => g.deleted).length} 个`,
         '<button class="btn btn-primary" data-act="upgrade">升级 / 充值</button>')}
     `, '套餐与积分')
   },
@@ -165,7 +165,7 @@ const SECTION_BUILDERS = {
 
   shortcuts: () => card(
     Object.entries(s().shortcuts).map(([key, val]) => row(
-      { search: '全局搜索', newGamma: '新建 gamma', send: '发送提示词', upload: '上传媒体' }[key] ?? key,
+      { search: '全局搜索', newGamma: '新建 Design Buddy', send: '发送提示词', upload: '上传媒体' }[key] ?? key,
       '点击右侧按钮后按下新的组合键',
       `<button class="btn btn-ghost" data-shortcut="${key}">${esc(val)}</button>`,
     )).join(''),
@@ -174,7 +174,7 @@ const SECTION_BUILDERS = {
 
   personalize: () => card(`
     ${row('智能建议', '根据上下文主动给出创作建议', switchHtml('settings.personalize.smartSuggest'))}
-    ${row('自动命名', '为新 gamma 自动生成标题', switchHtml('settings.personalize.autoTitle'))}
+    ${row('自动命名', '为新 Design Buddy 自动生成标题', switchHtml('settings.personalize.autoTitle'))}
     ${row('每周报告', '每周一汇总创作数据', switchHtml('settings.personalize.weeklyReport'))}
   `, '个性化'),
 
@@ -226,7 +226,7 @@ const SECTION_BUILDERS = {
   `, '设备连接'),
 
   data: () => card(`
-    ${row('导出数据', '把全部工作区、gamma、主题与设置下载为 JSON 文件',
+    ${row('导出数据', '把全部工作区、Design Buddy、主题与设置下载为 JSON 文件',
       '<button class="btn btn-primary" data-act="export" type="button">导出 JSON</button>')}
     ${row('导入数据', '从之前导出的 JSON 恢复，将覆盖当前本地数据',
       '<button class="btn btn-ghost" data-act="import" type="button">选择文件导入</button>')}

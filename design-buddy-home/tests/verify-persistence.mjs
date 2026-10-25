@@ -48,7 +48,7 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   check('folder rendered in sidebar', [...doc.querySelectorAll('.folder-row')].some((r) => r.textContent.includes('Q4 项目')))
 
   // 侧栏「最近的 gammas」弹窗读取真实数据
-  const navRecent = [...doc.querySelectorAll('[data-nav]')].find((n) => n.textContent.includes('最近的 gammas'))
+  const navRecent = [...doc.querySelectorAll('[data-nav]')].find((n) => n.textContent.includes('最近的 Design Buddy'))
   click(w, navRecent)
   await tick()
   check('gamma list modal shows stored gamma', doc.querySelector('.modal-list .gamma-title')?.textContent.includes('季度经营分析'))
