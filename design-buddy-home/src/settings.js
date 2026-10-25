@@ -106,6 +106,22 @@ function bindGeneral() {
     })
   })
 
+  // 网络代理：选择「自定义代理」时展开真实 URL 输入，作为素材请求基址立即生效
+  const proxyWrap = $$('[data-select]')[GENERAL_SELECTS.findIndex(([p]) => p === 'settings.proxy')]
+  if (proxyWrap) {
+    const input = document.createElement('input')
+    input.type = 'url'
+    input.placeholder = 'https://your-proxy.example.com'
+    input.value = s().proxyUrl || ''
+    input.hidden = s().proxy !== '自定义代理'
+    input.className = 'proxy-url-input'
+    input.addEventListener('input', () => { setPath('settings.proxyUrl', input.value.trim()) })
+    proxyWrap.closest('.setting-row').append(input)
+    const redrawInput = () => { input.hidden = s().proxy !== '自定义代理' }
+    new MutationObserver(redrawInput).observe(proxyWrap.querySelector('.select-value'), { childList: true })
+    redrawInput()
+  }
+
   const slider = $('#font-slider')
   slider.value = ZOOM_LEVELS.indexOf(s().fontScale) >= 0 ? ZOOM_LEVELS.indexOf(s().fontScale) : 2
   const paint = () => {

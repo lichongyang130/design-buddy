@@ -1057,3 +1057,94 @@
   color: var(--blue-deep);
   font-weight: 600;
 }
+
+/* ============================================================
+   设置真实生效层：密度 / 自动锁定 / 周报 / 代理输入 / 模型标签
+   ============================================================ */
+
+/* 界面密度：compact 真实收紧全局间距与侧栏 */
+:root[data-density="compact"] {
+  --space-1: 6px;
+  --space-2: 10px;
+  --space-3: 14px;
+  --space-4: 18px;
+}
+:root[data-density="compact"] .sidebar-inner,
+:root[data-density="compact"] .nav-item,
+:root[data-density="compact"] .setting-row { gap: 8px; }
+:root[data-density="compact"] .nav-item { padding-top: 7px; padding-bottom: 7px; }
+:root[data-density="compact"] .card,
+:root[data-density="compact"] .settings-card { padding: 14px; }
+:root[data-density="compact"] body { font-size: 0.94em; }
+
+/* 自定义代理 URL 输入 */
+.proxy-url-input {
+  flex-basis: 100%;
+  margin-top: 8px;
+  padding: 9px 12px;
+  border: 1px solid #d7dce5;
+  border-radius: 10px;
+  font-size: 13px;
+}
+.proxy-url-input[hidden] { display: none; }
+
+/* 无操作自动锁定遮罩（会话超时 / 两步验证） */
+.app-lock {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 35, 0.55);
+  backdrop-filter: blur(6px);
+}
+.app-lock-card {
+  width: min(380px, calc(100vw - 48px));
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px 28px;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(15, 23, 35, 0.25);
+}
+.app-lock-ico { font-size: 34px; }
+.app-lock-card h3 { margin: 10px 0 6px; font-size: 19px; }
+.app-lock-card p { color: #6b7780; font-size: 13px; margin: 0 0 16px; }
+.app-lock-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d7dce5;
+  border-radius: 12px;
+  font-size: 18px;
+  letter-spacing: 6px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.app-lock-hint b { color: var(--navy, #1f2a30); letter-spacing: 1px; }
+.app-lock-unlock { width: 100%; margin-top: 10px; }
+
+/* 每周报告统计卡 */
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.report-cell {
+  background: #f4f6fa;
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+}
+.report-cell b { display: block; font-size: 26px; color: var(--navy, #1f2a30); }
+.report-cell span { font-size: 12px; color: #6b7780; }
+
+/* 生成弹窗中的当前模型标签 */
+.gen-model-tag {
+  margin-right: auto;
+  align-self: center;
+  font-size: 12px;
+  color: #6b7780;
+  background: #f4f6fa;
+  padding: 5px 12px;
+  border-radius: 999px;
+}

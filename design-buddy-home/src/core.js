@@ -92,6 +92,7 @@ export function defaultSettings() {
     keepAwake: true,
     autoStart: false,
     proxy: '直接连接',
+    proxyUrl: '',
     trustedSkills: false,
     skillAutoUpdate: true,
     appearance: { theme: 'light', density: 'comfortable', reduceMotion: false },

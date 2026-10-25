@@ -8,7 +8,7 @@ import { store, toast, openModal, confirmModal, uid, fmtDate, copyText } from '.
 import { initGlobalUI, openUpgrade } from './global-ui.js'
 import {
   buildCatalog, buildDeck, renderPageHTML, metaFor, coverStyle, coverDeco,
-  displayTpl, catLabel, VISIBLE_CATS, HIDDEN_CATS, configureArt,
+  displayTpl, catLabel, VISIBLE_CATS, HIDDEN_CATS, configureArt, getArtBase,
   getArtManifest, setArtOverride, clearArtOverride,
 } from './template-engine.js'
 import { ART_CONCEPTS, conceptLabel } from './art-concepts.js'
@@ -23,12 +23,18 @@ store.state.imageMode ??= 'illustration'
 store.state.artOverrides ??= {}
 configureArt({ mode: store.state.imageMode, overrides: store.state.artOverrides })
 // 加载构建期素材清单；缺失/离线时静默失败，引擎自动回退内联 SVG
-// 用 document.baseURI 拼绝对地址，保证 jsdom/Node fetch 与子路径部署都能解析
-const manifestUrl = new URL('art/manifest.json', document.baseURI).href
-fetch(manifestUrl)
-  .then((r) => (r.ok ? r.json() : null))
-  .then((m) => { if (m?.concepts) configureArt({ manifest: m.concepts }) })
-  .catch(() => {})
+// 用 document.baseURI 拼绝对地址，保证 jsdom/Node fetch 与子路径部署都能解析；代理基址生效时走代理
+function loadArtManifest() {
+  const rel = 'art/manifest.json'
+  const url = getArtBase()
+    ? `${getArtBase()}/${rel}`
+    : new URL(rel, document.baseURI).href
+  fetch(url)
+    .then((r) => (r.ok ? r.json() : null))
+    .then((m) => { if (m?.concepts) configureArt({ manifest: m.concepts }) })
+    .catch(() => {})
+}
+loadArtManifest()
 const lang = () => (store.state.templateLang === 'en' ? 'en' : 'zh')
 const UI = {
   zh: {

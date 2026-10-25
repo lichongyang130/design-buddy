@@ -591,17 +591,21 @@ export function coverDeco(rawTpl) {
    overrides: 用户单页换图，键 `${deckId}:${pageNo}:${slot}`，值为 dataUrl 或素材 URL
    素材缺失时自动回退内联 SVG，保证离线/旧数据永不白屏 */
 const ART_MODES = ['svg', 'illustration', 'photo']
-let artConfig = { mode: 'svg', manifest: {}, overrides: {} }
+let artConfig = { mode: 'svg', manifest: {}, overrides: {}, base: '' }
 
 export function configureArt(opts = {}) {
   artConfig = {
     mode: ART_MODES.includes(opts.mode) ? opts.mode : artConfig.mode,
     manifest: opts.manifest ?? artConfig.manifest,
     overrides: opts.overrides ?? artConfig.overrides,
+    base: opts.base === undefined ? artConfig.base : (opts.base || ''),
   }
 }
 export const getArtMode = () => artConfig.mode
 export const getArtManifest = () => artConfig.manifest
+export const getArtBase = () => artConfig.base
+// 代理基址仅作用于站内 /art/ 素材；dataURL/blob/http 绝对地址不受影响
+const withBase = (src) => (artConfig.base && src.startsWith('/') ? artConfig.base + src : src)
 
 export function setArtOverride(deckId, pageNo, slot, src) {
   artConfig.overrides[`${deckId}:${pageNo}:${slot}`] = src
@@ -630,7 +634,7 @@ function art(deck, index, page = null, slot = 0, locale = 'zh') {
   if (!src) src = entrySrc(artConfig.manifest[key], artConfig.mode)
   if (!src) return fallback
   const alt = escAttr(conceptLabel(key, locale))
-  return `<div class="dp-art dp-art-img" ${artAttrs}><img loading="lazy" src="${escAttr(src)}" alt="${alt}"></div>`
+  return `<div class="dp-art dp-art-img" ${artAttrs}><img loading="lazy" src="${escAttr(withBase(src))}" alt="${alt}"></div>`
 }
 
 // map 版式：素材清单含 shared.map 时用真实插画地图，否则保留程序化 SVG
@@ -639,7 +643,7 @@ function mapArt(deck, page, fallbackSvg, locale) {
   const src = artConfig.overrides[`${deck.tpl.id}:${page.no}:0`]
     || entrySrc(artConfig.manifest['shared.map'], artConfig.mode)
   if (!src) return fallbackSvg
-  return `<img loading="lazy" src="${escAttr(src)}" alt="${escAttr(conceptLabel('shared.map', locale))}">`
+  return `<img loading="lazy" src="${escAttr(withBase(src))}" alt="${escAttr(conceptLabel('shared.map', locale))}">`
 }
 
 export function renderPageHTML(rawTpl, pageIndex, styleIdx = 0, locale = 'zh', edits = {}) {

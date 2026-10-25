@@ -343,6 +343,45 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   await tick()
   check('image mode persisted at top level', readState(storage).imageMode === 'photo')
 
+  // 密度设置真实改变文档根节点数据属性（CSS 据此收紧间距）
+  check('density applies to document root', doc.documentElement.dataset.density === 'compact')
+
+  // 头像缩写真实同步到侧栏头像
+  click(w, [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === 'profile'))
+  await tick()
+  const initialsInput = doc.querySelector('[data-bind="settings.profile.initials"]')
+  input(w, initialsInput, 'AB')
+  initialsInput.dispatchEvent(new w.Event('input', { bubbles: true }))
+  await tick()
+  check('profile initials sync to avatars', doc.querySelector('.avatar')?.textContent === 'AB')
+  check('profile initials persisted', readState(storage).settings.profile.initials === 'AB')
+
+  // 界面语言真实切换设置页导航文案
+  click(w, [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === 'general'))
+  await tick()
+  const englishOpt = [...doc.querySelectorAll('[data-select] .select-option')].find((o) => o.textContent.trim() === 'English')
+  click(w, englishOpt)
+  await tick()
+  const generalNav = [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === 'general')
+  check('language switch localizes settings nav', generalNav.textContent.trim() === 'General')
+  check('language persisted', readState(storage).settings.language === 'English')
+
+  // 快捷键真实注册：默认 ⌘K/Ctrl+K 聚焦设置页搜索框
+  doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'k', ctrlKey: true, bubbles: true, cancelable: true }))
+  await tick()
+  check('shortcut ctrl-k focuses search', doc.activeElement?.id === 'settings-search')
+
+  // 自定义代理：切换后出现 URL 输入并持久化为素材基址
+  const proxySelect = doc.querySelectorAll('[data-select]')[3]
+  click(w, [...proxySelect.querySelectorAll('.select-option')].find((o) => o.textContent.trim() === '自定义代理'))
+  await tick()
+  const proxyUrlInput = doc.querySelector('.proxy-url-input')
+  check('custom proxy reveals url input', !!proxyUrlInput && !proxyUrlInput.hidden)
+  input(w, proxyUrlInput, 'https://proxy.example.com')
+  proxyUrlInput.dispatchEvent(new w.Event('input', { bubbles: true }))
+  await tick()
+  check('proxy url persisted', readState(storage).settings.proxyUrl === 'https://proxy.example.com')
+
   click(w, [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === 'memory'))
   await tick()
   input(w, doc.querySelector('#mem-input'), '测试记忆条目')

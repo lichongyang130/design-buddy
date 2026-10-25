@@ -120,7 +120,87 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   click(w, footerIcons[1])
   await tick()
   check('messages modal opens', doc.querySelector('.modal-head h3')?.textContent.includes('消息'))
+  check('messages have real speak buttons', doc.querySelectorAll('[data-speak]').length > 0)
+  check('assistant name shown in messages', doc.body.textContent.includes(w.localStorage.getItem('design-buddy-state-v1') ? JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).settings.assistant.name : 'Buddy'))
+  click(w, doc.querySelector('.modal-close'))
+  await tick()
+
+  // 设置 → 应用管理：默认关闭的「轮播图」对应 chip 被真实隐藏
+  check('disabled app chip hidden', [...doc.querySelectorAll('[data-chip]')].find((c) => c.textContent.trim() === '轮播图')?.hidden === true)
+
+  // 设置 → 模型：创作弹窗显示当前模型标签
+  input(w, doc.querySelector('#prompt-input'), '测试模型标签的创作')
+  click(w, doc.querySelector('#send-btn'))
+  await tick(600)
+  check('generation modal shows model tag', !!doc.querySelector('.gen-model-tag'))
+  click(w, doc.querySelector('.modal-close'))
+  await tick()
   check('home smoke no errors', errors.length === 0, errors)
+}
+
+/* ---------------- 设置真实生效：技能门控 / 智能体 / 自动命名 / 智能建议 ----------------
+   freshCopy 复制整份 dist 到临时目录，模块图（含 rail-flyout 共享 chunk）全新执行，
+   事件绑定到当前 document，并真正读取传入的 storage（模拟浏览器刷新） */
+{
+  const seed = await loadPage('/index.html')
+  const st = JSON.parse(seed.storage.getItem('design-buddy-state-v1'))
+  st.settings.personalize.autoTitle = false
+  st.settings.personalize.smartSuggest = false
+  seed.storage.setItem('design-buddy-state-v1', JSON.stringify(st))
+  const { doc, w, errors, storage } = await loadPage('/index.html', { storage: seed.storage, freshCopy: true })
+  await tick(150)
+  check('smart suggest hides template row', doc.querySelector('.template-row')?.hidden === true)
+
+  const before = JSON.parse(storage.getItem('design-buddy-state-v1')).gammas.length
+  click(w, doc.querySelector('.topbar-right .pill'))
+  await tick()
+  const after = JSON.parse(storage.getItem('design-buddy-state-v1')).gammas
+  check('auto title off yields timestamp placeholder', after.length === before + 1 && /^未命名创作 \d{2}:\d{2}$/.test(after[0].title), after[0].title)
+
+  // 技能信任门控：默认未信任，开关点击不启用并给出提示
+  click(w, doc.querySelector('.more-wrap .rail-item'))
+  await tick()
+  click(w, doc.querySelector('[data-more="技能"]'))
+  await tick()
+  const firstSkillSwitch = doc.querySelector('[data-sk]')
+  const beforeEnabled = JSON.parse(storage.getItem('design-buddy-state-v1')).skills.find((x) => x.id === firstSkillSwitch?.dataset.sk)?.enabled
+  click(w, firstSkillSwitch)
+  await tick()
+  const afterEnabled = JSON.parse(storage.getItem('design-buddy-state-v1')).skills.find((x) => x.id === firstSkillSwitch?.dataset.sk)?.enabled
+  check('untrusted skill toggle is gated', beforeEnabled === afterEnabled)
+  check('skill trust hint visible', [...doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('信任技能')))
+  click(w, doc.querySelector('.modal-close'))
+  await tick()
+
+  // 智能体开关：专家弹窗展示启用中的智能体区块
+  click(w, doc.querySelector('.more-wrap .rail-item'))
+  await tick()
+  click(w, doc.querySelector('[data-more="专家"]'))
+  await tick()
+  check('experts modal lists active agents', doc.body.textContent.includes('已启用的智能体'))
+  click(w, doc.querySelector('.modal-close'))
+  await tick()
+  check('settings-driven page no errors', errors.length === 0, errors)
+}
+
+/* ---------------- 每周报告：开启且到期时弹真实统计，且只弹一次 ---------------- */
+{
+  const seed = await loadPage('/index.html')
+  const st = JSON.parse(seed.storage.getItem('design-buddy-state-v1'))
+  st.settings.personalize.weeklyReport = true
+  st.lastReportAt = 0
+  seed.storage.setItem('design-buddy-state-v1', JSON.stringify(st))
+  const { doc, w, storage } = await loadPage('/index.html', { storage: seed.storage, freshCopy: true })
+  await tick(150)
+  check('weekly report modal pops when due', doc.querySelector('.modal-head h3')?.textContent.includes('本周创作报告'))
+  check('weekly report shows real stats', !!doc.querySelector('.report-cell b'))
+  const after = JSON.parse(storage.getItem('design-buddy-state-v1'))
+  check('weekly report stamps lastReportAt', !!after.lastReportAt && after.lastReportAt > 0)
+  click(w, doc.querySelector('.modal-close'))
+  await tick()
+  const again = await loadPage('/index.html', { storage, freshCopy: true })
+  await tick(150)
+  check('weekly report does not repop within week', !again.doc.body.textContent.includes('本周创作报告'))
 }
 
 /* ---------------- 媒体：灯箱 + AI 生成 ---------------- */

@@ -24,7 +24,11 @@ export async function loadPage(file, { storage, freshCopy = false } = {}) {
     .find((p) => !p.includes('styles-') && !p.includes('rail-flyout-'))
   const dom = new JSDOM(html, { url: base + file, runScripts: 'outside-only', pretendToBeVisual: true })
   const w = dom.window
-  if (storage) Object.defineProperty(w, 'localStorage', { value: storage, configurable: true })
+  if (storage) {
+    Object.defineProperty(w, 'localStorage', { value: storage, configurable: true })
+    // 同步全局 shim，模块代码通过 globalThis.localStorage 才能真正读到传入的存储（模拟刷新）
+    Object.defineProperty(globalThis, 'localStorage', { value: storage, configurable: true, writable: true })
+  }
 
   const saved = {}
   const setGlobal = (key, value) => {

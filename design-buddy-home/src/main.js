@@ -18,11 +18,30 @@ import {
   openExperts,
   openConnectors,
 } from './global-ui.js'
+import { applyAppChips } from './settings-effects.js'
 
 initGlobalUI()
 
 const $ = (sel, root = document) => root.querySelector(sel)
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)]
+
+/* 设置 → 个性化/应用管理：推荐区显隐与创作类型过滤，随设置实时生效 */
+function applySmartSuggest() {
+  const row = $('.template-row')
+  if (!row) return
+  const label = row.previousElementSibling?.classList.contains('section-label') ? row.previousElementSibling : null
+  const show = store.state.settings.personalize.smartSuggest
+  row.hidden = !show
+  if (label) label.hidden = !show
+}
+applySmartSuggest()
+applyAppChips()
+store.subscribe(() => { applySmartSuggest(); applyAppChips() })
+
+/* 开机自动启动（设置项）：从其他页面恢复时带 ?new=1 则自动新建 */
+if (new URLSearchParams(location.search).get('new') === '1') {
+  setTimeout(() => createBlankGamma(), 0)
+}
 
 /* 跨刷新保留的首页 UI 偏好（创作类型 / 模式 / 图片模式 / 专家） */
 const ui = (store.state.ui ??= { type: '演示文稿', mode: '标准', imgMode: '自动', expert: null })
@@ -215,7 +234,13 @@ function submitPrompt() {
     })
     return
   }
-  createGamma({ prompt: text, origin: 'prompt' })
+  // 设置 → 记忆与进化：长期记忆与自定义指令真实注入每次创作
+  const memCount = store.state.settings.memories.length
+  const hasInstruction = !!store.state.instructions.trim()
+  if (memCount || hasInstruction) {
+    toast(`已应用 ${memCount} 条记忆${hasInstruction ? '与自定义指令' : ''}`)
+  }
+  createGamma({ prompt: text, origin: 'prompt', appliedMemory: memCount + (hasInstruction ? 1 : 0) })
   input.value = ''
   input.style.height = 'auto'
   attachments.length = 0
@@ -238,11 +263,14 @@ function createGamma({ prompt, origin = 'prompt', template = null, silent = fals
   const cost = silent ? 0 : MODE_COST[ui.mode] ?? 3
   store.state.credits -= cost
   const now = Date.now()
+  // 设置 → 个性化 → 自动命名：关闭时空白创作使用时间戳占位名，交由用户后续重命名
+  const autoTitle = store.state.settings.personalize.autoTitle
+  const stamp = new Date(now).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })
   const title = template
     ? `模板创作 · ${template}`
     : prompt
-      ? prompt.length > 18 ? `${prompt.slice(0, 18)}…` : prompt
-      : '未命名创作'
+      ? (autoTitle ? (prompt.length > 18 ? `${prompt.slice(0, 18)}…` : prompt) : `未命名创作 ${stamp}`)
+      : `未命名创作 ${stamp}`
   const gamma = {
     id: uid('g'),
     title,
@@ -269,10 +297,15 @@ function createGamma({ prompt, origin = 'prompt', template = null, silent = fals
 }
 
 function runGeneration(gamma) {
-  const steps = ['理解提示词', '规划页面结构', `${gamma.type}内容生成`, '视觉与排版优化']
+  // 设置 → 模型：不同模型真实改变生成节奏与步骤
+  const model = store.state.settings.model || '标准模型'
+  const pace = model === '极速模型' ? 240 : model === '高级模型' ? 760 : 480
+  const steps = model === '高级模型'
+    ? ['理解提示词', '规划页面结构', `${gamma.type}内容生成`, '深度推理与校对', '视觉与排版优化']
+    : ['理解提示词', '规划页面结构', `${gamma.type}内容生成`, '视觉与排版优化']
   const { bodyEl, footEl } = openModal({
     title: `正在创作 · ${gamma.type}`,
-    footer: '<button class="btn btn-ghost" data-close disabled>最小化</button>',
+    footer: `<span class="gen-model-tag">${model}</span><button class="btn btn-ghost" data-close disabled>最小化</button>`,
   })
   bodyEl.innerHTML = `<div class="gen-steps">${steps.map((s, i) => `
     <div class="gen-step" data-step="${i}"><span class="dot">${i + 1}</span><span>${s}</span></div>`).join('')}</div>`
@@ -287,7 +320,7 @@ function runGeneration(gamma) {
       clearInterval(timer)
       showResult(gamma, bodyEl, footEl)
     }
-  }, 480)
+  }, pace)
   footEl.querySelector('[data-close]').addEventListener('click', () => {
     clearInterval(timer)
     footEl.querySelector('[data-close]').closest('.modal-mask').remove()

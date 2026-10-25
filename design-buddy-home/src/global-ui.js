@@ -5,6 +5,7 @@
 
 import './features.css'
 import { store, openModal, toast, copyText, fmtDate, uid } from './core.js'
+import { initSettingsEffects, speak, activeAgents } from './settings-effects.js'
 
 /* ---------------- 外观设置全局生效 ---------------- */
 
@@ -157,22 +158,29 @@ export function openInvite() {
 
 export function openMessages() {
   const { bodyEl } = openModal({ title: '消息' })
+  const assistantName = store.state.settings.assistant.name || 'Buddy'
   const render = () => {
     bodyEl.innerHTML = `
       <div class="modal-list">
         ${store.state.messages.map((m) => `
           <div class="modal-list-item">
             <div class="grow">
-              <div class="primary">${m.from}</div>
+              <div class="primary">${m.from === 'Design Buddy' ? assistantName : m.from}</div>
               <div class="secondary">${m.text}</div>
               <div class="secondary">${fmtDate(m.at)}</div>
             </div>
+            <button class="icon-mini" data-speak="${uid('sp')}" title="朗读" aria-label="朗读">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+            </button>
           </div>`).join('')}
       </div>
       <div class="msg-form">
-        <input type="text" id="msg-input" placeholder="给 Design Buddy 发消息…" />
+        <input type="text" id="msg-input" placeholder="给 ${assistantName} 发消息…" />
         <button class="btn btn-primary" id="msg-send">发送</button>
       </div>`
+    bodyEl.querySelectorAll('[data-speak]').forEach((btn, i) => {
+      btn.addEventListener('click', () => speak(store.state.messages[i].text))
+    })
     const input = bodyEl.querySelector('#msg-input')
     bodyEl.querySelector('#msg-send').addEventListener('click', () => {
       const text = input.value.trim()
@@ -188,19 +196,31 @@ export function openMessages() {
 /* ---------------- 技能 / 连接器 / 专家库 ---------------- */
 
 export function openSkills() {
-  const { bodyEl } = openModal({ title: '技能' })
+  const { bodyEl } = openModal({
+    title: '技能',
+    body: '<div id="skills-root"></div>',
+  })
+  const root = bodyEl.querySelector('#skills-root')
   const render = () => {
-    bodyEl.innerHTML = `<div class="modal-list">${store.state.skills.map((sk) => `
+    const trusted = store.state.settings.trustedSkills
+    const autoUpdate = store.state.settings.skillAutoUpdate
+    root.innerHTML = `
+      ${autoUpdate ? '' : '<p class="modal-copy" style="margin:0 0 10px">技能自动更新已暂停，可在设置中恢复。</p>'}
+      <div class="modal-list">${store.state.skills.map((sk) => `
       <label class="modal-list-item">
         <div class="grow">
-          <div class="primary">${sk.name}</div>
+          <div class="primary">${sk.name}${trusted ? '' : ' <span class="count-pill">未信任</span>'}</div>
           <div class="secondary">${sk.desc}</div>
         </div>
         <span class="mini-switch ${sk.enabled ? 'is-on' : ''}" data-sk="${sk.id}"></span>
       </label>`).join('')}</div>`
-    bodyEl.querySelectorAll('[data-sk]').forEach((el) => {
+    root.querySelectorAll('[data-sk]').forEach((el) => {
       el.addEventListener('click', () => {
         const sk = store.state.skills.find((x) => x.id === el.dataset.sk)
+        if (!trusted) {
+          toast('请先在「设置 → 通用」中开启信任技能，再启用技能')
+          return
+        }
         sk.enabled = !sk.enabled
         store.save()
         toast(`${sk.name} 已${sk.enabled ? '启用' : '关闭'}`)
@@ -214,13 +234,21 @@ export function openSkills() {
 export function openExperts() {
   const { bodyEl } = openModal({ title: '专家' })
   const render = () => {
+    const agents = activeAgents()
     bodyEl.innerHTML = `<div class="modal-list">${store.state.experts.map((ex) => `
       <div class="modal-list-item">
         <div class="grow"><div class="primary">${ex.name}</div>
         <div class="secondary">${ex.desc}</div></div>
         <button class="btn ${ex.pinned ? 'btn-ghost' : 'btn-primary'}" data-ex="${ex.id}">
           ${ex.pinned ? '取消固定' : '固定到专家菜单'}</button>
-      </div>`).join('')}</div>`
+      </div>`).join('')}</div>
+      ${agents.length ? `<p class="settings-section-label" style="margin-top:14px">已启用的智能体（设置中管理）</p>
+      <div class="modal-list">${agents.map((ag) => `
+      <div class="modal-list-item">
+        <div class="grow"><div class="primary">${ag.name}</div>
+        <div class="secondary">来自设置 → 智能体</div></div>
+        <span class="count-pill">启用中</span>
+      </div>`).join('')}</div>` : '<p class="modal-copy" style="margin-top:12px">没有启用的智能体，可在「设置 → 智能体」中开启。</p>'}`
     bodyEl.querySelectorAll('[data-ex]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const ex = store.state.experts.find((x) => x.id === btn.dataset.ex)
@@ -338,13 +366,10 @@ export function openPalette() {
 export function initGlobalUI() {
   applyAppearance()
   store.subscribe(applyAppearance)
+  initSettingsEffects()
 
-  document.addEventListener('keydown', (e) => {
-    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-      e.preventDefault()
-      openPalette()
-    }
-  })
+  // 快捷键统一由 settings-effects 调度；首页无搜索框时通过事件打开命令面板
+  document.addEventListener('db:open-palette', openPalette)
 
   // 窄栏底部的邀请 / 消息（五页通用，data-demo 升级为真实弹窗）
   document.addEventListener('click', (e) => {
