@@ -814,3 +814,179 @@ export function renderPageHTML(rawTpl, pageIndex, styleIdx = 0, locale = 'zh', e
     <div class="dp-inner">${inner}</div>
   </div>`
 }
+
+/* ============================================================
+   文档形态渲染器（纵向滚动、图文流式，与幻灯分页形态明确区分）
+   - 同一套 data-edit 键与配图锚点，幻灯/文档的内联编辑与换图共享
+   - extraBlocks：用户通过「添加版块」插入的自定义块，持久化后传入
+   ============================================================ */
+
+function docArt(deck, page, slot, locale) {
+  return art(deck, (page.imgStart + slot) % deck.images.length, page, slot, locale)
+}
+
+export function renderDocumentHTML(rawTpl, locale = 'zh', editsByPage = {}, extraBlocks = []) {
+  const tpl = normalize(rawTpl)
+  const deck = buildDeck(rawTpl, locale)
+  const { pages, framework, palette, fonts, display } = deck
+  const T = I18N[locale]
+  const edOf = (pi) => (key, fallback) => {
+    const m = editsByPage[pi]
+    return m && m[key] != null && m[key] !== '' ? m[key] : fallback
+  }
+  const edAttr = (key) => ` class="db-editable" contenteditable="true" data-edit="${key}"`
+  const rootVars = `--dp-bg:${palette[0]};--dp-paper:${palette[1]};--dp-ink:${palette[2]};--dp-muted:${palette[3]};--dp-accent:${palette[4]};--dp-accent2:${palette[5]};--dp-radius:${framework.radius}px;--dp-head:${fonts.head};--dp-body:${fonts.body};`
+
+  const grid = (page, slots, cls) => `<div class="doc-img-grid doc-img-${cls}">${slots.map((k) => docArt(deck, page, k, locale)).join('')}</div>`
+
+  const blocks = pages.map((page) => {
+    const pi = page.no - 1
+    const ed = edOf(pi)
+    const L = page.layout
+    const head = `<h2${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h2>`
+    const body = `<p${edAttr('body0')}>${ed('body0', T.bodies[page.bodyIdx[0]])}</p>`
+    let inner = ''
+    switch (L) {
+      case 'cover':
+        inner = `<header class="doc-cover">${docArt(deck, page, 0, locale)}
+          <span class="doc-eyebrow db-editable" contenteditable="true" data-edit="cover-eyebrow">${ed('cover-eyebrow', `${catLabel(tpl.cats?.[0] ?? (locale === 'en' ? 'Template' : '模板'), locale)} · ${fwLabel(framework, locale)}`)}</span>
+          <h1${edAttr('cover-title')}>${ed('cover-title', display.a)}</h1>
+          <p class="doc-lead" ${edAttr('cover-sub')}>${ed('cover-sub', display.b ?? '')}</p></header>`
+        break
+      case 'closing':
+        inner = `<footer class="doc-cover doc-closing">${docArt(deck, page, 0, locale)}
+          <h2${edAttr('closing-title')}>${ed('closing-title', T.closing)}</h2>
+          <p class="doc-lead"${edAttr('closing-sub')}>${ed('closing-sub', display.a)}</p></footer>`
+        break
+      case 'divider':
+        inner = `<div class="doc-divider"><span class="doc-big-no">${String(page.no).padStart(2, '0')}</span>${docArt(deck, page, 0, locale)}
+          <h2${edAttr('title')}>${ed('title', T.sections[page.titleIdx])}</h2></div>`
+        break
+      case 'agenda':
+        inner = `${head}<ol class="doc-toc">${T.sections.slice(0, Math.min(8, tpl.pageCount - 4)).map((s, k) =>
+          `<li><i>${String(k + 1).padStart(2, '0')}</i><span class="db-editable" contenteditable="true" data-edit="agenda${k}">${ed(`agenda${k}`, s)}</span></li>`).join('')}</ol>${docArt(deck, page, 0, locale)}`
+        break
+      case 'stats':
+        inner = `${head}<div class="doc-stats">${[0, 1, 2, 3].map((k) => `<div class="doc-stat"><b class="db-editable" contenteditable="true" data-edit="stat-value${k}">${ed(`stat-value${k}`, `${60 + ((page.no * 7 + k * 13) % 38)}%`)}</b><span class="db-editable" contenteditable="true" data-edit="stat-label${k}">${ed(`stat-label${k}`, T.stats[(page.no + k) % T.stats.length])}</span></div>`).join('')}</div>${body}`
+        break
+      case 'big-stat':
+        inner = `<div class="doc-bigstat">${docArt(deck, page, 0, locale)}<div><span class="doc-eyebrow db-editable" contenteditable="true" data-edit="eyebrow">${ed('eyebrow', T.stats[page.statLabelIdx])}</span><b class="doc-bigno db-editable" contenteditable="true" data-edit="stat-value0">${ed('stat-value0', `${page.statNum}%`)}</b></div></div>
+          <p class="doc-lead"${edAttr('sub')}>${ed('sub', T.subtitles[page.subIdx])}</p>${body}`
+        break
+      case 'quote':
+      case 'testimonial':
+        inner = `<blockquote class="doc-quote">${docArt(deck, page, 0, locale)}<p class="db-editable" contenteditable="true" data-edit="quote">${ed('quote', T.quotes[page.quoteIdx])}</p><cite>— ${display.name}</cite></blockquote>`
+        break
+      case 'timeline':
+      case 'process':
+        inner = `${head}<ol class="doc-steps">${T.steps.map((s, k) => `<li><b>${k + 1}</b><span class="db-editable" contenteditable="true" data-edit="step${k}">${ed(`step${k}`, s)}</span></li>`).join('')}</ol>`
+        break
+      case 'comparison':
+        inner = `${head}<div class="doc-compare"><div><h4 class="db-editable" contenteditable="true" data-edit="cmp-left-title">${ed('cmp-left-title', T.compare.leftTitle)}</h4><ul>${T.compare.left.map((s, k) => `<li class="db-editable" contenteditable="true" data-edit="cmp-l${k}">${ed(`cmp-l${k}`, s)}</li>`).join('')}</ul></div><div><h4 class="db-editable" contenteditable="true" data-edit="cmp-right-title">${ed('cmp-right-title', T.compare.rightTitle)}</h4><ul>${T.compare.right.map((s, k) => `<li class="db-editable" contenteditable="true" data-edit="cmp-r${k}">${ed(`cmp-r${k}`, s)}</li>`).join('')}</ul></div></div>`
+        break
+      case 'table':
+        inner = `${head}<table class="doc-table"><thead><tr>${T.tableHead.map((h, k) => `<th class="db-editable" contenteditable="true" data-edit="th${k}">${ed(`th${k}`, h)}</th>`).join('')}</tr></thead><tbody>${T.tableDims.map((s, r) => `<tr><td class="db-editable" contenteditable="true" data-edit="cell-${r}-0">${ed(`cell-${r}-0`, s)}</td><td class="db-editable" contenteditable="true" data-edit="cell-${r}-1">${ed(`cell-${r}-1`, `${60 + r * 7}%`)}</td><td class="db-editable" contenteditable="true" data-edit="cell-${r}-2">${ed(`cell-${r}-2`, `${85 + r * 3}%`)}</td><td class="db-editable" contenteditable="true" data-edit="cell-${r}-3">${ed(`cell-${r}-3`, T.roles[r])}</td></tr>`).join('')}</tbody></table>`
+        break
+      case 'faq':
+        inner = `${head}<div class="doc-faq">${T.faqs.slice(0, 4).map((q, k) => `<details ${k === 0 ? 'open' : ''}><summary class="db-editable" contenteditable="true" data-edit="faq-q${k}">${ed(`faq-q${k}`, q)}</summary><p class="db-editable" contenteditable="true" data-edit="faq-a${k}">${ed(`faq-a${k}`, T.bodies[(page.bodyIdx[0] + k) % T.bodies.length])}</p></details>`).join('')}</div>`
+        break
+      case 'bars':
+        inner = `${head}<ul class="doc-bars">${T.stats.slice(0, 6).map((s, k) => { const v = 45 + ((page.no * 11 + k * 13) % 50); return `<li><span class="db-editable" contenteditable="true" data-edit="bar-label${k}">${ed(`bar-label${k}`, s)}</span><i style="width:${v}%"></i><b class="db-editable" contenteditable="true" data-edit="bar-value${k}">${ed(`bar-value${k}`, `${v}%`)}</b></li>` }).join('')}</ul>`
+        break
+      case 'line-chart':
+        inner = `${head}<svg class="doc-line" viewBox="0 0 600 260" preserveAspectRatio="none" role="img"><polyline points="${Array.from({ length: 9 }, (_, k) => `${30 + k * 67},${210 - ((page.no * 17 + k * 19) % 160)}`).join(' ')}" fill="none" stroke="var(--dp-accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><p class="doc-lead"${edAttr('sub')}>${ed('sub', T.subtitles[page.subIdx])}</p>`
+        break
+      case 'map':
+        inner = `${head}${docArt(deck, page, 0, locale)}<p class="doc-lead"${edAttr('map-lead')}>${ed('map-lead', T.mapLead)}</p>`
+        break
+      case 'gallery':
+        inner = `${head}${grid(page, [0, 1, 2, 3], 'four')}${body}`
+        break
+      case 'triple-grid':
+      case 'team':
+      case 'cards':
+      case 'pricing':
+        inner = `${head}${grid(page, [0, 1, 2], 'three')}${body}`
+        break
+      case 'two-image':
+        inner = `${head}${grid(page, [0, 1], 'two')}${body}`
+        break
+      case 'logos':
+        inner = `${head}${grid(page, [0], 'wide')}`
+        break
+      case 'index-list':
+        inner = `${head}<ul class="doc-index">${T.sections.map((s, k) => `<li><span class="db-editable" contenteditable="true" data-edit="index${k}">${ed(`index${k}`, s)}</span><i>${String(k + 3).padStart(2, '0')}</i></li>`).join('')}</ul>`
+        break
+      default:
+        inner = `<div class="doc-prose">${head}${body}<p${edAttr('body1')}>${ed('body1', T.bodies[page.bodyIdx[1]])}</p>${docArt(deck, page, 0, locale)}</div>`
+    }
+    return `<section class="doc-block doc-lay-${L}" data-no="${page.no}" data-layout="${L}">${inner}</section>`
+  }).join('')
+
+  const esc = (s) => String(s ?? '').replace(/</g, '&lt;')
+  const editOf = (b) => `<span class="db-editable db-block-edit" contenteditable="true" data-block-edit="${b.id}">${esc(b.text)}</span>`
+  const mediaUrl = (b, hint) => (b.url
+    ? (/\.(mp4|webm|ogg)(\?|$)/i.test(b.url)
+      ? `<video class="doc-frame-media" src="${esc(b.url)}" controls></video>`
+      : `<iframe class="doc-frame-media" src="${esc(b.url)}" title="${esc(b.text)}" loading="lazy" allowfullscreen></iframe>`)
+    : `<button type="button" class="doc-media-empty" data-block-url="${b.id}" data-prompt="${hint}">＋ ${locale === 'en' ? 'Paste a media URL to enable this block' : '粘贴媒体地址后启用该版块'}</button>`)
+  const renderCustomBlock = (b) => {
+    const del = `<button type="button" class="doc-block-del" data-block-del="${b.id}" aria-label="删除版块">×</button>`
+    let inner = ''
+    switch (b.kind) {
+      case 'h1': inner = `<h1 class="db-doc-h1">${editOf(b)}</h1>`; break
+      case 'h2': inner = `<h2 class="db-doc-h2">${editOf(b)}</h2>`; break
+      case 'h3': inner = `<h3 class="db-doc-h3">${editOf(b)}</h3>`; break
+      case 'h4': inner = `<h4 class="db-doc-h4">${editOf(b)}</h4>`; break
+      case 'quote': inner = `<blockquote class="doc-quote">${editOf(b)}</blockquote>`; break
+      case 'caption': inner = `<p class="doc-caption">${editOf(b)}</p>`; break
+      case 'label': inner = `<p class="doc-label">${editOf(b)}</p>`; break
+      case 'divider': inner = '<hr class="doc-divider">'; break
+      case 'image':
+        inner = `<figure class="doc-custom-fig">
+          ${b.src ? `<img src="${esc(b.src)}" alt="${esc(b.text)}">`
+            : `<button type="button" class="doc-img-empty" data-block-image="${b.id}">＋ ${locale === 'en' ? 'Upload an image' : '点击上传图片'}</button>`}
+          <figcaption>${editOf(b)}</figcaption></figure>`
+        break
+      case 'gallery':
+        inner = `<div class="doc-custom-gallery">${editOf(b)}
+          <div class="doc-gallery-row"><i></i><i></i><i></i></div></div>`
+        break
+      case 'card':
+        inner = `<div class="doc-custom-card"><h3>${editOf(b)}</h3>
+          <p>${locale === 'en' ? 'Supporting detail goes here — click to edit the heading above.' : '辅助说明文字，点击上方标题即可编辑。'}</p></div>`
+        break
+      case 'columns':
+        inner = `<div class="doc-custom-columns"><div>${editOf(b)}</div>
+          <div>${locale === 'en' ? 'Second column: use the add-block menu to insert more content.' : '第二栏：可继续通过「添加版块」补充内容。'}</div></div>`
+        break
+      case 'stat':
+        inner = `<div class="doc-custom-stat"><b>${editOf(b)}</b>
+          <span>${locale === 'en' ? 'Key metric label' : '关键指标标签'}</span></div>`
+        break
+      case 'bars':
+        inner = `<div class="doc-custom-bars"><p>${editOf(b)}</p>
+          <div class="doc-bars"><i style="--w:92%"></i><i style="--w:74%"></i><i style="--w:56%"></i></div></div>`
+        break
+      case 'video':
+        inner = `<figure class="doc-media">${mediaUrl(b, locale === 'en' ? 'Paste video URL (mp4 / YouTube / Vimeo)' : '粘贴视频地址（mp4 / YouTube / Vimeo）')}
+          <figcaption>${editOf(b)}</figcaption></figure>`
+        break
+      case 'embed':
+        inner = `<figure class="doc-media">${mediaUrl(b, locale === 'en' ? 'Paste embed URL (https://…)' : '粘贴嵌入地址（https://…）')}
+          <figcaption>${editOf(b)}</figcaption></figure>`
+        break
+      case 'input':
+        inner = `<label class="doc-form-input"><span>${editOf(b)}</span><input type="text" readonly placeholder="${locale === 'en' ? 'Preview only' : '仅作排版预览'}"></label>`
+        break
+      case 'button':
+        inner = `<div class="doc-form-btn"><button type="button" class="doc-cta">${editOf(b)}</button></div>`
+        break
+      default: inner = `<p>${editOf(b)}</p>`
+    }
+    return `<section class="doc-block doc-custom doc-kind-${b.kind}" data-block-id="${b.id}">${del}${inner}</section>`
+  }
+  const custom = extraBlocks.map(renderCustomBlock).join('')
+
+  return `<article class="db-doc ifr-${framework.imgFrame} head-${framework.heading}" style="${rootVars}" data-tpl="${tpl.id}">${blocks}${custom}</article>`
+}

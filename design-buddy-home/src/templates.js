@@ -7,11 +7,11 @@ import './rail-flyout.js'
 import { store, toast, openModal, confirmModal, uid, fmtDate, copyText } from './core.js'
 import { initGlobalUI, openUpgrade } from './global-ui.js'
 import {
-  buildCatalog, buildDeck, renderPageHTML, metaFor, coverStyle, coverDeco,
+  buildCatalog, buildDeck, renderPageHTML, renderDocumentHTML, metaFor, coverStyle, coverDeco,
   displayTpl, catLabel, VISIBLE_CATS, HIDDEN_CATS, configureArt, getArtBase,
   getArtManifest, setArtOverride, clearArtOverride,
 } from './template-engine.js'
-import { ART_CONCEPTS, conceptLabel } from './art-concepts.js'
+import { ART_CONCEPTS, conceptLabel, conceptFor } from './art-concepts.js'
 
 initGlobalUI()
 
@@ -603,14 +603,78 @@ function openTemplateDetail(tpl) {
   const mask = document.createElement('div')
   mask.className = 'td-mask'
   mask.innerHTML = `
-    <button class="td-back" id="td-back" type="button">
-      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-      <span id="td-back-label">返回模板</span>
-    </button>
-    <button class="td-close" type="button" aria-label="关闭">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
-    </button>
+    <div class="td-topbar">
+      <div class="td-topbar-left">
+        <button class="td-back" id="td-back" type="button">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span id="td-back-label">返回模板</span>
+        </button>
+        <span class="td-topbar-title" id="td-topbar-title"></span>
+      </div>
+      <div class="td-topbar-right">
+        <button class="td-top-btn" id="td-topic" type="button">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22a10 10 0 1 1 10-10c0 2.5-2 3-3.5 3H15a2.5 2.5 0 0 0-2 4c-.5 1.5-1 3-1 3z"/></svg>
+          主题
+        </button>
+        <button class="td-top-btn" id="td-share-top" type="button">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          分享
+        </button>
+        <button class="td-top-btn td-present" id="td-present" type="button">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          演示
+        </button>
+        <button class="td-top-btn td-upgrade" id="td-upgrade" type="button">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          升级
+        </button>
+        <button class="td-close" id="td-close" type="button" aria-label="关闭">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="td-ribbon">
+      <button class="td-ribbon-settings" id="td-settings-toggle" type="button">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        设置
+      </button>
+      <span class="td-ribbon-center">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
+        您正在编辑模板
+      </span>
+      <div class="td-ribbon-right">
+        <button class="td-use-ribbon" id="td-use-ribbon" type="button">使用模板
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <button class="td-api-btn" id="td-api" type="button">&lt;/&gt; API</button>
+      </div>
+    </div>
+    <div class="td-body">
+    <aside class="td-panel" id="td-panel"></aside>
     <div class="td-left">
+      <div class="td-toolbar">
+        <button class="td-tool td-tool-edit is-active" type="button" title="编辑">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+        </button>
+        <button class="td-tool" id="td-agent" type="button" title="Agent">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg>
+          Agent
+        </button>
+        <button class="td-tool" id="td-undo" type="button" title="撤销" disabled>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-15-6.7L3 13"/></svg>
+        </button>
+        <button class="td-tool" id="td-redo" type="button" title="重做" disabled>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 15-6.7L21 13"/></svg>
+        </button>
+        <button class="td-add-block" id="td-add-block" type="button">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          添加版块
+        </button>
+        <div class="td-form-switch" id="td-form-switch" role="group" aria-label="创作形式">
+          <button type="button" data-form="slide" class="is-active">幻灯片</button>
+          <button type="button" data-form="doc">文档</button>
+        </div>
+      </div>
       <div class="td-deck-bar">
         <span class="td-frame-badge" id="td-frame"></span>
         <span class="td-page-count" id="td-page-count"></span>
@@ -644,7 +708,7 @@ function openTemplateDetail(tpl) {
         </button>
       </div>
     </div>
-    <aside class="td-panel" id="td-panel"></aside>`
+    </div>`
   document.body.append(mask)
   document.body.style.overflow = 'hidden'
 
@@ -659,6 +723,22 @@ function openTemplateDetail(tpl) {
 
   const cur = () => list[idx]
   const styleIdxOf = (t) => store.state.templateStyles[t.name] ?? 0
+
+  /* 创作形式（幻灯片/文档）与自定义版块，均按模板名持久化 */
+  store.state.templateForm ??= {}
+  store.state.templateBlocks ??= {}
+  const formOf = (t) => store.state.templateForm[t.name] ?? 'slide'
+  const blocksOf = (t) => (store.state.templateBlocks[t.name] ??= [])
+  let activeTab = 'brief'
+
+  /* 撤销/重做：会话级编辑历史，记录字段级变化 */
+  const undoStack = []
+  const redoStack = []
+  const pushHistory = (rec) => { undoStack.push(rec); redoStack.length = 0; syncHistoryButtons() }
+  const syncHistoryButtons = () => {
+    mask.querySelector('#td-undo')?.toggleAttribute('disabled', undoStack.length === 0)
+    mask.querySelector('#td-redo')?.toggleAttribute('disabled', redoStack.length === 0)
+  }
 
   /* 内联编辑持久化：templateEdits[模板名][语言][页码][字段键] */
   store.state.templateEdits ??= {}
@@ -686,12 +766,28 @@ function openTemplateDetail(tpl) {
   function renderDeck() {
     const t = cur()
     const locale = lang()
+    const form = formOf(t)
     configureArt({ mode: store.state.imageMode ?? 'illustration', overrides: store.state.artOverrides })
     const deck = buildDeck(t, locale)
     if (pageIdx >= deck.pages.length) pageIdx = 0
-    const edits = pageEdits(t, locale, pageIdx)
-    deckEl.innerHTML = renderPageHTML(t, pageIdx, styleIdxOf(t), locale, edits)
-    deckEl.querySelector('.dp-page')?.classList.add('is-shown')
+    mask.querySelector('#td-topbar-title').textContent = displayTpl(t, locale).name
+    mask.querySelectorAll('#td-form-switch [data-form]').forEach((b) =>
+      b.classList.toggle('is-active', b.dataset.form === form))
+    const slideOnly = mask.querySelectorAll('.td-deck-bar, .td-page-arrow, .td-progress, .td-pages, .td-carousel-wrap')
+    if (form === 'doc') {
+      // 文档形态：整篇纵向滚动、图文流式，不再分页
+      deckEl.classList.add('is-doc')
+      slideOnly.forEach((el) => { el.hidden = true })
+      const editsByPage = editRoot(t)[locale] ?? {}
+      deckEl.innerHTML = renderDocumentHTML(t, locale, editsByPage, blocksOf(t))
+      deckEl.scrollTop = 0
+    } else {
+      deckEl.classList.remove('is-doc')
+      slideOnly.forEach((el) => { el.hidden = false })
+      const edits = pageEdits(t, locale, pageIdx)
+      deckEl.innerHTML = renderPageHTML(t, pageIdx, styleIdxOf(t), locale, edits)
+      deckEl.querySelector('.dp-page')?.classList.add('is-shown')
+    }
     pageCountEl.textContent = `${String(pageIdx + 1).padStart(2, '0')} / ${String(deck.pages.length).padStart(2, '0')}`
     frameEl.textContent = metaFor(t, locale).spec.framework
     progressEl.style.width = `${((pageIdx + 1) / deck.pages.length) * 100}%`
@@ -699,23 +795,66 @@ function openTemplateDetail(tpl) {
     syncLangButtons()
   }
 
-  // 编辑内容：input 实时保存，粘贴仅保留纯文本
+  // 进入编辑区时记录旧值，供撤销恢复
+  deckEl.addEventListener('focusin', (e) => {
+    const el = e.target.closest?.('[data-edit],[data-block-edit]')
+    if (el) el.dataset.oldText = el.textContent
+  })
+  // 编辑内容：input 实时保存（幻灯/文档/自定义版块共用），粘贴仅保留纯文本
   deckEl.addEventListener('input', (e) => {
+    const blockEl = e.target.closest?.('[data-block-edit]')
+    if (blockEl) {
+      const b = blocksOf(cur()).find((x) => x.id === blockEl.dataset.blockEdit)
+      if (b) {
+        pushHistory({ type: 'block', id: b.id, old: blockEl.dataset.oldText ?? '', val: blockEl.textContent })
+        b.text = blockEl.textContent
+        store.save()
+      }
+      return
+    }
     const el = e.target.closest?.('[data-edit]')
     if (!el) return
-    const no = Number(deckEl.querySelector('.dp-page')?.dataset.no ?? pageIdx + 1) - 1
+    const scope = el.closest('[data-no]')
+    // data-no 为 1-based 页码，存储统一用 0-based；文档 .doc-block 与幻灯 .dp-page 同源
+    const no = scope ? Number(scope.dataset.no) - 1 : pageIdx
+    pushHistory({ type: 'edit', no, key: el.dataset.edit, old: el.dataset.oldText ?? '', val: el.textContent })
     pageEdits(cur(), lang(), no)[el.dataset.edit] = el.textContent
     store.save()
     const resetBtn = panel.querySelector('#td-reset-edits')
     if (resetBtn) resetBtn.hidden = false
   })
   deckEl.addEventListener('paste', (e) => {
-    if (!e.target.closest?.('[data-edit]')) return
+    if (!e.target.closest?.('[data-edit],[data-block-edit]')) return
     e.preventDefault()
     const text = (e.clipboardData).getData('text/plain')
     try { document.execCommand('insertText', false, text) } catch { el_insertFallback(e.target, text) }
   })
   function el_insertFallback(el, text) { el.textContent = `${el.textContent}${text}` }
+
+  // 撤销/重做：恢复到引擎默认文案（删除覆盖），自定义版块直接还原文本
+  function applyHistory(rec, forward) {
+    const t = cur()
+    if (rec.type === 'block') {
+      const b = blocksOf(t).find((x) => x.id === rec.id)
+      if (!b) return
+      b.text = forward ? rec.val : rec.old
+    } else if (rec.type === 'delete') {
+      const arr = blocksOf(t)
+      if (forward) {
+        const i = arr.findIndex((x) => x.id === rec.block.id)
+        if (i >= 0) arr.splice(i, 1)
+      } else {
+        arr.splice(Math.min(rec.index, arr.length), 0, rec.block)
+      }
+    } else {
+      const m = pageEdits(t, lang(), rec.no)
+      if (forward) m[rec.key] = rec.val
+      else delete m[rec.key]
+    }
+    store.save()
+    renderDeck()
+    syncHistoryButtons()
+  }
 
   /* 配图替换（P4）：插画库选择 / 上传自有图 / 恢复默认，覆盖关系持久化 */
   function openArtPicker(tpl, pageNo, slot, currentKey) {
@@ -792,8 +931,52 @@ function openTemplateDetail(tpl) {
     const { close } = openModal({ title: T.title, body: grid, footer, wide: true })
   }
 
-  // 点击幻灯内任意配图外壳 → 打开换图弹窗（文字编辑区不在 dp-art 内，互不干扰）
+  // 点击配图外壳 → 换图弹窗；自定义版块 → 删除 / 媒体地址设置
   deckEl.addEventListener('click', (e) => {
+    const delEl = e.target.closest?.('[data-block-del]')
+    if (delEl) {
+      const arr = blocksOf(cur())
+      const i = arr.findIndex((x) => x.id === delEl.dataset.blockDel)
+      if (i >= 0) {
+        const [removed] = arr.splice(i, 1)
+        pushHistory({ type: 'delete', block: removed, index: i })
+        store.save()
+        renderDeck()
+      }
+      return
+    }
+    const urlEl = e.target.closest?.('[data-block-url]')
+    if (urlEl) {
+      const b = blocksOf(cur()).find((x) => x.id === urlEl.dataset.blockUrl)
+      if (!b) return
+      const url = window.prompt(urlEl.dataset.prompt ?? '粘贴媒体地址（https://…）', b.url ?? '')
+      if (url === null) return
+      b.url = url.trim()
+      store.save()
+      renderDeck()
+      return
+    }
+    const imgEl = e.target.closest?.('[data-block-image]')
+    if (imgEl) {
+      const b = blocksOf(cur()).find((x) => x.id === imgEl.dataset.blockImage)
+      if (!b) return
+      const fileInput = document.createElement('input')
+      fileInput.type = 'file'
+      fileInput.accept = 'image/*'
+      fileInput.addEventListener('change', () => {
+        const file = fileInput.files?.[0]
+        if (!file) return
+        const reader = new FileReader()
+        reader.onload = () => {
+          b.src = String(reader.result)
+          store.save()
+          renderDeck()
+        }
+        reader.readAsDataURL(file)
+      })
+      fileInput.click()
+      return
+    }
     const artEl = e.target.closest?.('[data-art-key]')
     if (!artEl || !deckEl.contains(artEl)) return
     openArtPicker(cur(), Number(artEl.dataset.artPage), Number(artEl.dataset.artSlot), artEl.dataset.artKey)
@@ -835,17 +1018,35 @@ function openTemplateDetail(tpl) {
     const spec = metaFor(t, locale).spec
     const styleIdx = styleIdxOf(t)
     const styleWord = locale === 'en' ? 'Style' : '样式'
+    const tabBrief = locale === 'en' ? 'Brief' : '说明'
+    const tabImages = locale === 'en' ? 'Images' : '图片'
+    // 收集整篇配图：页码 + 槽位 + 概念 key（与幻灯/文档渲染完全同源）
+    const deck = buildDeck(t, locale)
+    const artRows = []
+    deck.pages.forEach((p) => {
+      const count = LAYOUT_SLOT_COUNT[p.layout] ?? 1
+      for (let slot = 0; slot < count; slot++) {
+        artRows.push({ page: p.no, slot, key: conceptFor(t, p, slot) })
+      }
+    })
+    const manifest = getArtManifest()
     panel.innerHTML = `
+      <div class="tdp-tabs" role="tablist">
+        <button type="button" class="tdp-tab ${activeTab === 'brief' ? 'is-active' : ''}" data-tab="brief">${tabBrief}</button>
+        <button type="button" class="tdp-tab ${activeTab === 'images' ? 'is-active' : ''}" data-tab="images">${tabImages}<i>${artRows.length}</i></button>
+      </div>
+
+      <div class="tdp-pane" data-pane="brief" ${activeTab !== 'brief' ? 'hidden' : ''}>
       <div class="td-head">
         <h2>${displayTpl(t, locale).name}</h2>
         <button class="td-share" id="td-share" title="分享模板" type="button">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
         </button>
       </div>
-      <p class="td-meta">${t.format} · ${RATIO_LABEL[t.format] ?? '16:9'}</p>
+      <p class="td-meta">${t.format} · ${RATIO_LABEL[t.format] ?? '16:9'} · ${formOf(t) === 'doc' ? (locale === 'en' ? 'Document' : '文档') : (locale === 'en' ? 'Slides' : '幻灯片')}</p>
 
       <div class="td-provider">
-        <span class="td-g-badge">G</span>
+        <span class="td-g-badge">D</span>
         <span>${P.provider}</span>
       </div>
 
@@ -900,7 +1101,37 @@ function openTemplateDetail(tpl) {
 
       <div class="td-use-wrap">
         <button class="td-use" id="td-use" type="button">${P.use}</button>
+      </div>
+      </div>
+
+      <div class="tdp-pane tdp-images" data-pane="images" ${activeTab !== 'images' ? 'hidden' : ''}>
+        <p class="tdp-images-hint">${locale === 'en' ? 'Click any image to replace it — changes persist across slides and document view.' : '点击任意配图即可替换，幻灯与文档形态同步生效。'}</p>
+        <div class="tdp-image-grid">
+          ${artRows.map((r) => {
+            const src = manifest[r.key]?.illustration?.src
+            const override = store.state.artOverrides[`${t.id}:${r.page}:${r.slot}`]
+            return `<button type="button" class="tdp-image-card" data-art-pick="${r.page}:${r.slot}:${r.key}">
+              <span class="tdp-image-thumb">${(override || src) ? `<img src="${override || src}" alt="">` : `<i style="background:${meta.colors[r.page % meta.colors.length]}"></i>`}</span>
+              <span class="tdp-image-meta"><b>${conceptLabel(r.key, locale)}</b><em>${locale === 'en' ? 'Page' : '第'} ${r.page + 1} ${locale === 'en' ? '' : '页'}</em></span>
+            </button>`
+          }).join('')}
+        </div>
       </div>`
+
+    panel.onclick = (e) => {
+      const tab = e.target.closest?.('[data-tab]')
+      if (tab) {
+        activeTab = tab.dataset.tab
+        panel.querySelectorAll('.tdp-tab').forEach((b) => b.classList.toggle('is-active', b === tab))
+        panel.querySelectorAll('.tdp-pane').forEach((p) => { p.hidden = p.dataset.pane !== activeTab })
+        return
+      }
+      const artPick = e.target.closest?.('[data-art-pick]')
+      if (artPick) {
+        const [page, slot, key] = artPick.dataset.artPick.split(':')
+        openArtPicker(cur(), Number(page), Number(slot), key)
+      }
+    }
 
     if (hasEdits(t, locale)) panel.querySelector('#td-reset-edits').hidden = false
 
@@ -954,11 +1185,20 @@ function openTemplateDetail(tpl) {
     renderDeck()
   }
 
-  function goTemplate(delta) {
+  function switchTemplate(nextIdx) {
     stopAuto()
-    idx = (idx + delta + list.length) % list.length
+    idx = (nextIdx + list.length) % list.length
     pageIdx = 0
+    // 历史记录绑定当前模板的字段键，换模板后必须清空，避免撤销串台
+    undoStack.length = 0
+    redoStack.length = 0
+    activeTab = 'brief'
+    syncHistoryButtons()
     render()
+  }
+
+  function goTemplate(delta) {
+    switchTemplate(idx + delta)
   }
 
   function close() {
@@ -970,10 +1210,13 @@ function openTemplateDetail(tpl) {
   }
 
   function onKey(e) {
-    // 正在编辑文字时，Esc 先退出编辑而不是关掉整个弹层
-    const editing = e.target?.closest?.('.dp-editable')
+    // 正在编辑文字时，Esc 先退出编辑而不是关掉整个弹层（幻灯 .dp-editable / 文档 .db-editable）
+    const editing = e.target?.closest?.('.dp-editable,.db-editable')
     if (e.key === 'Escape' && editing) { editing.blur(); return }
+    // 二级弹窗（换图 / 块选择器等）打开时，Esc 只关弹窗，不连带关闭编辑器
+    if (e.key === 'Escape' && document.querySelector('.modal-mask')) return
     if (e.key === 'Escape') close()
+    if (formOf(cur()) !== 'slide') return
     if (e.key === 'ArrowRight' && !editing) goPage(1)
     if (e.key === 'ArrowLeft' && !editing) goPage(-1)
   }
@@ -1007,18 +1250,229 @@ function openTemplateDetail(tpl) {
   carousel.addEventListener('click', (e) => {
     const thumb = e.target.closest('.td-thumb')
     if (!thumb) return
-    stopAuto()
-    idx = Number(thumb.dataset.i)
-    pageIdx = 0
-    render()
+    switchTemplate(Number(thumb.dataset.i))
   })
   mask.querySelector('.td-back').addEventListener('click', close)
   mask.querySelector('.td-close').addEventListener('click', close)
   mask.addEventListener('click', (e) => { if (e.target === mask) close() })
+
+  /* ---------- 形态切换 / 版块库 / 撤销重做 / 新顶栏 ---------- */
+  function setForm(form) {
+    const t = cur()
+    if (formOf(t) === form) return
+    stopAuto()
+    store.state.templateForm[t.name] = form
+    store.save()
+    render()
+  }
+  mask.querySelector('#td-form-switch').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-form]')
+    if (btn) setForm(btn.dataset.form)
+  })
+  mask.querySelector('#td-undo').addEventListener('click', () => {
+    const rec = undoStack.pop()
+    if (!rec) return
+    redoStack.push(rec)
+    applyHistory(rec, false)
+  })
+  mask.querySelector('#td-redo').addEventListener('click', () => {
+    const rec = redoStack.pop()
+    if (!rec) return
+    undoStack.push(rec)
+    applyHistory(rec, true)
+  })
+  syncHistoryButtons()
+
+  function addBlock(def) {
+    const block = { id: uid('bk'), kind: def.kind, cat: def.cat, text: def.ph ?? '', url: '' }
+    blocksOf(cur()).push(block)
+    store.save()
+    renderDeck()
+    toast(lang() === 'en' ? 'Block added — scroll to the bottom to edit' : '版块已添加，滚动到文末即可编辑')
+  }
+  function openBlockPicker() {
+    const locale = lang()
+    if (formOf(cur()) === 'slide') {
+      setForm('doc')
+      toast(locale === 'en' ? 'Block editing lives in the document view — switched for you' : '版块编辑在文档形态中进行，已自动切换')
+    }
+    let cat = 'all'
+    let q = ''
+    const nameOf = (d) => (locale === 'en' ? d.en : d.zh)
+    const body = document.createElement('div')
+    body.className = 'block-picker'
+    body.innerHTML = `
+      <label class="block-search">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" placeholder="${locale === 'en' ? 'Search all blocks' : '搜索所有区块'}" data-bp-search>
+      </label>
+      <div class="block-picker-body">
+        <nav class="block-cats" data-bp-cats>
+          ${BLOCK_CATS.map((c) => `<button type="button" class="block-cat ${c.id === 'all' ? 'is-active' : ''}" data-cat="${c.id}">${locale === 'en' ? c.en : c.zh}</button>`).join('')}
+        </nav>
+        <div class="block-grid" data-bp-grid></div>
+      </div>`
+    const grid = body.querySelector('[data-bp-grid]')
+    const draw = () => {
+      const kw = q.trim().toLowerCase()
+      const items = BLOCK_LIB.filter((d) => (cat === 'all' || d.cat === cat)
+        && (!kw || nameOf(d).toLowerCase().includes(kw)))
+      grid.innerHTML = items.length
+        ? items.map((d) => `<button type="button" class="block-card" data-block-kind="${d.kind}">
+            <span class="block-card-ic block-ic-${d.kind}">${blockIcon(d.kind)}</span>
+            <span class="block-card-name">${nameOf(d)}</span>
+          </button>`).join('')
+        : `<p class="block-empty">${locale === 'en' ? 'No matching blocks' : '没有匹配的区块'}</p>`
+    }
+    draw()
+    body.querySelector('[data-bp-search]').addEventListener('input', (e) => { q = e.target.value; draw() })
+    body.querySelector('[data-bp-cats]').addEventListener('click', (e) => {
+      const c = e.target.closest('[data-cat]')
+      if (!c) return
+      cat = c.dataset.cat
+      body.querySelectorAll('.block-cat').forEach((b) => b.classList.toggle('is-active', b === c))
+      draw()
+    })
+    grid.addEventListener('click', (e) => {
+      const card = e.target.closest('[data-block-kind]')
+      if (!card) return
+      const def = BLOCK_LIB.find((d) => d.kind === card.dataset.blockKind)
+      closeModal()
+      addBlock(def)
+    })
+    const { close: closeModal } = openModal({
+      title: locale === 'en' ? 'Add block' : '添加版块',
+      body,
+      footer: `<button class="btn btn-ghost" data-close>${locale === 'en' ? 'Close' : '关闭'}</button>`,
+      wide: true,
+    })
+  }
+  mask.querySelector('#td-add-block').addEventListener('click', openBlockPicker)
+
+  // 左面板折叠（截图中的「设置」开关）
+  mask.querySelector('#td-settings-toggle').addEventListener('click', () => {
+    mask.classList.toggle('panel-collapsed')
+  })
+  // Agent：本地无云端大模型，打开命令面板这一真实的本地智能入口
+  mask.querySelector('#td-agent').addEventListener('click', () => {
+    document.dispatchEvent(new CustomEvent('db:open-palette'))
+    toast(lang() === 'en' ? 'Local command palette — no cloud AI in the zero-backend build' : '本地命令面板：零后端版本未接入云端 AI')
+  })
+  mask.querySelector('#td-topic').addEventListener('click', () => { location.href = 'themes.html' })
+  mask.querySelector('#td-share-top').addEventListener('click', () => {
+    copyText(`${location.origin}${location.pathname}?tpl=${encodeURIComponent(cur().name)}`)
+  })
+  mask.querySelector('#td-present').addEventListener('click', () => {
+    if (formOf(cur()) === 'doc') {
+      toast(lang() === 'en' ? 'Document view scrolls vertically — use slides for autoplay' : '文档形态为纵向滚动，自动演示请切回幻灯片')
+      return
+    }
+    autoplay ? stopAuto() : startAuto()
+  })
+  mask.querySelector('#td-upgrade').addEventListener('click', () => openUpgrade())
+  mask.querySelector('#td-use-ribbon').addEventListener('click', () => {
+    const t = cur()
+    close()
+    useTemplate(t)
+  })
+  mask.querySelector('#td-api').addEventListener('click', () => {
+    const locale = lang()
+    const t = cur()
+    const payload = JSON.stringify({
+      app: 'Design Buddy',
+      template: displayTpl(t, locale).name,
+      format: formOf(t),
+      pages: buildDeck(t, lang()).pages.length,
+      style: styleIdxOf(t),
+      blocks: blocksOf(t),
+    }, null, 2)
+    const body = document.createElement('div')
+    body.innerHTML = `<p class="api-hint">${locale === 'en'
+      ? 'Local-first build: no server or API key. This is the exact JSON your template produces — copy it into any workflow.'
+      : '本地优先版本：无服务器、无 API 密钥。以下是该模板产出的真实 JSON，可复制到任意工作流。'}</p>
+      <pre class="api-pre">${payload.replace(/</g, '&lt;')}</pre>`
+    const { close: closeApi } = openModal({
+      title: '</> API',
+      body,
+      wide: true,
+      footer: `<button class="btn btn-ghost" data-close>${locale === 'en' ? 'Close' : '关闭'}</button>
+               <button class="btn btn-primary" data-copy>${locale === 'en' ? 'Copy JSON' : '复制 JSON'}</button>`,
+    })
+    body.parentElement.querySelector('[data-copy]')?.addEventListener('click', () => copyText(payload))
+    void closeApi
+  })
+
   document.addEventListener('click', onDocClick)
   document.addEventListener('keydown', onKey)
 
   render()
+}
+
+/* 各版式实际渲染的配图槽位数（与 template-engine 的 img() 调用对齐，缺省 1 张） */
+const LAYOUT_SLOT_COUNT = {
+  gallery: 4,
+  'triple-grid': 3, team: 3, cards: 3, pricing: 3,
+  'two-image': 2,
+}
+
+/* ---------------- 文档版块库（块选择器，分类与 Gamma 截图对齐） ---------------- */
+
+const BLOCK_CATS = [
+  { id: 'all', zh: '全部', en: 'All' },
+  { id: 'text', zh: '基本块', en: 'Basic' },
+  { id: 'image', zh: '图片', en: 'Images' },
+  { id: 'shape', zh: '形状', en: 'Shapes' },
+  { id: 'layout', zh: '布局', en: 'Layout' },
+  { id: 'chart', zh: '图表', en: 'Charts' },
+  { id: 'media', zh: '视频/嵌入', en: 'Media' },
+  { id: 'form', zh: '表单', en: 'Forms' },
+]
+
+const BLOCK_LIB = [
+  { kind: 'h1', cat: 'text', zh: '标题 H1', en: 'Heading 1', ph: '标题文字' },
+  { kind: 'h2', cat: 'text', zh: '标题 H2', en: 'Heading 2', ph: '二级标题' },
+  { kind: 'h3', cat: 'text', zh: '标题 H3', en: 'Heading 3', ph: '三级标题' },
+  { kind: 'h4', cat: 'text', zh: '标题 H4', en: 'Heading 4', ph: '四级标题' },
+  { kind: 'p', cat: 'text', zh: '正文 / md', en: 'Paragraph', ph: '正文段落，直接输入文字…' },
+  { kind: 'caption', cat: 'text', zh: '说明文字', en: 'Caption', ph: '说明文字' },
+  { kind: 'label', cat: 'text', zh: '标签文本', en: 'Label', ph: '标签文本' },
+  { kind: 'quote', cat: 'text', zh: '块引用 / Quote', en: 'Block quote', ph: '引用内容…' },
+  { kind: 'image', cat: 'image', zh: '配图', en: 'Image', ph: '图片说明（点击图片即可替换）' },
+  { kind: 'gallery', cat: 'image', zh: '图库', en: 'Gallery', ph: '图库标题' },
+  { kind: 'divider', cat: 'shape', zh: '分隔线', en: 'Divider', ph: '' },
+  { kind: 'card', cat: 'layout', zh: '卡片', en: 'Card', ph: '卡片标题与正文…' },
+  { kind: 'columns', cat: 'layout', zh: '双栏', en: 'Two columns', ph: '左栏文字，右栏可继续补充…' },
+  { kind: 'stat', cat: 'chart', zh: '统计数字', en: 'Big stat', ph: '88%' },
+  { kind: 'bars', cat: 'chart', zh: '条形列表', en: 'Bar list', ph: '指标一' },
+  { kind: 'video', cat: 'media', zh: '视频', en: 'Video', ph: '视频标题' },
+  { kind: 'embed', cat: 'media', zh: '网页嵌入', en: 'Embed', ph: '嵌入标题' },
+  { kind: 'input', cat: 'form', zh: '输入框', en: 'Input', ph: '请输入邮箱' },
+  { kind: 'button', cat: 'form', zh: '按钮', en: 'Button', ph: '立即开始' },
+]
+
+function blockIcon(kind) {
+  const paths = {
+    h1: '<path d="M4 12h8"/><path d="M4 6v12"/><path d="M12 6v12"/><path d="m17 9 3-2v11"/>',
+    h2: '<path d="M4 12h8"/><path d="M4 6v12"/><path d="M12 6v12"/><path d="M17 8a2 2 0 1 1 3 2c-2 1-3 2-3 4h4"/>',
+    h3: '<path d="M4 12h8"/><path d="M4 6v12"/><path d="M12 6v12"/><path d="M17 8a2 2 0 1 1 3 2 2 2 0 0 1-2 2 2 2 0 0 1 2 2 2 2 0 1 1-3 2"/>',
+    h4: '<path d="M4 12h8"/><path d="M4 6v12"/><path d="M12 6v12"/><path d="M17 6v10"/><path d="M17 12h3"/><path d="M20 16v6"/>',
+    p: '<path d="M13 6H7v12"/><path d="M13 6a4 4 0 0 1 0 8H7"/>',
+    caption: '<circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/>',
+    label: '<path d="M20 12 12 20l-8-8V4h8z"/><circle cx="7.5" cy="7.5" r="1.2"/>',
+    quote: '<path d="M7 7h4v6a4 4 0 0 1-4 4"/><path d="M15 7h4v6a4 4 0 0 1-4 4"/>',
+    image: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/>',
+    gallery: '<rect x="3" y="4" width="8" height="7" rx="1"/><rect x="13" y="4" width="8" height="7" rx="1"/><rect x="3" y="13" width="8" height="7" rx="1"/><rect x="13" y="13" width="8" height="7" rx="1"/>',
+    divider: '<path d="M3 12h18"/><circle cx="12" cy="12" r="2.4"/>',
+    card: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/>',
+    columns: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16"/>',
+    stat: '<path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-4"/><path d="M12 16V8"/><path d="M16 16v-6"/>',
+    bars: '<path d="M4 8h16"/><path d="M4 12h11"/><path d="M4 16h14"/>',
+    video: '<rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/>',
+    embed: '<path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m13 6-2 12"/>',
+    input: '<rect x="3" y="8" width="18" height="8" rx="2"/><path d="M7 12h6"/>',
+    button: '<rect x="4" y="8" width="16" height="8" rx="4"/><path d="M9 12h6"/>',
+  }
+  return `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${paths[kind] ?? paths.p}</svg>`
 }
 
 /* ---------------- 自建模板 ---------------- */

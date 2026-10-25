@@ -4,12 +4,14 @@
    ============================================================ */
 
 import {
-  buildCatalog, buildDeck, renderPageHTML, metaFor, coverStyle, displayTpl, slotNeed,
+  buildCatalog, buildDeck, renderPageHTML, renderDocumentHTML, metaFor, coverStyle, displayTpl, slotNeed,
   configureArt, getArtMode, setArtOverride, clearArtOverride,
   CATEGORY_LIST, FRAMEWORKS, LAYOUTS,
 } from '../src/template-engine.js'
 import { conceptFor, ART_CONCEPTS, CONCEPT_POOLS } from '../src/art-concepts.js'
 import { loadPage, click, input, tick, readState } from './helpers.mjs'
+import fs from 'node:fs'
+import path from 'node:path'
 
 let passed = 0
 const fails = []
@@ -337,6 +339,159 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   check('toolbar toggle back to chinese', doc.querySelector('.tpl-lang [data-lang="zh"]').classList.contains('is-active'))
   check('grid back to chinese name', /[一-龥]/.test(doc.querySelector('.tpl-name span').textContent))
   check('category label chinese', /[一-龥]/.test(doc.querySelector('.cat-label').textContent))
+}
+
+/* ---------------- 任务二十三：文档形态 / 版块库 / 编辑器重构 ---------------- */
+{
+  // 引擎层契约：文档渲染器
+  const docTpl = catalog[10]
+  const docDeck = buildDeck(docTpl, 'zh')
+  const docHtml = renderDocumentHTML(docTpl, 'zh', {}, [])
+  check('doc renderer: one flowing section per page',
+    (docHtml.match(/class="doc-block /g) || []).length === docDeck.pages.length)
+  check('doc renderer: inline-edit anchors shared with slides',
+    docHtml.includes('db-editable') && docHtml.includes('data-edit="title"'))
+  check('doc renderer: art anchors shared with slides',
+    docHtml.includes('data-art-key') && docHtml.includes('data-art-page'))
+  const withBlocks = renderDocumentHTML(docTpl, 'zh', {}, [
+    { id: 'bk1', kind: 'h2', text: '自定义标题' },
+    { id: 'bk2', kind: 'quote', text: '自定义引用' },
+    { id: 'bk3', kind: 'video', text: '视频块', url: '' },
+    { id: 'bk4', kind: 'image', text: '图注', src: '' },
+  ])
+  check('doc renderer: custom blocks carry stable ids',
+    withBlocks.includes('data-block-id="bk1"') && withBlocks.includes('doc-kind-quote'))
+  check('doc renderer: media/image blocks show honest empty states',
+    withBlocks.includes('data-block-url="bk3"') && withBlocks.includes('data-block-image="bk4"'))
+  const docEn = renderDocumentHTML(docTpl, 'en', {}, [])
+  check('doc renderer: english stream contains no Chinese',
+    !/[一-龥]/.test(docEn.replace(/Design Buddy/g, '')))
+  // CSS 契约：is-doc 取消固定 16:9、开启纵向滚动
+  const distDir = path.resolve(new URL('../dist/assets', import.meta.url).pathname)
+  const cssFile = fs.readdirSync(distDir).find((f) => f.startsWith('templates-') && f.endsWith('.css'))
+  const cssText = fs.readFileSync(path.join(distDir, cssFile), 'utf8')
+  check('doc css: 16:9 ratio removed in document mode',
+    /\.td-deck\.is-doc\s*\{[^}]*aspect-ratio:\s*auto/.test(cssText))
+  check('doc css: vertical scrolling enabled',
+    /\.td-deck\.is-doc\s*\{[^}]*overflow-y:\s*auto/.test(cssText))
+
+  // 页面级交互
+  const { doc, w, errors, storage } = await loadPage('/templates.html')
+  click(w, doc.querySelector('.tpl-card'))
+  await tick()
+  const tplName = doc.querySelector('#td-topbar-title').textContent
+  check('editor: topbar/ribbon/toolbar restructured',
+    !!doc.querySelector('.td-topbar') && !!doc.querySelector('.td-ribbon') && !!doc.querySelector('.td-toolbar'))
+  check('editor: form switch offers slide + document',
+    [...doc.querySelectorAll('#td-form-switch [data-form]')].map((b) => b.dataset.form).join() === 'slide,doc')
+  check('editor: add-block and history buttons present',
+    !!doc.querySelector('#td-add-block') && !!doc.querySelector('#td-undo') && !!doc.querySelector('#td-redo'))
+  check('editor: panel tabs (brief/images)', doc.querySelectorAll('.tdp-tab').length === 2)
+  check('editor: undo disabled with empty history', doc.querySelector('#td-undo').hasAttribute('disabled'))
+  // 默认幻灯分页形态
+  check('slides: default form is paginated slides',
+    !!doc.querySelector('.td-deck .dp-page') && !doc.querySelector('.db-doc'))
+
+  // 切换到文档形态
+  click(w, doc.querySelector('#td-form-switch [data-form="doc"]'))
+  await tick()
+  const docBlockCount = doc.querySelectorAll('.db-doc .doc-block').length
+  check('doc: is-doc streaming article rendered',
+    !!doc.querySelector('.td-deck.is-doc .db-doc') && docBlockCount >= 20 && docBlockCount <= 30)
+  check('doc: slide-only chrome hidden',
+    doc.querySelector('.td-page-arrow').hidden && doc.querySelector('.td-pages').hidden)
+  check('doc: switch active state follows form',
+    doc.querySelector('#td-form-switch [data-form="doc"]').classList.contains('is-active'))
+
+  // 文档内联编辑 → 同一套 templateEdits 持久化
+  const field = doc.querySelector('.db-doc [data-edit]')
+  const editKey = field.dataset.edit
+  field.textContent = '文档内联编辑XYZ'
+  field.dispatchEvent(new w.Event('input', { bubbles: true }))
+  await tick()
+  check('doc: inline edit persisted into templateEdits',
+    JSON.stringify(readState(storage).templateEdits).includes('文档内联编辑XYZ'))
+  check('doc: undo enabled after edit', !doc.querySelector('#td-undo').hasAttribute('disabled'))
+  // 撤销恢复默认
+  click(w, doc.querySelector('#td-undo'))
+  await tick()
+  const restored = [...doc.querySelectorAll('.db-doc [data-edit]')].find((e) => e.dataset.edit === editKey)
+  check('doc: undo restores default copy', restored && restored.textContent !== '文档内联编辑XYZ')
+  check('doc: redo re-enables', !doc.querySelector('#td-redo').hasAttribute('disabled'))
+
+  // 形态按模板持久化：关闭重开仍是文档
+  doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
+  await tick()
+  const again = await loadPage('/templates.html', { storage })
+  await tick(120)
+  let card = [...again.doc.querySelectorAll('.tpl-card')]
+    .find((c) => c.querySelector('.tpl-name span')?.textContent === tplName)
+  check('doc: same template located for reopen', !!card)
+  click(again.w, card)
+  await tick()
+  check('doc: form choice persisted across reopen', !!again.doc.querySelector('.td-deck.is-doc .db-doc'))
+
+  // 添加版块：块选择器
+  click(again.w, again.doc.querySelector('#td-add-block'))
+  await tick()
+  const picker = again.doc.querySelector('.modal-mask .block-picker')
+  check('block picker: opens with search', !!picker?.querySelector('[data-bp-search]'))
+  check('block picker: eight screenshot categories', picker.querySelectorAll('.block-cat').length === 8)
+  check('block picker: 19 block cards in all view', picker.querySelectorAll('.block-card').length === 19)
+  // 搜索过滤
+  input(again.w, picker.querySelector('[data-bp-search]'), 'H1')
+  await tick()
+  check('block picker: search narrows grid',
+    picker.querySelectorAll('.block-card').length === 1
+    && picker.querySelector('.block-card')?.dataset.blockKind === 'h1')
+  input(again.w, picker.querySelector('[data-bp-search]'), '')
+  await tick()
+  // 分类过滤
+  click(again.w, picker.querySelector('.block-cat[data-cat="form"]'))
+  await tick()
+  check('block picker: category filter',
+    [...picker.querySelectorAll('.block-card')].every((c) => ['input', 'button'].includes(c.dataset.blockKind)))
+  click(again.w, picker.querySelector('.block-cat[data-cat="all"]'))
+  await tick()
+  // 插入 H2 自定义块
+  click(again.w, picker.querySelector('[data-block-kind="h2"]'))
+  await tick()
+  check('block picker: h2 block inserted at tail',
+    !!again.doc.querySelector('.db-doc .doc-custom.doc-kind-h2 [data-block-edit]'))
+  check('block picker: insertion persisted per template',
+    readState(storage).templateBlocks[tplName]?.length === 1
+    && readState(storage).templateBlocks[tplName][0].kind === 'h2')
+  // 自定义块文字可编辑并持久化
+  const blockField = again.doc.querySelector('[data-block-edit]')
+  blockField.textContent = '我加的版块标题'
+  blockField.dispatchEvent(new again.w.Event('input', { bubbles: true }))
+  await tick()
+  check('custom block: inline text persisted',
+    readState(storage).templateBlocks[tplName][0].text === '我加的版块标题')
+  // 删除版块
+  click(again.w, again.doc.querySelector('.doc-block-del'))
+  await tick()
+  check('custom block: delete removes from dom and store',
+    !again.doc.querySelector('.doc-custom') && readState(storage).templateBlocks[tplName].length === 0)
+
+  // 图片 tab：整篇配图网格，点击直达换图弹窗
+  click(again.w, again.doc.querySelector('.tdp-tab[data-tab="images"]'))
+  await tick()
+  const imgCards = again.doc.querySelectorAll('.tdp-image-card')
+  check('panel: images tab lists every art slot',
+    imgCards.length >= again.doc.querySelectorAll('.db-doc .doc-block').length)
+  click(again.w, imgCards[0])
+  await tick()
+  check('panel: image card opens art picker', !!again.doc.querySelector('.art-picker-grid'))
+  again.doc.dispatchEvent(new again.w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
+  await tick()
+
+  // 切回分页幻灯
+  click(again.w, again.doc.querySelector('#td-form-switch [data-form="slide"]'))
+  await tick()
+  check('slides: paginated form restored',
+    !!again.doc.querySelector('.td-deck .dp-page') && !again.doc.querySelector('.db-doc'))
+  check('editor: no runtime errors', errors.length === 0, JSON.stringify(errors))
 }
 
 /* ---------------- P1 真实配图：语义概念层 + 图片模式 ---------------- */
