@@ -492,33 +492,6 @@ function openReferencePicker() {
   render()
 }
 
-function openPermission() {
-  const cur = store.state.settings.permission
-  const opts = [
-    ['ask', '每次询问', '涉及文件与网络访问时先征求同意'],
-    ['full', '允许完全访问', '自动允许所有技能访问文件与网络'],
-    ['none', '仅当前对话', '授权只在本次对话内有效'],
-  ]
-  const { close, bodyEl, footEl } = openModal({
-    title: '访问权限',
-    body: `<div class="modal-list">${opts.map(([v, name, desc]) => `
-      <button class="modal-list-item" data-perm="${v}">
-        <span class="ws-check">${cur === v ? '✓' : ''}</span>
-        <span class="grow"><span class="primary">${name}</span><span class="secondary">${desc}</span></span>
-      </button>`).join('')}</div>`,
-    footer: '<button class="btn btn-primary" data-close>完成</button>',
-  })
-  bodyEl.querySelectorAll('[data-perm]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      store.state.settings.permission = btn.dataset.perm
-      store.save()
-      toast('访问权限已更新')
-      close()
-    })
-  })
-  footEl.querySelector('[data-close]').addEventListener('click', close)
-}
-
 popover.addEventListener('click', (event) => {
   const actionRow = event.target.closest('[data-action]')
   if (actionRow) {
@@ -532,7 +505,6 @@ popover.addEventListener('click', (event) => {
       case '技能': openSkills(); break
       case '连接器': openConnectors(); break
       case '新建': createBlankGamma(); break
-      case '访问权限': openPermission(); break
       case '召唤更多专家': openExperts(); break
       default: toast(action)
     }

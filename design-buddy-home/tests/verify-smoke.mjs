@@ -35,7 +35,7 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   check('export action runs', errors.length === 0, errors)
 }
 
-/* ---------------- 首页：参数 / 权限 / 引用 / Max 门槛 / 空白新建 ---------------- */
+/* ---------------- 首页：参数 / 弹出菜单 / 引用 / Max 门槛 / 空白新建 ---------------- */
 {
   const { doc, w, errors } = await loadPage('/index.html')
   click(w, doc.querySelector('.tool-btn[aria-label="调整参数"]'))
@@ -50,12 +50,13 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
 
   click(w, doc.querySelector('#add-menu-btn'))
   await tick()
-  click(w, doc.querySelector('[data-action="访问权限"]'))
+  check('full-access button removed from popover', !doc.querySelector('.access-btn'))
+  check('popover has no full-access label', !doc.body.textContent.includes('允许完全访问'))
+  check('footer keeps new plus button', !!doc.querySelector('.popover-footer .access-plus'))
+  // 底部「新建」按钮仍可点击并给出反馈
+  click(w, doc.querySelector('.popover-footer .access-plus'))
   await tick()
-  check('permission modal opens', doc.querySelector('.modal-head h3')?.textContent.includes('访问权限'))
-  click(w, doc.querySelector('[data-perm="full"]'))
-  await tick()
-  check('permission persisted', JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).settings.permission === 'full')
+  check('plus button gives feedback', !!doc.querySelector('.toast.show'))
 
   click(w, doc.querySelector('#add-menu-btn'))
   await tick()
