@@ -180,20 +180,17 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   const after = JSON.parse(storage.getItem('design-buddy-state-v1')).gammas
   check('auto title off yields timestamp placeholder', after.length === before + 1 && /^未命名创作 \d{2}:\d{2}$/.test(after[0].title), after[0].title)
 
-  // 技能信任门控：默认未信任，开关点击不启用并给出提示
-  click(w, doc.querySelector('.more-wrap .rail-item'))
+  // 技能信任门控：默认未信任，开关点击不启用并给出提示（技能已是独立页面）
+  const skillsPage = await loadPage('/skills.html', { storage, freshCopy: true })
+  click(skillsPage.w, skillsPage.doc.querySelector('[data-installed-toggle]'))
   await tick()
-  click(w, doc.querySelector('[data-more="技能"]'))
+  const firstSkillSwitch = skillsPage.doc.querySelector('[data-sk]')
+  const beforeEnabled = JSON.parse(skillsPage.storage.getItem('design-buddy-state-v1')).skills.find((x) => x.id === firstSkillSwitch?.dataset.sk)?.enabled
+  click(skillsPage.w, firstSkillSwitch)
   await tick()
-  const firstSkillSwitch = doc.querySelector('[data-sk]')
-  const beforeEnabled = JSON.parse(storage.getItem('design-buddy-state-v1')).skills.find((x) => x.id === firstSkillSwitch?.dataset.sk)?.enabled
-  click(w, firstSkillSwitch)
-  await tick()
-  const afterEnabled = JSON.parse(storage.getItem('design-buddy-state-v1')).skills.find((x) => x.id === firstSkillSwitch?.dataset.sk)?.enabled
+  const afterEnabled = JSON.parse(skillsPage.storage.getItem('design-buddy-state-v1')).skills.find((x) => x.id === firstSkillSwitch?.dataset.sk)?.enabled
   check('untrusted skill toggle is gated', beforeEnabled === afterEnabled)
-  check('skill trust hint visible', [...doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('信任技能')))
-  click(w, doc.querySelector('.modal-close'))
-  await tick()
+  check('skill trust hint visible', [...skillsPage.doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('信任技能')))
 
   // 专家入口：已升级为独立页面，窄栏「更多」只负责关闭浮层并跳转
   click(w, doc.querySelector('.more-wrap .rail-item'))

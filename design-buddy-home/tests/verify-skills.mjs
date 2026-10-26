@@ -1,13 +1,15 @@
 /* ============================================================
-   技能弹窗：左侧已安装管理（信任门控/更新契约）+ 右侧截图式发现区
-   双栏布局 / 精选换一批 / 来源 tab / 筛选 / 搜索 / 悬浮信息卡 /
-   精选安装 / 已安装视图 / 自定义技能 / 三弹窗切换
+   技能页（skills.html）：截图式发现区 + 首页同款左侧窄栏
+   栏目 / 顶栏操作 / 精选换一批 / 来源 tab / 筛选 / 搜索 /
+   悬浮信息卡 / 精选安装（信任门控）/ 已安装视图（启停·版本·更新）
    注册表安装与自动更新的深度契约在 verify-settings-real 中覆盖
    ============================================================ */
 
-import { loadPage, click, input, tick, readState } from './helpers.mjs'
-import { SKILL_REGISTRY } from '../src/skill-registry.js'
-import { DISCOVERY_SKILLS, FEATURED_SKILLS, FEATURED_SIZE, SKILL_FILTERS } from '../src/skills-catalog.js'
+import fs from 'node:fs'
+import path from 'node:path'
+import { loadPage, click, input, tick, readState, DIST } from './helpers.mjs'
+import { SKILL_REGISTRY, hasUpdate, registryEntry, SEED_SKILL_VERSION } from '../src/skill-registry.js'
+import { PAGE_SKILLS, FEATURED_SKILLS, FEATURED_SIZE, SKILL_FILTERS } from '../src/skills-catalog.js'
 
 let passed = 0
 const fails = []
@@ -16,155 +18,213 @@ function check(name, cond, extra) {
   else { fails.push(name); console.log('FAIL ', name, extra ?? '') }
 }
 
-const { doc, w, errors, storage } = await loadPage('/index.html')
+/* 产物 CSS 契约：截图布局的关键数值，防止后续改动悄悄退回旧观感 */
+const cssCompact = fs.readdirSync(path.join(DIST, 'assets'))
+  .filter((f) => f.endsWith('.css'))
+  .map((f) => fs.readFileSync(path.join(DIST, 'assets', f), 'utf8'))
+  .join('\n')
+  .replace(/\s+/g, '')
+const layoutOk = cssCompact.includes('.skills-page{flex:1;min-width:0')
+  && cssCompact.includes('.skills-page.sk-feature-track{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))')
+  && cssCompact.includes('.skills-page.sk-grid{grid-template-columns:repeat(5,minmax(0,1fr))')
+
+const { doc, w, errors, storage } = await loadPage('/skills.html', { freshCopy: true })
+const modal = () => doc.querySelector('.modal-box')
+const grid = () => doc.querySelectorAll('#sk-grid .sk-card')
+const confirmBox = () => [...doc.querySelectorAll('.modal-box')].find((m) => m.textContent.includes('手动安装') || m.textContent.includes('高风险'))
+
+/* ---------- 1. 页面骨架：左侧窄栏 + 顶部页签 + 操作区 ---------- */
 check('skills page loads without errors', errors.length === 0, errors)
+check('screenshot layout contract holds in built CSS', layoutOk)
+check('keeps the homepage rail (vertical icon column)',
+  [...doc.querySelectorAll('.rail .rail-item span')].map((s) => s.textContent).join() === '首页,媒体,模板,主题,设置,更多')
+check('top tabs are 专家 / 技能 / 连接器',
+  [...doc.querySelectorAll('.ex-top-tab')].map((t) => t.textContent.trim()).join() === '专家,技能,连接器')
+check('skills tab is the active page link',
+  doc.querySelector('.ex-top-tab.is-active')?.getAttribute('href') === 'skills.html')
+check('experts tab links to the experts page',
+  doc.querySelector('.ex-top-tab').getAttribute('href') === 'experts.html')
+check('search box present', !!doc.querySelector('#sk-search-input'))
+check('installed count button present',
+  doc.querySelector('[data-installed-toggle]')?.textContent.includes(`已安装(${readState(storage).skills.length})`))
+check('add-skill button present', !!doc.querySelector('[data-add-skill]'))
 
-const openSkills = async () => {
-  click(w, doc.querySelector('.more-wrap .rail-item'))
-  await tick()
-  click(w, doc.querySelector('[data-more="技能"]'))
-  await tick()
-}
-await openSkills()
-const modal = () => doc.querySelector('.modal-box.modal-skills')
-
-/* ---------- 1. 双栏骨架与左侧管理契约 ---------- */
-check('skills modal uses extra-wide two-pane layout',
-  !!modal() && !!modal().querySelector('#skills-root') && !!modal().querySelector('.experts-main'))
-check('left pane lists 4 installed skill switches',
-  modal().querySelectorAll('#skills-root [data-sk]').length === 4)
-check('left pane has manual check-update button', !!modal().querySelector('[data-check-update]'))
-check('right top shows installed count button',
-  modal().querySelector('[data-installed-toggle]')?.textContent.includes('已安装(4)'))
-check('right keeps installable section wording', modal().textContent.includes('可安装'))
-
-/* ---------- 2. 精选技能 + 换一批 ---------- */
-check('featured row shows fixed-size slice',
-  modal().querySelectorAll('.sk-feature-card').length === FEATURED_SIZE)
-const featuredBefore = [...modal().querySelectorAll('.sk-feature-card')].map((c) => c.dataset.featureCard)
-click(w, modal().querySelector('[data-shuffle]'))
+/* ---------- 2. 精选技能 5 张 + 换一批 ---------- */
+check('section head shows 精选技能 and 换一批',
+  doc.querySelector('#sk-section-head')?.textContent.includes('精选技能')
+  && !!doc.querySelector('#sk-section-head [data-shuffle]'))
+check('featured row shows fixed-size slice', doc.querySelectorAll('.sk-feature-card').length === FEATURED_SIZE)
+const featuredBefore = [...doc.querySelectorAll('.sk-feature-card')].map((c) => c.dataset.featureCard)
+click(w, doc.querySelector('[data-shuffle]'))
 await tick()
-const featuredAfter = [...modal().querySelectorAll('.sk-feature-card')].map((c) => c.dataset.featureCard)
+const featuredAfter = [...doc.querySelectorAll('.sk-feature-card')].map((c) => c.dataset.featureCard)
 check('shuffle rotates featured set', JSON.stringify(featuredBefore) !== JSON.stringify(featuredAfter))
-check('shuffle stays inside featured pool', featuredAfter.every((id) => FEATURED_SKILLS.some((f) => f.id === id)))
+check('shuffle stays inside featured pool',
+  featuredAfter.length === FEATURED_SIZE && featuredAfter.every((id) => FEATURED_SKILLS.some((f) => f.id === id)))
 
-/* ---------- 3. 网格：注册表事实源 + data-install 契约 ---------- */
-check('recommend tab lists all registry entries',
-  modal().querySelectorAll('#sk-grid .sk-card').length === DISCOVERY_SKILLS.length)
-const uninstalled = SKILL_REGISTRY.length - 4
-check('data-install buttons equal uninstalled registry count',
-  modal().querySelectorAll('[data-install]').length === uninstalled)
+/* ---------- 3. 网格：注册表在前 + 补充目录 ---------- */
+check('recommend tab lists registry + catalog skills', grid().length === PAGE_SKILLS.length)
+const installedCount = readState(storage).skills.length
+check('data-install buttons equal uninstalled catalog count',
+  doc.querySelectorAll('#sk-grid [data-install]').length === PAGE_SKILLS.length - installedCount)
 check('review-risk cards carry high-risk badge',
-  modal().querySelectorAll('#sk-grid .ex-badge').length === SKILL_REGISTRY.filter((r) => r.risk === 'review').length)
-check('all filter chips rendered', modal().querySelectorAll('[data-sk-chip]').length === SKILL_FILTERS.length)
-check('hover popover shows space and update time',
-  modal().querySelector('.sk-pop')?.textContent.includes('所属空间')
-  && modal().querySelector('.sk-pop')?.textContent.includes('更新于'))
+  doc.querySelectorAll('#sk-grid .ex-badge').length === PAGE_SKILLS.filter((s) => s.risk === 'review').length)
+check('paid skill carries paid badge', !!doc.querySelector('#sk-grid .sk-paid'))
+check('all filter chips rendered', doc.querySelectorAll('[data-sk-chip]').length === SKILL_FILTERS.length)
+check('hover popover shows device / space / update time',
+  (() => {
+    const pop = doc.querySelector('.sk-pop')
+    return pop?.querySelectorAll('.sk-pop-row').length === 3
+      && pop.textContent.includes('本地电脑')
+      && pop.textContent.includes('所属空间')
+      && pop.textContent.includes('更新于')
+  })())
 
 /* ---------- 4. 来源 tab / 分类 chip / 搜索 ---------- */
-click(w, modal().querySelector('[data-source="skillhub"]'))
+click(w, doc.querySelector('[data-source="skillhub"]'))
 await tick()
-const skillhubCount = DISCOVERY_SKILLS.filter((s) => s.source === 'skillhub').length
-check('skillhub tab filters by source', modal().querySelectorAll('#sk-grid .sk-card').length === skillhubCount)
-click(w, modal().querySelector('[data-source="suite"]'))
+check('skillhub tab filters by source',
+  grid().length === PAGE_SKILLS.filter((s) => s.source === 'skillhub').length)
+click(w, doc.querySelector('[data-source="suite"]'))
 await tick()
-const suiteCount = DISCOVERY_SKILLS.filter((s) => s.source === 'suite').length
-check('suite tab filters by source', modal().querySelectorAll('#sk-grid .sk-card').length === suiteCount)
-click(w, modal().querySelector('[data-source="recommend"]'))
+check('suite tab filters by source',
+  grid().length === PAGE_SKILLS.filter((s) => s.source === 'suite').length)
+click(w, doc.querySelector('[data-source="recommend"]'))
 await tick()
-click(w, modal().querySelector('[data-sk-chip="内容创作"]'))
+click(w, doc.querySelector('[data-sk-chip="内容创作"]'))
 await tick()
-const catCount = DISCOVERY_SKILLS.filter((s) => s.category === '内容创作').length
-check('category chip filters grid', modal().querySelectorAll('#sk-grid .sk-card').length === catCount && catCount === 2)
-click(w, modal().querySelector('[data-sk-chip="健康医疗"]'))
+const contentCount = PAGE_SKILLS.filter((s) => s.category === '内容创作').length
+check('category chip filters grid', grid().length === contentCount && contentCount > 0)
+click(w, doc.querySelector('[data-sk-chip="生活服务"]'))
 await tick()
-check('no-match category shows honest empty state',
-  !!modal().querySelector('.ex-empty') && modal().querySelectorAll('#sk-grid .sk-card').length === 0)
-click(w, modal().querySelector('[data-sk-chip="全部"]'))
+check('category chip narrows to one card', grid().length === 1)
+click(w, doc.querySelector('[data-sk-chip="全部"]'))
 await tick()
-input(w, modal().querySelector('#sk-search-input'), '邮件')
+input(w, doc.querySelector('#sk-search-input'), '邮件')
 await tick()
 check('search filters by name',
-  modal().querySelectorAll('#sk-grid .sk-card').length === 1
-  && modal().querySelector('#sk-grid .sk-card-title')?.textContent.includes('邮件撰写助手'))
-input(w, modal().querySelector('#sk-search-input'), 'no-such-skill-zzz')
+  grid().length === 1 && doc.querySelector('#sk-grid .sk-card-title')?.textContent.includes('邮件撰写助手'))
+input(w, doc.querySelector('#sk-search-input'), 'no-such-skill-zzz')
 await tick()
-check('search empty state', !!modal().querySelector('.ex-empty'))
-input(w, modal().querySelector('#sk-search-input'), '')
+check('search empty state', !!doc.querySelector('.ex-empty'))
+input(w, doc.querySelector('#sk-search-input'), '')
 await tick()
 
-/* ---------- 5. 精选技能安装（未信任 → 手动确认 → 真实持久化） ---------- */
-const featuredBtn = modal().querySelector('[data-featured-install]')
+/* ---------- 5. 精选技能安装：未信任 → 手动确认 → 真实持久化 ---------- */
+const featuredBtn = doc.querySelector('[data-featured-install]')
 const featuredName = FEATURED_SKILLS.find((f) => f.id === featuredBtn.dataset.featuredInstall).name
 click(w, featuredBtn)
 await tick()
-let confirmBox = [...doc.querySelectorAll('.modal-box')].find((m) => m.textContent.includes('手动安装'))
-check('featured install requires confirmation when untrusted', !!confirmBox)
-click(w, confirmBox.querySelector('[data-act="ok"]'))
+check('featured install requires confirmation when untrusted', !!confirmBox())
+click(w, confirmBox().querySelector('[data-act="ok"]'))
 await tick()
 check('featured skill persisted to store',
   readState(storage).skills.some((s) => s.name === featuredName))
 check('featured plus flips to installed check',
-  !!modal().querySelector(`[data-feature-card="${featuredBtn.dataset.featuredInstall}"] .sk-plus.is-installed`))
+  !!doc.querySelector(`[data-feature-card="${featuredBtn.dataset.featuredInstall}"] .sk-plus.is-installed`))
 check('installed count button increments',
-  modal().querySelector('[data-installed-toggle]')?.textContent.includes('已安装(5)'))
+  doc.querySelector('[data-installed-toggle]')?.textContent.includes(`已安装(${installedCount + 1})`))
 
-/* ---------- 6. 已安装视图 ---------- */
-click(w, modal().querySelector('[data-installed-toggle]'))
+/* ---------- 6. 已安装视图：启停 / 版本 / 检查更新 ---------- */
+click(w, doc.querySelector('[data-installed-toggle]'))
 await tick()
-check('installed-only view shows installed skills',
-  modal().querySelectorAll('#sk-grid .sk-card').length === 5
-  && modal().querySelectorAll('#sk-grid .sk-plus.is-installed').length === 5)
-click(w, modal().querySelector('[data-installed-toggle]'))
-await tick()
-check('installed-only toggle restores discovery grid',
-  modal().querySelectorAll('#sk-grid .sk-card').length === DISCOVERY_SKILLS.length)
+const installedNow = readState(storage).skills.length
+check('installed-only view lists installed skills',
+  grid().length === installedNow && doc.querySelectorAll('#sk-grid .sk-plus.is-installed').length === installedNow)
+check('installed view exposes enable switches',
+  doc.querySelectorAll('#sk-grid [data-sk]').length === installedNow)
+check('installed view exposes check-update button', !!doc.querySelector('[data-check-update]'))
 
-/* ---------- 7. 自定义技能：prompt + 确认后真实入库 ---------- */
-globalThis.prompt = () => '我的自定义技能'
-click(w, modal().querySelector('[data-add-skill]'))
-await tick()
-confirmBox = [...doc.querySelectorAll('.modal-box')].find((m) => m.textContent.includes('手动安装'))
-check('custom skill prompts then asks install confirmation', !!confirmBox)
-click(w, confirmBox.querySelector('[data-act="ok"]'))
-await tick()
-check('custom skill persisted',
-  readState(storage).skills.some((s) => s.name === '我的自定义技能'))
-check('custom skill appears in left management',
-  [...modal().querySelectorAll('#skills-root .primary')].some((p) => p.textContent.includes('我的自定义技能')))
-delete globalThis.prompt
-
-/* ---------- 8. 左侧信任门控 + 检查更新 ---------- */
-const firstSwitch = modal().querySelector('#skills-root [data-sk]')
-const before = readState(storage).skills.find((s) => s.id === firstSwitch.dataset.sk)?.enabled
+const firstSwitch = doc.querySelector('#sk-grid [data-sk]')
+const beforeEnabled = readState(storage).skills.find((s) => s.id === firstSwitch.dataset.sk)?.enabled
 click(w, firstSwitch)
 await tick()
-const after = readState(storage).skills.find((s) => s.id === firstSwitch.dataset.sk)?.enabled
-check('untrusted switch blocked and hinted', before === after
+const afterEnabled = readState(storage).skills.find((s) => s.id === firstSwitch.dataset.sk)?.enabled
+check('untrusted switch blocked and hinted', beforeEnabled === afterEnabled
   && [...doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('信任技能')))
-click(w, modal().querySelector('[data-check-update]'))
+
+click(w, doc.querySelector('[data-check-update]'))
 await tick()
 check('check update reports up-to-date',
   [...doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('最新版本')))
 
-/* ---------- 9. 顶部三弹窗切换 + 关闭 ---------- */
-click(w, modal().querySelector('[data-open="experts"]'))
+click(w, doc.querySelector('[data-installed-toggle]'))
 await tick()
-check('experts tab leaves for the experts page',
-  !doc.querySelector('.modal-skills') && !doc.querySelector('.modal-mask'))
-await openSkills()
-click(w, modal().querySelector('[data-open="connectors"]'))
-await tick()
-check('connectors tab opens connectors modal',
-  doc.body.textContent.includes('Google Drive') && !doc.querySelector('.modal-skills'))
-click(w, doc.querySelector('.modal-close'))
-await tick()
-await openSkills()
-click(w, doc.querySelector('.modal-close'))
-await tick()
-check('modal close works', !doc.querySelector('.modal-mask'))
+check('installed-only toggle restores discovery grid', grid().length === PAGE_SKILLS.length)
 
-check('skills flow: no runtime errors', errors.length === 0, JSON.stringify(errors))
+/* ---------- 7. 自定义技能：prompt + 确认后真实入库 ---------- */
+globalThis.prompt = () => '我的自定义技能'
+click(w, doc.querySelector('[data-add-skill]'))
+await tick()
+check('custom skill prompts then asks install confirmation', !!confirmBox())
+click(w, confirmBox().querySelector('[data-act="ok"]'))
+await tick()
+check('custom skill persisted',
+  readState(storage).skills.some((s) => s.name === '我的自定义技能'))
+click(w, doc.querySelector('[data-installed-toggle]'))
+await tick()
+check('custom skill appears in installed view',
+  [...doc.querySelectorAll('#sk-grid .sk-card-title')].some((p) => p.textContent.includes('我的自定义技能')))
+click(w, doc.querySelector('[data-installed-toggle]'))
+await tick()
+delete globalThis.prompt
+
+/* ---------- 8. 连接器页签仍打开既有弹窗 ---------- */
+click(w, doc.querySelector('[data-open="connectors"]'))
+await tick()
+check('connectors tab opens connectors modal', doc.body.textContent.includes('Google Drive'))
+click(w, doc.querySelector('.modal-close'))
+await tick()
+check('closing modal returns to the skills page', !modal() && grid().length === PAGE_SKILLS.length)
+
+check('skills page flow: no runtime errors', errors.length === 0, JSON.stringify(errors))
+
+/* ---------- 9. 入口：窄栏「更多 → 技能」离开弹窗形态 ---------- */
+{
+  const home = await loadPage('/index.html', { freshCopy: true })
+  click(home.w, home.doc.querySelector('.more-wrap .rail-item'))
+  await tick()
+  click(home.w, home.doc.querySelector('[data-more="技能"]'))
+  await tick()
+  check('skills entry closes flyout and opens no modal',
+    home.doc.querySelector('.more-pop').hidden === true && !home.doc.querySelector('.modal-mask'))
+  check('skills entry keeps home error-free', home.errors.length === 0, home.errors)
+}
+
+/* ---------- 10. 信任开启后：开关真实生效 + 手动更新路径 ---------- */
+{
+  const seed = await loadPage('/skills.html')
+  const st = readState(seed.storage)
+  st.settings.trustedSkills = true
+  st.settings.skillAutoUpdate = false
+  // 制造一个「可更新」的技能：把第一条压回 1.0.0
+  const reg = registryEntry(st.skills[0].name)
+  st.skills[0].version = '1.0.0'
+  seed.storage.setItem('design-buddy-state-v1', JSON.stringify(st))
+
+  const page = await loadPage('/skills.html', { storage: seed.storage, freshCopy: true })
+  check('paused auto-update keeps page error-free', page.errors.length === 0, page.errors)
+  click(page.w, page.doc.querySelector('[data-installed-toggle]'))
+  await tick()
+  const v0 = readState(page.storage).skills[0].version
+  check('outdated skill still at old version before manual update',
+    reg ? v0 === '1.0.0' : v0 === '1.0.0')
+  check('update pill visible when outdated', !!page.doc.querySelector('.update-pill'))
+  check('manual update button available', !!page.doc.querySelector('[data-update-sk]'))
+
+  const sw = page.doc.querySelector('#sk-grid [data-sk]')
+  const beforeOn = readState(page.storage).skills.find((s) => s.id === sw.dataset.sk)?.enabled
+  click(page.w, sw)
+  await tick()
+  check('trusted switch toggles persisted state',
+    readState(page.storage).skills.find((s) => s.id === sw.dataset.sk)?.enabled === !beforeOn)
+
+  click(page.w, page.doc.querySelector('[data-update-sk]'))
+  await tick()
+  check('manual update bumps version', readState(page.storage).skills[0].version !== '1.0.0')
+  check('update applies registry version',
+    registryEntry(readState(page.storage).skills[0].name)?.version === readState(page.storage).skills[0].version)
+}
 
 console.log(`\n${fails.length === 0 ? `ALL ${passed} SKILLS CHECKS PASSED` : `${fails.length} FAILED: ${fails.join('; ')}`}`)
 process.exit(fails.length ? 1 : 0)

@@ -1238,60 +1238,13 @@
 
 /* ---------- 左侧：我的专家管理（与旧弹窗一致的列表结构） ---------- */
 
-.experts-side {
-  width: 288px;
-  flex: none;
-  border-right: 1px solid var(--line-soft);
-  padding: 18px 16px;
-  overflow-y: auto;
-  background: #fbfcfe;
-}
 
-.experts-side-label {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--text-3);
-  margin: 2px 4px 10px;
-}
 
-.experts-side .modal-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
 
-.experts-side .modal-list-item {
-  padding: 10px 12px;
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  box-shadow: var(--shadow-soft);
-}
 
-.experts-side .modal-list-item .primary {
-  font-size: 13.5px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-}
 
-.experts-side .modal-list-item .secondary {
-  font-size: 12px;
-  margin-top: 2px;
-}
 
-.experts-side .btn {
-  padding: 5px 10px;
-  font-size: 12px;
-  white-space: nowrap;
-}
 
-.experts-side .settings-section-label {
-  margin: 18px 4px 10px;
-  font-size: 12px;
-}
 
 /* ---------- 右侧主区 ---------- */
 
@@ -1495,58 +1448,19 @@
 .av-slate { background: linear-gradient(145deg, #7c8aa5, #46536e); }
 
 @media (max-width: 900px) {
-  .modal-skills .experts-side { display: none; }
   .ex-search { width: 160px; }
 }
 
-/* ============================================================
-   技能发现弹窗：左侧已安装管理（与专家弹窗同款侧栏）+ 右侧截图式发现区
-   ============================================================ */
 
-.modal-skills {
-  width: min(1240px, 96vw);
-  height: min(880px, 90vh);
-  max-height: 90vh;
-}
-
-.modal-skills .modal-body {
-  padding: 0;
-  overflow: hidden;
-  flex: 1;
-  min-height: 0;
-}
 
 .av-red { background: linear-gradient(145deg, #f46363, #c62f2f); }
 
-/* 左侧管理栏复用 .experts-side 体系，技能侧栏标题行带检查更新 */
-.sk-side-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 2px 4px 10px;
-}
 
-.sk-side-head .experts-side-label { margin: 0; }
 
-.sk-check-btn {
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--blue);
-  padding: 3px 8px;
-  border-radius: 7px;
-  background: var(--blue-bg);
-  white-space: nowrap;
-}
 
-.sk-check-btn:hover { filter: brightness(0.97); }
 
-.sk-side .modal-list-item .skill-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
 
-/* ---------- 右侧顶部操作 ---------- */
+/* ---------- 技能页：顶部操作 ---------- */
 
 .sk-black-btn {
   display: inline-flex;
@@ -1581,7 +1495,7 @@
 .sk-installed-btn:hover { border-color: var(--blue); color: var(--blue); }
 .sk-installed-btn.is-active { color: #fff; background: var(--navy); border-color: var(--navy); }
 
-/* ---------- 精选技能横滑 ---------- */
+/* ---------- 技能页：精选技能 ---------- */
 
 .sk-section-head {
   display: flex;
@@ -1722,7 +1636,7 @@
   margin-left: 4px;
 }
 
-/* ---------- 推荐 / SkillHub / 套件 ---------- */
+/* ---------- 技能页：推荐 / SkillHub / 套件 ---------- */
 
 .sk-source-tabs { display: flex; gap: 18px; margin-top: 18px; }
 
@@ -1736,11 +1650,6 @@
 
 .sk-source-tab.is-active { color: var(--navy); border-bottom-color: var(--navy); }
 
-.sk-grid-meta {
-  font-size: 12.5px;
-  color: var(--text-3);
-  font-weight: 500;
-}
 
 .sk-grid {
   display: grid;
@@ -1771,7 +1680,7 @@
 
 .sk-card.is-installed { border-color: rgba(76, 175, 125, 0.45); }
 
-/* ---------- 悬浮信息卡（hover popover） ---------- */
+/* ---------- 技能页：悬浮信息卡（hover popover） ---------- */
 
 .sk-pop {
   position: absolute;
@@ -1825,6 +1734,5 @@
 }
 
 @media (max-width: 900px) {
-  .modal-skills .experts-side { display: none; }
   .sk-pop { display: none; }
 }

@@ -60,6 +60,92 @@ export const FEATURED_SKILLS = [
   },
 ]
 
+/* 发现页补充目录：截图里除注册表外的第三方/社区技能。
+   只用于发现与安装（安装后进入 store.state.skills，与注册表技能同等对待），
+   不参与 registryEntry 的版本升级判定，因此不会动到注册表的更新契约。 */
+export const CATALOG_SKILLS = [
+  {
+    id: 'cat-neodata', name: 'NeoData金融搜索服务', desc: '自然语言查询股票、基金、宏观与研报数据', source: 'skillhub',
+    color: 'av-indigo', glyph: 'N', category: '投资理财', tags: ['行情', '研报'], usage: 756600, downloads: 31000,
+    space: 'deepseek', updatedAt: '2026-10-25 09:12:04', version: '1.2.0', risk: 'trusted',
+  },
+  {
+    id: 'cat-excel', name: 'Excel 表格处理', desc: '创建、编辑、分析 Excel 表格与公式', source: 'recommend',
+    color: 'av-green', glyph: 'X', category: '办公协同', tags: ['表格', '公式'], usage: 591400, downloads: 283200,
+    space: 'deepseek', updatedAt: '2026-10-24 20:41:36', version: '1.1.0', risk: 'trusted',
+  },
+  {
+    id: 'cat-qqmusic', name: 'QQ音乐助手', desc: 'QQ音乐官方智能助手，支持歌单与听歌识曲', source: 'skillhub',
+    color: 'av-gold', glyph: '♫', category: '生活服务', tags: ['音乐', '歌单'], usage: 25100, downloads: 28900,
+    space: 'deepseek', updatedAt: '2026-10-23 09:30:18', version: '1.0.0', risk: 'trusted',
+  },
+  {
+    id: 'cat-inkswitch', name: '墨转Word', desc: '把 Markdown 转换成带真实排版的 Word 文档', source: 'recommend',
+    color: 'av-pink', glyph: '墨', category: '效率工具', tags: ['Markdown', 'Word'], usage: 1097, downloads: 3323,
+    space: 'deepseek', updatedAt: '2026-10-22 16:08:55', version: '1.0.1', risk: 'trusted',
+  },
+  {
+    id: 'cat-sqlquery', name: '数据即查', desc: '用 SQL 直接查 CSV/JSON/Parquet 等数据文件', source: 'recommend',
+    color: 'av-teal', glyph: '数', category: '数据分析', tags: ['SQL', '数据文件'], usage: 94, downloads: 0,
+    space: 'deepseek', updatedAt: '2026-10-25 07:55:12', version: '1.0.0', risk: 'trusted',
+  },
+  {
+    id: 'cat-pdf', name: 'PDF 文档处理', desc: 'PDF 文档处理工具，支持文本抽取与页面操作', source: 'skillhub',
+    color: 'av-green', glyph: 'P', category: '办公协同', tags: ['PDF', '文档'], usage: 1104400, downloads: 179100,
+    space: 'deepseek', updatedAt: '2026-10-24 11:22:47', version: '2.1.0', risk: 'trusted',
+  },
+  {
+    id: 'cat-bookwriter', name: 'fbs-bookwriter', desc: '福帮手出品 | 高质量长文档书写与成稿', source: 'skillhub',
+    color: 'av-cyan', glyph: 'fb', category: '内容创作', tags: ['长文档', '写作'], usage: 7728, downloads: 9219,
+    space: 'deepseek', updatedAt: '2026-10-20 18:03:29', version: '1.0.0', risk: 'trusted',
+  },
+  {
+    id: 'cat-workbuddy', name: 'WorkBuddy积分助手', desc: 'WorkBuddy积分助手：读取本机工作日历并汇总', source: 'recommend',
+    color: 'av-blue', glyph: 'WB', category: '效率工具', tags: ['日历', '汇总'], usage: 707600, downloads: 239300,
+    space: 'deepseek', updatedAt: '2026-10-23 14:36:51', version: '1.3.2', risk: 'trusted',
+  },
+  {
+    id: 'cat-minimax', name: 'MiniMax H3 提示词生成', desc: '为 T2VA、I2VA、FL2VA、L2VA 生成结构化提示词', source: 'skillhub',
+    color: 'av-rose', glyph: 'M', category: '内容创作', tags: ['提示词', '视频'], usage: 81300, downloads: 31400,
+    space: 'deepseek', updatedAt: '2026-10-25 06:47:10', version: '1.1.0', risk: 'trusted',
+  },
+  {
+    id: 'cat-skillguide', name: '技能创建指南', desc: '创建和维护自定义技能的指南与模板', source: 'suite',
+    color: 'av-pink', glyph: '技', category: '开发工具', tags: ['技能开发', '模板'], usage: 0, downloads: 0,
+    space: 'deepseek', updatedAt: '2026-10-19 10:11:03', version: '1.0.0', risk: 'trusted',
+  },
+  {
+    id: 'cat-startup', name: '创业可以学', desc: '服务创业者和管理者，解答创业全流程问题', source: 'recommend',
+    color: 'av-orange', glyph: 'O', category: '商业运营', tags: ['创业', '增长'], usage: 5830, downloads: 10300,
+    space: 'deepseek', updatedAt: '2026-10-21 13:29:44', version: '1.0.2', risk: 'trusted',
+  },
+  {
+    id: 'cat-research-paid', name: '专业底稿助手·研报版', desc: '专业底稿助手·研报版：研报口径的数据底稿生成', source: 'skillhub',
+    color: 'av-teal', glyph: '专', category: '投资理财', tags: ['研报', '底稿'], usage: 5, downloads: 5,
+    space: 'deepseek', updatedAt: '2026-10-25 09:05:00', version: '1.0.0', risk: 'trusted', paid: true,
+  },
+  {
+    id: 'cat-grill', name: 'grill-me', desc: '深度追问式方案审查：逐层拆解假设与风险', source: 'skillhub',
+    color: 'av-green', glyph: 'G', category: '开发工具', tags: ['方案评审', '追问'], usage: 122600, downloads: 38100,
+    space: 'deepseek', updatedAt: '2026-10-24 22:19:05', version: '1.0.0', risk: 'review',
+  },
+  {
+    id: 'cat-diagnose', name: '系统化问题定位', desc: '用可复现证据定位问题根因，输出修复建议', source: 'suite',
+    color: 'av-indigo', glyph: '系', category: '开发工具', tags: ['排障', '根因'], usage: 16400, downloads: 8859,
+    space: 'deepseek', updatedAt: '2026-10-23 19:52:38', version: '1.0.0', risk: 'trusted',
+  },
+  {
+    id: 'cat-excelfile', name: 'Excel 文件处理', desc: 'Excel 文件创建与分析，兼容 xlsx/xlsm', source: 'recommend',
+    color: 'av-green', glyph: 'E', category: '办公协同', tags: ['Excel', '分析'], usage: 133800, downloads: 101100,
+    space: 'deepseek', updatedAt: '2026-10-22 08:14:26', version: '1.2.0', risk: 'trusted',
+  },
+  {
+    id: 'cat-uicheck', name: '检查代码并按照截图调整界面', desc: '对照截图逐项核对界面还原度并给出改动建议', source: 'recommend',
+    color: 'av-slate', glyph: '界', category: '开发工具', tags: ['界面还原', '截图比对'], usage: 41300, downloads: 19700,
+    space: 'deepseek', updatedAt: '2026-10-25 09:50:30', version: '1.0.0', risk: 'trusted', runtime: '本地电脑',
+  },
+]
+
 // 注册表 id → 发现页展示元数据（source：recommend 推荐 / skillhub SkillHub / suite 套件）
 export const SKILL_META = {
   'reg-outline': {
@@ -102,6 +188,9 @@ export const SKILL_META = {
 
 // 网格事实源：注册表顺序不变（测试依赖该顺序的 data-install 排列）
 export const DISCOVERY_SKILLS = SKILL_REGISTRY.map((reg) => ({ ...reg, ...SKILL_META[reg.id] }))
+
+// 发现页总表：注册表在前（保持 data-install 顺序契约），补充目录在后
+export const PAGE_SKILLS = [...DISCOVERY_SKILLS, ...CATALOG_SKILLS]
 
 // >=1 万显示为「12.07w」，不足原值展示（8842、0）
 export function formatCount(n) {

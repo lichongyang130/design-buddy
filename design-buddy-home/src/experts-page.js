@@ -10,7 +10,7 @@ import { requireAuth } from './auth.js'
 requireAuth()
 import './experts.css'
 import { store, toast, uid } from './core.js'
-import { initGlobalUI, openSkills, openConnectors } from './global-ui.js'
+import { initGlobalUI, openConnectors } from './global-ui.js'
 import { EXPERT_CATEGORIES, EXPERT_CATALOG, EXPERT_FILTERS, formatUsage } from './experts-catalog.js'
 
 initGlobalUI()
@@ -106,7 +106,7 @@ const syncCategory = () => {
 
 /* ---------- 事件 ---------- */
 
-// 顶部页签：技能 / 连接器 打开既有弹窗
+// 顶部页签：技能已是独立页面（顶部是链接），这里只处理「我的专家」与搜索
 $('.ex-top-actions').addEventListener('click', (ev) => {
   if (ev.target.closest('[data-mine]')) {
     ui.mineOnly = !ui.mineOnly
@@ -117,7 +117,6 @@ $('.ex-top-actions').addEventListener('click', (ev) => {
 
 $$('[data-open]').forEach((btn) => {
   btn.addEventListener('click', () => {
-    if (btn.dataset.open === 'skills') openSkills()
     if (btn.dataset.open === 'connectors') openConnectors()
   })
 })

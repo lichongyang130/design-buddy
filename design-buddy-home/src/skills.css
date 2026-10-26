@@ -1,0 +1,232 @@
+/* ============================================================
+   技能页（skills.html）：截图式发现区，左侧沿用首页窄栏 rail
+   公共外壳（.ex-topbar / .ex-search / .ex-chip* / 卡片基类）在
+   features.css 里与专家页共用；这里放页面专属的栅格与截图差异。
+   ============================================================ */
+
+.skills-page {
+  flex: 1;
+  min-width: 0;
+  background: var(--surface);
+  padding: 20px 32px 44px;
+}
+
+/* 页面版顶部栏：窗口变窄时操作区换行，不挤压页签 */
+.skills-page .ex-topbar {
+  flex-wrap: wrap;
+  row-gap: 12px;
+}
+
+.skills-page .ex-top-tab.is-active {
+  font-weight: 800;
+}
+
+/* ---------- 精选技能：截图为等宽 5 列一行，不做横滑 ---------- */
+
+.skills-page .sk-section-head {
+  margin-top: 22px;
+}
+
+.skills-page .sk-feature-track {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  overflow: visible;
+  padding: 12px 0 0;
+}
+
+.skills-page .sk-feature-card {
+  flex: none;
+  padding: 15px 16px;
+  border-color: #eceef3;
+  border-radius: 14px;
+}
+
+/* ---------- 推荐 / SkillHub / 套件 ---------- */
+
+.skills-page .sk-source-tabs {
+  margin-top: 24px;
+  gap: 22px;
+}
+
+.skills-page .sk-source-tab {
+  padding-bottom: 4px;
+  font-size: 15px;
+}
+
+.skills-page .sk-source-tab.is-active {
+  font-weight: 800;
+}
+
+.skills-page .ex-chip-wrap {
+  margin-top: 14px;
+}
+
+/* ---------- 卡片网格：截图为 5 列 ---------- */
+
+.skills-page .sk-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.skills-page .sk-card {
+  gap: 14px;
+  padding: 15px 16px;
+  border-color: #eceef3;
+  border-radius: 14px;
+}
+
+/* 头部：徽标 + 标题与描述同列 + 右上角安装按钮（与截图一致） */
+.sk-card-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 1px;
+}
+
+.skills-page .sk-card-title {
+  padding-top: 0;
+  font-size: 14.5px;
+  line-height: 1.35;
+}
+
+.skills-page .sk-card-desc {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.skills-page .sk-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  font-size: 13px;
+}
+
+.skills-page .sk-plus {
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  margin-top: 1px;
+  font-size: 15px;
+}
+
+.skills-page .sk-stats {
+  gap: 14px;
+}
+
+/* 付费标记：截图里是名称下方的一枚红色小标 */
+.sk-paid {
+  margin-left: 0;
+  margin-right: 5px;
+  color: #d14343;
+  background: #fdecec;
+}
+
+/* 已安装视图里的启停 / 版本 / 更新行 */
+.sk-card-manage {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.sk-update-btn {
+  padding: 2px 8px;
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+.skills-page .sk-card-manage .mini-switch {
+  margin-left: auto;
+}
+
+.skills-page .sk-card.is-installed {
+  border-color: #eceef3;
+}
+
+.skills-page .sk-card.is-installed:hover {
+  border-color: #dbe1ea;
+}
+
+/* ---------- 悬浮信息卡：标题 + 三行图标信息，出现在卡片下方 ---------- */
+
+.skills-page .sk-card .sk-pop {
+  top: calc(100% + 8px);
+  bottom: auto;
+  width: 300px;
+  padding: 13px 14px;
+  transform: translateY(-6px);
+  z-index: 30;
+}
+
+.skills-page .sk-card:hover .sk-pop {
+  transform: translateY(0);
+}
+
+.sk-pop-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: var(--text-2);
+  line-height: 1.9;
+}
+
+.sk-pop-row svg {
+  width: 13px;
+  height: 13px;
+  flex: none;
+  color: var(--text-3);
+}
+
+.sk-pop-text {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.skills-page .sk-pop-tag {
+  flex: none;
+  margin-left: 2px;
+}
+
+.skills-page .sk-pop-title {
+  margin-bottom: 6px;
+}
+
+/* ---------- 响应式 ---------- */
+
+@media (max-width: 1320px) {
+  .skills-page .sk-feature-track,
+  .skills-page .sk-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1100px) {
+  .skills-page .sk-feature-track,
+  .skills-page .sk-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 900px) {
+  .skills-page { padding: 16px 18px 32px; }
+  .skills-page .sk-feature-track,
+  .skills-page .sk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .skills-page .ex-top-tabs { gap: 16px; }
+  .skills-page .ex-top-tab { font-size: 15.5px; }
+  .skills-page .sk-pop { display: none; }
+}
+
+/* 自动更新暂停时的提示行（占满整行） */
+.sk-paused {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 9px 12px;
+  border: 1px solid #f0e2c8;
+  border-radius: 10px;
+  background: #fdf8ee;
+  font-size: 12.5px;
+  color: #8a6a2a;
+}

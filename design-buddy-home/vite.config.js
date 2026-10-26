@@ -20,6 +20,7 @@ export default defineConfig({
         settings: resolve(import.meta.dirname, 'settings.html'),
         media: resolve(import.meta.dirname, 'media.html'),
         experts: resolve(import.meta.dirname, 'experts.html'),
+        skills: resolve(import.meta.dirname, 'skills.html'),
       },
     },
   },

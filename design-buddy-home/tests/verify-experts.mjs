@@ -146,12 +146,9 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   check('pinned highlight removed after unpin',
     !doc.querySelector(`.ex-card[data-pin="${pinId}"]`).classList.contains('is-pinned'))
 
-  /* ---------- 7. 顶部 技能 / 连接器 入口打开既有弹窗 ---------- */
-  click(w, doc.querySelector('[data-open="skills"]'))
-  await tick()
-  check('skills tab opens skills modal', !!doc.querySelector('#skills-root'))
-  click(w, doc.querySelector('.modal-close'))
-  await tick()
+  /* ---------- 7. 顶部 技能 / 连接器：技能是页面链接，连接器仍弹窗 ---------- */
+  check('skills tab links to the skills page',
+    doc.querySelector('.ex-top-tab[href="skills.html"]') !== null)
   click(w, doc.querySelector('[data-open="connectors"]'))
   await tick()
   check('connectors tab opens connectors modal', doc.body.textContent.includes('Google Drive'))

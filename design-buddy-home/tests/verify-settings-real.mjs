@@ -297,28 +297,29 @@ const pickOption = async (w, wrap, label) => {
   proxyInput.dispatchEvent(new w.Event('input', { bubbles: true }))
   await pickOption(w, selects()[3], '直接连接')
 
-  /* ----- 8/9. 技能：自动安装门控 + 自动更新 ----- */
-  // 打开技能弹窗（默认 trustedSkills=false, skillAutoUpdate=true）
-  click(w, doc.querySelector('.more-wrap .rail-item'))
-  await tick()
-  click(w, doc.querySelector('[data-more="技能"]'))
-  await tick()
-  const skillsModal = doc.querySelector('.modal-box')
-  check('skills: modal renders installed and catalog sections',
-    !!skillsModal && skillsModal.textContent.includes('已安装') && skillsModal.textContent.includes('可安装'))
-  const catalogCount = skillsModal.querySelectorAll('[data-install]').length
-  check('skills: registry offers uninstalled entries', catalogCount === SKILL_REGISTRY.length - 4)
-  // 默认自动更新已在开弹窗时消费：预置技能版本被抬高
+  /* ----- 8/9. 技能：自动安装门控 + 自动更新（技能已升级为独立页面） ----- */
+  // 默认 trustedSkills=false, skillAutoUpdate=true
+  const sk1 = await loadPage('/skills.html', { storage, freshCopy: true })
+  const skModal = (page) => page.doc.querySelector('.skills-page')
+  check('skills: page renders installed and catalog sections',
+    !!skModal(sk1) && sk1.doc.body.textContent.includes('已安装') && sk1.doc.body.textContent.includes('精选技能'))
+  const catalogCount = sk1.doc.querySelectorAll('#sk-grid [data-install]').length
+  check('skills: registry offers uninstalled entries', catalogCount > 0)
+  const regInstallCount = [...sk1.doc.querySelectorAll('#sk-grid [data-install]')]
+    .filter((b) => b.dataset.install.startsWith('reg-')).length
+  check('skills: every uninstalled registry entry is offered', regInstallCount === SKILL_REGISTRY.length - 4)
+  // 默认自动更新已在进页面时消费：预置技能版本被抬高
   const seeded = readState(storage).skills
   check('skills: auto-update applied on open (idle moment)',
     seeded.every((sk) => sk.version !== '1.0.0') && seeded.some((sk) => sk.version === '2.0.0'))
   // 未信任时点安装可信技能 → 必须弹手动确认
-  const trustedReg = skillsModal.querySelector('[data-install]')
-  click(w, trustedReg)
+  const trustedReg = [...sk1.doc.querySelectorAll('#sk-grid [data-install]')]
+    .find((b) => b.dataset.install.startsWith('reg-'))
+  click(sk1.w, trustedReg)
   await tick()
-  let confirmBox = [...doc.querySelectorAll('.modal-box')].find((m) => m.textContent.includes('手动安装'))
+  let confirmBox = [...sk1.doc.querySelectorAll('.modal-box')].find((m) => m.textContent.includes('手动安装'))
   check('skills: untrusted install requires confirmation', !!confirmBox)
-  click(w, confirmBox.querySelector('[data-act="cancel"]'))
+  click(sk1.w, confirmBox.querySelector('[data-act="cancel"]'))
   await tick()
   check('skills: cancel keeps skill uninstalled',
     readState(storage).skills.length === 4)
@@ -326,34 +327,35 @@ const pickOption = async (w, wrap, label) => {
   click(w, switches()[2])
   await tick()
   check('skills: trusted switch persisted', readState(storage).settings.trustedSkills === true)
-  const modal2 = [...doc.querySelectorAll('.modal-box')].find((m) => m.querySelector('#skills-root'))
-  const trustedBtn = modal2.querySelector('[data-install]')
+  const sk2 = await loadPage('/skills.html', { storage, freshCopy: true })
+  const trustedBtn = [...sk2.doc.querySelectorAll('#sk-grid [data-install]')]
+    .find((b) => b.dataset.install.startsWith('reg-'))
   const installingName = SKILL_REGISTRY.find((r) => r.id === trustedBtn.dataset.install).name
-  click(w, trustedBtn)
+  click(sk2.w, trustedBtn)
   await tick()
   check('skills: trusted skill auto-installed without confirm',
     readState(storage).skills.some((sk) => sk.name === installingName))
   check('skills: auto install toast shown',
-    [...doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('自动安装')))
+    [...sk2.doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('自动安装')))
   // 高风险技能即使开启自动安装，也必须手动确认
-  const reviewBtn = [...modal2.querySelectorAll('[data-install]')].find((b) =>
+  const reviewBtn = [...sk2.doc.querySelectorAll('#sk-grid [data-install]')].find((b) =>
     SKILL_REGISTRY.find((r) => r.id === b.dataset.install)?.risk === 'review')
   check('skills: review-risk entry exists in catalog', !!reviewBtn)
-  click(w, reviewBtn)
+  click(sk2.w, reviewBtn)
   await tick()
-  // 注意：技能弹窗本身也含「高风险」徽标，确认框要用 ok 按钮精确定位
-  confirmBox = [...doc.querySelectorAll('.modal-box')].find((m) => m.querySelector('[data-act="ok"]')
+  confirmBox = [...sk2.doc.querySelectorAll('.modal-box')].find((m) => m.querySelector('[data-act="ok"]')
     && m.textContent.includes('高风险'))
   check('skills: high-risk always requires manual confirm', !!confirmBox)
-  click(w, confirmBox.querySelector('[data-act="ok"]'))
+  click(sk2.w, confirmBox.querySelector('[data-act="ok"]'))
   await tick()
   const reviewName = SKILL_REGISTRY.find((r) => r.id === reviewBtn.dataset.install).name
   check('skills: confirmed high-risk skill installed',
     readState(storage).skills.some((sk) => sk.name === reviewName))
-  // 关闭自动更新 → 用全新模块图模拟刷新：旧版本技能应出现更新徽标与手动按钮
-  click(w, doc.querySelector('.modal-close'))
-  await tick()
-  click(w, switches()[3])
+  // 关闭自动更新 → 用全新模块图模拟刷新：旧版本技能应出现更新徽标与手动按钮。
+  // 技能页写入过 store，设置页的旧实例已过期，必须重新加载，否则旧内存状态会把新装技能覆盖掉。
+  const settingsFresh = await loadPage('/settings.html', { storage, freshCopy: true })
+  await tick(120)
+  click(settingsFresh.w, settingsFresh.doc.querySelectorAll('[data-switch]')[3])
   await tick()
   check('skills: auto update switch persisted off', readState(storage).settings.skillAutoUpdate === false)
   const st = readState(storage)
@@ -362,25 +364,23 @@ const pickOption = async (w, wrap, label) => {
 
   const fresh = await loadPage('/settings.html', { storage, freshCopy: true })
   await tick(120)
-  click(fresh.w, fresh.doc.querySelector('.more-wrap .rail-item'))
+  const freshSk = await loadPage('/skills.html', { storage, freshCopy: true })
+  click(freshSk.w, freshSk.doc.querySelector('[data-installed-toggle]'))
   await tick()
-  click(fresh.w, fresh.doc.querySelector('[data-more="技能"]'))
-  await tick()
-  const modal3 = [...fresh.doc.querySelectorAll('.modal-box')].find((m) => m.querySelector('#skills-root'))
-  check('skills: paused banner shown', modal3.textContent.includes('自动更新已暂停'))
-  check('skills: update pill visible when outdated', !!modal3.querySelector('.update-pill'))
-  check('skills: manual update button available', !!modal3.querySelector('[data-update-sk]'))
+  const panel3 = freshSk.doc.querySelector('.skills-page')
+  check('skills: paused banner shown', panel3.textContent.includes('自动更新已暂停'))
+  check('skills: update pill visible when outdated', !!panel3.querySelector('.update-pill'))
+  check('skills: manual update button available', !!panel3.querySelector('[data-update-sk]'))
   check('skills: outdated skill still at old version', readState(storage).skills[0].version === '1.0.0')
-  click(fresh.w, modal3.querySelector('[data-update-sk]'))
+  check('skills: installs survive the settings round-trip', readState(storage).skills.length === 6)
+  click(freshSk.w, panel3.querySelector('[data-update-sk]'))
   await tick()
   check('skills: manual update bumps version', readState(storage).skills[0].version !== '1.0.0')
   // 检查更新按钮：全部最新时诚实提示
-  click(fresh.w, modal3.querySelector('[data-check-update]'))
+  click(freshSk.w, panel3.querySelector('[data-check-update]'))
   await tick()
   check('skills: check update reports up-to-date',
-    [...fresh.doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('最新版本')))
-  click(fresh.w, fresh.doc.querySelector('.modal-close'))
-  await tick()
+    [...freshSk.doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('最新版本')))
 
   // 跨页面语言生效：全新加载（模拟真实浏览器导航）的其他页面 rail 跟随设置
   const fSelect = fresh.doc.querySelectorAll('[data-select]')[0]

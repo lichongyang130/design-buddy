@@ -79,11 +79,10 @@ for (const path of pages) {
   await new Promise((r) => setTimeout(r, 180))
   ok(pop.hidden === true, 'leaving portaled pop closes')
 
-  // 点击菜单项后浮层关闭，且不再有第二层「更多」可点
+  // 点击菜单项后浮层关闭；技能与专家都已升级为独立页面，不再出现弹窗
   click(btn)
   click(doc.querySelector('[data-more="技能"]'))
-  ok(pop.hidden === true && !!doc.querySelector('.modal-mask'), 'skills opens modal and closes pop')
-  click(doc.querySelector('.modal-close'))
+  ok(pop.hidden === true && !doc.querySelector('.modal-mask'), 'skills pick closes pop and routes to page')
   console.log('')
 }
 
