@@ -19,6 +19,26 @@ function check(name, cond, extra) {
 
 const expertsOnly = () => EXPERT_CATALOG.filter((e) => e.kind === 'expert')
 
+/* 目录契约：每个专家都要对应产品真实能解决的问题，不做泛行业占位 */
+check('catalog stays focused (16 experts + 4 teams)',
+  expertsOnly().length === 16 && EXPERT_CATALOG.filter((e) => e.kind === 'team').length === 4)
+check('every expert maps to a product capability category',
+  EXPERT_CATALOG.every((e) => EXPERT_FILTERS.includes(e.category)))
+check('every expert spells out the problems it solves',
+  EXPERT_CATALOG.every((e) => Array.isArray(e.solves) && e.solves.length === 3 && e.solves.every((x) => x.length >= 8)))
+check('every expert ships three ready-to-run prompts',
+  EXPERT_CATALOG.every((e) => Array.isArray(e.prompts) && e.prompts.length === 3))
+check('every expert carries persona and version for the drawer',
+  EXPERT_CATALOG.every((e) => !!e.persona && /^v\d+\.\d+\.\d+$/.test(e.version)))
+check('no generic industry filler left in the catalog', !EXPERT_CATALOG.some((e) =>
+  ['金融投资', '健康医疗', '游戏空间', '教育学习', '法务安全', '销售商务', '运营人力'].includes(e.category)))
+check('categories and chips describe product problems',
+  EXPERT_CATEGORIES.map((c) => c.name).join() === '提案与演示,品牌与视觉,文档与报告,社媒与增长,网站与原型,导入与交付'
+  && EXPERT_FILTERS.join() === '全部,提案演示,品牌视觉,文档报告,社媒增长,网站原型,导入与交付')
+check('each scenario card lists three real experts from its own category',
+  EXPERT_CATEGORIES.every((c) => c.subs.length === 3
+    && c.subs.every((name) => EXPERT_CATALOG.some((e) => e.name === name && e.category === c.filter))))
+
 /* 产物 CSS 契约：截图布局的关键数值，防止后续改动悄悄退回旧观感 */
 const cssAll = fs.readdirSync(path.join(DIST, 'assets'))
   .filter((f) => f.endsWith('.css'))
@@ -122,28 +142,30 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
     doc.querySelector('.ex-card')?.dataset.expert === expertsOnly()[0].id)
 
   /* ---------- 4. 分类 chips 与场景卡联动 ---------- */
-  click(w, doc.querySelector('[data-chip="技术工程"]'))
+  click(w, doc.querySelector('[data-chip="品牌视觉"]'))
   await tick()
   check('chip filter shows only matching category',
-    doc.querySelectorAll('.ex-card').length === expertsOnly().filter((e) => e.category === '技术工程').length)
-  check('active chip highlighted', doc.querySelector('[data-chip="技术工程"]').classList.contains('is-active'))
-  click(w, doc.querySelector('.ex-cat[data-cat="法务安全"]'))
+    doc.querySelectorAll('.ex-card').length === expertsOnly().filter((e) => e.category === '品牌视觉').length
+    && doc.querySelectorAll('.ex-card').length > 0)
+  check('active chip highlighted', doc.querySelector('[data-chip="品牌视觉"]').classList.contains('is-active'))
+  click(w, doc.querySelector('.ex-cat[data-cat="文档报告"]'))
   await tick()
-  check('scenario card activates its chip', doc.querySelector('.ex-chip.is-active')?.textContent === '法务安全')
+  const docExperts = expertsOnly().filter((e) => e.category === '文档报告')
+  check('scenario card activates its chip', doc.querySelector('.ex-chip.is-active')?.textContent === '文档报告')
   check('scenario card filters grid and marks itself active',
-    doc.querySelectorAll('.ex-card').length === 1
-    && doc.querySelector('.ex-card-name')?.textContent.includes('董秘助手')
-    && doc.querySelector('.ex-cat[data-cat="法务安全"]').classList.contains('is-active'))
+    doc.querySelectorAll('.ex-card').length === docExperts.length
+    && docExperts.every((e) => doc.querySelector(`.ex-card[data-expert="${e.id}"]`))
+    && doc.querySelector('.ex-cat[data-cat="文档报告"]').classList.contains('is-active'))
   click(w, doc.querySelector('[data-chip="全部"]'))
   await tick()
   check('all chip restores full grid', doc.querySelectorAll('.ex-card').length === expertsOnly().length)
 
   /* ---------- 5. 搜索：实时过滤 + 诚实空态 ---------- */
-  input(w, doc.querySelector('#ex-search-input'), 'python')
+  input(w, doc.querySelector('#ex-search-input'), '轮播')
   await tick()
   check('search filters by name/desc/tags',
-    doc.querySelectorAll('.ex-card').length === 1
-    && doc.querySelector('.ex-card-name')?.textContent.includes('Python'))
+    doc.querySelectorAll('.ex-card').length >= 1
+    && [...doc.querySelectorAll('.ex-card-name')].some((n) => n.textContent.includes('社媒轮播编导')))
   input(w, doc.querySelector('#ex-search-input'), 'no-such-expert-xyz')
   await tick()
   check('no-match shows honest empty state',
@@ -153,7 +175,7 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   check('clearing search restores cards', doc.querySelectorAll('.ex-card').length === expertsOnly().length)
 
   /* ---------- 6. 卡片固定：真实持久化 + 我的专家 ---------- */
-  const pinId = 'ec-webdeploy'
+  const pinId = 'ec-web-prototype'
   const pinName = EXPERT_CATALOG.find((e) => e.id === pinId).name
   click(w, doc.querySelector(`[data-pin="${pinId}"]`))
   await tick()
@@ -165,10 +187,11 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
 
   click(w, doc.querySelector('[data-mine]'))
   await tick()
+  const pinnedCount = readState(storage).experts.filter((e) => e.pinned).length
   check('my-experts toggle filters to pinned only',
     doc.querySelector('[data-mine]').classList.contains('is-active')
-    && doc.querySelectorAll('.ex-card').length === 1
-    && doc.querySelector('.ex-card-name')?.textContent.includes(pinName))
+    && doc.querySelectorAll('.ex-card').length === pinnedCount
+    && doc.querySelector(`.ex-card[data-expert="${pinId}"]`) !== null)
   click(w, doc.querySelector('[data-mine]'))
   await tick()
 
@@ -185,9 +208,9 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
     await tick()
   }
   const drawer = () => doc.querySelector('.ex-drawer-mask')
-  const py = EXPERT_CATALOG.find((e) => e.id === 'ec-python')
+  const py = EXPERT_CATALOG.find((e) => e.id === 'ec-deck-writer')
 
-  await openCard('ec-python')
+  await openCard('ec-deck-writer')
   check('clicking an expert card opens the detail drawer',
     !!drawer()?.querySelector('.ex-drawer[role="dialog"]'))
   check('drawer is portalled to body, above the page', drawer()?.parentElement === doc.body)
@@ -204,6 +227,8 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
     drawer().querySelector('.ex-drawer-desc')?.textContent === py.desc)
   check('drawer lists every ability tag',
     [...drawer().querySelectorAll('.ex-drawer-tags .ex-tag')].map((t) => t.textContent).join() === py.tags.join())
+  check('drawer lists what this expert solves',
+    [...drawer().querySelectorAll('.ex-solve')].map((l) => l.textContent.trim()).join('\u0000') === py.solves.join('\u0000'))
   check('drawer shows version and usage stats', (() => {
     const [ver, use] = [...drawer().querySelectorAll('.ex-stat')]
     return ver?.querySelector('strong').textContent === py.version
@@ -215,8 +240,8 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
     drawer().querySelectorAll('.ex-prompt').length === 3
     && [...drawer().querySelectorAll('.ex-prompt-text')].every((t) => t.textContent.startsWith('「') && t.textContent.endsWith('」'))
     && [...drawer().querySelectorAll('.ex-prompt-text')].map((t) => t.textContent.slice(1, -1)).join('\u0000') === py.prompts.join('\u0000'))
-  check('drawer section titles match the screenshot',
-    [...drawer().querySelectorAll('.ex-drawer-sec-title')].map((t) => t.textContent.trim()).join() === '专家帮你做,更多')
+  check('drawer section titles cover solves, help and more',
+    [...drawer().querySelectorAll('.ex-drawer-sec-title')].map((t) => t.textContent.trim()).join() === '它能解决,专家帮你做,更多')
   check('drawer ends with a copyable expert id',
     drawer().querySelector('[data-copy-id]')?.textContent.trim() === `ID: ${py.id}`)
   check('drawer layout follows the screenshot spec',
@@ -229,35 +254,35 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   await tick()
   check('close button dismisses the drawer', !drawer())
 
-  await openCard('ec-python')
+  await openCard('ec-deck-writer')
   doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
   await tick()
   check('Escape dismisses the drawer', !drawer())
 
-  await openCard('ec-python')
+  await openCard('ec-deck-writer')
   click(w, drawer())
   await tick()
   check('clicking the scrim dismisses the drawer', !drawer())
 
-  await openCard('ec-mentor')
+  await openCard('ec-web-prototype')
   check('opening another expert swaps the drawer content',
-    drawer()?.querySelector('.ex-drawer-name')?.textContent === '创业导师助手')
+    drawer()?.querySelector('.ex-drawer-name')?.textContent === '网页原型工程师')
 
   click(w, doc.querySelector('[data-summon]'))
   await tick()
   const summoned = JSON.parse(storage.getItem('design-buddy-summon-v1') ?? 'null')
   check('summon closes the drawer', !drawer())
   check('summon hands the expert over to the home page',
-    summoned?.name === '创业导师助手' && summoned?.prompt === '')
+    summoned?.name === '网页原型工程师' && summoned?.prompt === '')
   /* 过场：先在原地显示「正在召唤专家」，再进首页 */
   const summonMask = doc.querySelector('.ex-summon-mask')
   check('summon shows a loading screen before leaving',
     !!summonMask && summonMask.parentElement === doc.body)
   check('loading screen says it is summoning the expert',
     summonMask?.querySelector('.ex-summon-title')?.textContent === '正在召唤专家'
-    && summonMask?.querySelector('.ex-summon-name')?.textContent === '创业导师助手 · 启明')
+    && summonMask?.querySelector('.ex-summon-name')?.textContent === '网页原型工程师 · 方野')
   check('loading screen shows the expert portrait',
-    summonMask?.querySelector('.ex-summon-portrait')?.getAttribute('src') === '/avatars/ec-mentor.webp')
+    summonMask?.querySelector('.ex-summon-portrait')?.getAttribute('src') === '/avatars/ec-web-prototype.webp')
   check('loading screen stays up while it runs',
     !!doc.querySelector('.ex-summon-mask') && !doc.querySelector('.ex-drawer-mask'))
   check('loading screen contract in built CSS',
@@ -267,19 +292,19 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   summonMask.remove()
   storage.removeItem('design-buddy-summon-v1')
 
-  await openCard('ec-boardsec')
-  const boardPrompt = EXPERT_CATALOG.find((e) => e.id === 'ec-boardsec').prompts[0]
+  await openCard('ec-editor-in-chief')
+  const boardPrompt = EXPERT_CATALOG.find((e) => e.id === 'ec-editor-in-chief').prompts[0]
   click(w, doc.querySelector('.ex-prompt'))
   await tick()
   const withPrompt = JSON.parse(storage.getItem('design-buddy-summon-v1') ?? 'null')
   check('a prompt row carries its text to the home page',
-    withPrompt?.name === '董秘助手' && withPrompt?.prompt === boardPrompt && !drawer())
+    withPrompt?.name === '改稿与精简编辑' && withPrompt?.prompt === boardPrompt && !drawer())
   check('a prompt row also runs the summon loading screen',
     !!doc.querySelector('.ex-summon-mask'))
   doc.querySelector('.ex-summon-mask')?.remove()
   storage.removeItem('design-buddy-summon-v1')
 
-  await openCard('ec-boardsec')
+  await openCard('ec-editor-in-chief')
   click(w, doc.querySelector('[data-copy-id]'))
   await tick()
   check('copying the id surfaces feedback',
@@ -287,11 +312,15 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   click(w, doc.querySelector('[data-drawer-close]'))
   await tick()
 
-  click(w, doc.querySelector('[data-pin="ec-mentor"]'))
+  // 数据图表师不在默认种子里，固定状态只能来自这次点击
+  const unmutedId = 'ec-data-viz'
+  const unmutedName = EXPERT_CATALOG.find((e) => e.id === unmutedId).name
+  click(w, doc.querySelector(`[data-pin="${unmutedId}"]`))
   await tick()
   check('pin button never opens the drawer',
-    !drawer() && readState(storage).experts.find((e) => e.name === '创业导师助手')?.pinned === true)
-  click(w, doc.querySelector('[data-pin="ec-mentor"]'))
+    !drawer() && readState(storage).experts.find((e) => e.name === unmutedName)?.pinned === true)
+  click(w, doc.querySelector(`[data-pin="${unmutedId}"]`))
+  await tick()
   await tick()
 
   /* ---------- 8. 顶部 技能 / 连接器 都是页面链接 ---------- */
@@ -329,20 +358,20 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
 /* ---------- 11. 首页接收召唤：选好专家并带入提示词 ---------- */
 {
   const { storage } = await loadPage('/experts.html', { freshCopy: true })
-  storage.setItem('design-buddy-summon-v1', JSON.stringify({ name: '董秘助手', prompt: '帮我起草一份董事会决议公告' }))
+  storage.setItem('design-buddy-summon-v1', JSON.stringify({ name: '改稿与精简编辑', prompt: '把这段改写成像人写的' }))
   const home = await loadPage('/index.html', { storage, freshCopy: true })
   check('home prefills the summoned prompt',
-    home.doc.querySelector('#prompt-input')?.value === '帮我起草一份董事会决议公告')
+    home.doc.querySelector('#prompt-input')?.value === '把这段改写成像人写的')
   /* 输入框工具栏左侧：+ / 参数 / 专家胶囊（第三项） */
   const left = home.doc.querySelector('.toolbar-left')
   const chip = home.doc.querySelector('#prompt-expert')
   check('summoned expert sits third in the prompt toolbar',
     !!chip && left.children[2] === chip && left.children.length === 3)
   check('the expert chip names the summoned expert',
-    chip.querySelector('.prompt-expert-name')?.textContent === '董秘助手'
-    && chip.querySelector('img.prompt-expert-avatar')?.getAttribute('src') === '/avatars/ec-boardsec.webp')
+    chip.querySelector('.prompt-expert-name')?.textContent === '改稿与精简编辑'
+    && chip.querySelector('img.prompt-expert-avatar')?.getAttribute('src') === '/avatars/ec-editor-in-chief.webp')
   check('the expert chip explains itself on hover',
-    chip.title.includes('董秘助手') && chip.getAttribute('aria-label')?.includes('董秘助手'))
+    chip.title.includes('改稿与精简编辑') && chip.getAttribute('aria-label')?.includes('改稿与精简编辑'))
   check('the expert chip animates in when summoned',
     chip.classList.contains('is-arriving'))
   click(home.w, chip)
@@ -353,19 +382,19 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
     home.doc.querySelector('#toast')?.textContent.includes('已取消召唤'))
 
   // 有肖像的专家：第三项显示的是头像图片
-  storage.setItem('design-buddy-summon-v1', JSON.stringify({ name: '创业导师助手', prompt: '' }))
+  storage.setItem('design-buddy-summon-v1', JSON.stringify({ name: '提案叙事专家', prompt: '' }))
   const home2 = await loadPage('/index.html', { storage, freshCopy: true })
   const chip2 = home2.doc.querySelector('#prompt-expert')
   check('experts with a portrait render it in the toolbar chip',
-    chip2?.querySelector('img.prompt-expert-avatar')?.getAttribute('src') === '/avatars/ec-mentor.webp'
-    && chip2.querySelector('.prompt-expert-name')?.textContent === '创业导师助手'
+    chip2?.querySelector('img.prompt-expert-avatar')?.getAttribute('src') === '/avatars/ec-deck-writer.webp'
+    && chip2.querySelector('.prompt-expert-name')?.textContent === '提案叙事专家'
     && home2.doc.querySelector('.toolbar-left').children[2] === chip2)
   check('toolbar chip contract in built CSS',
     cssCompact.includes('.prompt-expert{display:inline-flex;align-items:center;gap:7px;height:36px')
     && cssCompact.includes('.prompt-expert-avatar{width:26px;height:26px')
     && cssCompact.includes('animation:prompt-expert-arrive1.4sease'))
   check('home announces the summoned expert',
-    home.doc.querySelector('#toast')?.textContent.includes('董秘助手'))
+    home.doc.querySelector('#toast')?.textContent.includes('改稿与精简编辑'))
   check('summon payload is one-shot and cleared on arrival',
     storage.getItem('design-buddy-summon-v1') === null)
   check('home handles the summon without errors', home.errors.length === 0, home.errors)

@@ -21,6 +21,9 @@ const $$ = (sel, root = document) => [...root.querySelectorAll(sel)]
 
 const PIN_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z"/></svg>'
 
+// 卡片底部的一行「它解决什么问题」
+const SOLVES_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.6"/></svg>'
+
 // 页面内筛选状态（不持久化，刷新回到默认视图）
 const ui = { q: '', kind: 'expert', sort: '综合', chip: '全部', mineOnly: false }
 
@@ -91,6 +94,9 @@ const renderGrid = () => {
         </span>
       </span>
       <span class="ex-card-tags">${e.tags.map((t) => `<span class="ex-tag">${t}</span>`).join('')}</span>
+      <span class="ex-card-solves" title="${e.solves?.[0] ?? ''}">
+        ${SOLVES_ICON}<span>${e.solves?.[0] ?? ''}</span>
+      </span>
       <span class="ex-card-foot">
         <span class="ex-usage">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>
@@ -197,6 +203,8 @@ const DRAWER_ICON = {
   bolt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>',
   help: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8" r="3.1"/><path d="M3.8 20c0-3.4 2.8-6.2 6.2-6.2 1.2 0 2.3.3 3.2.9"/><path d="m17.4 4.2.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8Z"/></svg>',
   more: '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="8" cy="8" r="1.7"/><circle cx="16" cy="8" r="1.7"/><circle cx="8" cy="16" r="1.7"/><circle cx="16" cy="16" r="1.7"/></svg>',
+  target: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.6"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
   bubble: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8 8 0 0 1-8.4 7.9 8.6 8.6 0 0 1-3.4-.7L4 20.5l1.5-4.3a8 8 0 0 1 6.6-12.1 8 8 0 0 1 8.4 7.5Z"/><circle cx="9" cy="11.5" r=".9" fill="currentColor" stroke="none"/><circle cx="12.5" cy="11.5" r=".9" fill="currentColor" stroke="none"/><circle cx="16" cy="11.5" r=".9" fill="currentColor" stroke="none"/></svg>',
 }
 
@@ -300,6 +308,11 @@ const openExpertDrawer = (entry) => {
         <div class="ex-stat"><strong>${entry.version ?? 'v1.0.0'}</strong><span>版本</span></div>
         <div class="ex-stat"><strong>${DRAWER_ICON.bolt}${usage}</strong><span>使用量</span></div>
       </div>
+      <section class="ex-drawer-sec">
+        <h3 class="ex-drawer-sec-title">${DRAWER_ICON.target}<span>它能解决</span></h3>
+        <ul class="ex-solve-list">${(entry.solves ?? []).map((s) => `
+          <li class="ex-solve">${DRAWER_ICON.check}<span>${s}</span></li>`).join('')}</ul>
+      </section>
       <section class="ex-drawer-sec">
         <h3 class="ex-drawer-sec-title">${DRAWER_ICON.help}<span>专家帮你做</span></h3>
         <div class="ex-prompt-list">${prompts.map((text) => `

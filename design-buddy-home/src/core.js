@@ -26,11 +26,11 @@ export function defaultState() {
     defaultTheme: null,
     media: seedMedia(),
     experts: [
-      { id: 'ex-1', name: '全栈开发专家', color: 'av-purple', desc: '前后端一体化方案设计', pinned: true },
-      { id: 'ex-2', name: '软件开发团队', color: 'av-navy', desc: '多人协作的工程化专家', pinned: false },
-      { id: 'ex-3', name: '高级开发工程师', color: 'av-orange', desc: '复杂业务与性能优化', pinned: false },
-      { id: 'ex-4', name: '微信小程序开发者', color: 'av-lavender', desc: '小程序与云开发', pinned: false },
-      { id: 'ex-5', name: '高级全栈工程师', color: 'av-blue', desc: '架构评审与技术选型', pinned: false },
+      { id: 'ex-1', name: '提案叙事专家', color: 'av-teal', desc: '先出大纲，再逐页成稿', pinned: true },
+      { id: 'ex-2', name: '版式设计师', color: 'av-amber', desc: '信息密度与视觉层级', pinned: false },
+      { id: 'ex-3', name: '设计系统管家', color: 'av-navy', desc: '品牌色与字体统一', pinned: false },
+      { id: 'ex-4', name: '网页原型工程师', color: 'av-green', desc: '可运行的 HTML 原型', pinned: false },
+      { id: 'ex-5', name: '改稿与精简编辑', color: 'av-purple', desc: '去 AI 腔、压篇幅', pinned: false },
     ],
     skills: [
       { id: 'sk-1', name: 'PPT 大纲生成', desc: '根据主题自动生成演示大纲', enabled: true, version: '1.0.0' },
