@@ -3908,72 +3908,123 @@ a:focus-visible {
   }
 }
 
-/* 新建 gamma 弹窗 */
+/* ===== 新建 gamma 弹窗 ===== */
+
+/* 弹窗容器加宽 */
+.modal-box:has(.new-gamma-modal) {
+  width: min(960px, 94vw);
+  max-height: 88vh;
+}
+
 .new-gamma-modal {
   display: flex;
   gap: 0;
-  min-height: 500px;
+  min-height: 520px;
+  margin: -8px -22px -18px;
 }
 
+/* ---- 左侧栏 ---- */
 .ng-sidebar {
-  width: 200px;
-  border-right: 1px solid #e5e7eb;
-  padding: 16px 0;
+  width: 220px;
+  min-width: 220px;
+  border-right: 1px solid #eef0f4;
+  padding: 20px 12px;
   display: flex;
   flex-direction: column;
+  gap: 2px;
+  background: #fafbfd;
+  border-radius: 0 0 0 18px;
 }
 
 .ng-type-btn {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 20px;
+  padding: 11px 16px;
   border: none;
   background: transparent;
   cursor: pointer;
   text-align: left;
-  transition: background 0.2s;
+  transition: all 0.18s ease;
   font-size: 14px;
-  color: #374151;
+  color: #4b5563;
+  border-radius: 10px;
+  position: relative;
 }
 
 .ng-type-btn:hover {
-  background: #f9fafb;
+  background: #f0f2f7;
+  color: #1f2937;
 }
 
 .ng-type-btn.is-active {
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: #eef2ff;
+  color: #4338ca;
   font-weight: 600;
 }
 
+.ng-type-btn.is-active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  background: #6366f1;
+  border-radius: 0 3px 3px 0;
+}
+
 .ng-type-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 8px;
   font-size: 16px;
-  width: 20px;
-  text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.ng-type-btn.is-active .ng-type-icon {
+  background: #4338ca;
+  color: white;
+  box-shadow: 0 2px 6px rgba(67,56,202,0.3);
 }
 
 .ng-type-label {
   flex: 1;
+  font-size: 14px;
 }
 
+/* ---- 右侧主区域 ---- */
 .ng-main {
   flex: 1;
-  padding: 24px 32px;
+  padding: 28px 32px;
   overflow-y: auto;
+  min-width: 0;
 }
 
 .ng-title {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
-  color: #1f2937;
+  color: #111827;
+  margin: 0 0 8px;
+  letter-spacing: -0.3px;
+}
+
+.ng-subtitle {
+  font-size: 13px;
+  color: #9ca3af;
   margin: 0 0 24px;
 }
 
+/* ---- 格式卡片网格 ---- */
 .ng-formats {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 14px;
   margin-bottom: 32px;
 }
 
@@ -3981,34 +4032,59 @@ a:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 16px;
-  border: 2px solid #e5e7eb;
-  border-radius: 12px;
+  padding: 20px 14px 16px;
+  border: 2px solid #eef0f4;
+  border-radius: 14px;
   background: white;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
   text-align: center;
+  position: relative;
 }
 
 .ng-format-card:hover {
-  border-color: #9ca3af;
+  border-color: #c7d2fe;
+  box-shadow: 0 4px 12px rgba(99,102,241,0.08);
+  transform: translateY(-1px);
 }
 
 .ng-format-card.is-active {
-  border-color: #3b82f6;
-  background: #eff6ff;
+  border-color: #6366f1;
+  background: #faf9ff;
+  box-shadow: 0 4px 16px rgba(99,102,241,0.12);
+}
+
+.ng-format-card.is-active::after {
+  content: '✓';
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 18px;
+  height: 18px;
+  background: #6366f1;
+  color: white;
+  border-radius: 50%;
+  font-size: 10px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
 }
 
 .ng-format-icon {
-  font-size: 24px;
-  margin-bottom: 8px;
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f3f4f6;
-  border-radius: 50%;
+  background: linear-gradient(135deg, #f8f9fc 0%, #eef0f7 100%);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  font-size: 22px;
+  transition: all 0.2s;
+}
+
+.ng-format-card.is-active .ng-format-icon {
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
 }
 
 .ng-format-name {
@@ -4021,16 +4097,22 @@ a:focus-visible {
 .ng-format-desc {
   font-size: 12px;
   color: #6b7280;
+  line-height: 1.4;
 }
 
 .ng-format-ratio {
-  font-size: 12px;
+  font-size: 11px;
   color: #9ca3af;
-  margin-top: 4px;
+  margin-top: 6px;
+  padding: 2px 8px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  font-weight: 500;
 }
 
+/* ---- 模板区域 ---- */
 .ng-templates-section {
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid #eef0f4;
   padding-top: 24px;
 }
 
@@ -4042,78 +4124,95 @@ a:focus-visible {
 }
 
 .ng-templates-header h3 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: #1f2937;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ng-templates-header h3::before {
+  content: '📁';
+  font-size: 16px;
 }
 
 .ng-templates-link {
   background: none;
   border: 1px solid #e5e7eb;
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 7px 14px;
+  border-radius: 8px;
   font-size: 13px;
-  color: #374151;
+  color: #6366f1;
   cursor: pointer;
   transition: all 0.2s;
+  font-weight: 500;
 }
 
 .ng-templates-link:hover {
-  background: #f9fafb;
-  border-color: #d1d5db;
+  background: #eef2ff;
+  border-color: #c7d2fe;
 }
 
 .ng-templates-search {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   margin-bottom: 16px;
 }
 
 .ng-templates-search input {
   flex: 1;
-  padding: 10px 14px;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  font-size: 14px;
+  padding: 10px 16px;
+  border: 1.5px solid #eef0f4;
+  border-radius: 10px;
+  font-size: 13px;
   outline: none;
-  transition: border-color 0.2s;
+  transition: all 0.2s;
+  background: #fafbfd;
 }
 
 .ng-templates-search input:focus {
-  border-color: #3b82f6;
+  border-color: #6366f1;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.08);
 }
 
 .ng-templates-filter {
   padding: 10px 14px;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  font-size: 14px;
-  background: white;
+  border: 1.5px solid #eef0f4;
+  border-radius: 10px;
+  font-size: 13px;
+  background: #fafbfd;
   cursor: pointer;
   outline: none;
+  min-width: 110px;
 }
 
 .ng-templates-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
 }
 
 .ng-template-card {
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.2s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid #eef0f4;
+  background: white;
 }
 
 .ng-template-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border-color: #c7d2fe;
 }
 
 .ng-template-thumb {
-  height: 120px;
-  border-radius: 8px;
+  height: 110px;
   overflow: hidden;
-  margin-bottom: 8px;
   position: relative;
 }
 
@@ -4127,32 +4226,38 @@ a:focus-visible {
 }
 
 .ng-template-title {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   color: white;
   text-align: center;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 
 .ng-template-name {
   font-size: 13px;
   color: #374151;
   font-weight: 500;
+  padding: 10px 12px;
 }
 
+/* ---- 底部提示 ---- */
 .ng-tip {
-  text-align: center;
-  font-size: 13px;
-  color: #6b7280;
-  margin: 16px 0 0;
-  padding: 12px;
-  background: #f9fafb;
-  border-radius: 8px;
+  text-align: left;
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 0;
+  padding: 10px 22px;
+  background: #fafbfd;
+  border-top: 1px solid #eef0f4;
+  border-radius: 0 0 18px 0;
 }
 
 .ng-tip code {
-  background: #e5e7eb;
-  padding: 2px 6px;
+  background: #f0f2f7;
+  padding: 2px 7px;
   border-radius: 4px;
-  font-family: monospace;
-  font-size: 12px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  color: #6366f1;
+  font-weight: 500;
 }
