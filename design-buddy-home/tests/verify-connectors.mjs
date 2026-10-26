@@ -110,6 +110,12 @@ check('clearing search restores grid', cards().length === CONNECTOR_CATALOG.leng
 /* ---------- 4. 连接 / 断开 ---------- */
 click(w, doc.querySelector('[data-cn-name="通达信"] [data-cn-toggle]'))
 await tick()
+// 现在会弹出连接确认弹窗，需要点击"连接"按钮
+const connectModal = doc.querySelector('.modal-mask')
+if (connectModal) {
+  click(w, connectModal.querySelector('[data-connect]'))
+  await tick()
+}
 check('clicking + connects and persists',
   readState(storage).connectors.find((c) => c.name === '通达信')?.connected === true)
 check('connected card flips to check and keeps details',
@@ -128,10 +134,17 @@ check('disconnected card returns to plus',
 
 click(w, doc.querySelector('[data-cn-name="GitHub"] [data-cn-toggle]'))
 await tick()
+// GitHub 已连接，点击应该直接断开（不需要弹窗）
 check('disconnecting a seeded connector persists',
   readState(storage).connectors.find((c) => c.name === 'GitHub')?.connected === false)
 click(w, doc.querySelector('[data-cn-name="GitHub"] [data-cn-toggle]'))
 await tick()
+// 再次点击应该弹出连接弹窗
+const ghModal = doc.querySelector('.modal-mask')
+if (ghModal) {
+  click(w, ghModal.querySelector('[data-connect]'))
+  await tick()
+}
 
 /* ---------- 5. 自定义连接器：表单 → 持久化 → 出现在列表 ---------- */
 click(w, doc.querySelector('[data-custom]'))

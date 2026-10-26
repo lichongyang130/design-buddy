@@ -810,10 +810,97 @@ $('#cn-search-input').addEventListener('input', renderGrid)
 
 $('[data-custom]').addEventListener('click', openCustom)
 
+const openConnectModal = (name) => {
+  const entry = entryOf(name) ?? cardOf(name)
+  if (!entry) return
+  
+  // 如果是远端认证方式但没有凭据，直接调用 toggle 显示错误提示
+  if (entry.authMethod && entry.authMethod !== 'local' && !entry.credential) {
+    toggle(name, { authMethod: entry.authMethod })
+    return
+  }
+  
+  const { mask, bodyEl, footEl } = openModal({
+    title: '',
+    body: `
+      <div class="connect-modal">
+        <div class="connect-header">
+          <div class="connect-icons">
+            <div class="connect-icon" style="background: ${entry.color}">${icon(entry.shape)}</div>
+            <span class="connect-dots">···</span>
+            <div class="connect-icon" style="background: #4285f4">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </div>
+          </div>
+          <h2 class="connect-title">连接 ${entry.name}</h2>
+          <p class="connect-desc">通过本地授权访问${entry.desc}。</p>
+          <button class="connect-btn" type="button" data-connect="${name}">连接</button>
+        </div>
+        <div class="connect-examples">
+          <h3 class="examples-title">💡 试试这样用</h3>
+          <div class="example-list">
+            ${generateExamples(entry.name).map((ex) => `
+              <div class="example-item">
+                <span class="example-text">${ex}</span>
+                <span class="example-icon">💬</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>`,
+    footer: '',
+  })
+  
+  const connectBtn = mask.querySelector('[data-connect]')
+  if (connectBtn) {
+    connectBtn.addEventListener('click', () => {
+      mask.remove()
+      toggle(name)
+    })
+  }
+}
+
+const generateExamples = (name) => {
+  const examples = {
+    'QQ邮箱': [
+      '搜索我最近一周收到的邮件，并按发件人汇总',
+      '读取这个邮件会话并总结待办事项',
+      '先为这封邮件创建回复草稿，不要直接发送',
+    ],
+    '腾讯文档': [
+      '帮我创建一个新的项目计划文档',
+      '总结最近编辑的 5 个文档的主要内容',
+      '把这个文档分享给团队成员并设置权限',
+    ],
+    'GitHub': [
+      '查看我最近的 pull request 状态',
+      '帮我创建一个新的 issue 并分配给相关开发者',
+      '总结这个仓库最近的代码变更',
+    ],
+    'Notion': [
+      '搜索我最近编辑的页面',
+      '创建一个新的项目笔记',
+      '总结这个数据库中的所有条目',
+    ],
+    '默认': [
+      `帮我使用${name}完成一个任务`,
+      `查看我在${name}中的最近活动`,
+      `总结${name}中的关键信息`,
+    ],
+  }
+  return examples[name] ?? examples['默认']
+}
+
 $('#cn-grid').addEventListener('click', (ev) => {
   const toggleBtn = ev.target.closest('[data-cn-toggle]')
   if (toggleBtn) {
-    toggle(toggleBtn.dataset.cnToggle)
+    const name = toggleBtn.dataset.cnToggle
+    const entry = entryOf(name)
+    if (entry?.connected) {
+      toggle(name)
+    } else {
+      openConnectModal(name)
+    }
     return
   }
   const card = ev.target.closest('[data-cn-name]')

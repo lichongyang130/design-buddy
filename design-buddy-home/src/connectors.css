@@ -558,3 +558,118 @@
   align-self: flex-start;
   margin-top: 2px;
 }
+
+/* 连接器连接弹窗 */
+.connect-modal {
+  padding: 24px;
+  text-align: center;
+}
+
+.connect-header {
+  margin-bottom: 32px;
+}
+
+.connect-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.connect-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.connect-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.connect-dots {
+  font-size: 24px;
+  color: #9ca3af;
+  letter-spacing: 4px;
+}
+
+.connect-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 12px;
+}
+
+.connect-desc {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0 0 24px;
+  line-height: 1.6;
+}
+
+.connect-btn {
+  background: #1f2937;
+  color: white;
+  border: none;
+  padding: 12px 48px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.connect-btn:hover {
+  background: #111827;
+}
+
+.connect-examples {
+  text-align: left;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 24px;
+}
+
+.examples-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 16px;
+}
+
+.example-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.example-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.example-item:hover {
+  background: #f3f4f6;
+}
+
+.example-text {
+  font-size: 14px;
+  color: #374151;
+  flex: 1;
+}
+
+.example-icon {
+  font-size: 16px;
+  margin-left: 12px;
+  opacity: 0.5;
+}

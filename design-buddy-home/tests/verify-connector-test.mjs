@@ -134,6 +134,12 @@ click(w, panel().querySelector('[data-cn-test-close]'))
 await tick()
 click(w, card('Tushare').querySelector('[data-cn-toggle]'))
 await tick()
+// 现在会弹出连接确认弹窗，需要点击"连接"按钮
+const tushareModal = doc.querySelector('.modal-mask')
+if (tushareModal) {
+  click(w, tushareModal.querySelector('[data-connect]'))
+  await tick()
+}
 check('plus button toggles without opening the panel',
   panel().hidden && readState(storage).connectors.find((c) => c.name === 'Tushare')?.connected === true)
 check('card plus flips to check mark',

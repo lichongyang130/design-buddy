@@ -35,6 +35,12 @@ check('no call log before any action', logs().length === 0)
 
 click(w, card('通达信').querySelector('[data-cn-toggle]'))
 await tick(60)
+// 现在会弹出连接确认弹窗，需要点击"连接"按钮
+const connectModal = doc.querySelector('.modal-mask')
+if (connectModal) {
+  click(w, connectModal.querySelector('[data-connect]'))
+  await tick(60)
+}
 const c1 = live('通达信')
 check('plus click marks the connector connected', c1?.connected === true)
 check('connect records a real timestamp', Number.isFinite(c1.connectedAt) && c1.connectedAt > 0)
@@ -161,6 +167,12 @@ check('disconnected card drops the handshake badge', !card('通达信').querySel
 
 click(w, card('通达信').querySelector('[data-cn-toggle]'))
 await tick(60)
+// 现在会弹出连接确认弹窗，需要点击"连接"按钮
+const reconnectModal = doc.querySelector('.modal-mask')
+if (reconnectModal) {
+  click(w, reconnectModal.querySelector('[data-connect]'))
+  await tick(60)
+}
 const c4 = live('通达信')
 check('reconnect runs a new handshake', c4.connected === true && Number.isFinite(c4.lastCheck.latency))
 check('reconnect reuses the pasted token instead of issuing a random one',
@@ -170,6 +182,12 @@ check('reconnect keeps the honest transport label', c4.lastCheck.transport === '
 /* 另一个连接器的握手指纹必须不同：摘要是内容哈希，不是随机数 */
 click(w, card('Tushare').querySelector('[data-cn-toggle]'))
 await tick(60)
+// 现在会弹出连接确认弹窗，需要点击"连接"按钮
+const tushareModal2 = doc.querySelector('.modal-mask')
+if (tushareModal2) {
+  click(w, tushareModal2.querySelector('[data-connect]'))
+  await tick(60)
+}
 const other = live('Tushare')
 check('a different connector produces a different payload digest',
   HEX8.test(other.lastCheck.digest) && other.lastCheck.digest !== c4.lastCheck.digest,

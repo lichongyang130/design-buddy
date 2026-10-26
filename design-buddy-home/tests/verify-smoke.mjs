@@ -131,6 +131,19 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   const gammaCount = JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).gammas.length
   click(w, doc.querySelector('.topbar-right .pill'))
   await tick()
+  // 现在会弹出新建 gamma 弹窗，需要双击格式卡片来创建
+  const ngModal = doc.querySelector('.modal-mask')
+  if (ngModal) {
+    const formatCard = ngModal.querySelector('[data-format]')
+    if (formatCard) {
+      formatCard.dispatchEvent(new w.MouseEvent('dblclick', { bubbles: true }))
+      await tick()
+    }
+    // 关闭弹窗
+    const closeBtn = ngModal.querySelector('.modal-close')
+    if (closeBtn) click(w, closeBtn)
+    await tick()
+  }
   check('blank gamma created without credits flow', JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).gammas.length === gammaCount + 1)
 
   click(w, doc.querySelector('.help-fab'))
@@ -180,6 +193,19 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   const before = JSON.parse(storage.getItem('design-buddy-state-v1')).gammas.length
   click(w, doc.querySelector('.topbar-right .pill'))
   await tick()
+  // 现在会弹出新建 gamma 弹窗，需要双击格式卡片来创建
+  const ngModal = doc.querySelector('.modal-mask')
+  if (ngModal) {
+    const formatCard = ngModal.querySelector('[data-format]')
+    if (formatCard) {
+      formatCard.dispatchEvent(new w.MouseEvent('dblclick', { bubbles: true }))
+      await tick()
+    }
+    // 关闭弹窗
+    const closeBtn = ngModal.querySelector('.modal-close')
+    if (closeBtn) click(w, closeBtn)
+    await tick()
+  }
   const after = JSON.parse(storage.getItem('design-buddy-state-v1')).gammas
   check('auto title off yields timestamp placeholder', after.length === before + 1 && /^未命名创作 \d{2}:\d{2}$/.test(after[0].title), after[0].title)
 

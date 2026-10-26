@@ -2288,9 +2288,145 @@ $$('[data-template]').forEach((card) => {
   card.addEventListener('click', () => referenceTemplate(card.dataset.template, coverOfCard(card)))
 })
 
+const NEW_GAMMA_TYPES = [
+  { id: 'presentation', label: '演示文稿', icon: '📊', formats: [
+    { id: 'default', name: '默认', ratio: '16:9', desc: '' },
+    { id: 'flexible', name: '灵活', ratio: '', desc: '动态' },
+    { id: 'tall', name: '高大', ratio: '4:3', desc: '' },
+  ]},
+  { id: 'document', label: '文档', icon: '📄', formats: [
+    { id: 'default', name: '默认', ratio: '', desc: '动态' },
+    { id: 'nopage', name: '无页', ratio: '', desc: '动态' },
+    { id: 'letter', name: '信纸', ratio: '', desc: '美国信' },
+    { id: 'a4', name: 'A4', ratio: '', desc: 'A4' },
+  ]},
+  { id: 'social', label: '社媒', icon: '', formats: [
+    { id: 'default', name: '默认', ratio: '', desc: '' },
+  ]},
+  { id: 'webpage', label: '网页', icon: '🌐', formats: [
+    { id: 'default', name: '默认', ratio: '', desc: '' },
+  ]},
+  { id: 'graphic', label: '图形', icon: '🎨', formats: [
+    { id: 'default', name: '默认', ratio: '', desc: '' },
+  ]},
+]
+
+function openNewGammaModal() {
+  let selectedType = 'presentation'
+  let selectedFormat = 'default'
+  
+  const renderContent = () => {
+    const type = NEW_GAMMA_TYPES.find(t => t.id === selectedType)
+    const formats = type.formats
+    
+    return `
+      <div class="new-gamma-modal">
+        <div class="ng-sidebar">
+          ${NEW_GAMMA_TYPES.map(t => `
+            <button class="ng-type-btn ${t.id === selectedType ? 'is-active' : ''}" data-type="${t.id}" type="button">
+              <span class="ng-type-icon">${t.icon}</span>
+              <span class="ng-type-label">${t.label}</span>
+            </button>
+          `).join('')}
+        </div>
+        <div class="ng-main">
+          <h2 class="ng-title">新建空白${type.label}</h2>
+          <div class="ng-formats">
+            ${formats.map(f => `
+              <button class="ng-format-card ${f.id === selectedFormat ? 'is-active' : ''}" data-format="${f.id}" type="button">
+                <div class="ng-format-icon">
+                  ${f.id === 'default' ? '' : f.id === 'flexible' ? '⬡' : f.id === 'tall' ? '▭' : f.id === 'nopage' ? '📃' : f.id === 'letter' ? '📄' : f.id === 'a4' ? '' : '📄'}
+                </div>
+                <div class="ng-format-name">${f.name}</div>
+                ${f.desc ? `<div class="ng-format-desc">${f.desc}</div>` : ''}
+                ${f.ratio ? `<div class="ng-format-ratio">${f.ratio}</div>` : ''}
+              </button>
+            `).join('')}
+          </div>
+          <div class="ng-templates-section">
+            <div class="ng-templates-header">
+              <h3>工作区模板</h3>
+              <button class="ng-templates-link" type="button">前往模板 ↗</button>
+            </div>
+            <div class="ng-templates-search">
+              <input type="search" placeholder="搜索工作区模板" />
+              <select class="ng-templates-filter">
+                <option>最近使用</option>
+                <option>全部模板</option>
+              </select>
+            </div>
+            <div class="ng-templates-list">
+              <div class="ng-template-card">
+                <div class="ng-template-thumb" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+                  <div class="ng-template-preview">
+                    <div class="ng-template-title">The secret life of pollinators</div>
+                  </div>
+                </div>
+                <div class="ng-template-name">Scintilla</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `
+  }
+  
+  const { mask, bodyEl } = openModal({
+    title: '新建 gamma',
+    body: renderContent(),
+    footer: '<p class="ng-tip">提示：在浏览器中输入 <code>gamma.new</code> 即可快速创建空白的 gamma。</p>',
+  })
+  
+  // 绑定类型切换
+  bodyEl.querySelectorAll('[data-type]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      selectedType = btn.dataset.type
+      selectedFormat = 'default'
+      bodyEl.innerHTML = renderContent()
+      rebindEvents()
+    })
+  })
+  
+  // 绑定格式选择
+  bodyEl.querySelectorAll('[data-format]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      selectedFormat = btn.dataset.format
+      bodyEl.querySelectorAll('[data-format]').forEach(b => b.classList.remove('is-active'))
+      btn.classList.add('is-active')
+    })
+  })
+  
+  const rebindEvents = () => {
+    bodyEl.querySelectorAll('[data-type]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedType = btn.dataset.type
+        selectedFormat = 'default'
+        bodyEl.innerHTML = renderContent()
+        rebindEvents()
+      })
+    })
+    bodyEl.querySelectorAll('[data-format]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedFormat = btn.dataset.format
+        bodyEl.querySelectorAll('[data-format]').forEach(b => b.classList.remove('is-active'))
+        btn.classList.add('is-active')
+      })
+    })
+  }
+  
+  // 点击创建按钮（格式卡片）时创建 gamma
+  bodyEl.querySelectorAll('[data-format]').forEach(btn => {
+    btn.addEventListener('dblclick', () => {
+      mask.remove()
+      const type = NEW_GAMMA_TYPES.find(t => t.id === selectedType)
+      const g = createGamma({ prompt: '', origin: 'blank', silent: true, type: type.label })
+      toast(`已新建空白${type.label}「${g.title}」`)
+    })
+  })
+}
+
 function createBlankGamma() {
-  const g = createGamma({ prompt: '', origin: 'blank', silent: true })
-  toast(`已新建空白 Design Buddy「${g.title}」，可在「最近的 Design Buddy」中找到`)
+  openNewGammaModal()
 }
 
 $('.pill-outline').addEventListener('click', () => { location.href = 'templates.html' })
