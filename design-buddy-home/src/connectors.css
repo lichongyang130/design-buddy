@@ -559,86 +559,144 @@
   margin-top: 2px;
 }
 
-/* 连接器连接弹窗 */
+/* ===== 连接器连接弹窗 ===== */
+
+/* 弹窗容器加宽 */
+.modal-box:has(.connect-modal) {
+  width: min(680px, 94vw);
+}
+
 .connect-modal {
-  padding: 24px;
+  padding: 32px;
   text-align: center;
 }
 
 .connect-header {
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .connect-icons {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 20px;
+  margin-bottom: 28px;
 }
 
 .connect-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease;
+}
+
+.connect-icon:hover {
+  transform: scale(1.05);
 }
 
 .connect-icon svg {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
 }
 
 .connect-dots {
-  font-size: 24px;
-  color: #9ca3af;
-  letter-spacing: 4px;
+  font-size: 28px;
+  color: #cbd5e1;
+  letter-spacing: 6px;
+  font-weight: 300;
+  position: relative;
+}
+
+.connect-dots::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
+  opacity: 0.5;
 }
 
 .connect-title {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
-  color: #1f2937;
+  color: #0f172a;
   margin: 0 0 12px;
+  letter-spacing: -0.3px;
 }
 
 .connect-desc {
-  font-size: 14px;
-  color: #6b7280;
-  margin: 0 0 24px;
+  font-size: 15px;
+  color: #64748b;
+  margin: 0 0 28px;
   line-height: 1.6;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .connect-btn {
-  background: #1f2937;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   color: white;
   border: none;
-  padding: 12px 48px;
-  border-radius: 8px;
+  padding: 14px 56px;
+  border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(99,102,241,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.connect-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.connect-btn:hover::before {
+  left: 100%;
 }
 
 .connect-btn:hover {
-  background: #111827;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(99,102,241,0.4);
 }
 
 .connect-examples {
   text-align: left;
-  border-top: 1px solid #e5e7eb;
-  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 28px;
+  margin-top: 32px;
 }
 
 .examples-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #374151;
-  margin: 0 0 16px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.examples-title::before {
+  content: '💡';
+  font-size: 18px;
 }
 
 .example-list {
@@ -651,25 +709,35 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 16px;
-  background: #f9fafb;
-  border-radius: 8px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s ease;
+  border: 1.5px solid transparent;
 }
 
 .example-item:hover {
-  background: #f3f4f6;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  border-color: #cbd5e1;
+  transform: translateX(4px);
 }
 
 .example-text {
   font-size: 14px;
-  color: #374151;
+  color: #334155;
   flex: 1;
+  line-height: 1.5;
 }
 
 .example-icon {
-  font-size: 16px;
-  margin-left: 12px;
-  opacity: 0.5;
+  font-size: 18px;
+  margin-left: 16px;
+  opacity: 0.6;
+  transition: all 0.2s;
+}
+
+.example-item:hover .example-icon {
+  opacity: 1;
+  transform: translateX(2px);
 }
