@@ -458,7 +458,7 @@ const openCustom = () => {
   const { mask, bodyEl, footEl } = openModal({
     title: '自定义连接器',
     body: `
-      <p class="modal-copy">接入自建服务或尚未收录的连接器，创建后会出现在列表中并保持已连接状态。</p>
+      <p class="modal-copy">接入尚未收录的服务：创建后会立即用本地引擎跑一次握手，握手成功才算连接。</p>
       <label class="cn-field">
         <span>名称</span>
         <input id="cn-custom-name" type="text" placeholder="例如：内部知识库 MCP" maxlength="40" />
@@ -478,12 +478,13 @@ const openCustom = () => {
     if (!name) { toast('请先填写连接器名称'); return }
     if (entryOf(name)) { toast(`「${name}」已在列表中`); return }
     store.state.connectors.push({
-      id: uid('cn'), name, connected: true,
+      id: uid('cn'), name, connected: false,
       desc: desc || '自定义连接器', color: '#5b6ef5', shape: 'sparkle', category: '自定义',
     })
     store.save()
     mask.remove()
-    toast(`已创建并连接「${name}」`)
+    // 创建不等于连上：和内置连接器走同一条握手路径，失败就保持未连接
+    toggle(name)
     renderGrid()
   }
 
