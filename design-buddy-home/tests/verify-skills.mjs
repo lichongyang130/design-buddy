@@ -169,13 +169,10 @@ click(w, doc.querySelector('[data-installed-toggle]'))
 await tick()
 delete globalThis.prompt
 
-/* ---------- 8. 连接器页签仍打开既有弹窗 ---------- */
-click(w, doc.querySelector('[data-open="connectors"]'))
-await tick()
-check('connectors tab opens connectors modal', doc.body.textContent.includes('Google Drive'))
-click(w, doc.querySelector('.modal-close'))
-await tick()
-check('closing modal returns to the skills page', !modal() && grid().length === PAGE_SKILLS.length)
+/* ---------- 8. 连接器页签是页面链接 ---------- */
+check('connectors tab links to the connectors page',
+  doc.querySelector('.ex-top-tab[href="connectors.html"]') !== null)
+check('no leftover modal entry on the skills page', !doc.querySelector('[data-open]'))
 
 check('skills page flow: no runtime errors', errors.length === 0, JSON.stringify(errors))
 

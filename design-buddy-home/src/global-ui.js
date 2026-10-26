@@ -1,6 +1,6 @@
 /* ============================================================
    全局 UI：外观持久化应用、⌘K 命令面板、帮助 / 邀请 / 消息 /
-   升级 / 连接器弹窗；专家与技能已升级为独立页面 experts.html / skills.html。
+   升级弹窗；专家 / 技能 / 连接器已升级为独立页面（experts / skills / connectors）。
    ============================================================ */
 
 import './features.css'
@@ -216,27 +216,13 @@ export function openExperts() {
   location.href = EXPERTS_PAGE
 }
 
+/* 连接器已升级为独立页面（connectors.html，左侧沿用首页窄栏 rail）。
+   首页菜单、窄栏「更多」、专家页与技能页的页签都走这里。 */
+const CONNECTORS_PAGE = 'connectors.html'
+
 export function openConnectors() {
-  const { bodyEl } = openModal({ title: '连接器' })
-  const render = () => {
-    bodyEl.innerHTML = `<div class="modal-list">${store.state.connectors.map((cn) => `
-      <div class="modal-list-item">
-        <div class="grow"><div class="primary">${cn.name}</div>
-        <div class="secondary">${cn.connected ? '已连接' : '未连接'}</div></div>
-        <button class="btn ${cn.connected ? 'btn-ghost' : 'btn-primary'}" data-cn="${cn.id}">
-          ${cn.connected ? '断开' : '连接'}</button>
-      </div>`).join('')}</div>`
-    bodyEl.querySelectorAll('[data-cn]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const cn = store.state.connectors.find((x) => x.id === btn.dataset.cn)
-        cn.connected = !cn.connected
-        store.save()
-        toast(`${cn.name} 已${cn.connected ? '连接' : '断开'}`)
-        render()
-      })
-    })
-  }
-  render()
+  if (location.pathname.endsWith(CONNECTORS_PAGE)) return
+  location.href = CONNECTORS_PAGE
 }
 
 /* ---------------- ⌘K 命令面板 ---------------- */

@@ -1,6 +1,6 @@
 /* ============================================================
    技能页：把截图式发现区做成真实页面（左侧沿用首页窄栏 rail）
-   - 顶部 专家 / 技能 / 连接器：专家与连接器走到既有入口
+   - 顶部 专家 / 技能 / 连接器：三者都是独立页面
    - 精选技能 5 张 + 换一批；推荐 / SkillHub / 套件；分类 chips；搜索
    - 安装走真实持久化 + 信任门控（高风险始终手动确认）
    - 「已安装」视图接管原先左侧管理栏：启停开关、版本、检查更新、手动更新
@@ -11,7 +11,7 @@ import { requireAuth } from './auth.js'
 requireAuth()
 import './skills.css'
 import { store, toast, uid, confirmModal } from './core.js'
-import { initGlobalUI, openExperts, openConnectors } from './global-ui.js'
+import { initGlobalUI, openExperts } from './global-ui.js'
 import { SKILL_REGISTRY, hasUpdate, registryEntry, SEED_SKILL_VERSION } from './skill-registry.js'
 import {
   FEATURED_SKILLS, FEATURED_SIZE, SKILL_FILTERS, PAGE_SKILLS, DISCOVERY_SKILLS, SKILL_META, formatCount,
@@ -237,13 +237,6 @@ $('.ex-top-actions').addEventListener('click', async (ev) => {
     if (!name?.trim()) return
     if (await installSkill({ name: name.trim(), desc: '自定义本地技能', risk: 'trusted', version: SEED_SKILL_VERSION })) renderAll()
   }
-})
-
-$$('[data-open]').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    if (btn.dataset.open === 'experts') openExperts()
-    if (btn.dataset.open === 'connectors') openConnectors()
-  })
 })
 
 $('#sk-search-input').addEventListener('input', (ev) => {

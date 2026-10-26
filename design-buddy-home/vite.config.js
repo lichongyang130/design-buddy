@@ -21,6 +21,7 @@ export default defineConfig({
         media: resolve(import.meta.dirname, 'media.html'),
         experts: resolve(import.meta.dirname, 'experts.html'),
         skills: resolve(import.meta.dirname, 'skills.html'),
+        connectors: resolve(import.meta.dirname, 'connectors.html'),
       },
     },
   },

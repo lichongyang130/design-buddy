@@ -1,7 +1,7 @@
 /* 窄栏「更多」悬浮层：鼠标指向「更多」时只弹出一张菜单卡片（技能 / 专家 / 连接器）。
    浮层用 position:fixed 并挂到 body：既逃逸 rail-top 的 overflow 裁剪，也逃逸
    .rail 因 sticky 而形成的层叠上下文（详见 styles.css 里的说明）。
-   技能 / 连接器打开既有弹窗，专家进入独立页面 experts.html（见 global-ui.js）。 */
+   三项都进入各自的独立页面 experts / skills / connectors（见 global-ui.js）。 */
 
 import { openSkills, openExperts, openConnectors } from './global-ui.js'
 

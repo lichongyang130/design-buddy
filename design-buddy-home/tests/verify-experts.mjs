@@ -146,15 +146,12 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   check('pinned highlight removed after unpin',
     !doc.querySelector(`.ex-card[data-pin="${pinId}"]`).classList.contains('is-pinned'))
 
-  /* ---------- 7. 顶部 技能 / 连接器：技能是页面链接，连接器仍弹窗 ---------- */
+  /* ---------- 7. 顶部 技能 / 连接器 都是页面链接 ---------- */
   check('skills tab links to the skills page',
     doc.querySelector('.ex-top-tab[href="skills.html"]') !== null)
-  click(w, doc.querySelector('[data-open="connectors"]'))
-  await tick()
-  check('connectors tab opens connectors modal', doc.body.textContent.includes('Google Drive'))
-  click(w, doc.querySelector('.modal-close'))
-  await tick()
-  check('closing modal returns to the page', !doc.querySelector('.modal-mask') && !!doc.querySelector('.ex-grid'))
+  check('connectors tab links to the connectors page',
+    doc.querySelector('.ex-top-tab[href="connectors.html"]') !== null)
+  check('no leftover modal entry on the experts page', !doc.querySelector('[data-open]'))
 
   /* ---------- 8. 本页窄栏「更多」仍可用 ---------- */
   click(w, doc.querySelector('.more-wrap .rail-item'))

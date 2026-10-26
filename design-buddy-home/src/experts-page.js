@@ -1,6 +1,6 @@
 /* ============================================================
    专家页：把截图式发现区做成真实页面（左侧沿用首页窄栏 rail）
-   - 顶部 专家 / 技能 / 连接器：技能与连接器继续走既有弹窗
+   - 顶部 专家 / 技能 / 连接器：三者都是独立页面
    - 场景卡 / 专家·专家团 / 综合·最热·最新 / 分类 chips 全部真实过滤
    - 卡片点击 = 固定 / 取消固定，与首页专家子菜单同源持久化
    ============================================================ */
@@ -10,7 +10,7 @@ import { requireAuth } from './auth.js'
 requireAuth()
 import './experts.css'
 import { store, toast, uid } from './core.js'
-import { initGlobalUI, openConnectors } from './global-ui.js'
+import { initGlobalUI } from './global-ui.js'
 import { EXPERT_CATEGORIES, EXPERT_CATALOG, EXPERT_FILTERS, formatUsage } from './experts-catalog.js'
 
 initGlobalUI()
@@ -113,12 +113,6 @@ $('.ex-top-actions').addEventListener('click', (ev) => {
     $('[data-mine]').classList.toggle('is-active', ui.mineOnly)
     renderGrid()
   }
-})
-
-$$('[data-open]').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    if (btn.dataset.open === 'connectors') openConnectors()
-  })
 })
 
 $('#ex-search-input').addEventListener('input', (ev) => {

@@ -1,0 +1,203 @@
+/* ============================================================
+   连接器页（connectors.html）：截图式目录，左侧沿用首页窄栏 rail
+   公共外壳（.ex-topbar / .ex-search）在 features.css 里与专家/技能页共用。
+   ============================================================ */
+
+.connectors-page {
+  flex: 1;
+  min-width: 0;
+  background: var(--surface);
+  padding: 20px 32px 44px;
+}
+
+.connectors-page .ex-topbar {
+  flex-wrap: wrap;
+  row-gap: 12px;
+}
+
+.connectors-page .ex-top-tab.is-active {
+  font-weight: 800;
+}
+
+/* ---------- 自定义连接器（黑色实心按钮） ---------- */
+
+.cn-custom-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: #141a26;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.cn-custom-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+.cn-custom-btn:hover {
+  background: #000;
+}
+
+/* ---------- 连接器卡片网格：截图为 5 列 ---------- */
+
+.cn-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.cn-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 15px 16px;
+  border: 1px solid #eceef3;
+  border-radius: 12px;
+  background: var(--surface);
+  text-align: left;
+  transition: box-shadow 0.16s ease, border-color 0.16s ease, transform 0.16s ease;
+}
+
+.cn-card:hover {
+  border-color: #dbe1ea;
+  box-shadow: 0 10px 26px rgba(23, 43, 92, 0.09);
+  transform: translateY(-1px);
+}
+
+.cn-card.is-connected {
+  border-color: rgba(59, 110, 246, 0.35);
+}
+
+/* logo：品牌色实心圆角块 + 白色线性图标（截图为实心风格） */
+.cn-logo {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  color: #fff;
+  background: var(--c);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.cn-logo svg {
+  width: 24px;
+  height: 24px;
+}
+
+.cn-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 1px;
+}
+
+.cn-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cn-desc {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--text-3);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 右上角 + / ✓ */
+.cn-plus {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin-left: 2px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #e4e7ee;
+  border-radius: 7px;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--text-2);
+  background: var(--surface);
+  transition: border-color 0.14s ease, color 0.14s ease, background 0.14s ease;
+}
+
+.cn-card:hover .cn-plus {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: var(--blue-bg);
+}
+
+.cn-plus.is-connected {
+  border-color: rgba(76, 175, 125, 0.55);
+  color: var(--green);
+  background: rgba(76, 175, 125, 0.12);
+  font-size: 13px;
+}
+
+.cn-empty {
+  grid-column: 1 / -1;
+  padding: 54px 20px;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--text-3);
+}
+
+/* ---------- 自定义连接器表单 ---------- */
+
+.cn-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+.cn-field input {
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 13.5px;
+  color: var(--text);
+  outline: none;
+}
+
+.cn-field input:focus {
+  border-color: var(--blue);
+}
+
+/* ---------- 响应式 ---------- */
+
+@media (max-width: 1320px) {
+  .cn-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1080px) {
+  .cn-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 900px) {
+  .connectors-page { padding: 16px 18px 32px; }
+  .cn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .connectors-page .ex-top-tabs { gap: 16px; }
+  .connectors-page .ex-top-tab { font-size: 15.5px; }
+}
