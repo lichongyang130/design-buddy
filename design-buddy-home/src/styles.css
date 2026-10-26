@@ -3765,3 +3765,145 @@ a:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ============================================================
+   引用卡片（模板 / 文档 / 演示文稿 / 表格 / 图片…）
+   截图：缩略图 + 名称 + 类型标签，挂在输入框上方
+   ============================================================ */
+
+.content .attach-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 0 12px;
+}
+
+.content .attach-chip.ref-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: 316px;
+  max-width: 100%;
+  padding: 8px;
+  border: 1px solid #e6e8ef;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--text);
+  font-weight: 500;
+  transition: border-color 0.13s ease, box-shadow 0.13s ease;
+}
+
+.content .attach-chip.ref-card:hover {
+  border-color: #d2d8e4;
+  box-shadow: 0 6px 18px rgba(23, 43, 92, 0.08);
+}
+
+/* 缩略图 */
+
+.ref-thumb {
+  width: 84px;
+  height: 60px;
+  flex: none;
+  border-radius: 8px;
+  border: 1px solid #eceef3;
+  background-color: #eef0f4;
+  background-image: var(--img, none);
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.ref-thumb em {
+  font-style: normal;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #5a6478;
+  background: #fff;
+  border-radius: 5px;
+  padding: 2px 6px;
+  box-shadow: 0 1px 2px rgba(23, 43, 92, 0.1);
+}
+
+/* 名称 + 标签 */
+
+.ref-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.content .ref-card .chip-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ref-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.ref-tag .icon {
+  width: 13px;
+  height: 13px;
+}
+
+/* 模板：紫色（截图里的 模板 标签） */
+.ref-tag.is-template { color: #7c3aed; }
+.ref-tag.is-doc { color: #2f5bd6; }
+.ref-tag.is-deck { color: #6b46c1; }
+.ref-tag.is-sheet { color: #15803d; }
+.ref-tag.is-pdf { color: #c2410c; }
+.ref-tag.is-image { color: #0b7bbd; }
+.ref-tag.is-code { color: #475569; }
+.ref-tag.is-file { color: #64748b; }
+
+.content .ref-card.is-template .ref-thumb { border-color: #e8e0fb; background-color: #f5f0ff; }
+
+/* 移除按钮：平时淡出，悬停/聚焦才出现 */
+.content .ref-card button {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #98a1b2;
+  opacity: 0;
+  transition: opacity 0.12s ease, background 0.12s ease, color 0.12s ease;
+}
+
+.content .ref-card:hover button,
+.content .ref-card button:focus-visible {
+  opacity: 1;
+}
+
+.content .ref-card button:hover {
+  background: #f1f3f7;
+  color: #44506a;
+}
+
+.content .ref-card button svg {
+  width: 12px;
+  height: 12px;
+}
+
+@media (max-width: 620px) {
+  .content .attach-chip.ref-card {
+    width: 100%;
+  }
+}

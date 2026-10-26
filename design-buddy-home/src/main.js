@@ -56,7 +56,7 @@ const TYPE_PLACEHOLDER = '描述您的演示主题'
 const TYPE_COPY = {
   演示文稿: { placeholder: '描述您的演示主题' },
   图片: { title: '你的笔记，美得令人惊艳', placeholder: '描述您想要创建的图像' },
-  文档: { placeholder: '描述您想写的文档' },
+  文档: { placeholder: '描述您想要创建的文档' },
   轮播图: { placeholder: '描述您的轮播图主题' },
   美化: { placeholder: '描述您希望更改或改进的内容', hero: '/covers/hero-beautify.jpg' },
   导入: { placeholder: '添加要导入的文件，或从下方选择任务', hero: '/covers/hero-beautify.jpg' },
@@ -292,45 +292,137 @@ input.addEventListener('input', () => {
 
 /* 通过「/」调用的技能：只对这一次创作生效 */
 let activeSkill = null
+/* 被引用的模板（点探索里的模板 / 推荐模板）：以卡片形式挂在输入框里，发送时才真正创建 */
+let activeTemplate = null
 
 const SKILL_ICON = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5 13.8 11.3 12 16l-1.8-4.7L5.5 9.5l4.7-1.8L12 3z"/><path d="M18.5 15l.8 2.1 2.2.8-2.2.8-.8 2.1-.8-2.1-2.2-.8 2.2-.8.8-2.1z"/></svg>'
 
+/* 引用卡片上的类型标签：文档 / 演示文稿 / 表格 / 图片 / PDF / 模板 */
+const FILE_TAGS = {
+  PDF: { label: 'PDF', key: 'pdf' },
+  表格: { label: '表格', key: 'sheet' },
+  文档: { label: '文档', key: 'doc' },
+  图片: { label: '图片', key: 'image' },
+  演示: { label: '演示文稿', key: 'deck' },
+  代码: { label: '代码', key: 'code' },
+  文件: { label: '文件', key: 'file' },
+}
+
+const fileKind = (name = '') => {
+  const ext = String(name).split('.').pop().toLowerCase()
+  if (ext === 'pdf') return 'PDF'
+  if (['xls', 'xlsx', 'csv'].includes(ext)) return '表格'
+  if (['doc', 'docx', 'md', 'txt', 'rtf'].includes(ext)) return '文档'
+  if (['png', 'jpg', 'jpeg', 'webp', 'gif', 'svg'].includes(ext)) return '图片'
+  if (['ppt', 'pptx', 'key'].includes(ext)) return '演示'
+  if (['js', 'ts', 'json', 'html', 'css', 'py'].includes(ext)) return '代码'
+  return '文件'
+}
+
+const extOf = (name = '') => (String(name).split('.').pop() || 'FILE').toUpperCase().slice(0, 4)
+
+const TAG_ICON = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>'
+const TPL_ICON = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg>'
+
+const X_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>'
+
+/* 引用卡片：缩略图 + 名称 + 类型标签（模板 / 文档 / 演示文稿…），与截图一致 */
+function refCardHTML({ name, thumb, thumbText, tag, kind, removeAttr }) {
+  return `
+    <span class="attach-chip ref-card is-${kind}">
+      <span class="ref-thumb"${thumb ? ` style="--img:url('${thumb}')"` : ''}>${thumb ? '' : `<em>${thumbText}</em>`}</span>
+      <span class="ref-main">
+        <span class="chip-name">${name}</span>
+        <span class="ref-tag is-${kind}">${kind === 'template' ? TPL_ICON : TAG_ICON}<b>${tag}</b></span>
+      </span>
+      <button type="button" ${removeAttr} aria-label="移除 ${name}">${X_ICON}</button>
+    </span>`
+}
+
 function renderChips() {
   let box = $('.attach-chips')
-  if (!activeSkill && !attachments.length) {
+  if (!activeSkill && !activeTemplate && !attachments.length) {
     box?.remove()
     return
   }
   if (!box) {
     box = document.createElement('div')
     box.className = 'attach-chips'
-    input.parentElement.insertBefore(box, $('.prompt-toolbar'))
+    // 引用卡片放在输入框上方（截图里卡片在占位文案之上）
+    input.parentElement.insertBefore(box, input)
   }
+  const templateCard = activeTemplate
+    ? refCardHTML({
+      name: activeTemplate.name,
+      thumb: activeTemplate.cover,
+      thumbText: 'TPL',
+      tag: '模板',
+      kind: 'template',
+      removeAttr: 'data-rm-template',
+    })
+    : ''
+  const fileCards = attachments.map((a, i) => {
+    const kind = a.kind || fileKind(a.name)
+    const meta = FILE_TAGS[kind] ?? FILE_TAGS.文件
+    return refCardHTML({
+      name: a.name,
+      thumb: a.type?.startsWith('image/') ? a.preview ?? '' : '',
+      thumbText: extOf(a.name),
+      tag: meta.label,
+      kind: meta.key,
+      removeAttr: `data-rm="${i}"`,
+    })
+  }).join('')
+
   box.innerHTML = `${activeSkill ? `
     <span class="skill-chip" data-skill-chip>
       ${SKILL_ICON}
       <span class="chip-name">技能 · ${activeSkill.name}</span>
-      <button type="button" data-rm-skill aria-label="取消技能">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
-      </button>
-    </span>` : ''}${attachments.map((a, i) => `
-    <span class="attach-chip">
-      <span class="chip-name">${a.name}</span>
-      <button type="button" data-rm="${i}" aria-label="移除">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
-      </button>
-    </span>`).join('')}`
+      <button type="button" data-rm-skill aria-label="取消技能">${X_ICON}</button>
+    </span>` : ''}${templateCard}${fileCards}`
+
   box.querySelectorAll('[data-rm]').forEach((b) =>
     b.addEventListener('click', () => {
       attachments.splice(Number(b.dataset.rm), 1)
       renderChips()
     }),
   )
+  box.querySelector('[data-rm-template]')?.addEventListener('click', () => {
+    const gone = activeTemplate?.name
+    activeTemplate = null
+    renderChips()
+    if (gone) toast(`已取消引用模板「${gone}」`)
+  })
   box.querySelector('[data-rm-skill]')?.addEventListener('click', () => {
     activeSkill = null
     renderChips()
     toast('已取消技能')
   })
+}
+
+/* 把一张模板卡片设为「引用」：进入它的格式工作台，并把卡片挂到输入框里 */
+/* 首页这批示例模板的格式（自定义模板以 store 里存的 format 为准） */
+const TEMPLATE_FORMATS = {
+  Graha: '文档',
+  'Jelly Canvas': '文档',
+  Olympus: '文档',
+  'Terrace Set': '演示文稿',
+  Reliquary: '文档',
+  Altitude: '演示文稿',
+  Scintilla: '演示文稿',
+}
+
+function referenceTemplate(name, cover = '') {
+  const tpl = (store.state.customTemplates ?? []).find((t) => t.name === name)
+  const format = tpl?.format || TEMPLATE_FORMATS[name] || null
+  activeTemplate = { name, cover: cover || (typeof tpl?.cover === 'string' && tpl.cover.startsWith('data:') ? tpl.cover : '') }
+  const typeMap = { 演示文稿: '演示文稿', 文档: '文档', 社交轮播卡片: '轮播图' }
+  const nextType = format ? typeMap[format] ?? ui.type : ui.type
+  if (!ui.type && nextType) setType(nextType, { quiet: true })
+  else if (!ui.type) setType('演示文稿', { quiet: true })
+  renderChips()
+  input.focus()
+  toast(`已引用模板「${name}」，写一句你想做的东西就能开始`)
 }
 
 function addAttachment(name, meta = {}) {
@@ -367,7 +459,11 @@ function referenceFiles() {
   attachments.forEach((a) => push(a.name, '本次提示词'))
   ;(store.state.gammas ?? []).forEach((g) => (g.attachments ?? []).forEach((a) => push(a.name, `创作「${g.title}」`)))
   ;(store.state.media ?? []).forEach((m) => push(m.name, m.source === 'ai' ? 'AI 生成' : '本地上传'))
-  return out
+  // 媒体库里的图片：引用后卡片上标「图片」而不是笼统的「文件」
+  return out.map((f) => {
+    const media = (store.state.media ?? []).find((m) => m.name === f.name)
+    return media?.type === 'image' ? { ...f, kind: '图片' } : f
+  })
 }
 
 const promptTriggers = initPromptTriggers({
@@ -378,7 +474,7 @@ const promptTriggers = initPromptTriggers({
       toast(`「${file.name}」已在附件里`)
       return
     }
-    addAttachment(file.name, { from: file.from || '对话文件' })
+    addAttachment(file.name, { from: file.from || '对话文件', kind: file.kind })
     toast(`已引用「${file.name}」，随提示词一起提交`)
   },
   listSkills: () => store.state.skills ?? [],
@@ -428,9 +524,11 @@ function submitPrompt() {
     toast(`已应用 ${memCount} 条记忆${hasInstruction ? '与自定义指令' : ''}`)
   }
   const context = attachmentContext()
+  const tpl = activeTemplate
   createGamma({
     prompt: text,
-    origin: 'prompt',
+    origin: tpl ? 'template' : 'prompt',
+    template: tpl?.name ?? null,
     appliedMemory: memCount + (hasInstruction ? 1 : 0),
     attachContext: context,
     attachNames: attachments.map((a) => a.name),
@@ -440,6 +538,7 @@ function submitPrompt() {
   input.style.height = 'auto'
   attachments.length = 0
   activeSkill = null
+  activeTemplate = null
   renderChips()
   syncSendState()
   input.focus()
@@ -462,10 +561,11 @@ function createGamma({ prompt, origin = 'prompt', template = null, silent = fals
   // 设置 → 个性化 → 自动命名：关闭时空白创作使用时间戳占位名，交由用户后续重命名
   const autoTitle = store.state.settings.personalize.autoTitle
   const stamp = new Date(now).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })
-  const title = template
-    ? `模板创作 · ${template}`
-    : prompt
-      ? (autoTitle ? (prompt.length > 18 ? `${prompt.slice(0, 18)}…` : prompt) : `未命名创作 ${stamp}`)
+  // 引用了模板又写了提示词时，标题优先用提示词；只有模板没有提示词才退回模板名
+  const title = prompt
+    ? (autoTitle ? (prompt.length > 18 ? `${prompt.slice(0, 18)}…` : prompt) : `未命名创作 ${stamp}`)
+    : template
+      ? `模板创作 · ${template}`
       : `未命名创作 ${stamp}`
   const gamma = {
     id: uid('g'),
@@ -2175,10 +2275,17 @@ function renderFolders() {
 
 /* ---------------- 模板 / 顶部按钮 / 帮助 ---------------- */
 
+/* 点模板：不再直接生成，而是把它作为「引用」卡片放进输入框（截图效果） */
+function coverOfCard(card) {
+  const styleAttr = card.querySelector('.cover, .rec-cover')?.getAttribute('style') ?? ''
+  const fromCss = /url\(['"]?([^'")]+)['"]?\)/.exec(styleAttr)?.[1]
+  if (fromCss) return fromCss
+  const tpl = (store.state.customTemplates ?? []).find((t) => t.name === card.dataset.template)
+  return typeof tpl?.cover === 'string' && tpl.cover.startsWith('data:') ? tpl.cover : ''
+}
+
 $$('[data-template]').forEach((card) => {
-  card.addEventListener('click', () => {
-    createGamma({ prompt: `使用「${card.dataset.template}」模板风格创作一份${ui.type || '演示文稿'}`, origin: 'template', template: card.dataset.template })
-  })
+  card.addEventListener('click', () => referenceTemplate(card.dataset.template, coverOfCard(card)))
 })
 
 function createBlankGamma() {
