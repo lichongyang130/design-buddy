@@ -25,7 +25,9 @@ import { applyAppChips } from './settings-effects.js'
 import { expertAvatarByName } from './expert-avatars.js'
 import { EXPERT_CATALOG } from './experts-catalog.js'
 import { EXPERT_CAPS, runExpert, resultHTML } from './expert-runtime.js'
+import { runSkill } from './skill-runtime.js'
 import { initAddSubPanels } from './add-menu.js'
+import { initPromptTriggers } from './prompt-triggers.js'
 
 initGlobalUI()
 
@@ -229,26 +231,47 @@ input.addEventListener('input', () => {
   input.style.height = `${Math.min(input.scrollHeight, 160)}px`
 })
 
+/* 通过「/」调用的技能：只对这一次创作生效 */
+let activeSkill = null
+
+const SKILL_ICON = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5 13.8 11.3 12 16l-1.8-4.7L5.5 9.5l4.7-1.8L12 3z"/><path d="M18.5 15l.8 2.1 2.2.8-2.2.8-.8 2.1-.8-2.1-2.2-.8 2.2-.8.8-2.1z"/></svg>'
+
 function renderChips() {
   let box = $('.attach-chips')
+  if (!activeSkill && !attachments.length) {
+    box?.remove()
+    return
+  }
   if (!box) {
     box = document.createElement('div')
     box.className = 'attach-chips'
     input.parentElement.insertBefore(box, $('.prompt-toolbar'))
   }
-  box.innerHTML = attachments.map((a, i) => `
+  box.innerHTML = `${activeSkill ? `
+    <span class="skill-chip" data-skill-chip>
+      ${SKILL_ICON}
+      <span class="chip-name">技能 · ${activeSkill.name}</span>
+      <button type="button" data-rm-skill aria-label="取消技能">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+    </span>` : ''}${attachments.map((a, i) => `
     <span class="attach-chip">
       <span class="chip-name">${a.name}</span>
       <button type="button" data-rm="${i}" aria-label="移除">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
       </button>
-    </span>`).join('')
+    </span>`).join('')}`
   box.querySelectorAll('[data-rm]').forEach((b) =>
     b.addEventListener('click', () => {
       attachments.splice(Number(b.dataset.rm), 1)
       renderChips()
     }),
   )
+  box.querySelector('[data-rm-skill]')?.addEventListener('click', () => {
+    activeSkill = null
+    renderChips()
+    toast('已取消技能')
+  })
 }
 
 function addAttachment(name, meta = {}) {
@@ -271,7 +294,48 @@ function attachmentContext() {
   return `附件清单：\n${head}${bodies ? `\n\n附件正文节选：\n${bodies}` : ''}`
 }
 
+/* ---------------- 输入框里的 @ 引用文件 / / 调用技能 ---------------- */
+
+/** 可以被 @ 引用的文件：本次附件 + 历史创作附件 + 媒体库 */
+function referenceFiles() {
+  const out = []
+  const seen = new Set()
+  const push = (name, from) => {
+    if (!name || seen.has(name)) return
+    seen.add(name)
+    out.push({ name, from })
+  }
+  attachments.forEach((a) => push(a.name, '本次提示词'))
+  ;(store.state.gammas ?? []).forEach((g) => (g.attachments ?? []).forEach((a) => push(a.name, `创作「${g.title}」`)))
+  ;(store.state.media ?? []).forEach((m) => push(m.name, m.source === 'ai' ? 'AI 生成' : '本地上传'))
+  return out
+}
+
+const promptTriggers = initPromptTriggers({
+  input,
+  listFiles: referenceFiles,
+  onPickFile: (file) => {
+    if (attachments.some((a) => a.name === file.name)) {
+      toast(`「${file.name}」已在附件里`)
+      return
+    }
+    addAttachment(file.name, { from: file.from || '对话文件' })
+    toast(`已引用「${file.name}」，随提示词一起提交`)
+  },
+  listSkills: () => store.state.skills ?? [],
+  onPickSkill: (skill) => {
+    if (!skill.enabled) {
+      toast(`「${skill.name}」还没启用，先去技能页开启`)
+      return
+    }
+    activeSkill = { id: skill.id, name: skill.name }
+    renderChips()
+    toast(`已调用技能「${skill.name}」，发送后真实运行`)
+  },
+})
+
 function submitPrompt() {
+  promptTriggers.close()
   const text = input.value.trim()
   if (!text) {
     input.focus()
@@ -307,10 +371,12 @@ function submitPrompt() {
     appliedMemory: memCount + (hasInstruction ? 1 : 0),
     attachContext: context,
     attachNames: attachments.map((a) => a.name),
+    skill: activeSkill?.name ?? null,
   })
   input.value = ''
   input.style.height = 'auto'
   attachments.length = 0
+  activeSkill = null
   renderChips()
   syncSendState()
   input.focus()
@@ -326,7 +392,7 @@ input.addEventListener('keydown', (event) => {
 
 /* ---------------- gamma 生成（模拟流水线，真实落库） ---------------- */
 
-function createGamma({ prompt, origin = 'prompt', template = null, silent = false, attachContext = '', attachNames = null }) {
+function createGamma({ prompt, origin = 'prompt', template = null, silent = false, attachContext = '', attachNames = null, skill = null }) {
   const cost = silent ? 0 : MODE_COST[ui.mode] ?? 3
   store.state.credits -= cost
   const now = Date.now()
@@ -347,6 +413,7 @@ function createGamma({ prompt, origin = 'prompt', template = null, silent = fals
     imgMode: ui.imgMode,
     refType: ui.refType,
     expert: ui.expert,
+    skill,
     template,
     origin,
     attachments: [...attachments],
@@ -362,7 +429,8 @@ function createGamma({ prompt, origin = 'prompt', template = null, silent = fals
   // 真实任务：与这次创作同生共死，模式菜单的「任务」列表直接读它
   store.state.tasks.unshift({
     id: uid('t'), gammaId: gamma.id, name: title, prompt,
-    mode: gamma.mode, type: gamma.type, status: silent ? '已完成' : '排队中',
+    mode: gamma.mode, type: gamma.type, skill: gamma.skill ?? null,
+    status: silent ? '已完成' : '排队中',
     createdAt: now, finishedAt: silent ? now : null, artifact: null,
     files: attachNames ?? gamma.attachments.map((a) => a.name),
   })
@@ -427,6 +495,38 @@ function runGeneration(gamma) {
 }
 
 function showResult(gamma, bodyEl, footEl) {
+  // 用「/」调用了技能：真实跑一遍技能引擎，结果与产物都来自本地实现
+  if (gamma.skill) {
+    const skillPrompt = [gamma.prompt, gamma.attachContext].filter(Boolean).join('\n\n')
+    const result = runSkill(gamma.skill, skillPrompt)
+    if (result) {
+      finishTask(gamma, result.artifacts?.[0]?.name ?? null)
+      const files = (gamma.attachments ?? []).map((a) => a.name)
+      bodyEl.innerHTML = `<p class="modal-copy"><strong>${gamma.skill}</strong> 已运行：${result.title}（${gamma.mode} 模式）${
+        files.length ? `<br />已参考 ${files.length} 个附件：${files.join('、')}` : ''
+      }</p>${resultHTML(result)}`
+      footEl.innerHTML = `
+        <button class="btn btn-ghost" data-skill-again>改一句再来</button>
+        ${result.artifacts?.length ? '<button class="btn btn-ghost" data-skill-download>下载产物</button>' : ''}
+        <button class="btn btn-primary" data-done>完成</button>`
+      footEl.querySelector('[data-done]').addEventListener('click', () => footEl.closest('.modal-mask').remove())
+      footEl.querySelector('[data-skill-download]')?.addEventListener('click', () => {
+        const art = result.artifacts[0]
+        downloadFile(art.name, art.content, art.mime ?? 'text/plain')
+        toast(`已下载 ${art.name}`)
+      })
+      footEl.querySelector('[data-skill-again]').addEventListener('click', () => {
+        footEl.closest('.modal-mask').remove()
+        input.value = gamma.prompt || ''
+        activeSkill = gamma.skill ? { id: null, name: gamma.skill } : null
+        renderChips()
+        syncSendState()
+        input.focus()
+      })
+      return
+    }
+  }
+
   // 选了带真实能力的专家：跑真实引擎，产出真实内容而不是固定五页
   const expertEntry = EXPERT_CATALOG.find((e) => e.name === gamma.expert)
   const cap = expertEntry ? EXPERT_CAPS[expertEntry.id] : null

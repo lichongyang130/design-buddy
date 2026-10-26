@@ -176,6 +176,17 @@
 
           <!-- 提示词输入卡片 -->
           <section class="prompt-card" aria-label="AI 创作输入">
+            <!-- 输入 @ 引用文件 / 输入 / 调用技能 -->
+            <div class="pt-pop" id="mention-pop" hidden role="listbox" aria-label="引用对话中的文件">
+              <div class="pt-head"><span>引用文件</span><em>@</em></div>
+              <div class="pt-list" id="mention-list"></div>
+              <div class="pt-foot">继续输入可筛选 · ↑↓ 选择 · Esc 关闭</div>
+            </div>
+            <div class="pt-pop" id="skill-pop" hidden role="listbox" aria-label="调用技能">
+              <div class="pt-head"><span>调用技能</span><em>/</em></div>
+              <div class="pt-list" id="skill-list"></div>
+              <div class="pt-foot">选中的技能会在这次创作里真实运行</div>
+            </div>
             <textarea
               id="prompt-input"
               rows="2"
