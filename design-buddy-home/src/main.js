@@ -2088,9 +2088,6 @@ $$('[data-nav]').forEach((item) => {
       case '网站':
         openGammaList('网站', alive.filter((g) => g.type === '网站'))
         break
-      case 'API 已生成':
-        openGammaList('API 已生成', alive.filter((g) => g.type === 'API'))
-        break
       case '垃圾箱':
         openGammaList('垃圾箱', store.state.gammas.filter((g) => g.deleted), { trash: true })
         break

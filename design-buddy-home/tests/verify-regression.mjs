@@ -40,7 +40,7 @@ results.push(['css: ws menu card restyled', cssBundle.includes('.ws-menu') && cs
   click(w, doc.body)
   results.push(['home bundle errors', errors.length === 0, errors])
   results.push(['home nav/template counts',
-    doc.querySelectorAll('.nav-item').length === 9
+    doc.querySelectorAll('.nav-item').length === 8
     && doc.querySelectorAll('#template-row .template-card').length === 6
     && doc.querySelectorAll('.rec-card').length === 1])
   results.push(['home three popovers toggle', addOpen && imgOpen && effortOpen])
