@@ -55,7 +55,7 @@ const STATUS_CLASS = { 排队中: 'is-queued', 进行中: 'is-running', 已完�
  * @param {(text:string, files?:Array)=>void} opts.fillPrompt 把计划/任务写回输入框
  * @returns {{ show:(name:string)=>void, hide:()=>void, current:()=>string, refresh:()=>void }}
  */
-export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRefPicker, fillPrompt, onAttachmentsChange }) {
+export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRefPicker, fillPrompt, onAttachmentsChange, closeMenu }) {
   const popover = $('#add-popover')
   const wrap = $('#add-sub')
   if (!popover || !wrap) return { show() {}, hide() {}, current: () => '', refresh() {} }
@@ -235,12 +235,22 @@ export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRe
     },
   }
 
+  // 带子菜单的父行（专家）只保留一个展开态，避免两行同时高亮
+  const syncParentRows = (name) => {
+    rows.filter((r) => r.classList.contains('menu-row-parent')).forEach((r) => {
+      const on = r.dataset.sub === name
+      r.classList.toggle('is-open', on)
+      r.setAttribute('aria-expanded', String(on))
+    })
+  }
+
   const show = (name) => {
     if (!panels.some((p) => p.dataset.subPanel === name)) return
     current = name
     wrap.hidden = false
     panels.forEach((p) => { p.hidden = p.dataset.subPanel !== name })
     rows.forEach((r) => r.classList.toggle('is-sub-active', r.dataset.sub === name))
+    syncParentRows(name)
     RENDERERS[name]?.()
   }
 
@@ -249,7 +259,11 @@ export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRe
     wrap.hidden = true
     panels.forEach((p) => { p.hidden = true })
     rows.forEach((r) => r.classList.remove('is-sub-active'))
+    syncParentRows('')
   }
+
+  // 选中一条计划/任务后整个菜单收起
+  const shutMenu = () => { (closeMenu ?? hide)() }
 
   const refresh = () => { if (current) RENDERERS[current]?.() }
 
@@ -268,6 +282,9 @@ export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRe
 
     const pick = el.closest('[data-pick-files]')
     if (pick) { pickFiles(); return }
+
+    // 文件面板里通往「引用对话中的文件」的入口
+    if (el.closest('[data-open-refs]')) { show('refs'); return }
 
     const refPicker = el.closest('[data-open-ref-picker]')
     if (refPicker) { openRefPicker(); return }
@@ -321,14 +338,14 @@ export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRe
       const g = store.state.gammas.find((x) => x.id === plan.dataset.plan)
       if (!g) return
       fillPrompt(g.prompt, g.attachments ?? [])
-      hide()
+      shutMenu()
       toast('计划已载入输入框')
       return
     }
 
     if (el.closest('[data-plan-sample]')) {
       fillPrompt('给制造业客户做一份数字化方案提案，30 分钟，重点讲降本 20%')
-      hide()
+      shutMenu()
       return
     }
 
@@ -338,7 +355,7 @@ export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRe
       if (!t) return
       if (!t.prompt) { toast('这条任务没有保留提示词'); return }
       fillPrompt(t.prompt, [])
-      hide()
+      shutMenu()
       toast('任务提示词已填回输入框')
       return
     }

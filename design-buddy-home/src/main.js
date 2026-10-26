@@ -883,6 +883,7 @@ const addSub = initAddSubPanels({
   pickFiles: () => fileInput.click(),
   openRefPicker: () => openReferencePicker(),
   onAttachmentsChange: () => renderChips(),
+  closeMenu: () => closePopover(),
   fillPrompt: (text, files = []) => {
     input.value = text
     input.style.height = 'auto'
@@ -898,7 +899,8 @@ function openPopover() {
   if (effortIsOpen()) closeEffort()
   popover.hidden = false
   addBtn.setAttribute('aria-expanded', 'true')
-  addSub.show('experts')
+  // 只要不指向某一行，右侧不显示任何下拉列表
+  addSub.hide()
 }
 function closePopover() {
   popover.hidden = true
@@ -1082,6 +1084,8 @@ popover.addEventListener('click', (event) => {
 })
 
 document.addEventListener('click', (event) => {
+  // 点击的是菜单自己重绘掉的元素（例如技能开关、引用文件）时不要误判为「点到了外面」
+  if (!event.target.isConnected) return
   if (popoverIsOpen() && !popover.contains(event.target) && event.target !== addBtn) closePopover()
 })
 document.addEventListener('keydown', (event) => {

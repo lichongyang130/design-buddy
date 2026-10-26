@@ -1,6 +1,7 @@
 /* ============================================================
    首页「＋」菜单：鼠标指向右侧切换真实内容
-   - 专家 / 技能 / 连接器 / 模式（计划·任务）/ 添加文件 / 引用对话中的文件
+   - 主菜单只有截图里的五行：添加文件 ┃ 模式 / 专家 / 技能 / 连接器
+   - 右侧面板只在鼠标指向某一行时出现
    - 技能启停、连接器连接、文件附件、计划载入、任务进度都写回 store
    ============================================================ */
 
@@ -27,19 +28,23 @@ const hover = (sel) => doc.querySelector(sel).dispatchEvent(new w.MouseEvent('mo
 
 check('home loads without errors', errors.length === 0, errors)
 
-/* ---------- 1. 打开菜单：默认右侧就是专家 ---------- */
+/* ---------- 1. 打开菜单：右侧默认什么都不显示（只有鼠标指向行才出现） ---------- */
 
 click(w, doc.querySelector('#add-menu-btn'))
 await tick()
-check('menu opens with a right-hand panel already showing',
-  !doc.querySelector('#add-popover').hidden && !sub().hidden && visiblePanels().join() === 'experts')
-check('main menu rows all declare a sub panel',
-  [...doc.querySelectorAll('#add-popover [data-sub]')].map((r) => r.dataset.sub).join()
-  === 'files,refs,mode,experts,skills,connectors')
+check('menu opens without any right-hand panel',
+  !doc.querySelector('#add-popover').hidden && sub().hidden && visiblePanels().length === 0)
+check('main menu is exactly the five screenshot rows',
+  [...doc.querySelectorAll('#add-popover .popover-main [data-sub]')].map((r) => r.dataset.sub).join()
+  === 'files,mode,experts,skills,connectors')
+check('main menu labels match the screenshot',
+  [...doc.querySelectorAll('.popover-main .menu-label')].map((l) => l.textContent.trim()).join()
+  === '添加文件,模式,专家,技能,连接器')
+check('main menu has no footer plus button', !doc.querySelector('.popover-footer'))
 
 /* ---------- 2. 鼠标指向即切换：只有一块可见 ---------- */
 
-for (const [row, name] of [['skills', 'skills'], ['connectors', 'connectors'], ['mode', 'mode'], ['files', 'files'], ['refs', 'refs'], ['experts', 'experts']]) {
+for (const [row, name] of [['skills', 'skills'], ['connectors', 'connectors'], ['mode', 'mode'], ['files', 'files'], ['experts', 'experts']]) {
   hover(`[data-sub="${row}"]`)
   await tick()
   check(`hovering ${row} shows only the ${name} panel`, visiblePanels().join() === name)
@@ -47,6 +52,20 @@ for (const [row, name] of [['skills', 'skills'], ['connectors', 'connectors'], [
     doc.querySelector(`[data-sub="${row}"]`).classList.contains('is-sub-active')
     && doc.querySelectorAll('.menu-row.is-sub-active').length === 1)
 }
+
+// 指向专家再指向技能：只能剩一行高亮
+hover('[data-sub="experts"]')
+await tick()
+hover('[data-sub="skills"]')
+await tick()
+check('only one parent row keeps its open state',
+  doc.querySelectorAll('.menu-row-parent.is-open').length === 0
+  && doc.querySelector('[data-sub="skills"]').classList.contains('is-sub-active'))
+
+// 鼠标离开菜单：右侧面板收起
+doc.querySelector('#add-popover').dispatchEvent(new w.MouseEvent('mouseleave'))
+await tick()
+check('moving the pointer out of the menu hides the right panel', sub().hidden)
 
 /* ---------- 3. 技能面板：真实启停 ---------- */
 
@@ -171,10 +190,15 @@ await tick()
 check('remove button drops the attachment',
   doc.querySelectorAll('.attach-chip').length === 0 && panel('files').textContent.includes('还没有附加文件'))
 
-/* ---------- 8. 引用对话中的文件 ---------- */
+/* ---------- 8. 引用对话中的文件（从「添加文件」面板进入） ---------- */
 
-hover('[data-sub="refs"]')
+hover('[data-sub="files"]')
 await tick()
+const refDoor = panel('files').querySelector('[data-open-refs]')
+check('files panel offers the conversation-file entry', !!refDoor)
+click(w, refDoor)
+await tick()
+check('conversation-file entry switches to the refs panel', visiblePanels().join() === 'refs')
 const refItems = [...panel('refs').querySelectorAll('[data-ref-file]')]
 check('reference panel lists conversation files',
   refItems.length >= 10 && panel('refs').querySelector('#add-ref-count').textContent.includes('可选文件'))
