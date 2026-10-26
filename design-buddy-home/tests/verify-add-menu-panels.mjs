@@ -5,7 +5,15 @@
    - 技能启停、连接器连接、文件附件、计划载入、任务进度都写回 store
    ============================================================ */
 
-import { loadPage, click, input, tick, readState, LS_KEY } from './helpers.mjs'
+import fs from 'node:fs'
+import path from 'node:path'
+import { loadPage, click, input, tick, readState, LS_KEY, DIST } from './helpers.mjs'
+
+const cssCompact = fs.readdirSync(path.join(DIST, 'assets'))
+  .filter((f) => f.endsWith('.css'))
+  .map((f) => fs.readFileSync(path.join(DIST, 'assets', f), 'utf8'))
+  .join('\n')
+  .replace(/\s+/g, '')
 
 let passed = 0
 const fails = []
@@ -66,6 +74,36 @@ check('only one parent row keeps its open state',
 doc.querySelector('#add-popover').dispatchEvent(new w.MouseEvent('mouseleave'))
 await tick()
 check('moving the pointer out of the menu hides the right panel', sub().hidden)
+
+/* ---------- 2c. 菜单位置固定：不能「总往上走」 ---------- */
+
+check('menu is anchored to the + button with a fixed gap',
+  cssCompact.includes('.popover{position:absolute;bottom:calc(100%+8px)')
+  && cssCompact.includes('align-items:flex-end'))
+check('panels are bottom-aligned so the main menu never shifts',
+  cssCompact.includes('.popover-main{width:250px;align-self:flex-end')
+  && cssCompact.includes('.popover-sub{') && cssCompact.includes('align-self:flex-end'))
+check('menu height is clamped to the space above the button',
+  cssCompact.includes('max-height:var(--pop-max')
+  && doc.querySelector('#add-popover').style.getPropertyValue('--pop-max').endsWith('px'))
+check('there is a downward fallback when the space above is tight',
+  cssCompact.includes('.popover.is-below{top:calc(100%+10px);bottom:auto'))
+check('narrow screens stack the panels instead of squeezing them',
+  cssCompact.includes('.popover{flex-direction:column-reverse;align-items:stretch'))
+
+const popBox = doc.querySelector('#add-popover')
+const menuMax = popBox.style.getPropertyValue('--pop-max')
+hover('[data-sub="experts"]')
+await tick()
+check('switching panels does not change the anchoring',
+  popBox.style.getPropertyValue('--pop-max') === menuMax
+  && popBox.classList.contains('is-below') === false)
+hover('[data-sub="files"]')
+await tick()
+check('a shorter panel keeps the same anchor too',
+  popBox.style.getPropertyValue('--pop-max') === menuMax)
+check('the open menu fits inside the viewport budget',
+  Number.parseInt(menuMax, 10) <= 620 && Number.parseInt(menuMax, 10) >= 200)
 
 /* ---------- 3. 技能面板：真实启停 ---------- */
 

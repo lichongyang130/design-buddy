@@ -1305,9 +1305,35 @@ const addSub = initAddSubPanels({
   },
 })
 
+/**
+ * 按住「＋」的位置把菜单摆稳：
+ * · 默认向上展开，高度上限 = 按钮上方的真实可用空间（不会顶穿顶栏 / 跑出屏幕）
+ * · 上方实在放不下、下方更宽裕时才翻到下方
+ * 菜单本身按底边对齐（见 styles.css），所以右侧面板换内容时主菜单不会再往上跑。
+ */
+function positionAddPopover() {
+  if (!popover || !addBtn) return
+  const rect = addBtn.getBoundingClientRect()
+  const vh = window.innerHeight || document.documentElement.clientHeight || 800
+  // 量不到真实位置（例如按钮暂时不可见）时不要瞎翻方向：保持默认的向上展开
+  if (!rect.width && !rect.height && !rect.top) {
+    popover.classList.remove('is-below')
+    popover.style.setProperty('--pop-max', '620px')
+    return
+  }
+  const margin = 16
+  const above = rect.top - margin
+  const below = vh - rect.bottom - margin
+  const flip = above < 300 && below > above
+  popover.classList.toggle('is-below', flip)
+  const max = Math.max(200, Math.min(flip ? below : above, 620))
+  popover.style.setProperty('--pop-max', `${Math.round(max)}px`)
+}
+
 function openPopover() {
   if (imgPopover && !imgPopover.hidden) closeImgPopover()
   if (effortIsOpen()) closeEffort()
+  positionAddPopover()
   popover.hidden = false
   addBtn.setAttribute('aria-expanded', 'true')
   // 只要不指向某一行，右侧不显示任何下拉列表
@@ -1338,6 +1364,10 @@ addBtn.addEventListener('click', (event) => {
   event.stopPropagation()
   popoverIsOpen() ? closePopover() : openPopover()
 })
+
+// 窗口变化或页面滚动时重新贴着按钮摆（菜单开着才处理）
+window.addEventListener('resize', () => { if (popoverIsOpen()) positionAddPopover() })
+window.addEventListener('scroll', () => { if (popoverIsOpen()) positionAddPopover() }, { passive: true })
 expertRow.addEventListener('mouseenter', openExpertSub)
 expertRow.addEventListener('click', (event) => {
   event.stopPropagation()

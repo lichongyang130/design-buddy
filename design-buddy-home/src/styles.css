@@ -1282,14 +1282,28 @@ a:focus-visible {
 
 .popover {
   position: absolute;
-  bottom: 100%;
+  /* 与「＋」按钮留出 8px 间距，菜单始终贴着按钮往上长 */
+  bottom: calc(100% + 8px);
   left: 0;
   display: flex;
-  align-items: flex-start;
+  /* 关键：两块面板底边对齐。
+     右侧面板高度随鼠标指向的行变化，如果顶部对齐（flex-start），
+     整个菜单的高度一变，顶边就会被顶上去，看起来「总往上走」；
+     底边对齐后主菜单纹丝不动，只有右侧面板向上延伸。 */
+  align-items: flex-end;
   gap: 10px;
   z-index: 60;
-  /* 防止被输入卡片的圆角裁切或遮挡 */
+  /* JS 会按按钮上方的真实空间写入 --pop-max */
+  max-height: var(--pop-max, min(70vh, 560px));
   animation: pop-in 0.16s ease both;
+}
+
+/* 上方空间不够时，菜单改到按钮下方展开（同样底/顶边对齐，不再乱跳） */
+.popover.is-below {
+  top: calc(100% + 10px);
+  bottom: auto;
+  align-items: flex-start;
+  transform-origin: top left;
 }
 
 .popover[hidden] {
@@ -1322,16 +1336,31 @@ a:focus-visible {
 .popover-main {
   width: 250px;
   flex: none;
+  /* 主菜单永远贴住底边，自己不被压缩 */
+  align-self: flex-end;
+  flex: none;
+  max-height: var(--pop-max, min(70vh, 560px));
+  overflow-y: auto;
 }
 
-/* 二级面板与主菜单顶部对齐（同为 flex-start，不再手动下压） */
+.popover.is-below .popover-main {
+  align-self: flex-start;
+}
+
+/* 二级面板：底边与主菜单对齐，高度上限来自 --pop-max，超出内部滚动 */
 .popover-sub {
   width: 320px;
   flex: none;
+  align-self: flex-end;
   margin-top: 0;
-  max-height: min(430px, 62vh);
+  max-height: var(--pop-max, min(430px, 62vh));
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 8px;
+}
+
+.popover.is-below .popover-sub {
+  align-self: flex-start;
 }
 
 .popover-sub[hidden] {
@@ -1532,13 +1561,34 @@ a:focus-visible {
 
 /* 窄屏：子菜单改到主菜单下方，避免横向溢出 */
 @media (max-width: 900px) {
+  /* 窄屏放不下并排的二级面板：改成上下叠放，
+     主菜单贴着按钮（column-reverse），二级面板向上长，底边依然不动 */
   .popover {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    max-height: var(--pop-max, min(70vh, 560px));
+  }
+
+  .popover.is-below {
     flex-direction: column;
   }
 
+  .popover-main,
   .popover-sub {
+    align-self: stretch;
+    max-height: none;
+  }
+
+  .popover-main {
+    flex: 0 0 auto;
+  }
+
+  .popover-sub {
+    flex: 1 1 auto;
+    min-height: 0;
     margin-top: 0;
-    width: 272px;
+    width: min(272px, calc(100vw - 80px));
+    overflow-y: auto;
   }
 }
 
