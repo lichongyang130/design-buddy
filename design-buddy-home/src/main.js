@@ -38,8 +38,14 @@ function applySmartSuggest() {
   if (!row) return
   const label = row.previousElementSibling?.classList.contains('section-label') ? row.previousElementSibling : null
   const show = store.state.settings.personalize.smartSuggest
-  row.hidden = !show
+  row.hidden = !show || row.dataset.workView === 'workspace'
   if (label) label.hidden = !show
+  ;['.examples', '.work-tabs'].forEach((sel) => {
+    const el = document.querySelector(sel)
+    if (el) el.hidden = !show
+  })
+  const work = document.querySelector('#work-grid')
+  if (work && !show) work.hidden = true
 }
 applySmartSuggest()
 applyAppChips()
@@ -334,6 +340,7 @@ function createGamma({ prompt, origin = 'prompt', template = null, silent = fals
   addSub.refresh()
   if (!silent) runGeneration(gamma)
   renderFolders()
+  renderWork()
   return gamma
 }
 
@@ -442,21 +449,239 @@ function showResult(gamma, bodyEl, footEl) {
   })
 }
 
-/* ---------------- 创作类型 chips ---------------- */
+/* ---------------- 创作类型：工具栏胶囊 + 下拉列表 ---------------- */
 
-$$('[data-chip]').forEach((chip) => {
-  if (chip.textContent.trim() === ui.type) {
-    $$('[data-chip]').forEach((c) => c.classList.remove('chip-active'))
-    chip.classList.add('chip-active')
-  }
-  chip.addEventListener('click', () => {
-    $$('[data-chip]').forEach((item) => item.classList.remove('chip-active'))
-    chip.classList.add('chip-active')
+const typeWrap = $('#type-chips')
+const typePill = $('#type-pill')
+const typePillBtn = $('#type-pill-btn')
+const typePillLabel = $('#type-pill-label')
+const typePillX = $('#type-pill-x')
+
+const typeChips = () => $$('[data-chip]')
+const typeMenuOpen = () => !!typeWrap && !typeWrap.hidden
+
+function syncTypeUI() {
+  typeChips().forEach((chip) => {
+    chip.classList.toggle('chip-active', chip.textContent.trim() === ui.type)
+  })
+  typePillLabel.textContent = ui.type || '类型'
+  typePill?.classList.toggle('is-off', !ui.type)
+  typePillBtn?.setAttribute('aria-expanded', String(typeMenuOpen()))
+}
+syncTypeUI()
+
+typePillBtn?.addEventListener('click', (event) => {
+  event.stopPropagation()
+  if (!typeWrap) return
+  typeWrap.hidden = !typeWrap.hidden
+  syncTypeUI()
+})
+
+// 胶囊上的 ×：清空类型（下一次创作不再限定格式）
+typePillX?.addEventListener('click', (event) => {
+  event.stopPropagation()
+  ui.type = null
+  store.save()
+  syncTypeUI()
+  toast('已清除创作类型')
+})
+
+typeChips().forEach((chip) => {
+  chip.addEventListener('click', (event) => {
+    event.stopPropagation()
     ui.type = chip.textContent.trim()
     store.save()
+    if (typeWrap) typeWrap.hidden = true
+    syncTypeUI()
     toast(`创作类型：${ui.type}`)
   })
 })
+
+document.addEventListener('click', (event) => {
+  if (typeMenuOpen() && !event.target.closest('.type-menu-wrap')) {
+    typeWrap.hidden = true
+    syncTypeUI()
+  }
+})
+
+/* ---------------- 顶栏返回 ---------------- */
+
+$('#back-btn')?.addEventListener('click', () => {
+  if (history.length > 1) history.back()
+  else {
+    location.href = 'index.html'
+  }
+})
+
+/* ---------------- 示例指令：分类 + 四条可开工的提示 ---------------- */
+
+const EXAMPLE_LIBRARY = {
+  '设计与产品': [
+    '产品设计师的演示讲故事技巧',
+    '设计冲刺议程',
+    '客户反馈主题',
+    '数据驱动的设计最佳实践',
+  ],
+  '市场与增长': [
+    '季度增长复盘：渠道与转化率拆解',
+    '新品发布会的媒体沟通方案',
+    '私域社群的月度运营计划',
+    '一次投放测试的复盘模板',
+  ],
+  '教育与培训': [
+    '给新员工的产品入门课大纲',
+    '把一次内部培训做成可复用课件',
+    '面向家长的课程介绍演示',
+    '结课汇报的评分标准',
+  ],
+  '商业与融资': [
+    'A 轮融资路演大纲（10 页）',
+    '向客户提案的报价结构',
+    '半年经营分析：收入与成本',
+    '一人公司的商业模式九宫格',
+  ],
+}
+
+const exampleState = { cat: '设计与产品' }
+const exampleGrid = $('#example-grid')
+const exampleMenu = $('#example-cat-menu')
+const exampleCatBtn = $('#example-cat-btn')
+const exampleCatLabel = $('#example-cat-label')
+
+const ARROW_ICON = '<svg class="icon example-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>'
+
+function renderExamples() {
+  if (!exampleGrid) return
+  exampleCatLabel.textContent = exampleState.cat
+  exampleMenu.innerHTML = Object.keys(EXAMPLE_LIBRARY).map((name) => `
+    <button class="example-cat-item${name === exampleState.cat ? ' is-active' : ''}" type="button" role="menuitem" data-example-cat="${name}">${name}</button>`).join('')
+  exampleGrid.innerHTML = EXAMPLE_LIBRARY[exampleState.cat].map((text) => `
+    <button class="example-card" type="button" data-example="${text}">
+      <span class="example-card-text">${text}</span>
+      ${ARROW_ICON}
+    </button>`).join('')
+}
+renderExamples()
+
+exampleCatBtn?.addEventListener('click', (event) => {
+  event.stopPropagation()
+  exampleMenu.hidden = !exampleMenu.hidden
+  exampleCatBtn.setAttribute('aria-expanded', String(!exampleMenu.hidden))
+})
+
+exampleMenu?.addEventListener('click', (event) => {
+  const item = event.target.closest('[data-example-cat]')
+  if (!item) return
+  exampleState.cat = item.dataset.exampleCat
+  exampleMenu.hidden = true
+  exampleCatBtn.setAttribute('aria-expanded', 'false')
+  renderExamples()
+})
+
+exampleGrid?.addEventListener('click', (event) => {
+  const card = event.target.closest('[data-example]')
+  if (!card) return
+  input.value = card.dataset.example
+  input.style.height = 'auto'
+  input.style.height = `${Math.min(input.scrollHeight, 160)}px`
+  syncSendState()
+  input.focus()
+  toast('示例指令已填入，可直接发送')
+})
+
+/* ---------------- 工作区 / 探索 ---------------- */
+
+const workGrid = $('#work-grid')
+const templateRow = $('#template-row')
+let workTab = 'explore'
+
+function renderWork() {
+  if (!workGrid || !templateRow) return
+  const isWork = workTab === 'workspace'
+  templateRow.dataset.workView = workTab
+  templateRow.hidden = isWork || !store.state.settings.personalize.smartSuggest
+  workGrid.hidden = !isWork
+  $$('[data-work-tab]').forEach((tab) => {
+    const on = tab.dataset.workTab === workTab
+    tab.classList.toggle('is-active', on)
+    tab.setAttribute('aria-selected', String(on))
+  })
+  if (!isWork) return
+  const list = (store.state.gammas ?? []).filter((g) => !g.deleted).slice(0, 8)
+  workGrid.innerHTML = list.length ? list.map((g, i) => `
+    <button class="work-item" type="button" data-work-gamma="${g.id}">
+      <span class="work-item-cover" style="background:linear-gradient(160deg, hsl(${(i * 47) % 360} 55% 82%), hsl(${(i * 47 + 40) % 360} 45% 66%))">
+        <span>${(g.title || '未命名创作').slice(0, 28)}</span>
+      </span>
+      <span class="work-item-meta">${g.type || '演示文稿'} · ${g.mode || '标准'} · ${fmtDate(g.createdAt)}</span>
+    </button>`).join('')
+    : `<div class="work-empty">工作区还没有内容。在输入框写一句话发送，创作会出现在这里。</div>`
+}
+
+$$('[data-work-tab]').forEach((tab) => {
+  tab.addEventListener('click', () => {
+    workTab = tab.dataset.workTab
+    renderWork()
+  })
+})
+
+store.subscribe(() => renderWork())
+
+workGrid?.addEventListener('click', (event) => {
+  const item = event.target.closest('[data-work-gamma]')
+  if (!item) return
+  const g = store.state.gammas.find((x) => x.id === item.dataset.workGamma)
+  if (!g) return
+  if (g.prompt) {
+    input.value = g.prompt
+    syncSendState()
+    input.focus()
+    toast('已把这条创作的提示词填回输入框')
+  } else {
+    toast('这条创作没有保留提示词')
+  }
+})
+
+/* ---------------- 上传模板：真实读取图片作为封面 ---------------- */
+
+const tplInput = document.createElement('input')
+tplInput.type = 'file'
+tplInput.accept = 'image/*'
+tplInput.hidden = true
+document.body.append(tplInput)
+
+tplInput.addEventListener('change', () => {
+  const file = tplInput.files?.[0]
+  tplInput.value = ''
+  if (!file) return
+  if (!file.type.startsWith('image/')) { toast('请选择图片文件'); return }
+  const finish = (cover) => {
+    const name = file.name.replace(/\.[^.]+$/, '') || '我的模板'
+    store.state.customTemplates = store.state.customTemplates ?? []
+    store.state.customTemplates.unshift({
+      id: uid('tpl'), name, cls: null, a: name, b: '',
+      format: ui.type || '演示文稿',
+      cats: ['由您上传'], cover, archived: false, createdAt: Date.now(),
+    })
+    store.save()
+    toast(`模板「${name}」已上传，可在模板页的「由您创建」里使用`)
+  }
+  if (file.size > 1.6 * 1024 * 1024) {
+    finish('#3b6ef6')
+    toast('图片较大，已只保留模板信息')
+    return
+  }
+  try {
+    const reader = new FileReader()
+    reader.onload = () => finish(String(reader.result))
+    reader.onerror = () => finish('#3b6ef6')
+    reader.readAsDataURL(file)
+  } catch {
+    finish('#3b6ef6')
+  }
+})
+
+$('#upload-template-btn')?.addEventListener('click', () => tplInput.click())
 
 /* ---------------- 调整参数弹层 ---------------- */
 
@@ -551,6 +776,20 @@ const expertList = $('#expert-list')
 
 const EXPERT_X_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>'
 
+/* 工具栏排布：无专家时 [＋][参数][类型]；有专家时 [＋][参数][专家]，类型胶囊挪到右侧 */
+function placeToolbarItems() {
+  const left = $('.toolbar-left')
+  const right = $('.toolbar-right')
+  const typeWrapEl = $('.type-menu-wrap')
+  const chip = $('#prompt-expert')
+  if (!left || !right || !typeWrapEl) return
+  if (chip) {
+    if (typeWrapEl.parentElement !== right) right.insertBefore(typeWrapEl, right.firstChild)
+  } else if (typeWrapEl.parentElement !== left) {
+    left.appendChild(typeWrapEl)
+  }
+}
+
 function renderPromptExpert() {
   const left = $('.toolbar-left')
   if (!left) return
@@ -573,11 +812,13 @@ function renderPromptExpert() {
       store.save()
       renderExperts()
       renderPromptExpert()
+      placeToolbarItems()
       toast(`已取消召唤「${gone}」`)
     })
     // 加在「+」和参数按钮之后，即工具栏左侧第三项
     left.appendChild(chip)
   }
+  placeToolbarItems()
   chip.title = `当前专家：${name}，点击取消`
   chip.setAttribute('aria-label', `当前专家 ${name}，点击取消`)
   chip.innerHTML = `
@@ -716,6 +957,7 @@ expertSearch.addEventListener('click', (event) => event.stopPropagation())
 // 隐藏文件选择器（添加文件）
 const fileInput = document.createElement('input')
 fileInput.type = 'file'
+fileInput.id = 'add-file-input'
 fileInput.multiple = true
 fileInput.accept = '.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.md,.json,.html,.css,.js,.ts,.png,.jpg,.jpeg,.webp,.gif,.svg'
 fileInput.hidden = true
@@ -1252,5 +1494,6 @@ document.addEventListener('keydown', (e) => {
 
 buildWorkspaceMenu()
 renderFolders()
+renderWork()
 syncChrome()
 syncSendState()

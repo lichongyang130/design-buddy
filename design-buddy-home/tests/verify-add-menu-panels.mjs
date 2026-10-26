@@ -151,7 +151,7 @@ hover('[data-sub="files"]')
 await tick()
 check('files panel explains what is supported and offers a picker',
   !!panel('files').querySelector('[data-pick-files]') && panel('files').textContent.includes('PDF'))
-const fileInput = [...doc.querySelectorAll('input[type="file"]')].find((i) => i.id !== 'ref-file-input')
+const fileInput = doc.querySelector('#add-file-input')
 Object.defineProperty(fileInput, 'files', {
   value: [new w.File(['渠道,订单数\n自然搜索,120\n信息流,86'], 'q3-orders.csv', { type: 'text/csv', lastModified: Date.now() })],
   configurable: true,

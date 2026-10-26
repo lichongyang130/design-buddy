@@ -146,16 +146,22 @@
       <!-- ============ 主区域 ============ -->
       <main class="main">
         <header class="topbar">
-          <button class="pill pill-upgrade" type="button">
-            <svg class="icon sparkle" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2zM19 15l.9 2.6L22.5 18.5l-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9L19 15z"/></svg>
-            升级获得更多 AI 功能
-          </button>
+          <div class="topbar-left">
+            <button class="pill pill-back" id="back-btn" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              返回
+            </button>
+            <button class="pill pill-upgrade" type="button">
+              <svg class="icon sparkle" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2zM19 15l.9 2.6L22.5 18.5l-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9L19 15z"/></svg>
+              升级获得更多 AI 功能
+            </button>
+          </div>
           <div class="topbar-right">
             <button class="pill" type="button">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
               从空白新建
             </button>
-            <div class="credits" title="剩余积分">
+            <div class="pill credits" title="剩余积分">
               <svg class="icon sparkle navy" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2zM19 15l.9 2.6L22.5 18.5l-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9L19 15z"/></svg>
               <strong>236</strong>
             </div>
@@ -163,15 +169,17 @@
         </header>
 
         <div class="content">
-          <img class="mascot" src="/mascot.png" alt="Design Buddy 企鹅吉祥物" />
-          <h1 class="hero-title">随时准备好，等您开始</h1>
+          <figure class="hero-figure">
+            <img class="hero-photo" src="/covers/hero.jpg" alt="黄昏里的弧顶建筑与彩虹广场" />
+          </figure>
+          <h1 class="hero-title">你的笔记，美得令人惊艳</h1>
 
           <!-- 提示词输入卡片 -->
           <section class="prompt-card" aria-label="AI 创作输入">
             <textarea
               id="prompt-input"
               rows="2"
-              placeholder="创建一个 4 页幻灯片的 [event] 邀请函：活动介绍、时间与地点、议程安排以及如何回复确认。设计要充满节日气氛。"
+              placeholder="描述您的演示主题"
             ></textarea>
             <div class="prompt-toolbar">
               <div class="toolbar-left">
@@ -334,6 +342,44 @@
                 <button class="tool-btn tool-btn-flat" type="button" aria-label="调整参数">
                   <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
                 </button>
+
+                <!-- 创作类型：胶囊 + 下拉列表（列表项保留 [data-chip] 契约） -->
+                <div class="type-menu-wrap">
+                  <span class="type-pill" id="type-pill">
+                    <button class="type-pill-main" type="button" id="type-pill-btn" aria-haspopup="true" aria-expanded="false">
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                      <span class="type-pill-label" id="type-pill-label">演示文稿</span>
+                    </button>
+                    <button class="type-pill-x" type="button" id="type-pill-x" aria-label="清除创作类型">×</button>
+                  </span>
+
+                  <div class="type-chips" id="type-chips" role="group" aria-label="创作类型" hidden>
+                    <button class="chip chip-active" type="button" data-chip>
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                      演示文稿
+                    </button>
+                    <button class="chip" type="button" data-chip>
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+                      文档
+                    </button>
+                    <button class="chip" type="button" data-chip>
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="M7 4v16M17 4v16"/></svg>
+                      轮播图
+                    </button>
+                    <button class="chip" type="button" data-chip>
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                      图片
+                    </button>
+                    <button class="chip" type="button" data-chip>
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l3.5-1 11-11a2.12 2.12 0 0 0-3-3l-11 11L3 21z"/><line x1="14" y1="7" x2="17" y2="10"/></svg>
+                      美化
+                    </button>
+                    <button class="chip" type="button" data-chip>
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      导入
+                    </button>
+                  </div>
+                </div>
               </div>
               <div class="toolbar-right">
                 <div class="img-menu-wrap">
@@ -428,91 +474,80 @@
             </div>
           </section>
 
-          <!-- 创作类型 -->
-          <div class="type-chips" role="group" aria-label="创作类型">
-            <button class="chip chip-active" type="button" data-chip>
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-              演示文稿
+          <!-- 示例指令：分类切换 + 四条可直接开工的提示 -->
+          <section class="examples" aria-label="示例指令">
+            <div class="examples-head">
+              <h2 class="section-label">示例指令</h2>
+              <div class="example-cat-wrap">
+                <button class="example-cat" id="example-cat-btn" type="button" aria-haspopup="true" aria-expanded="false">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+                  <span id="example-cat-label">设计与产品</span>
+                  <svg class="icon tiny" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="example-cat-menu" id="example-cat-menu" hidden role="menu" aria-label="示例分类"></div>
+              </div>
+            </div>
+            <div class="example-grid" id="example-grid"></div>
+          </section>
+
+          <!-- 模板入口 -->
+          <div class="template-cta">
+            <button class="pill pill-browse pill-outline" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              浏览模板
             </button>
-            <button class="chip" type="button" data-chip>
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
-              文档
-            </button>
-            <button class="chip" type="button" data-chip>
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="M7 4v16M17 4v16"/></svg>
-              轮播图
-            </button>
-            <button class="chip" type="button" data-chip>
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              图片
-            </button>
-            <button class="chip" type="button" data-chip>
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l3.5-1 11-11a2.12 2.12 0 0 0-3-3l-11 11L3 21z"/><line x1="14" y1="7" x2="17" y2="10"/></svg>
-              美化
-            </button>
-            <button class="chip" type="button" data-chip>
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              导入
+            <button class="pill pill-upload" id="upload-template-btn" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              上传模板
             </button>
           </div>
 
-          <!-- 推荐模板 -->
-          <h2 class="section-label">推荐模板</h2>
-          <div class="template-row">
+          <!-- 工作区 / 探索 -->
+          <div class="work-tabs" role="tablist" aria-label="模板视图">
+            <button class="work-tab" type="button" role="tab" data-work-tab="workspace" aria-selected="false">工作区</button>
+            <button class="work-tab is-active" type="button" role="tab" data-work-tab="explore" aria-selected="true">探索</button>
+          </div>
+
+          <div class="template-row" id="template-row">
             <article class="template-card" data-template="Graha">
-              <div class="cover cover-graha">
-                <span class="cover-kicker">GRAHA</span>
-                <span class="cover-title">NINE MOONS</span>
-                <span class="cover-tag">51 REVIEW</span>
-                <span class="planet"></span>
+              <div class="cover" style="--img:url('/covers/cover-1.jpg')">
+                <span class="cover-label bottom">Digging up<br />the past</span>
               </div>
               <p class="template-name">Graha</p>
             </article>
             <article class="template-card" data-template="Jelly Canvas">
-              <div class="cover cover-jelly">
-                <span class="coin"></span>
-                <span class="jelly-cross"></span>
-                <span class="cover-title dark">PONDLIGHT 3</span>
+              <div class="cover" style="--img:url('/covers/cover-2.jpg')">
+                <span class="cover-label bottom bold">WHERE THE<br />WATER ENDS</span>
               </div>
               <p class="template-name">Jelly Canvas</p>
             </article>
             <article class="template-card" data-template="Olympus">
-              <div class="cover cover-olympus">
-                <span class="temple"></span>
-                <span class="cover-bar">HEROES, MONSTERS, AND MISTAKES</span>
+              <div class="cover" style="--img:url('/covers/cover-3.jpg')">
+                <span class="cover-label top ink">Signs meant<br />to be seen</span>
               </div>
               <p class="template-name">Olympus</p>
             </article>
             <article class="template-card" data-template="Terrace Set">
-              <div class="cover cover-terrace">
-                <span class="badge-421">421</span>
-                <span class="stack s1"></span>
-                <span class="stack s2"></span>
-                <span class="cover-title serif">A gig tonight,<br />on a rooftop near you.</span>
+              <div class="cover" style="--img:url('/covers/cover-4.jpg')">
+                <span class="cover-label top ink">Nudges and<br />choices</span>
               </div>
               <p class="template-name">Terrace Set</p>
             </article>
             <article class="template-card" data-template="Reliquary">
-              <div class="cover cover-reliquary">
-                <span class="candle c1"></span>
-                <span class="candle c2"></span>
-                <span class="candle c3"></span>
-                <span class="cover-title serif brown">The Reliquary<br />Collection</span>
+              <div class="cover" style="--img:url('/covers/cover-5.jpg')">
+                <span class="cover-label bottom ink">A quiet kind<br />of order</span>
               </div>
               <p class="template-name">Reliquary</p>
             </article>
             <article class="template-card" data-template="Altitude">
-              <div class="cover cover-altitude">
-                <span class="wave w1"></span>
-                <span class="wave w2"></span>
-                <span class="cover-kicker light">Q3 business</span>
-                <span class="cover-title light">review</span>
+              <div class="cover" style="--img:url('/covers/cover-6.jpg')">
+                <span class="cover-label bottom ink">Shapes that<br />speak</span>
               </div>
               <p class="template-name">Altitude</p>
             </article>
           </div>
 
-          <button class="pill pill-outline" type="button">查看所有模板</button>
+          <div class="work-grid" id="work-grid" hidden></div>
         </div>
 
         <button class="help-fab" type="button" aria-label="帮助">?</button>
