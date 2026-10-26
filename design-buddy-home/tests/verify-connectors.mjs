@@ -108,7 +108,7 @@ await tick()
 check('clearing search restores grid', cards().length === CONNECTOR_CATALOG.length + 1)
 
 /* ---------- 4. 连接 / 断开 ---------- */
-click(w, doc.querySelector('[data-cn-name="通达信"]'))
+click(w, doc.querySelector('[data-cn-name="通达信"] [data-cn-toggle]'))
 await tick()
 check('clicking + connects and persists',
   readState(storage).connectors.find((c) => c.name === '通达信')?.connected === true)
@@ -119,18 +119,18 @@ check('connected card flips to check and keeps details',
 check('connect toast shown',
   [...doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('通达信 已连接')))
 
-click(w, doc.querySelector('[data-cn-name="通达信"]'))
+click(w, doc.querySelector('[data-cn-name="通达信"] [data-cn-toggle]'))
 await tick()
 check('clicking again disconnects', readState(storage).connectors.find((c) => c.name === '通达信')?.connected === false)
 check('disconnected card returns to plus',
   doc.querySelector('[data-cn-name="通达信"] .cn-plus').textContent === '+'
   && !doc.querySelector('[data-cn-name="通达信"]').classList.contains('is-connected'))
 
-click(w, doc.querySelector('[data-cn-name="GitHub"]'))
+click(w, doc.querySelector('[data-cn-name="GitHub"] [data-cn-toggle]'))
 await tick()
 check('disconnecting a seeded connector persists',
   readState(storage).connectors.find((c) => c.name === 'GitHub')?.connected === false)
-click(w, doc.querySelector('[data-cn-name="GitHub"]'))
+click(w, doc.querySelector('[data-cn-name="GitHub"] [data-cn-toggle]'))
 await tick()
 
 /* ---------- 5. 自定义连接器：表单 → 持久化 → 出现在列表 ---------- */

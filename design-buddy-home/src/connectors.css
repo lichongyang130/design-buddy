@@ -201,3 +201,294 @@
   .connectors-page .ex-top-tabs { gap: 16px; }
   .connectors-page .ex-top-tab { font-size: 15.5px; }
 }
+
+/* ============================================================
+   连接器卡片成为「可打开」的表面：点卡片测试，点 + 连接
+   ============================================================ */
+
+.cn-card {
+  cursor: pointer;
+  outline: none;
+}
+
+.cn-card:focus-visible {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(59, 110, 246, 0.14);
+}
+
+.cn-card .cn-plus {
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1;
+}
+
+.cn-card .cn-plus:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: var(--blue-bg);
+}
+
+.cn-card .cn-plus.is-connected:hover {
+  border-color: rgba(196, 92, 79, 0.5);
+  color: #c45c4f;
+  background: rgba(196, 92, 79, 0.1);
+}
+
+.cn-grid-tip {
+  margin: 20px 0 -6px;
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+
+/* ---------- 连接测试面板 ---------- */
+
+.connectors-page .cn-test {
+  margin-top: 20px;
+  padding: 18px 20px 20px;
+  border: 1px solid #e3e7ef;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #fbfcff 0%, #f6f8fc 100%);
+  box-shadow: 0 14px 40px rgba(23, 43, 92, 0.08);
+}
+
+.connectors-page .cn-test[hidden] {
+  display: none;
+}
+
+.cn-test-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cn-test-ident {
+  flex: 1;
+  min-width: 0;
+}
+
+.cn-test-ident h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15.5px;
+  color: var(--navy);
+}
+
+.cn-test-ident p {
+  margin-top: 3px;
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+.cn-test-tag {
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: var(--blue-bg);
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.cn-test-state {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+
+.cn-state {
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #f0f2f7;
+  color: var(--text-2);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.cn-state.is-on {
+  background: rgba(76, 175, 125, 0.14);
+  color: #2f7d57;
+}
+
+.cn-state-btn {
+  padding: 4px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 12px;
+  color: var(--text);
+}
+
+.cn-state-btn:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.cn-test-close {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text-2);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.cn-test-close:hover {
+  color: var(--navy);
+}
+
+.cn-test-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.cn-test-cap {
+  padding: 3px 9px;
+  border-radius: 7px;
+  background: #fff;
+  border: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--text);
+}
+
+.cn-test-hint {
+  font-size: 11.5px;
+  color: var(--text-3);
+}
+
+.cn-test-input {
+  width: 100%;
+  margin-top: 10px;
+  padding: 11px 13px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #fff;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text);
+  resize: vertical;
+  outline: none;
+}
+
+.cn-test-input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(59, 110, 246, 0.12);
+}
+
+.cn-test-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.cn-run-btn {
+  padding: 9px 20px;
+  border-radius: 10px;
+  background: var(--navy);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.cn-run-btn:hover {
+  background: #16223d;
+}
+
+.cn-run-ghost {
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.cn-run-ghost:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.cn-test-out {
+  margin-top: 16px;
+}
+
+.cn-test-summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 12px 14px;
+  border: 1px solid #e3e7ef;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+.cn-test-summary b {
+  color: var(--navy);
+  font-size: 13.5px;
+}
+
+.cn-req {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.cn-req.is-ok {
+  background: rgba(76, 175, 125, 0.14);
+  color: #2f7d57;
+}
+
+.cn-req.is-bad {
+  background: rgba(196, 92, 79, 0.14);
+  color: #a4372e;
+}
+
+.cn-test-data {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+}
+
+.cn-test-data > h4 {
+  margin-bottom: 10px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--text-2);
+}
+
+.cn-test-out-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.cn-run-empty {
+  margin: 0;
+  padding: 14px;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--text-3);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .connectors-page .cn-test { padding: 14px; }
+  .cn-test-state { flex-direction: column; align-items: flex-end; }
+}

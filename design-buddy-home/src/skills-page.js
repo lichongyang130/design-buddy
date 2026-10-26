@@ -10,12 +10,14 @@ import './rail-flyout.js'
 import { requireAuth } from './auth.js'
 requireAuth()
 import './skills.css'
-import { store, toast, uid, confirmModal } from './core.js'
+import { store, toast, uid, confirmModal, downloadFile } from './core.js'
 import { initGlobalUI, openExperts } from './global-ui.js'
 import { SKILL_REGISTRY, hasUpdate, registryEntry, SEED_SKILL_VERSION } from './skill-registry.js'
 import {
   FEATURED_SKILLS, FEATURED_SIZE, SKILL_FILTERS, PAGE_SKILLS, DISCOVERY_SKILLS, SKILL_META, formatCount,
 } from './skills-catalog.js'
+import { resultHTML } from './expert-runtime.js'
+import { skillCap, runSkill } from './skill-runtime.js'
 
 initGlobalUI()
 
@@ -105,7 +107,7 @@ const featuredSlice = () => Array.from(
 const renderFeatured = () => {
   const names = installedNames()
   $('#sk-feature-track').innerHTML = featuredSlice().map((f) => `
-    <div class="sk-feature-card" data-feature-card="${f.id}">
+    <div class="sk-feature-card" data-feature-card="${f.id}" data-sk-name="${f.name}" tabindex="0">
       ${popoverHtml(f.name, f.category, f.space, f.updatedAt)}
       ${headHtml(f, { installed: names.has(f.name), attr: 'data-featured-install' })}
       ${STATS(f.usage, f.downloads)}
@@ -132,8 +134,9 @@ const renderInstalledGrid = () => {
   const autoUpdate = store.state.settings.skillAutoUpdate
   // 自动更新被关掉时给一条明确提示（原先在弹窗左侧栏顶部）
   const paused = autoUpdate ? '' : '<p class="sk-paused">技能自动更新已暂停，可在设置中恢复，或使用「检查更新」手动升级。</p>'
-  $('#sk-grid').innerHTML = paused + (list.length ? list.map((s) => `
-    <div class="sk-card is-installed" data-skill-card="${s.id}">
+  const tip = '<p class="sk-run-tip">点卡片即可运行真实算法，结果与产物都能下载。</p>'
+  $('#sk-grid').innerHTML = tip + paused + (list.length ? list.map((s) => `
+    <div class="sk-card is-installed" data-skill-card="${s.id}" data-sk-name="${s.name}" tabindex="0">
       ${popoverHtml(s.name, s.category, s.space, s.updatedAt)}
       ${headHtml(s, { installed: true, attr: 'data-install' })}
       <div class="sk-card-manage">
@@ -142,6 +145,7 @@ const renderInstalledGrid = () => {
           ? `<span class="count-pill update-pill">可更新 v${s.regVersion}</span>
              ${autoUpdate ? '' : `<button class="btn btn-ghost sk-update-btn" type="button" data-update-sk="${s.record.id}">更新</button>`}`
           : `<span class="version-tag">v${s.record.version || SEED_SKILL_VERSION}</span>`}
+        <button class="btn btn-ghost sk-run-card-btn" type="button" data-sk-open="${s.record.id}" data-sk-name="${s.name}">运行</button>
         <span class="mini-switch ${s.record.enabled ? 'is-on' : ''}" data-sk="${s.record.id}" role="switch"
           aria-checked="${s.record.enabled}" tabindex="0" aria-label="启用 ${s.name}"></span>
       </div>
@@ -167,7 +171,7 @@ const renderGrid = () => {
   if (ui.installedOnly) return renderInstalledGrid()
   const list = computeGrid()
   $('#sk-grid').innerHTML = list.length ? list.map((s) => `
-    <div class="sk-card${s.installed ? ' is-installed' : ''}" data-skill-card="${s.id}">
+    <div class="sk-card${s.installed ? ' is-installed' : ''}" data-skill-card="${s.id}" data-sk-name="${s.name}" tabindex="0">
       ${popoverHtml(s.name, s.category, s.space, s.updatedAt)}
       ${headHtml(s, { installed: s.installed, attr: 'data-install' })}
       ${STATS(s.usage, s.downloads)}
@@ -220,6 +224,136 @@ const checkUpdates = (silent = false) => {
   }
   return updated.length
 }
+
+/* ---------- 直接开工：技能运行面板（真实算法 + 可下载产物） ---------- */
+
+const panel = $('#sk-run-panel')
+let runName = ''
+let runArtifacts = []
+let runText = ''
+
+const capLine = (cap) => (cap
+  ? '本地引擎真实执行：解析输入、算数、生成文件，不联网也不编数据。'
+  : '这个技能没有专属引擎，运行会按句做结构化整理并导出 Markdown。')
+
+const renderPanel = (keep = '') => {
+  const cap = skillCap(runName)
+  const installed = installedNames().has(runName)
+  panel.hidden = false
+  panel.innerHTML = `
+    <div class="sk-run-head">
+      <span class="sk-run-logo">${runName.slice(0, 1)}</span>
+      <div class="sk-run-ident">
+        <h4>${runName}<span class="sk-run-tag">${cap ? '本地引擎' : '结构化'}</span></h4>
+        <p>${capLine(cap)}</p>
+      </div>
+      <button class="sk-run-close" type="button" data-sk-run-close aria-label="收起运行面板">×</button>
+    </div>
+    <div class="sk-run-tools">
+      ${cap ? `<button class="sk-run-sample" type="button" data-sk-sample>填入示例</button>` : ''}
+      <span class="sk-run-hint">${installed ? '已安装，可在首页直接调用' : '运行不需要安装；安装后可在首页调用'}</span>
+    </div>
+    <textarea class="sk-run-input" id="sk-run-input" rows="3" placeholder="${cap ? cap.sample : '把要整理的内容贴进来…'}"></textarea>
+    <div class="sk-run-actions">
+      <button class="sk-run-btn" type="button" data-sk-run>运行</button>
+      <button class="sk-run-install" type="button" data-sk-install-inline ${installed ? 'hidden' : ''}>安装技能</button>
+      <span class="sk-run-hint">真实运行 · 产物可下载</span>
+    </div>
+    <div class="sk-run-out" id="sk-run-out" hidden></div>`
+  const input = panel.querySelector('#sk-run-input')
+  if (input) {
+    input.value = keep
+    input.focus?.()
+  }
+}
+
+const openRunPanel = (name, keep = '') => {
+  runName = name
+  runArtifacts = []
+  runText = ''
+  renderPanel(keep)
+  panel.scrollIntoView?.({ behavior: 'smooth', block: 'nearest' })
+}
+
+const runCurrent = () => {
+  const input = panel.querySelector('#sk-run-input')
+  const out = panel.querySelector('#sk-run-out')
+  if (!out) return
+  const raw = input?.value.trim() ?? ''
+  out.hidden = false
+  out.innerHTML = '<div class="xr-running"><span></span>正在运行…</div>'
+  setTimeout(() => {
+    const result = runSkill(runName, raw)
+    if (!result) {
+      out.innerHTML = '<p class="sk-run-empty">先输入要处理的内容，再运行。</p>'
+      return
+    }
+    runArtifacts = result.artifacts ?? []
+    runText = `${result.title}\n\n${result.summary}\n\n${runArtifacts.map((a) => `--- ${a.name} ---\n${a.content}`).join('\n\n')}`
+    out.innerHTML = `${resultHTML(result)}
+      <div class="sk-run-out-actions">
+        ${runArtifacts.map((a, i) => `<button class="xr-act" type="button" data-sk-download="${i}">下载 ${a.name}</button>`).join('')}
+        <button class="xr-act" type="button" data-sk-copy>复制结果</button>
+        <button class="xr-act ghost" type="button" data-sk-clear>收起</button>
+      </div>`
+  }, 180)
+}
+
+panel.addEventListener('click', async (ev) => {
+  const el = ev.target
+  if (el.closest('[data-sk-run-close]')) {
+    panel.hidden = true
+    panel.innerHTML = ''
+    runName = ''
+    return
+  }
+  if (el.closest('[data-sk-sample]')) {
+    const input = panel.querySelector('#sk-run-input')
+    const cap = skillCap(runName)
+    if (input && cap) {
+      input.value = cap.sample
+      input.focus?.()
+    }
+    return
+  }
+  if (el.closest('[data-sk-run]')) {
+    runCurrent()
+    return
+  }
+  if (el.closest('[data-sk-install-inline]')) {
+    const entry = PAGE_SKILLS.find((x) => x.name === runName) || SKILL_REGISTRY.find((x) => x.name === runName)
+    if (entry && await installSkill(entry)) {
+      const keep = panel.querySelector('#sk-run-input')?.value ?? ''
+      renderPanel(keep)
+      renderAll()
+      toast(`技能「${runName}」已安装，现在可以在首页直接调用`)
+    }
+    return
+  }
+  const dl = el.closest('[data-sk-download]')
+  if (dl) {
+    const art = runArtifacts[Number(dl.dataset.skDownload)]
+    if (art) {
+      downloadFile(art.name, art.content, art.mime ?? 'text/plain')
+      toast(`已下载 ${art.name}`)
+    }
+    return
+  }
+  if (el.closest('[data-sk-copy]')) {
+    navigator.clipboard?.writeText(runText).then(
+      () => toast('结果已复制'),
+      () => toast('复制失败，请手动选中'),
+    )
+    return
+  }
+  if (el.closest('[data-sk-clear]')) {
+    const out = panel.querySelector('#sk-run-out')
+    if (out) {
+      out.hidden = true
+      out.innerHTML = ''
+    }
+  }
+})
 
 /* ---------- 事件 ---------- */
 
@@ -275,8 +409,20 @@ $('[data-sk-chip-scroll]').addEventListener('click', () => {
 })
 
 $('#sk-grid').addEventListener('click', async (ev) => {
+  // 卡片主体（不是安装 / 启停 / 更新 / 运行按钮）→ 直接打开运行面板
+  const card = ev.target.closest('[data-skill-card]')
+  if (card && !ev.target.closest('[data-install], [data-sk], [data-update-sk], [data-sk-open]')) {
+    openRunPanel(card.dataset.skName)
+    return
+  }
+
   const el = ev.target.closest('button, [data-sk]')
   if (!el) return
+
+  if (el.dataset.skOpen) {
+    openRunPanel(el.dataset.skName)
+    return
+  }
 
   if (el.dataset.install) {
     const reg = SKILL_REGISTRY.find((r) => r.id === el.dataset.install)
@@ -314,10 +460,27 @@ $('#sk-grid').addEventListener('click', async (ev) => {
 
 $('#sk-feature-track').addEventListener('click', async (ev) => {
   const btn = ev.target.closest('[data-featured-install]')
-  if (!btn) return
+  if (!btn) {
+    const card = ev.target.closest('[data-feature-card]')
+    if (card) openRunPanel(card.dataset.skName)
+    return
+  }
   const f = FEATURED_SKILLS.find((x) => x.id === btn.dataset.featuredInstall)
   if (f && await installSkill({ ...f, risk: 'trusted' })) renderAll()
 })
+
+// 键盘：卡片上按 Enter / 空格直接开工（与鼠标点击等价）
+const cardKeydown = (ev) => {
+  if (ev.key !== 'Enter' && ev.key !== ' ') return
+  // 焦点在卡片里的按钮 / 开关上时，交给它们自己的行为
+  if (ev.target.closest('button, [data-sk], [data-sk-open], [data-install], [data-update-sk]')) return
+  const card = ev.target.closest('[data-skill-card], [data-feature-card]')
+  if (!card) return
+  ev.preventDefault()
+  openRunPanel(card.dataset.skName)
+}
+$('#sk-grid').addEventListener('keydown', cardKeydown)
+$('#sk-feature-track').addEventListener('keydown', cardKeydown)
 
 /* ---------- 首屏 ---------- */
 
