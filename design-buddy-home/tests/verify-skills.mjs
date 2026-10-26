@@ -38,6 +38,12 @@ check('skills page loads without errors', errors.length === 0, errors)
 check('screenshot layout contract holds in built CSS', layoutOk)
 check('keeps the homepage rail (vertical icon column)',
   [...doc.querySelectorAll('.rail .rail-item span')].map((s) => s.textContent).join() === '首页,媒体,模板,主题,设置,更多')
+check('only the more entry is active in the rail',
+  [...doc.querySelectorAll('.rail .rail-item-active')].length === 1
+  && doc.querySelector('.rail .more-wrap .rail-item').classList.contains('rail-item-active'))
+check('themes entry is not marked active on the skills page',
+  !doc.querySelector('.rail a[href="themes.html"]').classList.contains('rail-item-active')
+  && !doc.querySelector('.rail a[href="themes.html"]').hasAttribute('aria-current'))
 check('top tabs are 专家 / 技能 / 连接器',
   [...doc.querySelectorAll('.ex-top-tab')].map((t) => t.textContent.trim()).join() === '专家,技能,连接器')
 check('skills tab is the active page link',

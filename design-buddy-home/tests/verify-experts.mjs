@@ -40,6 +40,11 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
     [...doc.querySelectorAll('.rail .rail-item span')].map((s) => s.textContent).join() === '首页,媒体,模板,主题,设置,更多')
   check('more entry marked as current section',
     doc.querySelector('.rail .more-wrap .rail-item').classList.contains('rail-item-active'))
+  check('only the more entry is active in the rail',
+    [...doc.querySelectorAll('.rail .rail-item-active')].length === 1)
+  check('themes entry is not marked active on the experts page',
+    !doc.querySelector('.rail a[href="themes.html"]').classList.contains('rail-item-active')
+    && !doc.querySelector('.rail a[href="themes.html"]').hasAttribute('aria-current'))
   check('top tabs are 专家 / 技能 / 连接器',
     [...doc.querySelectorAll('.ex-top-tab')].map((t) => t.textContent.trim()).join() === '专家,技能,连接器')
   check('experts tab is the active one',
