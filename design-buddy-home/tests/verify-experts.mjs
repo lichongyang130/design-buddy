@@ -51,6 +51,21 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   check('long expert name ellipsizes through an inner text span',
     doc.querySelector('.ex-card-name-text') !== null
     && cssCompact.includes('.ex-card-name-text{min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis'))
+  /* 头像：西方动画电影式 3D 肖像（本地 webp），缺图的专家回退首字 */
+  const cards = [...doc.querySelectorAll('.ex-card')]
+  const portraits = cards.filter((c) => c.querySelector('.expert-avatar.has-photo img'))
+  check('expert cards paint 3D portrait avatars', portraits.length >= 9, `${portraits.length}/${cards.length}`)
+  check('portrait avatars point at local webp files',
+    portraits.every((c) => /^\/avatars\/ec-[a-z-]+\.webp$/.test(c.querySelector('.expert-avatar img').getAttribute('src'))))
+  check('portraits lazy-load and stay decorative',
+    portraits.every((c) => c.querySelector('.expert-avatar img').getAttribute('loading') === 'lazy'
+      && c.querySelector('.expert-avatar img').getAttribute('alt') === ''))
+  check('experts without a portrait fall back to initials',
+    cards.filter((c) => !c.querySelector('.expert-avatar.has-photo'))
+      .every((c) => c.querySelector('.expert-avatar').textContent.trim().length === 1))
+  check('avatar contract in built CSS',
+    cssCompact.includes('.expert-avatar.has-photo{overflow:hidden')
+    && cssCompact.includes('.expert-avatar.has-photoimg{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit}'))
   check('only the more entry is active in the rail',
     [...doc.querySelectorAll('.rail .rail-item-active')].length === 1)
   check('themes entry is not marked active on the experts page',
@@ -178,6 +193,9 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
     drawer().querySelector('.ex-drawer-name')?.textContent === py.name
     && drawer().querySelector('.ex-drawer-persona')?.textContent === py.persona
     && drawer().querySelector('.ex-drawer-title i')?.textContent === '|')
+  check('drawer reuses the same portrait avatar',
+    drawer().querySelector('.ex-drawer-head .expert-avatar img')?.getAttribute('src')
+      === `/avatars/${py.id}.webp`)
   check('drawer offers the summon button',
     drawer().querySelector('[data-summon]')?.textContent.trim() === '召唤')
   check('drawer shows the full description',
@@ -299,6 +317,18 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   check('summon payload is one-shot and cleared on arrival',
     storage.getItem('design-buddy-summon-v1') === null)
   check('home handles the summon without errors', home.errors.length === 0, home.errors)
+
+  // 「+」菜单的专家子列表用同一套肖像，名字对不上目录的旧数据保持首字
+  click(home.w, home.doc.querySelector('#add-menu-btn'))
+  await tick()
+  const homeExperts = [...home.doc.querySelectorAll('.expert-item')]
+  check('home expert menu reuses the portrait avatars',
+    homeExperts.filter((i) => i.querySelector('.expert-avatar img')).length >= 3
+    && homeExperts.filter((i) => i.querySelector('.expert-avatar img'))
+      .every((i) => /^\/avatars\/ec-[a-z-]+\.webp$/.test(i.querySelector('img').getAttribute('src'))))
+  check('home expert menu keeps initials for unmatched names',
+    homeExperts.filter((i) => !i.querySelector('.expert-avatar img'))
+      .every((i) => i.querySelector('.expert-avatar').textContent.trim().length === 1))
 }
 
 console.log(`\n${fails.length === 0 ? `ALL ${passed} EXPERTS CHECKS PASSED` : `${fails.length} FAILED: ${fails.join('; ')}`}`)

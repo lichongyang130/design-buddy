@@ -12,6 +12,7 @@ import './experts.css'
 import { store, toast, uid } from './core.js'
 import { initGlobalUI } from './global-ui.js'
 import { EXPERT_CATEGORIES, EXPERT_CATALOG, EXPERT_FILTERS, formatUsage } from './experts-catalog.js'
+import { avatarHTML } from './expert-avatars.js'
 
 initGlobalUI()
 
@@ -81,7 +82,7 @@ const renderGrid = () => {
     <article class="ex-card${isPinned ? ' is-pinned' : ''}" data-expert="${e.id}">
       <button class="ex-card-hit" type="button" data-open-expert="${e.id}" aria-label="查看「${e.name}」详情"></button>
       <span class="ex-card-head">
-        <span class="expert-avatar ${e.color}">${e.name[0]}</span>
+        ${avatarHTML(e, { color: e.color, className: 'expert-avatar' })}
         <span class="ex-card-title">
           <span class="ex-card-name">
             <span class="ex-card-name-text">${e.name}</span>${e.badge ? `<b class="ex-badge">${e.badge}</b>` : ''}
@@ -259,7 +260,7 @@ const openExpertDrawer = (entry) => {
     <aside class="ex-drawer" role="dialog" aria-modal="true" aria-labelledby="ex-drawer-title">
       <button class="ex-drawer-close" type="button" data-drawer-close aria-label="关闭专家详情">${DRAWER_ICON.close}</button>
       <div class="ex-drawer-head">
-        <span class="expert-avatar ${entry.color}">${entry.name[0]}</span>
+        ${avatarHTML(entry, { color: entry.color, className: 'expert-avatar' })}
         <div class="ex-drawer-ident">
           <h2 class="ex-drawer-title" id="ex-drawer-title">
             <span class="ex-drawer-name">${entry.name}</span>${entry.persona ? `<i aria-hidden="true">|</i><span class="ex-drawer-persona">${entry.persona}</span>` : ''}

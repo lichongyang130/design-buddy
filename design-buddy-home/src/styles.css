@@ -1375,6 +1375,21 @@ a:focus-visible {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
 }
 
+/* 有 3D 肖像时保留尺寸与圆角，交给图片铺满；渐变底与首字一起收掉 */
+.expert-avatar.has-photo {
+  overflow: hidden;
+  background: #eaeef7;
+  box-shadow: 0 0 0 1px rgba(23, 43, 92, 0.06);
+}
+
+.expert-avatar.has-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
 .av-purple {
   background: linear-gradient(145deg, #8b6bff, #5b3cc4);
 }

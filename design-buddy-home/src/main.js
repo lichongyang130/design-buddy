@@ -22,6 +22,7 @@ import {
   openConnectors,
 } from './global-ui.js'
 import { applyAppChips } from './settings-effects.js'
+import { expertAvatarByName } from './expert-avatars.js'
 
 initGlobalUI()
 
@@ -461,10 +462,18 @@ const expertSub = $('#expert-sub')
 const expertSearch = $('#expert-search-input')
 const expertList = $('#expert-list')
 
+// 首页子菜单里的专家头像：仍是「首字 + 渐变底」时保持原样，有肖像则换 <img>
+const avatarByName = (name, color) => {
+  const src = expertAvatarByName(name)
+  return src
+    ? `<span class="expert-avatar has-photo ${color}"><img src="${src}" alt="" loading="lazy" decoding="async" /></span>`
+    : `<span class="expert-avatar ${color}">${name[0]}</span>`
+}
+
 function renderExperts() {
   expertList.innerHTML = store.state.experts.map((ex) => `
     <button class="expert-item" type="button" role="menuitem" data-expert="${ex.name}">
-      <span class="expert-avatar ${ex.color}">${ex.name[0]}</span>
+      ${avatarByName(ex.name, ex.color)}
       <span class="expert-name">${ex.name}${ui.expert === ex.name ? ' ✓' : ''}</span>
     </button>`).join('')
 }
