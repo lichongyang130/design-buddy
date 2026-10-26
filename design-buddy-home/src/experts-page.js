@@ -81,8 +81,10 @@ const renderGrid = () => {
       <span class="ex-card-head">
         <span class="expert-avatar ${e.color}">${e.name[0]}</span>
         <span class="ex-card-title">
-          <span class="ex-card-name">${e.name}${e.badge ? `<b class="ex-badge">${e.badge}</b>` : ''}</span>
-          <span class="ex-card-desc">${e.desc}</span>
+          <span class="ex-card-name">
+            <span class="ex-card-name-text">${e.name}</span>${e.badge ? `<b class="ex-badge">${e.badge}</b>` : ''}
+          </span>
+          <span class="ex-card-desc" title="${e.desc}">${e.desc}</span>
         </span>
       </span>
       <span class="ex-card-tags">${e.tags.map((t) => `<span class="ex-tag">${t}</span>`).join('')}</span>

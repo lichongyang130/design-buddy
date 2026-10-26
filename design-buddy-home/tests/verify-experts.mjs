@@ -40,6 +40,17 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
     [...doc.querySelectorAll('.rail .rail-item span')].map((s) => s.textContent).join() === '首页,媒体,模板,主题,设置,更多')
   check('more entry marked as current section',
     doc.querySelector('.rail .more-wrap .rail-item').classList.contains('rail-item-active'))
+  /* 专家介绍曾经是 inline + nowrap：overflow 不生效，长文案直接溢出卡片 */
+  check('description is a clamped block, never inline nowrap',
+    cssCompact.includes('.ex-card-desc{display:block;display:-webkit-box;-webkit-line-clamp:2')
+    && cssCompact.includes('-webkit-box-orient:vertical;overflow:hidden;min-height:38px')
+    && !/\.ex-card-desc\{[^}]*white-space:nowrap/.test(cssCompact))
+  check('every description carries its full text as a hover title',
+    [...doc.querySelectorAll('.ex-card-desc')].every((d) =>
+      d.textContent.trim().length > 0 && d.getAttribute('title') === d.textContent.trim()))
+  check('long expert name ellipsizes through an inner text span',
+    doc.querySelector('.ex-card-name-text') !== null
+    && cssCompact.includes('.ex-card-name-text{min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis'))
   check('only the more entry is active in the rail',
     [...doc.querySelectorAll('.rail .rail-item-active')].length === 1)
   check('themes entry is not marked active on the experts page',
