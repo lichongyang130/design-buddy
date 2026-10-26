@@ -37,13 +37,33 @@ const $$ = (sel, root = document) => [...root.querySelectorAll(sel)]
 /* 跨刷新保留的首页 UI 偏好（创作类型 / 模式 / 图片模式 / 专家）
    type 为空 = 默认态（第一张截图）；选中类型 = 工作台态（第二张截图） */
 const ui = (store.state.ui ??= { type: null, mode: '标准', imgMode: '自动', expert: null })
+ui.ratio ??= '1:1'
+ui.count ??= 3
 const homeMode = () => !!ui.type
+
+/* 由后面的参考图菜单赋值，避免早期调用踩到暂时性死区 */
+let closeImgPopoverQuiet = () => {}
 
 /* 默认态 / 工作台态：整页显隐的唯一来源。
    默认态 → 头图 + 问候语 + 输入卡 + 六种类型 + 推荐模板
    工作台态 → 返回 + 类型胶囊 + 示例指令 + 浏览·上传模板 + 工作区·探索 */
 const DEFAULT_PLACEHOLDER = '从这份报告中找出五个最令人惊讶的发现，将它们制作成一个 6 张卡片的 LinkedIn 轮播图，第一张卡片要有吸引人的亮点，最后一张卡片要有行动号召。'
 const TYPE_PLACEHOLDER = '描述您的演示主题'
+
+/* 工作台里每种类型自己的标题与占位文案（截图里的图片工作台就是一例） */
+const TYPE_COPY = {
+  演示文稿: { placeholder: '描述您的演示主题' },
+  图片: { title: '你的笔记，美得令人惊艳', placeholder: '描述您想要创建的图像' },
+  文档: { placeholder: '描述您想写的文档' },
+  轮播图: { placeholder: '描述您的轮播图主题' },
+  美化: { placeholder: '上传或描述要美化的内容' },
+  导入: { placeholder: '粘贴内容或上传文件' },
+}
+const greetingTitle = () => {
+  const fullName = store.state.profile?.name || store.state.workspaces?.[0]?.name || 'ruoxuan'
+  const firstName = String(fullName).replace(/'s\s+Workspace$/i, '').trim().split(/\s+/)[0] || 'ruoxuan'
+  return `很高兴见到您，${firstName}`
+}
 
 function applySmartSuggest() {
   const mode = homeMode()
@@ -64,8 +84,19 @@ function applySmartSuggest() {
   const cta = $('.template-cta')
   if (cta) cta.hidden = !mode
 
+  const isImage = ui.type === '图片'
+  document.body.classList.toggle('is-image-mode', isImage)
+
   const inputEl = $('#prompt-input')
-  if (inputEl) inputEl.placeholder = mode ? TYPE_PLACEHOLDER : DEFAULT_PLACEHOLDER
+  if (inputEl) inputEl.placeholder = mode ? (TYPE_COPY[ui.type]?.placeholder ?? TYPE_PLACEHOLDER) : DEFAULT_PLACEHOLDER
+
+  const title = $('.hero-title')
+  if (title) title.textContent = (mode && TYPE_COPY[ui.type]?.title) || greetingTitle()
+
+  const imgExtra = $('#img-extra')
+  if (imgExtra) imgExtra.hidden = !isImage
+  const also = $('#also-make')
+  if (also) also.hidden = !isImage
 
   // 设置 → 个性化：关掉「智能推荐」时，工作台里的示例与探索区一并隐藏
   ;['.examples', '.work-tabs'].forEach((sel) => {
@@ -409,6 +440,8 @@ function createGamma({ prompt, origin = 'prompt', template = null, silent = fals
     title,
     prompt,
     type: ui.type || '演示文稿',
+    aspect: ui.type === '图片' ? ui.ratio : null,
+    imageCount: ui.type === '图片' ? ui.count : null,
     mode: ui.mode,
     imgMode: ui.imgMode,
     refType: ui.refType,
@@ -556,6 +589,36 @@ function showResult(gamma, bodyEl, footEl) {
     return
   }
 
+  // 图片：按比例与数量给出可用的提示词变体（每条都由输入的提示词派生）
+  if (gamma.type === '图片') {
+    const ratio = gamma.aspect || ui.ratio
+    const count = gamma.imageCount || ui.count
+    const angles = ['主体居中、突出光线与质感', '拉远交代环境与氛围', '特写材质与细节', '留白构图、适合加文字']
+    const variants = Array.from({ length: count }, (_, i) => `${gamma.prompt || '未命名图片'}，${angles[i % angles.length]}`)
+    finishTask(gamma, `${count} 条图片提示词`)
+    bodyEl.innerHTML = `
+      <p class="modal-copy"><strong>${gamma.title}</strong> 已按 ${ratio} 准备 ${count} 张图（${gamma.mode} 模式，消耗 ${MODE_COST[gamma.mode] ?? 3} 积分）。${gamma.refType ? `<br />参考方式：${REF_TYPE_LABELS[gamma.refType] ?? gamma.refType}` : ''}</p>
+      <ul class="outline-list">
+        ${variants.map((v, i) => `<li><strong>变体 ${i + 1} · ${ratio}</strong>${v}</li>`).join('')}
+      </ul>`
+    footEl.innerHTML = `
+      <button class="btn btn-ghost" data-again>改一句再来</button>
+      <button class="btn btn-ghost" data-copy-prompts>复制全部提示词</button>
+      <button class="btn btn-primary" data-done>完成</button>`
+    footEl.querySelector('[data-done]').addEventListener('click', () => footEl.closest('.modal-mask').remove())
+    footEl.querySelector('[data-copy-prompts]')?.addEventListener('click', () => {
+      downloadFile(`${gamma.title}.txt`, variants.join('\n\n'), 'text/plain')
+      toast(`已导出 ${count} 条提示词`)
+    })
+    footEl.querySelector('[data-again]').addEventListener('click', () => {
+      footEl.closest('.modal-mask').remove()
+      input.value = gamma.prompt || ''
+      syncSendState()
+      input.focus()
+    })
+    return
+  }
+
   const pages = ['封面', '背景介绍', '核心内容', '数据与案例', '总结与行动项']
   finishTask(gamma, `${pages.length} 页大纲`)
   bodyEl.innerHTML = `
@@ -607,6 +670,9 @@ function setType(next, { quiet = false } = {}) {
   store.save()
   if (typeWrap) typeWrap.hidden = true
   syncTypeUI()
+  renderExamples()
+  placeToolbarItems()
+  if (ui.type !== '图片') closeImgPopoverQuiet()
   if (!quiet && next) toast(`已进入「${next}」，可以开始创作了`)
 }
 syncTypeUI()
@@ -657,15 +723,6 @@ $('#back-btn')?.addEventListener('click', () => {
   else location.href = 'index.html'
 })
 
-/* ---------------- 问候语：很高兴见到您，<名字> ---------------- */
-
-const heroTitle = $('.hero-title')
-if (heroTitle) {
-  const fullName = store.state.profile?.name || store.state.workspaces?.[0]?.name || 'ruoxuan'
-  const firstName = String(fullName).replace(/'s\s+Workspace$/i, '').trim().split(/\s+/)[0] || 'ruoxuan'
-  heroTitle.textContent = `很高兴见到您，${firstName}`
-}
-
 /* ---------------- 示例指令：分类 + 四条可开工的提示 ---------------- */
 
 const EXAMPLE_LIBRARY = {
@@ -695,7 +752,36 @@ const EXAMPLE_LIBRARY = {
   ],
 }
 
+/* 图片工作台用另一套示例（截图里是「给我个惊喜」） */
+const IMAGE_EXAMPLES = {
+  '给我个惊喜': [
+    '90 年代风格的像素艺术村庄的夜景，闪烁的市集摊位，霓虹灯笼',
+    '一张柠檬片落入气泡水的照片，溅起的水花被高速快门定格得清晰',
+    '复古风格的喷绘插画描绘了一只镀铬天马掠过粉色云海',
+    '水彩绘制的森林清晨，雾气里透出光柱，安静治愈',
+  ],
+  '摄影写实': [
+    '清晨的海边木栈道，长曝光把海浪拍成雾气',
+    '咖啡馆窗边的手冲特写，逆光下的水汽与光斑',
+    '城市夜景航拍，车流被拉成金色光带',
+    '模特半身肖像，柔和的窗光与浅景深',
+  ],
+  '插画风格': [
+    '扁平插画的城市通勤场景，配色克制、几何感强',
+    '手绘蜡笔质感的儿童绘本封面，暖黄色调',
+    '日式浮世绘风格的海浪与灯塔，靛蓝与米白',
+    '像素风游戏场景素材，16 位色板，落日小镇',
+  ],
+  '3D 渲染': [
+    '磨砂玻璃材质的产品渲染图，柔和棚拍光',
+    '等距视角的迷你城市岛屿，柔粉与薄荷绿',
+    '毛绒质感的吉祥物渲染，圆润造型、软阴影',
+    '金属与陶瓷材质对比的抽象雕塑，工作室布光',
+  ],
+}
+
 const exampleState = { cat: '设计与产品' }
+const exampleLibrary = () => (ui.type === '图片' ? IMAGE_EXAMPLES : EXAMPLE_LIBRARY)
 const exampleGrid = $('#example-grid')
 const exampleMenu = $('#example-cat-menu')
 const exampleCatBtn = $('#example-cat-btn')
@@ -705,10 +791,12 @@ const ARROW_ICON = '<svg class="icon example-card-arrow" viewBox="0 0 24 24" fil
 
 function renderExamples() {
   if (!exampleGrid) return
+  const lib = exampleLibrary()
+  if (!lib[exampleState.cat]) exampleState.cat = Object.keys(lib)[0]
   exampleCatLabel.textContent = exampleState.cat
-  exampleMenu.innerHTML = Object.keys(EXAMPLE_LIBRARY).map((name) => `
+  exampleMenu.innerHTML = Object.keys(lib).map((name) => `
     <button class="example-cat-item${name === exampleState.cat ? ' is-active' : ''}" type="button" role="menuitem" data-example-cat="${name}">${name}</button>`).join('')
-  exampleGrid.innerHTML = EXAMPLE_LIBRARY[exampleState.cat].map((text) => `
+  exampleGrid.innerHTML = lib[exampleState.cat].map((text) => `
     <button class="example-card" type="button" data-example="${text}">
       <span class="example-card-text">${text}</span>
       ${ARROW_ICON}
@@ -933,12 +1021,31 @@ function placeToolbarItems() {
   const left = $('.toolbar-left')
   const right = $('.toolbar-right')
   const typeWrapEl = $('.type-menu-wrap')
+  const imgExtraEl = $('#img-extra')
+  const imgWrapEl = $('.img-menu-wrap')
   const chip = $('#prompt-expert')
   if (!left || !right || !typeWrapEl) return
   if (chip) {
     if (typeWrapEl.parentElement !== right) right.insertBefore(typeWrapEl, right.firstChild)
   } else if (typeWrapEl.parentElement !== left) {
     left.appendChild(typeWrapEl)
+  }
+  // 图片工作台：「参考图」排在比例 / 数量之后，其余类型留在右侧（截图 1 的纯图标位）
+  if (imgWrapEl && imgExtraEl) {
+    if (ui.type === '图片') {
+      if (imgWrapEl.parentElement !== imgExtraEl) imgExtraEl.appendChild(imgWrapEl)
+    } else if (imgWrapEl.parentElement !== right) {
+      right.insertBefore(imgWrapEl, right.firstChild)
+    }
+  }
+  // 比例 / 数量整组只在图片工作台挂在左侧工具条里，其它时候挪出去（保持左侧只有三项）
+  const toolbarEl = $('.prompt-toolbar')
+  if (imgExtraEl && toolbarEl) {
+    if (ui.type === '图片') {
+      if (imgExtraEl.parentElement !== left) left.appendChild(imgExtraEl)
+    } else if (imgExtraEl.parentElement !== toolbarEl) {
+      toolbarEl.insertBefore(imgExtraEl, right)
+    }
   }
 }
 
@@ -1265,6 +1372,7 @@ const imgPopoverIsOpen = () => !imgPopover.hidden
 function openImgPopover() {
   if (popoverIsOpen()) closePopover()
   if (effortIsOpen()) closeEffort()
+  closeMiniMenus?.()
   imgPopover.hidden = false
   imgBtn.setAttribute('aria-expanded', 'true')
 }
@@ -1272,6 +1380,7 @@ function closeImgPopover() {
   imgPopover.hidden = true
   imgBtn.setAttribute('aria-expanded', 'false')
 }
+closeImgPopoverQuiet = () => { if (imgPopoverIsOpen()) closeImgPopover() }
 imgBtn.addEventListener('click', (event) => {
   event.stopPropagation()
   imgPopoverIsOpen() ? closeImgPopover() : openImgPopover()
@@ -1309,6 +1418,103 @@ document.addEventListener('click', (event) => {
 })
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && imgPopoverIsOpen()) closeImgPopover()
+})
+
+/* ---------------- 图片工作台：画面比例 / 生成数量 ---------------- */
+
+const ratioBtn = $('#ratio-btn')
+const ratioPop = $('#ratio-pop')
+const ratioLabel = $('#ratio-label')
+const countBtn = $('#count-btn')
+const countPop = $('#count-pop')
+const countLabel = $('#count-label')
+
+function syncImageParams() {
+  if (ratioLabel) ratioLabel.textContent = ui.ratio
+  if (countLabel) countLabel.textContent = String(ui.count)
+  $$('[data-ratio]').forEach((b) => {
+    const on = b.dataset.ratio === ui.ratio
+    b.classList.toggle('is-active', on)
+    b.setAttribute('aria-checked', String(on))
+  })
+  $$('[data-count]').forEach((b) => {
+    const on = Number(b.dataset.count) === ui.count
+    b.classList.toggle('is-active', on)
+    b.setAttribute('aria-checked', String(on))
+  })
+}
+syncImageParams()
+
+const miniOpen = (pop) => !!pop && !pop.hidden
+function closeMiniMenus(except = null) {
+  ;[[ratioPop, ratioBtn], [countPop, countBtn]].forEach(([pop, btn]) => {
+    if (!pop || pop === except) return
+    pop.hidden = true
+    btn?.setAttribute('aria-expanded', 'false')
+  })
+}
+function openMiniMenu(pop, btn) {
+  if (popoverIsOpen()) closePopover()
+  if (imgPopoverIsOpen()) closeImgPopover()
+  if (effortIsOpen()) closeEffort()
+  closeMiniMenus(pop)
+  pop.hidden = false
+  btn.setAttribute('aria-expanded', 'true')
+}
+
+ratioBtn?.addEventListener('click', (event) => {
+  event.stopPropagation()
+  miniOpen(ratioPop) ? closeMiniMenus() : openMiniMenu(ratioPop, ratioBtn)
+})
+countBtn?.addEventListener('click', (event) => {
+  event.stopPropagation()
+  miniOpen(countPop) ? closeMiniMenus() : openMiniMenu(countPop, countBtn)
+})
+
+$$('[data-ratio]').forEach((b) => {
+  b.addEventListener('click', (event) => {
+    event.stopPropagation()
+    ui.ratio = b.dataset.ratio
+    store.save()
+    syncImageParams()
+    closeMiniMenus()
+    toast(`画面比例：${ui.ratio}`)
+  })
+})
+$$('[data-count]').forEach((b) => {
+  b.addEventListener('click', (event) => {
+    event.stopPropagation()
+    ui.count = Number(b.dataset.count)
+    store.save()
+    syncImageParams()
+    closeMiniMenus()
+    toast(`每次生成 ${ui.count} 张图片`)
+  })
+})
+
+document.addEventListener('click', (event) => {
+  if (!miniOpen(ratioPop) && !miniOpen(countPop)) return
+  if (event.target.closest('.mini-menu-wrap')) return
+  closeMiniMenus()
+})
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && (miniOpen(ratioPop) || miniOpen(countPop))) closeMiniMenus()
+})
+
+/* ---------------- 图片工作台：您还可以制作 ---------------- */
+
+$$('[data-make]').forEach((card) => {
+  card.addEventListener('click', () => {
+    const name = card.dataset.make
+    const desc = card.querySelector('em')?.textContent?.trim() ?? ''
+    $$('[data-make]').forEach((c) => c.classList.toggle('is-active', c === card))
+    input.value = `做一张${name}${desc ? `，内容方向：${desc}` : ''}。`
+    input.style.height = 'auto'
+    input.style.height = `${Math.min(input.scrollHeight, 160)}px`
+    syncSendState()
+    input.focus()
+    toast(`已把「${name}」的起手句填进输入框`)
+  })
 })
 
 /* ---------------- 努力模式上弹菜单 ---------------- */
@@ -1654,3 +1860,6 @@ renderFolders()
 renderWork()
 syncChrome()
 syncSendState()
+renderExamples()
+placeToolbarItems()
+applySmartSuggest()

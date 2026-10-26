@@ -2193,7 +2193,8 @@ a:focus-visible {
 .content > .template-row,
 .content > .work-grid,
 .content > .quick-types,
-.content > .rec-templates {
+.content > .rec-templates,
+.content > .also-make {
   width: min(592px, 100%);
 }
 
@@ -2673,7 +2674,10 @@ a:focus-visible {
 .content .rec-templates[hidden],
 .content .template-cta[hidden],
 .pill-back[hidden],
-.content .type-menu-wrap[hidden] {
+.content .type-menu-wrap[hidden],
+.content .img-extra[hidden],
+.content .also-make[hidden],
+.mini-pop[hidden] {
   display: none;
 }
 
@@ -3062,4 +3066,244 @@ a:focus-visible {
 .skill-chip svg {
   width: 11px;
   height: 11px;
+}
+
+
+/* ============================================================
+   图片工作台（截图：选图片后输入框的样子）
+   比例 / 数量 / 参考图 + 您还可以制作
+   ============================================================ */
+
+.img-extra {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mini-menu-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.mini-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  height: 34px;
+  padding: 0 9px 0 11px;
+  border: 1px solid #e4e7ee;
+  border-radius: 10px;
+  background: #fff;
+  color: #263244;
+  font-size: 12.5px;
+  font-weight: 600;
+  transition: background 0.13s ease, border-color 0.13s ease;
+}
+
+.mini-pill:hover {
+  background: #f6f8fc;
+  border-color: #cfd6e4;
+}
+
+.mini-pill[aria-expanded='true'] {
+  background: #f2f6ff;
+  border-color: #c9d8f8;
+  color: #2f5bd6;
+}
+
+.mini-pill .icon.tiny {
+  width: 14px;
+  height: 14px;
+  color: #98a1b2;
+}
+
+.mini-pill[aria-expanded='true'] .icon.tiny {
+  color: #2f5bd6;
+}
+
+.mini-pop {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+  z-index: 65;
+  min-width: 132px;
+  padding: 6px;
+  background: var(--surface);
+  border: 1px solid #e7e9ef;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(23, 43, 92, 0.16), 0 2px 8px rgba(23, 43, 92, 0.06);
+  animation: pop-in 0.14s ease both;
+}
+
+.mini-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #263244;
+  text-align: left;
+}
+
+.mini-item em {
+  font-style: normal;
+  font-size: 11px;
+  color: #98a1b2;
+}
+
+.mini-item:hover {
+  background: #f4f6fb;
+}
+
+.mini-item.is-active {
+  background: #eef3ff;
+  color: #2f5bd6;
+  font-weight: 600;
+}
+
+.mini-item.is-active em {
+  color: #6d84b8;
+}
+
+/* 参考图按钮在图片工作台里是带文字的胶囊，展开时整颗变蓝 */
+.is-image-mode .content .img-mode-btn {
+  width: auto;
+  height: 34px;
+  padding: 0 10px 0 11px;
+  gap: 6px;
+  border-radius: 10px;
+  border: 1px solid #e4e7ee;
+  background: #fff;
+  color: #263244;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.is-image-mode .content .img-mode-btn #img-mode-label,
+.is-image-mode .content .img-mode-btn .tiny {
+  display: inline;
+}
+
+.is-image-mode .content .img-mode-btn .tiny {
+  width: 14px;
+  height: 14px;
+  color: #98a1b2;
+}
+
+.is-image-mode .content .img-mode-btn:hover {
+  background: #f6f8fc;
+  border-color: #cfd6e4;
+}
+
+.is-image-mode .content .img-mode-btn[aria-expanded='true'] {
+  border-color: transparent;
+  background: #e8f0fe;
+  color: #2f5bd6;
+}
+
+.is-image-mode .content .img-mode-btn[aria-expanded='true'] .icon {
+  color: #2f5bd6;
+}
+
+/* 截图里参考图菜单是向下展开、左对齐 */
+.is-image-mode .img-popover {
+  top: calc(100% + 10px);
+  bottom: auto;
+  left: 0;
+  right: auto;
+  transform-origin: top left;
+  animation: pop-in 0.16s ease both;
+}
+
+/* ---------- 您还可以制作 ---------- */
+
+.also-make {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.also-make .section-label {
+  font-size: 13.5px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.also-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.also-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid #e6e9f0;
+  border-radius: 12px;
+  background: #fff;
+  text-align: left;
+  transition: border-color 0.13s ease, box-shadow 0.13s ease, transform 0.13s ease;
+}
+
+.also-card:hover {
+  border-color: #c9d3e8;
+  box-shadow: 0 8px 20px rgba(23, 43, 92, 0.08);
+}
+
+.also-card.is-active {
+  border-color: #c9d8f8;
+  background: #f7faff;
+}
+
+.also-ic {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: #eef4ff;
+  color: #2f5bd6;
+}
+
+.also-ic .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.also-ic.is-blue { background: #eaf2ff; color: #2f5bd6; }
+.also-ic.is-pink { background: #fdeef4; color: #d6336c; }
+.also-ic.is-sky { background: #e8f6ff; color: #0b7bbd; }
+.also-ic.is-violet { background: #f1ecff; color: #6b46c1; }
+
+.also-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.also-main b {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.also-main em {
+  font-style: normal;
+  font-size: 12px;
+  color: #8b93a3;
+}
+
+@media (max-width: 720px) {
+  .also-grid {
+    grid-template-columns: 1fr;
+  }
 }
