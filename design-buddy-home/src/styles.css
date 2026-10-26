@@ -2216,7 +2216,8 @@ a:focus-visible {
 .content > .quick-types,
 .content > .rec-templates,
 .content > .also-make,
-.content > .beautify-styles {
+.content > .beautify-styles,
+.content > .import-choices {
   width: min(592px, 100%);
 }
 
@@ -2707,6 +2708,7 @@ a:focus-visible {
 .content .also-make[hidden],
 .content .beautify-styles[hidden],
 .content .beautify-drop[hidden],
+.content .import-choices[hidden],
 .content .img-menu-wrap[hidden],
 .mini-pop[hidden] {
   display: none;
@@ -3580,6 +3582,136 @@ a:focus-visible {
 
 @media (max-width: 620px) {
   .bs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ============================================================
+   导入工作台（截图：选「导入」后输入框的样子）
+   更多选择 + 连接器提示
+   ============================================================ */
+
+.import-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.import-choices .section-label {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.ic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.ic-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid #e6e9f0;
+  border-radius: 12px;
+  background: #fff;
+  text-align: left;
+  transition: border-color 0.13s ease, box-shadow 0.13s ease;
+}
+
+.ic-card:hover {
+  border-color: #c9d3e8;
+  box-shadow: 0 8px 20px rgba(23, 43, 92, 0.08);
+}
+
+.ic-ic {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: #eaf2ff;
+  color: #2f5bd6;
+}
+
+.ic-ic .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.ic-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.ic-main b {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1f2937;
+  white-space: nowrap;
+}
+
+.ic-main em {
+  font-style: normal;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #8b93a3;
+}
+
+/* 提示 + 连接器小标 */
+
+.import-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 12.5px;
+  color: #8b93a3;
+}
+
+.import-sources {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.is-logo {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  color: var(--c, #5b6ef5);
+  background: color-mix(in srgb, var(--c, #5b6ef5) 12%, #fff);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.is-logo svg {
+  width: 14px;
+  height: 14px;
+}
+
+.is-logo:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(23, 43, 92, 0.16);
+}
+
+.is-logo.is-active {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--c, #5b6ef5) 45%, #fff);
+}
+
+@media (max-width: 620px) {
+  .ic-grid {
     grid-template-columns: 1fr;
   }
 }

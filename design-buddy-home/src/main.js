@@ -27,6 +27,7 @@ import { EXPERT_CATALOG } from './experts-catalog.js'
 import { EXPERT_CAPS, runExpert, resultHTML } from './expert-runtime.js'
 import { runSkill } from './skill-runtime.js'
 import { initAddSubPanels } from './add-menu.js'
+import { CONNECTOR_CATALOG, CONNECTOR_ICONS } from './connectors-catalog.js'
 import { initPromptTriggers } from './prompt-triggers.js'
 
 initGlobalUI()
@@ -58,7 +59,7 @@ const TYPE_COPY = {
   文档: { placeholder: '描述您想写的文档' },
   轮播图: { placeholder: '描述您的轮播图主题' },
   美化: { placeholder: '描述您希望更改或改进的内容', hero: '/covers/hero-beautify.jpg' },
-  导入: { placeholder: '粘贴内容或上传文件' },
+  导入: { placeholder: '添加要导入的文件，或从下方选择任务', hero: '/covers/hero-beautify.jpg' },
 }
 const greetingTitle = () => {
   const fullName = store.state.profile?.name || store.state.workspaces?.[0]?.name || 'ruoxuan'
@@ -85,8 +86,10 @@ function applySmartSuggest() {
 
   const isImage = ui.type === '图片'
   const isBeautify = ui.type === '美化'
+  const isImport = ui.type === '导入'
   document.body.classList.toggle('is-image-mode', isImage)
   document.body.classList.toggle('is-beautify-mode', isBeautify)
+  document.body.classList.toggle('is-import-mode', isImport)
 
   const inputEl = $('#prompt-input')
   if (inputEl) inputEl.placeholder = mode ? (TYPE_COPY[ui.type]?.placeholder ?? TYPE_PLACEHOLDER) : DEFAULT_PLACEHOLDER
@@ -107,23 +110,30 @@ function applySmartSuggest() {
   if (also) also.hidden = !isImage
   const beautifyDrop = $('#beautify-drop')
   if (beautifyDrop) beautifyDrop.hidden = !isBeautify
-  // 截图里美化工作台右侧只有 标准 / 麦克风 / 发送，没有参考图入口
-  const imgWrap = $('.img-menu-wrap')
-  if (imgWrap) imgWrap.hidden = isBeautify
-  if (isBeautify) closeImgPopoverQuiet()
   const beautifyStyles = $('#beautify-styles')
   if (beautifyStyles) beautifyStyles.hidden = !isBeautify
 
+  const importDrop = $('#import-drop')
+  if (importDrop) importDrop.hidden = !isImport
+  const importChoices = $('#import-choices')
+  if (importChoices) importChoices.hidden = !isImport
+
+  // 截图里美化 / 导入工作台右侧只有 标准 / 麦克风 / 发送，没有参考图入口
+  const imgWrap = $('.img-menu-wrap')
+  if (imgWrap) imgWrap.hidden = isBeautify || isImport
+  if (isBeautify || isImport) closeImgPopoverQuiet()
+
   // 设置 → 个性化：关掉「智能推荐」时，工作台里的示例与探索区一并隐藏
+  const bare = isBeautify || isImport
   ;['.examples', '.work-tabs'].forEach((sel) => {
     const el = $(sel)
-    if (el) el.hidden = !mode || !smart || isBeautify
+    if (el) el.hidden = !mode || !smart || bare
   })
-  if (row) row.hidden = !mode || !smart || isWork || isBeautify
+  if (row) row.hidden = !mode || !smart || isWork || bare
   const work = $('#work-grid')
-  if (work) work.hidden = !mode || !isWork || isBeautify
+  if (work) work.hidden = !mode || !isWork || bare
   const ctaEl = $('.template-cta')
-  if (ctaEl) ctaEl.hidden = !mode || isBeautify
+  if (ctaEl) ctaEl.hidden = !mode || bare
 }
 applySmartSuggest()
 applyAppChips()
@@ -385,6 +395,10 @@ const promptTriggers = initPromptTriggers({
 
 function submitPrompt() {
   promptTriggers.close()
+  if (ui.type === '导入' && !attachments.length) {
+    toast('先在上方添加要导入的文件（PPTX / DOCX / PDF）')
+    return
+  }
   const text = input.value.trim()
   if (!text) {
     input.focus()
@@ -459,6 +473,7 @@ function createGamma({ prompt, origin = 'prompt', template = null, silent = fals
     prompt,
     type: ui.type || '演示文稿',
     beautifyStyle: ui.type === '美化' ? ui.beautifyStyle : null,
+    importSource: ui.type === '导入' ? ui.importSource ?? null : null,
     aspect: ui.type === '图片' ? ui.ratio : null,
     imageCount: ui.type === '图片' ? ui.count : null,
     mode: ui.mode,
@@ -608,6 +623,53 @@ function showResult(gamma, bodyEl, footEl) {
     return
   }
 
+  // 导入：给出一份真实的导入清单（文件、类型、来源），并可下载
+  if (gamma.type === '导入') {
+    const files = gamma.attachments ?? []
+    const source = gamma.importSource
+    const manifest = [
+      '# 导入清单',
+      '',
+      `来源：${source || '本地文件'}`,
+      `文件数：${files.length}`,
+      '',
+      ...files.map((f, i) => `${i + 1}. ${f.name} · ${kindOf(f.name)}${f.size ? ` · ${(f.size / 1024).toFixed(0)} KB` : ''}（${f.from || '导入文件'}）`),
+      '',
+      '## 后续可用动作',
+      '- 在「模板」页把其中一份存成可复用模板',
+      '- 把清单里的文件拖进「美化」工作台统一视觉',
+      '- 用「演示文稿」把它转成一页结论',
+    ].join('\n')
+    const checks = [
+      ['文件读取', `${files.length} 个文件已加入本次工作区${files.length ? '' : '（还没有文件）'}`],
+      ['格式识别', files.length ? [...new Set(files.map((f) => kindOf(f.name)))].join('、') : '—'],
+      ['来源', source ? `${source}${store.state.connectors.find((c) => c.name === source)?.connected ? ' · 已连接' : ''}` : '本地文件'],
+      ['下一步', '选择「导入模板」把内容固化成模板，或直接开始创作'],
+    ]
+    finishTask(gamma, `${files.length} 个文件`)
+    bodyEl.innerHTML = `
+      <p class="modal-copy"><strong>${gamma.title}</strong> 已加入 ${files.length} 个文件（${gamma.mode} 模式，消耗 ${MODE_COST[gamma.mode] ?? 3} 积分）。${source ? `<br />导入来源：${source}` : ''}</p>
+      <ul class="outline-list">
+        ${checks.map(([k, v]) => `<li><strong>${k}</strong>${v}</li>`).join('')}
+      </ul>`
+    footEl.innerHTML = `
+      <button class="btn btn-ghost" data-import-again>改一句再来</button>
+      <button class="btn btn-ghost" data-import-download>下载导入清单</button>
+      <button class="btn btn-primary" data-done>完成</button>`
+    footEl.querySelector('[data-done]').addEventListener('click', () => footEl.closest('.modal-mask').remove())
+    footEl.querySelector('[data-import-download]').addEventListener('click', () => {
+      downloadFile('导入清单.md', manifest, 'text/markdown')
+      toast('已下载 导入清单.md')
+    })
+    footEl.querySelector('[data-import-again]').addEventListener('click', () => {
+      footEl.closest('.modal-mask').remove()
+      input.value = gamma.prompt || ''
+      syncSendState()
+      input.focus()
+    })
+    return
+  }
+
   // 美化：按选定的美化方式给出一份可执行的改版清单，并导出成文件
   if (gamma.type === '美化') {
     const styleKey = gamma.beautifyStyle || ui.beautifyStyle || 'restyle'
@@ -732,11 +794,23 @@ const typePillX = $('#type-pill-x')
 const typeChips = () => $$('[data-chip]')
 const typeMenuOpen = () => !!typeWrap && !typeWrap.hidden
 
+/* 胶囊图标：每种类型用与截图一致的线性图标 */
+const TYPE_PILL_ICONS = {
+  演示文稿: '<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>',
+  文档: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/>',
+  轮播图: '<rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="M7 4v16M17 4v16"/>',
+  图片: '<rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>',
+  美化: '<path d="M12 3l1.8 4.8L18.5 9.6 13.8 11.4 12 16.2 10.2 11.4 5.5 9.6l4.7-1.8L12 3z"/><path d="M18.5 15l.7 1.9 1.9.7-1.9.7-.7 1.9-.7-1.9-1.9-.7 1.9-.7.7-1.9z"/>',
+  导入: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>',
+}
+const typePillIcon = $('#type-pill-icon')
+
 function syncTypeUI() {
   typeChips().forEach((chip) => {
     chip.classList.toggle('chip-active', chip.textContent.trim() === ui.type)
   })
   if (typePillLabel) typePillLabel.textContent = ui.type || '类型'
+  if (typePillIcon) typePillIcon.innerHTML = TYPE_PILL_ICONS[ui.type] ?? TYPE_PILL_ICONS.演示文稿
   typePill?.classList.toggle('is-off', !ui.type)
   typePillBtn?.setAttribute('aria-expanded', String(typeMenuOpen()))
   applySmartSuggest()
@@ -1646,6 +1720,129 @@ $$('[data-beautify-style]').forEach((card) => {
   })
 })
 
+/* ---------------- 导入工作台：上传文件 / 导入模板 / 连接器来源 ---------------- */
+
+const IMPORT_SOURCES = 5
+const importDrop = $('#import-drop')
+const importInput = $('#import-file-input')
+
+const kindOf = (name = '') => {
+  const ext = String(name).split('.').pop().toLowerCase()
+  if (ext === 'pdf') return 'PDF'
+  if (['xls', 'xlsx', 'csv'].includes(ext)) return '表格'
+  if (['doc', 'docx', 'md', 'txt', 'rtf'].includes(ext)) return '文档'
+  if (['png', 'jpg', 'jpeg', 'webp', 'gif', 'svg'].includes(ext)) return '图片'
+  if (['ppt', 'pptx', 'key'].includes(ext)) return '演示文稿'
+  if (['js', 'ts', 'json', 'html', 'css', 'py'].includes(ext)) return '代码'
+  return '文件'
+}
+
+importDrop?.addEventListener('click', (event) => {
+  if (event.target.closest('[data-import-pick]')) importInput?.click()
+})
+
+importInput?.addEventListener('change', () => {
+  const files = [...importInput.files]
+  if (!files.length) return
+  files.forEach((f) => addAttachment(f.name, { size: f.size, type: f.type, from: '导入文件' }))
+  addSub.refresh()
+  toast(`已加入 ${files.length} 个文件：${files.map((f) => f.name).join('、')}`)
+  importInput.value = ''
+})
+
+/* 导入模板：真的在工作区里建一个可复用模板 */
+function openImportTemplateModal() {
+  const { close, bodyEl, footEl } = openModal({
+    title: '导入模板',
+    body: `
+      <p class="modal-copy">把这次导入的内容存成可复用的工作区模板，之后在「模板」页可以一键套用。</p>
+      <div class="field"><label>模板名称</label><input type="text" id="it-name" placeholder="例如：季度经营分析" /></div>
+      <div class="field"><label>格式</label>
+        <select id="it-format"><option>演示文稿</option><option>文档</option><option>社交轮播卡片</option></select>
+      </div>
+      <div class="field"><label>分类（逗号分隔）</label><input type="text" id="it-cats" placeholder="报告, 商业规划" /></div>`,
+    footer: '<button class="btn btn-ghost" data-close>取消</button><button class="btn btn-primary" data-ok>保存模板</button>',
+  })
+  footEl.querySelector('[data-close]').addEventListener('click', close)
+  footEl.querySelector('[data-ok]').addEventListener('click', () => {
+    const name = bodyEl.querySelector('#it-name').value.trim()
+    if (!name) { toast('请先填写模板名称'); return }
+    store.state.customTemplates.unshift({
+      id: uid('tpl'),
+      name,
+      cls: null,
+      a: name,
+      b: '',
+      format: bodyEl.querySelector('#it-format').value,
+      cats: bodyEl.querySelector('#it-cats').value.split(/[,，]/).map((x) => x.trim()).filter(Boolean),
+      cover: '#3b6ef6',
+      archived: false,
+      createdAt: Date.now(),
+    })
+    store.save()
+    close()
+    toast(`模板「${name}」已保存，可在模板页套用`)
+  })
+}
+
+$('[data-import-template]')?.addEventListener('click', openImportTemplateModal)
+
+/* 连接器来源：当前已连接的服务 + 目录补齐，点一下就设为导入来源 */
+ui.importSource ??= null
+
+function importSourceList() {
+  const list = (store.state.connectors ?? []).map((c) => ({
+    name: c.name, color: c.color || '#5b6ef5', shape: c.shape || 'cloud', connected: !!c.connected,
+  }))
+  // 优先补办公/知识类工具，避免把行情类连接器塞进「从您喜爱的工具导入」提示里
+  const PREFERRED = ['腾讯文档', '飞书', 'QQ邮箱', '腾讯会议', '乐享知识库']
+  const extras = [
+    ...PREFERRED.map((name) => CONNECTOR_CATALOG.find((c) => c.name === name)).filter(Boolean),
+    ...CONNECTOR_CATALOG,
+  ]
+  for (const c of extras) {
+    if (list.length >= IMPORT_SOURCES) break
+    if (!list.some((x) => x.name === c.name)) list.push({ name: c.name, color: c.color, shape: c.shape, connected: false })
+  }
+  return list.slice(0, IMPORT_SOURCES)
+}
+
+function renderImportSources() {
+  const box = $('#import-sources')
+  if (!box) return
+  box.innerHTML = importSourceList().map((c) => `
+    <button class="is-logo${ui.importSource === c.name ? ' is-active' : ''}" type="button"
+      data-import-connector="${c.name}" style="--c:${c.color}"
+      title="${c.name}${c.connected ? ' · 已连接' : ' · 未连接'}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${CONNECTOR_ICONS[c.shape] ?? CONNECTOR_ICONS.cloud}</svg>
+    </button>`).join('')
+}
+renderImportSources()
+
+$('#import-sources')?.addEventListener('click', (event) => {
+  const btn = event.target.closest('[data-import-connector]')
+  if (!btn) return
+  const name = btn.dataset.importConnector
+  let entry = store.state.connectors.find((c) => c.name === name)
+  let newly = false
+  if (!entry) {
+    const cat = CONNECTOR_CATALOG.find((c) => c.name === name)
+    entry = {
+      id: `cn-${Date.now().toString(36)}`, name, connected: true,
+      desc: cat?.desc, color: cat?.color, shape: cat?.shape, category: cat?.category,
+    }
+    store.state.connectors.push(entry)
+    newly = true
+  } else if (!entry.connected) {
+    entry.connected = true
+    newly = true
+  }
+  ui.importSource = name
+  store.save()
+  renderImportSources()
+  toast(`${newly ? `已连接「${name}」，` : ''}导入来源：${name}`)
+})
+
 /* ---------------- 努力模式上弹菜单 ---------------- */
 
 const modeBtn = $('#mode-menu-btn')
@@ -1992,3 +2189,5 @@ syncSendState()
 renderExamples()
 placeToolbarItems()
 applySmartSuggest()
+// 连接器状态变化时刷新「导入」提示里的品牌小标（写在这里，避免早期订阅踩到 TDZ）
+store.subscribe(() => renderImportSources())

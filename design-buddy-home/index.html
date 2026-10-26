@@ -199,6 +199,18 @@
               <input type="file" id="beautify-file-input" accept=".pptx,.ppt,.docx,.doc,.pdf,.key,.md,.txt" multiple hidden />
             </div>
 
+            <!-- 导入：虚线投放区，PPTX / DOCX / PDF -->
+            <div class="beautify-drop import-drop" id="import-drop" hidden>
+              <button class="bd-inner" type="button" data-import-pick>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <span class="bd-label">添加文件</span>
+                <em class="bd-fmt">PPTX</em>
+                <em class="bd-fmt">DOCX</em>
+                <em class="bd-fmt">PDF</em>
+              </button>
+              <input type="file" id="import-file-input" accept=".pptx,.ppt,.docx,.doc,.pdf,.key,.md,.txt,.xlsx,.csv" multiple hidden />
+            </div>
+
             <textarea
               id="prompt-input"
               rows="2"
@@ -361,7 +373,7 @@
                 <div class="type-menu-wrap">
                   <span class="type-pill" id="type-pill">
                     <button class="type-pill-main" type="button" id="type-pill-btn" aria-haspopup="true" aria-expanded="false">
-                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                      <svg class="icon" id="type-pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                       <span class="type-pill-label" id="type-pill-label">演示文稿</span>
                     </button>
                     <button class="type-pill-x" type="button" id="type-pill-x" aria-label="清除创作类型">×</button>
@@ -598,6 +610,23 @@
                 <span class="bs-main"><b>精简文字</b><em>标题更清晰，文案更简洁</em></span>
               </button>
             </div>
+          </section>
+
+          <!-- 导入专用：更多选择 -->
+          <section class="import-choices" id="import-choices" hidden aria-label="更多选择">
+            <h2 class="section-label">更多选择</h2>
+            <div class="ic-grid">
+              <button class="ic-card" type="button" data-import-template>
+                <span class="ic-ic">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.6"/><rect x="3" y="14" width="18" height="6" rx="1.6"/><path d="M7 7h.01M7 17h.01"/></svg>
+                </span>
+                <span class="ic-main"><b>导入模板</b><em>创建可复用的工作区模板</em></span>
+              </button>
+            </div>
+            <p class="import-hint">
+              <span>提示：使用连接器从您喜爱的工具中导入。</span>
+              <span class="import-sources" id="import-sources"></span>
+            </p>
           </section>
 
           <!-- 图片专用：您还可以制作 -->
