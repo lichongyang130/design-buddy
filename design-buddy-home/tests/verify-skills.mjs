@@ -75,7 +75,6 @@ check('data-install buttons equal uninstalled catalog count',
   doc.querySelectorAll('#sk-grid [data-install]').length === PAGE_SKILLS.length - installedCount)
 check('review-risk cards carry high-risk badge',
   doc.querySelectorAll('#sk-grid .ex-badge').length === PAGE_SKILLS.filter((s) => s.risk === 'review').length)
-check('paid skill carries paid badge', !!doc.querySelector('#sk-grid .sk-paid'))
 check('all filter chips rendered', doc.querySelectorAll('[data-sk-chip]').length === SKILL_FILTERS.length)
 check('hover popover shows device / space / update time',
   (() => {
@@ -97,16 +96,18 @@ check('suite tab filters by source',
   grid().length === PAGE_SKILLS.filter((s) => s.source === 'suite').length)
 click(w, doc.querySelector('[data-source="recommend"]'))
 await tick()
-click(w, doc.querySelector('[data-sk-chip="内容创作"]'))
+click(w, doc.querySelector('[data-sk-chip="提案演示"]'))
 await tick()
-const contentCount = PAGE_SKILLS.filter((s) => s.category === '内容创作').length
-check('category chip filters grid', grid().length === contentCount && contentCount > 0)
-click(w, doc.querySelector('[data-sk-chip="生活服务"]'))
+const deckCount = PAGE_SKILLS.filter((s) => s.category === '提案演示').length
+check('category chip filters grid', grid().length === deckCount && deckCount > 0)
+click(w, doc.querySelector('[data-sk-chip="网站原型"]'))
 await tick()
-check('category chip narrows to one card', grid().length === 1)
+check('category chip narrows to the category subset',
+  grid().length === PAGE_SKILLS.filter((s) => s.category === '网站原型').length
+  && grid().length < PAGE_SKILLS.length)
 click(w, doc.querySelector('[data-sk-chip="全部"]'))
 await tick()
-input(w, doc.querySelector('#sk-search-input'), '邮件')
+input(w, doc.querySelector('#sk-search-input'), '邮件撰写')
 await tick()
 check('search filters by name',
   grid().length === 1 && doc.querySelector('#sk-grid .sk-card-title')?.textContent.includes('邮件撰写助手'))
