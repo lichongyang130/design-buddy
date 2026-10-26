@@ -1302,15 +1302,33 @@ a:focus-visible {
   flex: none;
 }
 
-/* 子菜单与主菜单顶部对齐（同为 flex-start，不再手动下压） */
+/* 二级面板与主菜单顶部对齐（同为 flex-start，不再手动下压） */
 .popover-sub {
-  width: 296px;
+  width: 320px;
   flex: none;
   margin-top: 0;
+  max-height: min(430px, 62vh);
+  overflow-y: auto;
+  padding: 8px;
 }
 
 .popover-sub[hidden] {
   display: none;
+}
+
+/* 主菜单里当前被指向的行 */
+.menu-row.is-sub-active,
+.menu-row.is-sub-active:hover {
+  background: #eef1f8;
+}
+
+.menu-row.is-sub-active .menu-ic {
+  color: var(--navy);
+}
+
+.menu-row.is-sub-active .menu-chev {
+  color: var(--navy);
+  transform: translateX(1px);
 }
 
 /* 菜单项 */
@@ -1839,5 +1857,290 @@ a:focus-visible {
     left: 0;
     transform-origin: bottom left;
     animation-name: pop-in-tr;
+  }
+}
+
+/* ============================================================
+   「＋」二级面板：文件 / 引用 / 计划·任务 / 技能 / 连接器
+   ============================================================ */
+
+.add-sub-panel[hidden] {
+  display: none;
+}
+
+.add-sub-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px 8px;
+}
+
+.add-sub-head-second {
+  padding-top: 12px;
+  border-top: 1px solid var(--line-soft);
+  margin-top: 6px;
+}
+
+.add-sub-title {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: 0.01em;
+}
+
+.add-sub-count {
+  font-size: 11.5px;
+  font-style: normal;
+  color: var(--text-3);
+}
+
+.add-sub-mini {
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #fff;
+  font-size: 11.5px;
+  color: var(--text-2);
+}
+
+.add-sub-mini:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.add-sub-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  margin: 0 4px 8px;
+  padding: 0 10px;
+  border-radius: 9px;
+  background: #f4f5f8;
+}
+
+.add-sub-search .icon {
+  width: 15px;
+  height: 15px;
+  color: var(--text-3);
+  flex: none;
+}
+
+.add-sub-search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.add-sub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.add-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 9px;
+  text-align: left;
+  transition: background 0.12s ease;
+}
+
+.add-item:hover {
+  background: var(--line-soft);
+}
+
+.add-item.is-static:hover {
+  background: transparent;
+}
+
+.add-item-ic {
+  width: 30px;
+  height: 30px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #4b5b7d, #232f4b);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.add-item-ic.is-file {
+  background: #eef1f7;
+  color: #4a566e;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.add-dot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--c, #8792a8);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--c, #8792a8) 16%, transparent);
+}
+
+.add-dot.is-queued { background: #98a1b2; }
+.add-dot.is-running { background: #3b6ef6; }
+.add-dot.is-done { background: #4caf7d; }
+.add-dot.is-failed { background: #d14343; }
+
+.add-item-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.add-item-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--navy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.add-item-meta {
+  font-size: 11.5px;
+  color: var(--text-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.add-item-pill {
+  flex: none;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #f0f2f7;
+  font-size: 11px;
+  color: var(--text-2);
+}
+
+.add-item-pill.is-on {
+  background: rgba(76, 175, 125, 0.14);
+  color: #2f7d57;
+}
+
+.add-item-x {
+  flex: none;
+  padding: 2px 8px;
+  border-radius: 7px;
+  font-size: 11.5px;
+  color: var(--text-3);
+}
+
+.add-item-x:hover {
+  background: rgba(196, 92, 79, 0.12);
+  color: #a4372e;
+}
+
+.add-item .mini-switch {
+  flex: none;
+  margin-left: 2px;
+  pointer-events: none;
+}
+
+.add-sub-action {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: calc(100% - 8px);
+  margin: 4px;
+  padding: 10px 12px;
+  border: 1px dashed #c9d3e6;
+  border-radius: 10px;
+  background: #fbfcff;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.add-sub-action:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.add-sub-action.is-small {
+  width: auto;
+  margin: 8px 0 2px;
+  padding: 7px 12px;
+  font-size: 12.5px;
+}
+
+.add-sub-action .icon {
+  width: 17px;
+  height: 17px;
+}
+
+.add-sub-link {
+  display: block;
+  margin: 6px 4px 2px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  font-size: 12.5px;
+  color: var(--blue);
+  text-align: left;
+}
+
+.add-sub-link:hover {
+  background: var(--blue-bg);
+}
+
+.add-sub-link.as-button {
+  width: calc(100% - 8px);
+  border: none;
+  background: transparent;
+  font: inherit;
+}
+
+.add-sub-note {
+  margin: 2px 12px 8px;
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--text-3);
+}
+
+.add-sub-empty {
+  padding: 14px 12px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--text-3);
+}
+
+.add-sub-empty p {
+  margin: 0;
+}
+
+/* 专家列表里当前已选中的专家 */
+.expert-item.is-current {
+  background: #f1f4fb;
+}
+
+.expert-item.is-current .expert-name {
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .popover-sub {
+    width: 100%;
+    max-height: 320px;
+  }
+  .popover-sub {
+    margin-top: 8px;
   }
 }

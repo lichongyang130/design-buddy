@@ -25,6 +25,7 @@ import { applyAppChips } from './settings-effects.js'
 import { expertAvatarByName } from './expert-avatars.js'
 import { EXPERT_CATALOG } from './experts-catalog.js'
 import { EXPERT_CAPS, runExpert, resultHTML } from './expert-runtime.js'
+import { initAddSubPanels } from './add-menu.js'
 
 initGlobalUI()
 
@@ -217,10 +218,24 @@ function renderChips() {
   )
 }
 
-function addAttachment(name) {
+function addAttachment(name, meta = {}) {
   if (attachments.some((a) => a.name === name)) return
-  attachments.push({ name })
+  attachments.push({ name, ...meta })
   renderChips()
+}
+
+/* 附件正文 → 生成时真正使用的上下文（引用对话中的文件也走这里） */
+function attachmentContext() {
+  if (!attachments.length) return ''
+  const head = attachments.map((a) => {
+    const size = a.size ? `，${(a.size / 1024).toFixed(0)} KB` : ''
+    return `- ${a.name}（${a.from || '附件'}${size}${a.text ? '，正文已读取' : '，二进制仅随稿交付'}）`
+  }).join('\n')
+  const bodies = attachments
+    .filter((a) => a.text)
+    .map((a) => `【${a.name}】\n${a.text.slice(0, 1200)}`)
+    .join('\n\n')
+  return `附件清单：\n${head}${bodies ? `\n\n附件正文节选：\n${bodies}` : ''}`
 }
 
 function submitPrompt() {
@@ -248,7 +263,14 @@ function submitPrompt() {
   if (memCount || hasInstruction) {
     toast(`已应用 ${memCount} 条记忆${hasInstruction ? '与自定义指令' : ''}`)
   }
-  createGamma({ prompt: text, origin: 'prompt', appliedMemory: memCount + (hasInstruction ? 1 : 0) })
+  const context = attachmentContext()
+  createGamma({
+    prompt: text,
+    origin: 'prompt',
+    appliedMemory: memCount + (hasInstruction ? 1 : 0),
+    attachContext: context,
+    attachNames: attachments.map((a) => a.name),
+  })
   input.value = ''
   input.style.height = 'auto'
   attachments.length = 0
@@ -267,7 +289,7 @@ input.addEventListener('keydown', (event) => {
 
 /* ---------------- gamma 生成（模拟流水线，真实落库） ---------------- */
 
-function createGamma({ prompt, origin = 'prompt', template = null, silent = false }) {
+function createGamma({ prompt, origin = 'prompt', template = null, silent = false, attachContext = '', attachNames = null }) {
   const cost = silent ? 0 : MODE_COST[ui.mode] ?? 3
   store.state.credits -= cost
   const now = Date.now()
@@ -291,6 +313,7 @@ function createGamma({ prompt, origin = 'prompt', template = null, silent = fals
     template,
     origin,
     attachments: [...attachments],
+    attachContext,
     folderId: null,
     shared: false,
     deleted: false,
@@ -299,15 +322,45 @@ function createGamma({ prompt, origin = 'prompt', template = null, silent = fals
   }
   store.state.gammas.unshift(gamma)
   store.state.conversations.unshift({ id: uid('c'), gammaId: gamma.id, title, at: now })
+  // 真实任务：与这次创作同生共死，模式菜单的「任务」列表直接读它
+  store.state.tasks.unshift({
+    id: uid('t'), gammaId: gamma.id, name: title, prompt,
+    mode: gamma.mode, type: gamma.type, status: silent ? '已完成' : '排队中',
+    createdAt: now, finishedAt: silent ? now : null, artifact: null,
+    files: attachNames ?? gamma.attachments.map((a) => a.name),
+  })
+  store.state.tasks = store.state.tasks.slice(0, 50)
   store.save()
+  addSub.refresh()
   if (!silent) runGeneration(gamma)
   renderFolders()
   return gamma
 }
 
+function taskOf(gamma) {
+  return store.state.tasks.find((t) => t.gammaId === gamma.id)
+}
+
+function finishTask(gamma, artifact = null) {
+  const task = taskOf(gamma)
+  if (!task) return
+  task.status = '已完成'
+  task.finishedAt = Date.now()
+  task.artifact = artifact
+  store.save()
+  addSub.refresh()
+}
+
 function runGeneration(gamma) {
   // 设置 → 模型：真实模型 id 来自 model-config.js 写死的可用白名单
   const model = store.state.settings.model || AVAILABLE_MODELS[0]?.id || '本地演示模型'
+  const task = taskOf(gamma)
+  if (task) {
+    task.status = '进行中'
+    task.startedAt = Date.now()
+    store.save()
+    addSub.refresh()
+  }
   const pace = 480
   const steps = ['理解提示词', '规划页面结构', `${gamma.type}内容生成`, '视觉与排版优化']
   const { bodyEl, footEl } = openModal({
@@ -340,8 +393,12 @@ function showResult(gamma, bodyEl, footEl) {
   const expertEntry = EXPERT_CATALOG.find((e) => e.name === gamma.expert)
   const cap = expertEntry ? EXPERT_CAPS[expertEntry.id] : null
   if (cap) {
-    const result = runExpert(expertEntry.id, gamma.prompt || cap.sample)
-    bodyEl.innerHTML = `<p class="modal-copy"><strong>${expertEntry.name}</strong> 已交付：${result.title}（${gamma.mode} 模式）</p>${resultHTML(result)}`
+    const enginePrompt = [gamma.prompt, gamma.attachContext].filter(Boolean).join('\n\n') || cap.sample
+    const result = runExpert(expertEntry.id, enginePrompt)
+    finishTask(gamma, result.artifacts?.[0]?.name ?? null)
+    bodyEl.innerHTML = `<p class="modal-copy"><strong>${expertEntry.name}</strong> 已交付：${result.title}（${gamma.mode} 模式）${
+      gamma.attachments?.length ? `<br />已参考 ${gamma.attachments.length} 个附件：${gamma.attachments.map((a) => a.name).join('、')}` : ''
+    }</p>${resultHTML(result)}`
     footEl.innerHTML = `
       <button class="btn btn-ghost" data-again>改一句再来</button>
       ${result.artifacts?.length ? '<button class="btn btn-ghost" data-download>下载产物</button>' : ''}
@@ -362,6 +419,7 @@ function showResult(gamma, bodyEl, footEl) {
   }
 
   const pages = ['封面', '背景介绍', '核心内容', '数据与案例', '总结与行动项']
+  finishTask(gamma, `${pages.length} 页大纲`)
   bodyEl.innerHTML = `
     <p class="modal-copy"><strong>${gamma.title}</strong> 已生成，共 ${pages.length} 页（${gamma.mode} 模式，消耗 ${MODE_COST[gamma.mode] ?? 3} 积分）。</p>
     <ul class="outline-list">
@@ -577,11 +635,29 @@ try {
   /* 召唤数据损坏时不影响首页加载 */
 }
 
+/* 二级面板：鼠标指向主菜单某一行，右侧就显示该行的内容 */
+const addSub = initAddSubPanels({
+  attachments,
+  addAttachment,
+  pickFiles: () => fileInput.click(),
+  openRefPicker: () => openReferencePicker(),
+  onAttachmentsChange: () => renderChips(),
+  fillPrompt: (text, files = []) => {
+    input.value = text
+    input.style.height = 'auto'
+    input.style.height = `${Math.min(input.scrollHeight, 160)}px`
+    files.forEach((f) => addAttachment(f.name, { size: f.size, from: f.from }))
+    syncSendState()
+    input.focus()
+  },
+})
+
 function openPopover() {
   if (imgPopover && !imgPopover.hidden) closeImgPopover()
   if (effortIsOpen()) closeEffort()
   popover.hidden = false
   addBtn.setAttribute('aria-expanded', 'true')
+  addSub.show('experts')
 }
 function closePopover() {
   popover.hidden = true
@@ -592,11 +668,13 @@ function closePopover() {
 }
 const popoverIsOpen = () => !popover.hidden
 function openExpertSub() {
+  addSub.show('experts')
   expertSub.hidden = false
   expertRow.classList.add('is-open')
   expertRow.setAttribute('aria-expanded', 'true')
 }
 function closeExpertSub() {
+  addSub.hide()
   expertSub.hidden = true
   expertRow.classList.remove('is-open')
   expertRow.setAttribute('aria-expanded', 'false')
@@ -609,7 +687,8 @@ addBtn.addEventListener('click', (event) => {
 expertRow.addEventListener('mouseenter', openExpertSub)
 expertRow.addEventListener('click', (event) => {
   event.stopPropagation()
-  expertSub.hidden ? openExpertSub() : closeExpertSub()
+  // 点击与鼠标指向一致：始终展开专家面板（收起由关闭整个菜单负责）
+  openExpertSub()
 })
 
 function filterExperts() {
@@ -638,33 +717,93 @@ expertSearch.addEventListener('click', (event) => event.stopPropagation())
 const fileInput = document.createElement('input')
 fileInput.type = 'file'
 fileInput.multiple = true
+fileInput.accept = '.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.md,.json,.html,.css,.js,.ts,.png,.jpg,.jpeg,.webp,.gif,.svg'
 fileInput.hidden = true
 document.body.append(fileInput)
-fileInput.addEventListener('change', () => {
-  [...fileInput.files].forEach((f) => addAttachment(f.name))
+
+const TEXT_LIKE = /\.(txt|md|markdown|csv|tsv|json|html?|css|js|mjs|ts|tsx|jsx|ya?ml|xml|sql|py|sh|log|srt)$/i
+const isTextFile = (f) => (f.type || '').startsWith('text/') || /json|javascript|xml|yaml|csv/i.test(f.type || '') || TEXT_LIKE.test(f.name || '')
+
+// 文本类文件真读内容（截断到 6000 字），供引擎在生成时使用；二进制只记录元信息
+function readFileIntoAttachment(file) {
+  return new Promise((resolve) => {
+    const meta = { size: file.size, type: file.type, from: '本地上传' }
+    if (!isTextFile(file) || typeof FileReader === 'undefined') {
+      addAttachment(file.name, meta)
+      resolve()
+      return
+    }
+    try {
+      const reader = new FileReader()
+      reader.onload = () => {
+        addAttachment(file.name, { ...meta, text: String(reader.result ?? '').slice(0, 6000) })
+        resolve()
+      }
+      reader.onerror = () => { addAttachment(file.name, meta); resolve() }
+      reader.readAsText(file)
+    } catch {
+      addAttachment(file.name, meta)
+      resolve()
+    }
+  })
+}
+
+fileInput.addEventListener('change', async () => {
+  const files = [...fileInput.files]
+  for (const f of files) await readFileIntoAttachment(f)
   fileInput.value = ''
-  if (attachments.length) toast(`已附加 ${attachments.length} 个文件`)
+  if (files.length) {
+    const withText = attachments.filter((a) => a.text).length
+    toast(`已附加 ${files.length} 个文件${withText ? `，其中 ${withText} 个已读取正文` : ''}`)
+  }
+  addSub.refresh()
 })
 
 function openReferencePicker() {
+  const attachedNames = () => new Set(attachments.map((a) => a.name))
+  // 对话里的文件：历史创作附件 + 媒体库，按最近优先
+  const fromConversations = []
+  store.state.gammas.forEach((g) => (g.attachments ?? []).forEach((a) => {
+    if (!fromConversations.some((x) => x.name === a.name)) fromConversations.push({ name: a.name, from: `创作「${g.title}」` })
+  }))
   const { bodyEl } = openModal({
     title: '引用对话中的文件（媒体库）',
     wide: true,
   })
   const render = () => {
-    bodyEl.innerHTML = `<div class="modal-list">${store.state.media.map((m) => `
-      <button class="modal-list-item" data-ref="${m.id}">
-        <span class="gamma-thumb ${m.cls}"></span>
-        <span class="grow"><span class="primary">${m.name}</span>
-        <span class="secondary">${m.source === 'ai' ? 'AI 生成' : '本地上传'} · ${m.gen}</span></span>
-      </button>`).join('')}</div>`
+    const done = attachedNames()
+    bodyEl.innerHTML = `
+      ${fromConversations.length ? `<p class="modal-copy">来自历史对话的附件</p>
+      <div class="modal-list">${fromConversations.map((f) => `
+        <button class="modal-list-item${done.has(f.name) ? ' is-on' : ''}" data-ref-name="${f.name}">
+          <span class="gamma-thumb m-desk"></span>
+          <span class="grow"><span class="primary">${f.name}</span>
+          <span class="secondary">${f.from} · 对话文件</span></span>
+          <span class="add-item-pill${done.has(f.name) ? ' is-on' : ''}">${done.has(f.name) ? '已引用' : '引用'}</span>
+        </button>`).join('')}</div>` : ''}
+      <p class="modal-copy">媒体库</p>
+      <div class="modal-list">${store.state.media.map((m) => `
+        <button class="modal-list-item${done.has(m.name) ? ' is-on' : ''}" data-ref="${m.id}">
+          <span class="gamma-thumb ${m.cls}"></span>
+          <span class="grow"><span class="primary">${m.name}</span>
+          <span class="secondary">${m.source === 'ai' ? 'AI 生成' : '本地上传'} · ${m.gen}</span></span>
+          <span class="add-item-pill${done.has(m.name) ? ' is-on' : ''}">${done.has(m.name) ? '已引用' : '引用'}</span>
+        </button>`).join('')}</div>`
+    const pick = (name) => {
+      addAttachment(name, { from: '媒体库' })
+      bodyEl.closest('.modal-mask').remove()
+      addSub.refresh()
+      toast(`已引用「${name}」`)
+    }
     bodyEl.querySelectorAll('[data-ref]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const m = store.state.media.find((x) => x.id === btn.dataset.ref)
-        addAttachment(m.name)
-        bodyEl.closest('.modal-mask').remove()
-        toast(`已引用「${m.name}」`)
+        if (!m) return
+        pick(m.name)
       })
+    })
+    bodyEl.querySelectorAll('[data-ref-name]').forEach((btn) => {
+      btn.addEventListener('click', () => pick(btn.dataset.refName))
     })
   }
   render()
@@ -675,15 +814,15 @@ popover.addEventListener('click', (event) => {
   if (actionRow) {
     event.stopPropagation()
     const action = actionRow.dataset.action
-    closePopover()
     switch (action) {
-      case '添加文件': fileInput.click(); break
-      case '引用对话中的文件': openReferencePicker(); break
-      case '模式': openEffort(); break
-      case '技能': openSkills(); break
-      case '连接器': openConnectors(); break
-      case '新建': createBlankGamma(); break
-      case '召唤更多专家': openExperts(); break
+      // 这六项都在右侧展开真实内容，不跳页也不只是弹提示
+      case '添加文件': addSub.show('files'); fileInput.click(); break
+      case '引用对话中的文件': addSub.show('refs'); openReferencePicker(); break
+      case '模式': addSub.show('mode'); break
+      case '技能': addSub.show('skills'); break
+      case '连接器': addSub.show('connectors'); break
+      case '新建': closePopover(); createBlankGamma(); break
+      case '召唤更多专家': closePopover(); openExperts(); break
       default: toast(action)
     }
     return
@@ -748,7 +887,8 @@ imgPopover.querySelector('[data-ref-upload]').addEventListener('click', (event) 
 refFileInput.addEventListener('click', (event) => event.stopPropagation())
 refFileInput.addEventListener('change', () => {
   const files = [...refFileInput.files].filter((f) => f.type.startsWith('image/'))
-  files.forEach((f) => addAttachment(f.name))
+  files.forEach((f) => addAttachment(f.name, { size: f.size, type: f.type, from: '参考图' }))
+  addSub.refresh()
   if (files.length) toast(`已添加 ${files.length} 张参考图片`)
   refFileInput.value = ''
   closeImgPopover()

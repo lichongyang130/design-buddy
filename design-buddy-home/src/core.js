@@ -18,6 +18,8 @@ export function defaultState() {
     credits: 236,
     gammas: [],
     conversations: [],
+    // 真实任务队列：每次创作写入一条，随生成进度更新状态
+    tasks: [],
     folders: [],
     customThemes: [],
     archivedThemes: [],
