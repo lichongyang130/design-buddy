@@ -48,8 +48,11 @@ const server = createServer(async (req, res) => {
 
     res.writeHead(200, {
       'Content-Type': MIME[extname(filePath)] ?? 'application/octet-stream',
-      // 代理缓存按 URL 区分即可；不加 no-cache，让静态 hash 资源可缓存。
-      'Cache-Control': extname(filePath) === '.html' ? 'no-cache' : 'public, max-age=3600',
+      // HTML 与 Service Worker 必须每次回源校验，否则新版本部署后浏览器看不到更新；
+      // 其余带 hash 的静态资源可放心缓存。
+      'Cache-Control': (extname(filePath) === '.html' || filePath.endsWith('sw.js'))
+        ? 'no-cache'
+        : 'public, max-age=3600',
     })
     res.end(body)
   } catch (err) {

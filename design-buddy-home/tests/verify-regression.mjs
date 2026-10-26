@@ -13,6 +13,18 @@ const cssBundle = fs.readdirSync(path.join(DIST, 'assets'))
 results.push(['css: expert submenu no 118px offset', !cssBundle.includes('margin-top:118px') && /\.popover-sub\{[^}]*margin-top:0/.test(cssBundle.replace(/\s+/g, ''))])
 results.push(['css: ws menu card restyled', cssBundle.includes('.ws-menu') && cssBundle.includes('border-radius:22px')])
 
+// Service Worker：必须 network-first 导航 + 版本化缓存，防止旧壳长期驻留（预览不更新的根因防护）
+{
+  const sw = fs.readFileSync(path.join(DIST, 'sw.js'), 'utf8')
+  results.push(['sw: versioned shell cache v2', sw.includes("design-buddy-shell-v2'") && !sw.includes('shell-v1')])
+  results.push(['sw: navigation requests are network-first', sw.includes("req.mode === 'navigate'")])
+  results.push(['sw: stale caches purged on activate', sw.includes('caches.delete')])
+  const head = await fetch('http://127.0.0.1:5174/sw.js')
+  const htmlHead = await fetch('http://127.0.0.1:5174/index.html')
+  results.push(['server: sw.js served no-cache', (head.headers.get('cache-control') || '').includes('no-cache')])
+  results.push(['server: html served no-cache', (htmlHead.headers.get('cache-control') || '').includes('no-cache')])
+}
+
 // 首页：既有结构 + 三个弹层
 {
   const { doc, w, errors } = await loadPage('/index.html')
