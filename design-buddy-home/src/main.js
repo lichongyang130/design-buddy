@@ -1221,7 +1221,8 @@ function openParams() {
   footEl.querySelector('[data-close]').addEventListener('click', close)
 }
 
-$('.tool-btn[aria-label="调整参数"]').addEventListener('click', openParams)
+// 参数按钮已从界面移除
+// $('.tool-btn[aria-label="调整参数"]').addEventListener('click', openParams)
 
 /* ---------------- 语音输入 ---------------- */
 

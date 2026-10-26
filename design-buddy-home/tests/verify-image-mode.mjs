@@ -46,8 +46,8 @@ check('recommended templates step aside', $('#rec-templates').hidden === true)
 /* ---------- 2. 工具条顺序（截图） ---------- */
 
 const left = [...doc.querySelector('.toolbar-left').children].map((c) => c.className.split(' ')[0])
-check('left toolbar is + / params / 图片 pill / ratio / count / 参考图',
-  left.join() === 'add-menu-wrap,tool-btn,type-menu-wrap,img-extra')
+check('left toolbar is + / 图片 pill / ratio / count / 参考图',
+  left.join() === 'add-menu-wrap,type-menu-wrap,img-extra')
 check('ratio and count live in the image extras',
   [...$('#img-extra').children].map((c) => c.className.split(' ')[0]).join()
   === 'mini-menu-wrap,mini-menu-wrap,img-menu-wrap')

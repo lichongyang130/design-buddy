@@ -55,9 +55,9 @@ check('hero photo is the small tilted card from the screenshot',
 check('default placeholder is the LinkedIn carousel brief',
   $('#prompt-input')?.placeholder.includes('LinkedIn 轮播图')
   && $('#prompt-input')?.placeholder.includes('行动号召'))
-check('toolbar left is only + and params in the default state',
+check('toolbar left is only + and type-menu in the default state (params button removed)',
   [...doc.querySelector('.toolbar-left').children].map((c) => c.hidden ? `${c.className.split(' ')[0]}:hidden` : c.className.split(' ')[0]).join(',')
-  === 'add-menu-wrap,tool-btn,type-menu-wrap:hidden')
+  === 'add-menu-wrap,type-menu-wrap:hidden')
 check('toolbar right ends with mic and round send',
   [...doc.querySelector('.toolbar-right').children].map((c) => c.id || c.className.split(' ')[0]).join(',')
   === 'img-menu-wrap,mode-menu-wrap,tool-btn,send-btn')

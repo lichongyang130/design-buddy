@@ -44,16 +44,8 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
 /* ---------------- 首页：参数 / 弹出菜单 / 引用 / Max 门槛 / 空白新建 ---------------- */
 {
   const { doc, w, errors } = await loadPage('/index.html')
-  click(w, doc.querySelector('.tool-btn[aria-label="调整参数"]'))
-  await tick()
-  check('params modal opens', !!doc.querySelector('.modal-mask'))
-  const range = doc.querySelector('#p-creativity')
-  input(w, range, '4')
-  range.dispatchEvent(new w.Event('input', { bubbles: true }))
-  click(w, doc.querySelector('.modal-foot [data-ok]'))
-  await tick()
-  check('params saved', JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).settings.params.creativity === 4)
-
+  // 参数按钮已从界面移除，跳过参数测试
+  
   click(w, doc.querySelector('#add-menu-btn'))
   await tick()
   check('full-access button removed from popover', !doc.querySelector('.access-btn'))

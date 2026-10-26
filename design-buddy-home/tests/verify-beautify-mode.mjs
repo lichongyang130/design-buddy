@@ -74,9 +74,9 @@ check('the attachment is announced', toasts().includes('原稿') && toasts().inc
 
 /* ---------- 3. 工具条（截图） ---------- */
 
-check('left toolbar is + / params / 美化 pill',
+check('left toolbar is + / 美化 pill',
   [...doc.querySelector('.toolbar-left').children].map((c) => c.className.split(' ')[0]).join()
-  === 'add-menu-wrap,tool-btn,type-menu-wrap')
+  === 'add-menu-wrap,type-menu-wrap')
 check('the type pill reads 美化',
   $('#type-pill-label').textContent === '美化' && !$('#type-pill').classList.contains('is-off'))
 check('right toolbar is 标准 / mic / send without the image icon',

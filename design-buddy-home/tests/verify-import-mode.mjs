@@ -72,9 +72,9 @@ check('the import upload is announced',
 
 /* ---------- 3. 工具条（截图） ---------- */
 
-check('left toolbar is + / params / 导入 pill',
+check('left toolbar is + / 导入 pill',
   [...doc.querySelector('.toolbar-left').children].map((c) => c.className.split(' ')[0]).join()
-  === 'add-menu-wrap,tool-btn,type-menu-wrap')
+  === 'add-menu-wrap,type-menu-wrap')
 check('the type pill reads 导入 with a download icon',
   $('#type-pill-label').textContent === '导入'
   && $('#type-pill-icon').innerHTML.includes('12" y1="15" x2="12" y2="3"'))

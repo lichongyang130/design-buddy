@@ -368,11 +368,11 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   const home = await loadPage('/index.html', { storage, freshCopy: true })
   check('home prefills the summoned prompt',
     home.doc.querySelector('#prompt-input')?.value === '把这段改写成像人写的')
-  /* 输入框工具栏左侧：+ / 参数 / 专家胶囊（第三项） */
+  /* 输入框工具栏左侧：+ / 专家胶囊（第二项，参数按钮已移除） */
   const left = home.doc.querySelector('.toolbar-left')
   const chip = home.doc.querySelector('#prompt-expert')
-  check('summoned expert sits third in the prompt toolbar',
-    !!chip && left.children[2] === chip && left.children.length === 3)
+  check('summoned expert sits in the prompt toolbar',
+    !!chip && left.children[1] === chip)
   check('the expert chip names the summoned expert',
     chip.querySelector('.prompt-expert-name')?.textContent === '改稿与精简编辑'
     && chip.querySelector('img.prompt-expert-avatar')?.getAttribute('src') === '/avatars/ec-editor-in-chief.webp')
@@ -387,14 +387,14 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   check('dismissing the chip is announced',
     home.doc.querySelector('#toast')?.textContent.includes('已取消召唤'))
 
-  // 有肖像的专家：第三项显示的是头像图片
+  // 有肖像的专家：第二项显示的是头像图片（参数按钮已移除）
   storage.setItem('design-buddy-summon-v1', JSON.stringify({ name: '提案叙事专家', prompt: '' }))
   const home2 = await loadPage('/index.html', { storage, freshCopy: true })
   const chip2 = home2.doc.querySelector('#prompt-expert')
   check('experts with a portrait render it in the toolbar chip',
     chip2?.querySelector('img.prompt-expert-avatar')?.getAttribute('src') === '/avatars/ec-deck-writer.webp'
     && chip2.querySelector('.prompt-expert-name')?.textContent === '提案叙事专家'
-    && home2.doc.querySelector('.toolbar-left').children[2] === chip2)
+    && home2.doc.querySelector('.toolbar-left').children[1] === chip2)
   check('toolbar chip contract in built CSS',
     cssCompact.includes('.prompt-expert{display:inline-flex;align-items:center;gap:7px;height:36px')
     && cssCompact.includes('.prompt-expert-avatar{width:26px;height:26px')
