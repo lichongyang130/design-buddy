@@ -653,6 +653,90 @@ a:focus-visible {
   background: var(--line-soft);
 }
 
+/* ---------- 输入框左侧第三项：当前被召唤的专家（头像 + 名称） ---------- */
+
+.prompt-expert {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  max-width: 210px;
+  padding: 0 9px 0 4px;
+  border: 1px solid #e3e8f2;
+  border-radius: 999px;
+  background: #f7f9fd;
+  color: var(--navy);
+  font-size: 12.5px;
+  font-weight: 600;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.prompt-expert:hover {
+  border-color: #ccd7ea;
+  background: #eef3fc;
+}
+
+.prompt-expert-avatar {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eaeef7;
+  box-shadow: 0 0 0 1px rgba(23, 43, 92, 0.07);
+}
+
+.prompt-expert-avatar.is-initial {
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(145deg, #8b6bff, #5b3cc4);
+  box-shadow: none;
+}
+
+.prompt-expert-name {
+  min-width: 0;
+  max-width: 140px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.prompt-expert-x {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  flex: none;
+  border-radius: 50%;
+  color: #9aa3b5;
+}
+
+.prompt-expert-x svg {
+  width: 11px;
+  height: 11px;
+}
+
+.prompt-expert:hover .prompt-expert-x {
+  color: var(--navy);
+  background: #dde6f6;
+}
+
+/* 刚被召唤到首页时轻轻落位，提示「专家已就位」 */
+.prompt-expert.is-arriving {
+  animation: prompt-expert-arrive 1.4s ease;
+}
+
+@keyframes prompt-expert-arrive {
+  0% { transform: scale(0.7); opacity: 0; }
+  35% { transform: scale(1.06); opacity: 1; }
+  55% { transform: scale(1); }
+  75% { box-shadow: 0 0 0 4px rgba(59, 110, 246, 0.18); }
+  100% { box-shadow: none; }
+}
+
 .mode-btn {
   display: inline-flex;
   align-items: center;

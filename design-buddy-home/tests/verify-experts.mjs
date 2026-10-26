@@ -8,6 +8,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { loadPage, click, input, tick, readState, DIST } from './helpers.mjs'
 import { EXPERT_CATALOG, EXPERT_CATEGORIES, EXPERT_FILTERS, formatUsage } from '../src/experts-catalog.js'
+import { EXPERT_AVATARS } from '../src/expert-avatars.js'
 
 let passed = 0
 const fails = []
@@ -54,15 +55,16 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   /* 头像：西方动画电影式 3D 肖像（本地 webp），缺图的专家回退首字 */
   const cards = [...doc.querySelectorAll('.ex-card')]
   const portraits = cards.filter((c) => c.querySelector('.expert-avatar.has-photo img'))
-  check('expert cards paint 3D portrait avatars', portraits.length >= 9, `${portraits.length}/${cards.length}`)
+  check('every expert card paints a 3D portrait avatar', portraits.length === cards.length, `${portraits.length}/${cards.length}`)
   check('portrait avatars point at local webp files',
     portraits.every((c) => /^\/avatars\/ec-[a-z-]+\.webp$/.test(c.querySelector('.expert-avatar img').getAttribute('src'))))
   check('portraits lazy-load and stay decorative',
     portraits.every((c) => c.querySelector('.expert-avatar img').getAttribute('loading') === 'lazy'
       && c.querySelector('.expert-avatar img').getAttribute('alt') === ''))
-  check('experts without a portrait fall back to initials',
-    cards.filter((c) => !c.querySelector('.expert-avatar.has-photo'))
-      .every((c) => c.querySelector('.expert-avatar').textContent.trim().length === 1))
+  check('no card is left on the initials fallback',
+    cards.every((c) => c.querySelector('.expert-avatar.has-photo img')))
+  check('every catalog expert has an avatar file registered',
+    EXPERT_CATALOG.every((e) => /^\/avatars\/ec-[a-z-]+\.webp$/.test(EXPERT_AVATARS[e.id] ?? '')))
   check('avatar contract in built CSS',
     cssCompact.includes('.expert-avatar.has-photo{overflow:hidden')
     && cssCompact.includes('.expert-avatar.has-photoimg{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit}'))
@@ -247,6 +249,22 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   check('summon closes the drawer', !drawer())
   check('summon hands the expert over to the home page',
     summoned?.name === '创业导师助手' && summoned?.prompt === '')
+  /* 过场：先在原地显示「正在召唤专家」，再进首页 */
+  const summonMask = doc.querySelector('.ex-summon-mask')
+  check('summon shows a loading screen before leaving',
+    !!summonMask && summonMask.parentElement === doc.body)
+  check('loading screen says it is summoning the expert',
+    summonMask?.querySelector('.ex-summon-title')?.textContent === '正在召唤专家'
+    && summonMask?.querySelector('.ex-summon-name')?.textContent === '创业导师助手 · 启明')
+  check('loading screen shows the expert portrait',
+    summonMask?.querySelector('.ex-summon-portrait')?.getAttribute('src') === '/avatars/ec-mentor.webp')
+  check('loading screen stays up while it runs',
+    !!doc.querySelector('.ex-summon-mask') && !doc.querySelector('.ex-drawer-mask'))
+  check('loading screen contract in built CSS',
+    cssCompact.includes('.ex-summon-mask{position:fixed;top:0;right:0;bottom:0;left:0;z-index:110')
+    && cssCompact.includes('.ex-summon-orbit{')
+    && cssCompact.includes('animation:ex-mask-in.18sease'))
+  summonMask.remove()
   storage.removeItem('design-buddy-summon-v1')
 
   await openCard('ec-boardsec')
@@ -256,6 +274,9 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   const withPrompt = JSON.parse(storage.getItem('design-buddy-summon-v1') ?? 'null')
   check('a prompt row carries its text to the home page',
     withPrompt?.name === '董秘助手' && withPrompt?.prompt === boardPrompt && !drawer())
+  check('a prompt row also runs the summon loading screen',
+    !!doc.querySelector('.ex-summon-mask'))
+  doc.querySelector('.ex-summon-mask')?.remove()
   storage.removeItem('design-buddy-summon-v1')
 
   await openCard('ec-boardsec')
@@ -312,6 +333,37 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   const home = await loadPage('/index.html', { storage, freshCopy: true })
   check('home prefills the summoned prompt',
     home.doc.querySelector('#prompt-input')?.value === '帮我起草一份董事会决议公告')
+  /* 输入框工具栏左侧：+ / 参数 / 专家胶囊（第三项） */
+  const left = home.doc.querySelector('.toolbar-left')
+  const chip = home.doc.querySelector('#prompt-expert')
+  check('summoned expert sits third in the prompt toolbar',
+    !!chip && left.children[2] === chip && left.children.length === 3)
+  check('the expert chip names the summoned expert',
+    chip.querySelector('.prompt-expert-name')?.textContent === '董秘助手'
+    && chip.querySelector('img.prompt-expert-avatar')?.getAttribute('src') === '/avatars/ec-boardsec.webp')
+  check('the expert chip explains itself on hover',
+    chip.title.includes('董秘助手') && chip.getAttribute('aria-label')?.includes('董秘助手'))
+  check('the expert chip animates in when summoned',
+    chip.classList.contains('is-arriving'))
+  click(home.w, chip)
+  await tick()
+  check('dismissing the chip clears the expert and hides it',
+    !home.doc.querySelector('#prompt-expert') && readState(storage).ui?.expert === null)
+  check('dismissing the chip is announced',
+    home.doc.querySelector('#toast')?.textContent.includes('已取消召唤'))
+
+  // 有肖像的专家：第三项显示的是头像图片
+  storage.setItem('design-buddy-summon-v1', JSON.stringify({ name: '创业导师助手', prompt: '' }))
+  const home2 = await loadPage('/index.html', { storage, freshCopy: true })
+  const chip2 = home2.doc.querySelector('#prompt-expert')
+  check('experts with a portrait render it in the toolbar chip',
+    chip2?.querySelector('img.prompt-expert-avatar')?.getAttribute('src') === '/avatars/ec-mentor.webp'
+    && chip2.querySelector('.prompt-expert-name')?.textContent === '创业导师助手'
+    && home2.doc.querySelector('.toolbar-left').children[2] === chip2)
+  check('toolbar chip contract in built CSS',
+    cssCompact.includes('.prompt-expert{display:inline-flex;align-items:center;gap:7px;height:36px')
+    && cssCompact.includes('.prompt-expert-avatar{width:26px;height:26px')
+    && cssCompact.includes('animation:prompt-expert-arrive1.4sease'))
   check('home announces the summoned expert',
     home.doc.querySelector('#toast')?.textContent.includes('董秘助手'))
   check('summon payload is one-shot and cleared on arrival',

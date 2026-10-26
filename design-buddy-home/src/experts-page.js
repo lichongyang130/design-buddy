@@ -12,7 +12,7 @@ import './experts.css'
 import { store, toast, uid } from './core.js'
 import { initGlobalUI } from './global-ui.js'
 import { EXPERT_CATEGORIES, EXPERT_CATALOG, EXPERT_FILTERS, formatUsage } from './experts-catalog.js'
-import { avatarHTML } from './expert-avatars.js'
+import { avatarHTML, expertAvatar } from './expert-avatars.js'
 
 initGlobalUI()
 
@@ -189,6 +189,9 @@ $('#ex-grid').addEventListener('click', (ev) => {
 
 export const SUMMON_KEY = 'design-buddy-summon-v1'
 
+// 召唤过场时长：够看清「正在召唤专家」，又不至于让人等
+const SUMON_OVERLAY_MS = 1600
+
 const DRAWER_ICON = {
   close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
   bolt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>',
@@ -215,7 +218,27 @@ const closeExpertDrawer = () => {
   drawerReturnFocus = null
 }
 
-/* 召唤 / 带入提示词：把意图交给首页（同一个 localStorage 域），再跳转过去 */
+/* 召唤过场：先在当前页显示「正在召唤专家」，再带着数据进首页 */
+const showSummonOverlay = (entry) => {
+  if (document.querySelector('.ex-summon-mask')) return
+  const mask = document.createElement('div')
+  mask.className = 'ex-summon-mask'
+  mask.dataset.summoning = entry.id
+  const src = expertAvatar(entry)
+  mask.innerHTML = `
+    <div class="ex-summon-panel" role="status" aria-live="assertive">
+      <span class="ex-summon-orbit" aria-hidden="true"><i></i><i></i><i></i></span>
+      ${src
+        ? `<img class="ex-summon-portrait" src="${src}" alt="" />`
+        : `<span class="ex-summon-portrait is-initial ${entry.color}">${entry.name[0]}</span>`}
+      <p class="ex-summon-title">正在召唤专家</p>
+      <p class="ex-summon-name">${entry.name}${entry.persona ? ` · ${entry.persona}` : ''}</p>
+      <span class="ex-summon-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    </div>`
+  document.body.appendChild(mask)
+}
+
+/* 召唤 / 带入提示词：过场动画后把意图交给首页（同一个 localStorage 域）再跳转 */
 const summonExpert = (entry, prompt = '') => {
   try {
     localStorage.setItem(SUMMON_KEY, JSON.stringify({ id: entry.id, name: entry.name, prompt }))
@@ -223,7 +246,10 @@ const summonExpert = (entry, prompt = '') => {
     /* 隐私模式下写不进去也不阻断跳转 */
   }
   closeExpertDrawer()
-  location.href = 'index.html'
+  showSummonOverlay(entry)
+  setTimeout(() => {
+    location.href = 'index.html'
+  }, SUMON_OVERLAY_MS)
 }
 
 const copyExpertId = async (entry) => {

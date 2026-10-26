@@ -462,6 +462,47 @@ const expertSub = $('#expert-sub')
 const expertSearch = $('#expert-search-input')
 const expertList = $('#expert-list')
 
+/* ---------------- 输入框左侧第三个位置：当前专家（头像 + 名称） ---------------- */
+
+const EXPERT_X_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>'
+
+function renderPromptExpert() {
+  const left = $('.toolbar-left')
+  if (!left) return
+  const name = ui.expert
+  let chip = $('#prompt-expert')
+  if (!name) {
+    chip?.remove()
+    return
+  }
+  const entry = store.state.experts.find((e) => e.name === name)
+  const src = expertAvatarByName(name)
+  if (!chip) {
+    chip = document.createElement('button')
+    chip.id = 'prompt-expert'
+    chip.className = 'prompt-expert'
+    chip.type = 'button'
+    chip.addEventListener('click', () => {
+      const gone = ui.expert
+      ui.expert = null
+      store.save()
+      renderExperts()
+      renderPromptExpert()
+      toast(`已取消召唤「${gone}」`)
+    })
+    // 加在「+」和参数按钮之后，即工具栏左侧第三项
+    left.appendChild(chip)
+  }
+  chip.title = `当前专家：${name}，点击取消`
+  chip.setAttribute('aria-label', `当前专家 ${name}，点击取消`)
+  chip.innerHTML = `
+    ${src
+      ? `<img class="prompt-expert-avatar" src="${src}" alt="" loading="lazy" decoding="async" />`
+      : `<span class="prompt-expert-avatar is-initial ${entry?.color ?? 'av-blue'}">${name[0]}</span>`}
+    <span class="prompt-expert-name">${name}</span>
+    <span class="prompt-expert-x">${EXPERT_X_ICON}</span>`
+}
+
 // 首页子菜单里的专家头像：仍是「首字 + 渐变底」时保持原样，有肖像则换 <img>
 const avatarByName = (name, color) => {
   const src = expertAvatarByName(name)
@@ -478,6 +519,7 @@ function renderExperts() {
     </button>`).join('')
 }
 renderExperts()
+renderPromptExpert()
 
 /* ---------------- 专家页「召唤」过来：选好专家并带入提示词 ---------------- */
 try {
@@ -489,6 +531,9 @@ try {
       ui.expert = summon.name
       store.save()
       renderExperts()
+      renderPromptExpert()
+      $('#prompt-expert')?.classList.add('is-arriving')
+      setTimeout(() => $('#prompt-expert')?.classList.remove('is-arriving'), 1500)
       if (summon.prompt) {
         input.value = summon.prompt
         syncSendState()
@@ -622,6 +667,7 @@ popover.addEventListener('click', (event) => {
     ui.expert = expertItem.dataset.expert
     store.save()
     renderExperts()
+    renderPromptExpert()
     toast(`已选择专家：${ui.expert}`)
     closePopover()
   }

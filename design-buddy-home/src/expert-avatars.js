@@ -18,6 +18,11 @@ export const EXPERT_AVATARS = {
   'ec-python': '/avatars/ec-python.webp',
   'ec-partner': '/avatars/ec-partner.webp',
   'ec-workbench': '/avatars/ec-workbench.webp',
+  'ec-longdoc': '/avatars/ec-longdoc.webp',
+  'ec-strategy': '/avatars/ec-strategy.webp',
+  'ec-webdeploy': '/avatars/ec-webdeploy.webp',
+  'ec-equity': '/avatars/ec-equity.webp',
+  'ec-boardsec': '/avatars/ec-boardsec.webp',
 }
 
 const BY_NAME = Object.fromEntries(
