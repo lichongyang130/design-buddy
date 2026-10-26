@@ -39,6 +39,7 @@ const $$ = (sel, root = document) => [...root.querySelectorAll(sel)]
 const ui = (store.state.ui ??= { type: null, mode: '标准', imgMode: '自动', expert: null })
 ui.ratio ??= '1:1'
 ui.count ??= 3
+ui.beautifyStyle ??= null
 const homeMode = () => !!ui.type
 
 /* 由后面的参考图菜单赋值，避免早期调用踩到暂时性死区 */
@@ -56,7 +57,7 @@ const TYPE_COPY = {
   图片: { title: '你的笔记，美得令人惊艳', placeholder: '描述您想要创建的图像' },
   文档: { placeholder: '描述您想写的文档' },
   轮播图: { placeholder: '描述您的轮播图主题' },
-  美化: { placeholder: '上传或描述要美化的内容' },
+  美化: { placeholder: '描述您希望更改或改进的内容', hero: '/covers/hero-beautify.jpg' },
   导入: { placeholder: '粘贴内容或上传文件' },
 }
 const greetingTitle = () => {
@@ -81,11 +82,11 @@ function applySmartSuggest() {
   if (quick) quick.hidden = mode
   const rec = $('#rec-templates')
   if (rec) rec.hidden = mode
-  const cta = $('.template-cta')
-  if (cta) cta.hidden = !mode
 
   const isImage = ui.type === '图片'
+  const isBeautify = ui.type === '美化'
   document.body.classList.toggle('is-image-mode', isImage)
+  document.body.classList.toggle('is-beautify-mode', isBeautify)
 
   const inputEl = $('#prompt-input')
   if (inputEl) inputEl.placeholder = mode ? (TYPE_COPY[ui.type]?.placeholder ?? TYPE_PLACEHOLDER) : DEFAULT_PLACEHOLDER
@@ -93,19 +94,36 @@ function applySmartSuggest() {
   const title = $('.hero-title')
   if (title) title.textContent = (mode && TYPE_COPY[ui.type]?.title) || greetingTitle()
 
+  // 头图：美化态换成截图里的紫粉渐变山丘
+  const heroImg = $('.hero-photo')
+  if (heroImg) {
+    const src = (mode && TYPE_COPY[ui.type]?.hero) || '/covers/hero.jpg'
+    if (heroImg.getAttribute('src') !== src) heroImg.setAttribute('src', src)
+  }
+
   const imgExtra = $('#img-extra')
   if (imgExtra) imgExtra.hidden = !isImage
   const also = $('#also-make')
   if (also) also.hidden = !isImage
+  const beautifyDrop = $('#beautify-drop')
+  if (beautifyDrop) beautifyDrop.hidden = !isBeautify
+  // 截图里美化工作台右侧只有 标准 / 麦克风 / 发送，没有参考图入口
+  const imgWrap = $('.img-menu-wrap')
+  if (imgWrap) imgWrap.hidden = isBeautify
+  if (isBeautify) closeImgPopoverQuiet()
+  const beautifyStyles = $('#beautify-styles')
+  if (beautifyStyles) beautifyStyles.hidden = !isBeautify
 
   // 设置 → 个性化：关掉「智能推荐」时，工作台里的示例与探索区一并隐藏
   ;['.examples', '.work-tabs'].forEach((sel) => {
     const el = $(sel)
-    if (el) el.hidden = !mode || !smart
+    if (el) el.hidden = !mode || !smart || isBeautify
   })
-  if (row) row.hidden = !mode || !smart || isWork
+  if (row) row.hidden = !mode || !smart || isWork || isBeautify
   const work = $('#work-grid')
-  if (work) work.hidden = !mode || !isWork
+  if (work) work.hidden = !mode || !isWork || isBeautify
+  const ctaEl = $('.template-cta')
+  if (ctaEl) ctaEl.hidden = !mode || isBeautify
 }
 applySmartSuggest()
 applyAppChips()
@@ -440,6 +458,7 @@ function createGamma({ prompt, origin = 'prompt', template = null, silent = fals
     title,
     prompt,
     type: ui.type || '演示文稿',
+    beautifyStyle: ui.type === '美化' ? ui.beautifyStyle : null,
     aspect: ui.type === '图片' ? ui.ratio : null,
     imageCount: ui.type === '图片' ? ui.count : null,
     mode: ui.mode,
@@ -581,6 +600,65 @@ function showResult(gamma, bodyEl, footEl) {
       toast(`已下载 ${art.name}`)
     })
     footEl.querySelector('[data-again]').addEventListener('click', () => {
+      footEl.closest('.modal-mask').remove()
+      input.value = gamma.prompt || ''
+      syncSendState()
+      input.focus()
+    })
+    return
+  }
+
+  // 美化：按选定的美化方式给出一份可执行的改版清单，并导出成文件
+  if (gamma.type === '美化') {
+    const styleKey = gamma.beautifyStyle || ui.beautifyStyle || 'restyle'
+    const style = BEAUTIFY_STYLES[styleKey] ?? BEAUTIFY_STYLES.restyle
+    const files = (gamma.attachments ?? []).map((a) => a.name)
+    const changes = {
+      restyle: [
+        ['主题色', '把默认蓝灰换成一组主色 + 一枚强调色，全篇只保留两级强调'],
+        ['字体', '标题用一套显示字体（加粗、字距收紧），正文统一为无衬线，行高 1.6'],
+        ['配色', '背景降到低饱和，正文对比度提到 4.5:1 以上，图表色按同一色阶排布'],
+        ['图片', '统一圆角与裁切比例，去掉描边与阴影叠加'],
+      ],
+      layout: [
+        ['栅格', '从自由摆放改成 12 栏栅格，卡片左对齐到同一条基线'],
+        ['层级', '每页只保留一个视觉主角，标题–要点–注释三级字号差拉开'],
+        ['留白', '页边距统一 48px，同组元素间距按 8 的倍数取整'],
+        ['对齐', '多列卡片改成等宽等高，图标与文字左对齐'],
+      ],
+      copy: [
+        ['标题', '把长句压成 6–10 个字的名词短语，去掉「的」「我们」等虚词'],
+        ['要点', '每条不超过两行，删掉重复的铺垫句'],
+        ['数字', '把「大幅提升」改成具体数字与单位'],
+        ['行动项', '每页结尾保留一句明确的下一步'],
+      ],
+    }[styleKey]
+    const artifact = [
+      `# 改版清单 · ${style.name}`,
+      '',
+      `原稿：${files.length ? files.join('、') : '未上传（按描述处理）'}`,
+      `补充说明：${gamma.prompt || '无'}`,
+      '',
+      ...changes.map(([k, v], i) => `${i + 1}. **${k}**：${v}`),
+    ].join('\n')
+    finishTask(gamma, `${style.name}清单`)
+    bodyEl.innerHTML = `
+      <p class="modal-copy"><strong>${gamma.title}</strong> 已按「${style.name}」整理出 ${changes.length} 项改动（${gamma.mode} 模式，消耗 ${MODE_COST[gamma.mode] ?? 3} 积分）。${
+        files.length ? `<br />原稿：${files.join('、')}` : '<br />还没有上传原稿，可先用 ＋ 添加 PPTX / DOCX / PDF'
+      }</p>
+      <ul class="outline-list">
+        ${changes.map(([k, v]) => `<li><strong>${k}</strong>${v}</li>`).join('')}
+      </ul>`
+    footEl.innerHTML = `
+      <button class="btn btn-ghost" data-beautify-again>改一句再来</button>
+      <button class="btn btn-ghost" data-beautify-download>下载改版清单</button>
+      <button class="btn btn-primary" data-done>完成</button>`
+    footEl.querySelector('[data-done]').addEventListener('click', () => footEl.closest('.modal-mask').remove())
+    footEl.querySelector('[data-beautify-download]').addEventListener('click', () => {
+      downloadFile('改版清单.md', artifact, 'text/markdown')
+      toast('已下载 改版清单.md')
+    })
+    footEl.querySelector('[data-beautify-again]').addEventListener('click', () => {
       footEl.closest('.modal-mask').remove()
       input.value = gamma.prompt || ''
       syncSendState()
@@ -1514,6 +1592,57 @@ $$('[data-make]').forEach((card) => {
     syncSendState()
     input.focus()
     toast(`已把「${name}」的起手句填进输入框`)
+  })
+})
+
+/* ---------------- 美化工作台：上传原稿 + 美化方式 ---------------- */
+
+const BEAUTIFY_STYLES = {
+  restyle: { name: '更换视觉风格', desc: '全新的主题、字体和配色', ask: '更换视觉风格：换成全新的主题、字体和配色' },
+  layout: { name: '重新设计布局', desc: '用更强大的布局重构卡片', ask: '重新设计布局：用更强大的布局重构卡片' },
+  copy: { name: '精简文字', desc: '标题更清晰，文案更简洁', ask: '精简文字：让标题更清晰、文案更简洁' },
+}
+
+const beautifyDrop = $('#beautify-drop')
+const beautifyInput = $('#beautify-file-input')
+
+function syncBeautifyStyles() {
+  $$('[data-beautify-style]').forEach((card) => {
+    const on = card.dataset.beautifyStyle === ui.beautifyStyle
+    card.classList.toggle('is-active', on)
+    card.setAttribute('aria-pressed', String(on))
+  })
+}
+syncBeautifyStyles()
+
+beautifyDrop?.addEventListener('click', (event) => {
+  if (event.target.closest('[data-beautify-pick]')) beautifyInput?.click()
+})
+
+beautifyInput?.addEventListener('change', () => {
+  const files = [...beautifyInput.files]
+  if (!files.length) return
+  files.forEach((f) => addAttachment(f.name, { size: f.size, type: f.type, from: '美化原稿' }))
+  addSub.refresh()
+  toast(`已添加 ${files.length} 份原稿：${files.map((f) => f.name).join('、')}`)
+  beautifyInput.value = ''
+})
+
+$$('[data-beautify-style]').forEach((card) => {
+  card.addEventListener('click', () => {
+    const key = card.dataset.beautifyStyle
+    const style = BEAUTIFY_STYLES[key]
+    if (!style) return
+    ui.beautifyStyle = ui.beautifyStyle === key ? null : key
+    store.save()
+    syncBeautifyStyles()
+    if (ui.beautifyStyle && !input.value.trim()) {
+      input.value = style.ask
+      input.style.height = 'auto'
+      input.style.height = `${Math.min(input.scrollHeight, 160)}px`
+      syncSendState()
+    }
+    toast(ui.beautifyStyle ? `美化方式：${style.name}` : `已取消「${style.name}」`)
   })
 })
 

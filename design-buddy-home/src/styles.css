@@ -2215,7 +2215,8 @@ a:focus-visible {
 .content > .work-grid,
 .content > .quick-types,
 .content > .rec-templates,
-.content > .also-make {
+.content > .also-make,
+.content > .beautify-styles {
   width: min(592px, 100%);
 }
 
@@ -2704,6 +2705,9 @@ a:focus-visible {
 .content .type-menu-wrap[hidden],
 .content .img-extra[hidden],
 .content .also-make[hidden],
+.content .beautify-styles[hidden],
+.content .beautify-drop[hidden],
+.content .img-menu-wrap[hidden],
 .mini-pop[hidden] {
   display: none;
 }
@@ -3433,4 +3437,149 @@ a:focus-visible {
 
 .content .also-main em {
   white-space: normal;
+}
+
+
+/* ============================================================
+   美化工作台（截图：选「美化」后输入框的样子）
+   虚线投放区 + 美化方式三张卡
+   ============================================================ */
+
+.beautify-drop {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.bd-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 14px;
+  border: 1px dashed #cfd6e4;
+  border-radius: 10px;
+  background: #fff;
+  transition: border-color 0.13s ease, background 0.13s ease;
+}
+
+.bd-inner:hover {
+  border-color: #a9bce4;
+  background: #fafbff;
+}
+
+.bd-inner .icon {
+  width: 15px;
+  height: 15px;
+  color: #44506a;
+  flex: none;
+}
+
+.bd-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #263244;
+  white-space: nowrap;
+  margin-right: 2px;
+}
+
+.bd-fmt {
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #5a6478;
+  background: #f2f4f9;
+  border-radius: 5px;
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+
+/* 美化方式 */
+
+.beautify-styles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.beautify-styles .section-label {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.bs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.bs-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid #e6e9f0;
+  border-radius: 12px;
+  background: #fff;
+  text-align: left;
+  transition: border-color 0.13s ease, box-shadow 0.13s ease;
+}
+
+.bs-card:hover {
+  border-color: #c9d3e8;
+  box-shadow: 0 8px 20px rgba(23, 43, 92, 0.08);
+}
+
+.bs-card.is-active {
+  border-color: #c9d8f8;
+  background: #f7faff;
+  box-shadow: 0 6px 18px rgba(47, 91, 214, 0.1);
+}
+
+.bs-ic {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: #eef4ff;
+  color: #2f5bd6;
+}
+
+.bs-ic .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.bs-ic.is-violet { background: #f1ecff; color: #6b46c1; }
+.bs-ic.is-blue { background: #eaf2ff; color: #2f5bd6; }
+.bs-ic.is-sky { background: #e8f6ff; color: #0b7bbd; }
+
+.bs-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.bs-main b {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1f2937;
+  white-space: nowrap;
+}
+
+.bs-main em {
+  font-style: normal;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #8b93a3;
+}
+
+@media (max-width: 620px) {
+  .bs-grid {
+    grid-template-columns: 1fr;
+  }
 }
