@@ -147,7 +147,7 @@
       <main class="main">
         <header class="topbar">
           <div class="topbar-left">
-            <button class="pill pill-back" id="back-btn" type="button">
+            <button class="pill pill-back" id="back-btn" type="button" hidden>
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
               返回
             </button>
@@ -172,7 +172,7 @@
           <figure class="hero-figure">
             <img class="hero-photo" src="/covers/hero.jpg" alt="黄昏里的弧顶建筑与彩虹广场" />
           </figure>
-          <h1 class="hero-title">你的笔记，美得令人惊艳</h1>
+          <h1 class="hero-title">很高兴见到您，ruoxuan</h1>
 
           <!-- 提示词输入卡片 -->
           <section class="prompt-card" aria-label="AI 创作输入">
@@ -465,8 +465,49 @@
             </div>
           </section>
 
+          <!-- 默认态：六种创作类型（选中任意一种进入对应工作台，第二张截图） -->
+          <div class="quick-types" id="quick-types" role="group" aria-label="选择创作类型">
+            <button class="quick-type" type="button" data-quick-type="演示文稿">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              <span>演示文稿</span>
+            </button>
+            <button class="quick-type" type="button" data-quick-type="文档">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+              <span>文档</span>
+            </button>
+            <button class="quick-type" type="button" data-quick-type="轮播图">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="M7 4v16M17 4v16"/></svg>
+              <span>轮播图</span>
+            </button>
+            <button class="quick-type" type="button" data-quick-type="图片">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>图片</span>
+            </button>
+            <button class="quick-type" type="button" data-quick-type="美化">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l3.5-1 11-11a2.12 2.12 0 0 0-3-3l-11 11L3 21z"/><line x1="14" y1="7" x2="17" y2="10"/></svg>
+              <span>美化</span>
+            </button>
+            <button class="quick-type" type="button" data-quick-type="导入">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>导入</span>
+            </button>
+          </div>
+
+          <!-- 默认态：推荐模板 -->
+          <section class="rec-templates" id="rec-templates" aria-label="推荐模板">
+            <h2 class="rec-label">推荐模板</h2>
+            <article class="template-card rec-card" data-template="Scintilla">
+              <div class="cover rec-cover">
+                <span class="rec-cover-a">The secret life of pollinators</span>
+                <span class="rec-cover-b">SCINTILLA</span>
+              </div>
+              <p class="template-name">Scintilla</p>
+            </article>
+            <button class="pill pill-ghost" id="view-all-templates" type="button">查看所有模板</button>
+          </section>
+
           <!-- 示例指令：分类切换 + 四条可直接开工的提示 -->
-          <section class="examples" aria-label="示例指令">
+          <section class="examples" aria-label="示例指令" hidden>
             <div class="examples-head">
               <h2 class="section-label">示例指令</h2>
               <div class="example-cat-wrap">
@@ -482,7 +523,7 @@
           </section>
 
           <!-- 模板入口 -->
-          <div class="template-cta">
+          <div class="template-cta" hidden>
             <button class="pill pill-browse pill-outline" type="button">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
               浏览模板
@@ -494,12 +535,12 @@
           </div>
 
           <!-- 工作区 / 探索 -->
-          <div class="work-tabs" role="tablist" aria-label="模板视图">
+          <div class="work-tabs" role="tablist" aria-label="模板视图" hidden>
             <button class="work-tab" type="button" role="tab" data-work-tab="workspace" aria-selected="false">工作区</button>
             <button class="work-tab is-active" type="button" role="tab" data-work-tab="explore" aria-selected="true">探索</button>
           </div>
 
-          <div class="template-row" id="template-row">
+          <div class="template-row" id="template-row" hidden>
             <article class="template-card" data-template="Graha">
               <div class="cover" style="--img:url('/covers/cover-1.jpg')">
                 <span class="cover-label bottom">Digging up<br />the past</span>

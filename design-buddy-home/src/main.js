@@ -32,20 +32,47 @@ initGlobalUI()
 const $ = (sel, root = document) => root.querySelector(sel)
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)]
 
-/* 设置 → 个性化/应用管理：推荐区显隐与创作类型过滤，随设置实时生效 */
+/* 跨刷新保留的首页 UI 偏好（创作类型 / 模式 / 图片模式 / 专家）
+   type 为空 = 默认态（第一张截图）；选中类型 = 工作台态（第二张截图） */
+const ui = (store.state.ui ??= { type: null, mode: '标准', imgMode: '自动', expert: null })
+const homeMode = () => !!ui.type
+
+/* 默认态 / 工作台态：整页显隐的唯一来源。
+   默认态 → 头图 + 问候语 + 输入卡 + 六种类型 + 推荐模板
+   工作台态 → 返回 + 类型胶囊 + 示例指令 + 浏览·上传模板 + 工作区·探索 */
+const DEFAULT_PLACEHOLDER = '从这份报告中找出五个最令人惊讶的发现，将它们制作成一个 6 张卡片的 LinkedIn 轮播图，第一张卡片要有吸引人的亮点，最后一张卡片要有行动号召。'
+const TYPE_PLACEHOLDER = '描述您的演示主题'
+
 function applySmartSuggest() {
+  const mode = homeMode()
+  const smart = store.state.settings.personalize.smartSuggest
   const row = $('.template-row')
-  if (!row) return
-  const label = row.previousElementSibling?.classList.contains('section-label') ? row.previousElementSibling : null
-  const show = store.state.settings.personalize.smartSuggest
-  row.hidden = !show || row.dataset.workView === 'workspace'
-  if (label) label.hidden = !show
+  const isWork = row?.dataset.workView === 'workspace'
+
+  document.body.classList.toggle('is-type-mode', mode)
+
+  const back = $('#back-btn')
+  if (back) back.hidden = !mode
+  const pillWrap = $('.type-menu-wrap')
+  if (pillWrap) pillWrap.hidden = !mode
+  const quick = $('#quick-types')
+  if (quick) quick.hidden = mode
+  const rec = $('#rec-templates')
+  if (rec) rec.hidden = mode
+  const cta = $('.template-cta')
+  if (cta) cta.hidden = !mode
+
+  const inputEl = $('#prompt-input')
+  if (inputEl) inputEl.placeholder = mode ? TYPE_PLACEHOLDER : DEFAULT_PLACEHOLDER
+
+  // 设置 → 个性化：关掉「智能推荐」时，工作台里的示例与探索区一并隐藏
   ;['.examples', '.work-tabs'].forEach((sel) => {
-    const el = document.querySelector(sel)
-    if (el) el.hidden = !show
+    const el = $(sel)
+    if (el) el.hidden = !mode || !smart
   })
-  const work = document.querySelector('#work-grid')
-  if (work && !show) work.hidden = true
+  if (row) row.hidden = !mode || !smart || isWork
+  const work = $('#work-grid')
+  if (work) work.hidden = !mode || !isWork
 }
 applySmartSuggest()
 applyAppChips()
@@ -56,8 +83,7 @@ if (new URLSearchParams(location.search).get('new') === '1') {
   setTimeout(() => createBlankGamma(), 0)
 }
 
-/* 跨刷新保留的首页 UI 偏好（创作类型 / 模式 / 图片模式 / 专家） */
-const ui = (store.state.ui ??= { type: '演示文稿', mode: '标准', imgMode: '自动', expert: null })
+
 // 参考图方式：style 风格 / character 角色 / content 内容（旧数据无此字段时默认风格参考）
 ui.refType ??= 'style'
 
@@ -192,8 +218,9 @@ const attachments = []
 
 function syncSendState() {
   const hasText = input.value.trim().length > 0
-  sendBtn.disabled = !hasText
-  sendBtn.classList.toggle('is-ready', hasText)
+  // 工作台态即使还没输入，箭头也是可用状态（截图 2）；默认态没有内容时是灰的（截图 1）
+  sendBtn.disabled = !hasText && !homeMode()
+  sendBtn.classList.toggle('is-ready', hasText || homeMode())
 }
 
 input.addEventListener('input', syncSendState)
@@ -246,7 +273,11 @@ function attachmentContext() {
 
 function submitPrompt() {
   const text = input.value.trim()
-  if (!text) return
+  if (!text) {
+    input.focus()
+    toast(homeMode() ? '先用一句话描述你想做的内容' : '先描述你想做的内容，或从推荐模板开始')
+    return
+  }
   if (ui.mode === 'Max') {
     const ws = store.state.workspaces.find((w) => w.id === store.state.activeWorkspaceId)
     if (ws.plan !== 'pro') {
@@ -311,7 +342,7 @@ function createGamma({ prompt, origin = 'prompt', template = null, silent = fals
     id: uid('g'),
     title,
     prompt,
-    type: ui.type,
+    type: ui.type || '演示文稿',
     mode: ui.mode,
     imgMode: ui.imgMode,
     refType: ui.refType,
@@ -464,9 +495,19 @@ function syncTypeUI() {
   typeChips().forEach((chip) => {
     chip.classList.toggle('chip-active', chip.textContent.trim() === ui.type)
   })
-  typePillLabel.textContent = ui.type || '类型'
+  if (typePillLabel) typePillLabel.textContent = ui.type || '类型'
   typePill?.classList.toggle('is-off', !ui.type)
   typePillBtn?.setAttribute('aria-expanded', String(typeMenuOpen()))
+  applySmartSuggest()
+  syncSendState()
+}
+
+function setType(next, { quiet = false } = {}) {
+  ui.type = next
+  store.save()
+  if (typeWrap) typeWrap.hidden = true
+  syncTypeUI()
+  if (!quiet && next) toast(`已进入「${next}」，可以开始创作了`)
 }
 syncTypeUI()
 
@@ -480,21 +521,21 @@ typePillBtn?.addEventListener('click', (event) => {
 // 胶囊上的 ×：清空类型（下一次创作不再限定格式）
 typePillX?.addEventListener('click', (event) => {
   event.stopPropagation()
-  ui.type = null
-  store.save()
-  syncTypeUI()
-  toast('已清除创作类型')
+  setType(null, { quiet: true })
+  toast('已回到首页，可重新选择创作类型')
 })
 
 typeChips().forEach((chip) => {
   chip.addEventListener('click', (event) => {
     event.stopPropagation()
-    ui.type = chip.textContent.trim()
-    store.save()
-    if (typeWrap) typeWrap.hidden = true
-    syncTypeUI()
+    setType(chip.textContent.trim(), { quiet: true })
     toast(`创作类型：${ui.type}`)
   })
+})
+
+// 默认态下方的六个类型胶囊：点一下进入对应工作台
+$$('[data-quick-type]').forEach((btn) => {
+  btn.addEventListener('click', () => setType(btn.dataset.quickType))
 })
 
 document.addEventListener('click', (event) => {
@@ -507,11 +548,23 @@ document.addEventListener('click', (event) => {
 /* ---------------- 顶栏返回 ---------------- */
 
 $('#back-btn')?.addEventListener('click', () => {
-  if (history.length > 1) history.back()
-  else {
-    location.href = 'index.html'
+  if (homeMode()) {
+    setType(null, { quiet: true })
+    toast('已回到首页')
+    return
   }
+  if (history.length > 1) history.back()
+  else location.href = 'index.html'
 })
+
+/* ---------------- 问候语：很高兴见到您，<名字> ---------------- */
+
+const heroTitle = $('.hero-title')
+if (heroTitle) {
+  const fullName = store.state.profile?.name || store.state.workspaces?.[0]?.name || 'ruoxuan'
+  const firstName = String(fullName).replace(/'s\s+Workspace$/i, '').trim().split(/\s+/)[0] || 'ruoxuan'
+  heroTitle.textContent = `很高兴见到您，${firstName}`
+}
 
 /* ---------------- 示例指令：分类 + 四条可开工的提示 ---------------- */
 
@@ -599,8 +652,7 @@ function renderWork() {
   if (!workGrid || !templateRow) return
   const isWork = workTab === 'workspace'
   templateRow.dataset.workView = workTab
-  templateRow.hidden = isWork || !store.state.settings.personalize.smartSuggest
-  workGrid.hidden = !isWork
+  applySmartSuggest()
   $$('[data-work-tab]').forEach((tab) => {
     const on = tab.dataset.workTab === workTab
     tab.classList.toggle('is-active', on)
@@ -1466,7 +1518,7 @@ function renderFolders() {
 
 $$('[data-template]').forEach((card) => {
   card.addEventListener('click', () => {
-    createGamma({ prompt: `使用「${card.dataset.template}」模板风格创作一份${ui.type}`, origin: 'template', template: card.dataset.template })
+    createGamma({ prompt: `使用「${card.dataset.template}」模板风格创作一份${ui.type || '演示文稿'}`, origin: 'template', template: card.dataset.template })
   })
 })
 
@@ -1476,6 +1528,7 @@ function createBlankGamma() {
 }
 
 $('.pill-outline').addEventListener('click', () => { location.href = 'templates.html' })
+$('#view-all-templates')?.addEventListener('click', () => { location.href = 'templates.html' })
 $('.pill-upgrade').addEventListener('click', openUpgrade)
 $('.topbar-right .pill').addEventListener('click', createBlankGamma)
 $('.help-fab').addEventListener('click', openHelp)

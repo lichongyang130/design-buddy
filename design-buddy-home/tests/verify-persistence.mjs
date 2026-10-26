@@ -23,10 +23,11 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   check('send creates a gamma', after.gammas.length === 1 && after.gammas[0].prompt.includes('季度经营分析'))
   check('send deducts 3 credits (标准模式)', after.credits === 233)
   check('conversation recorded', after.conversations.length === 1)
-  check('ui preference persisted', after.ui.type === '演示文稿' && after.ui.mode === '标准')
+  check('ui preference persisted (no type until one is picked)',
+    after.ui.type === null && after.ui.mode === '标准')
 
-  click(w, [...doc.querySelectorAll('[data-chip]')].find((c) => c.textContent.trim() === '文档'))
-  check('chip choice persists', readState(storage).ui.type === '文档')
+  click(w, doc.querySelector('[data-quick-type="文档"]'))
+  check('type choice persists', readState(storage).ui.type === '文档')
 
   // 工作区下拉：截图式白色卡片（设置 / 邀请 / 方案价格 + 新建）
   click(w, doc.querySelector('.workspace-switch'))

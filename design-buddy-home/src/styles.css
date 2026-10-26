@@ -2170,12 +2170,12 @@ a:focus-visible {
 
 .hero-photo {
   display: block;
-  width: 132px;
-  height: 90px;
+  width: 100px;
+  height: 64px;
   object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 10px 26px rgba(23, 43, 92, 0.16), 0 0 0 4px #fff;
-  transform: rotate(-3.2deg);
+  border-radius: 9px;
+  box-shadow: 0 10px 24px rgba(23, 43, 92, 0.18), 0 0 0 4px #fff;
+  transform: rotate(-7deg);
 }
 
 .content .hero-title {
@@ -2190,8 +2190,10 @@ a:focus-visible {
 .content > .template-cta,
 .content > .work-tabs,
 .content > .template-row,
-.content > .work-grid {
-  width: min(636px, 100%);
+.content > .work-grid,
+.content > .quick-types,
+.content > .rec-templates {
+  width: min(592px, 100%);
 }
 
 /* ---------- 提示词卡片 ---------- */
@@ -2535,7 +2537,7 @@ a:focus-visible {
 }
 
 .content .cover {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 16 / 9;
   border-radius: 10px;
   background-image:
     linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.18)),
@@ -2642,7 +2644,9 @@ a:focus-visible {
   .content > .template-cta,
   .content > .work-tabs,
   .content > .template-row,
-  .content > .work-grid {
+  .content > .work-grid,
+  .content > .quick-types,
+  .content > .rec-templates {
     width: 100%;
   }
 
@@ -2663,7 +2667,12 @@ a:focus-visible {
 .content .template-row[hidden],
 .content .work-grid[hidden],
 .content .work-tabs[hidden],
-.content .examples[hidden] {
+.content .examples[hidden],
+.content .quick-types[hidden],
+.content .rec-templates[hidden],
+.content .template-cta[hidden],
+.pill-back[hidden],
+.content .type-menu-wrap[hidden] {
   display: none;
 }
 
@@ -2710,4 +2719,154 @@ a:focus-visible {
 .content .hero-title {
   font-size: 42px;
   letter-spacing: 0.5px;
+}
+
+
+/* ============================================================
+   默认态（未选创作类型，第一张截图）
+   六种类型胶囊 + 推荐模板
+   ============================================================ */
+
+.quick-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 18px 0 2px;
+}
+
+.quick-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 15px;
+  border: 1px solid #e4e7ee;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #263244;
+  box-shadow: 0 1px 2px rgba(23, 43, 92, 0.04);
+  transition: border-color 0.13s ease, background 0.13s ease, color 0.13s ease;
+}
+
+.quick-type:hover {
+  border-color: #c9d3e8;
+  background: #fbfcff;
+}
+
+.quick-type:active {
+  background: #f2f6ff;
+  border-color: #c9d8f8;
+  color: #2f5bd6;
+}
+
+.quick-type .icon {
+  width: 16px;
+  height: 16px;
+  color: #4a5568;
+}
+
+.rec-templates {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.rec-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  letter-spacing: 0.2px;
+}
+
+.rec-card {
+  width: 146px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.rec-cover {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #5b3cc4;
+  box-shadow: 0 8px 20px rgba(23, 43, 92, 0.16);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.rec-card:hover .rec-cover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(23, 43, 92, 0.2);
+}
+
+.rec-cover-a {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 10px;
+  font-size: 10px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: #ffd84d;
+}
+
+.rec-cover-b {
+  position: absolute;
+  left: 10px;
+  bottom: 9px;
+  font-size: 7px;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.rec-cover::before {
+  content: '';
+  position: absolute;
+  right: 12%;
+  bottom: 16%;
+  width: 26px;
+  height: 17px;
+  border-radius: 50%;
+  background: repeating-linear-gradient(90deg, #ffd84d 0 4px, #3b2386 4px 7px);
+}
+
+.rec-cover::after {
+  content: '✿';
+  position: absolute;
+  right: 9%;
+  top: 9%;
+  font-size: 16px;
+  color: rgba(255, 216, 77, 0.7);
+}
+
+.rec-card .template-name {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.pill-ghost {
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
+  padding: 0 16px;
+  border: 1px solid #dfe3ec;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  color: #263244;
+  transition: background 0.13s ease, border-color 0.13s ease;
+}
+
+.pill-ghost:hover {
+  background: #f6f8fc;
+  border-color: #c9d3e8;
 }
