@@ -56,6 +56,12 @@ check('the input gets focus so you can describe the work',
 
 /* ---------- 2. 卡片可以移除 ---------- */
 
+check('the template card shows a close button',
+  !!ref.querySelector('button[data-rm-template]') &&
+  ref.querySelector('button[data-rm-template]').getAttribute('aria-label').includes(tplName))
+check('the close button stays visible without hovering',
+  !cssCompact.includes('.content .ref-card button{opacity:0}'))
+
 click(w, ref.querySelector('[data-rm-template]'))
 await tick()
 check('the template card can be removed',

@@ -199,7 +199,7 @@ check('image extras step out of the toolbar',
 check('reference button returns to the right toolbar',
   $('.img-menu-wrap').parentElement.className.includes('toolbar-right'))
 check('headline and placeholder go back to the default home',
-  $('.hero-title').textContent.startsWith('很高兴见到您')
+  $('.hero-title').textContent.startsWith('DesignBuddy')
   && $('#prompt-input').placeholder.includes('LinkedIn 轮播图'))
 check('您还可以制作 disappears outside image mode', $('#also-make').hidden === true)
 check('default examples come back', $('#example-cat-label').textContent === '设计与产品')

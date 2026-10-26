@@ -61,11 +61,7 @@ const TYPE_COPY = {
   美化: { placeholder: '描述您希望更改或改进的内容', hero: '/covers/hero-beautify.jpg' },
   导入: { placeholder: '添加要导入的文件，或从下方选择任务', hero: '/covers/hero-beautify.jpg' },
 }
-const greetingTitle = () => {
-  const fullName = store.state.profile?.name || store.state.workspaces?.[0]?.name || 'ruoxuan'
-  const firstName = String(fullName).replace(/'s\s+Workspace$/i, '').trim().split(/\s+/)[0] || 'ruoxuan'
-  return `很高兴见到您，${firstName}`
-}
+const greetingTitle = () => 'DesignBuddy 让您提前下班'
 
 function applySmartSuggest() {
   const mode = homeMode()
@@ -411,6 +407,13 @@ const TEMPLATE_FORMATS = {
   Reliquary: '文档',
   Altitude: '演示文稿',
   Scintilla: '演示文稿',
+  Quire: '文档',
+  'Fit Check': '演示文稿',
+  'First Edition': '文档',
+  Luminal: '演示文稿',
+  Buzzer: '演示文稿',
+  Hush: '文档',
+  讲堂: '演示文稿',
 }
 
 function referenceTemplate(name, cover = '') {

@@ -45,7 +45,7 @@ check('credits pill removed from topbar', !$('.credits strong'))
 
 check('hero uses the photo card', $('.hero-photo')?.getAttribute('src') === '/covers/hero.jpg')
 check('hero photo file is shipped', fs.existsSync(path.join(DIST, 'covers/hero.jpg')))
-check('hero greets the signed-in user', $('.hero-title')?.textContent === '很高兴见到您，ruoxuan')
+check('hero greets the signed-in user', $('.hero-title')?.textContent === 'DesignBuddy 让您提前下班')
 check('hero photo is the small tilted card from the screenshot',
   cssCompact.includes('.hero-photo{display:block;width:100px;height:64px')
   && cssCompact.includes('rotate(-7deg)'))
@@ -78,6 +78,9 @@ check('nothing is preselected', readState(storage).ui.type === null)
 check('recommended template block is visible', !$('#rec-templates').hidden)
 check('recommended block is labelled 推荐模板',
   $('#rec-templates .rec-label')?.textContent === '推荐模板')
+check('recommended grid shows eight cards in two rows of four',
+  doc.querySelectorAll('#rec-templates .rec-card').length === 8
+  && cssCompact.includes('grid-template-columns:repeat(4,minmax(0,1fr))'))
 check('recommended card is the Scintilla template',
   $('#rec-templates .rec-card')?.dataset.template === 'Scintilla'
   && $('#rec-templates .template-name')?.textContent === 'Scintilla')
@@ -114,6 +117,8 @@ check('type pill matches the screenshot styling',
   && cssCompact.includes('border:1pxsolid#c9d8f8'))
 check('send arrow is blue even before typing',
   $('#send-btn').disabled === false && $('#send-btn').classList.contains('is-ready'))
+check('the prompt card focus ring never blocks clicks inside the card',
+  (cssCompact.match(/\.prompt-card:+before\{[^}]*\}/) ?? [''])[0].includes('pointer-events:none'))
 
 /* ---------- 8. 类型胶囊下拉 / 切换 / 清除 ---------- */
 

@@ -37,7 +37,7 @@ await tick()
 
 check('picking 美化 persists the type', readState(storage).ui.type === '美化')
 check('beautify workbench keeps the greeting headline',
-  $('.hero-title').textContent.startsWith('很高兴见到您'))
+  $('.hero-title').textContent.startsWith('DesignBuddy'))
 check('beautify workbench swaps the hero artwork',
   $('.hero-photo').getAttribute('src') === '/covers/hero-beautify.jpg'
   && fs.existsSync(path.join(DIST, 'covers/hero-beautify.jpg')))

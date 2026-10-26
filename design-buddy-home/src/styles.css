@@ -636,6 +636,7 @@ a:focus-visible {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.25s ease;
 }
 
@@ -2922,6 +2923,13 @@ a:focus-visible {
   margin-top: 30px;
 }
 
+.rec-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
 .rec-label {
   font-size: 13px;
   font-weight: 500;
@@ -2930,7 +2938,7 @@ a:focus-visible {
 }
 
 .rec-card {
-  width: 146px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -3932,7 +3940,7 @@ a:focus-visible {
 
 .content .ref-card.is-template .ref-thumb { border-color: #e8e0fb; background-color: #f5f0ff; }
 
-/* 移除按钮：平时淡出，悬停/聚焦才出现 */
+/* 移除按钮：始终可见，悬停/聚焦加深反馈 */
 .content .ref-card button {
   width: 22px;
   height: 22px;
@@ -3941,13 +3949,13 @@ a:focus-visible {
   place-items: center;
   border-radius: 50%;
   color: #98a1b2;
-  opacity: 0;
-  transition: opacity 0.12s ease, background 0.12s ease, color 0.12s ease;
+  opacity: 1;
+  transition: background 0.12s ease, color 0.12s ease;
 }
 
-.content .ref-card:hover button,
 .content .ref-card button:focus-visible {
-  opacity: 1;
+  outline: 2px solid #7c3aed;
+  outline-offset: 1px;
 }
 
 .content .ref-card button:hover {

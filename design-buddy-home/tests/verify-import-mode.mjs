@@ -38,7 +38,7 @@ await tick()
 
 check('picking 导入 persists the type', readState(storage).ui.type === '导入')
 check('import workbench keeps the greeting headline',
-  $('.hero-title').textContent.startsWith('很高兴见到您'))
+  $('.hero-title').textContent.startsWith('DesignBuddy'))
 check('import workbench uses the same artwork as the screenshot',
   $('.hero-photo').getAttribute('src') === '/covers/hero-beautify.jpg')
 check('import placeholder matches the screenshot',
