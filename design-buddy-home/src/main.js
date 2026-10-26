@@ -8,7 +8,7 @@
 import './rail-flyout.js'
 import { requireAuth } from './auth.js'
 requireAuth()
-import { store, toast, openModal, confirmModal, uid, fmtDate } from './core.js'
+import { store, toast, openModal, confirmModal, uid, fmtDate, downloadFile } from './core.js'
 import { AVAILABLE_MODELS } from './model-config.js'
 import {
   initGlobalUI,
@@ -23,6 +23,8 @@ import {
 } from './global-ui.js'
 import { applyAppChips } from './settings-effects.js'
 import { expertAvatarByName } from './expert-avatars.js'
+import { EXPERT_CATALOG } from './experts-catalog.js'
+import { EXPERT_CAPS, runExpert, resultHTML } from './expert-runtime.js'
 
 initGlobalUI()
 
@@ -334,6 +336,31 @@ function runGeneration(gamma) {
 }
 
 function showResult(gamma, bodyEl, footEl) {
+  // 选了带真实能力的专家：跑真实引擎，产出真实内容而不是固定五页
+  const expertEntry = EXPERT_CATALOG.find((e) => e.name === gamma.expert)
+  const cap = expertEntry ? EXPERT_CAPS[expertEntry.id] : null
+  if (cap) {
+    const result = runExpert(expertEntry.id, gamma.prompt || cap.sample)
+    bodyEl.innerHTML = `<p class="modal-copy"><strong>${expertEntry.name}</strong> 已交付：${result.title}（${gamma.mode} 模式）</p>${resultHTML(result)}`
+    footEl.innerHTML = `
+      <button class="btn btn-ghost" data-again>改一句再来</button>
+      ${result.artifacts?.length ? '<button class="btn btn-ghost" data-download>下载产物</button>' : ''}
+      <button class="btn btn-primary" data-done>完成</button>`
+    footEl.querySelector('[data-done]').addEventListener('click', () => footEl.closest('.modal-mask').remove())
+    footEl.querySelector('[data-download]')?.addEventListener('click', () => {
+      const art = result.artifacts[0]
+      downloadFile(art.name, art.content, art.mime ?? 'text/plain')
+      toast(`已下载 ${art.name}`)
+    })
+    footEl.querySelector('[data-again]').addEventListener('click', () => {
+      footEl.closest('.modal-mask').remove()
+      input.value = gamma.prompt || ''
+      syncSendState()
+      input.focus()
+    })
+    return
+  }
+
   const pages = ['封面', '背景介绍', '核心内容', '数据与案例', '总结与行动项']
   bodyEl.innerHTML = `
     <p class="modal-copy"><strong>${gamma.title}</strong> 已生成，共 ${pages.length} 页（${gamma.mode} 模式，消耗 ${MODE_COST[gamma.mode] ?? 3} 积分）。</p>

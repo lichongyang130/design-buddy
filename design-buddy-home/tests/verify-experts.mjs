@@ -240,8 +240,14 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
     drawer().querySelectorAll('.ex-prompt').length === 3
     && [...drawer().querySelectorAll('.ex-prompt-text')].every((t) => t.textContent.startsWith('「') && t.textContent.endsWith('」'))
     && [...drawer().querySelectorAll('.ex-prompt-text')].map((t) => t.textContent.slice(1, -1)).join('\u0000') === py.prompts.join('\u0000'))
-  check('drawer section titles cover solves, help and more',
-    [...drawer().querySelectorAll('.ex-drawer-sec-title')].map((t) => t.textContent.trim()).join() === '它能解决,专家帮你做,更多')
+  check('drawer sections cover run, solves, help and more', (() => {
+    const heads = [...drawer().querySelectorAll('.ex-drawer-sec-title')].map((t) => t.textContent.replace(/\s+/g, ''))
+    return heads.length === 4
+      && heads[0].startsWith('直接开工')
+      && heads[1] === '它能解决'
+      && heads[2] === '专家帮你做'
+      && heads[3] === '更多'
+  })())
   check('drawer ends with a copyable expert id',
     drawer().querySelector('[data-copy-id]')?.textContent.trim() === `ID: ${py.id}`)
   check('drawer layout follows the screenshot spec',

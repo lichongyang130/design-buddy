@@ -9,10 +9,11 @@ import './rail-flyout.js'
 import { requireAuth } from './auth.js'
 requireAuth()
 import './experts.css'
-import { store, toast, uid } from './core.js'
+import { store, toast, uid, downloadFile } from './core.js'
 import { initGlobalUI } from './global-ui.js'
 import { EXPERT_CATEGORIES, EXPERT_CATALOG, EXPERT_FILTERS, formatUsage } from './experts-catalog.js'
 import { avatarHTML, expertAvatar } from './expert-avatars.js'
+import { EXPERT_CAPS, runExpert, resultHTML } from './expert-runtime.js'
 
 initGlobalUI()
 
@@ -285,6 +286,7 @@ const copyExpertId = async (entry) => {
 const openExpertDrawer = (entry) => {
   if (!entry) return
   closeExpertDrawer()
+  const cap = EXPERT_CAPS[entry.id]
   const usage = entry.usage ? formatUsage(entry.usage) : '暂无数据'
   const prompts = entry.prompts ?? []
   const mask = document.createElement('div')
@@ -304,6 +306,17 @@ const openExpertDrawer = (entry) => {
       </div>
       <p class="ex-drawer-desc">${entry.desc}</p>
       <div class="ex-drawer-tags">${entry.tags.map((t) => `<span class="ex-tag">${t}</span>`).join('')}</div>
+      ${cap ? `<section class="ex-drawer-sec ex-run-sec">
+        <h3 class="ex-drawer-sec-title">${DRAWER_ICON.bolt}<span>直接开工</span>
+          <em class="ex-run-cap">${cap.label}</em></h3>
+        <div class="ex-run-samples">${[cap.sample].map((s) => `<button class="ex-run-sample" type="button" data-run-sample="${s}">${s}</button>`).join('')}</div>
+        <textarea class="ex-run-input" id="ex-run-input" rows="3" placeholder="${cap.sample}"></textarea>
+        <div class="ex-run-actions">
+          <button class="ex-run-btn" type="button" data-run-expert>${cap.label}</button>
+          <span class="ex-run-hint">真实运行，结果可下载</span>
+        </div>
+        <div class="ex-run-out" id="ex-run-out" hidden></div>
+      </section>` : ''}
       <div class="ex-drawer-stats">
         <div class="ex-stat"><strong>${entry.version ?? 'v1.0.0'}</strong><span>版本</span></div>
         <div class="ex-stat"><strong>${DRAWER_ICON.bolt}${usage}</strong><span>使用量</span></div>
@@ -350,6 +363,83 @@ const openExpertDrawer = (entry) => {
       return
     }
     if (ev.target.closest('[data-copy-id]')) copyExpertId(entry)
+
+    const sample = ev.target.closest('[data-run-sample]')
+    if (sample) {
+      const input = mask.querySelector('#ex-run-input')
+      if (input) {
+        input.value = sample.dataset.runSample
+        input.focus()
+      }
+      return
+    }
+
+    if (ev.target.closest('[data-run-expert]')) {
+      const input = mask.querySelector('#ex-run-input')
+      const raw = input?.value.trim() || cap?.sample || entry.desc
+      const out = mask.querySelector('#ex-run-out')
+      if (!out) return
+      out.hidden = false
+      out.innerHTML = '<div class="xr-running"><span></span>正在运行…</div>'
+      setTimeout(() => {
+        const result = runExpert(entry.id, raw)
+        if (!result) {
+          out.innerHTML = '<p class="ex-run-empty">这位专家的能力还在路上。</p>'
+          return
+        }
+        out.innerHTML = `
+          ${resultHTML(result)}
+          <div class="xr-actions">
+            ${result.artifacts?.length ? `<button class="xr-act" type="button" data-xr-download="0">下载产物</button>` : ''}
+            <button class="xr-act" type="button" data-xr-copy>复制结果</button>
+            <button class="xr-act ghost" type="button" data-xr-clear>收起</button>
+          </div>`
+        out.dataset.result = JSON.stringify({ title: result.title, summary: result.summary })
+        out._artifacts = result.artifacts ?? []
+        out._text = `${result.title}
+
+${result.summary}
+
+` + (result.artifacts?.[0]?.content ?? '')
+      }, 260)
+      return
+    }
+
+    const dl = ev.target.closest('[data-xr-download]')
+    if (dl) {
+      const out = mask.querySelector('#ex-run-out')
+      const art = out?._artifacts?.[Number(dl.dataset.xrDownload)]
+      if (art) {
+        downloadFile(art.name, art.content, art.mime ?? 'text/plain')
+        toast(`已下载 ${art.name}`)
+      }
+      return
+    }
+
+    if (ev.target.closest('[data-xr-copy]')) {
+      const out = mask.querySelector('#ex-run-out')
+      navigator.clipboard?.writeText(out?._text ?? '').then(
+        () => toast('结果已复制'),
+        () => toast('复制失败，请手动选中'),
+      )
+      return
+    }
+
+    if (ev.target.closest('[data-xr-clear]')) {
+      const out = mask.querySelector('#ex-run-out')
+      if (out) {
+        out.hidden = true
+        out.innerHTML = ''
+      }
+      return
+    }
+
+    const swatch = ev.target.closest('[data-use-color]')
+    if (swatch) {
+      document.documentElement.style.setProperty('--brand-preview', swatch.dataset.useColor)
+      toast(`主色已设为 ${swatch.dataset.useColor}（可下载 CSS 变量）`)
+      return
+    }
   })
 }
 
