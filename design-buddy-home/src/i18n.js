@@ -23,12 +23,6 @@ const DICT = {
   'menu.skills': { zh: '技能', 'zh-TW': '技能', en: 'Skills', ja: 'スキル' },
   'menu.experts': { zh: '专家', 'zh-TW': '專家', en: 'Experts', ja: 'エキスパート' },
   'menu.connectors': { zh: '连接器', 'zh-TW': '連接器', en: 'Connectors', ja: '連携サービス' },
-  'menu.inspire': { zh: '灵感', 'zh-TW': '靈感', en: 'Inspiration', ja: 'インスピレーション' },
-  'more.emptyTasks': { zh: '暂无任务', 'zh-TW': '暫無任務', en: 'No tasks yet', ja: 'タスクはまだありません' },
-  'more.emptyHint': {
-    zh: '点击上方按钮开始新任务', 'zh-TW': '點擊上方按鈕開始新任務',
-    en: 'Click the button above to start a new task', ja: '上のボタンから新しいタスクを始めましょう',
-  },
 
   /* ---------- 设置页侧栏 14 组 ---------- */
   'nav.general': { zh: '通用', 'zh-TW': '通用', en: 'General', ja: '一般' },
@@ -121,6 +115,13 @@ const DICT = {
   },
   'ph.viewTitleStatic': { zh: '「外观」设置组', 'zh-TW': '「外觀」設定組', en: 'Appearance settings', ja: '外観設定' },
   'page.settings': { zh: '设置 — Design Buddy', 'zh-TW': '設定 — Design Buddy', en: 'Settings — Design Buddy', ja: '設定 — Design Buddy' },
+  'page.experts': { zh: '专家 — Design Buddy', 'zh-TW': '專家 — Design Buddy', en: 'Experts — Design Buddy', ja: 'エキスパート — Design Buddy' },
+  'experts.search': { zh: '搜索专家', 'zh-TW': '搜尋專家', en: 'Search experts', ja: 'エキスパートを検索' },
+  'experts.mine': { zh: '我的专家', 'zh-TW': '我的專家', en: 'My experts', ja: 'マイエキスパート' },
+  'experts.kindTeam': { zh: '专家团', 'zh-TW': '專家團', en: 'Teams', ja: 'チーム' },
+  'experts.sort.comprehensive': { zh: '综合', 'zh-TW': '綜合', en: 'Recommended', ja: 'おすすめ' },
+  'experts.sort.hot': { zh: '最热', 'zh-TW': '最熱', en: 'Most used', ja: '人気順' },
+  'experts.sort.new': { zh: '最新', 'zh-TW': '最新', en: 'Newest', ja: '新着順' },
   'aria.moduleNav': { zh: '模块导航', 'zh-TW': '模組導航', en: 'Main navigation', ja: 'モジュールナビ' },
   'aria.moreMenu': { zh: '更多功能', 'zh-TW': '更多功能', en: 'More menu', ja: 'その他メニュー' },
   'aria.settingsNav': { zh: '设置导航', 'zh-TW': '設定導航', en: 'Settings navigation', ja: '設定ナビ' },

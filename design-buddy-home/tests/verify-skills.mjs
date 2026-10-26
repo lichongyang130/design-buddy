@@ -150,10 +150,8 @@ check('check update reports up-to-date',
 /* ---------- 9. 顶部三弹窗切换 + 关闭 ---------- */
 click(w, modal().querySelector('[data-open="experts"]'))
 await tick()
-check('experts tab opens experts modal',
-  !!doc.querySelector('.modal-experts') && !doc.querySelector('.modal-skills'))
-click(w, doc.querySelector('.modal-close'))
-await tick()
+check('experts tab leaves for the experts page',
+  !doc.querySelector('.modal-skills') && !doc.querySelector('.modal-mask'))
 await openSkills()
 click(w, modal().querySelector('[data-open="connectors"]'))
 await tick()

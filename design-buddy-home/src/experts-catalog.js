@@ -16,31 +16,37 @@ export const EXPERT_FILTERS = [
 export const EXPERT_CATEGORIES = [
   {
     id: 'cat-ecom', name: '电商运营', filter: '营销增长', gradient: 'linear-gradient(135deg,#ece4ff,#d8cbff)',
+    art: '/art/illustration/retail.storefront.svg',
     icon: 'M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Zm0 4h12M3 6h18M9 10a3 3 0 0 0 6 0',
     subs: ['中国电商运营专家', '商家宣传页与海报设计师', '跨境电商专家'],
   },
   {
     id: 'cat-content', name: '内容创作', filter: '内容创作', gradient: 'linear-gradient(135deg,#e0f4e7,#c7e8d4)',
+    art: '/art/illustration/art.brush.svg',
     icon: 'm9 18 6-6-6-6M15 12H3',
     subs: ['内容创作专家团', '内容创作专家', '微信公众号运营专家'],
   },
   {
     id: 'cat-invest', name: '投资分析', filter: '金融投资', gradient: 'linear-gradient(135deg,#dfeafb,#c2d8f7)',
+    art: '/art/illustration/funding.growth.svg',
     icon: 'M3 3v18h18M7 14l4-4 3 3 5-6',
     subs: ['交易分析团队', '股票研究专家', '腾讯自选股股票投研专家团'],
   },
   {
     id: 'cat-legal', name: '法律咨询', filter: '法务安全', gradient: 'linear-gradient(135deg,#e9ebf1,#d5dae5)',
+    art: '/art/illustration/proposal.sign.svg',
     icon: 'M12 3v18M5 7h14M7 7l-3 7a4 4 0 0 0 6 0l-3-7Zm10 0-3 7a4 4 0 0 0 6 0l-3-7Z',
     subs: ['法律检索专家', '资深合同法务专家', '财税合规专家团'],
   },
   {
     id: 'cat-smb', name: '小微企业', filter: 'OPC·一人公司', gradient: 'linear-gradient(135deg,#e3f4eb,#c9e9d7)',
+    art: '/art/illustration/retail.boutique.svg',
     icon: 'M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6',
     subs: ['销售教练', '微信公众号运营专家', '创业伙伴'],
   },
   {
     id: 'cat-data', name: '数据分析', filter: '数据智能', gradient: 'linear-gradient(135deg,#e2f0fc,#c9e2f8)',
+    art: '/art/illustration/report.dashboard.svg',
     icon: 'M4 19V5m6 14V9m6 10v-7m6 7H2',
     subs: ['数据分析报告师', '深度研究团队', '花椒数据分析专家团'],
   },

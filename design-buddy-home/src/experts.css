@@ -1,0 +1,395 @@
+/* ============================================================
+   专家页（experts.html）：截图式发现区，左侧沿用首页窄栏 rail
+   公共外壳（.ex-topbar / .ex-search / .ex-chip* / .experts-main）仍在
+   features.css 里与技能弹窗共用；这里只放页面专属与差异化的部分。
+   ============================================================ */
+
+.experts-page {
+  flex: 1;
+  min-width: 0;
+  background: var(--surface);
+  padding: 20px 32px 44px;
+}
+
+/* 页面版顶部栏：窗口变窄时搜索 / 我的专家换行，不挤压页签 */
+.experts-page .ex-topbar {
+  flex-wrap: wrap;
+  row-gap: 12px;
+}
+
+.ex-top-tab.is-active {
+  font-weight: 800;
+}
+
+/* ---------- 搜索 / 我的专家 ---------- */
+
+.ex-mine-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 15px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.ex-mine-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+.ex-mine-btn:hover {
+  border-color: #cfd6e2;
+  background: #fafbfd;
+}
+
+.ex-mine-btn.is-active {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: #fff;
+}
+
+/* ---------- 六大场景卡 ---------- */
+
+.ex-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.ex-cat {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid #eceef3;
+  border-radius: 14px;
+  background: var(--surface);
+  text-align: left;
+  transition: box-shadow 0.16s ease, transform 0.16s ease, border-color 0.16s ease;
+}
+
+.ex-cat:hover {
+  border-color: #dde2ec;
+  box-shadow: 0 12px 28px rgba(23, 43, 92, 0.1);
+  transform: translateY(-2px);
+}
+
+.ex-cat.is-active {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 1px var(--navy) inset;
+}
+
+/* 配图铺满卡片上半部；左侧白色渐隐保证标题可读 */
+.ex-cat-banner {
+  position: relative;
+  height: 94px;
+  background-color: #eef2f8;
+  background-size: cover;
+  background-position: 62% center;
+  background-repeat: no-repeat;
+}
+
+.ex-cat-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.84) 36%, rgba(255, 255, 255, 0) 70%);
+}
+
+.ex-cat-name {
+  position: absolute;
+  left: 13px;
+  bottom: 11px;
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #1f2733;
+  letter-spacing: 0.2px;
+}
+
+.ex-cat-subs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 11px 13px 13px;
+}
+
+.ex-cat-sub {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+.ex-cat-sub-label {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ex-cat-sub i {
+  flex: none;
+  font-style: normal;
+  color: #c3c9d4;
+}
+
+.ex-cat:hover .ex-cat-sub {
+  color: var(--navy);
+}
+
+/* ---------- 专家 / 专家团 + 排序（页面专属：分段控件） ---------- */
+
+.ex-kind-tabs {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.ex-kind-tab {
+  padding-bottom: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-3);
+  border-bottom: 2px solid transparent;
+}
+
+.ex-kind-tab:hover {
+  color: var(--navy);
+}
+
+.ex-kind-tab.is-active {
+  color: var(--navy);
+  font-weight: 800;
+}
+
+.ex-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 9px;
+  background: #f4f6fa;
+}
+
+.ex-sort-btn {
+  padding: 5px 13px;
+  border-radius: 7px;
+  font-size: 12.5px;
+  color: var(--text-2);
+  transition: background 0.14s ease, color 0.14s ease;
+}
+
+.ex-sort-btn:hover {
+  color: var(--navy);
+}
+
+.ex-sort-btn.is-active {
+  background: var(--surface);
+  color: var(--navy);
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(23, 43, 92, 0.12);
+}
+
+/* ---------- 分类 chips：截图里是描边选中，覆盖弹窗同款的实心药丸 ---------- */
+
+.ex-chip-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ex-chip-track {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 0;
+}
+
+.ex-chip {
+  padding: 6px 13px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-2);
+}
+
+.ex-chip:hover {
+  background: #f2f4f8;
+  color: var(--navy);
+}
+
+.ex-chip.is-active {
+  border-color: #d5dae4;
+  background: var(--surface);
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.ex-chip-next {
+  position: static;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  transform: none;
+  box-shadow: none;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--text-3);
+}
+
+.ex-chip-next:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+}
+
+/* ---------- 专家卡片网格 ---------- */
+
+.ex-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(246px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.ex-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 17px;
+  border: 1px solid #eceef3;
+  border-radius: 14px;
+  background: var(--surface);
+  text-align: left;
+  transition: box-shadow 0.16s ease, transform 0.16s ease, border-color 0.16s ease;
+}
+
+.ex-card:hover {
+  border-color: #dbe1ea;
+  box-shadow: 0 12px 28px rgba(23, 43, 92, 0.1);
+  transform: translateY(-2px);
+}
+
+.ex-card.is-pinned {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 1px var(--blue) inset;
+}
+
+.ex-card-head {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+}
+
+/* 卡片头像：截图里是圆角方块，覆盖 styles.css 的圆形基类 */
+.ex-card-head .expert-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+.ex-card-title {
+  min-width: 0;
+  flex: 1;
+}
+
+.ex-card-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ex-card-desc {
+  margin-top: 4px;
+  font-size: 12.5px;
+  color: var(--text-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ex-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ex-tag {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  color: var(--text-3);
+  background: #f3f5f9;
+}
+
+.ex-card-foot {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+
+.ex-card-foot svg {
+  width: 14px;
+  height: 14px;
+}
+
+.ex-usage {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* 固定标记：收起态是浅色图钉，已固定才染蓝 */
+.ex-pin-mark {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  color: #c3c9d4;
+}
+
+.ex-pin-mark svg {
+  width: 14px;
+  height: 14px;
+}
+
+.ex-card:hover .ex-pin-mark {
+  color: var(--text-3);
+}
+
+.ex-card.is-pinned .ex-pin-mark {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+/* ---------- 响应式 ---------- */
+
+@media (max-width: 1240px) {
+  .ex-cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 900px) {
+  .experts-page { padding: 16px 18px 32px; }
+  .ex-cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ex-top-tabs { gap: 16px; }
+  .ex-top-tab { font-size: 15.5px; }
+}

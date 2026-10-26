@@ -1228,18 +1228,7 @@
    专家发现弹窗：左侧管理栏（沿用旧弹窗）+ 右侧截图式发现区
    ============================================================ */
 
-.modal-experts {
-  width: min(1240px, 96vw);
-  height: min(880px, 90vh);
-  max-height: 90vh;
-}
 
-.modal-experts .modal-body {
-  padding: 0;
-  overflow: hidden;
-  flex: 1;
-  min-height: 0;
-}
 
 .experts-layout {
   display: flex;
@@ -1380,131 +1369,23 @@
 
 .ex-search input::placeholder { color: var(--text-3); }
 
-.ex-mine-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 8px 14px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--navy);
-  background: var(--surface);
-  white-space: nowrap;
-}
 
-.ex-mine-btn svg { width: 15px; height: 15px; }
 
-.ex-mine-btn:hover { border-color: var(--blue); color: var(--blue); }
 
-.ex-mine-btn.is-active {
-  color: #fff;
-  background: var(--navy);
-  border-color: var(--navy);
-}
 
-/* ---------- 场景分类横向卡片 ---------- */
 
-.ex-cat-wrap { position: relative; margin-top: 18px; }
 
-.ex-cat-track {
-  display: flex;
-  gap: 14px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding-bottom: 6px;
-  scrollbar-width: none;
-}
 
-.ex-cat-track::-webkit-scrollbar { display: none; }
 
-.ex-cat {
-  flex: 0 0 232px;
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  overflow: hidden;
-  text-align: left;
-  cursor: pointer;
-  transition: box-shadow 0.15s, transform 0.15s, border-color 0.15s;
-  padding: 0;
-}
 
-.ex-cat:hover {
-  box-shadow: var(--shadow-card);
-  transform: translateY(-2px);
-  border-color: #d7deea;
-}
 
-.ex-cat-banner {
-  position: relative;
-  height: 96px;
-  padding: 12px 14px;
-  display: flex;
-  align-items: flex-end;
-  background: var(--g, linear-gradient(135deg, #ece4ff, #d8cbff));
-}
 
-.ex-cat-banner svg {
-  position: absolute;
-  right: 12px;
-  top: 12px;
-  width: 34px;
-  height: 34px;
-  color: rgba(30, 43, 77, 0.42);
-}
 
-.ex-cat-name {
-  font-size: 17px;
-  font-weight: 800;
-  color: var(--navy);
-}
 
-.ex-cat-subs {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 14px 12px;
-  gap: 7px;
-}
 
-.ex-cat-sub {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12.5px;
-  color: var(--text-2);
-}
 
-.ex-cat-sub i {
-  font-style: normal;
-  color: var(--text-3);
-  font-size: 14px;
-}
 
-.ex-cat:hover .ex-cat-sub { color: var(--blue); }
 
-.ex-scroll-btn {
-  position: absolute;
-  top: 38px;
-  right: -6px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: var(--surface);
-  border: 1px solid var(--line-soft);
-  box-shadow: var(--shadow-card);
-  display: grid;
-  place-items: center;
-  color: var(--navy-soft);
-  font-size: 17px;
-  line-height: 1;
-  z-index: 2;
-}
-
-.ex-scroll-btn:hover { color: var(--blue); border-color: var(--blue); }
-
-/* ---------- 专家/专家团 + 排序 ---------- */
 
 .ex-sub-row {
   display: flex;
@@ -1513,39 +1394,11 @@
   margin-top: 20px;
 }
 
-.ex-kind-tabs { display: flex; gap: 16px; }
 
-.ex-kind-tab {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text-3);
-  padding-bottom: 4px;
-  border-bottom: 2px solid transparent;
-}
 
-.ex-kind-tab.is-active { color: var(--navy); border-bottom-color: var(--navy); }
 
-.ex-sort {
-  display: inline-flex;
-  padding: 3px;
-  gap: 2px;
-  background: #f1f3f8;
-  border-radius: 9px;
-}
 
-.ex-sort-btn {
-  padding: 5px 16px;
-  border-radius: 7px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-2);
-}
 
-.ex-sort-btn.is-active {
-  background: var(--surface);
-  color: var(--navy);
-  box-shadow: var(--shadow-soft);
-}
 
 /* ---------- 分类筛选 chips ---------- */
 
@@ -1595,60 +1448,13 @@
   z-index: 2;
 }
 
-/* ---------- 专家卡片网格 ---------- */
 
-.ex-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
-  gap: 14px;
-  margin-top: 16px;
-}
 
-.ex-card {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  text-align: left;
-  padding: 16px;
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  cursor: pointer;
-  transition: box-shadow 0.15s, transform 0.15s, border-color 0.15s;
-}
 
-.ex-card:hover {
-  box-shadow: var(--shadow-card);
-  transform: translateY(-2px);
-  border-color: #d7deea;
-}
 
-.ex-card.is-pinned {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 1px var(--blue) inset;
-}
 
-.ex-card-head { display: flex; gap: 11px; align-items: flex-start; }
 
-.ex-card-head .expert-avatar {
-  width: 44px;
-  height: 44px;
-  font-size: 16px;
-}
 
-.ex-card-title { min-width: 0; flex: 1; }
-
-.ex-card-name {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--navy);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
 .ex-badge {
   flex: none;
@@ -1660,47 +1466,12 @@
   padding: 1px 5px;
 }
 
-.ex-card-desc {
-  margin-top: 4px;
-  font-size: 12.5px;
-  color: var(--text-3);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
-.ex-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
-.ex-tag {
-  font-size: 11.5px;
-  color: var(--text-3);
-  background: #f3f5f9;
-  border-radius: 6px;
-  padding: 3px 8px;
-}
 
-.ex-card-foot {
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  font-size: 12.5px;
-  color: var(--text-3);
-}
 
-.ex-card-foot svg { width: 14px; height: 14px; }
 
-.ex-usage { display: inline-flex; align-items: center; gap: 4px; }
 
-.ex-pin-pill {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--blue);
-  background: var(--blue-bg);
-  border-radius: 999px;
-  padding: 2px 8px;
-}
 
 .ex-empty {
   grid-column: 1 / -1;
@@ -1724,7 +1495,7 @@
 .av-slate { background: linear-gradient(145deg, #7c8aa5, #46536e); }
 
 @media (max-width: 900px) {
-  .experts-side { display: none; }
+  .modal-skills .experts-side { display: none; }
   .ex-search { width: 160px; }
 }
 

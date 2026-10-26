@@ -1,10 +1,12 @@
 /* ============================================================
-   专家弹窗：左侧固定管理保持旧契约，右侧按截图实现发现区
-   双栏布局 / 场景卡 / 专家-专家团 / 排序 / 筛选 / 搜索 /
-   固定联动持久化 / 顶部三弹窗切换 / 空态
+   专家页（experts.html）：截图式发现区 + 首页同款左侧窄栏
+   栏位 / 场景卡 / 专家-专家团 / 排序 / 筛选 / 搜索 /
+   固定联动持久化 / 我的专家 / 顶部技能与连接器入口 / 空态
    ============================================================ */
 
-import { loadPage, click, input, tick, readState } from './helpers.mjs'
+import fs from 'node:fs'
+import path from 'node:path'
+import { loadPage, click, input, tick, readState, DIST } from './helpers.mjs'
 import { EXPERT_CATALOG, EXPERT_CATEGORIES, EXPERT_FILTERS, formatUsage } from '../src/experts-catalog.js'
 
 let passed = 0
@@ -14,148 +16,173 @@ function check(name, cond, extra) {
   else { fails.push(name); console.log('FAIL ', name, extra ?? '') }
 }
 
-const { doc, w, errors, storage } = await loadPage('/index.html')
-check('experts page loads without errors', errors.length === 0, errors)
+const expertsOnly = () => EXPERT_CATALOG.filter((e) => e.kind === 'expert')
 
-const openExperts = async () => {
+/* 产物 CSS 契约：截图布局的关键数值，防止后续改动悄悄退回旧观感 */
+const cssAll = fs.readdirSync(path.join(DIST, 'assets'))
+  .filter((f) => f.endsWith('.css'))
+  .map((f) => fs.readFileSync(path.join(DIST, 'assets', f), 'utf8'))
+  .join('\n')
+const cssCompact = cssAll.replace(/\s+/g, '')
+const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))')
+  && cssCompact.includes('.ex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(246px,1fr))')
+  && cssCompact.includes('.ex-cat-banner{position:relative;height:94px')
+  && cssCompact.includes('.experts-page{flex:1;min-width:0')
+  // 场景卡必须带内置插画作配图（不依赖外网素材）
+  && EXPERT_CATEGORIES.every((c) => c.art?.startsWith('/art/illustration/'))
+
+/* ---------- 1. 页面骨架：左侧窄栏 + 顶部页签 + 搜索 + 我的专家 ---------- */
+{
+  const { doc, w, errors, storage } = await loadPage('/experts.html', { freshCopy: true })
+  check('experts page loads without errors', errors.length === 0, errors)
+  check('screenshot layout contract holds in built CSS', layoutOk)
+  check('keeps the homepage rail (vertical icon column)',
+    [...doc.querySelectorAll('.rail .rail-item span')].map((s) => s.textContent).join() === '首页,媒体,模板,主题,设置,更多')
+  check('more entry marked as current section',
+    doc.querySelector('.rail .more-wrap .rail-item').classList.contains('rail-item-active'))
+  check('top tabs are 专家 / 技能 / 连接器',
+    [...doc.querySelectorAll('.ex-top-tab')].map((t) => t.textContent.trim()).join() === '专家,技能,连接器')
+  check('experts tab is the active one',
+    doc.querySelector('.ex-top-tab.is-active')?.getAttribute('href') === 'experts.html')
+  check('search box present', !!doc.querySelector('#ex-search-input'))
+  check('my-experts button present', !!doc.querySelector('[data-mine]'))
+
+  /* ---------- 2. 六大场景卡 ---------- */
+  check('6 scenario cards rendered', doc.querySelectorAll('.ex-cat').length === EXPERT_CATEGORIES.length)
+  check('each scenario card carries its banner art',
+    [...doc.querySelectorAll('.ex-cat-banner')].every((b) => (b.getAttribute('style') ?? '').includes('/art/illustration/')))
+  check('scenario cards show 3 sub entries each',
+    [...doc.querySelectorAll('.ex-cat')].every((c) => c.querySelectorAll('.ex-cat-sub').length === 3))
+  check('scenario card titles match catalog',
+    [...doc.querySelectorAll('.ex-cat-name')].map((n) => n.textContent).join() === EXPERT_CATEGORIES.map((c) => c.name).join())
+
+  /* ---------- 3. 分类 chips / 专家·专家团 / 排序 ---------- */
+  check('all filter chips rendered', doc.querySelectorAll('.ex-chip').length === EXPERT_FILTERS.length)
+  check('全部 chip active by default',
+    doc.querySelector('.ex-chip.is-active')?.textContent === '全部' && doc.querySelector('[data-chip="全部"]'))
+  check('expert tab lists individual experts', doc.querySelectorAll('.ex-card').length === expertsOnly().length)
+  check('usage count formatted with w suffix',
+    doc.querySelector('.ex-usage')?.textContent.trim().endsWith('w')
+    && doc.querySelector('.ex-usage')?.textContent.includes(formatUsage(EXPERT_CATALOG[0].usage).replace('w', '')))
+
+  click(w, doc.querySelector('[data-kind="team"]'))
+  await tick()
+  check('team tab lists only teams',
+    doc.querySelectorAll('.ex-card').length === EXPERT_CATALOG.filter((e) => e.kind === 'team').length
+    && doc.querySelector('[data-kind="team"]').classList.contains('is-active'))
+  click(w, doc.querySelector('[data-kind="expert"]'))
+  await tick()
+  check('back to expert tab restores count', doc.querySelectorAll('.ex-card').length === expertsOnly().length)
+
+  click(w, doc.querySelector('[data-sort="最热"]'))
+  await tick()
+  const hotUsages = [...doc.querySelectorAll('.ex-usage')].map((u) => parseFloat(u.textContent))
+  check('hottest sort is descending by usage', hotUsages.every((v, i) => i === 0 || hotUsages[i - 1] >= v))
+  click(w, doc.querySelector('[data-sort="最新"]'))
+  await tick()
+  const newestName = [...expertsOnly()].sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0].name
+  check('newest sort puts latest-created expert first',
+    doc.querySelector('.ex-card .ex-card-name')?.textContent.includes(newestName))
+  click(w, doc.querySelector('[data-sort="综合"]'))
+  await tick()
+  check('default sort restores catalog order',
+    doc.querySelector('.ex-card[data-pin]')?.dataset.pin === expertsOnly()[0].id)
+
+  /* ---------- 4. 分类 chips 与场景卡联动 ---------- */
+  click(w, doc.querySelector('[data-chip="技术工程"]'))
+  await tick()
+  check('chip filter shows only matching category',
+    doc.querySelectorAll('.ex-card').length === expertsOnly().filter((e) => e.category === '技术工程').length)
+  check('active chip highlighted', doc.querySelector('[data-chip="技术工程"]').classList.contains('is-active'))
+  click(w, doc.querySelector('.ex-cat[data-cat="法务安全"]'))
+  await tick()
+  check('scenario card activates its chip', doc.querySelector('.ex-chip.is-active')?.textContent === '法务安全')
+  check('scenario card filters grid and marks itself active',
+    doc.querySelectorAll('.ex-card').length === 1
+    && doc.querySelector('.ex-card-name')?.textContent.includes('董秘助手')
+    && doc.querySelector('.ex-cat[data-cat="法务安全"]').classList.contains('is-active'))
+  click(w, doc.querySelector('[data-chip="全部"]'))
+  await tick()
+  check('all chip restores full grid', doc.querySelectorAll('.ex-card').length === expertsOnly().length)
+
+  /* ---------- 5. 搜索：实时过滤 + 诚实空态 ---------- */
+  input(w, doc.querySelector('#ex-search-input'), 'python')
+  await tick()
+  check('search filters by name/desc/tags',
+    doc.querySelectorAll('.ex-card').length === 1
+    && doc.querySelector('.ex-card-name')?.textContent.includes('Python'))
+  input(w, doc.querySelector('#ex-search-input'), 'no-such-expert-xyz')
+  await tick()
+  check('no-match shows honest empty state',
+    !!doc.querySelector('.ex-empty') && doc.querySelectorAll('.ex-card').length === 0)
+  input(w, doc.querySelector('#ex-search-input'), '')
+  await tick()
+  check('clearing search restores cards', doc.querySelectorAll('.ex-card').length === expertsOnly().length)
+
+  /* ---------- 6. 卡片固定：真实持久化 + 我的专家 ---------- */
+  const pinId = 'ec-webdeploy'
+  const pinName = EXPERT_CATALOG.find((e) => e.id === pinId).name
+  click(w, doc.querySelector(`.ex-card[data-pin="${pinId}"]`))
+  await tick()
+  check('pinning catalog card persists to store',
+    readState(storage).experts.find((e) => e.name === pinName)?.pinned === true)
+  check('pinned card shows pinned state',
+    doc.querySelector(`.ex-card[data-pin="${pinId}"]`)?.classList.contains('is-pinned')
+    && doc.querySelector(`.ex-card[data-pin="${pinId}"] .ex-pin-mark`).textContent.includes('已固定'))
+
+  click(w, doc.querySelector('[data-mine]'))
+  await tick()
+  check('my-experts toggle filters to pinned only',
+    doc.querySelector('[data-mine]').classList.contains('is-active')
+    && doc.querySelectorAll('.ex-card').length === 1
+    && doc.querySelector('.ex-card-name')?.textContent.includes(pinName))
+  click(w, doc.querySelector('[data-mine]'))
+  await tick()
+
+  click(w, doc.querySelector(`.ex-card[data-pin="${pinId}"]`))
+  await tick()
+  check('unpinning clears persisted flag',
+    readState(storage).experts.find((e) => e.name === pinName)?.pinned === false)
+  check('pinned highlight removed after unpin',
+    !doc.querySelector(`.ex-card[data-pin="${pinId}"]`).classList.contains('is-pinned'))
+
+  /* ---------- 7. 顶部 技能 / 连接器 入口打开既有弹窗 ---------- */
+  click(w, doc.querySelector('[data-open="skills"]'))
+  await tick()
+  check('skills tab opens skills modal', !!doc.querySelector('#skills-root'))
+  click(w, doc.querySelector('.modal-close'))
+  await tick()
+  click(w, doc.querySelector('[data-open="connectors"]'))
+  await tick()
+  check('connectors tab opens connectors modal', doc.body.textContent.includes('Google Drive'))
+  click(w, doc.querySelector('.modal-close'))
+  await tick()
+  check('closing modal returns to the page', !doc.querySelector('.modal-mask') && !!doc.querySelector('.ex-grid'))
+
+  /* ---------- 8. 本页窄栏「更多」仍可用 ---------- */
+  click(w, doc.querySelector('.more-wrap .rail-item'))
+  await tick()
+  const pop = doc.querySelector('.more-pop')
+  check('rail more flyout opens on the experts page',
+    pop?.hidden === false && doc.body.contains(pop) && pop.querySelectorAll('[data-more]').length === 3)
+  click(w, doc.querySelector('[data-more="专家"]'))
+  await tick()
+  check('expert item on its own page just closes the flyout', pop.hidden === true)
+
+  check('experts page flow: no runtime errors', errors.length === 0, JSON.stringify(errors))
+}
+
+/* ---------- 8. 入口：首页窄栏「更多 → 专家」进入页面而不是弹窗 ---------- */
+{
+  const { doc, w, errors } = await loadPage('/index.html', { freshCopy: true })
   click(w, doc.querySelector('.more-wrap .rail-item'))
   await tick()
   click(w, doc.querySelector('[data-more="专家"]'))
   await tick()
+  check('more menu closes when leaving for the experts page', doc.querySelector('.more-pop').hidden === true)
+  check('experts entry no longer opens a modal', !doc.querySelector('.modal-mask'))
+  check('experts entry keeps page error-free', errors.length === 0, errors)
 }
-await openExperts()
-
-/* ---------- 1. 双栏骨架：左侧旧契约 + 右侧截图结构 ---------- */
-check('experts modal uses extra-wide two-pane layout',
-  !!doc.querySelector('.modal-box.modal-experts .experts-layout .experts-side')
-  && !!doc.querySelector('.experts-main'))
-check('left pane keeps 5 data-ex management buttons',
-  doc.querySelectorAll('.experts-side [data-ex]').length === 5)
-check('left pane keeps active agents block', doc.body.textContent.includes('已启用的智能体'))
-check('right pane has 6 scenario category cards', doc.querySelectorAll('.ex-cat').length === EXPERT_CATEGORIES.length)
-check('right pane has all filter chips', doc.querySelectorAll('.ex-chip').length === EXPERT_FILTERS.length)
-check('expert tab lists individual experts',
-  doc.querySelectorAll('.ex-card').length === EXPERT_CATALOG.filter((e) => e.kind === 'expert').length)
-check('usage count formatted with w suffix',
-  doc.querySelector('.ex-usage')?.textContent.trim().endsWith('w')
-  && doc.querySelector('.ex-usage')?.textContent.includes(formatUsage(EXPERT_CATALOG[0].usage).replace('w', '')))
-
-/* ---------- 2. 专家 / 专家团 切换 ---------- */
-click(w, doc.querySelector('[data-kind="team"]'))
-await tick()
-check('team tab lists only teams',
-  doc.querySelectorAll('.ex-card').length === EXPERT_CATALOG.filter((e) => e.kind === 'team').length
-  && doc.querySelector('[data-kind="team"]').classList.contains('is-active'))
-click(w, doc.querySelector('[data-kind="expert"]'))
-await tick()
-check('back to expert tab restores count',
-  doc.querySelectorAll('.ex-card').length === EXPERT_CATALOG.filter((e) => e.kind === 'expert').length)
-
-/* ---------- 3. 排序：综合 / 最热 / 最新 ---------- */
-click(w, doc.querySelector('[data-sort="最热"]'))
-await tick()
-const hotUsages = [...doc.querySelectorAll('.ex-usage')].map((u) => parseFloat(u.textContent))
-check('hottest sort is descending by usage', hotUsages.every((v, i) => i === 0 || hotUsages[i - 1] >= v))
-click(w, doc.querySelector('[data-sort="最新"]'))
-await tick()
-const newestName = [...EXPERT_CATALOG.filter((e) => e.kind === 'expert')]
-  .sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0].name
-check('newest sort puts latest-created expert first',
-  doc.querySelector('.ex-card .ex-card-name')?.textContent.includes(newestName))
-click(w, doc.querySelector('[data-sort="综合"]'))
-await tick()
-check('default sort restores catalog order',
-  doc.querySelector('.ex-card[data-pin]')?.dataset.pin === EXPERT_CATALOG.find((e) => e.kind === 'expert').id)
-
-/* ---------- 4. 分类 chips 与场景卡联动 ---------- */
-click(w, doc.querySelector('[data-chip="技术工程"]'))
-await tick()
-const techCount = EXPERT_CATALOG.filter((e) => e.kind === 'expert' && e.category === '技术工程').length
-check('chip filter shows only matching category',
-  doc.querySelectorAll('.ex-card').length === techCount && techCount === 6)
-check('active chip highlighted', doc.querySelector('[data-chip="技术工程"]').classList.contains('is-active'))
-// 场景大卡点击 = 激活对应 chip
-click(w, doc.querySelector('.ex-cat[data-cat="法务安全"]'))
-await tick()
-check('scenario card activates its chip', doc.querySelector('.ex-chip.is-active')?.textContent === '法务安全')
-check('scenario card filters grid', doc.querySelectorAll('.ex-card').length === 1
-  && doc.querySelector('.ex-card-name')?.textContent.includes('董秘助手'))
-click(w, doc.querySelector('[data-chip="全部"]'))
-await tick()
-check('all chip restores full grid', doc.querySelectorAll('.ex-card').length === 12)
-
-/* ---------- 5. 搜索：实时过滤 + 诚实空态 ---------- */
-input(w, doc.querySelector('#ex-search-input'), 'python')
-await tick()
-check('search filters by name/desc/tags',
-  doc.querySelectorAll('.ex-card').length === 1
-  && doc.querySelector('.ex-card-name')?.textContent.includes('Python'))
-input(w, doc.querySelector('#ex-search-input'), 'no-such-expert-xyz')
-await tick()
-check('no-match shows honest empty state', !!doc.querySelector('.ex-empty') && doc.querySelectorAll('.ex-card').length === 0)
-input(w, doc.querySelector('#ex-search-input'), '')
-await tick()
-check('clearing search restores cards', doc.querySelectorAll('.ex-card').length === 12)
-
-/* ---------- 6. 卡片固定：真实持久化 + 左右联动 ---------- */
-const pinId = 'ec-webdeploy'
-const pinName = EXPERT_CATALOG.find((e) => e.id === pinId).name
-click(w, doc.querySelector(`.ex-card[data-pin="${pinId}"]`))
-await tick()
-check('pinning catalog card persists to store',
-  readState(storage).experts.find((e) => e.name === pinName)?.pinned === true)
-check('pinned card shows pill and highlight',
-  !!doc.querySelector(`.ex-card[data-pin="${pinId}"] .ex-pin-pill`)
-  && doc.querySelector(`.ex-card[data-pin="${pinId}"]`).classList.contains('is-pinned'))
-check('pinned expert appears in left management pane',
-  [...doc.querySelectorAll('.experts-side .primary')].some((p) => p.textContent.includes(pinName)))
-// 我的专家：只看已固定
-click(w, doc.querySelector('[data-mine]'))
-await tick()
-check('my-experts toggle filters to pinned only',
-  doc.querySelector('[data-mine]').classList.contains('is-active')
-  && doc.querySelectorAll('.ex-card').length === 1
-  && doc.querySelector('.ex-card-name')?.textContent.includes(pinName))
-click(w, doc.querySelector('[data-mine]'))
-await tick()
-// 再次点击取消固定
-click(w, doc.querySelector(`.ex-card[data-pin="${pinId}"]`))
-await tick()
-check('unpinning clears persisted flag',
-  readState(storage).experts.find((e) => e.name === pinName)?.pinned === false)
-check('pin pill removed after unpin', !doc.querySelector(`.ex-card[data-pin="${pinId}"] .ex-pin-pill`))
-
-/* ---------- 7. 左侧旧固定按钮契约不变 ---------- */
-const firstExBtn = doc.querySelector('.experts-side [data-ex]')
-const before = readState(storage).experts.find((e) => e.id === firstExBtn.dataset.ex)?.pinned
-click(w, firstExBtn)
-await tick()
-const after = readState(storage).experts.find((e) => e.id === firstExBtn.dataset.ex)?.pinned
-check('left data-ex button still toggles persisted pin', before !== after && typeof after === 'boolean')
-// 还原，避免污染后续套件
-click(w, firstExBtn)
-await tick()
-
-/* ---------- 8. 顶部三弹窗切换 + 关闭 ---------- */
-click(w, doc.querySelector('[data-open="skills"]'))
-await tick()
-check('skills top tab opens skills modal and closes experts',
-  !!doc.querySelector('#skills-root') && !doc.querySelector('.modal-experts'))
-click(w, doc.querySelector('.modal-close'))
-await tick()
-await openExperts()
-click(w, doc.querySelector('[data-open="connectors"]'))
-await tick()
-check('connectors top tab opens connectors modal',
-  doc.body.textContent.includes('Google Drive') && !doc.querySelector('.modal-experts'))
-click(w, doc.querySelector('.modal-close'))
-await tick()
-await openExperts()
-click(w, doc.querySelector('.modal-close'))
-await tick()
-check('modal close works', !doc.querySelector('.modal-mask'))
-
-check('experts flow: no runtime errors', errors.length === 0, JSON.stringify(errors))
 
 console.log(`\n${fails.length === 0 ? `ALL ${passed} EXPERTS CHECKS PASSED` : `${fails.length} FAILED: ${fails.join('; ')}`}`)
 process.exit(fails.length ? 1 : 0)

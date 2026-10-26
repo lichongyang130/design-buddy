@@ -19,6 +19,7 @@ export default defineConfig({
         themes: resolve(import.meta.dirname, 'themes.html'),
         settings: resolve(import.meta.dirname, 'settings.html'),
         media: resolve(import.meta.dirname, 'media.html'),
+        experts: resolve(import.meta.dirname, 'experts.html'),
       },
     },
   },

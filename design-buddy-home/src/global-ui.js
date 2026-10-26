@@ -1,13 +1,12 @@
 /* ============================================================
    全局 UI：外观持久化应用、⌘K 命令面板、帮助 / 邀请 / 消息 /
-   升级 / 技能 / 连接器弹窗。所有页面统一初始化。
+   升级 / 技能 / 连接器弹窗；专家是独立页面 experts.html。所有页面统一初始化。
    ============================================================ */
 
 import './features.css'
 import { store, openModal, confirmModal, toast, copyText, fmtDate, uid } from './core.js'
-import { initSettingsEffects, speak, activeAgents } from './settings-effects.js'
+import { initSettingsEffects, speak } from './settings-effects.js'
 import { currentUser, logout } from './auth.js'
-import { EXPERT_CATALOG, EXPERT_CATEGORIES, EXPERT_FILTERS, formatUsage } from './experts-catalog.js'
 import {
   DISCOVERY_SKILLS, FEATURED_SKILLS, FEATURED_SIZE, SKILL_FILTERS, SKILL_META, formatCount,
 } from './skills-catalog.js'
@@ -536,242 +535,14 @@ export function openSkills() {
   if (store.state.settings.skillAutoUpdate) checkUpdates(true)
 }
 
+/* 专家已升级为独立页面（experts.html，左侧沿用首页窄栏 rail）。
+   所有「专家」入口统一走这里：首页的召唤更多专家、技能弹窗的页签、窄栏「更多」。
+   已在本页时不做任何事，避免无意义重载。 */
+const EXPERTS_PAGE = 'experts.html'
+
 export function openExperts() {
-  const { mask, bodyEl } = openModal({ title: '专家' })
-  mask.querySelector('.modal-box').classList.add('modal-experts')
-
-  // 右侧发现区的交互状态（仅本弹窗生命周期内）
-  const ui = { q: '', kind: 'expert', sort: '综合', chip: '全部', mineOnly: false }
-  const pinnedNames = () => new Set(store.state.experts.filter((e) => e.pinned).map((e) => e.name))
-
-  // 目录专家固定/取消固定：与 store.state.experts（首页专家子菜单同源）真实联动并持久化
-  const toggleCatalogPin = (entry) => {
-    const existing = store.state.experts.find((e) => e.name === entry.name)
-    if (existing) {
-      existing.pinned = !existing.pinned
-      toast(existing.pinned ? `已固定「${entry.name}」` : `已取消固定「${entry.name}」`)
-    } else {
-      store.state.experts.push({ id: uid('ex'), name: entry.name, color: entry.color, desc: entry.desc, pinned: true })
-      toast(`已固定「${entry.name}」`)
-    }
-    store.save()
-  }
-
-  /* ---------- 左侧：固定管理 + 启用中的智能体（结构沿用旧弹窗） ---------- */
-  const sideHtml = () => {
-    const agents = activeAgents()
-    const pinnedCount = store.state.experts.filter((e) => e.pinned).length
-    return `<aside class="experts-side">
-      <p class="experts-side-label">固定的专家（${pinnedCount}）</p>
-      <div class="modal-list">${store.state.experts.map((ex) => `
-        <div class="modal-list-item">
-          <div class="grow"><div class="primary">${ex.name}${ex.pinned ? ' <span class="count-pill">已固定</span>' : ''}</div>
-          <div class="secondary">${ex.desc}</div></div>
-          <button class="btn ${ex.pinned ? 'btn-ghost' : 'btn-primary'}" data-ex="${ex.id}" type="button">
-            ${ex.pinned ? '取消固定' : '固定到专家菜单'}</button>
-        </div>`).join('')}</div>
-      ${agents.length ? `<p class="settings-section-label">已启用的智能体（设置中管理）</p>
-      <div class="modal-list">${agents.map((ag) => `
-      <div class="modal-list-item">
-        <div class="grow"><div class="primary">${ag.name}</div>
-        <div class="secondary">来自设置 → 智能体</div></div>
-        <span class="count-pill">启用中</span>
-      </div>`).join('')}</div>`
-        : '<p class="modal-copy" style="margin-top:12px">没有启用的智能体，可在「设置 → 智能体」中开启。</p>'}
-    </aside>`
-  }
-
-  /* ---------- 右侧：截图式发现区骨架 ---------- */
-  const mainHtml = () => `<section class="experts-main">
-    <div class="ex-topbar">
-      <div class="ex-top-tabs" role="tablist">
-        <button class="ex-top-tab is-active" type="button">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          专家</button>
-        <button class="ex-top-tab" type="button" data-open="skills">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
-          技能</button>
-        <button class="ex-top-tab" type="button" data-open="connectors">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-          连接器</button>
-      </div>
-      <div class="ex-top-actions">
-        <label class="ex-search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input id="ex-search-input" type="search" placeholder="搜索专家" value="${ui.q.replace(/"/g, '&quot;')}" />
-        </label>
-        <button class="ex-mine-btn ${ui.mineOnly ? 'is-active' : ''}" type="button" data-mine>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z"/></svg>
-          我的专家</button>
-      </div>
-    </div>
-
-    <div class="ex-cat-wrap">
-      <button class="ex-scroll-btn" type="button" data-cat-scroll="-1" aria-label="向左滚动">‹</button>
-      <div class="ex-cat-track" id="ex-cat-track">${EXPERT_CATEGORIES.map((c) => `
-        <div class="ex-cat" role="button" tabindex="0" data-cat="${c.filter}">
-          <span class="ex-cat-banner" style="--g:${c.gradient}">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="${c.icon}"/></svg>
-            <span class="ex-cat-name">${c.name}</span>
-          </span>
-          <span class="ex-cat-subs">${c.subs.map((s) => `
-            <span class="ex-cat-sub">${s}<i>›</i></span>`).join('')}</span>
-        </div>`).join('')}</div>
-      <button class="ex-scroll-btn" type="button" data-cat-scroll="1" aria-label="向右滚动">›</button>
-    </div>
-
-    <div class="ex-sub-row">
-      <div class="ex-kind-tabs">
-        <button class="ex-kind-tab ${ui.kind === 'expert' ? 'is-active' : ''}" type="button" data-kind="expert">专家</button>
-        <button class="ex-kind-tab ${ui.kind === 'team' ? 'is-active' : ''}" type="button" data-kind="team">专家团</button>
-      </div>
-      <div class="ex-sort">
-        ${['综合', '最热', '最新'].map((s) => `<button class="ex-sort-btn ${ui.sort === s ? 'is-active' : ''}" type="button" data-sort="${s}">${s}</button>`).join('')}
-      </div>
-    </div>
-
-    <div class="ex-chip-wrap">
-      <div class="ex-chip-track" id="ex-chip-track">${EXPERT_FILTERS.map((f) => `
-        <button class="ex-chip ${ui.chip === f ? 'is-active' : ''}" type="button" data-chip="${f}">${f}</button>`).join('')}</div>
-      <button class="ex-chip-next" type="button" data-chip-scroll aria-label="向右滚动">›</button>
-    </div>
-
-    <div class="ex-grid" id="ex-grid"></div>
-  </section>`
-
-  /* ---------- 网格：搜索 / 分类 / 排序 / 我的专家 全部真实过滤 ---------- */
-  const computeList = () => {
-    let list = EXPERT_CATALOG.filter((e) => e.kind === ui.kind)
-    if (ui.chip !== '全部') list = list.filter((e) => e.category === ui.chip)
-    if (ui.mineOnly) {
-      const pinned = pinnedNames()
-      list = list.filter((e) => pinned.has(e.name))
-    }
-    const q = ui.q.trim().toLowerCase()
-    if (q) {
-      list = list.filter((e) => [e.name, e.desc, ...e.tags].join(' ').toLowerCase().includes(q))
-    }
-    if (ui.sort === '最热') list = [...list].sort((a, b) => b.usage - a.usage)
-    else if (ui.sort === '最新') list = [...list].sort((a, b) => b.createdAt.localeCompare(a.createdAt))
-    return list
-  }
-
-  const renderGrid = () => {
-    const grid = bodyEl.querySelector('#ex-grid')
-    if (!grid) return
-    const list = computeList()
-    const pinned = pinnedNames()
-    grid.innerHTML = list.length ? list.map((e) => `
-      <button class="ex-card ${pinned.has(e.name) ? 'is-pinned' : ''}" type="button" data-pin="${e.id}">
-        <span class="ex-card-head">
-          <span class="expert-avatar ${e.color}">${e.name[0]}</span>
-          <span class="ex-card-title">
-            <span class="ex-card-name">${e.name}${e.badge ? `<b class="ex-badge">${e.badge}</b>` : ''}</span>
-            <span class="ex-card-desc">${e.desc}</span>
-          </span>
-        </span>
-        <span class="ex-card-tags">${e.tags.map((t) => `<span class="ex-tag">${t}</span>`).join('')}</span>
-        <span class="ex-card-foot">
-          <span class="ex-usage">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>
-            ${formatUsage(e.usage)}</span>
-          ${pinned.has(e.name) ? '<span class="ex-pin-pill">已固定</span>' : ''}
-        </span>
-      </button>`).join('')
-      : '<p class="ex-empty">没有匹配的专家，换个关键词或筛选条件试试。</p>'
-  }
-
-  const renderAll = () => {
-    bodyEl.innerHTML = `<div class="experts-layout">${sideHtml()}${mainHtml()}</div>`
-    renderGrid()
-  }
-
-  // 事件代理挂在容器上，重渲染后依然有效
-  bodyEl.addEventListener('click', (ev) => {
-    const el = ev.target.closest('button, .ex-cat')
-    if (!el || !bodyEl.contains(el)) return
-
-    if (el.dataset.open === 'skills') { mask.remove(); return openSkills() }
-    if (el.dataset.open === 'connectors') { mask.remove(); return openConnectors() }
-
-    if (el.dataset.mine !== undefined) {
-      ui.mineOnly = !ui.mineOnly
-      el.classList.toggle('is-active', ui.mineOnly)
-      renderGrid()
-      return
-    }
-    if (el.dataset.cat) {
-      ui.chip = el.dataset.cat
-      bodyEl.querySelectorAll('[data-chip]').forEach((c) => c.classList.toggle('is-active', c.dataset.chip === ui.chip))
-      // jsdom 未实现 scrollIntoView，真实浏览器才滚动；可选调用保证后续逻辑不中断
-      bodyEl.querySelector(`[data-chip="${ui.chip}"]`)?.scrollIntoView?.({ inline: 'nearest', block: 'nearest' })
-      renderGrid()
-      return
-    }
-    if (el.dataset.catScroll) {
-      bodyEl.querySelector('#ex-cat-track')?.scrollBy?.({ left: Number(el.dataset.catScroll) * 246, behavior: 'smooth' })
-      return
-    }
-    if (el.dataset.chipScroll !== undefined) {
-      bodyEl.querySelector('#ex-chip-track')?.scrollBy?.({ left: 220, behavior: 'smooth' })
-      return
-    }
-    if (el.dataset.kind) {
-      ui.kind = el.dataset.kind
-      bodyEl.querySelectorAll('[data-kind]').forEach((b) => b.classList.toggle('is-active', b === el))
-      renderGrid()
-      return
-    }
-    if (el.dataset.sort) {
-      ui.sort = el.dataset.sort
-      bodyEl.querySelectorAll('[data-sort]').forEach((b) => b.classList.toggle('is-active', b === el))
-      renderGrid()
-      return
-    }
-    if (el.dataset.chip) {
-      ui.chip = el.dataset.chip
-      bodyEl.querySelectorAll('[data-chip]').forEach((c) => c.classList.toggle('is-active', c === el))
-      renderGrid()
-      return
-    }
-    if (el.dataset.pin) {
-      const entry = EXPERT_CATALOG.find((e) => e.id === el.dataset.pin)
-      if (!entry) return
-      toggleCatalogPin(entry)
-      renderAll()
-      // 重渲染后恢复搜索词焦点
-      const input = bodyEl.querySelector('#ex-search-input')
-      if (input && document.activeElement?.tagName === 'INPUT') input.focus()
-      return
-    }
-    // 左侧固定管理（旧契约 data-ex，逻辑保持不变）
-    if (el.dataset.ex) {
-      const ex = store.state.experts.find((x) => x.id === el.dataset.ex)
-      if (!ex) return
-      ex.pinned = !ex.pinned
-      store.save()
-      toast(ex.pinned ? `已固定「${ex.name}」` : `已取消固定「${ex.name}」`)
-      renderAll()
-    }
-  })
-
-  // 搜索：只刷新网格，输入焦点不丢失
-  bodyEl.addEventListener('input', (ev) => {
-    if (ev.target.id !== 'ex-search-input') return
-    ui.q = ev.target.value
-    renderGrid()
-  })
-
-  // 键盘可达：场景卡片 Enter/Space 等同点击
-  bodyEl.addEventListener('keydown', (ev) => {
-    const cat = ev.target.closest?.('.ex-cat')
-    if (cat && (ev.key === 'Enter' || ev.key === ' ')) {
-      ev.preventDefault()
-      cat.click()
-    }
-  })
-
-  renderAll()
+  if (location.pathname.endsWith(EXPERTS_PAGE)) return
+  location.href = EXPERTS_PAGE
 }
 
 export function openConnectors() {

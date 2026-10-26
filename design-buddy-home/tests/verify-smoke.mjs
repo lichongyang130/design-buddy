@@ -195,14 +195,13 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   click(w, doc.querySelector('.modal-close'))
   await tick()
 
-  // 智能体开关：专家弹窗展示启用中的智能体区块
+  // 专家入口：已升级为独立页面，窄栏「更多」只负责关闭浮层并跳转
   click(w, doc.querySelector('.more-wrap .rail-item'))
   await tick()
   click(w, doc.querySelector('[data-more="专家"]'))
   await tick()
-  check('experts modal lists active agents', doc.body.textContent.includes('已启用的智能体'))
-  click(w, doc.querySelector('.modal-close'))
-  await tick()
+  check('experts entry closes flyout without leftover modal',
+    doc.querySelector('.more-pop').hidden === true && !doc.querySelector('.modal-mask'))
   check('settings-driven page no errors', errors.length === 0, errors)
 }
 

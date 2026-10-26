@@ -1,10 +1,9 @@
-/* 窄栏「更多」悬浮层：左侧最近任务面板 + 右侧技能/专家/连接器菜单。
-   浮层用 position:fixed 逃逸 rail-top 的 overflow 裁剪，五个页面共享本模块。
-   点击菜单项后打开对应的真实管理弹窗（见 global-ui.js）。 */
+/* 窄栏「更多」悬浮层：鼠标指向「更多」时只弹出一张菜单卡片（技能 / 专家 / 连接器）。
+   浮层用 position:fixed 并挂到 body：既逃逸 rail-top 的 overflow 裁剪，也逃逸
+   .rail 因 sticky 而形成的层叠上下文（详见 styles.css 里的说明）。
+   技能 / 连接器打开既有弹窗，专家进入独立页面 experts.html（见 global-ui.js）。 */
 
 import { openSkills, openExperts, openConnectors } from './global-ui.js'
-import { store, fmtDate } from './core.js'
-import { t } from './i18n.js'
 
 const ACTIONS = {
   技能: openSkills,
@@ -12,15 +11,16 @@ const ACTIONS = {
   连接器: openConnectors,
 }
 
-const esc = (v) => String(v ?? '').replace(/[&<>"]/g, (c) => ({
-  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;',
-}[c]))
-
 document.querySelectorAll('.more-wrap').forEach((wrap) => {
   const btn = wrap.querySelector('.rail-item')
   const pop = wrap.querySelector('.more-pop')
-  const taskBody = wrap.querySelector('#more-tasks')
   if (!btn || !pop) return
+
+  // 浮层必须挂到 body：.rail 是 position: sticky，而 sticky 元素一定会生成层叠上下文，
+  // 留在 rail 内部时 fixed + z-index 只在这个上下文里生效，后出现的 .sidebar / .main
+  // （同样是定位元素，绘制顺序在后）会把浮层整块盖住。挂到 body 后 z-index 落在根上下文，
+  // 才能压住页面内容，同时仍低于 .modal-mask(100) 等真正的弹窗层。
+  document.body.append(pop)
 
   let closeTimer
 
@@ -29,8 +29,9 @@ document.querySelectorAll('.more-wrap').forEach((wrap) => {
   // 依据按钮视口坐标定位（rail 为 sticky，滚动时坐标基本稳定；滚动/缩放另做重定位）
   const position = () => {
     const rect = btn.getBoundingClientRect()
-    const popWidth = pop.offsetWidth || 514
-    const popHeight = pop.offsetHeight || 300
+    // 隐藏时量不到尺寸，退回卡片的设计宽度/高度（236px 宽、约 190px 高的三行菜单）
+    const popWidth = pop.offsetWidth || 236
+    const popHeight = pop.offsetHeight || 190
     let left = rect.right + 14
     // 窄视口下防止浮层溢出右/下边缘
     if (left + popWidth > window.innerWidth - 12) {
@@ -41,35 +42,10 @@ document.querySelectorAll('.more-wrap').forEach((wrap) => {
     pop.style.top = `${top}px`
   }
 
-  // 最近任务读真实创作数据；无任务时显示与截图一致的诚实空态
-  const renderTasks = () => {
-    const lang = store.state.settings.language || '简体中文'
-    const tasks = store.state.gammas.filter((g) => !g.deleted).slice(0, 5)
-    if (!tasks.length) {
-      taskBody.innerHTML = `
-        <div class="more-empty">
-          <p class="more-empty-title">${t('more.emptyTasks', lang)}</p>
-          <p class="more-empty-hint">${t('more.emptyHint', lang)}</p>
-        </div>`
-      return
-    }
-    taskBody.innerHTML = tasks.map((g) => `
-      <button class="more-task" type="button" data-task="${esc(g.id)}">
-        <span class="more-task-ic">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg>
-        </span>
-        <span class="more-task-text">
-          <span class="more-task-name">${esc(g.title)}</span>
-          <span class="more-task-meta">${esc(g.type || '')} · ${esc(fmtDate(g.updatedAt || g.createdAt))}</span>
-        </span>
-      </button>`).join('')
-  }
-
   const open = () => {
     clearTimeout(closeTimer)
     if (isOpen()) return
     position()
-    renderTasks()
     pop.hidden = false
     btn.setAttribute('aria-expanded', 'true')
     btn.classList.add('is-open')
@@ -81,11 +57,16 @@ document.querySelectorAll('.more-wrap').forEach((wrap) => {
     btn.classList.remove('is-open')
   }
 
-  // 桌面端：悬停即出；pop 是 wrap 的 DOM 子节点，鼠标在按钮与浮层间移动不会误关
-  wrap.addEventListener('mouseenter', open)
-  wrap.addEventListener('mouseleave', () => {
+  // 桌面端：悬停即出。浮层已挂到 body，不再是 wrap 的 DOM 子节点，
+  // 所以按钮与浮层各自维护进出场，中间 14px 间隙由悬停桥 + 120ms 关闭延迟兜住。
+  const keepOpen = () => clearTimeout(closeTimer)
+  const scheduleClose = () => {
     closeTimer = setTimeout(close, 120)
-  })
+  }
+  wrap.addEventListener('mouseenter', open)
+  wrap.addEventListener('mouseleave', scheduleClose)
+  pop.addEventListener('mouseenter', keepOpen)
+  pop.addEventListener('mouseleave', scheduleClose)
 
   // 触屏 / 键盘：点击切换
   btn.addEventListener('click', (event) => {
@@ -96,30 +77,15 @@ document.querySelectorAll('.more-wrap').forEach((wrap) => {
 
   pop.addEventListener('click', (event) => {
     const row = event.target.closest('[data-more]')
-    if (row) {
-      event.stopPropagation()
-      close()
-      ACTIONS[row.dataset.more]?.()
-      return
-    }
-    // 灵感：跳转到模板库寻找创作灵感（已在模板页则仅关闭浮层）
-    if (event.target.closest('[data-inspire]')) {
-      event.stopPropagation()
-      close()
-      if (!location.pathname.endsWith('templates.html')) location.href = 'templates.html'
-      return
-    }
-    // 最近任务：回到首页继续该创作
-    const task = event.target.closest('[data-task]')
-    if (task) {
-      event.stopPropagation()
-      close()
-      if (!location.pathname.endsWith('index.html')) location.href = 'index.html'
-    }
+    if (!row) return
+    event.stopPropagation()
+    close()
+    ACTIONS[row.dataset.more]?.()
   })
 
   document.addEventListener('click', (event) => {
-    if (isOpen() && !wrap.contains(event.target)) close()
+    // 浮层在 body 上，判断外点时要单独排除浮层内部的点击
+    if (isOpen() && !wrap.contains(event.target) && !pop.contains(event.target)) close()
   })
 
   document.addEventListener('keydown', (event) => {
