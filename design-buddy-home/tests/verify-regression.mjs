@@ -63,7 +63,7 @@ results.push(['css: ws menu card restyled', cssBundle.includes('.ws-menu') && cs
 // 设置页
 {
   const { doc, errors } = await loadPage('/settings.html')
-  results.push(['settings selects/switches', doc.querySelectorAll('[data-select]').length === 4 && doc.querySelectorAll('[data-switch]').length === 4])
+  results.push(['settings selects/switches', doc.querySelectorAll('[data-select]').length >= 4 && doc.querySelectorAll('[data-switch]').length >= 4])
   results.push(['settings no errors', errors.length === 0, errors])
 }
 

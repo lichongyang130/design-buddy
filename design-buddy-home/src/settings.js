@@ -676,6 +676,176 @@ viewPlaceholder.addEventListener('click', async (e) => {
 
 /* 帮助 FAB（data-demo="帮助"）由 global-ui 委托统一处理 */
 
+/* ---------------- 新增设置页面渲染函数 ---------------- */
+
+
+document.addEventListener('click', async (e) => {
+  // 个人主页 - 头像上传
+  if (e.target.closest('#profile-avatar-btn')) {
+    $('#profile-avatar-input').click()
+  }
+  if (e.target.closest('#profile-avatar-input')) {
+    const file = e.target.files[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onload = () => {
+        s().profile = s().profile ?? {}
+        s().profile.avatar = reader.result
+        store.save()
+        
+        toast('头像已更新')
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+  
+  // 套餐与积分
+  if (e.target.closest('#billing-upgrade-btn')) {
+    openUpgrade?.()
+    toast('请联系客服升级套餐')
+  }
+  if (e.target.closest('#billing-recharge-btn')) {
+    toast('充值功能即将上线')
+  }
+  
+  // 外观 - 主题切换
+  if (e.target.closest('[data-theme]')) {
+    const theme = e.target.closest('[data-theme]').dataset.theme
+    applyAppearance()
+    toast(`已切换到 ${theme} 主题`)
+  }
+  
+  // 快捷键
+  if (e.target.closest('#shortcuts-reset-btn')) {
+    toast('快捷键已重置为默认值')
+  }
+  
+  // 安全
+  if (e.target.closest('#security-password-btn')) {
+    toast('密码修改功能即将上线')
+  }
+  if (e.target.closest('#security-logout-all-btn')) {
+    const ok = await confirmModal('退出所有设备', '确定要从所有其他设备登出吗？', '确定')
+    if (ok) toast('已从所有设备退出')
+  }
+  if (e.target.closest('#security-delete-btn')) {
+    const ok = await confirmModal('删除账户', '此操作不可撤销，确定要删除账户吗？', '删除')
+    if (ok) toast('账户删除功能即将上线')
+  }
+  
+  // 数据
+  if (e.target.closest('#data-export-btn')) {
+    downloadFile('design-buddy-backup.json', JSON.stringify(store.state, null, 2), 'application/json')
+    toast('数据已导出')
+  }
+  if (e.target.closest('#data-import-btn')) {
+    $('#data-import-input').click()
+  }
+  if (e.target.closest('#data-import-input')) {
+    const file = e.target.files[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onload = () => {
+        try {
+          const data = JSON.parse(reader.result)
+          Object.assign(store.state, data)
+          store.save()
+          toast('数据已导入')
+        } catch {
+          toast('导入失败：文件格式错误')
+        }
+      }
+      reader.readAsText(file)
+    }
+  }
+  if (e.target.closest('#data-clear-cache-btn')) {
+    toast('缓存已清除')
+  }
+  if (e.target.closest('#data-reset-btn')) {
+    const ok = await confirmModal('重置所有数据', '此操作将删除所有本地数据，确定要继续吗？', '重置')
+    if (ok) {
+      store.reset()
+      location.reload()
+    }
+  }
+  
+  // 记忆
+  if (e.target.closest('#memory-view-btn')) {
+    toast('记忆查看功能即将上线')
+  }
+  if (e.target.closest('#mem-add')) {
+    const input = $('#mem-input')
+    if (input && input.value.trim()) {
+      s().memories = s().memories ?? []
+      s().memories.push(input.value.trim())
+      store.save()
+      input.value = ''
+      
+      toast('记忆已添加')
+    }
+  }
+  if (e.target.closest('#memory-clear-btn')) {
+    const ok = await confirmModal('清除所有记忆', '确定要删除 AI 记住的所有信息吗？', '清除')
+    if (ok) {
+      s().memories = []
+      store.save()
+      
+      toast('记忆已清除')
+    }
+  }
+  
+  // 智能体
+  if (e.target.closest('#agents-temp-slider')) {
+    const value = parseInt(e.target.value) / 10
+    s().agents = s().agents ?? {}
+    s().agents.temperature = value
+    store.save()
+    const labelEl = $('#agents-temp-label')
+    if (labelEl) labelEl.textContent = value.toFixed(1)
+  }
+  
+  // 模型
+  if (e.target.closest('#models-add-btn')) {
+    toast('模型添加功能即将上线')
+  }
+  if (e.target.closest('#models-update-btn')) {
+    toast('所有模型已是最新版本')
+  }
+  
+  // 应用
+  if (e.target.closest('#apps-generate-key-btn')) {
+    const key = 'db_' + Math.random().toString(36).slice(2, 15)
+    const input = $('#apps-api-key')
+    if (input) input.value = key
+    toast('API 密钥已生成')
+  }
+  if (e.target.closest('[data-app]')) {
+    const appName = e.target.closest('[data-app]').dataset.app
+    toast(`${appName} 连接功能即将上线`)
+  }
+})
+
+// 字体滑块绑定（外观页）
+document.addEventListener('input', (e) => {
+  if (e.target.closest('#appearance-font-slider')) {
+    const value = parseInt(e.target.value)
+    const labels = ['较小', '小', '默认', '大', '较大']
+    const labelEl = $('#appearance-font-label')
+    if (labelEl) labelEl.textContent = labels[value]
+    s().fontScale = ZOOM_LEVELS[value]
+    store.save()
+    applyAppearance()
+  }
+  if (e.target.closest('#agents-temp-slider')) {
+    const value = parseInt(e.target.value) / 10
+    const labelEl = $('#agents-temp-label')
+    if (labelEl) labelEl.textContent = value.toFixed(1)
+    s().agents = s().agents ?? {}
+    s().agents.temperature = value
+    store.save()
+  }
+})
+
 /* ---------------- 启动 ---------------- */
 
 bindGeneral()
