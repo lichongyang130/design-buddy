@@ -86,28 +86,44 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   click(w, doc.querySelector('.modal-foot [data-act="cancel"]'))
   await tick()
 
-  // 图片模式上弹卡片：无对勾、灰底选中态、药丸标签联动
+  // 参考图上弹卡片：真实文件上传 + 风格/角色/内容三类参考单选
   click(w, doc.querySelector('#img-menu-btn'))
   await tick()
   check('img popover opens', !doc.querySelector('#img-popover').hidden)
-  check('img options have no checkmarks', doc.querySelectorAll('.img-check').length === 0)
-  check('img popover has 4 options', doc.querySelectorAll('.img-option').length === 4)
-  check('default selected is 自动', doc.querySelector('.img-option.is-selected')?.dataset.imgMode === '自动')
-  check('pill label defaults to 自动', doc.querySelector('#img-mode-label').textContent === '自动')
-  check('image icon visible by default', !doc.querySelector('.img-ic-on').hasAttribute('hidden'))
+  check('reference menu has upload entry', !!doc.querySelector('[data-ref-upload]'))
+  check('reference menu has 3 reference types', doc.querySelectorAll('.ref-option').length === 3)
+  check('default reference type is style',
+    doc.querySelector('.ref-option.is-selected')?.dataset.refType === 'style')
+  check('button label is 参考图', doc.querySelector('#img-mode-label').textContent === '参考图')
+  check('image icon visible', !doc.querySelector('.img-ic-on').hasAttribute('hidden'))
   check('removed off-icon no longer rendered', !doc.querySelector('.img-ic-off'))
-  click(w, doc.querySelector('[data-img-mode="不添加图片"]'))
+  // 切换到内容参考：菜单关闭、选中态与持久化联动
+  click(w, doc.querySelector('[data-ref-type="content"]'))
   await tick()
   check('img popover closes after pick', doc.querySelector('#img-popover').hidden)
-  check('pill label switches to 无图片', doc.querySelector('#img-mode-label').textContent === '无图片')
-  check('image icon stays visible in 无图片 mode', !doc.querySelector('.img-ic-on').hasAttribute('hidden'))
-  check('img mode persisted', JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).ui.imgMode === '不添加图片')
+  check('reference type persisted',
+    JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).ui.refType === 'content')
   click(w, doc.querySelector('#img-menu-btn'))
   await tick()
-  check('selected state moved to 不添加图片', doc.querySelector('.img-option.is-selected')?.dataset.imgMode === '不添加图片')
-  click(w, doc.querySelector('[data-img-mode="自动"]'))
+  check('selected state moved to content',
+    doc.querySelector('.ref-option.is-selected')?.dataset.refType === 'content')
+  click(w, doc.querySelector('[data-ref-type="style"]'))
   await tick()
-  check('pill label restores to 自动', doc.querySelector('#img-mode-label').textContent === '自动')
+  check('reference type restores to style',
+    JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).ui.refType === 'style')
+  // 上传图片：真实文件选择后进入附件芯片
+  click(w, doc.querySelector('#img-menu-btn'))
+  await tick()
+  const refInput = doc.querySelector('#ref-file-input')
+  Object.defineProperty(refInput, 'files', {
+    value: [new w.File(['x'], 'ref-photo.png', { type: 'image/png' })],
+    configurable: true,
+  })
+  refInput.dispatchEvent(new w.Event('change', { bubbles: true }))
+  await tick()
+  check('uploaded image becomes attachment chip',
+    [...doc.querySelectorAll('.attach-chip .chip-name')].some((n) => n.textContent === 'ref-photo.png'))
+  check('upload closes popover', doc.querySelector('#img-popover').hidden)
 
   const gammaCount = JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).gammas.length
   click(w, doc.querySelector('.topbar-right .pill'))

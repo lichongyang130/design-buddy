@@ -48,6 +48,8 @@ if (new URLSearchParams(location.search).get('new') === '1') {
 
 /* 跨刷新保留的首页 UI 偏好（创作类型 / 模式 / 图片模式 / 专家） */
 const ui = (store.state.ui ??= { type: '演示文稿', mode: '标准', imgMode: '自动', expert: null })
+// 参考图方式：style 风格 / character 角色 / content 内容（旧数据无此字段时默认风格参考）
+ui.refType ??= 'style'
 
 const MODE_COST = { Lite: 1, 标准: 3, Max: 8 }
 const TYPE_ICONS = { 演示文稿: '📊', 文档: '📄', 轮播图: '🎞️', 图片: '🖼️', 美化: '✨', 导入: '📥' }
@@ -281,6 +283,7 @@ function createGamma({ prompt, origin = 'prompt', template = null, silent = fals
     type: ui.type,
     mode: ui.mode,
     imgMode: ui.imgMode,
+    refType: ui.refType,
     expert: ui.expert,
     template,
     origin,
@@ -596,22 +599,23 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && popoverIsOpen()) closePopover()
 })
 
-/* ---------------- 图片模式上弹菜单 ---------------- */
+/* ---------------- 参考图上弹菜单（上传 / 风格 / 角色 / 内容） ---------------- */
 
+const REF_TYPE_LABELS = { style: '风格参考', character: '角色参考', content: '内容参考' }
 const imgBtn = $('#img-menu-btn')
 const imgPopover = $('#img-popover')
-const IMG_BTN_LABELS = {
-  自动: '自动',
-  添加图片: '添加图片',
-  图片幻灯片: '图片幻灯片',
-  不添加图片: '无图片',
+const refFileInput = $('#ref-file-input')
+const refOptions = $$('.ref-option')
+
+function syncRefOptions() {
+  refOptions.forEach((option) => {
+    const selected = option.dataset.refType === ui.refType
+    option.classList.toggle('is-selected', selected)
+    option.setAttribute('aria-checked', String(selected))
+  })
 }
-function syncImgBtn() {
-  $('#img-mode-label').textContent = IMG_BTN_LABELS[ui.imgMode] ?? ui.imgMode
-  // 图片图标固定展示，不再随「无图片」模式切换为禁用图标
-  imgBtn.querySelector('.img-ic-on').hidden = false
-}
-syncImgBtn()
+syncRefOptions()
+
 const imgPopoverIsOpen = () => !imgPopover.hidden
 function openImgPopover() {
   if (popoverIsOpen()) closePopover()
@@ -627,27 +631,33 @@ imgBtn.addEventListener('click', (event) => {
   event.stopPropagation()
   imgPopoverIsOpen() ? closeImgPopover() : openImgPopover()
 })
-$$('.img-option').forEach((option) => {
-  if (option.dataset.imgMode === ui.imgMode) {
-    $$('.img-option').forEach((o) => {
-      o.classList.toggle('is-selected', o === option)
-      o.setAttribute('aria-checked', String(o === option))
-    })
-  }
+
+// 上传图片：真实调起系统文件选择器，选中的图片进入附件芯片（随创作持久化）
+imgPopover.querySelector('[data-ref-upload]').addEventListener('click', (event) => {
+  event.stopPropagation()
+  refFileInput.click()
+})
+refFileInput.addEventListener('click', (event) => event.stopPropagation())
+refFileInput.addEventListener('change', () => {
+  const files = [...refFileInput.files].filter((f) => f.type.startsWith('image/'))
+  files.forEach((f) => addAttachment(f.name))
+  if (files.length) toast(`已添加 ${files.length} 张参考图片`)
+  refFileInput.value = ''
+  closeImgPopover()
+})
+
+// 参考方式：单选，真实持久化到 ui.refType 并随 gamma 落库
+refOptions.forEach((option) => {
   option.addEventListener('click', (event) => {
     event.stopPropagation()
-    $$('.img-option').forEach((item) => {
-      const selected = item === option
-      item.classList.toggle('is-selected', selected)
-      item.setAttribute('aria-checked', String(selected))
-    })
-    ui.imgMode = option.dataset.imgMode
+    ui.refType = option.dataset.refType
     store.save()
-    syncImgBtn()
-    toast(`图片模式：${ui.imgMode}`)
+    syncRefOptions()
+    toast(`参考方式：${REF_TYPE_LABELS[ui.refType]}`)
     closeImgPopover()
   })
 })
+
 document.addEventListener('click', (event) => {
   if (imgPopoverIsOpen() && !imgPopover.contains(event.target) && event.target !== imgBtn) closeImgPopover()
 })
