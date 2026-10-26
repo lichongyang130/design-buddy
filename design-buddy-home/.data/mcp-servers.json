@@ -1,0 +1,864 @@
+[
+  {
+    "id": "srv_mvoztkz7_reuhtd",
+    "label": "测试 MCP",
+    "url": "http://127.0.0.1:9877/mcp",
+    "allowPrivate": true,
+    "createdAt": 1793003217525,
+    "protocol": {
+      "mode": "stateless",
+      "version": "2026-07-28"
+    },
+    "transport": "mcp-http",
+    "serverInfo": {
+      "name": "MockMCP",
+      "version": "1.0.0"
+    },
+    "capabilities": {
+      "tools": {}
+    },
+    "instructions": "这是一个测试用的 MCP 服务",
+    "tools": [
+      {
+        "name": "echo",
+        "description": "原样返回输入",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "description": "要回显的文本"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "add",
+        "description": "两数相加",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "a": {
+              "type": "number"
+            },
+            "b": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "a",
+            "b"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "slow",
+        "description": "慢操作（用于测超时）",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "ms": {
+              "type": "number",
+              "default": 100
+            }
+          },
+          "required": [
+            "ms"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "fail",
+        "description": "永远失败",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "annotations": null
+      },
+      {
+        "name": "big",
+        "description": "返回大响应",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "annotations": null
+      }
+    ],
+    "toolCount": 5,
+    "lastHandshake": {
+      "at": 1793003217525,
+      "ms": 25,
+      "requestId": "req_mvoztkyi_rg4gh4yy",
+      "ok": true
+    },
+    "auth": {
+      "mode": "none"
+    },
+    "logs": [
+      {
+        "at": 1793003217525,
+        "action": "handshake",
+        "ok": true,
+        "latency": 25,
+        "bytes": null,
+        "requestId": "req_mvoztkyi_rg4gh4yy",
+        "detail": "5 个工具",
+        "status": null
+      }
+    ]
+  },
+  {
+    "id": "srv_mvozwbub_5ieulo",
+    "label": "测试 MCP",
+    "url": "http://127.0.0.1:9877/mcp",
+    "allowPrivate": true,
+    "createdAt": 1793003345651,
+    "protocol": {
+      "mode": "stateless",
+      "version": "2026-07-28"
+    },
+    "transport": "mcp-http",
+    "serverInfo": {
+      "name": "MockMCP",
+      "version": "1.0.0"
+    },
+    "capabilities": {
+      "tools": {}
+    },
+    "instructions": "这是一个测试用的 MCP 服务",
+    "tools": [
+      {
+        "name": "echo",
+        "description": "原样返回输入",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "description": "要回显的文本"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "add",
+        "description": "两数相加",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "a": {
+              "type": "number"
+            },
+            "b": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "a",
+            "b"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "slow",
+        "description": "慢操作（用于测超时）",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "ms": {
+              "type": "number",
+              "default": 100
+            }
+          },
+          "required": [
+            "ms"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "fail",
+        "description": "永远失败",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "annotations": null
+      },
+      {
+        "name": "big",
+        "description": "返回大响应",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "annotations": null
+      }
+    ],
+    "toolCount": 5,
+    "lastHandshake": {
+      "at": 1793003345651,
+      "ms": 9,
+      "requestId": "req_mvozwbu2_11h5l32q",
+      "ok": true
+    },
+    "auth": {
+      "mode": "none"
+    },
+    "logs": [
+      {
+        "at": 1793003345651,
+        "action": "handshake",
+        "ok": true,
+        "latency": 9,
+        "bytes": null,
+        "requestId": "req_mvozwbu2_11h5l32q",
+        "detail": "5 个工具",
+        "status": null
+      }
+    ]
+  },
+  {
+    "id": "srv_mvozxd3h_294gs9",
+    "label": "测试 MCP",
+    "url": "http://127.0.0.1:9877/mcp",
+    "allowPrivate": true,
+    "createdAt": 1793003393933,
+    "protocol": {
+      "mode": "stateless",
+      "version": "2026-07-28"
+    },
+    "transport": "mcp-http",
+    "serverInfo": {
+      "name": "MockMCP",
+      "version": "1.0.0"
+    },
+    "capabilities": {
+      "tools": {}
+    },
+    "instructions": "这是一个测试用的 MCP 服务",
+    "tools": [
+      {
+        "name": "echo",
+        "description": "原样返回输入",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "description": "要回显的文本"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "add",
+        "description": "两数相加",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "a": {
+              "type": "number"
+            },
+            "b": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "a",
+            "b"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "slow",
+        "description": "慢操作（用于测超时）",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "ms": {
+              "type": "number",
+              "default": 100
+            }
+          },
+          "required": [
+            "ms"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "fail",
+        "description": "永远失败",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "annotations": null
+      },
+      {
+        "name": "big",
+        "description": "返回大响应",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "annotations": null
+      }
+    ],
+    "toolCount": 5,
+    "lastHandshake": {
+      "at": 1793003393933,
+      "ms": 8,
+      "requestId": "req_mvozxd39_71ntlk3v",
+      "ok": true
+    },
+    "auth": {
+      "mode": "none"
+    },
+    "logs": [
+      {
+        "at": 1793003393934,
+        "action": "handshake",
+        "ok": true,
+        "latency": 8,
+        "bytes": null,
+        "requestId": "req_mvozxd39_71ntlk3v",
+        "detail": "5 个工具",
+        "status": null
+      },
+      {
+        "at": 1793003396174,
+        "action": "call",
+        "ok": true,
+        "latency": 3,
+        "bytes": 107,
+        "requestId": "call_mvozxetn_09v11kee",
+        "detail": "echo · 1 段内容",
+        "status": null
+      }
+    ]
+  },
+  {
+    "id": "srv_mvozz38w_u4d2w9",
+    "label": "测试 MCP",
+    "url": "http://127.0.0.1:9877/mcp",
+    "allowPrivate": true,
+    "createdAt": 1793003474480,
+    "protocol": {
+      "mode": "stateless",
+      "version": "2026-07-28"
+    },
+    "transport": "mcp-http",
+    "serverInfo": {
+      "name": "MockMCP",
+      "version": "1.0.0"
+    },
+    "capabilities": {
+      "tools": {}
+    },
+    "instructions": "这是一个测试用的 MCP 服务",
+    "tools": [
+      {
+        "name": "echo",
+        "description": "原样返回输入",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "description": "要回显的文本"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "add",
+        "description": "两数相加",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "a": {
+              "type": "number"
+            },
+            "b": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "a",
+            "b"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "slow",
+        "description": "慢操作（用于测超时）",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "ms": {
+              "type": "number",
+              "default": 100
+            }
+          },
+          "required": [
+            "ms"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "fail",
+        "description": "永远失败",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "annotations": null
+      },
+      {
+        "name": "big",
+        "description": "返回大响应",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "annotations": null
+      }
+    ],
+    "toolCount": 5,
+    "lastHandshake": {
+      "at": 1793003474480,
+      "ms": 8,
+      "requestId": "req_mvozz38o_l4kugs21",
+      "ok": true
+    },
+    "auth": {
+      "mode": "none"
+    },
+    "logs": [
+      {
+        "at": 1793003474481,
+        "action": "handshake",
+        "ok": true,
+        "latency": 8,
+        "bytes": null,
+        "requestId": "req_mvozz38o_l4kugs21",
+        "detail": "5 个工具",
+        "status": null
+      },
+      {
+        "at": 1793003476716,
+        "action": "call",
+        "ok": true,
+        "latency": 3,
+        "bytes": 107,
+        "requestId": "call_mvozz4yx_04uhc2l5",
+        "detail": "echo · 1 段内容",
+        "status": null
+      }
+    ]
+  },
+  {
+    "id": "srv_mvp009ne_o1bz1j",
+    "label": "测试 MCP",
+    "url": "http://127.0.0.1:9877/mcp",
+    "allowPrivate": true,
+    "createdAt": 1793003529434,
+    "protocol": {
+      "mode": "stateless",
+      "version": "2026-07-28"
+    },
+    "transport": "mcp-http",
+    "serverInfo": {
+      "name": "MockMCP",
+      "version": "1.0.0"
+    },
+    "capabilities": {
+      "tools": {}
+    },
+    "instructions": "这是一个测试用的 MCP 服务",
+    "tools": [
+      {
+        "name": "echo",
+        "description": "原样返回输入",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "description": "要回显的文本"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "add",
+        "description": "两数相加",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "a": {
+              "type": "number"
+            },
+            "b": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "a",
+            "b"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "slow",
+        "description": "慢操作（用于测超时）",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "ms": {
+              "type": "number",
+              "default": 100
+            }
+          },
+          "required": [
+            "ms"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "fail",
+        "description": "永远失败",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "annotations": null
+      },
+      {
+        "name": "big",
+        "description": "返回大响应",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "annotations": null
+      }
+    ],
+    "toolCount": 5,
+    "lastHandshake": {
+      "at": 1793003529434,
+      "ms": 8,
+      "requestId": "req_mvp009n6_zu99vvc1",
+      "ok": true
+    },
+    "auth": {
+      "mode": "none"
+    },
+    "logs": [
+      {
+        "at": 1793003529435,
+        "action": "handshake",
+        "ok": true,
+        "latency": 8,
+        "bytes": null,
+        "requestId": "req_mvp009n6_zu99vvc1",
+        "detail": "5 个工具",
+        "status": null
+      },
+      {
+        "at": 1793003531679,
+        "action": "call",
+        "ok": true,
+        "latency": 3,
+        "bytes": 107,
+        "requestId": "call_mvp00bdo_v3fc04yv",
+        "detail": "echo · 1 段内容",
+        "status": null
+      }
+    ]
+  },
+  {
+    "id": "srv_mvp01hga_n2gnfh",
+    "label": "测试 MCP",
+    "url": "http://127.0.0.1:9877/mcp",
+    "allowPrivate": true,
+    "createdAt": 1793003586202,
+    "protocol": {
+      "mode": "stateless",
+      "version": "2026-07-28"
+    },
+    "transport": "mcp-http",
+    "serverInfo": {
+      "name": "MockMCP",
+      "version": "1.0.0"
+    },
+    "capabilities": {
+      "tools": {}
+    },
+    "instructions": "这是一个测试用的 MCP 服务",
+    "tools": [
+      {
+        "name": "echo",
+        "description": "原样返回输入",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "description": "要回显的文本"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "add",
+        "description": "两数相加",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "a": {
+              "type": "number"
+            },
+            "b": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "a",
+            "b"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "slow",
+        "description": "慢操作（用于测超时）",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "ms": {
+              "type": "number",
+              "default": 100
+            }
+          },
+          "required": [
+            "ms"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "fail",
+        "description": "永远失败",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "annotations": null
+      },
+      {
+        "name": "big",
+        "description": "返回大响应",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "annotations": null
+      }
+    ],
+    "toolCount": 5,
+    "lastHandshake": {
+      "at": 1793003586202,
+      "ms": 7,
+      "requestId": "req_mvp01hg3_gb0ftsht",
+      "ok": true
+    },
+    "auth": {
+      "mode": "none"
+    },
+    "logs": [
+      {
+        "at": 1793003586203,
+        "action": "handshake",
+        "ok": true,
+        "latency": 7,
+        "bytes": null,
+        "requestId": "req_mvp01hg3_gb0ftsht",
+        "detail": "5 个工具",
+        "status": null
+      },
+      {
+        "at": 1793003588443,
+        "action": "call",
+        "ok": true,
+        "latency": 3,
+        "bytes": 107,
+        "requestId": "call_mvp01j6g_x8ns8mc2",
+        "detail": "echo · 1 段内容",
+        "status": null
+      }
+    ]
+  },
+  {
+    "id": "srv_mvp03bvx_7afl5r",
+    "label": "测试 MCP",
+    "url": "http://127.0.0.1:9877/mcp",
+    "allowPrivate": true,
+    "createdAt": 1793003672301,
+    "protocol": {
+      "mode": "stateless",
+      "version": "2026-07-28"
+    },
+    "transport": "mcp-http",
+    "serverInfo": {
+      "name": "MockMCP",
+      "version": "1.0.0"
+    },
+    "capabilities": {
+      "tools": {}
+    },
+    "instructions": "这是一个测试用的 MCP 服务",
+    "tools": [
+      {
+        "name": "echo",
+        "description": "原样返回输入",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "description": "要回显的文本"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "add",
+        "description": "两数相加",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "a": {
+              "type": "number"
+            },
+            "b": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "a",
+            "b"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "slow",
+        "description": "慢操作（用于测超时）",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "ms": {
+              "type": "number",
+              "default": 100
+            }
+          },
+          "required": [
+            "ms"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "fail",
+        "description": "永远失败",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "annotations": null
+      },
+      {
+        "name": "big",
+        "description": "返回大响应",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "annotations": null
+      }
+    ],
+    "toolCount": 5,
+    "lastHandshake": {
+      "at": 1793003672301,
+      "ms": 7,
+      "requestId": "req_mvp03bvq_8p3ah40x",
+      "ok": true
+    },
+    "auth": {
+      "mode": "none"
+    },
+    "logs": [
+      {
+        "at": 1793003672302,
+        "action": "handshake",
+        "ok": true,
+        "latency": 7,
+        "bytes": null,
+        "requestId": "req_mvp03bvq_8p3ah40x",
+        "detail": "5 个工具",
+        "status": null
+      },
+      {
+        "at": 1793003674543,
+        "action": "call",
+        "ok": true,
+        "latency": 2,
+        "bytes": 107,
+        "requestId": "call_mvp03dm4_qlo5lewb",
+        "detail": "echo · 1 段内容",
+        "status": null
+      }
+    ]
+  }
+]

@@ -38,7 +38,13 @@ const extraCards = () => store.state.connectors
   }))
 
 // 目录顺序优先（与截图一致），目录外的历史/自定义连接器排在末尾
-const allCards = () => [...CONNECTOR_CATALOG, ...extraCards()]
+const allCards = () => {
+  const mcpServers = (store.state.mcpServers ?? []).map((s) => ({
+    id: s.id, name: s.label, desc: s.serverInfo?.name ? `${s.serverInfo.name} · ${s.toolCount} 个工具` : '远端 MCP 服务',
+    color: '#3b82f6', shape: 'globe', category: '远端 MCP', remote: true,
+  }))
+  return [...CONNECTOR_CATALOG, ...extraCards(), ...mcpServers]
+}
 
 const cardOf = (name) => allCards().find((c) => c.name === name) ?? entryOf(name)
 
@@ -48,12 +54,16 @@ const cardHtml = (c) => {
   const entry = entryOf(c.name)
   const connected = !!entry?.connected
   const check = entry?.lastCheck
+  const mcpServer = (store.state.mcpServers ?? []).find((s) => s.label === c.name)
+  const isRemote = !!mcpServer
   const meta = connected && check
     ? `<span class="cn-verified">已握手 · ${check.ok ? `${check.latency} ms` : '失败'}</span>`
-    : ''
+    : isRemote
+      ? `<span class="cn-verified">已连 · ${mcpServer.toolCount} 个工具</span>`
+      : ''
   return `
-    <div class="cn-card${connected ? ' is-connected' : ''}" role="button" tabindex="0"
-      data-cn="${c.id}" data-cn-name="${c.name}" aria-pressed="${connected}"
+    <div class="cn-card${connected || isRemote ? ' is-connected' : ''}" role="button" tabindex="0"
+      data-cn="${c.id}" data-cn-name="${c.name}" aria-pressed="${connected || isRemote}"
       title="点卡片打开连接测试，点右上角 + 连接">
       <span class="cn-logo" style="--c:${c.color}">${icon(c.shape)}</span>
       <span class="cn-text">
@@ -61,8 +71,9 @@ const cardHtml = (c) => {
         <span class="cn-desc">${c.desc}</span>
         ${meta}
       </span>
-      <button class="cn-plus${connected ? ' is-connected' : ''}" type="button" data-cn-toggle="${c.name}"
-        aria-label="${connected ? '断开' : '连接'} ${c.name}" aria-pressed="${connected}">${connected ? '✓' : '+'}</button>
+      ${isRemote ? '<button class="cn-plus is-connected" type="button" data-mcp-delete="' + mcpServer.id + '" aria-label="删除" aria-pressed="true">✓</button>' :
+        `<button class="cn-plus${connected ? ' is-connected' : ''}" type="button" data-cn-toggle="${c.name}"
+        aria-label="${connected ? '断开' : '连接'} ${c.name}" aria-pressed="${connected}">${connected ? '✓' : '+'}</button>`}
     </div>`
 }
 
@@ -169,6 +180,14 @@ const openPanel = (name) => {
   panelName = name
   panelArtifacts = []
   panelText = ''
+  const mcpServer = (store.state.mcpServers ?? []).find((s) => s.label === name)
+  const isRemote = !!mcpServer
+
+  if (isRemote) {
+    openRemotePanel(mcpServer)
+    return
+  }
+
   const kind = connectorKind(entry)
   const [label] = connectorLabel(entry)
   const sample = connectorSample(entry)
@@ -192,6 +211,62 @@ const openPanel = (name) => {
       <span class="cn-test-hint">真实执行 · 计时 · 可下载</span>
     </div>
     <div class="cn-test-out" id="cn-test-out" hidden></div>`
+  panel.scrollIntoView?.({ behavior: 'smooth', block: 'nearest' })
+}
+
+const openRemotePanel = (server) => {
+  panel.hidden = false
+  panel.innerHTML = `
+    <div class="cn-test-head">
+      <span class="cn-logo" style="--c:#3b82f6">${icon('globe')}</span>
+      <div class="cn-test-ident">
+        <h3>${server.label}<span class="cn-test-tag">远端 MCP</span></h3>
+        <p>${server.serverInfo?.name ?? '远端 MCP 服务'}</p>
+      </div>
+      <div class="cn-test-state">
+        <span class="cn-state is-on">已连接</span>
+        <button class="cn-state-btn" type="button" data-cn-delete="${server.id}">删除</button>
+      </div>
+      <button class="cn-test-close" type="button" data-cn-test-close aria-label="收起连接测试">×</button>
+    </div>
+
+    <div class="cn-conn">
+      <div class="cn-conn-row">
+        <span class="cn-conn-k">协议版本</span>
+        <span class="cn-conn-v mono">${server.protocol.version}</span>
+      </div>
+      <div class="cn-conn-row">
+        <span class="cn-conn-k">传输</span>
+        <span class="cn-conn-v">远端 · ${server.url}</span>
+      </div>
+      <div class="cn-conn-row">
+        <span class="cn-conn-k">服务信息</span>
+        <span class="cn-conn-v">${server.serverInfo?.name ?? '—'} ${server.serverInfo?.version ?? ''}</span>
+      </div>
+      ${server.instructions ? `<div class="cn-conn-row">
+        <span class="cn-conn-k">说明</span>
+        <span class="cn-conn-v">${server.instructions}</span>
+      </div>` : ''}
+      <div class="cn-conn-row">
+        <span class="cn-conn-k">最近握手</span>
+        <span class="cn-conn-v">${fmtTime(server.lastHandshake?.at)} · ${server.lastHandshake?.ms ?? '—'} ms</span>
+      </div>
+    </div>
+
+    <div class="cn-tools">
+      <h4>工具列表 (${server.tools?.length ?? 0})</h4>
+      <div class="cn-tool-list">
+        ${(server.tools ?? []).map((t, i) => `
+          <div class="cn-tool" data-tool-index="${i}">
+            <div class="cn-tool-name">${t.name}</div>
+            <div class="cn-tool-desc">${t.description ?? ''}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="cn-tool-form" id="cn-tool-form" hidden></div>
+    <div class="cn-tool-result" id="cn-tool-result" hidden></div>`
   panel.scrollIntoView?.({ behavior: 'smooth', block: 'nearest' })
 }
 
@@ -540,8 +615,195 @@ const openLog = () => {
   })
 }
 
+/* ---------- MCP 远端服务接入 ---------- */
+
+const mcpModal = async () => {
+  const { mask, bodyEl, footEl } = openModal({
+    title: '接入 MCP 服务',
+    body: `
+      <p class="modal-copy">接入真实的 MCP 协议服务（远端工具服务器）。会立即握手验证，成功后才保存。</p>
+      <label class="cn-field"><span>名称</span>
+        <input id="mcp-label" type="text" placeholder="例如：内部知识库" maxlength="40" />
+      </label>
+      <label class="cn-field"><span>MCP 地址</span>
+        <input id="mcp-url" type="url" placeholder="https://mcp.example.com/mcp" />
+      </label>
+      <label class="cn-field"><span>认证方式</span>
+        <select id="mcp-auth-mode">
+          <option value="none">无需认证</option>
+          <option value="bearer">Bearer Token</option>
+          <option value="header">自定义 Header</option>
+        </select>
+      </label>
+      <label class="cn-field" id="mcp-token-field" hidden><span>Token</span>
+        <input id="mcp-token" type="password" placeholder="sk-..." autocomplete="off" />
+      </label>
+      <label class="cn-field" id="mcp-header-field" hidden><span>Header 名称</span>
+        <input id="mcp-header-name" type="text" placeholder="X-Api-Key" />
+      </label>
+      <label class="cn-check">
+        <input id="mcp-allow-private" type="checkbox" />
+        <span>信任内网地址（本地部署 / VPN / 127.0.0.1）</span>
+      </label>`,
+    footer: `<button class="btn btn-ghost" data-act="cancel" type="button">取消</button>
+             <button class="btn btn-primary" data-act="save" type="button">测试并保存</button>`,
+  })
+
+  const authSelect = mask.querySelector('#mcp-auth-mode')
+  const tokenField = mask.querySelector('#mcp-token-field')
+  const headerField = mask.querySelector('#mcp-header-field')
+
+  const syncAuth = () => {
+    const mode = authSelect.value
+    tokenField.hidden = mode !== 'bearer'
+    headerField.hidden = mode !== 'header'
+  }
+  syncAuth()
+  authSelect.addEventListener('change', syncAuth)
+
+  const submit = async () => {
+    const label = mask.querySelector('#mcp-label').value.trim()
+    const url = mask.querySelector('#mcp-url').value.trim()
+    const authMode = authSelect.value
+    const allowPrivate = mask.querySelector('#mcp-allow-private').checked
+
+    if (!label) { 
+      const hint = mask.querySelector('#mcp-hint') || (() => {
+        const h = document.createElement('p')
+        h.id = 'mcp-hint'
+        h.className = 'cn-creds-hint is-bad'
+        h.textContent = '请填写名称'
+        mask.querySelector('.modal-body').prepend(h)
+        return h
+      })()
+      hint.textContent = '请填写名称'
+      hint.classList.add('is-bad')
+      toast('请填写名称')
+      return 
+    }
+    if (!url) { 
+      const hint = mask.querySelector('#mcp-hint')
+      if (hint) { hint.textContent = '请填写 MCP 地址'; hint.classList.add('is-bad') }
+      toast('请填写 MCP 地址')
+      return 
+    }
+
+    let auth = { mode: authMode }
+    if (authMode === 'bearer') {
+      const token = mask.querySelector('#mcp-token').value.trim()
+      if (!token) { 
+        const hint = mask.querySelector('#mcp-hint')
+        if (hint) { hint.textContent = '请填写 Token'; hint.classList.add('is-bad') }
+        toast('请填写 Token')
+        return 
+      }
+      auth.token = token
+    } else if (authMode === 'header') {
+      const headerName = mask.querySelector('#mcp-header-name').value.trim()
+      const token = mask.querySelector('#mcp-token').value.trim()
+      if (!headerName || !token) { 
+        const hint = mask.querySelector('#mcp-hint')
+        if (hint) { hint.textContent = '请填写 Header 名称和 Token'; hint.classList.add('is-bad') }
+        toast('请填写 Header 名称和 Token')
+        return 
+      }
+      auth.headerName = headerName
+      auth.token = token
+    }
+
+    // 校验 URL 格式
+    try {
+      new URL(url)
+    } catch {
+      const hint = mask.querySelector('#mcp-hint')
+      if (hint) { hint.textContent = 'MCP 地址格式不正确'; hint.classList.add('is-bad') }
+      toast('MCP 地址格式不正确')
+      return
+    }
+
+    const submitBtn = footEl.querySelector('[data-act="save"]')
+    submitBtn.disabled = true
+    submitBtn.textContent = '握手中…'
+
+    try {
+      const apiUrl = new URL('/api/mcp/servers', window.location.origin).href
+      const res = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-DB-Client': 'design-buddy' },
+        body: JSON.stringify({ label, url, auth, allowPrivate, timeoutMs: 10000 }),
+      })
+      const data = await res.json()
+      if (!data.ok) {
+        // 翻译错误码为中文
+        const errorMessages = {
+          'MCP_REFUSED': '连接被拒',
+          'MCP_TIMEOUT': '连接超时',
+          'MCP_DNS': '无法连接',
+          'MCP_NETWORK': '无法连接',
+          'MCP_BAD_SCHEME': 'URL 格式错误',
+          'MCP_PRIVATE_HOST': '不允许连接内网地址',
+          'MCP_AUTH': '认证失败',
+          'MCP_UNSUPPORTED': '不支持的协议版本',
+        }
+        const errorMsg = errorMessages[data.error.code] || data.error.message || '未知错误'
+        // 在模态框中显示错误信息
+        const hint = mask.querySelector('#mcp-hint') || (() => {
+          const h = document.createElement('p')
+          h.id = 'mcp-hint'
+          h.className = 'cn-creds-hint is-bad'
+          mask.querySelector('.modal-body').prepend(h)
+          return h
+        })()
+        hint.textContent = `接入失败：${errorMsg}`
+        hint.classList.add('is-bad')
+        toast(`接入失败：${errorMsg}`)
+        submitBtn.disabled = false
+        submitBtn.textContent = '测试并保存'
+        return
+      }
+      // 将远端服务信息写入 store
+      store.state.mcpServers = store.state.mcpServers ?? []
+      store.state.mcpServers.push({
+        id: data.server.id,
+        label,
+        url,
+        protocol: data.server.protocol,
+        serverInfo: data.server.serverInfo,
+        toolCount: data.server.toolCount,
+        tools: data.server.tools,
+        instructions: data.server.instructions,
+        auth: data.server.auth,
+        lastHandshake: data.server.lastHandshake,
+        remote: true,
+      })
+      store.save()
+      // 记录握手日志
+      pushConnectorLog(store, {
+        connector: label, action: 'handshake', ok: true,
+        latency: data.server.lastHandshake?.ms,
+        detail: `MCP · ${data.server.protocol?.version} · ${data.server.toolCount} 个工具`,
+      })
+      mask.remove()
+      toast(`已接入「${label}」· ${data.server.toolCount} 个工具`)
+      renderGrid()
+    } catch (err) {
+      toast(`接入失败：${err.message}`)
+      submitBtn.disabled = false
+      submitBtn.textContent = '测试并保存'
+    }
+  }
+
+  footEl.addEventListener('click', (ev) => {
+    const act = ev.target.closest('[data-act]')?.dataset.act
+    if (act === 'cancel') mask.remove()
+    if (act === 'save') submit()
+  })
+  bodyEl.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') submit() })
+}
+
 /* ---------- 事件 ---------- */
 
+document.querySelector('[data-mcp-add]')?.addEventListener('click', mcpModal)
 document.querySelector('[data-cn-logs]')?.addEventListener('click', openLog)
 
 $('#cn-search-input').addEventListener('input', renderGrid)
@@ -557,6 +819,150 @@ $('#cn-grid').addEventListener('click', (ev) => {
   const card = ev.target.closest('[data-cn-name]')
   if (card) openPanel(card.dataset.cnName)
 })
+
+// 删除 MCP 服务（带确认）
+document.addEventListener('click', (ev) => {
+  const deleteBtn = ev.target.closest('[data-cn-delete]')
+  if (!deleteBtn) return
+  const id = deleteBtn.dataset.cnDelete
+  const server = (store.state.mcpServers ?? []).find((s) => s.id === id)
+  if (!server) return
+
+  // 显示确认对话框
+  const { mask, footEl } = openModal({
+    title: '删除 MCP 服务',
+    body: `<p class="modal-copy">确定要删除「${server.label}」吗？删除后需要重新握手才能使用。</p>`,
+    footer: `<button class="btn btn-ghost" data-act="cancel" type="button">取消</button>
+             <button class="btn btn-primary" data-act="confirm" type="button">确定删除</button>`,
+  })
+
+  footEl.addEventListener('click', (e) => {
+    const act = e.target.closest('[data-act]')?.dataset.act
+    if (act === 'cancel') {
+      mask.remove()
+    } else if (act === 'confirm') {
+      store.state.mcpServers = (store.state.mcpServers ?? []).filter((s) => s.id !== id)
+      store.save()
+      mask.remove()
+      renderGrid()
+      if (panelName === server.label) {
+        panel.hidden = true
+        panelName = ''
+      }
+      toast('已删除')
+    }
+  })
+})
+
+// 工具列表点击
+panel.addEventListener('click', (ev) => {
+  const toolEl = ev.target.closest('.cn-tool')
+  if (toolEl) {
+    const index = parseInt(toolEl.dataset.toolIndex)
+    const mcpServer = (store.state.mcpServers ?? []).find((s) => s.label === panelName)
+    if (mcpServer && mcpServer.tools[index]) {
+      showToolForm(mcpServer, mcpServer.tools[index])
+    }
+    return
+  }
+
+  const submitBtn = ev.target.closest('[data-tool-submit]')
+  if (submitBtn) {
+    submitToolCall()
+    return
+  }
+})
+
+let currentToolCall = null
+
+const showToolForm = (server, tool) => {
+  const form = $('#cn-tool-form')
+  if (!form) return
+  form.hidden = false
+  const props = tool.inputSchema?.properties ?? {}
+  const required = tool.inputSchema?.required ?? []
+  
+  currentToolCall = { server, tool }
+  
+  form.innerHTML = `
+    <h4>调用工具：${tool.name}</h4>
+    <p class="cn-tool-desc">${tool.description ?? ''}</p>
+    <div class="cn-tool-params">
+      ${Object.entries(props).map(([key, schema]) => {
+        const isRequired = required.includes(key)
+        const inputType = schema.type === 'number' ? 'number' : schema.type === 'boolean' ? 'checkbox' : 'text'
+        return `
+          <label class="cn-field">
+            <span>${key}${isRequired ? ' *' : ''}</span>
+            ${schema.description ? `<small>${schema.description}</small>` : ''}
+            ${inputType === 'checkbox' 
+              ? `<input type="checkbox" name="${key}" />`
+              : `<input type="${inputType}" name="${key}" ${isRequired ? 'required' : ''} ${schema.type === 'number' ? 'step="any"' : ''} />`
+            }
+          </label>
+        `
+      }).join('')}
+    </div>
+    <button class="cn-run-btn" type="submit" data-tool-submit>调用</button>
+  `
+}
+
+const submitToolCall = async () => {
+  if (!currentToolCall) return
+  const { server, tool } = currentToolCall
+  const form = $('#cn-tool-form')
+  const inputs = form.querySelectorAll('input[name]')
+  const args = {}
+  inputs.forEach((input) => {
+    const name = input.name
+    if (input.type === 'checkbox') {
+      args[name] = input.checked
+    } else if (input.type === 'number') {
+      args[name] = parseFloat(input.value)
+    } else {
+      args[name] = input.value
+    }
+  })
+
+  const resultEl = $('#cn-tool-result')
+  if (!resultEl) return
+  resultEl.hidden = false
+  resultEl.innerHTML = '<div class="cn-tool-loading">调用中…</div>'
+
+  try {
+    const apiUrl = new URL('/api/mcp/servers/' + server.id + '/call', window.location.origin).href
+    const res = await fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-DB-Client': 'design-buddy' },
+      body: JSON.stringify({ toolName: tool.name, args }),
+    })
+    const data = await res.json()
+    if (!data.ok) {
+      resultEl.innerHTML = `<div class="cn-tool-error">调用失败：${data.error.message}</div>`
+      return
+    }
+    const result = data.result
+    const content = result.content?.map((c) => c.text ?? JSON.stringify(c)).join('\n') ?? '无结果'
+    resultEl.innerHTML = `
+      <div class="cn-tool-success">
+        <div class="cn-tool-meta">
+          <span>耗时：${result.ms} ms</span>
+          <span>字节：${result.bytes}</span>
+          ${result.isError ? '<span class="cn-tool-err">错误</span>' : '<span class="cn-tool-ok">成功</span>'}
+        </div>
+        <pre class="cn-tool-content">${content}</pre>
+      </div>
+    `
+    // 记录调用日志
+    pushConnectorLog(store, {
+      connector: server.label, action: 'call', ok: !result.isError,
+      latency: result.ms,
+      detail: `MCP 调用 ${tool.name} · ${result.bytes} 字节`,
+    })
+  } catch (err) {
+    resultEl.innerHTML = `<div class="cn-tool-error">调用失败：${err.message}</div>`
+  }
+}
 
 $('#cn-grid').addEventListener('keydown', (ev) => {
   if (ev.key !== 'Enter' && ev.key !== ' ') return
