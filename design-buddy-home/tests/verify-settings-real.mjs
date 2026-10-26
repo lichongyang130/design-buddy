@@ -175,6 +175,47 @@ const pickOption = async (w, wrap, label) => {
   click(w, [...doc.querySelectorAll('[data-settings]')].find((n) => n.dataset.settings === 'general'))
   await tick()
 
+  /* ----- 1d. 下拉真实展开/收起：按钮互斥、外部点击、Esc、选中即收 ----- */
+  const langWrap = selects()[0]
+  const langBtn = langWrap.querySelector('.select-btn')
+  const langMenu = langWrap.querySelector('.select-menu')
+  check('dropdown: menu hidden initially', langMenu.hidden === true)
+  click(w, langBtn)
+  await tick()
+  check('dropdown: click button opens menu',
+    langMenu.hidden === false && langWrap.classList.contains('is-open')
+    && langBtn.getAttribute('aria-expanded') === 'true')
+  check('dropdown: four language options visible',
+    [...langMenu.querySelectorAll('.select-option')].map((o) => o.textContent.trim())
+      .join('|') === '简体中文|繁體中文|English|日本語')
+  // 展开一个下拉时，其他下拉必须收起
+  const linkWrap = selects()[1]
+  click(w, linkWrap.querySelector('.select-btn'))
+  await tick()
+  check('dropdown: opening another closes the first',
+    langMenu.hidden === true && !langWrap.classList.contains('is-open')
+    && linkWrap.querySelector('.select-menu').hidden === false)
+  // 外部点击收起
+  doc.body.dispatchEvent(new w.MouseEvent('click', { bubbles: true }))
+  await tick()
+  check('dropdown: outside click closes all',
+    [...doc.querySelectorAll('.select-menu')].every((m) => m.hidden === true))
+  // Esc 收起
+  click(w, langBtn)
+  await tick()
+  doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
+  await tick()
+  check('dropdown: escape closes menu', langMenu.hidden === true && !langWrap.classList.contains('is-open'))
+  // 选中选项后菜单自动收起
+  click(w, langBtn)
+  await tick()
+  click(w, [...langMenu.querySelectorAll('.select-option')].find((o) => o.textContent.trim() === 'English'))
+  await tick()
+  check('dropdown: picking option closes menu and persists',
+    langMenu.hidden === true && readState(storage).settings.language === 'English')
+  // 恢复简中，避免影响后续断言
+  await pickOption(w, selects()[0], '简体中文')
+
   /* ----- 2. 链接打开方式：DOM 级真实委托 ----- */
   const openCalls = []
   w.open = (url) => { openCalls.push(url); return null }

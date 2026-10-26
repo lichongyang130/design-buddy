@@ -99,17 +99,49 @@ const FONT_TOKENS = ['font.tiny', 'font.small', 'font.normal', 'font.large', 'fo
 const fontLabel = (i) => t(FONT_TOKENS[i], curLang())
 
 function bindGeneral() {
-  $$('[data-select]').forEach((wrap) => {
+  const wraps = $$('[data-select]')
+
+  // 四个下拉同一时刻只允许一个展开；外部点击 / Esc 统一收起
+  const closeAllSelects = (except) => {
+    wraps.forEach((w) => {
+      if (w === except) return
+      w.classList.remove('is-open')
+      const menu = w.querySelector('.select-menu')
+      const button = w.querySelector('.select-btn')
+      if (menu) menu.hidden = true
+      button?.setAttribute('aria-expanded', 'false')
+    })
+  }
+
+  wraps.forEach((wrap) => {
     const kind = wrap.dataset.selectKind
     const meta = SELECT_KIND_META[kind]
     if (!meta) return
     const valueEl = $('.select-value', wrap)
+    const btn = $('.select-btn', wrap)
+    const menu = $('.select-menu', wrap)
+    const close = () => {
+      wrap.classList.remove('is-open')
+      menu.hidden = true
+      btn.setAttribute('aria-expanded', 'false')
+    }
     // 语言名直接显示；枚举值翻译为当前语言
     const paint = () => {
       const val = getPath(meta.path)
       valueEl.textContent = kind === 'language' ? val : optionLabel(kind, val, curLang())
     }
     paint()
+
+    // 展开 / 收起：点击按钮切换，同时收起其他下拉
+    btn.addEventListener('click', (event) => {
+      event.stopPropagation()
+      const willOpen = menu.hidden
+      closeAllSelects(wrap)
+      menu.hidden = !willOpen
+      wrap.classList.toggle('is-open', willOpen)
+      btn.setAttribute('aria-expanded', String(willOpen))
+    })
+
     wrap.addEventListener('click', (event) => {
       const opt = event.target.closest('.select-option')
       if (!opt) return
@@ -124,7 +156,14 @@ function bindGeneral() {
       })
       const shown = kind === 'language' ? canonical : optionLabel(kind, canonical, curLang())
       toast(tt('toast.saved', curLang(), { label: t(meta.labelToken, curLang()), value: shown }))
+      close()
     })
+  })
+
+  // 点击浮层外部或按 Esc：收起全部下拉
+  document.addEventListener('click', () => closeAllSelects())
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeAllSelects()
   })
 
   $$('[data-switch]').forEach((sw, i) => {
