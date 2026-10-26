@@ -42,7 +42,7 @@ check('panel titles the connector and its engine kind',
 check('panel pre-fills a sample input tied to this connector',
   panel().querySelector('#cn-test-input').value.includes('通达信'))
 check('panel states what this connector can do',
-  panel().querySelector('.cn-test-cap')?.textContent.includes('行情'))
+  panel().querySelector('.cn-conn')?.textContent.includes('行情'))
 
 /* ---------- 3. 运行连接测试 ---------- */
 

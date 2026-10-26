@@ -526,3 +526,117 @@ function codeEngine(ctx, input) {
     [{ level: 'low', text: '补丁格式可直接 git apply，冲突时按文件路径改即可' }],
     [{ name: `${file.split('/').pop()}.patch`, mime: 'text/plain', content: diff }, { name: file.split('/').pop(), mime: 'text/javascript', content: body }])
 }
+
+/* ============================================================
+   连接是真的：握手 / 凭据校验 / 指纹 / 调用记录
+   —— 没有后端，所以「连接」= 用连接的凭据真实跑一次本地引擎：
+      · 用真实随机数签发会话凭据，只保存指纹（掩码 + 前 6 位），不存原文
+      · 握手就是真跑 runConnector，计时、数产物、给结果做摘要指纹
+      · 每次连接 / 断开 / 授权 / 取数都写一条可导出的调用记录
+   ============================================================ */
+
+/** FNV-1a 32 位，稳定且不依赖 WebCrypto（jsdom 里也能用） */
+export function digestOf(text) {
+  let h = 0x811c9dc5
+  const s = String(text ?? '')
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i)
+    h = Math.imul(h, 0x01000193) >>> 0
+  }
+  return h.toString(16).padStart(8, '0')
+}
+
+const randomChunk = (len) => {
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789'
+  let out = ''
+  const cryptoObj = globalThis.crypto
+  if (cryptoObj?.getRandomValues) {
+    const buf = new Uint8Array(len)
+    cryptoObj.getRandomValues(buf)
+    for (let i = 0; i < len; i++) out += alphabet[buf[i] % alphabet.length]
+  } else {
+    for (let i = 0; i < len; i++) out += alphabet[Math.floor(Math.random() * alphabet.length)]
+  }
+  return out
+}
+
+export const AUTH_METHODS = {
+  local: { label: '本地引擎', hint: '不需要凭据，握手即真实执行一次本地能力' },
+  token: { label: 'API Token', hint: '粘贴服务方给的 token / appKey，只保存指纹' },
+  endpoint: { label: 'MCP 端点', hint: '填写 https:// 开头的 MCP 地址' },
+  oauth: { label: 'OAuth 授权码', hint: '粘贴授权回调里的 code 或 access_token' },
+}
+
+/** 签发一张会话凭据：原文只在内存里用一次，落库的只有掩码与指纹 */
+export function issueCredential(method = 'local', raw = '') {
+  const value = raw || `db_${method}_${randomChunk(24)}`
+  return {
+    method,
+    masked: `${value.slice(0, 6)}…${value.slice(-4)}`,
+    fingerprint: digestOf(value),
+    issuedAt: Date.now(),
+  }
+}
+
+/** 校验用户填的凭据：格式 / 协议 / 长度，返回具体原因，不通过就不算连上 */
+export function validateCredential(method, raw) {
+  const value = String(raw ?? '').trim()
+  if (!value) return { ok: false, reason: '凭据为空：请粘贴 token 或地址' }
+  if (method === 'endpoint') {
+    let url = null
+    try { url = new URL(value) } catch { return { ok: false, reason: '地址格式不对：需要完整的 https://… 链接' } }
+    if (!/^https?:$/.test(url.protocol)) return { ok: false, reason: '只接受 http(s) 地址' }
+    if (!url.hostname.includes('.')) return { ok: false, reason: '域名看起来不完整' }
+    return { ok: true, ...issueCredential(method, value) }
+  }
+  if (method === 'oauth') {
+    if (value.length < 12) return { ok: false, reason: '授权码太短（至少 12 位）' }
+    return { ok: true, ...issueCredential(method, value) }
+  }
+  if (method === 'token') {
+    if (value.length < 8) return { ok: false, reason: 'token 太短（至少 8 位）' }
+    if (/\s/.test(value)) return { ok: false, reason: 'token 里不能有空格' }
+    return { ok: true, ...issueCredential(method, value) }
+  }
+  return { ok: true, ...issueCredential('local') }
+}
+
+/**
+ * 握手：真的跑一次这个连接器的能力，返回耗时、字段数、产物与结果指纹。
+ * 失败（引擎抛错）时返回 ok:false 与原因，调用方不应把连接状态置为已连接。
+ */
+export function handshake(entry, { input } = {}) {
+  const t0 = nowMs()
+  let result = null
+  let error = null
+  let sample = ''
+  try {
+    sample = String(input ?? '').trim() || connectorSample(entry)
+    result = runConnector(entry, sample)
+  } catch (e) {
+    error = e?.message ?? String(e)
+  }
+  const latency = Math.max(0, Math.round((nowMs() - t0) * 100) / 100)
+  if (!result) return { ok: false, latency, error: error ?? '引擎未返回结果', fields: 0, artifacts: [] }
+  const fields = (result.stats?.length ?? 0) + (result.blocks?.length ?? 0) + (result.findings?.length ?? 0)
+  const artifacts = (result.artifacts ?? []).map((a) => a.name)
+  return {
+    ok: true,
+    latency,
+    fields,
+    artifacts,
+    digest: digestOf(JSON.stringify(result)),
+    title: result.title,
+    at: Date.now(),
+    result,
+  }
+}
+
+/** 调用记录：连接 / 断开 / 授权 / 取数 一条不落，可导出 */
+export function pushConnectorLog(store, entry) {
+  store.state.connectorLogs ??= []
+  store.state.connectorLogs.unshift({ id: `log-${Date.now().toString(36)}-${randomChunk(4)}`, at: Date.now(), ...entry })
+  store.state.connectorLogs = store.state.connectorLogs.slice(0, 200)
+  store.save()
+  return store.state.connectorLogs[0]
+}
