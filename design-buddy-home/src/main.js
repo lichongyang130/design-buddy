@@ -470,6 +470,32 @@ function renderExperts() {
 }
 renderExperts()
 
+/* ---------------- 专家页「召唤」过来：选好专家并带入提示词 ---------------- */
+try {
+  const raw = localStorage.getItem('design-buddy-summon-v1')
+  if (raw) {
+    localStorage.removeItem('design-buddy-summon-v1')
+    const summon = JSON.parse(raw)
+    if (summon?.name) {
+      ui.expert = summon.name
+      store.save()
+      renderExperts()
+      if (summon.prompt) {
+        input.value = summon.prompt
+        syncSendState()
+        input.style.height = 'auto'
+        input.style.height = `${Math.min(input.scrollHeight, 160)}px`
+        input.focus()
+        toast(`已为「${summon.name}」带入提示词`)
+      } else {
+        toast(`已召唤「${summon.name}」`)
+      }
+    }
+  }
+} catch {
+  /* 召唤数据损坏时不影响首页加载 */
+}
+
 function openPopover() {
   if (imgPopover && !imgPopover.hidden) closeImgPopover()
   if (effortIsOpen()) closeEffort()

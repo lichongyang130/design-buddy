@@ -1124,7 +1124,7 @@ a:focus-visible {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.22s ease, transform 0.22s ease;
-  z-index: 50;
+  z-index: 130;
   max-width: 70vw;
 }
 

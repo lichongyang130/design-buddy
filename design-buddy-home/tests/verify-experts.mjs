@@ -102,7 +102,7 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   click(w, doc.querySelector('[data-sort="综合"]'))
   await tick()
   check('default sort restores catalog order',
-    doc.querySelector('.ex-card[data-pin]')?.dataset.pin === expertsOnly()[0].id)
+    doc.querySelector('.ex-card')?.dataset.expert === expertsOnly()[0].id)
 
   /* ---------- 4. 分类 chips 与场景卡联动 ---------- */
   click(w, doc.querySelector('[data-chip="技术工程"]'))
@@ -138,13 +138,13 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   /* ---------- 6. 卡片固定：真实持久化 + 我的专家 ---------- */
   const pinId = 'ec-webdeploy'
   const pinName = EXPERT_CATALOG.find((e) => e.id === pinId).name
-  click(w, doc.querySelector(`.ex-card[data-pin="${pinId}"]`))
+  click(w, doc.querySelector(`[data-pin="${pinId}"]`))
   await tick()
   check('pinning catalog card persists to store',
     readState(storage).experts.find((e) => e.name === pinName)?.pinned === true)
   check('pinned card shows pinned state',
-    doc.querySelector(`.ex-card[data-pin="${pinId}"]`)?.classList.contains('is-pinned')
-    && doc.querySelector(`.ex-card[data-pin="${pinId}"] .ex-pin-mark`).textContent.includes('已固定'))
+    doc.querySelector(`.ex-card[data-expert="${pinId}"]`)?.classList.contains('is-pinned')
+    && doc.querySelector(`.ex-card[data-expert="${pinId}"] [data-pin]`).textContent.includes('已固定'))
 
   click(w, doc.querySelector('[data-mine]'))
   await tick()
@@ -155,21 +155,114 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   click(w, doc.querySelector('[data-mine]'))
   await tick()
 
-  click(w, doc.querySelector(`.ex-card[data-pin="${pinId}"]`))
+  click(w, doc.querySelector(`[data-pin="${pinId}"]`))
   await tick()
   check('unpinning clears persisted flag',
     readState(storage).experts.find((e) => e.name === pinName)?.pinned === false)
   check('pinned highlight removed after unpin',
-    !doc.querySelector(`.ex-card[data-pin="${pinId}"]`).classList.contains('is-pinned'))
+    !doc.querySelector(`.ex-card[data-expert="${pinId}"]`).classList.contains('is-pinned'))
 
-  /* ---------- 7. 顶部 技能 / 连接器 都是页面链接 ---------- */
+  /* ---------- 7. 专家详情抽屉：点卡片按截图展示 / 召唤 / 帮你做 / 更多 ---------- */
+  const openCard = async (id) => {
+    click(w, doc.querySelector(`[data-open-expert="${id}"]`))
+    await tick()
+  }
+  const drawer = () => doc.querySelector('.ex-drawer-mask')
+  const py = EXPERT_CATALOG.find((e) => e.id === 'ec-python')
+
+  await openCard('ec-python')
+  check('clicking an expert card opens the detail drawer',
+    !!drawer()?.querySelector('.ex-drawer[role="dialog"]'))
+  check('drawer is portalled to body, above the page', drawer()?.parentElement === doc.body)
+  check('drawer header shows expert name and persona',
+    drawer().querySelector('.ex-drawer-name')?.textContent === py.name
+    && drawer().querySelector('.ex-drawer-persona')?.textContent === py.persona
+    && drawer().querySelector('.ex-drawer-title i')?.textContent === '|')
+  check('drawer offers the summon button',
+    drawer().querySelector('[data-summon]')?.textContent.trim() === '召唤')
+  check('drawer shows the full description',
+    drawer().querySelector('.ex-drawer-desc')?.textContent === py.desc)
+  check('drawer lists every ability tag',
+    [...drawer().querySelectorAll('.ex-drawer-tags .ex-tag')].map((t) => t.textContent).join() === py.tags.join())
+  check('drawer shows version and usage stats', (() => {
+    const [ver, use] = [...drawer().querySelectorAll('.ex-stat')]
+    return ver?.querySelector('strong').textContent === py.version
+      && ver?.querySelector('span').textContent === '版本'
+      && use?.querySelector('strong').textContent.includes(formatUsage(py.usage))
+      && use?.querySelector('span').textContent === '使用量'
+  })())
+  check('drawer lists three curated prompts in quotes',
+    drawer().querySelectorAll('.ex-prompt').length === 3
+    && [...drawer().querySelectorAll('.ex-prompt-text')].every((t) => t.textContent.startsWith('「') && t.textContent.endsWith('」'))
+    && [...drawer().querySelectorAll('.ex-prompt-text')].map((t) => t.textContent.slice(1, -1)).join('\u0000') === py.prompts.join('\u0000'))
+  check('drawer section titles match the screenshot',
+    [...drawer().querySelectorAll('.ex-drawer-sec-title')].map((t) => t.textContent.trim()).join() === '专家帮你做,更多')
+  check('drawer ends with a copyable expert id',
+    drawer().querySelector('[data-copy-id]')?.textContent.trim() === `ID: ${py.id}`)
+  check('drawer layout follows the screenshot spec',
+    cssCompact.includes('.ex-drawer{position:relative;width:min(640px,100%)')
+    && cssCompact.includes('border-radius:18px0018px')
+    && cssCompact.includes('.ex-drawer-mask{position:fixed;top:0;right:0;bottom:0;left:0;z-index:85')
+    && cssCompact.includes('.ex-summon{margin-top:12px;height:38px'))
+
+  click(w, doc.querySelector('[data-drawer-close]'))
+  await tick()
+  check('close button dismisses the drawer', !drawer())
+
+  await openCard('ec-python')
+  doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
+  await tick()
+  check('Escape dismisses the drawer', !drawer())
+
+  await openCard('ec-python')
+  click(w, drawer())
+  await tick()
+  check('clicking the scrim dismisses the drawer', !drawer())
+
+  await openCard('ec-mentor')
+  check('opening another expert swaps the drawer content',
+    drawer()?.querySelector('.ex-drawer-name')?.textContent === '创业导师助手')
+
+  click(w, doc.querySelector('[data-summon]'))
+  await tick()
+  const summoned = JSON.parse(storage.getItem('design-buddy-summon-v1') ?? 'null')
+  check('summon closes the drawer', !drawer())
+  check('summon hands the expert over to the home page',
+    summoned?.name === '创业导师助手' && summoned?.prompt === '')
+  storage.removeItem('design-buddy-summon-v1')
+
+  await openCard('ec-boardsec')
+  const boardPrompt = EXPERT_CATALOG.find((e) => e.id === 'ec-boardsec').prompts[0]
+  click(w, doc.querySelector('.ex-prompt'))
+  await tick()
+  const withPrompt = JSON.parse(storage.getItem('design-buddy-summon-v1') ?? 'null')
+  check('a prompt row carries its text to the home page',
+    withPrompt?.name === '董秘助手' && withPrompt?.prompt === boardPrompt && !drawer())
+  storage.removeItem('design-buddy-summon-v1')
+
+  await openCard('ec-boardsec')
+  click(w, doc.querySelector('[data-copy-id]'))
+  await tick()
+  check('copying the id surfaces feedback',
+    doc.querySelector('#toast')?.textContent.includes('ID'))
+  click(w, doc.querySelector('[data-drawer-close]'))
+  await tick()
+
+  click(w, doc.querySelector('[data-pin="ec-mentor"]'))
+  await tick()
+  check('pin button never opens the drawer',
+    !drawer() && readState(storage).experts.find((e) => e.name === '创业导师助手')?.pinned === true)
+  click(w, doc.querySelector('[data-pin="ec-mentor"]'))
+  await tick()
+
+  /* ---------- 8. 顶部 技能 / 连接器 都是页面链接 ---------- */
   check('skills tab links to the skills page',
     doc.querySelector('.ex-top-tab[href="skills.html"]') !== null)
   check('connectors tab links to the connectors page',
     doc.querySelector('.ex-top-tab[href="connectors.html"]') !== null)
   check('no leftover modal entry on the experts page', !doc.querySelector('[data-open]'))
 
-  /* ---------- 8. 本页窄栏「更多」仍可用 ---------- */
+  /* ---------- 9. 本页窄栏「更多」仍可用 ---------- */
   click(w, doc.querySelector('.more-wrap .rail-item'))
   await tick()
   const pop = doc.querySelector('.more-pop')
@@ -182,7 +275,7 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   check('experts page flow: no runtime errors', errors.length === 0, JSON.stringify(errors))
 }
 
-/* ---------- 8. 入口：首页窄栏「更多 → 专家」进入页面而不是弹窗 ---------- */
+/* ---------- 10. 入口：首页窄栏「更多 → 专家」进入页面而不是弹窗 ---------- */
 {
   const { doc, w, errors } = await loadPage('/index.html', { freshCopy: true })
   click(w, doc.querySelector('.more-wrap .rail-item'))
@@ -192,6 +285,20 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   check('more menu closes when leaving for the experts page', doc.querySelector('.more-pop').hidden === true)
   check('experts entry no longer opens a modal', !doc.querySelector('.modal-mask'))
   check('experts entry keeps page error-free', errors.length === 0, errors)
+}
+
+/* ---------- 11. 首页接收召唤：选好专家并带入提示词 ---------- */
+{
+  const { storage } = await loadPage('/experts.html', { freshCopy: true })
+  storage.setItem('design-buddy-summon-v1', JSON.stringify({ name: '董秘助手', prompt: '帮我起草一份董事会决议公告' }))
+  const home = await loadPage('/index.html', { storage, freshCopy: true })
+  check('home prefills the summoned prompt',
+    home.doc.querySelector('#prompt-input')?.value === '帮我起草一份董事会决议公告')
+  check('home announces the summoned expert',
+    home.doc.querySelector('#toast')?.textContent.includes('董秘助手'))
+  check('summon payload is one-shot and cleared on arrival',
+    storage.getItem('design-buddy-summon-v1') === null)
+  check('home handles the summon without errors', home.errors.length === 0, home.errors)
 }
 
 console.log(`\n${fails.length === 0 ? `ALL ${passed} EXPERTS CHECKS PASSED` : `${fails.length} FAILED: ${fails.join('; ')}`}`)

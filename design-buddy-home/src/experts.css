@@ -300,6 +300,30 @@
   align-items: flex-start;
 }
 
+/* 整张卡片可点开详情：透明按钮铺满，正文与固定按钮浮在上层 */
+.ex-card-hit {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.ex-card-head,
+.ex-card-tags,
+.ex-card-foot {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ex-card:focus-within {
+  outline: 2px solid rgba(59, 110, 246, 0.5);
+  outline-offset: 2px;
+}
+
 /* 卡片头像：截图里是圆角方块，覆盖 styles.css 的圆形基类 */
 .ex-card-head .expert-avatar {
   width: 44px;
@@ -398,32 +422,43 @@
   color: #e3a53c;
 }
 
-/* 固定标记：收起态是浅色图钉，已固定才染蓝 */
-.ex-pin-mark {
+/* 固定按钮：收起态是浅色图钉，已固定才染蓝 */
+.ex-pin-btn {
+  pointer-events: auto;
   margin-left: auto;
+  margin-right: -6px;
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  padding: 2px 6px;
+  border-radius: 7px;
   font-size: 11.5px;
   color: #c3c9d4;
-  transition: color 0.15s ease;
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
 }
 
-.ex-pin-mark svg {
+.ex-pin-btn svg {
   width: 14px;
   height: 14px;
 }
 
-.ex-card:hover .ex-pin-mark {
+.ex-card:hover .ex-pin-btn {
   color: var(--text-2);
 }
 
-.ex-card.is-pinned .ex-pin-mark {
+.ex-pin-btn:hover {
+  background: #f2f5fa;
+  color: var(--navy);
+}
+
+.ex-pin-btn.is-pinned {
   color: var(--blue);
   font-weight: 700;
 }
 
-.ex-card.is-pinned .ex-pin-mark svg {
+.ex-pin-btn.is-pinned svg {
   fill: rgba(59, 110, 246, 0.16);
 }
 
@@ -438,6 +473,298 @@
   color: var(--text-3);
 }
 
+
+/* ---------- 专家详情抽屉（右侧滑出，按截图排版） ---------- */
+
+.ex-drawer-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 85;
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(15, 23, 42, 0.32);
+  animation: ex-mask-in 0.18s ease;
+}
+
+.ex-drawer {
+  position: relative;
+  width: min(640px, 100%);
+  height: 100%;
+  padding: 18px 20px 28px;
+  background: var(--surface);
+  border-radius: 18px 0 0 18px;
+  box-shadow: -24px 0 64px rgba(15, 25, 50, 0.22);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  animation: ex-drawer-in 0.24s cubic-bezier(0.22, 0.8, 0.28, 1);
+}
+
+@keyframes ex-mask-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ex-drawer-in {
+  from { transform: translateX(30px); opacity: 0.4; }
+  to { transform: none; opacity: 1; }
+}
+
+.ex-drawer-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: #8d94a3;
+  background: transparent;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.ex-drawer-close svg {
+  width: 16px;
+  height: 16px;
+}
+
+.ex-drawer-close:hover {
+  background: #f3f5f9;
+  color: var(--navy);
+}
+
+/* 身份区：头像 + 名称（职业 | 昵称）+ 召唤 */
+.ex-drawer-head {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding-right: 44px;
+}
+
+.ex-drawer-head .expert-avatar {
+  width: 78px;
+  height: 78px;
+  border-radius: 16px;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22), 0 8px 18px rgba(23, 43, 92, 0.16);
+}
+
+.ex-drawer-ident {
+  min-width: 0;
+  flex: 1;
+  padding-top: 6px;
+}
+
+.ex-drawer-title {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  min-width: 0;
+  font-size: 19.5px;
+  font-weight: 700;
+  color: #1b2430;
+  letter-spacing: 0.2px;
+  line-height: 1.35;
+}
+
+.ex-drawer-name {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ex-drawer-title i {
+  flex: none;
+  font-style: normal;
+  font-weight: 400;
+  color: #d3d8e2;
+}
+
+.ex-drawer-persona {
+  flex: none;
+  color: #333b48;
+}
+
+.ex-summon {
+  margin-top: 12px;
+  height: 38px;
+  padding: 0 22px;
+  border-radius: 8px;
+  background: #141a26;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.ex-summon:hover {
+  background: #000;
+}
+
+.ex-summon:active {
+  transform: scale(0.98);
+}
+
+.ex-drawer-desc {
+  margin-top: 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #4b5361;
+}
+
+.ex-drawer-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.ex-drawer-tags .ex-tag {
+  padding: 4px 9px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  color: #4b5361;
+  background: #f2f3f5;
+}
+
+/* 版本 / 使用量：上下细线分隔的两栏 */
+.ex-drawer-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 22px;
+  border-top: 1px solid #eceef3;
+  border-bottom: 1px solid #eceef3;
+}
+
+.ex-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 18px 8px 16px;
+  text-align: center;
+}
+
+.ex-stat + .ex-stat {
+  border-left: 1px solid #f1f3f7;
+}
+
+.ex-stat strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1b2430;
+}
+
+.ex-stat strong svg {
+  width: 16px;
+  height: 16px;
+  color: #4b5361;
+}
+
+.ex-stat > span {
+  font-size: 12px;
+  color: #98a1b2;
+}
+
+/* 专家帮你做 / 更多 */
+.ex-drawer-sec {
+  margin-top: 28px;
+}
+
+/* 抽屉自己的滚动条：细、低调 */
+.ex-drawer::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ex-drawer::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #e3e7ef;
+}
+
+.ex-drawer-sec-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1b2430;
+}
+
+.ex-drawer-sec-title svg {
+  width: 17px;
+  height: 17px;
+  color: #3f4756;
+}
+
+.ex-prompt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 13px;
+}
+
+.ex-prompt {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 13px 15px;
+  border-radius: 12px;
+  background: #f7f8fa;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ex-prompt:hover {
+  background: #f1f3f7;
+  box-shadow: inset 0 0 0 1px #e6eaf2;
+}
+
+.ex-prompt-text {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #454c59;
+}
+
+.ex-prompt-ic {
+  flex: none;
+  padding-top: 2px;
+  color: #8b93a3;
+}
+
+.ex-prompt-ic svg {
+  width: 17px;
+  height: 17px;
+}
+
+.ex-drawer-idbox {
+  display: block;
+  width: 100%;
+  margin-top: 13px;
+  padding: 13px 15px;
+  border-radius: 10px;
+  background: #f7f8fa;
+  text-align: left;
+  font-size: 13px;
+  color: #5d6472;
+  cursor: copy;
+  transition: background 0.15s ease;
+}
+
+.ex-drawer-idbox:hover {
+  background: #f1f3f7;
+}
+
 /* ---------- 响应式 ---------- */
 
 @media (max-width: 1240px) {
@@ -449,4 +776,32 @@
   .ex-cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ex-top-tabs { gap: 16px; }
   .ex-top-tab { font-size: 15.5px; }
+}
+
+@media (max-width: 640px) {
+  .ex-drawer {
+    width: 100%;
+    border-radius: 0;
+    padding: 14px 16px 24px;
+  }
+
+  .ex-drawer-head {
+    gap: 14px;
+    padding-right: 38px;
+  }
+
+  .ex-drawer-head .expert-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    font-size: 22px;
+  }
+
+  .ex-drawer-title {
+    font-size: 17px;
+  }
+
+  .ex-drawer-stats {
+    margin-top: 16px;
+  }
 }

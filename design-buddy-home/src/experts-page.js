@@ -75,9 +75,11 @@ const computeList = () => {
 const renderGrid = () => {
   const list = computeList()
   const pinned = pinnedNames()
-  $('#ex-grid').innerHTML = list.length ? list.map((e) => `
-    <button class="ex-card${pinned.has(e.name) ? ' is-pinned' : ''}" type="button" data-pin="${e.id}"
-      aria-pressed="${pinned.has(e.name)}">
+  $('#ex-grid').innerHTML = list.length ? list.map((e) => {
+    const isPinned = pinned.has(e.name)
+    return `
+    <article class="ex-card${isPinned ? ' is-pinned' : ''}" data-expert="${e.id}">
+      <button class="ex-card-hit" type="button" data-open-expert="${e.id}" aria-label="查看「${e.name}」详情"></button>
       <span class="ex-card-head">
         <span class="expert-avatar ${e.color}">${e.name[0]}</span>
         <span class="ex-card-title">
@@ -92,9 +94,13 @@ const renderGrid = () => {
         <span class="ex-usage">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>
           ${formatUsage(e.usage)}</span>
-        <span class="ex-pin-mark">${pinned.has(e.name) ? '已固定' : ''}${PIN_ICON}</span>
+        <button class="ex-pin-btn${isPinned ? ' is-pinned' : ''}" type="button" data-pin="${e.id}"
+          aria-pressed="${isPinned}" aria-label="${isPinned ? '取消固定' : '固定'}「${e.name}」">
+          <span class="ex-pin-text">${isPinned ? '已固定' : ''}</span>${PIN_ICON}
+        </button>
       </span>
-    </button>`).join('')
+    </article>`
+  }).join('')
     : '<p class="ex-empty">没有匹配的专家，换个关键词或筛选条件试试。</p>'
 }
 
@@ -163,13 +169,149 @@ $('.ex-sort').addEventListener('click', (ev) => {
 })
 
 $('#ex-grid').addEventListener('click', (ev) => {
-  const card = ev.target.closest('[data-pin]')
-  if (!card) return
-  const entry = EXPERT_CATALOG.find((e) => e.id === card.dataset.pin)
-  if (!entry) return
-  togglePin(entry)
-  renderGrid()
+  const pinBtn = ev.target.closest('[data-pin]')
+  if (pinBtn) {
+    const entry = EXPERT_CATALOG.find((e) => e.id === pinBtn.dataset.pin)
+    if (entry) {
+      togglePin(entry)
+      renderGrid()
+    }
+    return
+  }
+  const opener = ev.target.closest('[data-open-expert]')
+  if (!opener) return
+  const entry = EXPERT_CATALOG.find((e) => e.id === opener.dataset.openExpert)
+  if (entry) openExpertDrawer(entry)
 })
+
+/* ---------- 专家详情抽屉（按截图：身份 / 召唤 / 介绍 / 能力标签 / 帮你做 / 更多） ---------- */
+
+export const SUMMON_KEY = 'design-buddy-summon-v1'
+
+const DRAWER_ICON = {
+  close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+  bolt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>',
+  help: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8" r="3.1"/><path d="M3.8 20c0-3.4 2.8-6.2 6.2-6.2 1.2 0 2.3.3 3.2.9"/><path d="m17.4 4.2.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8Z"/></svg>',
+  more: '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="8" cy="8" r="1.7"/><circle cx="16" cy="8" r="1.7"/><circle cx="8" cy="16" r="1.7"/><circle cx="16" cy="16" r="1.7"/></svg>',
+  bubble: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8 8 0 0 1-8.4 7.9 8.6 8.6 0 0 1-3.4-.7L4 20.5l1.5-4.3a8 8 0 0 1 6.6-12.1 8 8 0 0 1 8.4 7.5Z"/><circle cx="9" cy="11.5" r=".9" fill="currentColor" stroke="none"/><circle cx="12.5" cy="11.5" r=".9" fill="currentColor" stroke="none"/><circle cx="16" cy="11.5" r=".9" fill="currentColor" stroke="none"/></svg>',
+}
+
+let drawerMask = null
+let drawerReturnFocus = null
+
+const onDrawerKeydown = (ev) => {
+  if (ev.key !== 'Escape') return
+  ev.preventDefault()
+  closeExpertDrawer()
+}
+
+const closeExpertDrawer = () => {
+  if (!drawerMask) return
+  drawerMask.remove()
+  drawerMask = null
+  document.removeEventListener('keydown', onDrawerKeydown)
+  drawerReturnFocus?.focus?.()
+  drawerReturnFocus = null
+}
+
+/* 召唤 / 带入提示词：把意图交给首页（同一个 localStorage 域），再跳转过去 */
+const summonExpert = (entry, prompt = '') => {
+  try {
+    localStorage.setItem(SUMMON_KEY, JSON.stringify({ id: entry.id, name: entry.name, prompt }))
+  } catch {
+    /* 隐私模式下写不进去也不阻断跳转 */
+  }
+  closeExpertDrawer()
+  location.href = 'index.html'
+}
+
+const copyExpertId = async (entry) => {
+  const text = entry.id
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text)
+      toast(`已复制专家 ID：${text}`)
+      return
+    }
+  } catch {
+    /* 落到手动选中兜底 */
+  }
+  const box = drawerMask?.querySelector('[data-copy-id]')
+  if (box) {
+    const range = document.createRange()
+    range.selectNodeContents(box)
+    const sel = window.getSelection()
+    sel?.removeAllRanges()
+    sel?.addRange(range)
+  }
+  toast('已选中 ID，按 Ctrl / ⌘ + C 复制')
+}
+
+const openExpertDrawer = (entry) => {
+  if (!entry) return
+  closeExpertDrawer()
+  const usage = entry.usage ? formatUsage(entry.usage) : '暂无数据'
+  const prompts = entry.prompts ?? []
+  const mask = document.createElement('div')
+  mask.className = 'ex-drawer-mask'
+  mask.dataset.exDrawer = entry.id
+  mask.innerHTML = `
+    <aside class="ex-drawer" role="dialog" aria-modal="true" aria-labelledby="ex-drawer-title">
+      <button class="ex-drawer-close" type="button" data-drawer-close aria-label="关闭专家详情">${DRAWER_ICON.close}</button>
+      <div class="ex-drawer-head">
+        <span class="expert-avatar ${entry.color}">${entry.name[0]}</span>
+        <div class="ex-drawer-ident">
+          <h2 class="ex-drawer-title" id="ex-drawer-title">
+            <span class="ex-drawer-name">${entry.name}</span>${entry.persona ? `<i aria-hidden="true">|</i><span class="ex-drawer-persona">${entry.persona}</span>` : ''}
+          </h2>
+          <button class="ex-summon" type="button" data-summon>召唤</button>
+        </div>
+      </div>
+      <p class="ex-drawer-desc">${entry.desc}</p>
+      <div class="ex-drawer-tags">${entry.tags.map((t) => `<span class="ex-tag">${t}</span>`).join('')}</div>
+      <div class="ex-drawer-stats">
+        <div class="ex-stat"><strong>${entry.version ?? 'v1.0.0'}</strong><span>版本</span></div>
+        <div class="ex-stat"><strong>${DRAWER_ICON.bolt}${usage}</strong><span>使用量</span></div>
+      </div>
+      <section class="ex-drawer-sec">
+        <h3 class="ex-drawer-sec-title">${DRAWER_ICON.help}<span>专家帮你做</span></h3>
+        <div class="ex-prompt-list">${prompts.map((text) => `
+          <button class="ex-prompt" type="button" data-prompt="${text}">
+            <span class="ex-prompt-text">「${text}」</span>
+            <span class="ex-prompt-ic">${DRAWER_ICON.bubble}</span>
+          </button>`).join('')}</div>
+      </section>
+      <section class="ex-drawer-sec">
+        <h3 class="ex-drawer-sec-title">${DRAWER_ICON.more}<span>更多</span></h3>
+        <button class="ex-drawer-idbox" type="button" data-copy-id title="点击复制专家 ID">
+          <span>ID: ${entry.id}</span>
+        </button>
+      </section>
+    </aside>`
+
+  drawerReturnFocus = document.activeElement
+  document.body.appendChild(mask)
+  drawerMask = mask
+  document.addEventListener('keydown', onDrawerKeydown)
+  mask.querySelector('[data-drawer-close]')?.focus?.()
+
+  mask.addEventListener('click', (ev) => {
+    if (ev.target.closest('[data-drawer-close]') || ev.target === mask) {
+      closeExpertDrawer()
+      return
+    }
+    if (ev.target.closest('[data-summon]')) {
+      summonExpert(entry)
+      return
+    }
+    const promptBtn = ev.target.closest('[data-prompt]')
+    if (promptBtn) {
+      summonExpert(entry, promptBtn.dataset.prompt)
+      return
+    }
+    if (ev.target.closest('[data-copy-id]')) copyExpertId(entry)
+  })
+}
 
 /* ---------- 首屏 ---------- */
 
