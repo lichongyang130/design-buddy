@@ -1223,3 +1223,507 @@
   color: #2f5bd6;
   background: rgba(47, 91, 214, 0.1);
 }
+
+/* ============================================================
+   专家发现弹窗：左侧管理栏（沿用旧弹窗）+ 右侧截图式发现区
+   ============================================================ */
+
+.modal-experts {
+  width: min(1240px, 96vw);
+  height: min(880px, 90vh);
+  max-height: 90vh;
+}
+
+.modal-experts .modal-body {
+  padding: 0;
+  overflow: hidden;
+  flex: 1;
+  min-height: 0;
+}
+
+.experts-layout {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+}
+
+/* ---------- 左侧：我的专家管理（与旧弹窗一致的列表结构） ---------- */
+
+.experts-side {
+  width: 288px;
+  flex: none;
+  border-right: 1px solid var(--line-soft);
+  padding: 18px 16px;
+  overflow-y: auto;
+  background: #fbfcfe;
+}
+
+.experts-side-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-3);
+  margin: 2px 4px 10px;
+}
+
+.experts-side .modal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.experts-side .modal-list-item {
+  padding: 10px 12px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.experts-side .modal-list-item .primary {
+  font-size: 13.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.experts-side .modal-list-item .secondary {
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.experts-side .btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.experts-side .settings-section-label {
+  margin: 18px 4px 10px;
+  font-size: 12px;
+}
+
+/* ---------- 右侧主区 ---------- */
+
+.experts-main {
+  flex: 1;
+  min-width: 0;
+  padding: 18px 22px 22px;
+  overflow-y: auto;
+}
+
+.ex-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.ex-top-tabs {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.ex-top-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-3);
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.ex-top-tab svg { width: 19px; height: 19px; }
+
+.ex-top-tab:hover { color: var(--navy-soft); }
+
+.ex-top-tab.is-active {
+  color: var(--navy);
+  border-bottom-color: var(--navy);
+}
+
+.ex-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ex-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 240px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  transition: border-color 0.15s;
+}
+
+.ex-search:focus-within { border-color: var(--blue); }
+
+.ex-search svg { width: 15px; height: 15px; color: var(--text-3); flex: none; }
+
+.ex-search input {
+  border: 0;
+  outline: 0;
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  color: var(--text);
+  background: transparent;
+}
+
+.ex-search input::placeholder { color: var(--text-3); }
+
+.ex-mine-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  background: var(--surface);
+  white-space: nowrap;
+}
+
+.ex-mine-btn svg { width: 15px; height: 15px; }
+
+.ex-mine-btn:hover { border-color: var(--blue); color: var(--blue); }
+
+.ex-mine-btn.is-active {
+  color: #fff;
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+/* ---------- 场景分类横向卡片 ---------- */
+
+.ex-cat-wrap { position: relative; margin-top: 18px; }
+
+.ex-cat-track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+}
+
+.ex-cat-track::-webkit-scrollbar { display: none; }
+
+.ex-cat {
+  flex: 0 0 232px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  overflow: hidden;
+  text-align: left;
+  cursor: pointer;
+  transition: box-shadow 0.15s, transform 0.15s, border-color 0.15s;
+  padding: 0;
+}
+
+.ex-cat:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+  border-color: #d7deea;
+}
+
+.ex-cat-banner {
+  position: relative;
+  height: 96px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: flex-end;
+  background: var(--g, linear-gradient(135deg, #ece4ff, #d8cbff));
+}
+
+.ex-cat-banner svg {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  width: 34px;
+  height: 34px;
+  color: rgba(30, 43, 77, 0.42);
+}
+
+.ex-cat-name {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.ex-cat-subs {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 14px 12px;
+  gap: 7px;
+}
+
+.ex-cat-sub {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+.ex-cat-sub i {
+  font-style: normal;
+  color: var(--text-3);
+  font-size: 14px;
+}
+
+.ex-cat:hover .ex-cat-sub { color: var(--blue); }
+
+.ex-scroll-btn {
+  position: absolute;
+  top: 38px;
+  right: -6px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  box-shadow: var(--shadow-card);
+  display: grid;
+  place-items: center;
+  color: var(--navy-soft);
+  font-size: 17px;
+  line-height: 1;
+  z-index: 2;
+}
+
+.ex-scroll-btn:hover { color: var(--blue); border-color: var(--blue); }
+
+/* ---------- 专家/专家团 + 排序 ---------- */
+
+.ex-sub-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.ex-kind-tabs { display: flex; gap: 16px; }
+
+.ex-kind-tab {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-3);
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+}
+
+.ex-kind-tab.is-active { color: var(--navy); border-bottom-color: var(--navy); }
+
+.ex-sort {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  background: #f1f3f8;
+  border-radius: 9px;
+}
+
+.ex-sort-btn {
+  padding: 5px 16px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.ex-sort-btn.is-active {
+  background: var(--surface);
+  color: var(--navy);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ---------- 分类筛选 chips ---------- */
+
+.ex-chip-wrap { position: relative; margin-top: 14px; }
+
+.ex-chip-track {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.ex-chip-track::-webkit-scrollbar { display: none; }
+
+.ex-chip {
+  flex: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--text-2);
+  background: #f3f5f9;
+  white-space: nowrap;
+}
+
+.ex-chip:hover { color: var(--blue); background: var(--blue-bg); }
+
+.ex-chip.is-active {
+  color: #fff;
+  background: var(--navy);
+  font-weight: 600;
+}
+
+.ex-chip-next {
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  box-shadow: var(--shadow-card);
+  color: var(--navy-soft);
+  z-index: 2;
+}
+
+/* ---------- 专家卡片网格 ---------- */
+
+.ex-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.ex-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  padding: 16px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  cursor: pointer;
+  transition: box-shadow 0.15s, transform 0.15s, border-color 0.15s;
+}
+
+.ex-card:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+  border-color: #d7deea;
+}
+
+.ex-card.is-pinned {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 1px var(--blue) inset;
+}
+
+.ex-card-head { display: flex; gap: 11px; align-items: flex-start; }
+
+.ex-card-head .expert-avatar {
+  width: 44px;
+  height: 44px;
+  font-size: 16px;
+}
+
+.ex-card-title { min-width: 0; flex: 1; }
+
+.ex-card-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ex-badge {
+  flex: none;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #b7791f;
+  background: #fdf0d5;
+  border-radius: 5px;
+  padding: 1px 5px;
+}
+
+.ex-card-desc {
+  margin-top: 4px;
+  font-size: 12.5px;
+  color: var(--text-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ex-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.ex-tag {
+  font-size: 11.5px;
+  color: var(--text-3);
+  background: #f3f5f9;
+  border-radius: 6px;
+  padding: 3px 8px;
+}
+
+.ex-card-foot {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+
+.ex-card-foot svg { width: 14px; height: 14px; }
+
+.ex-usage { display: inline-flex; align-items: center; gap: 4px; }
+
+.ex-pin-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--blue);
+  background: var(--blue-bg);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.ex-empty {
+  grid-column: 1 / -1;
+  padding: 54px 20px;
+  text-align: center;
+  color: var(--text-3);
+  font-size: 13.5px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-md);
+}
+
+/* ---------- 卡片头像扩展色系（沿用渐变头像语言） ---------- */
+
+.av-teal { background: linear-gradient(145deg, #34c3ab, #0f7d6d); }
+.av-rose { background: linear-gradient(145deg, #f472a0, #c2386d); }
+.av-gold { background: linear-gradient(145deg, #f2b45c, #c8801f); }
+.av-green { background: linear-gradient(145deg, #5cc98a, #2f8a57); }
+.av-cyan { background: linear-gradient(145deg, #56c4e8, #2387b5); }
+.av-indigo { background: linear-gradient(145deg, #6f7ef5, #3d49c4); }
+.av-pink { background: linear-gradient(145deg, #f08ea8, #cf4f71); }
+.av-slate { background: linear-gradient(145deg, #7c8aa5, #46536e); }
+
+@media (max-width: 900px) {
+  .experts-side { display: none; }
+  .ex-search { width: 160px; }
+}
