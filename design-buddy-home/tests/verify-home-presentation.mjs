@@ -37,10 +37,9 @@ check('topbar left keeps back then upgrade in order',
   === 'back,upgrade')
 check('default state hides the back pill', $('#back-btn').hidden === true)
 check('upgrade pill keeps its label', $('.pill-upgrade')?.textContent.includes('升级获得更多 AI 功能'))
-check('topbar right has blank-new and credit pill',
-  [...doc.querySelectorAll('.topbar-right > *')].map((n) => n.className.includes('credits') ? 'credits' : 'new').join()
-  === 'new,credits')
-check('credits pill shows the real balance', $('.credits strong')?.textContent === '236')
+check('topbar right no longer has blank-new and credit pill',
+  [...doc.querySelectorAll('.topbar-right > *')].length === 0)
+check('credits pill removed from topbar', !$('.credits strong'))
 
 /* ---------- 2. 头图与问候语 ---------- */
 

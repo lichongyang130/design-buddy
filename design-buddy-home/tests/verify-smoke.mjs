@@ -129,22 +129,24 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   check('upload closes popover', doc.querySelector('#img-popover').hidden)
 
   const gammaCount = JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).gammas.length
-  click(w, doc.querySelector('.topbar-right .pill'))
-  await tick()
-  // 现在会弹出新建 gamma 弹窗，需要双击格式卡片来创建
-  const ngModal = doc.querySelector('.modal-mask')
-  if (ngModal) {
-    const formatCard = ngModal.querySelector('[data-format]')
-    if (formatCard) {
-      formatCard.dispatchEvent(new w.MouseEvent('dblclick', { bubbles: true }))
-      await tick()
-    }
-    // 关闭弹窗
-    const closeBtn = ngModal.querySelector('.modal-close')
-    if (closeBtn) click(w, closeBtn)
-    await tick()
-  }
-  check('blank gamma created without credits flow', JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).gammas.length === gammaCount + 1)
+  // 已移除"从空白新建"按钮，跳过此测试
+  // click(w, doc.querySelector('.topbar-right .pill'))
+  // await tick()
+  // // 现在会弹出新建 gamma 弹窗，需要双击格式卡片来创建
+  // const ngModal = doc.querySelector('.modal-mask')
+  // if (ngModal) {
+  //   const formatCard = ngModal.querySelector('[data-format]')
+  //   if (formatCard) {
+  //     formatCard.dispatchEvent(new w.MouseEvent('dblclick', { bubbles: true }))
+  //     await tick()
+  //   }
+  //   // 关闭弹窗
+  //   const closeBtn = ngModal.querySelector('.modal-close')
+  //   if (closeBtn) click(w, closeBtn)
+  //   await tick()
+  // }
+  // check('blank gamma created without credits flow', JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).gammas.length === gammaCount + 1)
+  check('blank gamma removed from topbar', !doc.querySelector('.topbar-right .pill'))
 
   click(w, doc.querySelector('.help-fab'))
   await tick()
@@ -191,23 +193,26 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   check('smart suggest hides template row', doc.querySelector('.template-row')?.hidden === true)
 
   const before = JSON.parse(storage.getItem('design-buddy-state-v1')).gammas.length
-  click(w, doc.querySelector('.topbar-right .pill'))
-  await tick()
-  // 现在会弹出新建 gamma 弹窗，需要双击格式卡片来创建
-  const ngModal = doc.querySelector('.modal-mask')
-  if (ngModal) {
-    const formatCard = ngModal.querySelector('[data-format]')
-    if (formatCard) {
-      formatCard.dispatchEvent(new w.MouseEvent('dblclick', { bubbles: true }))
-      await tick()
-    }
-    // 关闭弹窗
-    const closeBtn = ngModal.querySelector('.modal-close')
-    if (closeBtn) click(w, closeBtn)
-    await tick()
-  }
+  // 已移除"从空白新建"按钮，跳过此测试
+  // click(w, doc.querySelector('.topbar-right .pill'))
+  // await tick()
+  // // 现在会弹出新建 gamma 弹窗，需要双击格式卡片来创建
+  // const ngModal = doc.querySelector('.modal-mask')
+  // if (ngModal) {
+  //   const formatCard = ngModal.querySelector('[data-format]')
+  //   if (formatCard) {
+  //     formatCard.dispatchEvent(new w.MouseEvent('dblclick', { bubbles: true }))
+  //     await tick()
+  //   }
+  //   // 关闭弹窗
+  //   const closeBtn = ngModal.querySelector('.modal-close')
+  //   if (closeBtn) click(w, closeBtn)
+  //   await tick()
+  // }
   const after = JSON.parse(storage.getItem('design-buddy-state-v1')).gammas
-  check('auto title off yields timestamp placeholder', after.length === before + 1 && /^未命名创作 \d{2}:\d{2}$/.test(after[0].title), after[0].title)
+  // 已移除"从空白新建"按钮，跳过此测试
+  // check('auto title off yields timestamp placeholder', after.length === before + 1 && /^未命名创作 \d{2}:\d{2}$/.test(after[0].title), after[0].title)
+  check('blank gamma button removed from topbar', !doc.querySelector('.topbar-right .pill'))
 
   // 技能信任门控：默认未信任，开关点击不启用并给出提示（技能已是独立页面）
   const skillsPage = await loadPage('/skills.html', { storage, freshCopy: true })

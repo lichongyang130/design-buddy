@@ -154,7 +154,8 @@ const TYPE_ICONS = { 演示文稿: '📊', 文档: '📄', 轮播图: '🎞️',
 /* ---------------- 积分 / 工作区显示 ---------------- */
 
 function syncChrome() {
-  $('.credits strong').textContent = store.state.credits
+  const creditsEl = $('.credits strong')
+  if (creditsEl) creditsEl.textContent = store.state.credits
   const ws = store.state.workspaces.find((w) => w.id === store.state.activeWorkspaceId) ?? store.state.workspaces[0]
   $('.workspace-name').textContent = ws.name
   $('.workspace-plan').textContent = ws.plan === 'pro' ? 'Pro' : 'Free'
@@ -2431,7 +2432,6 @@ function createBlankGamma() {
 $('.pill-outline').addEventListener('click', () => { location.href = 'templates.html' })
 $('#view-all-templates')?.addEventListener('click', () => { location.href = 'templates.html' })
 $('.pill-upgrade').addEventListener('click', openUpgrade)
-$('.topbar-right .pill').addEventListener('click', createBlankGamma)
 $('.help-fab').addEventListener('click', openHelp)
 $$('.rail-footer .footer-icon').forEach((btn) => {
   btn.addEventListener('click', () => {
