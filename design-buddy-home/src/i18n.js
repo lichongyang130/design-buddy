@@ -23,6 +23,12 @@ const DICT = {
   'menu.skills': { zh: '技能', 'zh-TW': '技能', en: 'Skills', ja: 'スキル' },
   'menu.experts': { zh: '专家', 'zh-TW': '專家', en: 'Experts', ja: 'エキスパート' },
   'menu.connectors': { zh: '连接器', 'zh-TW': '連接器', en: 'Connectors', ja: '連携サービス' },
+  'menu.inspire': { zh: '灵感', 'zh-TW': '靈感', en: 'Inspiration', ja: 'インスピレーション' },
+  'more.emptyTasks': { zh: '暂无任务', 'zh-TW': '暫無任務', en: 'No tasks yet', ja: 'タスクはまだありません' },
+  'more.emptyHint': {
+    zh: '点击上方按钮开始新任务', 'zh-TW': '點擊上方按鈕開始新任務',
+    en: 'Click the button above to start a new task', ja: '上のボタンから新しいタスクを始めましょう',
+  },
 
   /* ---------- 设置页侧栏 14 组 ---------- */
   'nav.general': { zh: '通用', 'zh-TW': '通用', en: 'General', ja: '一般' },

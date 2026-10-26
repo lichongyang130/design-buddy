@@ -608,9 +608,8 @@ const IMG_BTN_LABELS = {
 }
 function syncImgBtn() {
   $('#img-mode-label').textContent = IMG_BTN_LABELS[ui.imgMode] ?? ui.imgMode
-  const isNone = ui.imgMode === '不添加图片'
-  imgBtn.querySelector('.img-ic-on').hidden = isNone
-  imgBtn.querySelector('.img-ic-off').hidden = !isNone
+  // 图片图标固定展示，不再随「无图片」模式切换为禁用图标
+  imgBtn.querySelector('.img-ic-on').hidden = false
 }
 syncImgBtn()
 const imgPopoverIsOpen = () => !imgPopover.hidden
