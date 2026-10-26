@@ -95,6 +95,11 @@ const renderGrid = () => {
         </span>
       </span>
       <span class="ex-card-tags">${e.tags.map((t) => `<span class="ex-tag">${t}</span>`).join('')}</span>
+      ${e.skills?.length ? `
+      <span class="ex-card-skills">
+        <span class="ex-card-skills-label">技能</span>
+        ${e.skills.map((s) => `<span class="ex-skill-tag">${s}</span>`).join('')}
+      </span>` : ''}
       <span class="ex-card-solves" title="${e.solves?.[0] ?? ''}">
         ${SOLVES_ICON}<span>${e.solves?.[0] ?? ''}</span>
       </span>

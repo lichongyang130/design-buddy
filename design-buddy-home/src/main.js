@@ -470,6 +470,17 @@ function referenceFiles() {
   })
 }
 
+/* 调用技能：输入框「/」触发与「＋」菜单技能行共用同一入口 */
+const pickSkill = (skill) => {
+  if (!skill.enabled) {
+    toast(`「${skill.name}」还没启用，先去技能页开启`)
+    return
+  }
+  activeSkill = { id: skill.id, name: skill.name }
+  renderChips()
+  toast(`已调用技能「${skill.name}」，发送后真实运行`)
+}
+
 const promptTriggers = initPromptTriggers({
   input,
   listFiles: referenceFiles,
@@ -482,15 +493,7 @@ const promptTriggers = initPromptTriggers({
     toast(`已引用「${file.name}」，随提示词一起提交`)
   },
   listSkills: () => store.state.skills ?? [],
-  onPickSkill: (skill) => {
-    if (!skill.enabled) {
-      toast(`「${skill.name}」还没启用，先去技能页开启`)
-      return
-    }
-    activeSkill = { id: skill.id, name: skill.name }
-    renderChips()
-    toast(`已调用技能「${skill.name}」，发送后真实运行`)
-  },
+  onPickSkill: pickSkill,
 })
 
 function submitPrompt() {
@@ -1400,6 +1403,8 @@ const addSub = initAddSubPanels({
   openRefPicker: () => openReferencePicker(),
   onAttachmentsChange: () => renderChips(),
   closeMenu: () => closePopover(),
+  onPickSkill: pickSkill,
+  currentSkill: () => activeSkill,
   fillPrompt: (text, files = []) => {
     input.value = text
     input.style.height = 'auto'

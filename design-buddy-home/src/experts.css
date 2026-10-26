@@ -400,6 +400,37 @@
   background: #eef2f9;
 }
 
+/* 卡片上露出该专家的技能库（办公问题 → 专家 → 技能） */
+.ex-card-skills {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.ex-card-skills-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--text-3);
+  letter-spacing: 0.5px;
+  flex: none;
+}
+
+.ex-skill-tag {
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #4338ca;
+  background: #eef2ff;
+  border: 1px solid #e0e7ff;
+  white-space: nowrap;
+}
+
+.ex-card:hover .ex-skill-tag {
+  background: #e0e7ff;
+}
+
 /* 卡片里直接点出「它解决什么问题」，避免专家栏变成一堆看不懂的头衔 */
 .ex-card-solves {
   display: flex;
