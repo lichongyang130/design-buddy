@@ -76,8 +76,7 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   const cards = [...doc.querySelectorAll('.ex-card')]
   const portraits = cards.filter((c) => c.querySelector('.expert-avatar.has-photo img'))
   const initials = cards.filter((c) => !c.querySelector('.expert-avatar.has-photo img'))
-  check('every expert card paints an avatar (portrait or initials)',
-    portraits.length + initials.length === cards.length, `${portraits.length}/${initials.length}/${cards.length}`)
+  check('every expert card paints a 3D portrait avatar', portraits.length === cards.length, `${portraits.length}/${cards.length}`)
   check('portrait avatars point at local webp files',
     portraits.every((c) => /^\/avatars\/ec-[a-z-]+\.webp$/.test(c.querySelector('.expert-avatar img').getAttribute('src'))))
   check('portraits lazy-load and stay decorative',
@@ -85,8 +84,14 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
       && c.querySelector('.expert-avatar img').getAttribute('alt') === ''))
   check('cards without a portrait fall back to single-char initials',
     initials.every((c) => c.querySelector('.expert-avatar').textContent.trim().length === 1))
-  check('registered avatar files are local webp',
-    EXPERT_CATALOG.every((e) => !EXPERT_AVATARS[e.id] || /^\/avatars\/ec-[a-z-]+\.webp$/.test(EXPERT_AVATARS[e.id])))
+  check('every catalog expert has an avatar file registered',
+    EXPERT_CATALOG.every((e) => /^\/avatars\/ec-[a-z-]+\.webp$/.test(EXPERT_AVATARS[e.id] ?? '')))
+  check('avatar files exist on disk and are reasonable size',
+    EXPERT_CATALOG.every((e) => {
+      const p = path.join(DIST, EXPERT_AVATARS[e.id])
+      const st = fs.statSync(p)
+      return st.isFile() && st.size > 2000 && st.size < 40000
+    }))
   check('avatar contract in built CSS',
     cssCompact.includes('.expert-avatar.has-photo{overflow:hidden')
     && cssCompact.includes('.expert-avatar.has-photoimg{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit}'))
@@ -220,9 +225,9 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
     drawer().querySelector('.ex-drawer-name')?.textContent === py.name
     && drawer().querySelector('.ex-drawer-persona')?.textContent === py.persona
     && drawer().querySelector('.ex-drawer-title i')?.textContent === '|')
-  check('drawer reuses the same avatar (portrait or initials)',
-    drawer().querySelector('.ex-drawer-head .expert-avatar img')?.getAttribute('src') === `/avatars/${py.id}.webp`
-    || drawer().querySelector('.ex-drawer-head .expert-avatar')?.textContent.trim() === py.name[0])
+  check('drawer reuses the same portrait avatar',
+    drawer().querySelector('.ex-drawer-head .expert-avatar img')?.getAttribute('src')
+      === `/avatars/${py.id}.webp`)
   check('drawer offers the summon button',
     drawer().querySelector('[data-summon]')?.textContent.trim() === '召唤')
   check('drawer shows the full description',
@@ -390,13 +395,13 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
     home.doc.querySelector('#toast')?.textContent.includes('已取消召唤'))
 
   // 没有肖像的专家：第二项显示首字 + 渐变底（而不是头像图片）
-  storage.setItem('design-buddy-summon-v1', JSON.stringify({ name: '内容优化专家', prompt: '' }))
+  storage.setItem('design-buddy-summon-v1', JSON.stringify({ name: '特邀顾问', prompt: '' }))
   const home2 = await loadPage('/index.html', { storage, freshCopy: true })
   const chip2 = home2.doc.querySelector('#prompt-expert')
   check('experts without a portrait render initials in the toolbar chip',
-    chip2?.querySelector('.prompt-expert-avatar.is-initial')?.textContent === '内'
+    chip2?.querySelector('.prompt-expert-avatar.is-initial')?.textContent === '特'
     && !chip2.querySelector('img.prompt-expert-avatar')
-    && chip2.querySelector('.prompt-expert-name')?.textContent === '内容优化专家'
+    && chip2.querySelector('.prompt-expert-name')?.textContent === '特邀顾问'
     && home2.doc.querySelector('.toolbar-left').children[1] === chip2)
   check('toolbar chip contract in built CSS',
     cssCompact.includes('.prompt-expert{display:inline-flex;align-items:center;gap:7px;height:36px')
