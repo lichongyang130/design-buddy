@@ -1727,3 +1727,333 @@
   .experts-side { display: none; }
   .ex-search { width: 160px; }
 }
+
+/* ============================================================
+   技能发现弹窗：左侧已安装管理（与专家弹窗同款侧栏）+ 右侧截图式发现区
+   ============================================================ */
+
+.modal-skills {
+  width: min(1240px, 96vw);
+  height: min(880px, 90vh);
+  max-height: 90vh;
+}
+
+.modal-skills .modal-body {
+  padding: 0;
+  overflow: hidden;
+  flex: 1;
+  min-height: 0;
+}
+
+.av-red { background: linear-gradient(145deg, #f46363, #c62f2f); }
+
+/* 左侧管理栏复用 .experts-side 体系，技能侧栏标题行带检查更新 */
+.sk-side-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2px 4px 10px;
+}
+
+.sk-side-head .experts-side-label { margin: 0; }
+
+.sk-check-btn {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--blue);
+  padding: 3px 8px;
+  border-radius: 7px;
+  background: var(--blue-bg);
+  white-space: nowrap;
+}
+
+.sk-check-btn:hover { filter: brightness(0.97); }
+
+.sk-side .modal-list-item .skill-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---------- 右侧顶部操作 ---------- */
+
+.sk-black-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: #141a26;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sk-black-btn:hover { background: #000; }
+
+.sk-installed-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  background: var(--surface);
+  white-space: nowrap;
+}
+
+.sk-installed-btn svg { width: 15px; height: 15px; }
+.sk-installed-btn:hover { border-color: var(--blue); color: var(--blue); }
+.sk-installed-btn.is-active { color: #fff; background: var(--navy); border-color: var(--navy); }
+
+/* ---------- 精选技能横滑 ---------- */
+
+.sk-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.sk-section-title {
+  font-size: 15.5px;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.sk-shuffle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+
+.sk-shuffle svg { width: 14px; height: 14px; }
+.sk-shuffle:hover { color: var(--blue); }
+
+.sk-feature-track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 12px 2px 8px;
+  scrollbar-width: none;
+}
+
+.sk-feature-track::-webkit-scrollbar { display: none; }
+
+.sk-feature-card {
+  position: relative;
+  flex: 0 0 232px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 14px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  text-align: left;
+  cursor: pointer;
+  transition: box-shadow 0.15s, transform 0.15s, border-color 0.15s;
+}
+
+.sk-feature-card:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+  border-color: #d7deea;
+}
+
+/* ---------- 技能卡片通用 ---------- */
+
+.sk-card-top { display: flex; align-items: flex-start; gap: 10px; min-width: 0; }
+
+.sk-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  flex: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.sk-card-title {
+  flex: 1;
+  min-width: 0;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--navy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 2px;
+}
+
+.sk-plus {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  color: var(--text-2);
+  font-size: 17px;
+  line-height: 1;
+  background: var(--surface);
+}
+
+.sk-plus:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-bg); }
+
+.sk-plus.is-installed {
+  border-color: var(--green);
+  color: var(--green);
+  background: rgba(76, 175, 125, 0.1);
+  cursor: default;
+  font-size: 14px;
+}
+
+.sk-card-desc {
+  font-size: 12.5px;
+  color: var(--text-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sk-stats { display: flex; gap: 16px; margin-top: auto; }
+
+.sk-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.sk-stat svg { width: 13px; height: 13px; }
+
+.sk-paid {
+  flex: none;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #b7791f;
+  background: #fdf0d5;
+  border-radius: 5px;
+  padding: 1px 5px;
+  margin-left: 4px;
+}
+
+/* ---------- 推荐 / SkillHub / 套件 ---------- */
+
+.sk-source-tabs { display: flex; gap: 18px; margin-top: 18px; }
+
+.sk-source-tab {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--text-3);
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+}
+
+.sk-source-tab.is-active { color: var(--navy); border-bottom-color: var(--navy); }
+
+.sk-grid-meta {
+  font-size: 12.5px;
+  color: var(--text-3);
+  font-weight: 500;
+}
+
+.sk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.sk-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  text-align: left;
+  cursor: pointer;
+  transition: box-shadow 0.15s, transform 0.15s, border-color 0.15s;
+}
+
+.sk-card:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+  border-color: #d7deea;
+}
+
+.sk-card.is-installed { border-color: rgba(76, 175, 125, 0.45); }
+
+/* ---------- 悬浮信息卡（hover popover） ---------- */
+
+.sk-pop {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+  width: 268px;
+  z-index: 5;
+  padding: 13px 14px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--line-soft);
+  box-shadow: 0 18px 48px rgba(15, 25, 50, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.15s, transform 0.15s, visibility 0.15s;
+  pointer-events: none;
+  text-align: left;
+}
+
+.sk-card:hover .sk-pop,
+.sk-feature-card:hover .sk-pop {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.sk-pop-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.sk-pop-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 9px; }
+
+.sk-pop-tag {
+  font-size: 11px;
+  color: var(--text-2);
+  background: #f3f5f9;
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+.sk-pop-meta {
+  font-size: 11.5px;
+  color: var(--text-3);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+@media (max-width: 900px) {
+  .modal-skills .experts-side { display: none; }
+  .sk-pop { display: none; }
+}
