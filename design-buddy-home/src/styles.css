@@ -627,6 +627,25 @@ a:focus-visible {
   display: flex;
   align-items: center;
   gap: 6px;
+  /* 不参与压缩：压缩会把胶囊里的文字挤成一字一行的竖排 */
+  flex: none;
+  min-width: 0;
+}
+
+.toolbar-right {
+  margin-left: auto;
+}
+
+/* 工具条各控件一律不被压扁，文案不换行；真的放不下时整组换行，而不是把字挤成竖列 */
+.prompt-toolbar {
+  flex-wrap: wrap;
+  row-gap: 8px;
+}
+
+.toolbar-left > *,
+.toolbar-right > * {
+  flex: none;
+  white-space: nowrap;
 }
 
 .tool-btn {
@@ -748,6 +767,8 @@ a:focus-visible {
   color: var(--navy);
   font-weight: 600;
   font-size: 13.5px;
+  white-space: nowrap;
+  flex: none;
   transition: background 0.15s ease;
 }
 
@@ -2250,6 +2271,12 @@ a:focus-visible {
   color: #2f5bd6;
   font-size: 13px;
   font-weight: 600;
+  white-space: nowrap;
+  flex: none;
+}
+
+.type-pill-label {
+  white-space: nowrap;
 }
 
 .type-pill-main .icon {
@@ -3078,6 +3105,8 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  flex: none;
+  white-space: nowrap;
 }
 
 .mini-menu-wrap {
@@ -3089,6 +3118,8 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 3px;
+  flex: none;
+  white-space: nowrap;
   height: 34px;
   padding: 0 9px 0 11px;
   border: 1px solid #e4e7ee;
@@ -3306,4 +3337,100 @@ a:focus-visible {
   .also-grid {
     grid-template-columns: 1fr;
   }
+}
+
+
+/* 图片工作台：左侧有 6 个控件，收紧间距与内边距，保证还是截图里的一行 */
+.is-image-mode .content .prompt-toolbar {
+  gap: 8px;
+}
+
+.is-image-mode .content .toolbar-left,
+.is-image-mode .content .toolbar-right {
+  gap: 6px;
+}
+
+.is-image-mode .content .img-extra {
+  gap: 6px;
+}
+
+.is-image-mode .content .type-pill-main {
+  padding: 0 4px 0 8px;
+  font-size: 12.5px;
+  gap: 5px;
+}
+
+.is-image-mode .content .type-pill-x {
+  padding: 0 6px 0 2px;
+}
+
+.is-image-mode .content .mini-pill {
+  padding: 0 7px;
+  font-size: 12px;
+}
+
+.is-image-mode .content .img-mode-btn {
+  font-size: 12px;
+  padding: 0 8px;
+  gap: 5px;
+}
+
+.is-image-mode .content .img-mode-btn .icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* 窄屏：工具条换行后右侧仍靠右 */
+@media (max-width: 620px) {
+  .prompt-toolbar {
+    justify-content: flex-start;
+  }
+
+  .toolbar-right {
+    margin-left: auto;
+  }
+
+  /* 手机宽度：两组各自折行，而不是把标签压成竖排 */
+  .toolbar-left,
+  .toolbar-right {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+}
+
+
+/* ============================================================
+   防挤压：胶囊 / 标签类元素一律不换行、不被压扁
+   （压缩会把中文挤成一字一行的竖列）
+   ============================================================ */
+
+.content .quick-types,
+.content .template-cta,
+.content .examples-head {
+  flex-wrap: wrap;
+  row-gap: 8px;
+}
+
+.content .quick-type,
+.content .pill-ghost,
+.content .pill-browse,
+.content .pill-upload,
+.content .example-cat,
+.content .example-cat-label,
+.content .work-tab,
+.content .also-main b,
+.content .pt-name,
+.content .pt-tag,
+.content .skill-chip .chip-name,
+.content .attach-chip .chip-name {
+  flex: none;
+  white-space: nowrap;
+}
+
+.content .also-main {
+  min-width: 0;
+}
+
+.content .also-main em {
+  white-space: normal;
 }

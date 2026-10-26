@@ -65,6 +65,28 @@ check('image extras match the screenshot styling',
   && cssCompact.includes('.is-image-mode.content.img-mode-btn[aria-expanded=true]')
   && cssCompact.includes('.mini-pill{display:inline-flex'))
 
+/* ---------- 2b. 防挤压：文字不能变成一竖列 ---------- */
+
+check('toolbar groups never shrink',
+  cssCompact.includes('.toolbar-left,.toolbar-right{display:flex;align-items:center;gap:6px;flex:none;min-width:0'))
+check('every toolbar control is fixed-size and keeps one line',
+  cssCompact.includes('.toolbar-left>*,.toolbar-right>*{flex:none;white-space:nowrap}'))
+check('toolbar wraps instead of squeezing labels',
+  cssCompact.includes('.prompt-toolbar{flex-wrap:wrap'))
+check('type pill and its label stay on one line',
+  cssCompact.includes('.type-pill-main{') && cssCompact.includes('.type-pill-label{white-space:nowrap}'))
+check('ratio / count pills stay on one line',
+  cssCompact.includes('.mini-pill{display:inline-flex;align-items:center;gap:3px;flex:none;white-space:nowrap'))
+check('reference pill label stays on one line in image mode',
+  cssCompact.includes('.is-image-mode.content.img-mode-btn{width:auto;height:34px')
+  && cssCompact.includes('white-space:nowrap'))
+check('quick type / example / also cards also cannot be squeezed',
+  cssCompact.includes('.content.quick-type,.content.pill-ghost')
+  && cssCompact.includes('flex:none;white-space:nowrap'))
+check('image toolbar spacing is tighter to keep one row',
+  cssCompact.includes('.is-image-mode.content.prompt-toolbar{gap:8px}')
+  && cssCompact.includes('.is-image-mode.content.toolbar-left') && cssCompact.includes('gap:6px'))
+
 /* ---------- 3. 比例 ---------- */
 
 click(w, $('#ratio-btn'))
