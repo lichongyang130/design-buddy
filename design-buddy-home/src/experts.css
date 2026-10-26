@@ -779,6 +779,24 @@
   color: #3f4756;
 }
 
+/* 「技能清单」：专家能力技能（与技能页内置能力技能对应） */
+.ex-skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 13px;
+}
+
+.ex-skill-chip {
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #4338ca;
+  background: #eef2ff;
+  border: 1px solid #e0e7ff;
+}
+
 /* 「它能解决」清单 */
 .ex-solve-list {
   display: flex;

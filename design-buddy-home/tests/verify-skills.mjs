@@ -70,6 +70,9 @@ check('shuffle stays inside featured pool',
 
 /* ---------- 3. 网格：注册表在前 + 补充目录 ---------- */
 check('recommend tab lists registry + catalog skills', grid().length === PAGE_SKILLS.length)
+check('builtin skill cards show their expert',
+  doc.querySelectorAll('#sk-grid .sk-expert').length === PAGE_SKILLS.filter((s) => s.expertName).length
+  && [...doc.querySelectorAll('#sk-grid .sk-expert')].every((e) => e.textContent.includes('所属专家：')))
 const installedCount = readState(storage).skills.length
 check('data-install buttons equal uninstalled catalog count',
   doc.querySelectorAll('#sk-grid [data-install]').length === PAGE_SKILLS.length - installedCount)
