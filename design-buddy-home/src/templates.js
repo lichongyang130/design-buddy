@@ -10,7 +10,7 @@ import { store, toast, openModal, confirmModal, uid, fmtDate, copyText } from '.
 import { initGlobalUI, openUpgrade, openAccount } from './global-ui.js'
 import {
   buildCatalog, buildDeck, renderPageHTML, renderDocumentHTML, metaFor, coverStyle, coverDeco,
-  FRAMEWORKS,
+  FRAMEWORKS, PALETTES,
   displayTpl, catLabel, VISIBLE_CATS, HIDDEN_CATS, configureArt, getArtBase,
   getArtManifest, setArtOverride, clearArtOverride,
 } from './template-engine.js'
@@ -613,11 +613,20 @@ function coverHTML(tpl) {
   if (tpl.gen) {
     const d = displayTpl(tpl, lang())
     const cartoon = tpl.presentation ? getCartoonForCategory(tpl.cat, tpl.serial) : null
-    return `<div class="tpl-cover tpl-gen" data-deco="${coverDeco(tpl)}" style="${coverStyle(tpl)}">
+    // 使用模板的封面图作为缩略图背景
+    const coverImg = tpl.images && tpl.images[0]
+    const deco = coverDeco(tpl)
+    const pal = tpl.pal != null ? PALETTES[tpl.pal] : null
+    const palStyle = pal ? `--g-bg:${pal[0]};--g-ink:${pal[2]};--g-muted:${pal[3]};--g-accent:${pal[4]};--g-accent2:${pal[5]};` : ''
+    return `<div class="tpl-cover tpl-gen" data-deco="${deco}" style="${palStyle}">
+      ${coverImg ? `<img class="tc-bg" src="${coverImg}" alt="" loading="lazy">` : ''}
+      <div class="tc-scrim"></div>
       <span class="tc-deco" aria-hidden="true"></span>
       ${cartoon ? `<div class="tc-cartoon">${cartoon.svg}</div>` : ''}
-      ${d.a ? `<span class="tc-a">${d.a}</span>` : ''}
-      ${d.b ? `<span class="tc-b">${d.b}</span>` : ''}
+      <div class="tc-text">
+        ${d.a ? `<span class="tc-a">${d.a}</span>` : ''}
+        ${d.b ? `<span class="tc-b">${d.b}</span>` : ''}
+      </div>
       ${pageBadge(tpl)}
     </div>`
   }
