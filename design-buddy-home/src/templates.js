@@ -129,6 +129,7 @@ const CATEGORIES_HIDDEN = HIDDEN_CATS
 const TEMPLATES = [
   ...PRESENTATION_TEMPLATES.map((t) => getPresentationMeta(t)),
   ...GENERATED_DOCUMENT_TEMPLATES.map((t) => getPresentationMeta(t)),
+  { id: 'qiye-travel-app', name: '栖野 · 周末旅行 App', a: '把周末，还给山野。', b: 'QIYE · WEEKEND ESCAPES', cats: ['旅游'], cat: '旅游', format: 'App', app: true, href: '/qiye-app.html', pageCount: 6, imgCount: 5 },
 ]
 
 const FOLDER_ICON = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>`
@@ -422,7 +423,7 @@ function pageBadge(tpl) {
 function renderGrid(items) {
   currentItems = items
   const visible = items.slice(0, pageLimit)
-  grid.innerHTML = visible.map((tpl) => `
+  grid.innerHTML = visible.map((tpl) => tpl.app ? `<article class="tpl-card tpl-app-card" data-name="${tpl.name}"><a href="${tpl.href}" class="tpl-app-link" aria-label="打开${tpl.name}交互原型">${coverHTML(tpl)}<p class="tpl-name">${FOLDER_ICON}<span>${tpl.name}</span><span class="tpl-fmt">App · 可交互</span></p></a></article>` : `
     <article class="tpl-card" data-name="${tpl.name}" ${tpl.custom ? `data-custom="${tpl.id}"` : ''}>
       ${coverHTML(tpl)}
       <p class="tpl-name">${FOLDER_ICON}<span>${displayTpl(tpl, lang()).name}</span>${tpl.format ? `<span class="tpl-fmt">${tpl.format}</span>` : ''}</p>
@@ -602,7 +603,7 @@ grid.addEventListener('click', (event) => {
   const card = event.target.closest('.tpl-card')
   if (!card) return
   const tpl = allTemplates().find((t) => t.name === card.dataset.name)
-  if (tpl) openTemplateDetail(tpl)
+  if (tpl && !tpl.app) openTemplateDetail(tpl)
 })
 
 /* ---------------- 模板详情预览弹层（按截图 1:1） ---------------- */
@@ -616,6 +617,7 @@ function coverInner(tpl) {
 }
 
 function coverHTML(tpl) {
+  if (tpl.app) return `<div class="tpl-cover qiye-app-cover"><iframe src="/qiye-app.html?embed=1" title="栖野 App 真实首页预览" loading="lazy" tabindex="-1" aria-hidden="true"></iframe><span class="qiye-app-cover-badge">6 个页面 · 交互原型 ↗</span></div>`
   if (tpl.gen && tpl._tpl) {
     return `<div class="tpl-cover tpl-gen exhibition-thumb ${tpl.docMode ? 'exhibition-document' : ''}">
       <div class="exhibition-sheet">${renderExhibitionCover(tpl._tpl)}</div>
@@ -746,6 +748,7 @@ function buildWritingStyle(locale) {
 }
 
 function openTemplateDetail(tpl) {
+  if (tpl.app) { location.href = tpl.href; return }
   const list = allTemplates()
   let idx = list.findIndex((t) => t.name === tpl.name)
   if (idx < 0) idx = 0

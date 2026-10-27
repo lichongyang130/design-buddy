@@ -3065,3 +3065,10 @@
   .td-made-by { position: static; align-self: flex-end; margin: 8px 0; }
   .td-left { padding-top: 12px; }
 }
+
+/* The App case previews its actual responsive homepage, not a slide cover. */
+.qiye-app-cover { background: #f7f7f2; border: 1px solid #dce4d7; }
+.qiye-app-cover iframe { width: 200%; height: 200%; transform: scale(.5); transform-origin: top left; border: 0; pointer-events: none; }
+.qiye-app-cover-badge { position: absolute; bottom: 9px; right: 9px; border-radius: 4px; background: #244a3ce8; color: #fff; padding: 6px 8px; font-size: 9px; pointer-events: none; }
+.tpl-app-link { display: block; color: inherit; text-decoration: none; }
+.tpl-app-link:focus-visible { outline: 3px solid #7d9a6b; outline-offset: 5px; border-radius: 8px; }

@@ -11,6 +11,8 @@ import { handleMcpRequest } from './server/api-mcp.mjs'
 
 const root = resolve(fileURLToPath(new URL('.', import.meta.url)), 'dist')
 const port = Number(process.env.PORT ?? 5174)
+// Optional direct entry for standalone case previews; keep the workspace default.
+const previewEntry = /^[a-zA-Z0-9_-]+\.html$/.test(process.env.PREVIEW_ENTRY || '') ? process.env.PREVIEW_ENTRY : 'index.html'
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -37,7 +39,7 @@ const server = createServer(async (req, res) => {
     }
     // 防目录穿越：规范化后必须仍在 dist 内。
     const safePath = normalize(urlPath).replace(/^(\.\.[/\\])+/, '')
-    let filePath = join(root, safePath)
+    let filePath = join(root, urlPath === '/' ? previewEntry : safePath)
     if (!filePath.startsWith(root)) {
       res.writeHead(403).end('Forbidden')
       return
@@ -48,7 +50,7 @@ const server = createServer(async (req, res) => {
       body = await readFile(filePath)
     } catch {
       // 资源不存在时回退到 SPA 入口（本项目为单页）。
-      filePath = join(root, 'index.html')
+      filePath = join(root, previewEntry)
       body = await readFile(filePath)
     }
 
