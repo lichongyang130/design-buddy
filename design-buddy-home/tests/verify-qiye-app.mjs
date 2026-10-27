@@ -93,10 +93,26 @@ const submit = (selector) => {
   el.dispatchEvent(new w.Event('submit', { bubbles: true, cancelable: true }))
 }
 try {
-  assert.equal(doc.querySelectorAll('.q-sidebar nav a').length, 5)
+  assert.equal(doc.querySelectorAll('.q-bottom-nav a').length, 5)
+  assert.equal(doc.querySelector('.q-sidebar'), null, 'no desktop website sidebar')
+  assert.ok(doc.querySelector('.q-phone[data-screen=home]'))
+  assert.ok(doc.querySelector('.q-home-search'))
   assert.ok(doc.querySelector('.q-hero'))
+  doc.querySelector('#q-main').scrollTop = 120
+  press('.q-bottom-nav [data-go="#discover"]')
+  press('.q-bottom-nav [data-go="#home"]')
+  assert.equal(doc.querySelector('#q-main').scrollTop, 120, 'each tab retains its content position')
   press('.q-hero [data-go]')
   assert.ok(doc.querySelector('.q-detail-gallery'))
+  assert.ok(
+    doc.querySelector('.q-detail-action [data-add]'),
+    'detail action pinned outside scroll area',
+  )
+  assert.equal(
+    doc.querySelector('.q-bottom-nav'),
+    null,
+    'detail is a child screen, not a top-level tab',
+  )
   assert.match(doc.querySelector('h1').textContent, /青岚山谷/)
   press('[data-gallery="1"]')
   assert.equal(
@@ -112,7 +128,7 @@ try {
   submit('#q-new-trip')
   assert.ok(doc.querySelector('[data-trip-item="mountain"]'))
   assert.match(doc.querySelector('.q-trip-head').textContent, /山野小出走/)
-  press('.q-sidebar [data-go="#discover"]')
+  press('.q-bottom-nav [data-go="#discover"]')
   input(w, doc.querySelector('#q-discover-search'), '海岸')
   assert.equal(doc.querySelectorAll('.q-card').length, 1)
   press('[data-clear-filters]')
@@ -133,9 +149,9 @@ try {
     JSON.parse(w.localStorage.getItem(QIYE_KEY)).trips[0].items.find((i) => i.id === 'coast').day,
     2,
   )
-  press('.q-sidebar [data-go="#saved"]')
+  press('.q-bottom-nav [data-go="#saved"]')
   assert.equal(doc.querySelectorAll('.q-card').length, 1)
-  press('.q-sidebar [data-go="#profile"]')
+  press('.q-bottom-nav [data-go="#profile"]')
   press('[data-edit-name]')
   input(w, doc.querySelector('#q-name-form [name="name"]'), '<img src=x onerror=alert(1)>')
   submit('#q-name-form')
@@ -152,7 +168,7 @@ try {
   reloaded.w.scrollTo = () => {}
   try {
     assert.ok(reloaded.doc.body.classList.contains('q-compact'))
-    click(reloaded.w, reloaded.doc.querySelector('.q-sidebar [data-go="#trips"]'))
+    click(reloaded.w, reloaded.doc.querySelector('.q-bottom-nav [data-go="#trips"]'))
     assert.equal(
       reloaded.doc.querySelectorAll('[data-trip-item]').length,
       2,
@@ -164,7 +180,7 @@ try {
     assert.ok(reloaded.doc.querySelector('[role="dialog"]'))
     click(reloaded.w, reloaded.doc.querySelector('[data-confirm-delete]'))
     assert.ok(reloaded.doc.querySelector('.q-empty'))
-    click(reloaded.w, reloaded.doc.querySelector('.q-sidebar [data-go="#profile"]'))
+    click(reloaded.w, reloaded.doc.querySelector('.q-bottom-nav [data-go="#profile"]'))
     click(reloaded.w, reloaded.doc.querySelector('[data-reset]'))
     click(reloaded.w, reloaded.doc.querySelector('[data-confirm-reset]'))
     assert.deepEqual(JSON.parse(savedStorage.getItem(QIYE_KEY)), model)
