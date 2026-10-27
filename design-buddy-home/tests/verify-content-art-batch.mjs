@@ -13,8 +13,11 @@ const coverage=artCoverage(),cases=artJobs(),pages=artJobs({scope:'page'})
 assert.equal(cases.length,712)
 assert.equal(new Set(cases.map(j=>j.templateId)).size,ART_CASES.length,'one planned case illustration for every case')
 assert.equal(coverage.casesWithAI,new Set(CONTENT_SCENES.map(scene=>scene.templateId)).size)
-assert.ok(coverage.casesWithAI>=24,'previously completed case illustrations remain available')
+assert.ok(coverage.casesWithAI>=34,'previously completed case illustrations remain available')
 assert.equal(coverage.casesWithAI+coverage.casesPending,712)
+for(const id of ['pitch-12','pitch-13','pitch-14','pitch-15','pitch-16','qbr-0','qbr-1','qbr-2','qbr-3','qbr-4']) {
+ assert.equal(cases.find(job=>job.templateId===id)?.status,'generated',`${id}: latest batch is attached to actual content`)
+}
 assert.equal(coverage.scenePagesWithAI+coverage.scenePagesPending,pages.length)
 assert.ok(cases.every(j=>j.brief.length>100&&j.sourceSnapshot&&j.key),'all jobs have source and usable briefs')
 assert.equal(sourceSnapshot({title:'A',body:'B',img:4}),sourceSnapshot({img:7,body:'B',title:'A'}),'order and obsolete stock index do not affect source matching')
