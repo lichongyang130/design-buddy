@@ -197,16 +197,16 @@ try {
 const gallery = await loadPage('/templates.html')
 try {
   click(gallery.w, gallery.doc.querySelector('input[name="format"][value="App"]'))
-  assert.equal(gallery.doc.querySelectorAll('.tpl-card').length, 1)
-  assert.equal(gallery.doc.querySelector('.tpl-app-link').getAttribute('href'), '/qiye-app.html')
+  assert.equal(gallery.doc.querySelectorAll('.tpl-card').length, 24)
+  assert.equal(gallery.doc.querySelector('.tpl-app-link').getAttribute('href'), '/app-case.html?app=qiye')
   assert.equal(
     gallery.doc.querySelector('.qiye-app-cover img').getAttribute('src'),
-    '/art/qiye/cover.webp',
+    '/art/apps/covers/qiye.webp',
   )
   assert.equal(gallery.errors.length, 0)
   assert.equal(gallery.doc.querySelector('.qiye-app-cover iframe'), null, 'thumbnail no longer crops a live iframe')
   assert.ok(fs.existsSync(new URL('../public/art/qiye/cover.webp', import.meta.url)))
-  console.log('PASS: App filter contains one interactive case with composed real-screen cover')
+  console.log('PASS: App filter contains new catalog with 24 first-page real-screen covers; legacy six-screen App preserved')
 } finally {
   gallery.w.close()
 }

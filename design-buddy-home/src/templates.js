@@ -1,3 +1,4 @@
+import { APP_CASES, appTemplateMeta } from './app-catalog.js'
 /* ============================================================
    探索模板页：筛选 / 搜索 / 排序保留，套用模板真实生成 gamma
    侧栏四个视图：工作区模板 / 最近 / 由您创建 / 已归档（持久化）
@@ -129,7 +130,7 @@ const CATEGORIES_HIDDEN = HIDDEN_CATS
 const TEMPLATES = [
   ...PRESENTATION_TEMPLATES.map((t) => getPresentationMeta(t)),
   ...GENERATED_DOCUMENT_TEMPLATES.map((t) => getPresentationMeta(t)),
-  { id: 'qiye-travel-app', name: '栖野 · 周末旅行 App', a: '把周末，还给山野。', b: 'QIYE · WEEKEND ESCAPES', cats: ['旅游'], cat: '旅游', format: 'App', app: true, href: '/qiye-app.html', pageCount: 6, imgCount: 5 },
+  ...APP_CASES.map(appTemplateMeta),
 ]
 
 const FOLDER_ICON = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>`
@@ -617,7 +618,7 @@ function coverInner(tpl) {
 }
 
 function coverHTML(tpl) {
-  if (tpl.app) return `<div class="tpl-cover qiye-app-cover"><img class="qiye-app-cover-image" src="/art/qiye/cover.webp" alt="栖野周末旅行 App：品牌封面与真实手机首页" loading="lazy" width="1200" height="714"></div>`
+  if (tpl.app) return `<div class="tpl-cover qiye-app-cover"><img class="qiye-app-cover-image" src="${tpl.cover}" alt="${tpl.name}：独立品牌封面与真实手机首页" loading="lazy" width="1200" height="714"></div>`
   if (tpl.gen && tpl._tpl) {
     return `<div class="tpl-cover tpl-gen exhibition-thumb ${tpl.docMode ? 'exhibition-document' : ''}">
       <div class="exhibition-sheet">${renderExhibitionCover(tpl._tpl)}</div>

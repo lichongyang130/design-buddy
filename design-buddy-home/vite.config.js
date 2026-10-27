@@ -21,6 +21,8 @@ export default defineConfig({
         home: resolve(import.meta.dirname, 'index.html'),
         auth: resolve(import.meta.dirname, 'auth.html'),
         'qiye-app': resolve(import.meta.dirname, 'qiye-app.html'),
+        'app-case': resolve(import.meta.dirname, 'app-case.html'),
+        apps: resolve(import.meta.dirname, 'apps.html'),
         templates: resolve(import.meta.dirname, 'templates.html'),
         'art-library': resolve(import.meta.dirname, 'art-library.html'),
         'art-review': resolve(import.meta.dirname, 'art-review.html'),
