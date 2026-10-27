@@ -3,13 +3,12 @@
    .rail 因 sticky 而形成的层叠上下文（详见 styles.css 里的说明）。
    三项都进入各自的独立页面 experts / skills / connectors（见 global-ui.js）。 */
 
-import { openSkills, openExperts, openConnectors, openCases } from './global-ui.js'
+import { openSkills, openExperts, openConnectors } from './global-ui.js'
 
 const ACTIONS = {
   技能: openSkills,
   专家: openExperts,
   连接器: openConnectors,
-  案例: openCases,
 }
 
 document.querySelectorAll('.more-wrap').forEach((wrap) => {

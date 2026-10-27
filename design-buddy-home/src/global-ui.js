@@ -225,20 +225,11 @@ export function openConnectors() {
   location.href = CONNECTORS_PAGE
 }
 
-/* 商业级演示案例（cases.html） */
-const CASES_PAGE = 'cases.html'
-
-export function openCases() {
-  if (location.pathname.endsWith(CASES_PAGE)) return
-  location.href = CASES_PAGE
-}
-
 /* ---------------- ⌘K 命令面板 ---------------- */
 
 const PAGE_ITEMS = [
   { label: '首页', icon: '🏠', href: 'index.html', tag: '页面' },
   { label: '模板', icon: '🧩', href: 'templates.html', tag: '页面' },
-  { label: '案例', icon: '📊', href: 'cases.html', tag: '页面' },
   { label: '主题', icon: '🎨', href: 'themes.html', tag: '页面' },
   { label: '媒体库', icon: '🖼️', href: 'media.html', tag: '页面' },
   { label: '设置', icon: '⚙️', href: 'settings.html', tag: '页面' },

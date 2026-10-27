@@ -399,9 +399,6 @@ function renderGrid(items) {
   if (none) {
     const [title, copy] = uiText().empty[view.scope]
     empty.querySelector('p').textContent = lang() === 'en' ? `${title}. ${copy}` : `${title}。${copy}`
-    empty.querySelector('.tpl-empty-sub').textContent = lang() === 'en'
-      ? 'Browse 4 commercial-grade presentation cases, 15 slides each.'
-      : '浏览 4 个商业级演示案例，每个 15 页完整演示文稿'
   }
 }
 

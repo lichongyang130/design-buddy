@@ -376,5 +376,131 @@
         "status": null
       }
     ]
+  },
+  {
+    "id": "srv_mvq41xm8_9w8243",
+    "label": "测试 MCP",
+    "url": "http://127.0.0.1:9877/mcp",
+    "allowPrivate": true,
+    "createdAt": 1793070791792,
+    "protocol": {
+      "mode": "stateless",
+      "version": "2026-07-28"
+    },
+    "transport": "mcp-http",
+    "serverInfo": {
+      "name": "MockMCP",
+      "version": "1.0.0"
+    },
+    "capabilities": {
+      "tools": {}
+    },
+    "instructions": "这是一个测试用的 MCP 服务",
+    "tools": [
+      {
+        "name": "echo",
+        "description": "原样返回输入",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "description": "要回显的文本"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "add",
+        "description": "两数相加",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "a": {
+              "type": "number"
+            },
+            "b": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "a",
+            "b"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "slow",
+        "description": "慢操作（用于测超时）",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "ms": {
+              "type": "number",
+              "default": 100
+            }
+          },
+          "required": [
+            "ms"
+          ]
+        },
+        "annotations": null
+      },
+      {
+        "name": "fail",
+        "description": "永远失败",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "annotations": null
+      },
+      {
+        "name": "big",
+        "description": "返回大响应",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "annotations": null
+      }
+    ],
+    "toolCount": 5,
+    "lastHandshake": {
+      "at": 1793070791792,
+      "ms": 7,
+      "requestId": "req_mvq41xm1_eamojhal",
+      "ok": true
+    },
+    "auth": {
+      "mode": "none"
+    },
+    "logs": [
+      {
+        "at": 1793070791793,
+        "action": "handshake",
+        "ok": true,
+        "latency": 7,
+        "bytes": null,
+        "requestId": "req_mvq41xm1_eamojhal",
+        "detail": "5 个工具",
+        "status": null
+      },
+      {
+        "at": 1793070794039,
+        "action": "call",
+        "ok": true,
+        "latency": 3,
+        "bytes": 107,
+        "requestId": "call_mvq41zck_lvkuyytv",
+        "detail": "echo · 1 段内容",
+        "status": null
+      }
+    ]
   }
 ]
