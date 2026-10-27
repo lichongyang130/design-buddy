@@ -3,6 +3,7 @@
    5 个模板 × 30-35 页，西方特色，内容丰富，含真实图片
    ============================================================ */
 
+import { renderExhibitionCover } from './exhibition-cover.js'
 import { FRAMEWORKS, PALETTES, FONT_PAIRS } from './template-engine.js'
 import { GENERATED_PRESENTATION_TEMPLATES, IMG } from './presentation-generator.js'
 
@@ -507,6 +508,7 @@ function imgTag(imgIdx) {
 export function renderPresentationSlide(tpl, pageIdx) {
   const page = tpl.pages[pageIdx]
   if (!page) return ''
+  if (pageIdx === 0) return `<div class="dp-page exhibition-first-page ${tpl.docMode ? 'exhibition-first-document' : ''}">${renderExhibitionCover(tpl)}</div>`
   const lay = page.layout || 'split'
   const fw = FRAMEWORKS[tpl.fw] || FRAMEWORKS[0]
   const pal = PALETTES[tpl.pal] || PALETTES[0]

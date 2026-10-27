@@ -15,11 +15,6 @@ export default defineConfig({
     port: 5174,
     allowedHosts: [process.env.VITE_ALLOWED_HOST, '.e2b.app'].filter(Boolean),
   },
-  preview: {
-    host: '0.0.0.0',
-    port: 5174,
-    allowedHosts: process.env.VITE_ALLOWED_HOST ? [process.env.VITE_ALLOWED_HOST] : undefined,
-  },
   build: {
     rollupOptions: {
       input: {
