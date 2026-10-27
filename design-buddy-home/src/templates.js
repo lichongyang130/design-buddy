@@ -613,21 +613,40 @@ function coverInner(tpl) {
     ${tpl.b ? `<span class="tc-b">${tpl.b}</span>` : ''}`
 }
 
+/* 缩略图风格变体：从 serial+fw+pal 计算 16 种布局 */
+function thumbVariant(tpl) {
+  const s = tpl.serial || 0
+  const f = tpl.fw || 0
+  const p = tpl.pal || 0
+  return (s * 7 + f * 3 + p * 5) % 16
+}
+
 function coverHTML(tpl) {
   if (tpl.gen) {
     const d = displayTpl(tpl, lang())
     const cartoon = tpl.presentation ? getCartoonForCategory(tpl.cat, tpl.serial) : null
-    // 使用模板的封面图作为缩略图背景
-    const coverImg = tpl.images && tpl.images[0]
+    const v = thumbVariant(tpl)
     const deco = coverDeco(tpl)
     const pal = tpl.pal != null ? PALETTES[tpl.pal] : null
     const palStyle = pal ? `--g-bg:${pal[0]};--g-ink:${pal[2]};--g-muted:${pal[3]};--g-accent:${pal[4]};--g-accent2:${pal[5]};` : ''
-    return `<div class="tpl-cover tpl-gen" data-deco="${deco}" style="${palStyle}">
+    // 变化图片选择：不同模板用不同图片做背景
+    const imgIdx = (tpl.serial || 0) % Math.min(3, tpl.images?.length || 1)
+    const coverImg = tpl.images && tpl.images[imgIdx]
+    // 变化遮罩方向
+    const scrimDeg = [135, 45, 180, 90, 270, 225, 315, 0][v % 8]
+    // 卡通位置变体
+    const cartoonPos = cartoon ? `tc-cartoon-p${Math.floor(v / 2) % 5}` : ''
+    // 文字位置变体
+    const textPos = `tc-text-p${v % 6}`
+    // 额外的强调元素
+    const accent = v >= 8 ? `<span class="tc-accent" aria-hidden="true"></span>` : ''
+    return `<div class="tpl-cover tpl-gen thumb-v${v}" data-deco="${deco}" style="${palStyle}--tc-scrim:${scrimDeg}deg">
       ${coverImg ? `<img class="tc-bg" src="${coverImg}" alt="" loading="lazy">` : ''}
       <div class="tc-scrim"></div>
       <span class="tc-deco" aria-hidden="true"></span>
-      ${cartoon ? `<div class="tc-cartoon">${cartoon.svg}</div>` : ''}
-      <div class="tc-text">
+      ${accent}
+      ${cartoon ? `<div class="tc-cartoon ${cartoonPos}">${cartoon.svg}</div>` : ''}
+      <div class="tc-text ${textPos}">
         ${d.a ? `<span class="tc-a">${d.a}</span>` : ''}
         ${d.b ? `<span class="tc-b">${d.b}</span>` : ''}
       </div>
