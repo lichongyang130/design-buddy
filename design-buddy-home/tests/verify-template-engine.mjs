@@ -24,6 +24,8 @@ function check(name, cond, extra) {
 
 const catalog = buildCatalog()
 check('catalog has 950 generated templates', catalog.length === 950)
+check('generated catalog covers the new formats',
+  ['网站复刻', 'App', '图片', '实时产物', 'WebGL'].every((f) => catalog.some((t) => t.format === f)))
 check('19 categories registered', CATEGORY_LIST.length === 19)
 check('framework pool has 50 entries', FRAMEWORKS.length === 50)
 check('layout pool has 26 entries', LAYOUTS.length === 26)
@@ -174,6 +176,21 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   input(w, doc.querySelector('#tpl-search-input'), '')
   await tick()
   // 搜索清空后回到第一页（24 张精选），再加载出生成模板
+  click(w, doc.querySelector('#tpl-more'))
+  await tick()
+
+  // 格式筛选：新增网站复刻 / App / 图片 / 实时产物 / WebGL
+  check('format filter exposes the new formats',
+    ['网站复刻', 'App', '图片', '实时产物', 'WebGL'].every((f) =>
+      !!doc.querySelector(`input[name="format"][value="${f}"]`)))
+  click(w, doc.querySelector('input[name="format"][value="网站复刻"]'))
+  await tick()
+  const fmtTotal = Number(doc.querySelector('#tpl-more-count').textContent.match(/\/ (\d+) 套/)?.[1] ?? 0)
+  check('format filter narrows to web-clone templates',
+    fmtTotal === catalog.filter((t) => t.format === '网站复刻').length && fmtTotal > 0)
+  click(w, doc.querySelector('input[name="format"][value="all"]'))
+  await tick()
+  // 格式切换会重置分页，重新加载出生成模板
   click(w, doc.querySelector('#tpl-more'))
   await tick()
 

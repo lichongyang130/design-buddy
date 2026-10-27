@@ -504,7 +504,7 @@ export function buildCatalog() {
         b: `${EN_A[i % EN_A.length]} ${EN_B[(i * 3) % EN_B.length]}`.toUpperCase(),
         cls: null,
         gen: true,
-        format: ['演示文稿', '演示文稿', '演示文稿', '文档', '社交轮播卡片'][int(rng, 0, 4)],
+        format: ['演示文稿', '演示文稿', '演示文稿', '文档', '社交轮播卡片', '网站复刻', 'App', '图片', '实时产物', 'WebGL'][int(rng, 0, 10)],
         cats: [primary],
         seed,
         fw: fwOrder[i],
