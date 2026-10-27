@@ -3,6 +3,7 @@
    5 个模板 × 30-35 页，西方特色，内容丰富，含真实图片
    ============================================================ */
 
+import { renderContentArt } from './content-art.js'
 import { renderExhibitionCover } from './exhibition-cover.js'
 import { FRAMEWORKS, PALETTES, FONT_PAIRS } from './template-engine.js'
 import { GENERATED_PRESENTATION_TEMPLATES, IMG } from './presentation-generator.js'
@@ -492,12 +493,6 @@ function escapeHtml(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
 
-function imgTag(imgIdx) {
-  if (imgIdx == null || imgIdx < 0) return ''
-  const key = Object.keys(IMG)[imgIdx]
-  return `<div class="dp-art dp-art-img"><img loading="lazy" src="${IMG[key]}" alt=""></div>`
-}
-
 /**
  * 渲染单个自定义幻灯片
  * 结构: <div class="dp-page ifr-xx head-xx lay-xx" style="vars">
@@ -514,7 +509,7 @@ export function renderPresentationSlide(tpl, pageIdx) {
   const pal = PALETTES[tpl.pal] || PALETTES[0]
   const font = FONT_PAIRS[tpl.font || 0] || FONT_PAIRS[0]
   const rootVars = `--dp-bg:${pal[0]};--dp-paper:${pal[1]};--dp-ink:${pal[2]};--dp-muted:${pal[3]};--dp-accent:${pal[4]};--dp-accent2:${pal[5]};--dp-radius:${fw.radius}px;--dp-head:${font.head};--dp-body:${font.body};`
-  const img = imgTag(page.img)
+  const img = renderContentArt(tpl, pageIdx)
   const eb = (t) => t ? `<span class="dp-eyebrow">${escapeHtml(t)}</span>` : ''
   const h3 = (t) => `<h3>${escapeHtml(t)}</h3>`
   const h2 = (t) => `<h2>${escapeHtml(t)}</h2>`
@@ -620,7 +615,7 @@ export function renderPresentationSlide(tpl, pageIdx) {
     case 'table':
       const headHtml = (page.head || []).map(h => `<th>${escapeHtml(h)}</th>`).join('')
       const rowsHtml = (page.rows || []).map(r =>
-        `<tr>${r.map(c => `<td>${escapeHtml(c)}</td>`).join('')}</tr>`).join('')
+        `<tr>${(Array.isArray(r) ? r : Object.values(r)).map(c => `<td>${escapeHtml(c)}</td>`).join('')}</tr>`).join('')
       inner = `<div class="dp-split-grid"><div class="dp-main-col">
           ${h3(page.title)}
           <table class="dp-table"><thead><tr>${headHtml}</tr></thead><tbody>${rowsHtml}</tbody></table>
@@ -632,6 +627,7 @@ export function renderPresentationSlide(tpl, pageIdx) {
         `<div class="dp-card"><h4>${escapeHtml(s.title)}</h4><p>${escapeHtml(s.body || '')}</p></div>`).join('')
       inner = `${eb(page.eyebrow)}
         ${h3(page.title)}
+        <div class="dp-banner-art">${img}</div>
         <div class="dp-cards">${gridHtml}</div>`
       break
 
@@ -644,6 +640,7 @@ export function renderPresentationSlide(tpl, pageIdx) {
 
     default:
       inner = `${h3(page.title)}
+        <div class="dp-banner-art">${img}</div>
         ${p(page.sub)}
         ${p(page.body)}
         ${p(page.body1)}`

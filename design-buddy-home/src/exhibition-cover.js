@@ -1,6 +1,6 @@
 // A shared cover composition: gallery thumbnails and the actual first page
 // deliberately use the same markup, rather than an unrelated card decoration.
-import { IMG } from './presentation-generator.js'
+import { contentArtURL } from './content-art.js'
 
 const families = ['editorial', 'cinema', 'swiss', 'botanical', 'blueprint', 'folio', 'archive', 'diptych', 'signal', 'monograph', 'collage', 'orbit']
 const pools = {
@@ -29,7 +29,7 @@ export function coverDesign(tpl) {
 export function renderExhibitionCover(tpl, { title, subtitle } = {}) {
   const { seed, family, tone } = coverDesign(tpl)
   const page = tpl.pages?.[0] || {}
-  const image = Object.values(IMG)[page.img ?? seed % Object.keys(IMG).length] || Object.values(IMG)[0]
+  const image = contentArtURL(tpl, 0)
   const heading = title || page.title || tpl.a || tpl.name
   const sub = subtitle || page.sub || tpl.b || ''
   const issue = String((seed % 89) + 11)

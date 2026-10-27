@@ -17,6 +17,7 @@ import {
 import { ART_CONCEPTS, conceptLabel, conceptFor } from './art-concepts.js'
 import { PRESENTATION_TEMPLATES, getPresentationMeta, getPresentationTemplates, renderPresentationSlide, renderPresentationDocument, renderDocumentPresentation } from './presentation-templates.js'
 import { GENERATED_DOCUMENT_TEMPLATES } from './document-generator.js'
+import { planContentArt, contentArtURL, renderContentArtSVG } from './content-art.js'
 import { renderExhibitionCover } from './exhibition-cover.js'
 import './exhibition-cover.css'
 
@@ -1257,7 +1258,9 @@ function openTemplateDetail(tpl) {
       pages: t._tpl.pages.map((p, i) => ({ no: i + 1, layout: p.layout })),
     } : buildDeck(t, locale)
     const artRows = []
-    if (!t.presentation) {
+    if (t.presentation) {
+      t._tpl.pages.forEach((p, i) => artRows.push({ page: i, content: true }))
+    } else {
       deck.pages.forEach((p) => {
         const count = LAYOUT_SLOT_COUNT[p.layout] ?? 1
         for (let slot = 0; slot < count; slot++) {
@@ -1381,9 +1384,16 @@ function openTemplateDetail(tpl) {
       </div>
 
       <div class="tdp-pane tdp-images" data-pane="images" ${activeTab !== 'images' ? 'hidden' : ''}>
-        <p class="tdp-images-hint">${locale === 'en' ? 'Click any image to replace it — changes persist across slides and document view.' : '点击任意配图即可替换，幻灯与文档形态同步生效。'}</p>
+        <p class="tdp-images-hint">${t.presentation ? (locale === 'en' ? 'Content-derived diagrams and pilot AI illustrations. Click to inspect or download. Template data is illustrative.' : '按内容生成的图解与样板 AI 插画。点击查看来源、生成说明并下载；模板数值为示例。') : (locale === 'en' ? 'Click any image to replace it — changes persist across slides and document view.' : '点击任意配图即可替换，幻灯与文档形态同步生效。')}</p>
         <div class="tdp-image-grid">
           ${artRows.map((r) => {
+            if (r.content) {
+              const plan = planContentArt(t._tpl, r.page)
+              return `<button type="button" class="tdp-image-card" data-content-art="${r.page}">
+                <span class="tdp-image-thumb"><img src="${contentArtURL(t._tpl, r.page)}" alt=""></span>
+                <span class="tdp-image-meta"><b>${plan.scene ? 'AI 插画' : plan.kind + ' · SVG'}</b><em>${locale === 'en' ? 'Page' : '第'} ${r.page + 1} ${locale === 'en' ? '' : '页'}</em></span>
+              </button>`
+            }
             const src = manifest[r.key]?.illustration?.src
             const override = store.state.artOverrides[`${t.id}:${r.page}:${r.slot}`]
             return `<button type="button" class="tdp-image-card" data-art-pick="${r.page}:${r.slot}:${r.key}">
@@ -1400,6 +1410,27 @@ function openTemplateDetail(tpl) {
         activeTab = tab.dataset.tab
         panel.querySelectorAll('.tdp-tab').forEach((b) => b.classList.toggle('is-active', b === tab))
         panel.querySelectorAll('.tdp-pane').forEach((p) => { p.hidden = p.dataset.pane !== activeTab })
+        return
+      }
+      const contentPick = e.target.closest?.('[data-content-art]')
+      if (contentPick) {
+        const t = cur()
+        const index = Number(contentPick.dataset.contentArt)
+        const plan = planContentArt(t._tpl, index)
+        const modal = openModal({
+          title: plan.scene ? '内容配图 · AI 概念插画（非实景摄影）' : (locale === 'en' ? 'Content artwork · SVG' : '内容配图 · 可编辑 SVG'),
+          body: `<div class="content-art-inspector">${plan.scene ? `<img src="${plan.scene.src}" alt="AI conceptual illustration">` : renderContentArtSVG(t._tpl,index)}<p>Source: template page ${index+1} · Sample content</p><pre></pre></div>`,
+          footer: `<button class="btn btn-primary" data-download-art>${plan.scene ? '下载插画' : '下载 SVG'}</button>`,
+        })
+        modal.bodyEl.querySelector('pre').textContent = plan.brief
+        modal.footEl.querySelector('[data-download-art]').addEventListener('click', () => {
+          if (plan.scene) {
+            const a = document.createElement('a'); a.href = plan.scene.src; a.download = `${plan.scene.file}.webp`; a.click(); return
+          }
+          const url = URL.createObjectURL(new Blob([renderContentArtSVG(t._tpl,index)], { type: 'image/svg+xml' }))
+          const a = document.createElement('a'); a.href = url; a.download = `${t.id}-page-${index+1}.svg`; a.click()
+          setTimeout(() => URL.revokeObjectURL(url), 1000)
+        })
         return
       }
       const artPick = e.target.closest?.('[data-art-pick]')

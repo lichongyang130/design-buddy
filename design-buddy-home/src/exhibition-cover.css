@@ -477,3 +477,20 @@
   font-size:10px
 }
 
+
+/* Content visuals must remain rectangular and legible; decorative circle/arch
+   crops used for photography would cut off evidence and diagram labels. */
+.dp-art.dp-art-content {
+  border-radius: 8px;
+  padding: 0;
+  aspect-ratio: 500 / 380;
+}
+.dp-art-content svg { width: 100%; height: 100%; object-fit: contain; }
+.dp-page:has(.dp-art-content) .dp-side-round .dp-art { border-radius: 8px; }
+.lay-triple-grid:has(.dp-art-content) .dp-banner-art { height: 35%; }
+.ex-photo img[src^="data:image/svg+xml"] { object-fit: contain; }
+.content-art-inspector svg { width: 100%; max-height: 50vh; display: block; }
+.content-art-inspector pre { font: 12px/1.6 monospace; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 180px; overflow: auto; }
+.content-art-inspector p { font-size: 12px; color: #65766f; }
+
+.content-art-inspector>img { width: 100%; max-height: 50vh; object-fit: contain; }

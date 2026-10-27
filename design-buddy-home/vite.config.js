@@ -21,6 +21,7 @@ export default defineConfig({
         home: resolve(import.meta.dirname, 'index.html'),
         auth: resolve(import.meta.dirname, 'auth.html'),
         templates: resolve(import.meta.dirname, 'templates.html'),
+        'art-review': resolve(import.meta.dirname, 'art-review.html'),
         themes: resolve(import.meta.dirname, 'themes.html'),
         settings: resolve(import.meta.dirname, 'settings.html'),
         media: resolve(import.meta.dirname, 'media.html'),
