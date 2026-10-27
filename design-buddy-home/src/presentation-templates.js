@@ -4,26 +4,14 @@
    ============================================================ */
 
 import { FRAMEWORKS, PALETTES, FONT_PAIRS } from './template-engine.js'
+import { GENERATED_PRESENTATION_TEMPLATES, IMG } from './presentation-generator.js'
 
-/* ---------------- 图片池 ---------------- */
-
-const IMG = {
-  a: '/covers/cover-1.jpg',
-  b: '/covers/cover-2.jpg',
-  c: '/covers/cover-3.jpg',
-  d: '/covers/cover-4.jpg',
-  e: '/covers/cover-5.jpg',
-  f: '/covers/cover-6.jpg',
-  g: '/covers/cover-7.jpg',
-  h: '/covers/cover-8.jpg',
-  i: '/covers/cover-9.jpg',
-  j: '/covers/cover-10.jpg',
-  k: '/covers/cover-11.jpg',
-}
+/* ---------------- 图片池（从生成器导入） ---------------- */
+/* IMG 从 presentation-generator.js 导入 */
 
 /* ---------------- 模板定义 ---------------- */
 
-export const PRESENTATION_TEMPLATES = [
+const PRESENTATION_TEMPLATES_MANUAL = [
   /* ========== 1. Investor Pitch Deck ========== */
   {
     id: 'pitch-deck',
@@ -671,3 +659,6 @@ export function renderPresentationDocument(tpl) {
   const pagesHtml = tpl.pages.map((_, i) => renderPresentationSlide(tpl, i)).join('')
   return `<div class="td-deck">${pagesHtml}</div>`
 }
+
+/* 合并手动模板和生成模板 */
+export const PRESENTATION_TEMPLATES = [...PRESENTATION_TEMPLATES_MANUAL, ...GENERATED_PRESENTATION_TEMPLATES]

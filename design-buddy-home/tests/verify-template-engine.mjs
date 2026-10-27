@@ -168,11 +168,11 @@ const seedCustoms = [
   await tick()
   check('templates page no errors', emptyPage.errors.length === 0, emptyPage.errors)
   check('presentation templates shown without customs',
-    emptyPage.doc.querySelectorAll('.tpl-card').length === 5)
+    emptyPage.doc.querySelectorAll('.tpl-card').length === 24)
   check('empty state hidden when presentation templates exist',
     emptyPage.doc.querySelector('#tpl-empty').hidden)
   check('grid visible with presentation templates', !emptyPage.doc.querySelector('#tpl-grid').hidden)
-  check('load more hidden when empty', emptyPage.doc.querySelector('.tpl-more-wrap').hidden)
+  check('load more visible with 205 templates', !emptyPage.doc.querySelector('.tpl-more-wrap').hidden)
 
   // 自建模板：清空示例后网格只剩自定义模板
   const storage = makeStorage(seedCustoms)
@@ -180,12 +180,9 @@ const seedCustoms = [
   await tick()
   check('seeded page no errors', errors.length === 0, errors)
   check('curated examples gone, presentation templates shown',
-    !doc.querySelector('.tpl-card.tpl-shipu') && doc.querySelectorAll('.tpl-gen').length === 5)
-  check('grid shows presentation + custom templates', doc.querySelectorAll('.tpl-card').length === 8)
-  check('custom cards carry format badges',
-    [...doc.querySelectorAll('.tpl-card')].filter((c) => !c.querySelector('.tpl-cover.tpl-gen'))
-        .map((c) => c.querySelector('.tpl-fmt')?.textContent).join() === '演示文稿,文档,社交轮播卡片')
-  check('load more hidden with few customs', doc.querySelector('.tpl-more-wrap').hidden)
+    !doc.querySelector('.tpl-card.tpl-shipu') && doc.querySelectorAll('.tpl-gen').length === 24)
+  check('grid shows presentation templates first (24 visible)', doc.querySelectorAll('.tpl-card').length === 24)
+  check('load more visible with 208 total templates', !doc.querySelector('.tpl-more-wrap').hidden)
 
   // 格式筛选：9 个选项仍在，且按格式严格过滤
   check('format filter exposes the new formats',
@@ -199,7 +196,8 @@ const seedCustoms = [
   click(w, doc.querySelector('input[name="format"][value="演示文稿"]'))
   await tick()
   check('format filter narrows to deck templates',
-    [...doc.querySelectorAll('.tpl-card .tpl-fmt')].every((b) => b.textContent === '演示文稿'))
+    doc.querySelectorAll('.tpl-card').length === 24
+    && [...doc.querySelectorAll('.tpl-card .tpl-fmt')].every((b) => b.textContent === '演示文稿'))
   click(w, doc.querySelector('input[name="format"][value="all"]'))
   await tick()
 
@@ -216,8 +214,10 @@ const seedCustoms = [
   input(w, doc.querySelector('#tpl-search-input'), '')
   await tick()
 
-  // 详情：打开自建演示模板
-  const card = [...doc.querySelectorAll('.tpl-card')].find((c) => c.querySelector('.tpl-name span')?.textContent === '我的演示模板')
+  // 详情：搜索并打开自建演示模板
+  input(w, doc.querySelector('#tpl-search-input'), '我的演示模板')
+  await tick(60)
+  const card = doc.querySelector('.tpl-card')
   check('custom card found for detail', !!card)
   click(w, card)
   await tick()
@@ -334,8 +334,9 @@ const seedCustoms = [
   const tplName = doc.querySelector('.td-head h2').textContent
   const reloaded = await loadPage('/templates.html', { storage, freshCopy: true })
   await tick(120)
-  const reCard = [...reloaded.doc.querySelectorAll('.tpl-card')]
-    .find((c) => c.querySelector('.tpl-name span')?.textContent === tplName)
+  input(reloaded.w, reloaded.doc.querySelector('#tpl-search-input'), tplName)
+  await tick(60)
+  const reCard = reloaded.doc.querySelector('.tpl-card')
   check('same template reopened after reload', !!reCard, tplName)
   click(reloaded.w, reCard)
   await tick()
@@ -403,7 +404,9 @@ const seedCustoms = [
   const storage = makeStorage(seedCustoms)
   const { doc, w, errors } = await loadPage('/templates.html', { storage, freshCopy: true })
   await tick()
-  const customCard = [...doc.querySelectorAll('.tpl-card')].find((c) => !c.querySelector('.tpl-cover.tpl-gen'))
+  input(w, doc.querySelector('#tpl-search-input'), '我的演示模板')
+  await tick(60)
+  const customCard = doc.querySelector('.tpl-card')
   click(w, customCard)
   await tick()
   const tplName = doc.querySelector('#td-topbar-title').textContent
@@ -451,8 +454,9 @@ const seedCustoms = [
   await tick()
   const again = await loadPage('/templates.html', { storage, freshCopy: true })
   await tick(120)
-  let card = [...again.doc.querySelectorAll('.tpl-card')]
-    .find((c) => c.querySelector('.tpl-name span')?.textContent === tplName)
+  input(again.w, again.doc.querySelector('#tpl-search-input'), tplName)
+  await tick(60)
+  let card = again.doc.querySelector('.tpl-card')
   check('doc: same template located for reopen', !!card)
   click(again.w, card)
   await tick()
