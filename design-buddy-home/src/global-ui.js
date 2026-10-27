@@ -230,6 +230,7 @@ export function openConnectors() {
 const PAGE_ITEMS = [
   { label: '首页', icon: '🏠', href: 'index.html', tag: '页面' },
   { label: '模板', icon: '🧩', href: 'templates.html', tag: '页面' },
+  { label: '案例', icon: '📊', href: 'cases.html', tag: '页面' },
   { label: '主题', icon: '🎨', href: 'themes.html', tag: '页面' },
   { label: '媒体库', icon: '🖼️', href: 'media.html', tag: '页面' },
   { label: '设置', icon: '⚙️', href: 'settings.html', tag: '页面' },

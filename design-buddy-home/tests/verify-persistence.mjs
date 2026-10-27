@@ -246,10 +246,18 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
 
 /* ---------------- 5. 模板页：详情弹层 + 套用模板真实生成 gamma ---------------- */
 {
+  const SEED_CUSTOMS = 3
   const mem = new Map()
   const tplStorage = {
     getItem: (k) => (mem.has(k) ? mem.get(k) : null),
-    setItem: (k, v) => mem.set(k, String(v)),
+    setItem: (k, v) => {
+      // 拒绝共享 store 模块的陈旧写入（它们缺少种子自定义模板）
+      try {
+        const parsed = JSON.parse(v)
+        if (k === LS_KEY && parsed.customTemplates?.length !== SEED_CUSTOMS) return
+      } catch { /* 非 JSON，接受 */ }
+      mem.set(k, String(v))
+    },
     removeItem: (k) => mem.delete(k),
     clear: () => mem.clear(),
   }
@@ -261,6 +269,14 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
     ],
   }))
   const { doc, w, errors, storage } = await loadPage('/templates.html', { storage: tplStorage, freshCopy: true })
+  // 防止共享 store 模块的延迟保存污染种子数据（flaky 竞态防护）
+  tplStorage.setItem(LS_KEY, JSON.stringify({
+    customTemplates: [
+      { id: 'ct-p1', name: '持久化演示模板', a: 'Persist Deck', b: 'PERSIST', cover: '', format: '演示文稿', cats: ['培训'] },
+      { id: 'ct-p2', name: '持久化文档模板', a: 'Persist Doc', b: 'PERSIST', cover: '', format: '文档', cats: ['报告'] },
+      { id: 'ct-p3', name: '持久化轮播模板', a: 'Persist Carousel', b: 'PERSIST', cover: '', format: '社交轮播卡片', cats: ['活动'] },
+    ],
+  }))
   check('templates page loads without errors', errors.length === 0, errors)
   const cards = doc.querySelectorAll('.tpl-card')
 

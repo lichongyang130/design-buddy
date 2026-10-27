@@ -49,7 +49,7 @@ export const catLabel = (cat, locale) => (locale === 'en' ? (CAT_EN[cat] ?? cat)
 
 /* ---------------- 调色板（20 套：bg/paper/ink/muted/accent/accent2） ---------------- */
 
-const PALETTES = [
+export const PALETTES = [
   ['#f4f1ea', '#fffdf7', '#1f2a30', '#6b7780', '#1f5f6b', '#e08a3c'],
   ['#0f1b2d', '#16263f', '#eef3fb', '#9db0c8', '#5b82f5', '#7fd1c4'],
   ['#f6efe4', '#fffaf1', '#33281d', '#8a7a66', '#b0563a', '#d9a441'],
@@ -74,7 +74,7 @@ const PALETTES = [
 
 /* ---------------- 字体搭配 ---------------- */
 
-const FONT_PAIRS = [
+export const FONT_PAIRS = [
   { head: '"Noto Serif SC", Georgia, "Songti SC", serif', body: '"PingFang SC", "Microsoft YaHei", sans-serif' },
   { head: '"PingFang SC", "Microsoft YaHei", sans-serif', body: '"PingFang SC", "Microsoft YaHei", sans-serif' },
   { head: 'Georgia, "Times New Roman", "Noto Serif SC", serif', body: 'Georgia, "Noto Serif SC", serif' },
