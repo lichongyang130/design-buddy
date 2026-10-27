@@ -319,6 +319,17 @@
   color: var(--text-2);
 }
 
+.tpl-fmt {
+  margin-left: auto;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--blue-bg);
+  color: var(--blue-deep);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .tpl-name .icon {
   width: 14px;
   height: 14px;
@@ -1591,6 +1602,12 @@
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
   container-type: inline-size;
   background: #fff;
+}
+
+/* 社交轮播卡片：方形画幅 */
+.td-deck.is-square {
+  aspect-ratio: 1 / 1;
+  width: min(100%, 640px);
 }
 
 .td-page-arrow {

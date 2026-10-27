@@ -172,7 +172,7 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   input(w, doc.querySelector('#tpl-search-input'), '灵动')
   await tick(60)
   check('search filters generated names', doc.querySelectorAll('.tpl-card').length > 0 &&
-    [...doc.querySelectorAll('.tpl-name span')].every((s) => s.textContent.includes('灵动')))
+    [...doc.querySelectorAll('.tpl-name > span:not(.tpl-fmt)')].every((s) => s.textContent.includes('灵动')))
   input(w, doc.querySelector('#tpl-search-input'), '')
   await tick()
   // 搜索清空后回到第一页（24 张精选），再加载出生成模板
@@ -188,6 +188,13 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   const fmtTotal = Number(doc.querySelector('#tpl-more-count').textContent.match(/\/ (\d+) 套/)?.[1] ?? 0)
   check('format filter narrows to web-clone templates',
     fmtTotal === catalog.filter((t) => t.format === '网站复刻').length && fmtTotal > 0)
+  check('format filter: cards carry the matching format badge',
+    doc.querySelectorAll('.tpl-card .tpl-fmt').length === doc.querySelectorAll('.tpl-card').length
+    && [...doc.querySelectorAll('.tpl-card .tpl-fmt')].every((b) => b.textContent === '网站复刻'))
+  click(w, doc.querySelector('input[name="format"][value="演示文稿"]'))
+  await tick()
+  check('deck format: badge labelled 演示文稿',
+    [...doc.querySelectorAll('.tpl-card .tpl-fmt')].every((b) => b.textContent === '演示文稿'))
   click(w, doc.querySelector('input[name="format"][value="all"]'))
   await tick()
   // 格式切换会重置分页，重新加载出生成模板
@@ -506,6 +513,38 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   check('slides: paginated form restored',
     !!again.doc.querySelector('.td-deck .dp-page') && !again.doc.querySelector('.db-doc'))
   check('editor: no runtime errors', errors.length === 0, JSON.stringify(errors))
+}
+
+/* 格式驱动默认渲染形态：文档→文档形态、轮播→方形画幅、演示文稿→16:9 分页 */
+{
+  const { doc, w, errors, storage } = await loadPage('/templates.html')
+  click(w, doc.querySelector('input[name="format"][value="文档"]'))
+  await tick()
+  click(w, doc.querySelector('.tpl-card'))
+  await tick()
+  check('document format opens in doc form by default',
+    !!doc.querySelector('.td-deck.is-doc .db-doc')
+    && doc.querySelector('#td-form-switch [data-form="doc"]').classList.contains('is-active'))
+  check('document format: meta shows document form',
+    doc.querySelector('.td-meta')?.textContent === '文档 · A4 · 文档')
+  click(w, doc.querySelector('.td-close'))
+  await tick()
+  click(w, doc.querySelector('input[name="format"][value="社交轮播卡片"]'))
+  await tick()
+  click(w, doc.querySelector('.tpl-card'))
+  await tick()
+  check('carousel format renders square deck',
+    !!doc.querySelector('.td-deck.is-square') && !doc.querySelector('.td-deck.is-doc'))
+  click(w, doc.querySelector('.td-close'))
+  await tick()
+  click(w, doc.querySelector('input[name="format"][value="演示文稿"]'))
+  await tick()
+  click(w, doc.querySelector('.tpl-card'))
+  await tick()
+  check('deck format stays paginated 16:9 slides',
+    !!doc.querySelector('.td-deck .dp-page')
+    && !doc.querySelector('.td-deck.is-square') && !doc.querySelector('.db-doc'))
+  check('format form: no runtime errors', errors.length === 0, JSON.stringify(errors))
 }
 
 /* ---------------- 任务二十七：查看器按截图重构（顶栏/共享带/设置面板） ---------------- */

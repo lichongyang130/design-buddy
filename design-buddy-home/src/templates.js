@@ -415,7 +415,7 @@ function renderGrid(items) {
   grid.innerHTML = visible.map((tpl) => `
     <article class="tpl-card" data-name="${tpl.name}" ${tpl.custom ? `data-custom="${tpl.id}"` : ''}>
       ${coverHTML(tpl)}
-      <p class="tpl-name">${FOLDER_ICON}<span>${displayTpl(tpl, lang()).name}</span></p>
+      <p class="tpl-name">${FOLDER_ICON}<span>${displayTpl(tpl, lang()).name}</span>${tpl.format ? `<span class="tpl-fmt">${tpl.format}</span>` : ''}</p>
     </article>`).join('')
   const none = items.length === 0
   empty.hidden = !none
@@ -897,7 +897,7 @@ function openTemplateDetail(tpl) {
   /* 创作形式（幻灯片/文档）与自定义版块，均按模板名持久化 */
   store.state.templateForm ??= {}
   store.state.templateBlocks ??= {}
-  const formOf = (t) => store.state.templateForm[t.name] ?? 'slide'
+  const formOf = (t) => store.state.templateForm[t.name] ?? (t.format === '文档' ? 'doc' : 'slide')
   const blocksOf = (t) => (store.state.templateBlocks[t.name] ??= [])
   let activeTab = 'brief'
 
@@ -947,12 +947,15 @@ function openTemplateDetail(tpl) {
     if (form === 'doc') {
       // 文档形态：整篇纵向滚动、图文流式，不再分页
       deckEl.classList.add('is-doc')
+      deckEl.classList.remove('is-square')
       slideOnly.forEach((el) => { el.hidden = true })
       const editsByPage = editRoot(t)[locale] ?? {}
       deckEl.innerHTML = renderDocumentHTML(t, locale, editsByPage, blocksOf(t))
       deckEl.scrollTop = 0
     } else {
       deckEl.classList.remove('is-doc')
+      // 社交轮播卡片：方形画幅（1:1），其余格式保持 16:9
+      deckEl.classList.toggle('is-square', t.format === '社交轮播卡片')
       slideOnly.forEach((el) => { el.hidden = false })
       const edits = pageEdits(t, locale, pageIdx)
       deckEl.innerHTML = renderPageHTML(t, pageIdx, styleIdxOf(t), locale, edits)
