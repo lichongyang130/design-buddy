@@ -661,8 +661,6 @@ export function renderPresentationDocument(tpl) {
   return `<div class="td-deck">${pagesHtml}</div>`
 }
 
-<<<<<<< HEAD
-=======
 /* 文档模式渲染：将所有页面堆叠为可滚动文档 */
 export function renderDocumentPresentation(presTpl, locale) {
   const total = presTpl.pages.length
