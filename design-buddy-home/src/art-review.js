@@ -34,7 +34,7 @@ grid.addEventListener('click',event=>{
   const button=event.target.closest('[data-download]'); if(!button)return
   const {tpl,index}=samples[Number(button.dataset.download)]
   const scene = planContentArt(tpl,index).scene
-  if (scene) { const a=document.createElement('a');a.href=contentArtURL(tpl,index);a.download=`${scene.file}.webp`;a.click();return }
+  if (scene) { const a=document.createElement('a');a.href=contentArtURL(tpl,index);a.download=scene.src.split('/').pop();a.click();return }
   const url=URL.createObjectURL(new Blob([renderContentArtSVG(tpl,index)],{type:'image/svg+xml'}))
   const a=document.createElement('a');a.href=url;a.download=`${tpl.id}-page-${index+1}.svg`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)
 })

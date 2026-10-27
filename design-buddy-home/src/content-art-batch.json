@@ -1,0 +1,98 @@
+[
+  {
+    "templateId": "brand-story",
+    "title": "A Workshop on Rue de Rivoli",
+    "sourceSnapshot": "{\"body\":\"In a small atelier on Rue de Rivoli, Édouard Lumière began crafting light fixtures by hand — each one a unique work of art.\",\"eyebrow\":\"1928 · PARIS\",\"layout\":\"hero\",\"title\":\"A Workshop on Rue de Rivoli\"}",
+    "src": "/art/content/brand-story-p4-bdee3f6eff68.webp",
+    "file": "brand-story-p4-bdee3f6eff68.webp",
+    "brief": "A fictional Paris lighting atelier in 1928: artisan hand crafting a brass fixture at a timber workbench, glass shades, tools and tall window. Ink and gouache in aged brass, walnut, ivory and blue. Not a historical photograph.",
+    "medium": "ai-illustration",
+    "status": "generated",
+    "sha256": "bdee3f6eff6872fae9834aba9119088b941193a9e4f517d968c6b50b80ee3999",
+    "source": "AI-generated conceptual illustration, not documentary photography"
+  },
+  {
+    "templateId": "guide-doc-1",
+    "title": "What is Cloud Architecture?",
+    "sourceSnapshot": "{\"body\":\"PaperHandbook 2 provides comprehensive guidance on Cloud Architecture. This guide covers everything from basic concepts to advanced implementation.\",\"eyebrow\":\"INTRODUCTION\",\"layout\":\"hero\",\"title\":\"What is Cloud Architecture?\"}",
+    "src": "/art/content/guide-doc-1-p10-0ef2d4c32648.webp",
+    "file": "guide-doc-1-p10-0ef2d4c32648.webp",
+    "brief": "Cutaway conceptual cloud facility with compute, storage and network spaces and redundant physical pathways. Axonometric clay and translucent blue glass, ivory and copper. Not a real vendor architecture.",
+    "medium": "ai-illustration",
+    "status": "generated",
+    "sha256": "0ef2d4c3264841b1cd8a7d00c553a84e7b491b68bfa666951656112cf3d86eb5",
+    "source": "AI-generated conceptual illustration, not documentary photography"
+  },
+  {
+    "templateId": "guide-doc-2",
+    "title": "What is Cybersecurity?",
+    "sourceSnapshot": "{\"body\":\"PageReference 3 provides comprehensive guidance on Cybersecurity. This guide covers everything from basic concepts to advanced implementation.\",\"eyebrow\":\"INTRODUCTION\",\"layout\":\"hero\",\"title\":\"What is Cybersecurity?\"}",
+    "src": "/art/content/guide-doc-2-p7-aae96878c8de.webp",
+    "file": "guide-doc-2-p7-aae96878c8de.webp",
+    "brief": "Layered secure archive with access checkpoint, separated internal rooms and monitored vault. An analyst at a workstation; defense in depth as tangible space, not a generic shield icon. Charcoal navy, jade and ivory.",
+    "medium": "ai-illustration",
+    "status": "generated",
+    "sha256": "aae96878c8de43c2d653d14a431fe43b0794671a38adc1bac1f5c5c0e0c97674",
+    "source": "AI-generated conceptual illustration, not documentary photography"
+  },
+  {
+    "templateId": "launch-0",
+    "title": "The World Has Changed",
+    "sourceSnapshot": "{\"body\":\"EdTech Platforms is undergoing a fundamental shift. Traditional solutions were built for yesterday's world — they cannot handle today's scale, complexity, and speed.\",\"eyebrow\":\"THE PROBLEM\",\"layout\":\"hero\",\"title\":\"The World Has Changed\"}",
+    "src": "/art/content/launch-0-p7-e005d20474fc.webp",
+    "file": "launch-0-p7-e005d20474fc.webp",
+    "brief": "An old classroom and overloaded equipment cabinet open toward a spacious networked learning studio with flexible stations and instructor-led groups. Educational platform scale and complexity, gouache in cream, cobalt and terracotta.",
+    "medium": "ai-illustration",
+    "status": "generated",
+    "sha256": "e005d20474fcef667e30ad0a6b62145e794079443fae6c2c6b3f53287a020d70",
+    "source": "AI-generated conceptual illustration, not documentary photography"
+  },
+  {
+    "templateId": "pitch-0",
+    "title": "Why Now",
+    "sourceSnapshot": "{\"body\":\"Three converging forces — technological advancement, market readiness, and regulatory momentum — are creating a once-in-a-decade window in AI Infrastructure.\",\"eyebrow\":\"MARKET OPPORTUNITY\",\"layout\":\"hero\",\"title\":\"Why Now\"}",
+    "src": "/art/content/pitch-0-p5-b68727d160cf.webp",
+    "file": "pitch-0-p5-b68727d160cf.webp",
+    "brief": "Modular AI compute facility assembled where a research workshop, commercial hall and inspection gate meet: technical advance, market readiness and regulatory momentum. Porcelain, ink blue, coral and gold.",
+    "medium": "ai-illustration",
+    "status": "generated",
+    "sha256": "b68727d160cf5d302a18e5171d0da7b8b122968d2917004b862fbdf142c2d864",
+    "source": "AI-generated conceptual illustration, not documentary photography"
+  },
+  {
+    "templateId": "pitch-1",
+    "title": "Why Current Solutions Fail",
+    "sourceSnapshot": "{\"body\":\"73% of organizations report that existing Cloud Computing solutions fail to meet their needs. The root cause is not technology quality — it is fragmentation and lack of integration.\",\"eyebrow\":\"THE PROBLEM\",\"layout\":\"hero\",\"title\":\"Why Current Solutions Fail\"}",
+    "src": "/art/content/pitch-1-p4-db42f045678d.webp",
+    "file": "pitch-1-p4-db42f045678d.webp",
+    "brief": "Separate server islands with cables ending short of incompatible ports and an engineer examining mismatched connections. Cloud integration fragmentation metaphor, architectural gouache, slate and burnt orange.",
+    "medium": "ai-illustration",
+    "status": "generated",
+    "sha256": "db42f045678d91e98f1cd8e0fefd2f03b95c35fa9992b05e08ec98f3ee1cbbe6",
+    "source": "AI-generated conceptual illustration, not documentary photography"
+  },
+  {
+    "templateId": "training-1",
+    "title": "Mastering Food Technology",
+    "sourceSnapshot": "{\"body\":\"This comprehensive training program is designed to take you from foundational knowledge to advanced mastery of Food Technology, with hands-on exercises and real-world projects.\",\"eyebrow\":\"PROGRAM OVERVIEW\",\"layout\":\"hero\",\"title\":\"Mastering Food Technology\"}",
+    "src": "/art/content/training-1-p4-8f939b8e081a.webp",
+    "file": "training-1-p4-8f939b8e081a.webp",
+    "brief": "Food scientist mentor and student in a pilot food laboratory inspecting fermentation jars, processing machinery and a temperature probe. Ivory, sage and copper gouache; real hands-on food technology learning, not generic icons.",
+    "medium": "ai-illustration",
+    "status": "generated",
+    "sha256": "8f939b8e081af383e4c2181f210a99ac6ee3ff9a987f26bc478291fb26ad77a0",
+    "source": "AI-generated conceptual illustration, not documentary photography"
+  },
+  {
+    "templateId": "training-2",
+    "title": "Mastering Precision Agriculture",
+    "sourceSnapshot": "{\"body\":\"This comprehensive training program is designed to take you from foundational knowledge to advanced mastery of Precision Agriculture, with hands-on exercises and real-world projects.\",\"eyebrow\":\"PROGRAM OVERVIEW\",\"layout\":\"hero\",\"title\":\"Mastering Precision Agriculture\"}",
+    "src": "/art/content/training-2-p9-bc590f03606e.webp",
+    "file": "training-2-p9-bc590f03606e.webp",
+    "brief": "Trainee agronomist operating a ground soil sensor beside crop rows, surveying drone and targeted irrigation valves. Botanical architectural ink and gouache; cream, green and ochre, no factual data claims.",
+    "medium": "ai-illustration",
+    "status": "generated",
+    "sha256": "bc590f03606eb06b9b94f5aec3375263cf45e2a8a584836245bd6afb1338e2d9",
+    "source": "AI-generated conceptual illustration, not documentary photography"
+  }
+]

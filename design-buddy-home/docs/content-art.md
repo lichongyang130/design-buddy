@@ -42,3 +42,37 @@ node tests/verify-regression.mjs
 ```
 
 内容测试覆盖全目录渲染、步骤来源、单位保护、XSS 转义、六个素材文件、内容匹配失效、30 页筛选和详情配图查看器。自动化通过不等于人工视觉验收通过。
+
+## 全量扩展进度（2026-10-27）
+
+新增八个案例的独立插画：食品技术、精准农业、云架构、网络安全、AI 基础设施融资、云系统集成、教育平台发布和巴黎灯具工坊品牌故事。
+
+当前 **14 / 712 个案例**有专属 AI 插画，**698 个案例仍待生成**。11,573 个适合场景插画的页面中完成 14 页；其余页面的内容 SVG 不计入 AI 插画完成数。`/art-library.html` 展示全目录和真实进度，可筛选、搜索、下载已有素材或导出待生成任务。
+
+### 可恢复的批次任务
+
+```sh
+node scripts/content-art-batch.mjs status
+node scripts/content-art-batch.mjs plan --scope=case --out=../.artifacts/content-art/case-jobs.json
+node scripts/content-art-batch.mjs plan --scope=page --out=../.artifacts/content-art/page-jobs.json
+node scripts/content-art-batch.mjs audit
+```
+
+- case 范围：每个案例至少一张专属场景插画。
+- page 范围：封面、图文、主张、章节、引用和收尾等场景页。指标/流程/对比页继续使用可编辑内容图解。
+- `plan` 只导出尚未完成的任务，包含案例上下文、页面内容、配色和生成说明，不发起付费请求。
+- 使用图像生成工具按任务独立生成。不可将多案例做成一张拼图或复用素材。
+- 压缩为 WebP 后用 `import` 登记，必须提供计划里的原始 `sourceSnapshot`，避免旧计划的图片绑定到已修改正文。
+
+```js
+// argv 示例，避免 shell 手工转义正文中的引号
+spawnSync(process.execPath, ['scripts/content-art-batch.mjs', 'import',
+  `--job=${job.key}`, `--snapshot=${job.sourceSnapshot}`,
+  '--file=/absolute/path/to/generated.webp', '--brief=Actual image creation brief ...'])
+```
+
+批次注册表为 `src/content-art-batch.json`。导入检查真实文件签名、大小、重复 SHA-256、任务是否存在和内容快照是否一致。审核检查文件是否存在、SHA-256 是否变化、是否存在完全相同的重复图片和失效正文映射。它不检测视觉近似，也不自动审核 AI 生成质量。
+
+尚未启动无人值守图像生成服务，不会声称任务清单里的待生成图片已在后台自动生成。
+
+已完成插画的案例，封面和作品展缩略图也使用该案例的主插画，作为同案例视觉身份延续；不把封面复用计为新增生成图片。其他案例保持现有 SVG，进度仍为待生成。

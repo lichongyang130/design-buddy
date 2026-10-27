@@ -1425,7 +1425,7 @@ function openTemplateDetail(tpl) {
         modal.bodyEl.querySelector('pre').textContent = plan.brief
         modal.footEl.querySelector('[data-download-art]').addEventListener('click', () => {
           if (plan.scene) {
-            const a = document.createElement('a'); a.href = plan.scene.src; a.download = `${plan.scene.file}.webp`; a.click(); return
+            const a = document.createElement('a'); a.href = plan.scene.src; a.download = plan.scene.src.split('/').pop(); a.click(); return
           }
           const url = URL.createObjectURL(new Blob([renderContentArtSVG(t._tpl,index)], { type: 'image/svg+xml' }))
           const a = document.createElement('a'); a.href = url; a.download = `${t.id}-page-${index+1}.svg`; a.click()

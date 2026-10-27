@@ -44,7 +44,7 @@ for (const tpl of templates) {
   }
   assert.equal(palettes.size,1,'case-level SVG palette remains consistent')
 }
-assert.equal(scenes,6,'exactly six dedicated AI pilot illustrations')
+assert.equal(scenes,CONTENT_SCENES.length,'all registered AI illustrations are attached to current content')
 for (const scene of CONTENT_SCENES) {
   assert.ok(fs.existsSync(new URL(`../public${scene.src}`,import.meta.url)))
   const tpl = templates.find(t=>t.id===scene.templateId)
@@ -54,7 +54,7 @@ for (const scene of CONTENT_SCENES) {
   assert.equal(contentSceneFor(edited,index),null,'stale image cannot attach to changed content')
   assert.ok(contentArtURL(edited,index).startsWith('data:image/svg+xml'),'explicit content-derived fallback, not unrelated photo')
 }
-console.log(`PASS: ${templates.length} cases / ${pages} pages; content artwork present, no rotating stock images, 6 matched AI scenes, source escaping and data guards`)
+console.log(`PASS: ${templates.length} cases / ${pages} pages; content artwork present, no rotating stock images, ${scenes} matched AI scenes, source escaping and data guards`)
 
 const page = await loadPage('/art-review.html')
 try {
