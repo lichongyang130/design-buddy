@@ -16,6 +16,7 @@ import {
 } from './template-engine.js'
 import { ART_CONCEPTS, conceptLabel, conceptFor } from './art-concepts.js'
 import { PRESENTATION_TEMPLATES, getPresentationMeta, getPresentationTemplates, renderPresentationSlide, renderPresentationDocument } from './presentation-templates.js'
+import { getCartoonForCategory } from './cartoon-characters.js'
 
 initGlobalUI()
 
@@ -611,8 +612,10 @@ function coverInner(tpl) {
 function coverHTML(tpl) {
   if (tpl.gen) {
     const d = displayTpl(tpl, lang())
+    const cartoon = tpl.presentation ? getCartoonForCategory(tpl.cat, tpl.serial) : null
     return `<div class="tpl-cover tpl-gen" data-deco="${coverDeco(tpl)}" style="${coverStyle(tpl)}">
       <span class="tc-deco" aria-hidden="true"></span>
+      ${cartoon ? `<div class="tc-cartoon">${cartoon.svg}</div>` : ''}
       ${d.a ? `<span class="tc-a">${d.a}</span>` : ''}
       ${d.b ? `<span class="tc-b">${d.b}</span>` : ''}
       ${pageBadge(tpl)}

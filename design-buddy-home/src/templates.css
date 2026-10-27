@@ -1441,6 +1441,26 @@
   --tc-ink: var(--g-ink);
 }
 
+/* 卡通人物缩略图 */
+.tc-cartoon {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-52%);
+  width: 44%;
+  max-width: 95px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.95;
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.18));
+}
+
+.tc-cartoon svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .tpl-gen .tc-a {
   color: var(--g-ink);
   font-size: 12px;
