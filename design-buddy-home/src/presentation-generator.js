@@ -934,6 +934,60 @@ function extraPages(theme, imgBase, catType) {
   return pages
 }
 
+/* ---------------- 变体构建器 ---------------- */
+/* 为每个类别创建 4 种不同的页面结构变体 */
+
+const VARIANT_ORDERS = [
+  [0, 1, 2, 3, 4, 5, 6, 7, 8],
+  [1, 2, 0, 4, 3, 5, 6, 7, 8],
+  [2, 0, 1, 5, 3, 4, 7, 6, 8],
+  [0, 2, 1, 3, 5, 4, 6, 8, 7],
+]
+
+function makeVariants(basePages, theme, imgBase, variant) {
+  const cover = basePages[0]
+  const agenda = basePages[1]
+  const closing = basePages[basePages.length - 1]
+  const middle = basePages.slice(2, -1)
+
+  // 按 divider 分段
+  const sections = []
+  let current = null
+  for (const page of middle) {
+    if (page.layout === 'divider') {
+      if (current) sections.push(current)
+      current = [page]
+    } else {
+      if (current) current.push(page)
+      else current = [page]
+    }
+  }
+  if (current) sections.push(current)
+
+  // 按变体顺序重排段落
+  const order = VARIANT_ORDERS[variant % VARIANT_ORDERS.length]
+  const reordered = order.map((i) => sections[i]).filter(Boolean)
+
+  // 为每个变体添加独特的内容页面
+  const m = theme.metrics
+  const ml = theme.metricLabels
+  const ib = (n) => (imgBase + n) % 11
+  const extra = []
+
+  if (variant === 1) {
+    extra.push({ layout: 'quote', quote: `The future belongs to those who believe in the beauty of their dreams.`, source: `${theme.company} Manifesto`, img: ib(6) })
+    extra.push({ layout: 'stats', title: `${theme.industry} at a Glance`, stats: [{ val: m[0], lab: ml[0] }, { val: m[1], lab: ml[1] }, { val: m[2], lab: ml[2] }, { val: m[3], lab: ml[3] }], body: `Comprehensive overview of key ${theme.industry} metrics and trends.`, img: ib(7) })
+  } else if (variant === 2) {
+    extra.push({ layout: 'comparison', title: `Before ${theme.company}`, leftTitle: 'Before', rightTitle: 'After', left: ['Manual processes', 'High costs', 'Limited reach', 'Slow delivery'], right: ['Automated', 'Reduced costs', 'Global reach', 'Instant delivery'], img: ib(6) })
+    extra.push({ layout: 'big-stat', eyebrow: 'IMPACT', stat: m[0], sub: ml[0], body: `${theme.company} has transformed ${theme.industry} with innovative solutions.`, img: ib(7) })
+  } else if (variant === 3) {
+    extra.push({ layout: 'timeline', title: `${theme.company} Journey`, steps: ['Founded (2020)', 'First Product (2021)', 'Series A (2022)', 'Global Expansion (2023)', 'Industry Leader (2024)', 'Future Vision (2025+)'], img: ib(6) })
+    extra.push({ layout: 'split', eyebrow: 'VISION', title: 'Two Pillars', body0: `Innovation: We constantly push boundaries in ${theme.industry}.`, body1: `Impact: We create lasting value for customers and communities.`, img: ib(7) })
+  }
+
+  return [cover, agenda, ...reordered.flat(), ...extra, closing]
+}
+
 export function generatePresentationTemplates() {
   const templates = []
   let themeIdx = 0
@@ -943,14 +997,17 @@ export function generatePresentationTemplates() {
     const variantsPerCategory = Math.ceil(200 / CATEGORY_DEFS.length)
     for (let i = 0; i < variantsPerCategory && themeIdx < THEMES.length; i++) {
       const theme = THEMES[themeIdx]
-      // 选择框架/配色/字体变体
-      const fw = catDef.fwOptions[i % catDef.fwOptions.length]
-      const pal = catDef.palOptions[i % catDef.palOptions.length]
-      const font = catDef.fontOptions[i % catDef.fontOptions.length]
+      // 选择变体：每个模板使用不同的页面结构
+      const variant = (theme.serial - 1) % 4
+      // 选择框架/配色/字体：使用全局序号扩大范围
+      const fw = (theme.serial * 7 + i * 3) % 50
+      const pal = (theme.serial * 3 + i * 5) % 16
+      const font = (theme.serial + i) % 3
       // 图片基础索引：每个模板使用不同的起始图片
       const imgBase = globalIdx % 11
-      // 构建页面
-      const pages = [...catDef.build(theme, imgBase), ...extraPages(theme, imgBase, catDef.type)]
+      // 构建页面（使用变体系统）
+      const basePages = catDef.build(theme, imgBase)
+      const pages = makeVariants(basePages, theme, imgBase, variant)
       // 生成模板定义
       templates.push({
         id: `${catDef.type}-${i}`,

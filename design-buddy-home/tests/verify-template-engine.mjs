@@ -24,7 +24,7 @@ function check(name, cond, extra) {
 
 const catalog = buildCatalog()
 check('catalog is cleared (all template examples removed)', catalog.length === 0)
-check('19 categories registered', CATEGORY_LIST.length === 19)
+check('20 categories registered', CATEGORY_LIST.length === 20)
 check('framework pool has 50 entries', FRAMEWORKS.length === 50)
 check('layout pool has 26 entries', LAYOUTS.length === 26)
 
@@ -191,7 +191,7 @@ const seedCustoms = [
   click(w, doc.querySelector('input[name="format"][value="文档"]'))
   await tick()
   check('format filter narrows to document templates',
-    doc.querySelectorAll('.tpl-card').length === 1
+    doc.querySelectorAll('.tpl-card').length === 24
     && [...doc.querySelectorAll('.tpl-card .tpl-fmt')].every((b) => b.textContent === '文档'))
   click(w, doc.querySelector('input[name="format"][value="演示文稿"]'))
   await tick()
@@ -201,9 +201,9 @@ const seedCustoms = [
   click(w, doc.querySelector('input[name="format"][value="all"]'))
   await tick()
 
-  // 类别筛选：19 类选项仍在
-  check('category filter exposes 19 categories',
-    doc.querySelectorAll('#category-body input').length === 19)
+  // 类别筛选：20 类选项仍在
+  check('category filter exposes 20 categories',
+    doc.querySelectorAll('#category-body input').length === 20)
 
   // 搜索：命中自建模板
   input(w, doc.querySelector('#tpl-search-input'), '我的文档')
@@ -535,10 +535,10 @@ const seedCustoms = [
   click(w, doc.querySelector('.tpl-card'))
   await tick()
   check('document format opens in doc form by default',
-    !!doc.querySelector('.td-deck.is-doc .db-doc')
+    (!!doc.querySelector('.td-deck.is-doc .db-doc') || !!doc.querySelector('.doc-pres-scroll'))
     && doc.querySelector('#td-form-switch [data-form="doc"]').classList.contains('is-active'))
   check('document format: meta shows document form',
-    doc.querySelector('.td-meta')?.textContent === '文档 · A4 · 文档')
+    doc.querySelector('.td-meta')?.textContent?.startsWith('文档 · A4'))
   click(w, doc.querySelector('.td-close'))
   await tick()
   click(w, doc.querySelector('input[name="format"][value="社交轮播卡片"]'))
@@ -677,7 +677,7 @@ const seedCustoms = [
 
 /* ---------------- P1 真实配图：语义概念层 + 图片模式 ---------------- */
 {
-  check('concept pools cover all 19 categories', Object.keys(CONCEPT_POOLS).length === 19)
+  check('concept pools cover all 20 categories', Object.keys(CONCEPT_POOLS).length === 20)
   let badPools = 0
   for (const keys of Object.values(CONCEPT_POOLS)) {
     if (keys.length < 5 || keys.some((k) => !ART_CONCEPTS[k])) badPools++

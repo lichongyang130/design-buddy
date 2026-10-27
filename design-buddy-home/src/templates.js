@@ -15,7 +15,8 @@ import {
   getArtManifest, setArtOverride, clearArtOverride,
 } from './template-engine.js'
 import { ART_CONCEPTS, conceptLabel, conceptFor } from './art-concepts.js'
-import { PRESENTATION_TEMPLATES, getPresentationMeta, getPresentationTemplates, renderPresentationSlide, renderPresentationDocument } from './presentation-templates.js'
+import { PRESENTATION_TEMPLATES, getPresentationMeta, getPresentationTemplates, renderPresentationSlide, renderPresentationDocument, renderDocumentPresentation } from './presentation-templates.js'
+import { GENERATED_DOCUMENT_TEMPLATES } from './document-generator.js'
 import { getCartoonForCategory } from './cartoon-characters.js'
 
 initGlobalUI()
@@ -123,7 +124,10 @@ const $$ = (sel, root = document) => [...root.querySelectorAll(sel)]
 const CATEGORIES_VISIBLE = VISIBLE_CATS
 const CATEGORIES_HIDDEN = HIDDEN_CATS
 
-const TEMPLATES = PRESENTATION_TEMPLATES.map((t) => getPresentationMeta(t))
+const TEMPLATES = [
+  ...PRESENTATION_TEMPLATES.map((t) => getPresentationMeta(t)),
+  ...GENERATED_DOCUMENT_TEMPLATES.map((t) => getPresentationMeta(t)),
+]
 
 const FOLDER_ICON = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>`
 
@@ -959,19 +963,35 @@ function openTemplateDetail(tpl) {
       const totalPages = presTpl.pages.length
       if (pageIdx >= totalPages) pageIdx = 0
       mask.querySelector('#td-topbar-title').textContent = displayTpl(t, locale).name
-      mask.querySelectorAll('#td-form-switch [data-form]').forEach((b) =>
-        b.classList.toggle('is-active', b.dataset.form === 'slide'))
       const slideOnly = mask.querySelectorAll('.td-deck-bar, .td-page-arrow, .td-progress, .td-pages')
-      deckEl.classList.remove('is-doc')
-      deckEl.classList.remove('is-square')
-      slideOnly.forEach((el) => { el.hidden = false })
-      deckEl.innerHTML = renderPresentationSlide(presTpl, pageIdx)
-      deckEl.querySelector('.dp-page')?.classList.add('is-shown')
-      pageCountEl.textContent = `${String(pageIdx + 1).padStart(2, '0')} / ${String(totalPages).padStart(2, '0')}`
-      const fw = FRAMEWORKS[presTpl.fw]
-      frameEl.textContent = locale === 'en' ? fw.nameEn : fw.name
-      progressEl.style.width = `${((pageIdx + 1) / totalPages) * 100}%`
-      renderPageStrip(totalPages)
+
+      if (t.docMode) {
+        // 文档模式：渲染全部页面为可滚动文档
+        mask.querySelectorAll('#td-form-switch [data-form]').forEach((b) =>
+          b.classList.toggle('is-active', b.dataset.form === 'doc'))
+        deckEl.classList.add('is-doc')
+        deckEl.classList.remove('is-square')
+        slideOnly.forEach((el) => { el.hidden = true })
+        deckEl.innerHTML = renderDocumentPresentation(presTpl, locale)
+        deckEl.scrollTop = 0
+        const fw = FRAMEWORKS[presTpl.fw]
+        frameEl.textContent = locale === 'en' ? fw.nameEn : fw.name
+        pageCountEl.textContent = `${String(totalPages).padStart(2, '0')} ${uiText().pages}`
+      } else {
+        // 幻灯片模式：逐页渲染
+        mask.querySelectorAll('#td-form-switch [data-form]').forEach((b) =>
+          b.classList.toggle('is-active', b.dataset.form === 'slide'))
+        deckEl.classList.remove('is-doc')
+        deckEl.classList.remove('is-square')
+        slideOnly.forEach((el) => { el.hidden = false })
+        deckEl.innerHTML = renderPresentationSlide(presTpl, pageIdx)
+        deckEl.querySelector('.dp-page')?.classList.add('is-shown')
+        pageCountEl.textContent = `${String(pageIdx + 1).padStart(2, '0')} / ${String(totalPages).padStart(2, '0')}`
+        const fw = FRAMEWORKS[presTpl.fw]
+        frameEl.textContent = locale === 'en' ? fw.nameEn : fw.name
+        progressEl.style.width = `${((pageIdx + 1) / totalPages) * 100}%`
+        renderPageStrip(totalPages)
+      }
       syncLangButtons()
       return
     }

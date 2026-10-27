@@ -462,7 +462,8 @@ export function getPresentationMeta(tpl) {
     b: tpl.b,
     cats: [tpl.cat],
     cat: tpl.cat,
-    format: '演示文稿',
+    format: tpl.format || '演示文稿',
+    docMode: !!tpl.docMode,
     pageCount: tpl.pageCount,
     imgCount: tpl.imgCount,
     gen: true,
@@ -658,6 +659,22 @@ export function renderPresentationSlide(tpl, pageIdx) {
 export function renderPresentationDocument(tpl) {
   const pagesHtml = tpl.pages.map((_, i) => renderPresentationSlide(tpl, i)).join('')
   return `<div class="td-deck">${pagesHtml}</div>`
+}
+
+<<<<<<< HEAD
+=======
+/* 文档模式渲染：将所有页面堆叠为可滚动文档 */
+export function renderDocumentPresentation(presTpl, locale) {
+  const total = presTpl.pages.length
+  let html = `<div class="doc-pres-scroll">`
+  for (let i = 0; i < total; i++) {
+    html += `<div class="doc-pres-page">`
+    html += renderPresentationSlide(presTpl, i)
+    html += `<div class="doc-pres-pagenum">${String(i + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}</div>`
+    html += `</div>`
+  }
+  html += `</div>`
+  return html
 }
 
 /* 合并手动模板和生成模板 */

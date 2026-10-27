@@ -35,7 +35,7 @@ const int = (rng, min, max) => min + Math.floor(rng() * (max - min + 1))
 
 /* ---------------- 类别 ---------------- */
 
-export const VISIBLE_CATS = ['课程', '提案', '报告', '融资演讲稿', '营销材料', '培训', '商业规划', '活动']
+export const VISIBLE_CATS = ['课程', '提案', '报告', '融资演讲稿', '营销材料', '培训', '商业规划', '活动', '技术文档']
 export const HIDDEN_CATS = ['作品集', '品牌设计', '教育', '科技', '医疗健康', '艺术', '文化', '旅游', '餐饮', '零售', '建筑']
 export const CATEGORY_LIST = [...VISIBLE_CATS, ...HIDDEN_CATS]
 
@@ -43,7 +43,7 @@ export const CAT_EN = {
   课程: 'Courses', 提案: 'Proposals', 报告: 'Reports', 融资演讲稿: 'Fundraising', 营销材料: 'Marketing',
   培训: 'Training', 商业规划: 'Business Planning', 活动: 'Events', 作品集: 'Portfolios', 品牌设计: 'Brand Design',
   教育: 'Education', 科技: 'Technology', 医疗健康: 'Healthcare', 艺术: 'Art', 文化: 'Culture',
-  旅游: 'Travel', 餐饮: 'F&B', 零售: 'Retail', 建筑: 'Architecture',
+  旅游: 'Travel', 餐饮: 'F&B', 零售: 'Retail', 建筑: 'Architecture', 技术文档: 'Technical Docs',
 }
 export const catLabel = (cat, locale) => (locale === 'en' ? (CAT_EN[cat] ?? cat) : cat)
 
