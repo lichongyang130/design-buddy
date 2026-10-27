@@ -10,10 +10,12 @@ import { store, toast, openModal, confirmModal, uid, fmtDate, copyText } from '.
 import { initGlobalUI, openUpgrade, openAccount } from './global-ui.js'
 import {
   buildCatalog, buildDeck, renderPageHTML, renderDocumentHTML, metaFor, coverStyle, coverDeco,
+  FRAMEWORKS,
   displayTpl, catLabel, VISIBLE_CATS, HIDDEN_CATS, configureArt, getArtBase,
   getArtManifest, setArtOverride, clearArtOverride,
 } from './template-engine.js'
 import { ART_CONCEPTS, conceptLabel, conceptFor } from './art-concepts.js'
+import { PRESENTATION_TEMPLATES, getPresentationMeta, getPresentationTemplates, renderPresentationSlide, renderPresentationDocument } from './presentation-templates.js'
 
 initGlobalUI()
 
@@ -120,7 +122,7 @@ const $$ = (sel, root = document) => [...root.querySelectorAll(sel)]
 const CATEGORIES_VISIBLE = VISIBLE_CATS
 const CATEGORIES_HIDDEN = HIDDEN_CATS
 
-const TEMPLATES = []
+const TEMPLATES = PRESENTATION_TEMPLATES.map((t) => getPresentationMeta(t))
 
 const FOLDER_ICON = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>`
 
@@ -248,6 +250,32 @@ const TPL_META = {
     desc: 'A seasonal campaign carousel blending modernist grids with rain-washed indigos, made for collaborative making and storytelling.',
     fits: ['seasonal marketing campaigns', 'brand storytelling carousels', 'event invitations', 'social content series'],
     colors: ['#3957a8', '#7fb2e5', '#f2eadf'], themes: ['活动', '品牌'],
+  },
+  // ---- 演示文稿模板元数据 ----
+  '投资者路演套件': {
+    desc: 'A 35-slide investor pitch deck built on the cyber-neon framework: dark blue canvases, electric-blue accents and full-bleed photography for Series A funding rounds.',
+    fits: ['Series A and B fundraising pitches', 'startup roadshows', 'angel investor meetings', 'venture capital demo days'],
+    colors: ['#0d1b3e', '#2563eb', '#f8fafc'], themes: ['商业', '科技'],
+  },
+  '季度经营回顾': {
+    desc: 'A 30-slide quarterly business review on a data-dashboard framework: clean blue-gray palette, KPI boards, line charts and comparison tables for leadership reviews.',
+    fits: ['quarterly board presentations', 'executive leadership reviews', 'investor update meetings', 'cross-team progress reviews'],
+    colors: ['#1e3a5f', '#3b82f6', '#f1f5f9'], themes: ['商业', '数据'],
+  },
+  '品牌传承故事': {
+    desc: 'A 35-slide brand heritage story on an editorial framework: warm gold-brown palette, serif headlines and full-bleed photography for luxury brand narratives.',
+    fits: ['luxury and heritage brand stories', 'brand anniversary celebrations', 'craftsmanship and legacy narratives', 'brand book presentations'],
+    colors: ['#7c5e1e', '#d4a73a', '#faf6ef'], themes: ['品牌', '文化'],
+  },
+  '市场扩张战略': {
+    desc: 'A 30-slide market expansion strategy on the Swiss International typographic grid: strict blue-gray palette, data tables, timelines and comparison layouts for strategic planning.',
+    fits: ['market entry strategies', 'geographic expansion plans', 'competitive positioning decks', 'board strategy presentations'],
+    colors: ['#1a2b3c', '#4a6fa5', '#e8edf2'], themes: ['商业', '战略'],
+  },
+  '产品发布主题演讲': {
+    desc: 'A 35-slide product launch keynote on a cover-impact framework: gradient purple-pink palette, dramatic hero slides and full-bleed photography for consumer product launches.',
+    fits: ['consumer product launches', 'tech product keynotes', 'brand campaign announcements', 'trade show presentations'],
+    colors: ['#4a1a6b', '#e84393', '#faf0ff'], themes: ['营销', '科技'],
   },
 }
 
@@ -912,6 +940,30 @@ function openTemplateDetail(tpl) {
     const t = cur()
     const locale = lang()
     const form = formOf(t)
+
+    // 演示文稿模板：使用自定义渲染函数
+    if (t.presentation) {
+      const presTpl = t._tpl
+      const totalPages = presTpl.pages.length
+      if (pageIdx >= totalPages) pageIdx = 0
+      mask.querySelector('#td-topbar-title').textContent = displayTpl(t, locale).name
+      mask.querySelectorAll('#td-form-switch [data-form]').forEach((b) =>
+        b.classList.toggle('is-active', b.dataset.form === 'slide'))
+      const slideOnly = mask.querySelectorAll('.td-deck-bar, .td-page-arrow, .td-progress, .td-pages')
+      deckEl.classList.remove('is-doc')
+      deckEl.classList.remove('is-square')
+      slideOnly.forEach((el) => { el.hidden = false })
+      deckEl.innerHTML = renderPresentationSlide(presTpl, pageIdx)
+      deckEl.querySelector('.dp-page')?.classList.add('is-shown')
+      pageCountEl.textContent = `${String(pageIdx + 1).padStart(2, '0')} / ${String(totalPages).padStart(2, '0')}`
+      const fw = FRAMEWORKS[presTpl.fw]
+      frameEl.textContent = locale === 'en' ? fw.nameEn : fw.name
+      progressEl.style.width = `${((pageIdx + 1) / totalPages) * 100}%`
+      renderPageStrip(totalPages)
+      syncLangButtons()
+      return
+    }
+
     configureArt({ mode: store.state.imageMode ?? 'illustration', overrides: store.state.artOverrides })
     const deck = buildDeck(t, locale)
     if (pageIdx >= deck.pages.length) pageIdx = 0
@@ -1180,14 +1232,20 @@ function openTemplateDetail(tpl) {
     const tabBrief = locale === 'en' ? 'Brief' : '说明'
     const tabImages = locale === 'en' ? 'Images' : '图片'
     // 收集整篇配图：页码 + 槽位 + 概念 key（与幻灯/文档渲染完全同源）
-    const deck = buildDeck(t, locale)
+    // 演示文稿模板使用真实图片，创建 mock deck 供视觉气质/工作原理使用
+    const deck = t.presentation ? {
+      framework: FRAMEWORKS[t.fw],
+      pages: t._tpl.pages.map((p, i) => ({ no: i + 1, layout: p.layout })),
+    } : buildDeck(t, locale)
     const artRows = []
-    deck.pages.forEach((p) => {
-      const count = LAYOUT_SLOT_COUNT[p.layout] ?? 1
-      for (let slot = 0; slot < count; slot++) {
-        artRows.push({ page: p.no, slot, key: conceptFor(t, p, slot) })
-      }
-    })
+    if (!t.presentation) {
+      deck.pages.forEach((p) => {
+        const count = LAYOUT_SLOT_COUNT[p.layout] ?? 1
+        for (let slot = 0; slot < count; slot++) {
+          artRows.push({ page: p.no, slot, key: conceptFor(t, p, slot) })
+        }
+      })
+    }
     const manifest = getArtManifest()
     panel.innerHTML = `
       <div class="tdp-head">
@@ -1387,8 +1445,9 @@ function openTemplateDetail(tpl) {
   }
 
   function goPage(delta) {
-    const deck = buildDeck(cur())
-    pageIdx = (pageIdx + delta + deck.pages.length) % deck.pages.length
+    const t = cur()
+    const total = t.presentation ? t._tpl.pages.length : buildDeck(t).pages.length
+    pageIdx = (pageIdx + delta + total) % total
     renderDeck()
   }
 
@@ -1620,7 +1679,7 @@ function openTemplateDetail(tpl) {
       app: 'Design Buddy',
       template: displayTpl(t, locale).name,
       format: formOf(t),
-      pages: buildDeck(t, lang()).pages.length,
+      pages: t.presentation ? t._tpl.pages.length : buildDeck(t, lang()).pages.length,
       style: styleIdxOf(t),
       blocks: blocksOf(t),
     }, null, 2)

@@ -47,7 +47,7 @@ results.push(['css: ws menu card restyled', cssBundle.includes('.ws-menu') && cs
 // 模板页
 {
   const { doc, errors } = await loadPage('/templates.html')
-  results.push(['templates empty state', doc.querySelectorAll('.tpl-card').length === 0])
+  results.push(['templates presentation cards', doc.querySelectorAll('.tpl-card').length === 5])
   results.push(['templates no errors', errors.length === 0, errors])
 }
 

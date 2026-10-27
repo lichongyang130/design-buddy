@@ -163,13 +163,15 @@ const seedCustoms = [
 ]
 
 {
-  // 空态：无任何模板时展示空状态
+  // 空态：无自定义模板时仍展示演示文稿模板
   const emptyPage = await loadPage('/templates.html', { storage: makeStorage(), freshCopy: true })
   await tick()
   check('templates page no errors', emptyPage.errors.length === 0, emptyPage.errors)
-  check('empty state shown when no templates',
-    !!emptyPage.doc.querySelector('#tpl-empty') && !emptyPage.doc.querySelector('#tpl-empty').hidden)
-  check('empty state hides grid', emptyPage.doc.querySelector('#tpl-grid').hidden)
+  check('presentation templates shown without customs',
+    emptyPage.doc.querySelectorAll('.tpl-card').length === 5)
+  check('empty state hidden when presentation templates exist',
+    emptyPage.doc.querySelector('#tpl-empty').hidden)
+  check('grid visible with presentation templates', !emptyPage.doc.querySelector('#tpl-grid').hidden)
   check('load more hidden when empty', emptyPage.doc.querySelector('.tpl-more-wrap').hidden)
 
   // 自建模板：清空示例后网格只剩自定义模板
@@ -177,11 +179,12 @@ const seedCustoms = [
   const { doc, w, errors } = await loadPage('/templates.html', { storage, freshCopy: true })
   await tick()
   check('seeded page no errors', errors.length === 0, errors)
-  check('curated and generated examples gone',
-    !doc.querySelector('.tpl-gen') && !doc.querySelector('.tpl-card.tpl-shipu'))
-  check('grid shows seeded custom templates', doc.querySelectorAll('.tpl-card').length === 3)
+  check('curated examples gone, presentation templates shown',
+    !doc.querySelector('.tpl-card.tpl-shipu') && doc.querySelectorAll('.tpl-gen').length === 5)
+  check('grid shows presentation + custom templates', doc.querySelectorAll('.tpl-card').length === 8)
   check('custom cards carry format badges',
-    [...doc.querySelectorAll('.tpl-card .tpl-fmt')].map((b) => b.textContent).join() === '演示文稿,文档,社交轮播卡片')
+    [...doc.querySelectorAll('.tpl-card')].filter((c) => !c.querySelector('.tpl-cover.tpl-gen'))
+        .map((c) => c.querySelector('.tpl-fmt')?.textContent).join() === '演示文稿,文档,社交轮播卡片')
   check('load more hidden with few customs', doc.querySelector('.tpl-more-wrap').hidden)
 
   // 格式筛选：9 个选项仍在，且按格式严格过滤
@@ -357,7 +360,8 @@ const seedCustoms = [
   click(w, doc.querySelector('.tpl-lang [data-lang="zh"]'))
   await tick()
   check('toolbar toggle back to chinese', doc.querySelector('.tpl-lang [data-lang="zh"]').classList.contains('is-active'))
-  check('grid back to chinese name', /[一-龥]/.test(doc.querySelector('.tpl-name span').textContent))
+  const firstCardName = doc.querySelector('.tpl-name span')?.textContent || 'NO NAME'
+  check('grid back to chinese name', /[一-龥]/.test(firstCardName), firstCardName)
   check('category label chinese', /[一-龥]/.test(doc.querySelector('.cat-label').textContent))
 }
 
@@ -399,7 +403,8 @@ const seedCustoms = [
   const storage = makeStorage(seedCustoms)
   const { doc, w, errors } = await loadPage('/templates.html', { storage, freshCopy: true })
   await tick()
-  click(w, doc.querySelector('.tpl-card'))
+  const customCard = [...doc.querySelectorAll('.tpl-card')].find((c) => !c.querySelector('.tpl-cover.tpl-gen'))
+  click(w, customCard)
   await tick()
   const tplName = doc.querySelector('#td-topbar-title').textContent
   check('editor: topbar/ribbon/toolbar restructured',

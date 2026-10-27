@@ -1838,6 +1838,7 @@
 
 /* cards */
 .lay-cards .dp-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5%; flex: 1; min-height: 0; }
+.lay-triple-grid .dp-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5%; flex: 1; min-height: 0; }
 .dp-card { background: var(--dp-paper); border-radius: var(--dp-radius); overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 8px 22px rgba(17,28,54,0.07); }
 .dp-card .dp-art { height: 48%; border-radius: 0; }
 .dp-card h4, .dp-card p { padding: 0 1.6cqw; }

@@ -466,6 +466,10 @@ const CURATED_EN = {
 }
 
 export function displayTpl(tpl, locale = 'zh') {
+  if (tpl.presentation) {
+    const name = locale === 'en' ? tpl.name : (tpl.zh || tpl.name)
+    return { name, a: tpl.a, b: tpl.b }
+  }
   if (locale !== 'en') return { name: tpl.name, a: tpl.a, b: tpl.b }
   if (tpl.gen) {
     const ci = CATEGORY_LIST.indexOf(tpl.cats[0])
