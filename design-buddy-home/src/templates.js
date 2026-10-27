@@ -1,3 +1,4 @@
+import { CASES as SHOWCASE_CASES, showcaseMeta } from './showcase/data.js'
 import { APP_CASES, appTemplateMeta } from './app-catalog.js'
 /* ============================================================
    探索模板页：筛选 / 搜索 / 排序保留，套用模板真实生成 gamma
@@ -131,6 +132,7 @@ const TEMPLATES = [
   ...PRESENTATION_TEMPLATES.map((t) => getPresentationMeta(t)),
   ...GENERATED_DOCUMENT_TEMPLATES.map((t) => getPresentationMeta(t)),
   ...APP_CASES.map(appTemplateMeta),
+  ...SHOWCASE_CASES.map(showcaseMeta),
 ]
 
 const FOLDER_ICON = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>`
@@ -424,7 +426,7 @@ function pageBadge(tpl) {
 function renderGrid(items) {
   currentItems = items
   const visible = items.slice(0, pageLimit)
-  grid.innerHTML = visible.map((tpl) => tpl.app ? `<article class="tpl-card tpl-app-card" data-name="${tpl.name}"><a href="${tpl.href}" class="tpl-app-link" aria-label="打开${tpl.name}交互原型">${coverHTML(tpl)}<p class="tpl-name">${FOLDER_ICON}<span>${tpl.name}</span><span class="tpl-fmt">App · 可交互</span></p></a></article>` : `
+  grid.innerHTML = visible.map((tpl) => tpl.app || tpl.showcase ? `<article class="tpl-card tpl-app-card" data-name="${tpl.name}"><a href="${tpl.href}" class="tpl-app-link" aria-label="打开${tpl.name}交互原型">${coverHTML(tpl)}<p class="tpl-name">${FOLDER_ICON}<span>${tpl.name}</span><span class="tpl-fmt">${tpl.app ? 'App · 可交互' : tpl.format}</span></p></a></article>` : `
     <article class="tpl-card" data-name="${tpl.name}" ${tpl.custom ? `data-custom="${tpl.id}"` : ''}>
       ${coverHTML(tpl)}
       <p class="tpl-name">${FOLDER_ICON}<span>${displayTpl(tpl, lang()).name}</span>${tpl.format ? `<span class="tpl-fmt">${tpl.format}</span>` : ''}</p>
@@ -604,7 +606,7 @@ grid.addEventListener('click', (event) => {
   const card = event.target.closest('.tpl-card')
   if (!card) return
   const tpl = allTemplates().find((t) => t.name === card.dataset.name)
-  if (tpl && !tpl.app) openTemplateDetail(tpl)
+  if (tpl && !tpl.app && !tpl.showcase) openTemplateDetail(tpl)
 })
 
 /* ---------------- 模板详情预览弹层（按截图 1:1） ---------------- */
@@ -618,6 +620,7 @@ function coverInner(tpl) {
 }
 
 function coverHTML(tpl) {
+  if (tpl.showcase) return `<div class="tpl-cover qiye-app-cover"><img class="qiye-app-cover-image" src="${tpl.cover}" alt="${tpl.name}实际案例封面" loading="lazy" width="1200" height="714"></div>`
   if (tpl.app) return `<div class="tpl-cover qiye-app-cover"><img class="qiye-app-cover-image" src="${tpl.cover}" alt="${tpl.name}：独立品牌封面与真实手机首页" loading="lazy" width="1200" height="714"></div>`
   if (tpl.gen && tpl._tpl) {
     return `<div class="tpl-cover tpl-gen exhibition-thumb ${tpl.docMode ? 'exhibition-document' : ''}">

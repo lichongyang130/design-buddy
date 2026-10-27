@@ -543,7 +543,10 @@ const seedCustoms = [
   await tick()
   click(w, doc.querySelector('input[name="format"][value="社交轮播卡片"]'))
   await tick()
-  click(w, doc.querySelector('.tpl-card'))
+  // New curated cases use the dedicated editor; retain this legacy custom-deck
+  // regression by explicitly selecting the seeded custom carousel after paging.
+  for (let i = 0; i < 4; i++) click(w, doc.querySelector('#tpl-more'))
+  click(w, doc.querySelector('.tpl-card[data-custom="ct-carousel"]'))
   await tick()
   check('carousel format renders square deck',
     !!doc.querySelector('.td-deck.is-square') && !doc.querySelector('.td-deck.is-doc'))

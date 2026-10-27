@@ -23,6 +23,8 @@ export default defineConfig({
         'qiye-app': resolve(import.meta.dirname, 'qiye-app.html'),
         'app-case': resolve(import.meta.dirname, 'app-case.html'),
         apps: resolve(import.meta.dirname, 'apps.html'),
+        showcase: resolve(import.meta.dirname, 'showcase.html'),
+        'showcase-case': resolve(import.meta.dirname, 'showcase-case.html'),
         templates: resolve(import.meta.dirname, 'templates.html'),
         'art-library': resolve(import.meta.dirname, 'art-library.html'),
         'art-review': resolve(import.meta.dirname, 'art-review.html'),
