@@ -225,6 +225,14 @@ export function openConnectors() {
   location.href = CONNECTORS_PAGE
 }
 
+/* 商业级演示案例（cases.html） */
+const CASES_PAGE = 'cases.html'
+
+export function openCases() {
+  if (location.pathname.endsWith(CASES_PAGE)) return
+  location.href = CASES_PAGE
+}
+
 /* ---------------- ⌘K 命令面板 ---------------- */
 
 const PAGE_ITEMS = [

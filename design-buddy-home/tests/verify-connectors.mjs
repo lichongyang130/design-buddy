@@ -35,7 +35,7 @@ const cardNames = () => cards().map((c) => c.dataset.cnName)
 check('connectors page loads without errors', errors.length === 0, errors)
 check('screenshot layout contract holds in built CSS', layoutOk)
 check('keeps the homepage rail (vertical icon column)',
-  [...doc.querySelectorAll('.rail .rail-item span')].map((s) => s.textContent).join() === '首页,媒体,模板,主题,设置,更多')
+  [...doc.querySelectorAll('.rail .rail-item span')].map((s) => s.textContent).join() === '首页,媒体,模板,案例,主题,设置,更多')
 check('only the more entry is active in the rail',
   [...doc.querySelectorAll('.rail .rail-item-active')].length === 1
   && doc.querySelector('.rail .more-wrap .rail-item').classList.contains('rail-item-active'))

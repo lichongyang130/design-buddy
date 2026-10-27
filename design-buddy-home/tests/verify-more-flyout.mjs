@@ -34,11 +34,11 @@ for (const path of pages) {
     console.log(`${cond ? 'PASS' : 'FAIL'}  ${path} ${label}`)
     if (!cond) failed += 1
   }
-  ok(!!wrap && items.join() === '技能,专家,连接器', `flyout structure ${JSON.stringify(items)}`)
+  ok(!!wrap && items.join() === '案例,技能,专家,连接器', `flyout structure ${JSON.stringify(items)}`)
   ok(!!pop && pop.hidden === true, 'pop hidden initially')
   // 只有一层：技能/专家/连接器这一张卡片，不要再套一层「更多」任务面板
   ok(!!flyout && pop.children.length === 1 && flyout === pop.firstElementChild, 'single menu card only')
-  ok(pop?.querySelectorAll('.menu-row').length === 3, 'three menu rows only')
+  ok(pop?.querySelectorAll('.menu-row').length === 4, 'four menu rows only')
   ok(!pop?.querySelector('[data-inspire]') && !pop?.querySelector('[data-task]'), 'no second-layer panel entries')
   // rail 是 position: sticky，必然生成层叠上下文；浮层必须挂到 body，
   // 否则 fixed+z-index 也只在 rail 上下文内生效，会被 .sidebar / .main 盖住。

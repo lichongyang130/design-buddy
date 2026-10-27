@@ -58,7 +58,7 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   check('experts page loads without errors', errors.length === 0, errors)
   check('screenshot layout contract holds in built CSS', layoutOk)
   check('keeps the homepage rail (vertical icon column)',
-    [...doc.querySelectorAll('.rail .rail-item span')].map((s) => s.textContent).join() === '首页,媒体,模板,主题,设置,更多')
+    [...doc.querySelectorAll('.rail .rail-item span')].map((s) => s.textContent).join() === '首页,媒体,模板,案例,主题,设置,更多')
   check('more entry marked as current section',
     doc.querySelector('.rail .more-wrap .rail-item').classList.contains('rail-item-active'))
   /* 专家介绍曾经是 inline + nowrap：overflow 不生效，长文案直接溢出卡片 */
@@ -352,7 +352,7 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   await tick()
   const pop = doc.querySelector('.more-pop')
   check('rail more flyout opens on the experts page',
-    pop?.hidden === false && doc.body.contains(pop) && pop.querySelectorAll('[data-more]').length === 3)
+    pop?.hidden === false && doc.body.contains(pop) && pop.querySelectorAll('[data-more]').length === 4)
   click(w, doc.querySelector('[data-more="专家"]'))
   await tick()
   check('expert item on its own page just closes the flyout', pop.hidden === true)
