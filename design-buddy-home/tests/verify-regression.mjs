@@ -40,16 +40,14 @@ results.push(['css: ws menu card restyled', cssBundle.includes('.ws-menu') && cs
   click(w, doc.body)
   results.push(['home bundle errors', errors.length === 0, errors])
   results.push(['home nav/template counts',
-    doc.querySelectorAll('.nav-item').length === 8
-    && doc.querySelectorAll('#template-row .template-card').length === 6
-    && doc.querySelectorAll('.rec-card').length === 8])
+    doc.querySelectorAll('.nav-item').length === 8])
   results.push(['home three popovers toggle', addOpen && imgOpen && effortOpen])
 }
 
 // 模板页
 {
   const { doc, errors } = await loadPage('/templates.html')
-  results.push(['templates 24 cards', doc.querySelectorAll('.tpl-card').length === 24])
+  results.push(['templates empty state', doc.querySelectorAll('.tpl-card').length === 0])
   results.push(['templates no errors', errors.length === 0, errors])
 }
 

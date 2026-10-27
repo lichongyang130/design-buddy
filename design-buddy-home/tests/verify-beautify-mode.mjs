@@ -44,8 +44,8 @@ check('beautify workbench swaps the hero artwork',
 check('beautify placeholder asks what to improve',
   $('#prompt-input').placeholder === '描述您希望更改或改进的内容')
 check('beautify workbench keeps the back pill', $('#back-btn').hidden === false)
-check('quick type row and recommended templates step aside',
-  $('#quick-types').hidden === true && $('#rec-templates').hidden === true)
+check('quick type row steps aside',
+  $('#quick-types').hidden === true && !$('#rec-templates'))
 
 /* ---------- 2. 虚线投放区 ---------- */
 

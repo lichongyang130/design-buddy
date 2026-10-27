@@ -9,7 +9,26 @@
 import { readFile, readdir, access } from 'node:fs/promises'
 import { join } from 'node:path'
 import { ART_CONCEPTS } from '../src/art-concepts.js'
-import { buildCatalog, buildDeck, renderPageHTML, configureArt } from '../src/template-engine.js'
+import { buildCatalog, buildDeck, renderPageHTML, configureArt, hashStr, CATEGORY_LIST, FRAMEWORKS } from '../src/template-engine.js'
+
+/* 合成模板：生成目录已清空，引擎用合成模板验证插画接线 */
+const synthCatalog = Array.from({ length: 40 }, (_, i) => ({
+  id: `synth-${i}`,
+  serial: i,
+  name: `合成绘本${i}`,
+  a: `合成${i}`,
+  b: 'SYNTH',
+  cls: null,
+  gen: true,
+  format: '演示文稿',
+  cats: [CATEGORY_LIST[i % CATEGORY_LIST.length]],
+  seed: hashStr(`synth-art:${i}`),
+  fw: i % FRAMEWORKS.length,
+  pal: i % 20,
+  font: i % 5,
+  pageCount: 20 + (i % 10),
+  imgCount: 10 + (i % 5),
+}))
 import { DIST } from './helpers.mjs'
 
 let passed = 0
@@ -41,7 +60,7 @@ for (const key of keys) {
 
 // 引擎接线：插画模式
 configureArt({ mode: 'illustration', manifest: manifest.concepts })
-const catalog = buildCatalog()
+const catalog = synthCatalog
 let rendered = 0, imged = 0
 let portraitOk = false, mapOk = false
 const usedPortraits = new Set()

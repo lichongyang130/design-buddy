@@ -66,8 +66,6 @@ const greetingTitle = () => 'DesignBuddy 让您提前下班'
 function applySmartSuggest() {
   const mode = homeMode()
   const smart = store.state.settings.personalize.smartSuggest
-  const row = $('.template-row')
-  const isWork = row?.dataset.workView === 'workspace'
 
   document.body.classList.toggle('is-type-mode', mode)
 
@@ -77,8 +75,6 @@ function applySmartSuggest() {
   if (pillWrap) pillWrap.hidden = !mode
   const quick = $('#quick-types')
   if (quick) quick.hidden = mode
-  const rec = $('#rec-templates')
-  if (rec) rec.hidden = mode
 
   const isImage = ui.type === '图片'
   const isBeautify = ui.type === '美化'
@@ -121,13 +117,12 @@ function applySmartSuggest() {
 
   // 设置 → 个性化：关掉「智能推荐」时，工作台里的示例与探索区一并隐藏
   const bare = isBeautify || isImport
-  ;['.examples', '.work-tabs'].forEach((sel) => {
+  ;['.examples'].forEach((sel) => {
     const el = $(sel)
     if (el) el.hidden = !mode || !smart || bare
   })
-  if (row) row.hidden = !mode || !smart || isWork || bare
   const work = $('#work-grid')
-  if (work) work.hidden = !mode || !isWork || bare
+  if (work) work.hidden = !mode || bare
   const ctaEl = $('.template-cta')
   if (ctaEl) ctaEl.hidden = !mode || bare
 }
@@ -398,36 +393,7 @@ function renderChips() {
 }
 
 /* 把一张模板卡片设为「引用」：进入它的格式工作台，并把卡片挂到输入框里 */
-/* 首页这批示例模板的格式（自定义模板以 store 里存的 format 为准） */
-const TEMPLATE_FORMATS = {
-  Graha: '文档',
-  'Jelly Canvas': '文档',
-  Olympus: '文档',
-  'Terrace Set': '演示文稿',
-  Reliquary: '文档',
-  Altitude: '演示文稿',
-  Scintilla: '演示文稿',
-  Quire: '文档',
-  'Fit Check': '演示文稿',
-  'First Edition': '文档',
-  Luminal: '演示文稿',
-  Buzzer: '演示文稿',
-  Hush: '文档',
-  讲堂: '演示文稿',
-}
-
-function referenceTemplate(name, cover = '') {
-  const tpl = (store.state.customTemplates ?? []).find((t) => t.name === name)
-  const format = tpl?.format || TEMPLATE_FORMATS[name] || null
-  activeTemplate = { name, cover: cover || (typeof tpl?.cover === 'string' && tpl.cover.startsWith('data:') ? tpl.cover : '') }
-  const typeMap = { 演示文稿: '演示文稿', 文档: '文档', 社交轮播卡片: '轮播图' }
-  const nextType = format ? typeMap[format] ?? ui.type : ui.type
-  if (!ui.type && nextType) setType(nextType, { quiet: true })
-  else if (!ui.type) setType('演示文稿', { quiet: true })
-  renderChips()
-  input.focus()
-  toast(`已引用模板「${name}」，写一句你想做的东西就能开始`)
-}
+/* 示例模板引用入口已全部清空（保留自定义模板在模板页的添加流程） */
 
 function addAttachment(name, meta = {}) {
   if (attachments.some((a) => a.name === name)) return
@@ -1092,20 +1058,10 @@ exampleGrid?.addEventListener('click', (event) => {
 /* ---------------- 工作区 / 探索 ---------------- */
 
 const workGrid = $('#work-grid')
-const templateRow = $('#template-row')
-let workTab = 'explore'
 
 function renderWork() {
-  if (!workGrid || !templateRow) return
-  const isWork = workTab === 'workspace'
-  templateRow.dataset.workView = workTab
+  if (!workGrid) return
   applySmartSuggest()
-  $$('[data-work-tab]').forEach((tab) => {
-    const on = tab.dataset.workTab === workTab
-    tab.classList.toggle('is-active', on)
-    tab.setAttribute('aria-selected', String(on))
-  })
-  if (!isWork) return
   const list = (store.state.gammas ?? []).filter((g) => !g.deleted).slice(0, 8)
   workGrid.innerHTML = list.length ? list.map((g, i) => `
     <button class="work-item" type="button" data-work-gamma="${g.id}">
@@ -1117,12 +1073,6 @@ function renderWork() {
     : `<div class="work-empty">工作区还没有内容。在输入框写一句话发送，创作会出现在这里。</div>`
 }
 
-$$('[data-work-tab]').forEach((tab) => {
-  tab.addEventListener('click', () => {
-    workTab = tab.dataset.workTab
-    renderWork()
-  })
-})
 
 store.subscribe(() => renderWork())
 
@@ -2285,18 +2235,6 @@ function renderFolders() {
 
 /* ---------------- 模板 / 顶部按钮 / 帮助 ---------------- */
 
-/* 点模板：不再直接生成，而是把它作为「引用」卡片放进输入框（截图效果） */
-function coverOfCard(card) {
-  const styleAttr = card.querySelector('.cover, .rec-cover')?.getAttribute('style') ?? ''
-  const fromCss = /url\(['"]?([^'")]+)['"]?\)/.exec(styleAttr)?.[1]
-  if (fromCss) return fromCss
-  const tpl = (store.state.customTemplates ?? []).find((t) => t.name === card.dataset.template)
-  return typeof tpl?.cover === 'string' && tpl.cover.startsWith('data:') ? tpl.cover : ''
-}
-
-$$('[data-template]').forEach((card) => {
-  card.addEventListener('click', () => referenceTemplate(card.dataset.template, coverOfCard(card)))
-})
 
 const NEW_GAMMA_TYPES = [
   { id: 'presentation', label: '演示文稿', icon: '📊', formats: [
@@ -2439,7 +2377,6 @@ function createBlankGamma() {
 }
 
 $('.pill-outline').addEventListener('click', () => { location.href = 'templates.html' })
-$('#view-all-templates')?.addEventListener('click', () => { location.href = 'templates.html' })
 $('.pill-upgrade').addEventListener('click', openUpgrade)
 $('.help-fab').addEventListener('click', openHelp)
 $$('.rail-footer .footer-icon').forEach((btn) => {

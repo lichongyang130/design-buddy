@@ -6,10 +6,10 @@
 import {
   buildCatalog, buildDeck, renderPageHTML, renderDocumentHTML, metaFor, coverStyle, displayTpl, slotNeed,
   configureArt, getArtMode, setArtOverride, clearArtOverride,
-  CATEGORY_LIST, FRAMEWORKS, LAYOUTS,
+  CATEGORY_LIST, FRAMEWORKS, LAYOUTS, hashStr,
 } from '../src/template-engine.js'
 import { conceptFor, ART_CONCEPTS, CONCEPT_POOLS } from '../src/art-concepts.js'
-import { loadPage, click, input, tick, readState } from './helpers.mjs'
+import { loadPage, click, input, tick, readState, LS_KEY } from './helpers.mjs'
 import fs from 'node:fs'
 import path from 'node:path'
 
@@ -23,31 +23,35 @@ function check(name, cond, extra) {
 /* ---------------- 纯引擎层 ---------------- */
 
 const catalog = buildCatalog()
-check('catalog has 950 generated templates', catalog.length === 950)
-check('generated catalog covers the new formats',
-  ['网站复刻', 'App', '图片', '实时产物', 'WebGL'].every((f) => catalog.some((t) => t.format === f)))
+check('catalog is cleared (all template examples removed)', catalog.length === 0)
 check('19 categories registered', CATEGORY_LIST.length === 19)
 check('framework pool has 50 entries', FRAMEWORKS.length === 50)
 check('layout pool has 26 entries', LAYOUTS.length === 26)
 
-for (const c of CATEGORY_LIST) {
-  const inCat = catalog.filter((t) => t.cats[0] === c)
-  check(`category ${c} has exactly 50`, inCat.length === 50)
-  const fws = new Set(inCat.map((t) => t.fw))
-  check(`category ${c} frameworks unique`, fws.size === 50)
-}
+// 合成模板：目录清空后，引擎仍可为自定义模板生成完整 deck（验证引擎本身未坏）
+const synthTpl = (i) => ({
+  id: `synth-${i}`,
+  serial: i,
+  name: `合成模板${i}`,
+  a: `合成${i}`,
+  b: 'SYNTH',
+  cls: null,
+  gen: true,
+  format: ['演示文稿', '文档', '社交轮播卡片', '网站复刻', 'App', '图片', '实时产物', 'WebGL'][i % 8],
+  cats: [CATEGORY_LIST[i % CATEGORY_LIST.length]],
+  seed: hashStr(`synth:${i}`),
+  fw: i % FRAMEWORKS.length,
+  pal: i % 20,
+  font: i % 5,
+  pageCount: 20 + (i % 10),
+  imgCount: 10 + (i % 5),
+})
+const synthCatalog = Array.from({ length: 120 }, (_, i) => synthTpl(i))
+check('synth catalog built with mixed formats',
+  synthCatalog.length === 120 && new Set(synthCatalog.map((t) => t.format)).size === 8)
 
-check('every template has 20-30 pages', catalog.every((t) => t.pageCount >= 20 && t.pageCount <= 30))
-check('every template has 10-15 images', catalog.every((t) => t.imgCount >= 10 && t.imgCount <= 15))
-check('all template names unique', new Set(catalog.map((t) => t.name)).size === 950)
-check('cover style exposes palette vars', coverStyle(catalog[0]).includes('--g-accent:'))
-
-// 确定性：两次构建结果一致
-const again = buildCatalog()
-check('catalog deterministic', JSON.stringify(catalog[333]) === JSON.stringify(again[333]))
-
-// 抽样 40 套深度验证 deck
-const sample = [0, 7, 23, 50, 120, 250, 399, 512, 688, 812, 949].map((i) => catalog[i])
+// 抽样深度验证 deck
+const sample = synthCatalog.filter((_, i) => [0, 7, 23, 50, 61, 80, 95, 104, 112, 119].includes(i))
 const layoutSeen = new Set()
 for (const t of sample) {
   const deck = buildDeck(t)
@@ -74,13 +78,19 @@ for (const t of sample) {
   const meta = metaFor(t)
   check(`deck ${t.name} meta spec consistent`, meta.spec.pages === t.pageCount && meta.spec.images === t.imgCount && meta.colors.length === 3)
 }
-check('all 26 layouts covered across sample', layoutSeen.size === 26, [...layoutSeen].join(','))
+check('sample decks: layouts covered', layoutSeen.size >= 15, [...layoutSeen].join(','))
+// 合成目录全量：所有 26 种版式都被覆盖
+{
+  const allLayouts = new Set()
+  for (const t of synthCatalog) buildDeck(t).pages.forEach((p) => allLayouts.add(p.layout))
+  check('all 26 layouts covered across synth catalog', allLayouts.size === 26, [...allLayouts].join(','))
+}
 
-// 全量 950 套：每一页都必须有配图位，且图片槽位不少于配图数
+// 全量合成模板：每一页都必须有配图位，且图片槽位不少于配图数
 {
   let pagesWithoutArt = 0
   let slotStarved = 0
-  for (const t of catalog) {
+  for (const t of synthCatalog) {
     const d = buildDeck(t)
     const slots = d.pages.reduce((s, p) => s + slotNeed(p.layout), 0)
     if (slots < t.imgCount) slotStarved++
@@ -88,8 +98,8 @@ check('all 26 layouts covered across sample', layoutSeen.size === 26, [...layout
       if (p.layout !== 'map' && !renderPageHTML(t, i).includes('dp-art')) pagesWithoutArt++
     })
   }
-  check('all 950 decks: zero pages without artwork', pagesWithoutArt === 0, `pages=${pagesWithoutArt}`)
-  check('all 950 decks: slots cover every image', slotStarved === 0, `starved=${slotStarved}`)
+  check('all synth decks: zero pages without artwork', pagesWithoutArt === 0, `pages=${pagesWithoutArt}`)
+  check('all synth decks: slots cover every image', slotStarved === 0, `starved=${slotStarved}`)
 }
 
 // 精选模板也能生成 deck（由名称哈希推导）
@@ -100,113 +110,115 @@ check('curated deck renders', renderPageHTML(curatedLike, 0).includes('lay-cover
 
 /* ---------------- 双语 ---------------- */
 
-const zhDeck = buildDeck(catalog[10], 'zh')
-const enDeck = buildDeck(catalog[10], 'en')
-const zhSampleHtml = zhDeck.pages.map((_, i) => renderPageHTML(catalog[10], i, 0, 'zh')).join('')
-const enSampleHtml = enDeck.pages.map((_, i) => renderPageHTML(catalog[10], i, 0, 'en')).join('')
+const zhDeck = buildDeck(synthCatalog[10], 'zh')
+const enDeck = buildDeck(synthCatalog[10], 'en')
+const zhSampleHtml = zhDeck.pages.map((_, i) => renderPageHTML(synthCatalog[10], i, 0, 'zh')).join('')
+const enSampleHtml = enDeck.pages.map((_, i) => renderPageHTML(synthCatalog[10], i, 0, 'en')).join('')
 check('zh deck contains Chinese text', /[一-龥]/.test(zhSampleHtml))
 check('en deck has no Chinese copy', !/[一-龥]/.test(enSampleHtml.replace(/Design Buddy/g, '')))
 check('en deck contains English section words', /Market|Solution|Milestones|Team|Growth/.test(enSampleHtml))
-check('displayTpl zh name', displayTpl(catalog[10], 'zh').name === catalog[10].name)
-check('displayTpl en name differs', displayTpl(catalog[10], 'en').name !== catalog[10].name && /^[A-Za-z]/.test(displayTpl(catalog[10], 'en').name))
-check('en meta spec uses english framework', /[A-Za-z]/.test(metaFor(catalog[10], 'en').spec.framework))
-check('zh meta spec uses chinese framework', /[一-龥]/.test(metaFor(catalog[10], 'zh').spec.framework))
+check('displayTpl zh name', displayTpl(synthCatalog[10], 'zh').name === synthCatalog[10].name)
+check('displayTpl en name differs', displayTpl(synthCatalog[10], 'en').name !== synthCatalog[10].name && /^[A-Za-z]/.test(displayTpl(synthCatalog[10], 'en').name))
+check('en meta spec uses english framework', /[A-Za-z]/.test(metaFor(synthCatalog[10], 'en').spec.framework))
+check('zh meta spec uses chinese framework', /[一-龥]/.test(metaFor(synthCatalog[10], 'zh').spec.framework))
 check('curated en display falls back gracefully', displayTpl(curatedLike, 'en').name.length > 0)
 
 /* ---------------- 可编辑字段 ---------------- */
 
-const editSample = [catalog[0], catalog[77], catalog[250], catalog[512], catalog[949]]
+const editSample = [synthCatalog[0], synthCatalog[77], synthCatalog[10], synthCatalog[55], synthCatalog[119]]
 for (const t of editSample) {
   const d = buildDeck(t, 'zh')
   const allHtml = d.pages.map((_, i) => renderPageHTML(t, i)).join('')
   check(`editable fields on every page (${t.name})`, d.pages.every((_, i) => (renderPageHTML(t, i).match(/data-edit=/g) || []).length >= 1))
   check(`editable elements are contenteditable (${t.name})`, allHtml.includes('contenteditable="true"'))
 }
-const edited = renderPageHTML(catalog[10], 0, 0, 'zh', { 'cover-title': '定制标题ABC' })
+const edited = renderPageHTML(synthCatalog[10], 0, 0, 'zh', { 'cover-title': '定制标题ABC' })
 check('edits override default copy', edited.includes('定制标题ABC'))
-const editedEn = renderPageHTML(catalog[10], 2, 0, 'en', { title: 'Custom Title XYZ' })
+const editedEn = renderPageHTML(synthCatalog[10], 2, 0, 'en', { title: 'Custom Title XYZ' })
 check('english edits override', editedEn.includes('Custom Title XYZ'))
 // 编辑键在同版式内稳定
-const r1 = renderPageHTML(catalog[10], 2)
-const r2 = renderPageHTML(catalog[10], 2)
+const r1 = renderPageHTML(synthCatalog[10], 2)
+const r2 = renderPageHTML(synthCatalog[10], 2)
 check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|') === r2.match(/data-edit="[^"]+"/g).join('|'))
 
 /* ---------------- 页面级交互 ---------------- */
 
-{
-  const { doc, w, errors, storage } = await loadPage('/templates.html')
-  check('templates page no errors', errors.length === 0, errors)
-  check('first grid page shows 24 curated cards', doc.querySelectorAll('.tpl-card').length === 24)
-  check('load more visible', !doc.querySelector('.tpl-more-wrap').hidden)
-  check('load more count text', doc.querySelector('#tpl-more-count').textContent.includes('24 /'))
-
-  click(w, doc.querySelector('#tpl-more'))
-  await tick()
-  check('load more appends next page', doc.querySelectorAll('.tpl-card').length === 48)
-  check('fresh animation class applied', doc.querySelectorAll('.tpl-card.is-fresh').length === 24)
-  check('generated cover rendered', !!doc.querySelector('.tpl-gen'))
-  check('page badge on generated cards', /\d+ 页 · \d+ 图/.test(doc.querySelector('.tc-page-badge')?.textContent ?? ''))
-  check('cover deco variants present', new Set([...doc.querySelectorAll('.tpl-gen')].map((e) => e.dataset.deco)).size > 1)
-
-  // 类别筛选：课程恰好 50 套生成模板（精选无「课程」主类，命中另计）
-  const box = [...doc.querySelectorAll('#category-body input')].find((i) => i.value === '课程')
-  click(w, box)
-  await tick()
-  check('category filter resets pagination', doc.querySelectorAll('.tpl-card').length === 24)
-  const totalText = doc.querySelector('#tpl-more-count').textContent
-  const totalN = Number(totalText.match(/\/ (\d+) 套/)?.[1] ?? 0)
-  // 每类生成模板恰好 50，另有少量手工精选命中加成
-  check('category has at least 50 templates', totalN >= 50, totalText)
-  check('category has exactly 50 generated', catalog.filter((t) => t.cats[0] === '课程').length === 50)
-  // 全部加载完
-  while (!doc.querySelector('.tpl-more-wrap').hidden) {
-    click(w, doc.querySelector('#tpl-more'))
-    await tick()
+// 预置自建模板：内置示例与生成目录全部清空后，模板页只剩自定义模板
+function makeStorage(customs = []) {
+  const mem = new Map()
+  const storage = {
+    getItem: (k) => (mem.has(k) ? mem.get(k) : null),
+    setItem: (k, v) => mem.set(k, String(v)),
+    removeItem: (k) => mem.delete(k),
+    clear: () => mem.clear(),
   }
-  check('all category cards rendered', doc.querySelectorAll('.tpl-card').length === totalN)
-  check('load more hidden after all', doc.querySelector('.tpl-more-wrap').hidden)
-  click(w, box)
-  await tick()
+  storage.setItem(LS_KEY, JSON.stringify({ customTemplates: customs }))
+  return storage
+}
 
-  // 搜索
-  input(w, doc.querySelector('#tpl-search-input'), '灵动')
-  await tick(60)
-  check('search filters generated names', doc.querySelectorAll('.tpl-card').length > 0 &&
-    [...doc.querySelectorAll('.tpl-name > span:not(.tpl-fmt)')].every((s) => s.textContent.includes('灵动')))
-  input(w, doc.querySelector('#tpl-search-input'), '')
-  await tick()
-  // 搜索清空后回到第一页（24 张精选），再加载出生成模板
-  click(w, doc.querySelector('#tpl-more'))
-  await tick()
+const seedCustoms = [
+  { id: 'ct-slide', name: '我的演示模板', a: 'My Custom Deck', b: 'CUSTOM TEMPLATE', cover: '', format: '演示文稿', cats: ['培训'] },
+  { id: 'ct-doc', name: '我的文档模板', a: 'My Custom Doc', b: 'DOCUMENT', cover: '', format: '文档', cats: ['报告'] },
+  { id: 'ct-carousel', name: '我的轮播模板', a: 'My Carousel', b: 'CAROUSEL', cover: '', format: '社交轮播卡片', cats: ['活动'] },
+]
 
-  // 格式筛选：新增网站复刻 / App / 图片 / 实时产物 / WebGL
+{
+  // 空态：无任何模板时展示空状态
+  const emptyPage = await loadPage('/templates.html', { storage: makeStorage(), freshCopy: true })
+  await tick()
+  check('templates page no errors', emptyPage.errors.length === 0, emptyPage.errors)
+  check('empty state shown when no templates',
+    !!emptyPage.doc.querySelector('#tpl-empty') && !emptyPage.doc.querySelector('#tpl-empty').hidden)
+  check('empty state hides grid', emptyPage.doc.querySelector('#tpl-grid').hidden)
+  check('load more hidden when empty', emptyPage.doc.querySelector('.tpl-more-wrap').hidden)
+
+  // 自建模板：清空示例后网格只剩自定义模板
+  const storage = makeStorage(seedCustoms)
+  const { doc, w, errors } = await loadPage('/templates.html', { storage, freshCopy: true })
+  await tick()
+  check('seeded page no errors', errors.length === 0, errors)
+  check('curated and generated examples gone',
+    !doc.querySelector('.tpl-gen') && !doc.querySelector('.tpl-card.tpl-shipu'))
+  check('grid shows seeded custom templates', doc.querySelectorAll('.tpl-card').length === 3)
+  check('custom cards carry format badges',
+    [...doc.querySelectorAll('.tpl-card .tpl-fmt')].map((b) => b.textContent).join() === '演示文稿,文档,社交轮播卡片')
+  check('load more hidden with few customs', doc.querySelector('.tpl-more-wrap').hidden)
+
+  // 格式筛选：9 个选项仍在，且按格式严格过滤
   check('format filter exposes the new formats',
-    ['网站复刻', 'App', '图片', '实时产物', 'WebGL'].every((f) =>
+    ['演示文稿', '文档', '社交轮播卡片', '网站复刻', 'App', '图片', '实时产物', 'WebGL'].every((f) =>
       !!doc.querySelector(`input[name="format"][value="${f}"]`)))
-  click(w, doc.querySelector('input[name="format"][value="网站复刻"]'))
+  click(w, doc.querySelector('input[name="format"][value="文档"]'))
   await tick()
-  const fmtTotal = Number(doc.querySelector('#tpl-more-count').textContent.match(/\/ (\d+) 套/)?.[1] ?? 0)
-  check('format filter narrows to web-clone templates',
-    fmtTotal === catalog.filter((t) => t.format === '网站复刻').length && fmtTotal > 0)
-  check('format filter: cards carry the matching format badge',
-    doc.querySelectorAll('.tpl-card .tpl-fmt').length === doc.querySelectorAll('.tpl-card').length
-    && [...doc.querySelectorAll('.tpl-card .tpl-fmt')].every((b) => b.textContent === '网站复刻'))
+  check('format filter narrows to document templates',
+    doc.querySelectorAll('.tpl-card').length === 1
+    && [...doc.querySelectorAll('.tpl-card .tpl-fmt')].every((b) => b.textContent === '文档'))
   click(w, doc.querySelector('input[name="format"][value="演示文稿"]'))
   await tick()
-  check('deck format: badge labelled 演示文稿',
+  check('format filter narrows to deck templates',
     [...doc.querySelectorAll('.tpl-card .tpl-fmt')].every((b) => b.textContent === '演示文稿'))
   click(w, doc.querySelector('input[name="format"][value="all"]'))
   await tick()
-  // 格式切换会重置分页，重新加载出生成模板
-  click(w, doc.querySelector('#tpl-more'))
+
+  // 类别筛选：19 类选项仍在
+  check('category filter exposes 19 categories',
+    doc.querySelectorAll('#category-body input').length === 19)
+
+  // 搜索：命中自建模板
+  input(w, doc.querySelector('#tpl-search-input'), '我的文档')
+  await tick(60)
+  check('search finds custom template',
+    doc.querySelectorAll('.tpl-card').length === 1
+    && doc.querySelector('.tpl-name > span:not(.tpl-fmt)').textContent.includes('我的文档'))
+  input(w, doc.querySelector('#tpl-search-input'), '')
   await tick()
 
-  // 打开一套生成模板的详情
-  const genCard = [...doc.querySelectorAll('.tpl-card')].find((c) => c.querySelector('.tpl-gen'))
-  check('generated card exists', !!genCard)
-  click(w, genCard)
+  // 详情：打开自建演示模板
+  const card = [...doc.querySelectorAll('.tpl-card')].find((c) => c.querySelector('.tpl-name span')?.textContent === '我的演示模板')
+  check('custom card found for detail', !!card)
+  click(w, card)
   await tick()
-  check('generated detail opens', !!doc.querySelector('.td-mask .dp-page'))
+  check('custom detail opens', !!doc.querySelector('.td-mask .dp-page'))
   check('deck has framework badge', doc.querySelector('#td-frame').textContent.length > 0)
   const firstCount = doc.querySelector('#td-page-count').textContent
   check('page counter format', /^\d\d \/ \d\d$/.test(firstCount), firstCount)
@@ -217,7 +229,6 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   await tick()
   check('page next updates counter', doc.querySelector('#td-page-count').textContent !== firstCount)
   check('page transition class', !!doc.querySelector('.dp-page.is-shown'))
-  // 键盘翻页
   doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }))
   await tick()
   const afterKey = doc.querySelector('#td-page-count').textContent
@@ -226,8 +237,8 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   await tick()
   check('esc closes detail', !doc.querySelector('.td-mask'))
 
-  // 再次打开，验证样式 A/B/C 换色
-  click(w, genCard)
+  // 样式 A/B/C 换色
+  click(w, card)
   await tick()
   const styleCards = doc.querySelectorAll('.td-style-card')
   check('three style cards', styleCards.length === 3)
@@ -236,7 +247,6 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   await tick()
   check('style switch recolors deck', doc.querySelector('.dp-page').getAttribute('style') !== before)
   check('style card picked state', styleCards[1] && doc.querySelectorAll('.td-style-card')[1].classList.contains('is-picked'))
-  // 底部其他案例轮播行已按需求移除，舞台更干净
   check('other-cases carousel row removed',
     !doc.querySelector('.td-carousel-wrap') && doc.querySelectorAll('.td-thumb').length === 0)
 
@@ -259,16 +269,13 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   const st = readState(storage)
   check('inline edit persisted', JSON.stringify(st.templateEdits).includes('Edited in browser'))
   check('reset edit button appears', !doc.querySelector('#td-reset-edits').hidden)
-  // 翻页后回来仍保留
   click(w, doc.querySelector('#td-page-next')); await tick()
   click(w, doc.querySelector('#td-page-prev')); await tick()
   const again = [...doc.querySelectorAll('.dp-page [data-edit]')].find((e) => e.dataset.edit === editKey)
   check('inline edit survives page navigation', again?.textContent === 'Edited in browser')
-  // 重置
   click(w, doc.querySelector('#td-reset-edits')); await tick()
   const afterReset = [...doc.querySelectorAll('.dp-page [data-edit]')].find((e) => e.dataset.edit === editKey)
   check('reset restores default copy', afterReset?.textContent !== 'Edited in browser')
-  // 工具栏语言控件同步
   check('toolbar lang control exists', !!doc.querySelector('.tpl-lang [data-lang="zh"]'))
 
   /* P4 配图替换：点击配图 → 素材弹窗 → 换图/上传/恢复默认，全部持久化 */
@@ -295,7 +302,7 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   const st1 = readState(storage)
   check('art override persisted to state', Object.values(st1.artOverrides).includes(altSrc))
 
-  // 重新打开 → 恢复默认
+  // 重置默认
   click(w, doc.querySelector('.td-deck .dp-art[data-art-key]'))
   await tick()
   check('picker reopens with current tag', !!doc.querySelector('.art-pick.is-current'))
@@ -320,22 +327,15 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   check('deck shows uploaded image', doc.querySelector(`.td-deck [data-art-page="${artPageNo}"][data-art-slot="0"] img`)
     ?.getAttribute('src')?.startsWith('data:image/svg'))
 
-  // 刷新后覆盖仍生效（轮播中途切过模板，按名称重开同一套）
+  // 刷新后覆盖仍生效
   const tplName = doc.querySelector('.td-head h2').textContent
-  const reloaded = await loadPage('/templates.html', { storage })
+  const reloaded = await loadPage('/templates.html', { storage, freshCopy: true })
   await tick(120)
-  let reCard = [...reloaded.doc.querySelectorAll('.tpl-card')]
+  const reCard = [...reloaded.doc.querySelectorAll('.tpl-card')]
     .find((c) => c.querySelector('.tpl-name span')?.textContent === tplName)
-  for (let n = 0; n < 12 && !reCard; n++) {
-    click(reloaded.w, reloaded.doc.querySelector('#tpl-more'))
-    await tick()
-    reCard = [...reloaded.doc.querySelectorAll('.tpl-card')]
-      .find((c) => c.querySelector('.tpl-name span')?.textContent === tplName)
-  }
   check('same template reopened after reload', !!reCard, tplName)
   click(reloaded.w, reCard)
   await tick()
-  // 覆盖按页号持久化，重开详情默认在第 1 页，翻到被替换的那一页
   let reloadTarget = reloaded.doc.querySelector(`.td-deck [data-art-page="${artPageNo}"][data-art-slot="0"] img`)
   for (let n = 0; n < 8 && !reloadTarget; n++) {
     click(reloaded.w, reloaded.doc.querySelector('#td-page-next'))
@@ -343,7 +343,6 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
     reloadTarget = reloaded.doc.querySelector(`.td-deck [data-art-page="${artPageNo}"][data-art-slot="0"] img`)
   }
   check('upload override survives reload', reloadTarget?.getAttribute('src')?.startsWith('data:image/svg'))
-  // 收尾：恢复默认，避免污染后续断言
   click(reloaded.w, reloaded.doc.querySelector(`.td-deck [data-art-page="${artPageNo}"]`))
   await tick()
   click(reloaded.w, reloaded.doc.querySelector('.art-picker-foot [data-art-reset]'))
@@ -365,7 +364,7 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
 /* ---------------- 任务二十三：文档形态 / 版块库 / 编辑器重构 ---------------- */
 {
   // 引擎层契约：文档渲染器
-  const docTpl = catalog[10]
+  const docTpl = synthCatalog[10]
   const docDeck = buildDeck(docTpl, 'zh')
   const docHtml = renderDocumentHTML(docTpl, 'zh', {}, [])
   check('doc renderer: one flowing section per page',
@@ -397,7 +396,9 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
     /\.td-deck\.is-doc\s*\{[^}]*overflow-y:\s*auto/.test(cssText))
 
   // 页面级交互
-  const { doc, w, errors, storage } = await loadPage('/templates.html')
+  const storage = makeStorage(seedCustoms)
+  const { doc, w, errors } = await loadPage('/templates.html', { storage, freshCopy: true })
+  await tick()
   click(w, doc.querySelector('.tpl-card'))
   await tick()
   const tplName = doc.querySelector('#td-topbar-title').textContent
@@ -443,7 +444,7 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   // 形态按模板持久化：关闭重开仍是文档
   doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
   await tick()
-  const again = await loadPage('/templates.html', { storage })
+  const again = await loadPage('/templates.html', { storage, freshCopy: true })
   await tick(120)
   let card = [...again.doc.querySelectorAll('.tpl-card')]
     .find((c) => c.querySelector('.tpl-name span')?.textContent === tplName)
@@ -517,7 +518,9 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
 
 /* 格式驱动默认渲染形态：文档→文档形态、轮播→方形画幅、演示文稿→16:9 分页 */
 {
-  const { doc, w, errors, storage } = await loadPage('/templates.html')
+  const storage = makeStorage(seedCustoms)
+  const { doc, w, errors } = await loadPage('/templates.html', { storage, freshCopy: true })
+  await tick()
   click(w, doc.querySelector('input[name="format"][value="文档"]'))
   await tick()
   click(w, doc.querySelector('.tpl-card'))
@@ -549,7 +552,8 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
 
 /* ---------------- 任务二十七：查看器按截图重构（顶栏/共享带/设置面板） ---------------- */
 {
-  const { doc, w, errors, storage } = await loadPage('/templates.html')
+  const storage = makeStorage(seedCustoms)
+  const { doc, w, errors } = await loadPage('/templates.html', { storage, freshCopy: true })
   await tick(120)
   click(w, doc.querySelector('.tpl-card'))
   await tick(200)
@@ -679,7 +683,7 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
     && /^Illustrated portrait \d+$/.test(ART_CONCEPTS[`shared.portrait.${n}`].en)))
   check('shared map and logowall defined', !!ART_CONCEPTS['shared.map'] && !!ART_CONCEPTS['shared.logowall'])
 
-  const t = catalog[0]
+  const t = synthCatalog[0]
   const d = buildDeck(t)
   const teamPage = d.pages.find((p) => p.layout === 'team')
   check('team layout pins shared portrait concept', !!teamPage && conceptFor(t, teamPage, 0).startsWith('shared.portrait.'))
@@ -724,7 +728,7 @@ check('edit keys stable across renders', r1.match(/data-edit="[^"]+"/g).join('|'
   // 全量 950 套：插画模式 + 空清单不报错，每页仍有 dp-art（SVG 兜底）
   configureArt({ mode: 'illustration', manifest: {}, overrides: {} })
   let renderBad = 0
-  for (const tpl of catalog) {
+  for (const tpl of synthCatalog) {
     const deck = buildDeck(tpl)
     for (let i = 0; i < deck.pages.length; i++) {
       if (!renderPageHTML(tpl, i).includes('dp-art')) renderBad++

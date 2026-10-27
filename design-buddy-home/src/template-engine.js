@@ -481,41 +481,8 @@ export function displayTpl(tpl, locale = 'zh') {
 }
 
 export function buildCatalog() {
-  if (catalogCache.length) return catalogCache
-  let serial = 0
-  for (let ci = 0; ci < CATEGORY_LIST.length; ci++) {
-    const primary = CATEGORY_LIST[ci]
-    const nouns = CAT_NOUNS[primary]
-    const fwOrder = [...FRAMEWORKS.keys()]
-    const catRng = mulberry32(hashStr(`cat:${primary}`))
-    for (let i = fwOrder.length - 1; i > 0; i--) {
-      const j = Math.floor(catRng() * (i + 1))
-      ;[fwOrder[i], fwOrder[j]] = [fwOrder[j], fwOrder[i]]
-    }
-    for (let i = 0; i < 50; i++) {
-      const seed = hashStr(`${primary}:${i}`)
-      const rng = mulberry32(seed)
-      const name = `${ADJ[i % ADJ.length]}${nouns[i % nouns.length]}`
-      catalogCache.push({
-        id: `tpl-gen-${ci}-${i}`,
-        serial: serial++,
-        name,
-        a: `${name} · ${primary}`,
-        b: `${EN_A[i % EN_A.length]} ${EN_B[(i * 3) % EN_B.length]}`.toUpperCase(),
-        cls: null,
-        gen: true,
-        format: ['演示文稿', '演示文稿', '演示文稿', '文档', '社交轮播卡片', '网站复刻', 'App', '图片', '实时产物', 'WebGL'][int(rng, 0, 10)],
-        cats: [primary],
-        seed,
-        fw: fwOrder[i],
-        pal: int(rng, 0, PALETTES.length - 1),
-        font: int(rng, 0, FONT_PAIRS.length - 1),
-        pageCount: 20 + int(rng, 0, 10),
-        imgCount: 10 + int(rng, 0, 5),
-      })
-    }
-  }
-  return catalogCache
+  // 示例目录已全部清空（保留引擎供自定义模板复用）；如需恢复展示可注释掉此返回
+  return []
 }
 
 export function buildDeck(rawTpl, locale = 'zh') {

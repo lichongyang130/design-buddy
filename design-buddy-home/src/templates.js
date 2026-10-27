@@ -115,37 +115,12 @@ const uiText = () => UI[lang()]
 const $ = (sel, root = document) => root.querySelector(sel)
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)]
 
-/* ---------------- 内置 24 套模板 ---------------- */
+/* ---------------- 内置模板（示例已全部清空，仅保留自定义模板入口） ---------------- */
 
 const CATEGORIES_VISIBLE = VISIBLE_CATS
 const CATEGORIES_HIDDEN = HIDDEN_CATS
 
-const TEMPLATES = [
-  { name: '渔港日记', cls: 'tpl-shipu', a: '石', b: 'SHIPU', format: '演示文稿', cats: ['文化', '营销材料'] },
-  { name: '水墨亭', cls: 'tpl-ink', a: '澄湖', b: 'INK PAVILION', format: '文档', cats: ['文化', '艺术'] },
-  { name: 'Overtime', cls: 'tpl-overtime', a: '年终大复盘！', b: 'Phew!! Still cooking', format: '演示文稿', cats: ['培训', '商业规划'] },
-  { name: '朱砂册页', cls: 'tpl-cinnabar', a: '茶事雅集', b: '', format: '社交轮播卡片', cats: ['文化', '活动'] },
-  { name: '讲堂', cls: 'tpl-lecture', a: '城市生态：六周观察课', b: 'URBAN ECOLOGY', format: '演示文稿', cats: ['课程', '教育'] },
-  { name: '国潮商务路演', cls: 'tpl-guochao', a: '用调度效率提升每一块算力的产出', b: '', format: '演示文稿', cats: ['融资演讲稿', '商业规划'] },
-  { name: 'Quire', cls: 'tpl-quire', a: 'Back of House', b: '2026 RESTAURANT SURVEY', format: '文档', cats: ['报告', '餐饮'] },
-  { name: 'Full Record', cls: 'tpl-fullrecord', a: 'Amara Osei', b: 'FULL RECORD', format: '文档', cats: ['作品集', '品牌设计'] },
-  { name: 'Fit Check', cls: 'tpl-fitcheck', a: 'HOMEROOM', b: 'GENERAL UNIFORM POLICY', format: '演示文稿', cats: ['融资演讲稿', '营销材料', '作品集'] },
-  { name: 'First Edition', cls: 'tpl-firstedition', a: 'Salt and Lemon', b: 'FIRST EDITION', format: '文档', cats: ['作品集', '艺术'] },
-  { name: 'The Web Between Us', cls: 'tpl-web', a: 'THE WEB BETWEEN US', b: '', format: '社交轮播卡片', cats: ['科技', '艺术'] },
-  { name: 'Soft Current', cls: 'tpl-soft', a: 'Migraine is more than a headache', b: '', format: '社交轮播卡片', cats: ['医疗健康', '课程'] },
-  { name: 'Spark and Fire', cls: 'tpl-spark', a: '', b: 'SPARK AND FIRE', format: '演示文稿', cats: ['培训', '活动'] },
-  { name: 'Scintilla', cls: 'tpl-scintilla', a: 'The secret life of pollinators', b: '', format: '演示文稿', cats: ['教育', '科技'] },
-  { name: 'Sisyphus Riso', cls: 'tpl-sisyphus', a: 'FIND DELIGHT IN PUSHING YOUR ROCK UP YOUR HILL', b: '', format: '演示文稿', cats: ['培训', '商业规划'] },
-  { name: 'Rebuilding the Past', cls: 'tpl-rebuilding', a: 'Rebuilding the Past', b: '', format: '演示文稿', cats: ['报告', '建筑'] },
-  { name: 'Metamorphosis', cls: 'tpl-metamorphosis', a: '', b: 'METAMORPHOSIS', format: '社交轮播卡片', cats: ['艺术', '品牌设计'] },
-  { name: 'Luminal', cls: 'tpl-luminal', a: 'The quiet cascade', b: '', format: '演示文稿', cats: ['作品集', '艺术'] },
-  { name: 'Inner Weather', cls: 'tpl-inner', a: '', b: 'INNER WEATHER', format: '文档', cats: ['课程', '医疗健康'] },
-  { name: 'Hush', cls: 'tpl-hush', a: 'Our year at the Brierley Institute', b: '', format: '文档', cats: ['报告', '文化'] },
-  { name: 'Buzzer', cls: 'tpl-buzzer', a: 'TRIVIA NIGHT', b: 'Harper Street Library · Friday March 14', format: '演示文稿', cats: ['活动', '餐饮'] },
-  { name: 'Vista', cls: 'tpl-vista', a: 'Kalai Retreat', b: '', format: '演示文稿', cats: ['旅游', '建筑'] },
-  { name: 'Open House', cls: 'tpl-openhouse', a: '214 Birchwood Lane', b: '', format: '演示文稿', cats: ['建筑', '营销材料'] },
-  { name: 'Monsoon Modern', cls: 'tpl-monsoon', a: 'A SEASON OF MAKING TOGETHER', b: '', format: '社交轮播卡片', cats: ['活动', '品牌设计'] },
-]
+const TEMPLATES = []
 
 const FOLDER_ICON = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>`
 
