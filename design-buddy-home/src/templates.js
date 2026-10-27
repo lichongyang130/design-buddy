@@ -617,7 +617,7 @@ function coverInner(tpl) {
 }
 
 function coverHTML(tpl) {
-  if (tpl.app) return `<div class="tpl-cover qiye-app-cover"><iframe src="/qiye-app.html?embed=1" title="栖野 App 真实首页预览" loading="lazy" tabindex="-1" aria-hidden="true"></iframe><span class="qiye-app-cover-badge">6 个页面 · 交互原型 ↗</span></div>`
+  if (tpl.app) return `<div class="tpl-cover qiye-app-cover"><img class="qiye-app-cover-image" src="/art/qiye/cover.webp" alt="栖野周末旅行 App：品牌封面与真实手机首页" loading="lazy" width="1200" height="714"></div>`
   if (tpl.gen && tpl._tpl) {
     return `<div class="tpl-cover tpl-gen exhibition-thumb ${tpl.docMode ? 'exhibition-document' : ''}">
       <div class="exhibition-sheet">${renderExhibitionCover(tpl._tpl)}</div>

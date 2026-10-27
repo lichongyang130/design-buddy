@@ -3,7 +3,7 @@
 ## 打开
 
 - `/qiye-app.html`：独立交互原型，不依赖账号或外部 API。
-- 模板页 `/templates.html` → 形式「App」→「栖野 · 周末旅行 App」。缩略图是实际首页的只读 iframe，点击打开可操作的完整案例。
+- 模板页 `/templates.html` → 形式「App」→「栖野 · 周末旅行 App」。缩略图为独立设计的品牌封面（真实手机首页截图＋原有旅行场景背景），点击打开可操作的完整案例，不再使用被裁切的只读 iframe。
 - `npm run build` 后，直接预览首页：`PORT=5176 PREVIEW_ENTRY=qiye-app.html node server.mjs`。服务器默认行为保持工作区首页不变。
 
 ## 六个页面
@@ -47,3 +47,9 @@ node tests/verify-regression.mjs
 首页推荐支持横向滑动；发现页为双列目的地卡片；收藏页为横向信息列表；详情页底部「加入我的行程」始终可见；行程为单列日程时间线；资料页为个人卡片和设置列表。演示仍运行于浏览器，并非原生安装包。
 
 重构后附加 Chromium 验证：360×740、390×844、768×900、1440×1000 下六个页面均无整页横向/纵向滚动溢出，滚动仅在 App 内容区；桌面容器不超过 414px。首页 Tab 的滚动位置保留、底部 Tab 与详情操作栏固定、底部抽屉不超出设备边界、手机创建行程及刷新后恢复均已实测。
+
+## 作品展缩略图
+
+`public/art/qiye/cover.webp` 为 1200×714 的独立作品封面：左侧栖野品牌标题，右侧真实手机界面及淡化旅行背景。不是 AI 生成的虚构 UI。App 页面本身不变。
+
+`scripts/make-qiye-cover.mjs` 可从运行中的预览重新抓取首页并排版、导出 WebP。需要可用的本地 Playwright / Chromium；可用 `QIYE_PLAYWRIGHT_MODULE` 和 `QIYE_CHROMIUM_MODULE` 指向外部工具安装，或通过 `QIYE_BROWSER_EXECUTABLE` 指定 Chromium。`QIYE_PREVIEW_URL` 默认 `http://127.0.0.1:5174`，仅用于构建时截图，不会出现在浏览器运行代码的 API 地址中。

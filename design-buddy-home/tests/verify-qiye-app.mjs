@@ -200,11 +200,13 @@ try {
   assert.equal(gallery.doc.querySelectorAll('.tpl-card').length, 1)
   assert.equal(gallery.doc.querySelector('.tpl-app-link').getAttribute('href'), '/qiye-app.html')
   assert.equal(
-    gallery.doc.querySelector('.qiye-app-cover iframe').getAttribute('src'),
-    '/qiye-app.html?embed=1',
+    gallery.doc.querySelector('.qiye-app-cover img').getAttribute('src'),
+    '/art/qiye/cover.webp',
   )
   assert.equal(gallery.errors.length, 0)
-  console.log('PASS: App filter contains one live interactive case with actual homepage thumbnail')
+  assert.equal(gallery.doc.querySelector('.qiye-app-cover iframe'), null, 'thumbnail no longer crops a live iframe')
+  assert.ok(fs.existsSync(new URL('../public/art/qiye/cover.webp', import.meta.url)))
+  console.log('PASS: App filter contains one interactive case with composed real-screen cover')
 } finally {
   gallery.w.close()
 }
