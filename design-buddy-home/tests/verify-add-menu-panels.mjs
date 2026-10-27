@@ -32,6 +32,7 @@ const { doc, w, errors, storage } = await loadPage('/index.html', { storage: see
 const sub = () => doc.querySelector('#add-sub')
 const panel = (n) => doc.querySelector(`[data-sub-panel="${n}"]`)
 const visiblePanels = () => [...doc.querySelectorAll('[data-sub-panel]')].filter((p) => !p.hidden).map((p) => p.dataset.subPanel)
+const toasts = () => [...doc.querySelectorAll('.toast')].map((t) => t.textContent).join(' | ')
 const hover = (sel) => doc.querySelector(sel).dispatchEvent(new w.MouseEvent('mouseenter', { bubbles: true }))
 
 check('home loads without errors', errors.length === 0, errors)
@@ -118,12 +119,38 @@ check('skill rows expose enabled state to screen readers',
   skillItems.every((i) => ['true', 'false'].includes(i.getAttribute('aria-checked'))))
 const offSkill = skillItems.find((i) => i.getAttribute('aria-checked') === 'false')
 const offName = readState(storage).skills.find((s) => s.id === offSkill.dataset.toggleSkill).name
-click(w, panel('skills').querySelector(`[data-toggle-skill="${offSkill.dataset.toggleSkill}"]`))
+click(w, panel('skills').querySelector(`[data-toggle-skill="${offSkill.dataset.toggleSkill}"] .mini-switch`))
 await tick()
-check('clicking a skill really enables it in the store',
+check('clicking a skill switch really enables it in the store',
   readState(storage).skills.find((s) => s.name === offName)?.enabled === true)
 check('skill row turns on after the toggle',
   panel('skills').querySelector(`[data-toggle-skill="${offSkill.dataset.toggleSkill}"]`).getAttribute('aria-checked') === 'true')
+
+/* ---------- 3b. 技能面板：点击技能行直接调用 ---------- */
+
+const rowOf = (id) => panel('skills').querySelector(`[data-toggle-skill="${id}"]`)
+const onRow = [...panel('skills').querySelectorAll('[data-toggle-skill]')].find((i) => i.getAttribute('aria-checked') === 'true')
+const onName = readState(storage).skills.find((s) => s.id === onRow.dataset.toggleSkill).name
+click(w, rowOf(onRow.dataset.toggleSkill))
+await tick()
+check('clicking a skill row calls it into the prompt',
+  doc.querySelector('.skill-chip')?.querySelector('.chip-name')?.textContent === `技能 · ${onName}`)
+check('calling a skill is announced', toasts().includes(`已调用技能「${onName}」`))
+check('the called skill is marked in the panel',
+  rowOf(onRow.dataset.toggleSkill).querySelector('.add-item-pill')?.textContent === '已调用')
+check('the called skill row shows the meta',
+  rowOf(onRow.dataset.toggleSkill).querySelector('.add-item-meta')?.textContent.includes('本次已调用'))
+click(w, doc.querySelector('.skill-chip [data-rm-skill]'))
+await tick()
+check('the skill chip can be dismissed again', !doc.querySelector('.skill-chip'))
+click(w, rowOf(offSkill.dataset.toggleSkill).querySelector('.mini-switch'))
+await tick()
+check('the skill switch turns the skill off again',
+  readState(storage).skills.find((s) => s.name === offName)?.enabled === false)
+click(w, rowOf(offSkill.dataset.toggleSkill))
+await tick()
+check('calling a disabled skill asks to enable it first',
+  toasts().includes('还没启用，先去技能页开启'))
 
 /* ---------- 4. 连接器面板：已连接优先、可搜索、真连接 ---------- */
 
@@ -254,7 +281,7 @@ click(w, doc.querySelector('#add-menu-btn'))
 await tick()
 click(w, doc.querySelector('#expert-row'))
 await tick()
-click(w, [...doc.querySelectorAll('.expert-item')].find((i) => i.dataset.expert === '提案叙事专家'))
+click(w, [...doc.querySelectorAll('.expert-item')].find((i) => i.dataset.expert === 'PPT 专家'))
 await tick()
 input(w, doc.querySelector('#prompt-input'), '把附件里的渠道数据整理成一页结论')
 click(w, doc.querySelector('#send-btn'))

@@ -1,3 +1,4 @@
+import { initQuestionChat, isStandaloneQuestion, escapeQuestionText } from './question-chat.js'
 /* ============================================================
    Design Buddy 首页：真实创作流 + localStorage 持久化
    - gamma / 对话 / 文件夹 / 垃圾箱 / 工作区 全部落库
@@ -9,7 +10,7 @@ import './rail-flyout.js'
 import { requireAuth } from './auth.js'
 requireAuth()
 import { store, toast, openModal, confirmModal, uid, fmtDate, downloadFile } from './core.js'
-import { AVAILABLE_MODELS } from './model-config.js'
+import { SELECTABLE_MODELS as AVAILABLE_MODELS } from './model-config.js'
 import {
   initGlobalUI,
   openPalette,
@@ -42,6 +43,7 @@ ui.ratio ??= '1:1'
 ui.count ??= 3
 ui.beautifyStyle ??= null
 const homeMode = () => !!ui.type
+const questionChat = initQuestionChat({store,toast})
 
 /* 由后面的参考图菜单赋值，避免早期调用踩到暂时性死区 */
 let closeImgPopoverQuiet = () => {}
@@ -61,17 +63,11 @@ const TYPE_COPY = {
   美化: { placeholder: '描述您希望更改或改进的内容', hero: '/covers/hero-beautify.jpg' },
   导入: { placeholder: '添加要导入的文件，或从下方选择任务', hero: '/covers/hero-beautify.jpg' },
 }
-const greetingTitle = () => {
-  const fullName = store.state.profile?.name || store.state.workspaces?.[0]?.name || 'ruoxuan'
-  const firstName = String(fullName).replace(/'s\s+Workspace$/i, '').trim().split(/\s+/)[0] || 'ruoxuan'
-  return `很高兴见到您，${firstName}`
-}
+const greetingTitle = () => 'DesignBuddy 让您提前下班'
 
 function applySmartSuggest() {
   const mode = homeMode()
   const smart = store.state.settings.personalize.smartSuggest
-  const row = $('.template-row')
-  const isWork = row?.dataset.workView === 'workspace'
 
   document.body.classList.toggle('is-type-mode', mode)
 
@@ -81,8 +77,6 @@ function applySmartSuggest() {
   if (pillWrap) pillWrap.hidden = !mode
   const quick = $('#quick-types')
   if (quick) quick.hidden = mode
-  const rec = $('#rec-templates')
-  if (rec) rec.hidden = mode
 
   const isImage = ui.type === '图片'
   const isBeautify = ui.type === '美化'
@@ -125,13 +119,12 @@ function applySmartSuggest() {
 
   // 设置 → 个性化：关掉「智能推荐」时，工作台里的示例与探索区一并隐藏
   const bare = isBeautify || isImport
-  ;['.examples', '.work-tabs'].forEach((sel) => {
+  ;['.examples'].forEach((sel) => {
     const el = $(sel)
     if (el) el.hidden = !mode || !smart || bare
   })
-  if (row) row.hidden = !mode || !smart || isWork || bare
   const work = $('#work-grid')
-  if (work) work.hidden = !mode || !isWork || bare
+  if (work) work.hidden = !mode || bare
   const ctaEl = $('.template-cta')
   if (ctaEl) ctaEl.hidden = !mode || bare
 }
@@ -402,29 +395,7 @@ function renderChips() {
 }
 
 /* 把一张模板卡片设为「引用」：进入它的格式工作台，并把卡片挂到输入框里 */
-/* 首页这批示例模板的格式（自定义模板以 store 里存的 format 为准） */
-const TEMPLATE_FORMATS = {
-  Graha: '文档',
-  'Jelly Canvas': '文档',
-  Olympus: '文档',
-  'Terrace Set': '演示文稿',
-  Reliquary: '文档',
-  Altitude: '演示文稿',
-  Scintilla: '演示文稿',
-}
-
-function referenceTemplate(name, cover = '') {
-  const tpl = (store.state.customTemplates ?? []).find((t) => t.name === name)
-  const format = tpl?.format || TEMPLATE_FORMATS[name] || null
-  activeTemplate = { name, cover: cover || (typeof tpl?.cover === 'string' && tpl.cover.startsWith('data:') ? tpl.cover : '') }
-  const typeMap = { 演示文稿: '演示文稿', 文档: '文档', 社交轮播卡片: '轮播图' }
-  const nextType = format ? typeMap[format] ?? ui.type : ui.type
-  if (!ui.type && nextType) setType(nextType, { quiet: true })
-  else if (!ui.type) setType('演示文稿', { quiet: true })
-  renderChips()
-  input.focus()
-  toast(`已引用模板「${name}」，写一句你想做的东西就能开始`)
-}
+/* 示例模板引用入口已全部清空（保留自定义模板在模板页的添加流程） */
 
 function addAttachment(name, meta = {}) {
   if (attachments.some((a) => a.name === name)) return
@@ -467,6 +438,17 @@ function referenceFiles() {
   })
 }
 
+/* 调用技能：输入框「/」触发与「＋」菜单技能行共用同一入口 */
+const pickSkill = (skill) => {
+  if (!skill.enabled) {
+    toast(`「${skill.name}」还没启用，先去技能页开启`)
+    return
+  }
+  activeSkill = { id: skill.id, name: skill.name }
+  renderChips()
+  toast(`已调用技能「${skill.name}」，发送后真实运行`)
+}
+
 const promptTriggers = initPromptTriggers({
   input,
   listFiles: referenceFiles,
@@ -479,15 +461,7 @@ const promptTriggers = initPromptTriggers({
     toast(`已引用「${file.name}」，随提示词一起提交`)
   },
   listSkills: () => store.state.skills ?? [],
-  onPickSkill: (skill) => {
-    if (!skill.enabled) {
-      toast(`「${skill.name}」还没启用，先去技能页开启`)
-      return
-    }
-    activeSkill = { id: skill.id, name: skill.name }
-    renderChips()
-    toast(`已调用技能「${skill.name}」，发送后真实运行`)
-  },
+  onPickSkill: pickSkill,
 })
 
 function submitPrompt() {
@@ -500,6 +474,16 @@ function submitPrompt() {
   if (!text) {
     input.focus()
     toast(homeMode() ? '先用一句话描述你想做的内容' : '先描述你想做的内容，或从推荐模板开始')
+    return
+  }
+  if (isStandaloneQuestion({text,type:ui.type,skill:activeSkill,expert:ui.expert})) {
+    questionChat.start(text, {template:activeTemplate,files:attachments.map(a=>a.name),context:attachmentContext()})
+    input.value = ''
+    input.style.height = 'auto'
+    attachments.length = 0
+    activeTemplate = null
+    renderChips()
+    syncSendState()
     return
   }
   if (ui.mode === 'Max') {
@@ -626,7 +610,7 @@ function finishTask(gamma, artifact = null) {
 }
 
 function runGeneration(gamma) {
-  // 设置 → 模型：真实模型 id 来自 model-config.js 写死的可用白名单
+  // 设置 → 模型：记录已验证或预置的模型偏好，不代表本地生成器已调用该模型
   const model = store.state.settings.model || AVAILABLE_MODELS[0]?.id || '本地演示模型'
   const task = taskOf(gamma)
   if (task) {
@@ -1086,20 +1070,10 @@ exampleGrid?.addEventListener('click', (event) => {
 /* ---------------- 工作区 / 探索 ---------------- */
 
 const workGrid = $('#work-grid')
-const templateRow = $('#template-row')
-let workTab = 'explore'
 
 function renderWork() {
-  if (!workGrid || !templateRow) return
-  const isWork = workTab === 'workspace'
-  templateRow.dataset.workView = workTab
+  if (!workGrid) return
   applySmartSuggest()
-  $$('[data-work-tab]').forEach((tab) => {
-    const on = tab.dataset.workTab === workTab
-    tab.classList.toggle('is-active', on)
-    tab.setAttribute('aria-selected', String(on))
-  })
-  if (!isWork) return
   const list = (store.state.gammas ?? []).filter((g) => !g.deleted).slice(0, 8)
   workGrid.innerHTML = list.length ? list.map((g, i) => `
     <button class="work-item" type="button" data-work-gamma="${g.id}">
@@ -1111,12 +1085,6 @@ function renderWork() {
     : `<div class="work-empty">工作区还没有内容。在输入框写一句话发送，创作会出现在这里。</div>`
 }
 
-$$('[data-work-tab]').forEach((tab) => {
-  tab.addEventListener('click', () => {
-    workTab = tab.dataset.workTab
-    renderWork()
-  })
-})
 
 store.subscribe(() => renderWork())
 
@@ -1397,6 +1365,8 @@ const addSub = initAddSubPanels({
   openRefPicker: () => openReferencePicker(),
   onAttachmentsChange: () => renderChips(),
   closeMenu: () => closePopover(),
+  onPickSkill: pickSkill,
+  currentSkill: () => activeSkill,
   fillPrompt: (text, files = []) => {
     input.value = text
     input.style.height = 'auto'
@@ -2163,13 +2133,18 @@ $$('[data-nav]').forEach((item) => {
           body: store.state.conversations.length
             ? `<div class="modal-list">${store.state.conversations.map((c) => `
                 <button class="modal-list-item" data-conv="${c.id}">
-                  <span class="grow"><span class="primary">${c.title}</span>
+                  <span class="grow"><span class="primary">${escapeQuestionText(c.title)}</span>
                   <span class="secondary">${fmtDate(c.at)}</span></span>
                 </button>`).join('')}</div>`
             : '<div class="empty-hint">还没有对话记录<br />发送一条提示词开始第一次对话。</div>',
         }).bodyEl.querySelectorAll('[data-conv]').forEach((b) =>
           b.addEventListener('click', () => {
             const c = store.state.conversations.find((x) => x.id === b.dataset.conv)
+            if (c.kind === 'question') {
+              b.closest('.modal-mask').remove()
+              questionChat.open(c.id)
+              return
+            }
             const g = store.state.gammas.find((x) => x.id === c.gammaId)
             if (g) input.value = g.prompt
             syncSendState()
@@ -2277,18 +2252,6 @@ function renderFolders() {
 
 /* ---------------- 模板 / 顶部按钮 / 帮助 ---------------- */
 
-/* 点模板：不再直接生成，而是把它作为「引用」卡片放进输入框（截图效果） */
-function coverOfCard(card) {
-  const styleAttr = card.querySelector('.cover, .rec-cover')?.getAttribute('style') ?? ''
-  const fromCss = /url\(['"]?([^'")]+)['"]?\)/.exec(styleAttr)?.[1]
-  if (fromCss) return fromCss
-  const tpl = (store.state.customTemplates ?? []).find((t) => t.name === card.dataset.template)
-  return typeof tpl?.cover === 'string' && tpl.cover.startsWith('data:') ? tpl.cover : ''
-}
-
-$$('[data-template]').forEach((card) => {
-  card.addEventListener('click', () => referenceTemplate(card.dataset.template, coverOfCard(card)))
-})
 
 const NEW_GAMMA_TYPES = [
   { id: 'presentation', label: '演示文稿', icon: '📊', formats: [
@@ -2431,7 +2394,6 @@ function createBlankGamma() {
 }
 
 $('.pill-outline').addEventListener('click', () => { location.href = 'templates.html' })
-$('#view-all-templates')?.addEventListener('click', () => { location.href = 'templates.html' })
 $('.pill-upgrade').addEventListener('click', openUpgrade)
 $('.help-fab').addEventListener('click', openHelp)
 $$('.rail-footer .footer-icon').forEach((btn) => {
@@ -2461,3 +2423,5 @@ placeToolbarItems()
 applySmartSuggest()
 // 连接器状态变化时刷新「导入」提示里的品牌小标（写在这里，避免早期订阅踩到 TDZ）
 store.subscribe(() => renderImportSources())
+
+questionChat.restore()

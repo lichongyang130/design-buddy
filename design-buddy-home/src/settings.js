@@ -6,24 +6,22 @@
 import './rail-flyout.js'
 import { requireAuth } from './auth.js'
 requireAuth()
-import { store, toast, confirmModal, downloadFile, uid } from './core.js'
+import { store, toast, confirmModal, downloadFile, uid, openModal } from './core.js'
 import { initGlobalUI, applyAppearance, openUpgrade } from './global-ui.js'
 import {
   previewLockScreen, testWakeLock, wakeLockState, pwaState, installPwa, testProxyConnection,
 } from './settings-effects.js'
 import { t, tt, optionLabel, dynOptionLabel } from './i18n.js'
-import { AVAILABLE_MODELS } from './model-config.js'
+import { SELECTABLE_MODELS as AVAILABLE_MODELS, MODEL_BASE_URL } from './model-config.js'
+import { createModelManager, ensureCustomModels } from './model-manager.js'
 
 initGlobalUI()
 
 // 配图模式与模板页共享同一持久化字段，默认绘本插画
 store.state.imageMode ??= 'illustration'
-// 旧版本存储的中文档位模型名（标准模型等）已下线：不在写死白名单内时迁移到首个可用模型
-// 注意：此处位于模块顶部，s() 等 const 助手尚未初始化，只能直接走 store.state
-if (!AVAILABLE_MODELS.some((m) => m.id === store.state.settings.model)) {
-  store.state.settings.model = AVAILABLE_MODELS[0]?.id ?? ''
-  store.save()
-}
+// Preserve custom model selection across reloads; only seed presets once.
+ensureCustomModels(store.state.settings, AVAILABLE_MODELS, MODEL_BASE_URL)
+store.save()
 
 const $ = (sel, root = document) => root.querySelector(sel)
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)]
@@ -427,13 +425,7 @@ const SECTION_BUILDERS = {
     <div class="setting-row"><button class="btn btn-ghost" data-act="add-agent" type="button">${t('dy.ag.add', curLang())}</button></div>
   `, sectionLabel('agents')),
 
-  models: () => card(
-    AVAILABLE_MODELS.length
-      ? AVAILABLE_MODELS.map((m) => row(esc(m.id), t('dy.mdl.availableDesc', curLang()), `
-        <button class="switch ${s().model === m.id ? 'is-on' : ''}" data-model="${esc(m.id)}"><span class="switch-knob"></span></button>`)).join('')
-      : `<p class="modal-copy">${t('dy.mdl.empty', curLang())}</p>`,
-    sectionLabel('models'),
-  ),
+  models: () => modelManager.render(),
 
   assistant: () => card(`
     ${row(t('dy.asst.nameTitle', curLang()), '', textHtml('settings.assistant.name'))}
@@ -470,8 +462,17 @@ const SECTION_BUILDERS = {
   `, sectionLabel('security')),
 }
 
+const modelManager = createModelManager({
+  store, presets: AVAILABLE_MODELS, baseURL: MODEL_BASE_URL,
+  openModal, confirmModal, downloadFile, toast, uid,
+  onChange: () => renderSection('models', sectionLabel('models')),
+  language: curLang, setupText: () => t('dy.mdl.setup', curLang()),
+})
+
 function renderSection(key, label) {
   activeSection = key
+  viewPlaceholder.classList.toggle('settings-models-view', key === 'models')
+  $('.settings-main').classList.toggle('settings-models-main', key === 'models')
   $$('[data-settings]').forEach((item) => item.classList.toggle('nav-item-active', item.dataset.settings === key))
   if (key === 'general') {
     viewGeneral.hidden = false
@@ -539,6 +540,11 @@ viewPlaceholder.addEventListener('click', async (e) => {
     setPath(path, !getPath(path))
     sw.classList.toggle('is-on', getPath(path))
     sw.setAttribute('aria-checked', String(getPath(path)))
+    return
+  }
+
+  if (e.target.closest('[data-model-add],[data-model-edit],[data-model-delete],[data-model-connect],[data-model-export]')) {
+    modelManager.handle(e)
     return
   }
 

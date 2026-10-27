@@ -1,3 +1,5 @@
+import { CASES as SHOWCASE_CASES, showcaseMeta } from './showcase/data.js'
+import { APP_CASES, appTemplateMeta } from './app-catalog.js'
 /* ============================================================
    探索模板页：筛选 / 搜索 / 排序保留，套用模板真实生成 gamma
    侧栏四个视图：工作区模板 / 最近 / 由您创建 / 已归档（持久化）
@@ -10,10 +12,16 @@ import { store, toast, openModal, confirmModal, uid, fmtDate, copyText } from '.
 import { initGlobalUI, openUpgrade, openAccount } from './global-ui.js'
 import {
   buildCatalog, buildDeck, renderPageHTML, renderDocumentHTML, metaFor, coverStyle, coverDeco,
+  FRAMEWORKS, PALETTES,
   displayTpl, catLabel, VISIBLE_CATS, HIDDEN_CATS, configureArt, getArtBase,
   getArtManifest, setArtOverride, clearArtOverride,
 } from './template-engine.js'
 import { ART_CONCEPTS, conceptLabel, conceptFor } from './art-concepts.js'
+import { PRESENTATION_TEMPLATES, getPresentationMeta, getPresentationTemplates, renderPresentationSlide, renderPresentationDocument, renderDocumentPresentation } from './presentation-templates.js'
+import { GENERATED_DOCUMENT_TEMPLATES } from './document-generator.js'
+import { planContentArt, contentArtURL, renderContentArtSVG } from './content-art.js'
+import { renderExhibitionCover } from './exhibition-cover.js'
+import './exhibition-cover.css'
 
 initGlobalUI()
 
@@ -115,36 +123,16 @@ const uiText = () => UI[lang()]
 const $ = (sel, root = document) => root.querySelector(sel)
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)]
 
-/* ---------------- 内置 24 套模板 ---------------- */
+/* ---------------- 内置模板（示例已全部清空，仅保留自定义模板入口） ---------------- */
 
 const CATEGORIES_VISIBLE = VISIBLE_CATS
 const CATEGORIES_HIDDEN = HIDDEN_CATS
 
 const TEMPLATES = [
-  { name: '渔港日记', cls: 'tpl-shipu', a: '石', b: 'SHIPU', format: '演示文稿', cats: ['文化', '营销材料'] },
-  { name: '水墨亭', cls: 'tpl-ink', a: '澄湖', b: 'INK PAVILION', format: '文档', cats: ['文化', '艺术'] },
-  { name: 'Overtime', cls: 'tpl-overtime', a: '年终大复盘！', b: 'Phew!! Still cooking', format: '演示文稿', cats: ['培训', '商业规划'] },
-  { name: '朱砂册页', cls: 'tpl-cinnabar', a: '茶事雅集', b: '', format: '社交轮播卡片', cats: ['文化', '活动'] },
-  { name: '讲堂', cls: 'tpl-lecture', a: '城市生态：六周观察课', b: 'URBAN ECOLOGY', format: '演示文稿', cats: ['课程', '教育'] },
-  { name: '国潮商务路演', cls: 'tpl-guochao', a: '用调度效率提升每一块算力的产出', b: '', format: '演示文稿', cats: ['融资演讲稿', '商业规划'] },
-  { name: 'Quire', cls: 'tpl-quire', a: 'Back of House', b: '2026 RESTAURANT SURVEY', format: '文档', cats: ['报告', '餐饮'] },
-  { name: 'Full Record', cls: 'tpl-fullrecord', a: 'Amara Osei', b: 'FULL RECORD', format: '文档', cats: ['作品集', '品牌设计'] },
-  { name: 'Fit Check', cls: 'tpl-fitcheck', a: 'HOMEROOM', b: 'GENERAL UNIFORM POLICY', format: '演示文稿', cats: ['融资演讲稿', '营销材料', '作品集'] },
-  { name: 'First Edition', cls: 'tpl-firstedition', a: 'Salt and Lemon', b: 'FIRST EDITION', format: '文档', cats: ['作品集', '艺术'] },
-  { name: 'The Web Between Us', cls: 'tpl-web', a: 'THE WEB BETWEEN US', b: '', format: '社交轮播卡片', cats: ['科技', '艺术'] },
-  { name: 'Soft Current', cls: 'tpl-soft', a: 'Migraine is more than a headache', b: '', format: '社交轮播卡片', cats: ['医疗健康', '课程'] },
-  { name: 'Spark and Fire', cls: 'tpl-spark', a: '', b: 'SPARK AND FIRE', format: '演示文稿', cats: ['培训', '活动'] },
-  { name: 'Scintilla', cls: 'tpl-scintilla', a: 'The secret life of pollinators', b: '', format: '演示文稿', cats: ['教育', '科技'] },
-  { name: 'Sisyphus Riso', cls: 'tpl-sisyphus', a: 'FIND DELIGHT IN PUSHING YOUR ROCK UP YOUR HILL', b: '', format: '演示文稿', cats: ['培训', '商业规划'] },
-  { name: 'Rebuilding the Past', cls: 'tpl-rebuilding', a: 'Rebuilding the Past', b: '', format: '演示文稿', cats: ['报告', '建筑'] },
-  { name: 'Metamorphosis', cls: 'tpl-metamorphosis', a: '', b: 'METAMORPHOSIS', format: '社交轮播卡片', cats: ['艺术', '品牌设计'] },
-  { name: 'Luminal', cls: 'tpl-luminal', a: 'The quiet cascade', b: '', format: '演示文稿', cats: ['作品集', '艺术'] },
-  { name: 'Inner Weather', cls: 'tpl-inner', a: '', b: 'INNER WEATHER', format: '文档', cats: ['课程', '医疗健康'] },
-  { name: 'Hush', cls: 'tpl-hush', a: 'Our year at the Brierley Institute', b: '', format: '文档', cats: ['报告', '文化'] },
-  { name: 'Buzzer', cls: 'tpl-buzzer', a: 'TRIVIA NIGHT', b: 'Harper Street Library · Friday March 14', format: '演示文稿', cats: ['活动', '餐饮'] },
-  { name: 'Vista', cls: 'tpl-vista', a: 'Kalai Retreat', b: '', format: '演示文稿', cats: ['旅游', '建筑'] },
-  { name: 'Open House', cls: 'tpl-openhouse', a: '214 Birchwood Lane', b: '', format: '演示文稿', cats: ['建筑', '营销材料'] },
-  { name: 'Monsoon Modern', cls: 'tpl-monsoon', a: 'A SEASON OF MAKING TOGETHER', b: '', format: '社交轮播卡片', cats: ['活动', '品牌设计'] },
+  ...PRESENTATION_TEMPLATES.map((t) => getPresentationMeta(t)),
+  ...GENERATED_DOCUMENT_TEMPLATES.map((t) => getPresentationMeta(t)),
+  ...APP_CASES.map(appTemplateMeta),
+  ...SHOWCASE_CASES.map(showcaseMeta),
 ]
 
 const FOLDER_ICON = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>`
@@ -273,6 +261,32 @@ const TPL_META = {
     desc: 'A seasonal campaign carousel blending modernist grids with rain-washed indigos, made for collaborative making and storytelling.',
     fits: ['seasonal marketing campaigns', 'brand storytelling carousels', 'event invitations', 'social content series'],
     colors: ['#3957a8', '#7fb2e5', '#f2eadf'], themes: ['活动', '品牌'],
+  },
+  // ---- 演示文稿模板元数据 ----
+  '投资者路演套件': {
+    desc: 'A 35-slide investor pitch deck built on the cyber-neon framework: dark blue canvases, electric-blue accents and full-bleed photography for Series A funding rounds.',
+    fits: ['Series A and B fundraising pitches', 'startup roadshows', 'angel investor meetings', 'venture capital demo days'],
+    colors: ['#0d1b3e', '#2563eb', '#f8fafc'], themes: ['商业', '科技'],
+  },
+  '季度经营回顾': {
+    desc: 'A 30-slide quarterly business review on a data-dashboard framework: clean blue-gray palette, KPI boards, line charts and comparison tables for leadership reviews.',
+    fits: ['quarterly board presentations', 'executive leadership reviews', 'investor update meetings', 'cross-team progress reviews'],
+    colors: ['#1e3a5f', '#3b82f6', '#f1f5f9'], themes: ['商业', '数据'],
+  },
+  '品牌传承故事': {
+    desc: 'A 35-slide brand heritage story on an editorial framework: warm gold-brown palette, serif headlines and full-bleed photography for luxury brand narratives.',
+    fits: ['luxury and heritage brand stories', 'brand anniversary celebrations', 'craftsmanship and legacy narratives', 'brand book presentations'],
+    colors: ['#7c5e1e', '#d4a73a', '#faf6ef'], themes: ['品牌', '文化'],
+  },
+  '市场扩张战略': {
+    desc: 'A 30-slide market expansion strategy on the Swiss International typographic grid: strict blue-gray palette, data tables, timelines and comparison layouts for strategic planning.',
+    fits: ['market entry strategies', 'geographic expansion plans', 'competitive positioning decks', 'board strategy presentations'],
+    colors: ['#1a2b3c', '#4a6fa5', '#e8edf2'], themes: ['商业', '战略'],
+  },
+  '产品发布主题演讲': {
+    desc: 'A 35-slide product launch keynote on a cover-impact framework: gradient purple-pink palette, dramatic hero slides and full-bleed photography for consumer product launches.',
+    fits: ['consumer product launches', 'tech product keynotes', 'brand campaign announcements', 'trade show presentations'],
+    colors: ['#4a1a6b', '#e84393', '#faf0ff'], themes: ['营销', '科技'],
   },
 }
 
@@ -412,10 +426,10 @@ function pageBadge(tpl) {
 function renderGrid(items) {
   currentItems = items
   const visible = items.slice(0, pageLimit)
-  grid.innerHTML = visible.map((tpl) => `
+  grid.innerHTML = visible.map((tpl) => tpl.app || tpl.showcase ? `<article class="tpl-card tpl-app-card" data-name="${tpl.name}"><a href="${tpl.href}" class="tpl-app-link" aria-label="打开${tpl.name}交互原型">${coverHTML(tpl)}<p class="tpl-name">${FOLDER_ICON}<span>${tpl.name}</span><span class="tpl-fmt">${tpl.app ? 'App · 可交互' : tpl.format}</span></p></a></article>` : `
     <article class="tpl-card" data-name="${tpl.name}" ${tpl.custom ? `data-custom="${tpl.id}"` : ''}>
       ${coverHTML(tpl)}
-      <p class="tpl-name">${FOLDER_ICON}<span>${displayTpl(tpl, lang()).name}</span></p>
+      <p class="tpl-name">${FOLDER_ICON}<span>${displayTpl(tpl, lang()).name}</span>${tpl.format ? `<span class="tpl-fmt">${tpl.format}</span>` : ''}</p>
     </article>`).join('')
   const none = items.length === 0
   empty.hidden = !none
@@ -592,7 +606,7 @@ grid.addEventListener('click', (event) => {
   const card = event.target.closest('.tpl-card')
   if (!card) return
   const tpl = allTemplates().find((t) => t.name === card.dataset.name)
-  if (tpl) openTemplateDetail(tpl)
+  if (tpl && !tpl.app && !tpl.showcase) openTemplateDetail(tpl)
 })
 
 /* ---------------- 模板详情预览弹层（按截图 1:1） ---------------- */
@@ -606,12 +620,11 @@ function coverInner(tpl) {
 }
 
 function coverHTML(tpl) {
-  if (tpl.gen) {
-    const d = displayTpl(tpl, lang())
-    return `<div class="tpl-cover tpl-gen" data-deco="${coverDeco(tpl)}" style="${coverStyle(tpl)}">
-      <span class="tc-deco" aria-hidden="true"></span>
-      ${d.a ? `<span class="tc-a">${d.a}</span>` : ''}
-      ${d.b ? `<span class="tc-b">${d.b}</span>` : ''}
+  if (tpl.showcase) return `<div class="tpl-cover qiye-app-cover"><img class="qiye-app-cover-image" src="${tpl.cover}" alt="${tpl.name}实际案例封面" loading="lazy" width="1200" height="714"></div>`
+  if (tpl.app) return `<div class="tpl-cover qiye-app-cover"><img class="qiye-app-cover-image" src="${tpl.cover}" alt="${tpl.name}：独立品牌封面与真实手机首页" loading="lazy" width="1200" height="714"></div>`
+  if (tpl.gen && tpl._tpl) {
+    return `<div class="tpl-cover tpl-gen exhibition-thumb ${tpl.docMode ? 'exhibition-document' : ''}">
+      <div class="exhibition-sheet">${renderExhibitionCover(tpl._tpl)}</div>
       ${pageBadge(tpl)}
     </div>`
   }
@@ -739,6 +752,7 @@ function buildWritingStyle(locale) {
 }
 
 function openTemplateDetail(tpl) {
+  if (tpl.app) { location.href = tpl.href; return }
   const list = allTemplates()
   let idx = list.findIndex((t) => t.name === tpl.name)
   if (idx < 0) idx = 0
@@ -897,7 +911,7 @@ function openTemplateDetail(tpl) {
   /* 创作形式（幻灯片/文档）与自定义版块，均按模板名持久化 */
   store.state.templateForm ??= {}
   store.state.templateBlocks ??= {}
-  const formOf = (t) => store.state.templateForm[t.name] ?? 'slide'
+  const formOf = (t) => store.state.templateForm[t.name] ?? (t.format === '文档' ? 'doc' : 'slide')
   const blocksOf = (t) => (store.state.templateBlocks[t.name] ??= [])
   let activeTab = 'brief'
 
@@ -937,6 +951,46 @@ function openTemplateDetail(tpl) {
     const t = cur()
     const locale = lang()
     const form = formOf(t)
+
+    // 演示文稿模板：使用自定义渲染函数
+    if (t.presentation) {
+      const presTpl = t._tpl
+      const totalPages = presTpl.pages.length
+      if (pageIdx >= totalPages) pageIdx = 0
+      mask.querySelector('#td-topbar-title').textContent = displayTpl(t, locale).name
+      const slideOnly = mask.querySelectorAll('.td-deck-bar, .td-page-arrow, .td-progress, .td-pages')
+
+      if (t.docMode) {
+        // 文档模式：渲染全部页面为可滚动文档
+        mask.querySelectorAll('#td-form-switch [data-form]').forEach((b) =>
+          b.classList.toggle('is-active', b.dataset.form === 'doc'))
+        deckEl.classList.add('is-doc')
+        deckEl.classList.remove('is-square')
+        slideOnly.forEach((el) => { el.hidden = true })
+        deckEl.innerHTML = renderDocumentPresentation(presTpl, locale)
+        deckEl.scrollTop = 0
+        const fw = FRAMEWORKS[presTpl.fw]
+        frameEl.textContent = locale === 'en' ? fw.nameEn : fw.name
+        pageCountEl.textContent = `${String(totalPages).padStart(2, '0')} ${uiText().pages}`
+      } else {
+        // 幻灯片模式：逐页渲染
+        mask.querySelectorAll('#td-form-switch [data-form]').forEach((b) =>
+          b.classList.toggle('is-active', b.dataset.form === 'slide'))
+        deckEl.classList.remove('is-doc')
+        deckEl.classList.remove('is-square')
+        slideOnly.forEach((el) => { el.hidden = false })
+        deckEl.innerHTML = renderPresentationSlide(presTpl, pageIdx)
+        deckEl.querySelector('.dp-page')?.classList.add('is-shown')
+        pageCountEl.textContent = `${String(pageIdx + 1).padStart(2, '0')} / ${String(totalPages).padStart(2, '0')}`
+        const fw = FRAMEWORKS[presTpl.fw]
+        frameEl.textContent = locale === 'en' ? fw.nameEn : fw.name
+        progressEl.style.width = `${((pageIdx + 1) / totalPages) * 100}%`
+        renderPageStrip(totalPages)
+      }
+      syncLangButtons()
+      return
+    }
+
     configureArt({ mode: store.state.imageMode ?? 'illustration', overrides: store.state.artOverrides })
     const deck = buildDeck(t, locale)
     if (pageIdx >= deck.pages.length) pageIdx = 0
@@ -947,12 +1001,15 @@ function openTemplateDetail(tpl) {
     if (form === 'doc') {
       // 文档形态：整篇纵向滚动、图文流式，不再分页
       deckEl.classList.add('is-doc')
+      deckEl.classList.remove('is-square')
       slideOnly.forEach((el) => { el.hidden = true })
       const editsByPage = editRoot(t)[locale] ?? {}
       deckEl.innerHTML = renderDocumentHTML(t, locale, editsByPage, blocksOf(t))
       deckEl.scrollTop = 0
     } else {
       deckEl.classList.remove('is-doc')
+      // 社交轮播卡片：方形画幅（1:1），其余格式保持 16:9
+      deckEl.classList.toggle('is-square', t.format === '社交轮播卡片')
       slideOnly.forEach((el) => { el.hidden = false })
       const edits = pageEdits(t, locale, pageIdx)
       deckEl.innerHTML = renderPageHTML(t, pageIdx, styleIdxOf(t), locale, edits)
@@ -1202,14 +1259,22 @@ function openTemplateDetail(tpl) {
     const tabBrief = locale === 'en' ? 'Brief' : '说明'
     const tabImages = locale === 'en' ? 'Images' : '图片'
     // 收集整篇配图：页码 + 槽位 + 概念 key（与幻灯/文档渲染完全同源）
-    const deck = buildDeck(t, locale)
+    // 演示文稿模板使用真实图片，创建 mock deck 供视觉气质/工作原理使用
+    const deck = t.presentation ? {
+      framework: FRAMEWORKS[t.fw],
+      pages: t._tpl.pages.map((p, i) => ({ no: i + 1, layout: p.layout })),
+    } : buildDeck(t, locale)
     const artRows = []
-    deck.pages.forEach((p) => {
-      const count = LAYOUT_SLOT_COUNT[p.layout] ?? 1
-      for (let slot = 0; slot < count; slot++) {
-        artRows.push({ page: p.no, slot, key: conceptFor(t, p, slot) })
-      }
-    })
+    if (t.presentation) {
+      t._tpl.pages.forEach((p, i) => artRows.push({ page: i, content: true }))
+    } else {
+      deck.pages.forEach((p) => {
+        const count = LAYOUT_SLOT_COUNT[p.layout] ?? 1
+        for (let slot = 0; slot < count; slot++) {
+          artRows.push({ page: p.no, slot, key: conceptFor(t, p, slot) })
+        }
+      })
+    }
     const manifest = getArtManifest()
     panel.innerHTML = `
       <div class="tdp-head">
@@ -1326,9 +1391,16 @@ function openTemplateDetail(tpl) {
       </div>
 
       <div class="tdp-pane tdp-images" data-pane="images" ${activeTab !== 'images' ? 'hidden' : ''}>
-        <p class="tdp-images-hint">${locale === 'en' ? 'Click any image to replace it — changes persist across slides and document view.' : '点击任意配图即可替换，幻灯与文档形态同步生效。'}</p>
+        <p class="tdp-images-hint">${t.presentation ? (locale === 'en' ? 'Content-derived diagrams and pilot AI illustrations. Click to inspect or download. Template data is illustrative.' : '按内容生成的图解与样板 AI 插画。点击查看来源、生成说明并下载；模板数值为示例。') : (locale === 'en' ? 'Click any image to replace it — changes persist across slides and document view.' : '点击任意配图即可替换，幻灯与文档形态同步生效。')}</p>
         <div class="tdp-image-grid">
           ${artRows.map((r) => {
+            if (r.content) {
+              const plan = planContentArt(t._tpl, r.page)
+              return `<button type="button" class="tdp-image-card" data-content-art="${r.page}">
+                <span class="tdp-image-thumb"><img src="${contentArtURL(t._tpl, r.page)}" alt=""></span>
+                <span class="tdp-image-meta"><b>${plan.scene ? 'AI 插画' : plan.kind + ' · SVG'}</b><em>${locale === 'en' ? 'Page' : '第'} ${r.page + 1} ${locale === 'en' ? '' : '页'}</em></span>
+              </button>`
+            }
             const src = manifest[r.key]?.illustration?.src
             const override = store.state.artOverrides[`${t.id}:${r.page}:${r.slot}`]
             return `<button type="button" class="tdp-image-card" data-art-pick="${r.page}:${r.slot}:${r.key}">
@@ -1345,6 +1417,27 @@ function openTemplateDetail(tpl) {
         activeTab = tab.dataset.tab
         panel.querySelectorAll('.tdp-tab').forEach((b) => b.classList.toggle('is-active', b === tab))
         panel.querySelectorAll('.tdp-pane').forEach((p) => { p.hidden = p.dataset.pane !== activeTab })
+        return
+      }
+      const contentPick = e.target.closest?.('[data-content-art]')
+      if (contentPick) {
+        const t = cur()
+        const index = Number(contentPick.dataset.contentArt)
+        const plan = planContentArt(t._tpl, index)
+        const modal = openModal({
+          title: plan.scene ? '内容配图 · AI 概念插画（非实景摄影）' : (locale === 'en' ? 'Content artwork · SVG' : '内容配图 · 可编辑 SVG'),
+          body: `<div class="content-art-inspector">${plan.scene ? `<img src="${plan.scene.src}" alt="AI conceptual illustration">` : renderContentArtSVG(t._tpl,index)}<p>Source: template page ${index+1} · Sample content</p><pre></pre></div>`,
+          footer: `<button class="btn btn-primary" data-download-art>${plan.scene ? '下载插画' : '下载 SVG'}</button>`,
+        })
+        modal.bodyEl.querySelector('pre').textContent = plan.brief
+        modal.footEl.querySelector('[data-download-art]').addEventListener('click', () => {
+          if (plan.scene) {
+            const a = document.createElement('a'); a.href = plan.scene.src; a.download = plan.scene.src.split('/').pop(); a.click(); return
+          }
+          const url = URL.createObjectURL(new Blob([renderContentArtSVG(t._tpl,index)], { type: 'image/svg+xml' }))
+          const a = document.createElement('a'); a.href = url; a.download = `${t.id}-page-${index+1}.svg`; a.click()
+          setTimeout(() => URL.revokeObjectURL(url), 1000)
+        })
         return
       }
       const artPick = e.target.closest?.('[data-art-pick]')
@@ -1409,8 +1502,9 @@ function openTemplateDetail(tpl) {
   }
 
   function goPage(delta) {
-    const deck = buildDeck(cur())
-    pageIdx = (pageIdx + delta + deck.pages.length) % deck.pages.length
+    const t = cur()
+    const total = t.presentation ? t._tpl.pages.length : buildDeck(t).pages.length
+    pageIdx = (pageIdx + delta + total) % total
     renderDeck()
   }
 
@@ -1642,7 +1736,7 @@ function openTemplateDetail(tpl) {
       app: 'Design Buddy',
       template: displayTpl(t, locale).name,
       format: formOf(t),
-      pages: buildDeck(t, lang()).pages.length,
+      pages: t.presentation ? t._tpl.pages.length : buildDeck(t, lang()).pages.length,
       style: styleIdxOf(t),
       blocks: blocksOf(t),
     }, null, 2)

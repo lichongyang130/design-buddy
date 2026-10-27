@@ -285,14 +285,22 @@ const DICT = {
 
   /* ---------- 模型：白名单由 discover-models 脚本实测后写死 ---------- */
   'dy.mdl.availableDesc': {
-    zh: '连通性实测通过，可用于创作', 'zh-TW': '連通性實測通過，可用於創作',
-    en: 'Passed live connectivity test, ready for creation', ja: '接続テスト合格、創作に使用できます',
+    zh: '探测时对话请求成功；不代表应用问答服务已接通', 'zh-TW': '探測時對話請求成功；不代表應用問答服務已接通',
+    en: 'Chat probe passed; this does not connect the app chat service.', ja: '会話テスト合格。アプリのチャット接続は別途必要です。',
+  },
+  'dy.mdl.configuredDesc': {
+    zh: '预置模型标识 · 尚未验证账号权限或连通性', 'zh-TW': '預設模型識別碼 · 尚未驗證帳號權限或連線',
+    en: 'Preset identifier · account access and connectivity not verified', ja: 'プリセット識別子・アカウント権限と接続は未検証',
+  },
+  'dy.mdl.setup': {
+    zh: '选择模型后，请测试连接。API Key 不写入前端源码或本地存储；测试成功后仅在服务器内存保留 30 分钟。也可在服务器配置 DEEPSEEK_API_KEY / OPENAI_API_KEY。普通问答将调用所选模型。',
+    'zh-TW': '選擇模型後請測試連線。API Key 不寫入前端原始碼或本機儲存；測試成功後僅在伺服器記憶體保留 30 分鐘。亦可設定伺服器環境變數。一般問答將呼叫選定模型。',
+    en: 'Selection alone is not an AI connection; test access first. API Key is never stored locally. Successful tests retain it in server memory for 30 minutes. Server environment credentials are also supported. Chat uses the selected model.',
+    ja: 'モデルを選択して接続をテストしてください。API Key はローカルに保存せず、テスト成功後サーバーメモリに30分のみ保持します。サーバー環境変数も使用できます。チャットは選択モデルを呼び出します。',
   },
   'dy.mdl.empty': {
-    zh: '尚未发现可用模型。请在有网络的环境运行 npm run discover-models，系统会自动探测并写死可用模型列表。',
-    'zh-TW': '尚未發現可用模型。請在有網路的環境執行 npm run discover-models，系統會自動探測並寫死可用模型列表。',
-    en: 'No available models yet. Run npm run discover-models in a networked environment to probe and hardcode the model list automatically.',
-    ja: '利用可能なモデルがまだありません。ネットワーク接続のある環境で npm run discover-models を実行すると、自動で検出して固定リストに書き出します。',
+    zh: '尚未配置模型标识。请检查模型配置与服务端探测结果。', 'zh-TW': '尚未設定模型識別碼，請檢查模型設定與伺服器探測結果。',
+    en: 'No model identifiers configured. Check the configuration and server-side discovery results.', ja: 'モデル識別子が未設定です。設定とサーバー側の検証結果を確認してください。',
   },
   'dy.mdl.switched': { zh: '已切换到{model}', 'zh-TW': '已切換到{model}', en: 'Switched to {model}', ja: '{model} に切り替えました' },
 

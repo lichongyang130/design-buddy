@@ -319,6 +319,17 @@
   color: var(--text-2);
 }
 
+.tpl-fmt {
+  margin-left: auto;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--blue-bg);
+  color: var(--blue-deep);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .tpl-name .icon {
   width: 14px;
   height: 14px;
@@ -1422,22 +1433,145 @@
 
 .td-style-card.is-picked .td-style-name { color: var(--blue-deep); }
 /* ============================================================
-   生成模板封面（.tpl-gen）：CSS 变量驱动 + 12 种母题装饰
+   生成模板封面（.tpl-gen）：16 种布局变体 × 12 种装饰 × 8 种遮罩方向
    ============================================================ */
 
 .tpl-gen {
   background: var(--g-bg);
   --tc-ink: var(--g-ink);
+  --tc-ink-rgb: 255,255,255;
+  /* 默认位置变量（被 thumb-v* 覆盖） */
+  --tc-text-l: 12px;
+  --tc-text-t: 10px;
+  --tc-text-r: 50%;
+  --tc-text-b: 10px;
+  --tc-text-align: flex-start;
+  --tc-text-gap: 0;
+  --tc-cartoon-l: auto;
+  --tc-cartoon-t: auto;
+  --tc-cartoon-r: 0;
+  --tc-cartoon-b: 0;
+  --tc-cartoon-w: 52%;
+  --tc-cartoon-maxw: 110px;
+  --tc-cartoon-ty: 8%;
+  --tc-scrim: 135deg;
+  --tc-accent-show: 0;
+}
+
+/* 封面图背景 */
+.tc-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: transform 0.3s ease;
+}
+
+.tpl-card:hover .tc-bg {
+  transform: scale(1.06);
+}
+
+/* 渐变遮罩：方向由 --tc-scrim 控制 */
+.tc-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(var(--tc-scrim, 135deg),
+    rgba(15,23,42,0.82) 0%,
+    rgba(15,23,42,0.55) 35%,
+    rgba(15,23,42,0.15) 65%,
+    rgba(15,23,42,0.05) 100%);
+  pointer-events: none;
+}
+
+/* 文字容器：位置由 CSS 变量驱动 */
+.tc-text {
+  position: absolute;
+  left: var(--tc-text-l);
+  top: var(--tc-text-t);
+  right: var(--tc-text-r);
+  bottom: var(--tc-text-b);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: var(--tc-text-align);
+  gap: var(--tc-text-gap);
 }
 
 .tpl-gen .tc-a {
-  color: var(--g-ink);
-  font-size: 12px;
+  position: relative;
+  color: #fff;
+  font-size: 13px;
   font-weight: 800;
+  line-height: 1.25;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  max-width: 100%;
 }
 
 .tpl-gen .tc-b {
-  color: var(--g-muted);
+  position: relative;
+  color: rgba(255,255,255,0.78);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  line-height: 1.3;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  max-width: 100%;
+}
+
+/* 卡通人物：位置由 CSS 变量驱动 */
+.tc-cartoon {
+  position: absolute;
+  left: var(--tc-cartoon-l);
+  top: var(--tc-cartoon-t);
+  right: var(--tc-cartoon-r);
+  bottom: var(--tc-cartoon-b);
+  width: var(--tc-cartoon-w);
+  max-width: var(--tc-cartoon-maxw);
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+}
+
+.tc-cartoon svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: translateY(var(--tc-cartoon-ty));
+}
+
+/* 额外强调元素 */
+.tc-accent {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* 页数徽章 */
+.tpl-gen .tc-page-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 4;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 7px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.5px;
+}
+
+/* 装饰层 */
+.tpl-gen .tc-deco {
+  opacity: 0.35;
 }
 
 .tc-deco {
@@ -1447,7 +1581,7 @@
   pointer-events: none;
 }
 
-/* 12 种封面母题：用渐变 / 裁切 / 圆环区分视觉框架 */
+/* 12 种封面母题装饰 */
 .tpl-gen[data-deco='1'] .tc-deco {
   background:
     radial-gradient(circle at 82% 22%, var(--g-accent) 0 16%, transparent 17%),
@@ -1506,6 +1640,159 @@
     radial-gradient(circle at 82% 26%, var(--g-accent2) 0 10%, transparent 11%),
     radial-gradient(circle at 82% 26%, transparent 20%, var(--g-accent) 21% 22.5%, transparent 24%),
     linear-gradient(180deg, transparent 62%, var(--g-accent) 63% 66%, transparent 67%);
+}
+
+/* ============================================================
+   16 种布局变体：文字位置 + 卡通位置 + 遮罩方向 + 强调元素
+   ============================================================ */
+
+/* v0: 文字左上，卡通右下，遮罩 135°（原默认） */
+.thumb-v0 { --tc-scrim: 135deg; }
+
+/* v1: 文字右下，卡通左上，遮罩 45° */
+.thumb-v1 {
+  --tc-text-l: 50%; --tc-text-r: 12px; --tc-text-t: 50%; --tc-text-b: 10px;
+  --tc-text-align: flex-end;
+  --tc-cartoon-l: 0; --tc-cartoon-t: 0; --tc-cartoon-r: auto; --tc-cartoon-b: auto;
+  --tc-cartoon-ty: 0%;
+  --tc-scrim: 45deg;
+}
+
+/* v2: 文字居中底部，卡通居中顶部，遮罩 180° */
+.thumb-v2 {
+  --tc-text-l: 12px; --tc-text-r: 12px; --tc-text-t: auto; --tc-text-b: 10px;
+  --tc-text-align: center; --tc-text-gap: 4px;
+  --tc-cartoon-l: 50%; --tc-cartoon-t: 0; --tc-cartoon-r: auto; --tc-cartoon-b: auto;
+  --tc-cartoon-ty: 0%; --tc-cartoon-w: 40%; --tc-cartoon-maxw: 80px;
+  --tc-scrim: 180deg;
+}
+
+/* v3: 文字左下，卡通右上，遮罩 90° */
+.thumb-v3 {
+  --tc-text-l: 12px; --tc-text-r: 55%; --tc-text-t: auto; --tc-text-b: 10px;
+  --tc-cartoon-l: auto; --tc-cartoon-t: 0; --tc-cartoon-r: 0; --tc-cartoon-b: auto;
+  --tc-cartoon-ty: 0%; --tc-cartoon-w: 40%; --tc-cartoon-maxw: 80px;
+  --tc-scrim: 90deg;
+}
+
+/* v4: 文字居中顶部，卡通底部居中，遮罩 270° */
+.thumb-v4 {
+  --tc-text-l: 12px; --tc-text-r: 12px; --tc-text-t: 10px; --tc-text-b: auto;
+  --tc-text-align: center; --tc-text-gap: 3px;
+  --tc-cartoon-l: 50%; --tc-cartoon-t: auto; --tc-cartoon-r: auto; --tc-cartoon-b: 0;
+  --tc-cartoon-ty: 0%; --tc-cartoon-w: 45%; --tc-cartoon-maxw: 90px;
+  --tc-scrim: 270deg;
+}
+
+/* v5: 文字右上，卡通左中，遮罩 225° */
+.thumb-v5 {
+  --tc-text-l: 50%; --tc-text-r: 12px; --tc-text-t: 10px; --tc-text-b: auto;
+  --tc-text-align: flex-end;
+  --tc-cartoon-l: 0; --tc-cartoon-t: 50%; --tc-cartoon-r: auto; --tc-cartoon-b: auto;
+  --tc-cartoon-ty: -52%;
+  --tc-scrim: 225deg;
+}
+
+/* v6: 文字底部居中，卡通左下，遮罩 315° */
+.thumb-v6 {
+  --tc-text-l: 12px; --tc-text-r: 12px; --tc-text-t: auto; --tc-text-b: 8px;
+  --tc-text-align: center; --tc-text-gap: 4px;
+  --tc-cartoon-l: 0; --tc-cartoon-t: auto; --tc-cartoon-r: auto; --tc-cartoon-b: 0;
+  --tc-cartoon-ty: 0%; --tc-cartoon-w: 38%; --tc-cartoon-maxw: 75px;
+  --tc-scrim: 315deg;
+}
+
+/* v7: 文字左中，卡通右中，遮罩 0° */
+.thumb-v7 {
+  --tc-text-l: 12px; --tc-text-r: 52%; --tc-text-t: 50%; --tc-text-b: auto;
+  --tc-cartoon-l: auto; --tc-cartoon-t: 50%; --tc-cartoon-r: 0; --tc-cartoon-b: auto;
+  --tc-cartoon-ty: -52%; --tc-cartoon-w: 42%; --tc-cartoon-maxw: 85px;
+  --tc-scrim: 0deg;
+}
+
+/* v8: 文字居中，无卡通，大圆强调，遮罩 135° */
+.thumb-v8 {
+  --tc-text-l: 12px; --tc-text-r: 12px; --tc-text-t: 50%; --tc-text-b: auto;
+  --tc-text-align: center; --tc-text-gap: 6px;
+  --tc-cartoon-w: 0; --tc-cartoon-maxw: 0;
+  --tc-scrim: 135deg;
+}
+.thumb-v8 .tc-cartoon { display: none; }
+.thumb-v8 .tc-accent {
+  opacity: 0.6;
+  left: 50%; top: 50%;
+  width: 140%; height: 140%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, transparent 35%, var(--g-accent) 36% 38%, transparent 39%);
+}
+
+/* v9: 文字右下，无卡通，网格图案，遮罩 90° */
+.thumb-v9 {
+  --tc-text-l: 50%; --tc-text-r: 12px; --tc-text-t: auto; --tc-text-b: 10px;
+  --tc-text-align: flex-end; --tc-text-gap: 4px;
+  --tc-cartoon-w: 0; --tc-cartoon-maxw: 0;
+  --tc-scrim: 90deg;
+}
+.thumb-v9 .tc-cartoon { display: none; }
+.thumb-v9 .tc-accent {
+  opacity: 0.4;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--g-accent2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--g-accent2) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* v10: 文字左上，卡通居中右，遮罩 160° */
+.thumb-v10 {
+  --tc-text-l: 12px; --tc-text-r: 55%; --tc-text-t: 10px; --tc-text-b: auto;
+  --tc-cartoon-l: auto; --tc-cartoon-t: 30%; --tc-cartoon-r: 5%; --tc-cartoon-b: auto;
+  --tc-cartoon-ty: 0%; --tc-cartoon-w: 40%; --tc-cartoon-maxw: 80px;
+  --tc-scrim: 160deg;
+}
+
+/* v11: 文字居中，卡通左下，遮罩 200° */
+.thumb-v11 {
+  --tc-text-l: 12px; --tc-text-r: 12px; --tc-text-t: 40%; --tc-text-b: auto;
+  --tc-text-align: center; --tc-text-gap: 4px;
+  --tc-cartoon-l: 0; --tc-cartoon-t: auto; --tc-cartoon-r: auto; --tc-cartoon-b: 0;
+  --tc-cartoon-ty: 0%; --tc-cartoon-w: 35%; --tc-cartoon-maxw: 70px;
+  --tc-scrim: 200deg;
+}
+
+/* v12: 文字右上，卡通底部居中，遮罩 110° */
+.thumb-v12 {
+  --tc-text-l: 50%; --tc-text-r: 12px; --tc-text-t: 10px; --tc-text-b: auto;
+  --tc-text-align: flex-end;
+  --tc-cartoon-l: 50%; --tc-cartoon-t: auto; --tc-cartoon-r: auto; --tc-cartoon-b: 0;
+  --tc-cartoon-ty: 0%; --tc-cartoon-w: 42%; --tc-cartoon-maxw: 85px;
+  --tc-scrim: 110deg;
+}
+
+/* v13: 文字左下，卡通右上，遮罩 180° */
+.thumb-v13 {
+  --tc-text-l: 12px; --tc-text-r: 50%; --tc-text-t: auto; --tc-text-b: 10px;
+  --tc-cartoon-l: auto; --tc-cartoon-t: 0; --tc-cartoon-r: 0; --tc-cartoon-b: auto;
+  --tc-cartoon-ty: 0%; --tc-cartoon-w: 42%; --tc-cartoon-maxw: 85px;
+  --tc-scrim: 180deg;
+}
+
+/* v14: 文字居中左，卡通居中右，遮罩 200° */
+.thumb-v14 {
+  --tc-text-l: 12px; --tc-text-r: 48%; --tc-text-t: 35%; --tc-text-b: auto;
+  --tc-text-gap: 6px;
+  --tc-cartoon-l: 52%; --tc-cartoon-t: 35%; --tc-cartoon-r: 5%; --tc-cartoon-b: auto;
+  --tc-cartoon-ty: 0%; --tc-cartoon-w: 40%; --tc-cartoon-maxw: 80px;
+  --tc-scrim: 200deg;
+}
+
+/* v15: 文字顶部居中，卡通右下，遮罩 350° */
+.thumb-v15 {
+  --tc-text-l: 12px; --tc-text-r: 12px; --tc-text-t: 10px; --tc-text-b: auto;
+  --tc-text-align: center; --tc-text-gap: 4px;
+  --tc-cartoon-l: auto; --tc-cartoon-t: auto; --tc-cartoon-r: 0; --tc-cartoon-b: 0;
+  --tc-cartoon-ty: 0%; --tc-cartoon-w: 45%; --tc-cartoon-maxw: 90px;
+  --tc-scrim: 350deg;
 }
 
 .tc-page-badge {
@@ -1591,6 +1878,12 @@
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
   container-type: inline-size;
   background: #fff;
+}
+
+/* 社交轮播卡片：方形画幅 */
+.td-deck.is-square {
+  aspect-ratio: 1 / 1;
+  width: min(100%, 640px);
 }
 
 .td-page-arrow {
@@ -1821,6 +2114,7 @@
 
 /* cards */
 .lay-cards .dp-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5%; flex: 1; min-height: 0; }
+.lay-triple-grid .dp-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5%; flex: 1; min-height: 0; }
 .dp-card { background: var(--dp-paper); border-radius: var(--dp-radius); overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 8px 22px rgba(17,28,54,0.07); }
 .dp-card .dp-art { height: 48%; border-radius: 0; }
 .dp-card h4, .dp-card p { padding: 0 1.6cqw; }
@@ -2356,6 +2650,35 @@
 .db-doc .doc-cover { padding: 24px 0 8px; }
 .db-doc .doc-cover h1 { font-size: 40px; font-weight: 800; margin: 12px 0; }
 .db-doc .doc-closing { text-align: center; }
+
+/* 文档模式演示文稿：将幻灯片堆叠为可滚动文档 */
+.doc-pres-scroll {
+  display: flex; flex-direction: column; gap: 24px;
+  padding: 24px 0 48px;
+}
+.doc-pres-page {
+  position: relative;
+  border-radius: 12px; overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
+}
+.doc-pres-page .dp-page {
+  aspect-ratio: auto;
+  width: 100%;
+  position: relative;
+  transform: none;
+}
+.doc-pres-pagenum {
+  position: absolute;
+  bottom: 12px; right: 16px;
+  font-family: var(--dp-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 999px;
+  padding: 4px 10px;
+  pointer-events: none;
+}
 .db-doc .doc-closing .dp-art { max-width: 420px; margin: 0 auto 20px; }
 /* 分隔页 */
 .db-doc .doc-divider { display: flex; flex-direction: column; gap: 10px; }
@@ -2742,3 +3065,9 @@
   .td-made-by { position: static; align-self: flex-end; margin: 8px 0; }
   .td-left { padding-top: 12px; }
 }
+
+/* Composed App cover uses the actual mobile screen, without a cropped live iframe. */
+.qiye-app-cover { background: #f7f7f2; border: 1px solid #dce4d7; }
+.qiye-app-cover-image { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tpl-app-link { display: block; color: inherit; text-decoration: none; }
+.tpl-app-link:focus-visible { outline: 3px solid #7d9a6b; outline-offset: 5px; border-radius: 8px; }
