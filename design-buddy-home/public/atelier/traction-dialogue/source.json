@@ -1,0 +1,198 @@
+{
+  "source": "authored-fictional-pitch-model",
+  "synthetic": true,
+  "notInvestmentOffer": true,
+  "summary": {
+    "workspaces": 30,
+    "sessionEvents": 48,
+    "repeatedWorkspaces": 14,
+    "singleSession": 16,
+    "twoSessions": 10,
+    "threeSessions": 4,
+    "observationWindow": null,
+    "retentionNotEstablished": true,
+    "revenueNotSupplied": true
+  },
+  "records": [
+    {
+      "workspace_id": "W01",
+      "session_events": 1,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W02",
+      "session_events": 1,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W03",
+      "session_events": 1,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W04",
+      "session_events": 1,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W05",
+      "session_events": 1,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W06",
+      "session_events": 1,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W07",
+      "session_events": 1,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W08",
+      "session_events": 1,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W09",
+      "session_events": 1,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W10",
+      "session_events": 1,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W11",
+      "session_events": 1,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W12",
+      "session_events": 1,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W13",
+      "session_events": 1,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W14",
+      "session_events": 1,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W15",
+      "session_events": 1,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W16",
+      "session_events": 1,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W17",
+      "session_events": 2,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W18",
+      "session_events": 2,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W19",
+      "session_events": 2,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W20",
+      "session_events": 2,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W21",
+      "session_events": 2,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W22",
+      "session_events": 2,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W23",
+      "session_events": 2,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W24",
+      "session_events": 2,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W25",
+      "session_events": 2,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W26",
+      "session_events": 2,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W27",
+      "session_events": 3,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W28",
+      "session_events": 3,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W29",
+      "session_events": 3,
+      "paid_status": null,
+      "invented": true
+    },
+    {
+      "workspace_id": "W30",
+      "session_events": 3,
+      "paid_status": null,
+      "invented": true
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "traction-dialogue",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 15381,
+      "sha256": "0cbe3ab064c1ee348710c2151980bc9e0679c508d9ea2cc236a20a9da79fbb34"
+    },
+    {
+      "path": "content.js",
+      "bytes": 12847,
+      "sha256": "69ec9040442f196f4a94cc3a36976ace9c562fe80081063da23dc240c7ce2d31"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 515,
+      "sha256": "3be7830cd2e081f3dbcfd96d4f1576a157aa7441f64749d23f451d53eeee49d2"
+    },
+    {
+      "path": "traction-dialogue.docx",
+      "bytes": 925059,
+      "sha256": "199a0d605c32c1431541289826de08427fae370da66d1dfd28adfafb24a5e8f3"
+    },
+    {
+      "path": "traction-dialogue.pdf",
+      "bytes": 995875,
+      "sha256": "250553b4f992a74743afc7008e996567c49dd68467481e6877229d5b51bad62e"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 409,
+      "sha256": "f4db4f0af716b484575d0cb38fcd10cc3d8381ff864a349c6e51ece3ed854794"
+    },
+    {
+      "path": "source.json",
+      "bytes": 3957,
+      "sha256": "123cff19f82ad32c900a168e39d1b63e1a1bd71b75b00eb55e29ae9c15778cfe"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 187307,
+      "sha256": "021c7bc4b655f968e402cf262cf6e373b0e155dca0f916a6d8427f01c7e64144"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 135649,
+      "sha256": "7b0d1cc79d34872d24d9374c9c788b11aea2ff8fbdb714dc26cb24e4b132d4ca"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 168489,
+      "sha256": "9d8e52be92e0a57d1c532e3c88d27281f8cd0fe7d32e006edb7703aeb6777cd7"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 203235,
+      "sha256": "60948742a14a46ebe9de42307f1cbb1014e4bbc47c5e583f4390b69eb38a910a"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 221434,
+      "sha256": "9a6b0e24710b726e30e09e363768ab404a217db4e1627b7ad9261cd94abc80bd"
+    }
+  ]
+}

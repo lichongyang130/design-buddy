@@ -1,0 +1,296 @@
+{
+  "work": {
+    "id": "traction-dialogue",
+    "title": "TRACTION DIALOGUE",
+    "subtitle": "进展证据型融资稿",
+    "category": "融资演讲稿",
+    "layout": "traction",
+    "color": "#22687d",
+    "wash": "#e2eff4",
+    "framework": "主张证据与追问脚本",
+    "scope": "Fictional fundraising speech template. Spoken drafts, ventures, people and illustrative models are invented; no real traction, validated impact, technical performance, securities offer, investment terms or committed funding is supplied.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "fundraising-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / TRACTION DIALOGUE",
+      "title": "Lead with a traceable model.",
+      "lead": "Our worked example records 48 session events across 30 hypothetical workspaces. Fourteen workspaces appear more than once. That gives us a precise pattern to discuss, not a claim that we have customers, retained users or revenue. Relay Cards is a fictional concept, and every row in this example is invented.",
+      "body": "Keep the model label audible and visible. The complete 30-row source is downloadable. Workspace IDs are fictional identifiers, not actual people or client organisations.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What exactly is counted, and is any of it observed?",
+      "records": [
+        {
+          "label": "Progress statement",
+          "prompt": "30 invented workspaces produce 48 session events."
+        },
+        {
+          "label": "Model source",
+          "prompt": "Complete authored rows in source CSV and JSON."
+        },
+        {
+          "label": "Evidence qualification",
+          "prompt": "Synthetic activity is not observed business traction."
+        }
+      ],
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / TRACTION DIALOGUE",
+      "title": "Define the unit before the headline.",
+      "lead": "A workspace is the unit of the source row; a session count is the number assigned to that row. We should not call 48 events 48 users or 30 workspaces 30 paying accounts. The distinction is essential to making the progress conversation inspectable.",
+      "body": "The source contains 16 single-session rows, ten two-session rows and four three-session rows. It provides no identity resolution, payment information or time-based cohort definition.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What would be required to connect this unit to a real customer metric?",
+      "records": [
+        {
+          "label": "Row unit",
+          "prompt": "One row represents one invented workspace."
+        },
+        {
+          "label": "Event unit",
+          "prompt": "A session event is not a person or account."
+        },
+        {
+          "label": "Unsupported relabelling",
+          "prompt": "Do not relabel workspaces as customers or paying users."
+        }
+      ],
+      "image": 1,
+      "kind": "body"
+    },
+    {
+      "section": "03 / TRACTION DIALOGUE",
+      "title": "Show the pattern without upgrading it.",
+      "lead": "Sixteen hypothetical workspaces have one session, ten have two and four have three. The repeated-workspace count is therefore 14, and the event total is 16 plus 20 plus 12, or 48. This describes the invented table and nothing more.",
+      "body": "Display both the count and its source boundary. A returning workspace is not automatically a retained user, a satisfied customer or an independent organisation.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "Which inference reaches beyond what repeated appearances actually mean?",
+      "records": [
+        {
+          "label": "Distribution",
+          "prompt": "16 single-session, 10 two-session, 4 three-session rows."
+        },
+        {
+          "label": "Reconciliation",
+          "prompt": "16 + 20 + 12 = 48 model session events."
+        },
+        {
+          "label": "Interpretation boundary",
+          "prompt": "Repetition alone does not establish a time trend."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / TRACTION DIALOGUE",
+      "title": "Keep retention a question.",
+      "lead": "Fourteen out of 30 is about 46.7% of the rows with more than one assigned session. We do not label that retention, because the example has no observation window or eligible cohort. A real retention claim would need those definitions before the percentage became meaningful.",
+      "body": "Do not turn a model fraction into a growth claim. Preserve the numerator, denominator, time-window gap and synthetic label beside any edited headline.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What observation period and eligibility rule would a retention metric require?",
+      "records": [
+        {
+          "label": "Numerator",
+          "prompt": "14 workspaces have more than one session event."
+        },
+        {
+          "label": "Denominator",
+          "prompt": "All 30 invented workspaces; approximately 46.7%."
+        },
+        {
+          "label": "Missing cohort rule",
+          "prompt": "No cohort, eligibility rule or observation window supplied."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / TRACTION DIALOGUE",
+      "title": "Use growth language carefully.",
+      "lead": "This source has no time series. It cannot tell us that activity grew, accelerated or became more efficient. What it can do is make clear which observations a real progress report would need to collect before discussing a trend.",
+      "body": "There are no dates, acquisition costs, sales stages or conversion paths in the invented rows. Do not manufacture a rising chart or causal explanation from the order of workspace IDs.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What evidence would establish change over time rather than a static distribution?",
+      "records": [
+        {
+          "label": "Trend claim to test",
+          "prompt": "Whether comparable activity increases over defined periods."
+        },
+        {
+          "label": "Missing time source",
+          "prompt": "Dated observations with stable definitions and coverage."
+        },
+        {
+          "label": "Permitted description",
+          "prompt": "Describe the supplied distribution, not business growth."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / TRACTION DIALOGUE",
+      "title": "Say what is missing about revenue.",
+      "lead": "The model supplies no prices, transactions, contracts or willingness-to-pay evidence. Session activity would not establish revenue even if the activity were real. Our commercial question remains who would pay for which outcome under what sustainable conditions.",
+      "body": "All paid-status fields are null, meaning not supplied rather than false or zero. Do not convert missing payment evidence into either zero revenue or proven monetisation.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What separate evidence would support a real commercial claim?",
+      "records": [
+        {
+          "label": "Payment evidence",
+          "prompt": "Every paid_status value is unknown, not false."
+        },
+        {
+          "label": "Missing commercial source",
+          "prompt": "No invoices, payment records or revenue ledger provided."
+        },
+        {
+          "label": "Revenue boundary",
+          "prompt": "Unknown payment is neither zero revenue nor confirmed revenue."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / TRACTION DIALOGUE",
+      "title": "Connect a claim to a reviewer question.",
+      "lead": "When we make a progress statement, the next line should identify how a reviewer could inspect it. If the source is incomplete or the definition changes, the statement should become narrower rather than more confident.",
+      "body": "Use the source export, a metric dictionary and a question log. The supplied table only demonstrates that structure; it is not a verified reporting system or evidence of real operating controls.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "Could another reader reproduce the headline from the source?",
+      "records": [
+        {
+          "label": "Claim",
+          "prompt": "The synthetic register contains repeated session activity."
+        },
+        {
+          "label": "Reviewable artifact",
+          "prompt": "The downloadable 30-row source register."
+        },
+        {
+          "label": "Definition question",
+          "prompt": "What counts as a session, and over which period?"
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / TRACTION DIALOGUE",
+      "title": "Turn the next milestone into a test.",
+      "lead": "The next useful milestone would establish a real observation unit, an appropriate collection context and a reason that the resulting signal matters. It would not be a larger invented number. A milestone should make a decision easier, including the decision to change direction.",
+      "body": "No real test, participant recruitment or collection permission is supplied. A genuine plan needs suitable context and independent review before collecting or interpreting information.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "Which result would cause you to revise the current business hypothesis?",
+      "records": [
+        {
+          "label": "Milestone question",
+          "prompt": "Can an appropriately defined task produce interpretable observations?"
+        },
+        {
+          "label": "Suitable observation",
+          "prompt": "A bounded study with documented units and eligibility."
+        },
+        {
+          "label": "Stop-or-revise condition",
+          "prompt": "Revise if the unit or observation cannot support the claim."
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / TRACTION DIALOGUE",
+      "title": "Tie resources to an evidence gap.",
+      "lead": "A financing discussion should connect the proposed use of resources to the uncertainty it addresses. In this example, the unresolved gaps concern real demand, meaningful repeat use and commercial conditions. No funding amount, valuation, runway or agreed investment terms are supplied.",
+      "body": "Keep a real ask separate from teaching arithmetic. Do not infer an actual raise from the 48 model events, and do not label a request funded or committed without a confirmed source.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What must be learned before a larger commitment is justified?",
+      "records": [
+        {
+          "label": "Resource purpose",
+          "prompt": "Clarify definitions before expanding activity claims."
+        },
+        {
+          "label": "Evidence gap",
+          "prompt": "Missing observation window, cohort rules and payment evidence."
+        },
+        {
+          "label": "Actual terms to establish",
+          "prompt": "No actual investment amount, valuation or terms supplied."
+        }
+      ],
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / TRACTION DIALOGUE",
+      "title": "Invite verification, not belief.",
+      "lead": "We want the progress conversation to be inspectable: what is counted, which source supports it and what remains unknown. If you want to continue, the next step is to agree which real evidence would be useful and who would need to review it.",
+      "body": "Close with the metric boundary intact. The complete invented table accompanies the script; no real customer outcome, audited metric or investment offer is implied.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What source would you ask to inspect first?",
+      "records": [
+        {
+          "label": "Verification request",
+          "prompt": "Recompute the totals and challenge the definitions."
+        },
+        {
+          "label": "Relevant source",
+          "prompt": "Use the original CSV/JSON, not edited narrative as data."
+        },
+        {
+          "label": "Next discussion",
+          "prompt": "Agree what real evidence would be appropriate to collect."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for traction-dialogue"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: tideline/11.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: swatch/03.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: open-shelf/09.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: common-ground/02.jpg"
+    }
+  ]
+}

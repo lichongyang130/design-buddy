@@ -1,0 +1,27 @@
+{
+  "source": "authored-fictional-pitch-model",
+  "synthetic": true,
+  "notInvestmentOffer": true,
+  "summary": {
+    "totalTeachingUnits": 100,
+    "notCurrency": true,
+    "actualAsk": null
+  },
+  "records": [
+    {
+      "category": "discovery",
+      "teaching_units": 45,
+      "real_currency": false
+    },
+    {
+      "category": "prototype-question",
+      "teaching_units": 35,
+      "real_currency": false
+    },
+    {
+      "category": "review",
+      "teaching_units": 20,
+      "real_currency": false
+    }
+  ]
+}

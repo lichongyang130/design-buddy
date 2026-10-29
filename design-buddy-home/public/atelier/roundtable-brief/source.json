@@ -1,0 +1,73 @@
+{
+  "source": "authored-fictional-pitch-model",
+  "synthetic": true,
+  "notInvestmentOffer": true,
+  "summary": {
+    "modules": 10,
+    "realMeeting": false,
+    "actualAsk": null,
+    "agreedTerms": null
+  },
+  "records": [
+    {
+      "module_id": "Q01",
+      "page": 1,
+      "question": "What are you building?",
+      "evidence_status": "illustrative-only"
+    },
+    {
+      "module_id": "Q02",
+      "page": 2,
+      "question": "Why does this problem matter?",
+      "evidence_status": "illustrative-only"
+    },
+    {
+      "module_id": "Q03",
+      "page": 3,
+      "question": "What would the product actually do?",
+      "evidence_status": "illustrative-only"
+    },
+    {
+      "module_id": "Q04",
+      "page": 4,
+      "question": "What do you know about the market?",
+      "evidence_status": "illustrative-only"
+    },
+    {
+      "module_id": "Q05",
+      "page": 5,
+      "question": "How could the model earn revenue?",
+      "evidence_status": "illustrative-only"
+    },
+    {
+      "module_id": "Q06",
+      "page": 6,
+      "question": "Who is responsible for the work?",
+      "evidence_status": "illustrative-only"
+    },
+    {
+      "module_id": "Q07",
+      "page": 7,
+      "question": "What are you asking investors to support?",
+      "evidence_status": "illustrative-only"
+    },
+    {
+      "module_id": "Q08",
+      "page": 8,
+      "question": "What could make this fail?",
+      "evidence_status": "illustrative-only"
+    },
+    {
+      "module_id": "Q09",
+      "page": 9,
+      "question": "What difficult question remains unanswered?",
+      "evidence_status": "illustrative-only"
+    },
+    {
+      "module_id": "Q10",
+      "page": 10,
+      "question": "What happens after this conversation?",
+      "evidence_status": "illustrative-only"
+    }
+  ]
+}

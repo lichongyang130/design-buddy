@@ -1,0 +1,11 @@
+module_id,page,question,evidence_status
+Q01,1,What are you building?,illustrative-only
+Q02,2,Why does this problem matter?,illustrative-only
+Q03,3,What would the product actually do?,illustrative-only
+Q04,4,What do you know about the market?,illustrative-only
+Q05,5,How could the model earn revenue?,illustrative-only
+Q06,6,Who is responsible for the work?,illustrative-only
+Q07,7,What are you asking investors to support?,illustrative-only
+Q08,8,What could make this fail?,illustrative-only
+Q09,9,What difficult question remains unanswered?,illustrative-only
+Q10,10,What happens after this conversation?,illustrative-only

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "roundtable-brief",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 15562,
+      "sha256": "9c17c3fd5f287f134a15b6b8f0f7ea01906a9998025883d8bdd0b599b7838838"
+    },
+    {
+      "path": "content.js",
+      "bytes": 13026,
+      "sha256": "9447a016f471667d35cdb024906943a58f66dc18e36e01d2d10425c6223c856a"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 517,
+      "sha256": "fbb71dc2856838e6d55677441ebde4caf6ed08ec2ae1969ee020a8ec2535342d"
+    },
+    {
+      "path": "roundtable-brief.docx",
+      "bytes": 912120,
+      "sha256": "224304d8471355a38648c126d81fc47cac0cd6ac659f665bcb5509d27b15a9a5"
+    },
+    {
+      "path": "roundtable-brief.pdf",
+      "bytes": 988191,
+      "sha256": "438d0d0abb7dfbf965a2606542ab60a6dd23e5d9240eaa85b02af308e8e55397"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 623,
+      "sha256": "bea0dea4716c1838d304add2f8bfc7aa0812a79c52717ce9490cc9a01d45e2ff"
+    },
+    {
+      "path": "source.json",
+      "bytes": 1794,
+      "sha256": "89614c9defffdb297bd1e5a24c9e4dadec21af0ef68c3cb9c95c406205475bc0"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 174314,
+      "sha256": "e491ce24b8f362cca47c74ca337e8c9911092e16e969a7f444836733b34909e7"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 150201,
+      "sha256": "3d509f8009f2e5a75ab12af2b2ef0ec4d6632586fc31561498bda5a24f46a4f1"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 192830,
+      "sha256": "addf8505d609290be084c33451bd37b950915b2be0edd24d7ee68e3386257f3a"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 200180,
+      "sha256": "ec7b88a120cd4808bb1593d72ad8e90a765d42e1196758b0558c32d4f6aab16c"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 186008,
+      "sha256": "42c53962faa377b40fa2aa6355e43e5564c09f785ec4d3d2a79a55804104cbaf"
+    }
+  ]
+}

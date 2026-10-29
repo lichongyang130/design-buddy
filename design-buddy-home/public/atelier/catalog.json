@@ -43,7 +43,12 @@
     "operations-review",
     "interview-synthesis",
     "landscape-scan",
-    "decision-audit"
+    "decision-audit",
+    "founder-narrative",
+    "traction-dialogue",
+    "technical-thesis",
+    "impact-thesis",
+    "roundtable-brief"
   ],
   "documentRequirements": {
     "minPages": 10,
@@ -51,8 +56,8 @@
   },
   "additionalDocumentRequest": {
     "count": 50,
-    "published": 18,
-    "remaining": 32,
+    "published": 23,
+    "remaining": 27,
     "plan": "docs/document-expansion-50.json"
   }
 }

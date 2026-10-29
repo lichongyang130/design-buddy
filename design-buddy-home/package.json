@@ -38,7 +38,9 @@
     "build:proposal-expansion": "node scripts/build-proposal-expansion.mjs",
     "test:proposal-expansion": "node tests/verify-proposal-expansion.mjs",
     "build:report-expansion": "node scripts/build-report-expansion.mjs",
-    "test:report-expansion": "node tests/verify-report-expansion.mjs"
+    "test:report-expansion": "node tests/verify-report-expansion.mjs",
+    "build:fundraising-expansion": "node scripts/build-fundraising-expansion.mjs",
+    "test:fundraising-expansion": "node tests/verify-fundraising-expansion.mjs"
   },
   "devDependencies": {
     "@sparticuz/chromium": "^153.0.0",

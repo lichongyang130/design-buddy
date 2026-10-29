@@ -16,17 +16,17 @@ Open `/templates.html?format=文档&batch=nine-documents` for nine different cat
 
 Nine new theme illustrations are combined with 36 curated existing-image placements, not 45 new images. Report/model values are fictional. Original DOCX/PDF remain fixed; current edited Word/HTML/JSON exports include local edits and private notes. Long edits can reflow. Review notes before sharing.
 
-See [NEW-TEMPLATE-PLAN.md](NEW-TEMPLATE-PLAN.md) for the current 65-case target, current 32-published/1-draft status, frameworks, validation and remaining limits. SWATCH remains an honest draft, not a completed case.
+See [NEW-TEMPLATE-PLAN.md](NEW-TEMPLATE-PLAN.md) for the current 65-case target, current 37-published/1-draft status, frameworks, validation and remaining limits. SWATCH remains an honest draft, not a completed case.
 
 ## Artifact preservation
 
-Primary art, source, manifests and completed export bytes are backed up in Git. Distribution files can be stored in SHA-pinned, already-pushed immutable Git history rather than duplicated in the current tree. Currently 70 files (six older source ZIPs, five older PPTX and five older PDF files, and 54 course/proposal/report DOCX/PDF/source archives) are restored automatically before dev/start/check/build via `artifact-registry.json`. Their downloadable paths are unchanged. Local Git objects are preferred; the GitHub CLI is the remote fallback. Do not change an older archive without updating the registry. All pinned downloads have SHA/byte-size verification and automatic missing-file restoration; each new distribution batch is pushed before pinning. Standard full clones restore from local Git objects; shallow clones may require fetching history or authenticated GitHub CLI access. No successful GitHub release upload is claimed.
+Primary art, source, manifests and completed export bytes are backed up in Git. Distribution files can be stored in SHA-pinned, already-pushed immutable Git history rather than duplicated in the current tree. Currently 85 files (six older source ZIPs, five older PPTX and five older PDF files, and 69 course/proposal/report/fundraising DOCX/PDF/source archives) are restored automatically before dev/start/check/build via `artifact-registry.json`. Their downloadable paths are unchanged. Local Git objects are preferred; the GitHub CLI is the remote fallback. Do not change an older archive without updating the registry. All pinned downloads have SHA/byte-size verification and automatic missing-file restoration; each new distribution batch is pushed before pinning. Standard full clones restore from local Git objects; shallow clones may require fetching history or authenticated GitHub CLI access. No successful GitHub release upload is claimed.
 
 ## Checks
 
 - `npm run check:templates`: registry, publication gates and SHA manifests, including shared document kit.
 - `npm run test:document-batch`: gallery, nine geometries, 90-page fit, editable exports, mobile, offline sources, model arithmetic and real edited Word rendering.
-- `npm run test:template-office`: all 33 originals rendered with real LibreOffice core at the expected page counts.
+- `npm run test:template-office`: all 38 originals rendered with real LibreOffice core at the expected page counts.
 - `npm run test:pantry-cache`: old-cache migration without deleting unrelated caches or personal storage.
 - Individual earlier cases retain their own `test:<case>` scripts.
 
@@ -34,13 +34,13 @@ Office tests require Node 22.19+ and `@deepseek-ai/libreoffice-kit` installed in
 
 ## 50-case expansion — course batch completed
 
-Eighteen of the 50 additional cases are complete (six courses, six proposals and six reports); 32 remain planned. Open `/templates.html?format=文档&batch=course-expansion`. The original nine-document collection remains nine cases. All previous 15 cases remain available, bringing the gallery to 33 cases (32 published, one SWATCH draft). The revised total target is 65: existing 15 plus 50 additional—not 50 including the old nine.
+Twenty-three of the 50 additional cases are complete (six courses, six proposals, six reports and five fundraising speeches); 27 remain planned. Open `/templates.html?format=文档&batch=course-expansion`. The original nine-document collection remains nine cases. All previous 15 cases remain available, bringing the gallery to 38 cases (37 published, one SWATCH draft). The revised total target is 65: existing 15 plus 50 additional—not 50 including the old nine.
 
 Six courses: QUESTION LAB (inquiry tree), STORY WORKSHOP (manuscript annotations), VISUAL LITERACY (image/analysis comparison), PROJECT STUDIO (task board), DEBATE ROOM (argument mapping), SELF-PACED ROUTE (branching route). Each has ten substantive pages, five images, one new hero and four curated assets. Worksheet cells are editable, persist per case and export in current DOCX/HTML/JSON. Native Word has six different content orders and appropriate native record tables; image assets remain raster. Original and edited copies rendered to ten pages each in real LibreOffice.
 
 `npm run build:course-expansion` and `npm run test:course-expansion` reproduce and check this batch. `/atelier/inquiry-kit/download.html` assembles six Word and six PDF originals in the browser; the ZIP was unpacked and all entries checked against actual originals. `docs/DOCUMENT-EXPANSION-50.md` records all 50 distinct frameworks and honest progress.
 
-For future artifact updates: rebuild, check, force-add any ignored regenerated exports, commit and push their actual bytes first. Only then run `npm run pin:artifacts -- case-id ...` and commit/push the resulting registry/ignore changes. This helper refuses unpushed or mismatching bytes and never removes local download files. Do not run it on an uncommitted export or claim pinning alone created a backup. Current cumulative snapshot content is approximately 118.4 MiB; audit it before each further batch.
+For future artifact updates: rebuild, check, force-add any ignored regenerated exports, commit and push their actual bytes first. Only then run `npm run pin:artifacts -- case-id ...` and commit/push the resulting registry/ignore changes. This helper refuses unpushed or mismatching bytes and never removes local download files. Do not run it on an uncommitted export or claim pinning alone created a backup. Current cumulative snapshot content is approximately 124 MiB; audit it before each further batch.
 
 ## Proposal batch completed
 
@@ -73,3 +73,14 @@ Optional image/source preparation: install Pillow to ignored `.cache/expansion-p
 Complete final report export bytes are backed by pushed commit `195eaa8ceeafebc8350b686628261b05c042a3fa`. All 70 pinned artifacts were actually removed locally, automatically reconstructed from immutable Git history and verified against byte size/SHA-256. A report Word blob was independently downloaded from GitHub and matched exactly. The six restored final original Word files were rendered again with real LibreOffice: ten pages each. Production integrity/build passes after the cold restore. Cumulative extant non-ignored patch content is approximately **118.4 MiB**, below 128 MiB.
 
 The CSV writer now emits canonical LF, matching the repository’s enforced LF checkout. All source CSV/JSON/JS bytes were compared with their pushed Git blobs; manifests and offline archives were rebuilt after canonicalisation. This prevents a fresh clone from failing byte-level integrity because of CRLF normalisation. Model round trips, report browser/mobile/offline/download tests and six edited-Word renderings passed again after that correction. No current download was removed by artifact pinning.
+
+
+## Fundraising speech batch completed — 23 / 50
+
+Five different frameworks: FOUNDER NARRATIVE (story and evidence side-notes), TRACTION DIALOGUE (claim/definition/source challenge), TECHNICAL THESIS (mechanism, baseline and validation gate), IMPACT THESIS (independent impact and commercial paths), ROUNDTABLE BRIEF (ten non-linear investor question modules). Each includes ten complete English spoken drafts with independent speaker/evidence notes, five distinct illustrations, editable native Word, ten-page PDF, offline source ZIP and source CSV/JSON. Five new heroes plus twenty curated existing images; not twenty-five new artworks. The five browser geometries and five native Word block orders differ.
+
+Open `/templates.html?format=文档&batch=fundraising-expansion`; `/atelier/fundraising-kit/download.html` downloads five Word + five PDF originals in one browser-built, byte-checked ZIP. `npm run build:fundraising-expansion` reproduces exports. `npm run test:fundraising-expansion` checks all fifty pages, gallery/search, editing persistence, native Word XML, notes, mobile, offline file://, ZIP contents and actual edited Word rendering. `tests/verify-fundraising-models.mjs` validates complete LF CSV/JSON round trips and source arithmetic/unknown-value boundaries. Optional preparation: `python3 design-buddy-home/scripts/prepare-fundraising-expansion.py --keep-images` from the repository root preserves existing image bytes.
+
+All scenarios are fictional, not investment offers: teaching units are not currency or an actual ask; 30 invented workspaces/48 events/14 repeated workspaces are not retention or growth; payment is unknown, not zero; three technical stages are untested, not deployed code; six impact/commercial hypotheses are unverified, not measured outcomes; the question index is not a real meeting or agreed terms. Original sources stay fixed when prose/records are edited. Current Word/HTML include the private note; review it before sharing. Longer edits may reflow. No Microsoft Word GUI validation is claimed.
+
+Current expansion: 23 published, 27 remaining; gallery 38 cases (37 published, one SWATCH draft), 486 authored pages. Existing collections and local workspace mechanisms are preserved. Gallery revision 14 / SW v14 use the existing activation handshake without deleting personal data. Next planned batch: six marketing documents.

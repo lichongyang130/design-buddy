@@ -1,0 +1,897 @@
+[
+  {
+    "id": "founder-narrative",
+    "title": "FOUNDER NARRATIVE",
+    "subtitle": "创始人叙事融资稿",
+    "category": "融资演讲稿",
+    "layout": "founder",
+    "color": "#354b70",
+    "wash": "#e6ecf8",
+    "framework": "故事弧与证据侧注",
+    "scope": "Fictional fundraising speech template. Spoken drafts, ventures, people and illustrative models are invented; no real traction, validated impact, technical performance, securities offer, investment terms or committed funding is supplied.",
+    "sources": [
+      "afterglow/11",
+      "common-ground/04",
+      "open-shelf/06",
+      "tideline/15"
+    ],
+    "chapters": [
+      {
+        "title": "Start with a small frustration.",
+        "lead": "We started with a small frustration: a useful note can lose its meaning when the context around it disappears. Margin is our fictional concept for keeping a reading note beside the question that gave it purpose. We are here to explain that direction and the evidence we would need before asking anyone to believe a larger story.",
+        "body": "Open with a concrete tension, not an invented customer testimonial. Margin and the founder voice are fictional. No real origin story, launch or customer experience is established by this script.",
+        "labels": [
+          "Opening image",
+          "Founder premise",
+          "Source boundary"
+        ],
+        "question": "How do you know this is a problem worth solving?",
+        "recordValues": [
+          "A reading note detached from its original question.",
+          "Margin links notes to the questions that prompted them.",
+          "No real founder history or customer account supplied."
+        ]
+      },
+      {
+        "title": "Make the problem recognisable.",
+        "lead": "Imagine returning to a note that says useful passage but not why it mattered. The problem we want to explore is not a shortage of tools; it is the gap between saving a reference and recovering its intended use. That situation is our design premise, not measured demand.",
+        "body": "Pause after the example. A real pitch would need appropriate evidence about the intended reader and context. Do not describe the imagined situation as a study finding or a universal behaviour.",
+        "labels": [
+          "Problem scene",
+          "Intended reader",
+          "Evidence still needed"
+        ],
+        "question": "Which real source would distinguish a recurring need from an appealing anecdote?",
+        "recordValues": [
+          "A reader revisits a useful note without its context.",
+          "Readers returning to their own working material.",
+          "Observe actual retrieval tasks before claiming a recurring need."
+        ]
+      },
+      {
+        "title": "Explain the founder’s reason to care.",
+        "lead": "Our interest is in the moment when a reader moves from collecting material to making a careful point. We want the document to show both the reference and the question attached to it. That is the commitment behind this concept, rather than a claim that our background guarantees a successful business.",
+        "body": "Use an authentic biography only after replacing the fictional voice with verified context. No credentials, employment history, specialist expertise or founder-market fit is supplied here.",
+        "labels": [
+          "Personal motivation",
+          "Relevant experience to verify",
+          "Unproven inference"
+        ],
+        "question": "What experience genuinely prepares the team to investigate this problem?",
+        "recordValues": [
+          "Interest in preserving context while reading and drafting.",
+          "Relevant work and experience must be checked before use.",
+          "Personal concern does not establish a market."
+        ]
+      },
+      {
+        "title": "Introduce the change in approach.",
+        "lead": "The proposed shift is simple: keep the note, its source and its intended use together. Instead of presenting another place to collect everything, we would explore a smaller structure that helps a reader explain why one item belongs in the next conversation.",
+        "body": "This is a product intention, not a demonstration of implemented software. Keep the difference between a proposed workflow and a working capability explicit when adapting the script.",
+        "labels": [
+          "Proposed change",
+          "Workflow hypothesis",
+          "Capability not verified"
+        ],
+        "question": "What would a first working demonstration need to show?",
+        "recordValues": [
+          "Keep a note and its purpose visible together.",
+          "Context may make later review more useful.",
+          "No implemented product or working capability verified."
+        ]
+      },
+      {
+        "title": "Walk through one use situation.",
+        "lead": "A reader selects a passage, writes the question it raises and records what would need checking before the passage supports a claim. The useful result would be a more inspectable note, not an automatic conclusion. This short walkthrough illustrates the intended experience; it is not a tested user journey.",
+        "body": "Point to a clearly labelled concept artifact if one exists. The illustrations are editorial references, not product screenshots, user research or evidence that a real person completed the workflow.",
+        "labels": [
+          "Use situation",
+          "Concept artifact",
+          "Validation question"
+        ],
+        "question": "Which part of the walkthrough is most uncertain in a real setting?",
+        "recordValues": [
+          "Revisit a note while drafting a short explanation.",
+          "A proposed note-and-question card, not a working product.",
+          "Can a reader explain why the note was saved?"
+        ]
+      },
+      {
+        "title": "Say what progress would mean.",
+        "lead": "At this stage, progress would mean learning whether the proposed structure addresses a specific reader task. We would want to see the question become clearer, the reference remain traceable and the limits stay visible. We are not reporting customers, retention or revenue in this fictional narrative.",
+        "body": "Do not substitute a polished illustration for traction. If real progress is later added, retain its unit, period, denominator and supporting source beside the claim.",
+        "labels": [
+          "Learning signal",
+          "Source to collect",
+          "Claim not yet supported"
+        ],
+        "question": "What evidence would change the direction rather than merely decorate the story?",
+        "recordValues": [
+          "A reader can recover the intended purpose of a note.",
+          "A consented observation with the original task context.",
+          "Usage, adoption and customer value remain unproven."
+        ]
+      },
+      {
+        "title": "Keep the business hypothesis separate.",
+        "lead": "The business question is whether a defined group would value this support enough to adopt it under sustainable conditions. We have not established a price, willingness to pay or a repeatable acquisition route. Those are hypotheses to investigate, not facts hidden inside a compelling founder story.",
+        "body": "A real business model needs verified context and relevant unit definitions. This document supplies no market size, revenue forecast, customer commitment or investment return.",
+        "labels": [
+          "Value hypothesis",
+          "Adoption hypothesis",
+          "Commercial evidence gap"
+        ],
+        "question": "Who might pay, for what, and what source would support that answer?",
+        "recordValues": [
+          "Contextual notes might reduce repeated interpretation work.",
+          "Readers may choose to maintain note-question connections.",
+          "No buyer, price or payment evidence supplied."
+        ]
+      },
+      {
+        "title": "Show the roles the work requires.",
+        "lead": "The work would need product judgement, contextual inquiry and careful handling of source boundaries. We can describe those responsibilities without pretending that a complete team has been appointed. The next conversation should ask which capabilities are actually present and which need support.",
+        "body": "Replace role categories with named people only when their involvement and biographies are confirmed. This template contains no appointments, endorsements or staffing commitments.",
+        "labels": [
+          "Product responsibility",
+          "Inquiry responsibility",
+          "Role to confirm"
+        ],
+        "question": "Which missing capability would most affect the next step?",
+        "recordValues": [
+          "Define the note-and-context interaction.",
+          "Plan appropriate inquiry and preserve source limitations.",
+          "Names, availability and relevant experience require verification."
+        ]
+      },
+      {
+        "title": "Connect resources to learning gates.",
+        "lead": "Our illustrative planning model allocates 100 teaching units: 45 to discovery, 35 to a prototype question and 20 to review. These are not currency, a real budget or an amount we are raising. The point is to connect each proposed resource category with a question that must be answered before a larger commitment.",
+        "body": "The model JSON/CSV preserves the 45+35+20=100 arithmetic. A real financing ask needs an actual entity, verified plan, terms and appropriate advice outside this fictional script.",
+        "labels": [
+          "Learning gate",
+          "Proposed resource use",
+          "Actual ask not supplied"
+        ],
+        "question": "What decision should each resource category make possible?",
+        "recordValues": [
+          "Review whether a prototype answers the context question.",
+          "45 discovery / 35 prototype-question / 20 review teaching units.",
+          "100 teaching units are not currency or an investment ask."
+        ]
+      },
+      {
+        "title": "Close with an honest invitation.",
+        "lead": "If the problem and the proposed learning route seem worth investigating, the next step is a focused conversation about evidence, responsibilities and the right conditions for further work. We would rather leave you with one clear question than imply a level of progress we have not established.",
+        "body": "End on the specific response sought. This is not an offer of securities, a promise of funding or a request to act on invented terms. Preserve the fictional-source note in shared copies.",
+        "labels": [
+          "Conversation requested",
+          "Open condition",
+          "Next proof artifact"
+        ],
+        "question": "What would you need to see before continuing this conversation?",
+        "recordValues": [
+          "Discuss what evidence should come before a larger claim.",
+          "No commitment or financing agreement is established.",
+          "A small, inspectable concept and its unresolved questions."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "traction-dialogue",
+    "title": "TRACTION DIALOGUE",
+    "subtitle": "进展证据型融资稿",
+    "category": "融资演讲稿",
+    "layout": "traction",
+    "color": "#22687d",
+    "wash": "#e2eff4",
+    "framework": "主张证据与追问脚本",
+    "scope": "Fictional fundraising speech template. Spoken drafts, ventures, people and illustrative models are invented; no real traction, validated impact, technical performance, securities offer, investment terms or committed funding is supplied.",
+    "sources": [
+      "tideline/11",
+      "swatch/03",
+      "open-shelf/09",
+      "common-ground/02"
+    ],
+    "chapters": [
+      {
+        "title": "Lead with a traceable model.",
+        "lead": "Our worked example records 48 session events across 30 hypothetical workspaces. Fourteen workspaces appear more than once. That gives us a precise pattern to discuss, not a claim that we have customers, retained users or revenue. Relay Cards is a fictional concept, and every row in this example is invented.",
+        "body": "Keep the model label audible and visible. The complete 30-row source is downloadable. Workspace IDs are fictional identifiers, not actual people or client organisations.",
+        "labels": [
+          "Progress statement",
+          "Model source",
+          "Evidence qualification"
+        ],
+        "question": "What exactly is counted, and is any of it observed?",
+        "recordValues": [
+          "30 invented workspaces produce 48 session events.",
+          "Complete authored rows in source CSV and JSON.",
+          "Synthetic activity is not observed business traction."
+        ]
+      },
+      {
+        "title": "Define the unit before the headline.",
+        "lead": "A workspace is the unit of the source row; a session count is the number assigned to that row. We should not call 48 events 48 users or 30 workspaces 30 paying accounts. The distinction is essential to making the progress conversation inspectable.",
+        "body": "The source contains 16 single-session rows, ten two-session rows and four three-session rows. It provides no identity resolution, payment information or time-based cohort definition.",
+        "labels": [
+          "Row unit",
+          "Event unit",
+          "Unsupported relabelling"
+        ],
+        "question": "What would be required to connect this unit to a real customer metric?",
+        "recordValues": [
+          "One row represents one invented workspace.",
+          "A session event is not a person or account.",
+          "Do not relabel workspaces as customers or paying users."
+        ]
+      },
+      {
+        "title": "Show the pattern without upgrading it.",
+        "lead": "Sixteen hypothetical workspaces have one session, ten have two and four have three. The repeated-workspace count is therefore 14, and the event total is 16 plus 20 plus 12, or 48. This describes the invented table and nothing more.",
+        "body": "Display both the count and its source boundary. A returning workspace is not automatically a retained user, a satisfied customer or an independent organisation.",
+        "labels": [
+          "Distribution",
+          "Reconciliation",
+          "Interpretation boundary"
+        ],
+        "question": "Which inference reaches beyond what repeated appearances actually mean?",
+        "recordValues": [
+          "16 single-session, 10 two-session, 4 three-session rows.",
+          "16 + 20 + 12 = 48 model session events.",
+          "Repetition alone does not establish a time trend."
+        ]
+      },
+      {
+        "title": "Keep retention a question.",
+        "lead": "Fourteen out of 30 is about 46.7% of the rows with more than one assigned session. We do not label that retention, because the example has no observation window or eligible cohort. A real retention claim would need those definitions before the percentage became meaningful.",
+        "body": "Do not turn a model fraction into a growth claim. Preserve the numerator, denominator, time-window gap and synthetic label beside any edited headline.",
+        "labels": [
+          "Numerator",
+          "Denominator",
+          "Missing cohort rule"
+        ],
+        "question": "What observation period and eligibility rule would a retention metric require?",
+        "recordValues": [
+          "14 workspaces have more than one session event.",
+          "All 30 invented workspaces; approximately 46.7%.",
+          "No cohort, eligibility rule or observation window supplied."
+        ]
+      },
+      {
+        "title": "Use growth language carefully.",
+        "lead": "This source has no time series. It cannot tell us that activity grew, accelerated or became more efficient. What it can do is make clear which observations a real progress report would need to collect before discussing a trend.",
+        "body": "There are no dates, acquisition costs, sales stages or conversion paths in the invented rows. Do not manufacture a rising chart or causal explanation from the order of workspace IDs.",
+        "labels": [
+          "Trend claim to test",
+          "Missing time source",
+          "Permitted description"
+        ],
+        "question": "What evidence would establish change over time rather than a static distribution?",
+        "recordValues": [
+          "Whether comparable activity increases over defined periods.",
+          "Dated observations with stable definitions and coverage.",
+          "Describe the supplied distribution, not business growth."
+        ]
+      },
+      {
+        "title": "Say what is missing about revenue.",
+        "lead": "The model supplies no prices, transactions, contracts or willingness-to-pay evidence. Session activity would not establish revenue even if the activity were real. Our commercial question remains who would pay for which outcome under what sustainable conditions.",
+        "body": "All paid-status fields are null, meaning not supplied rather than false or zero. Do not convert missing payment evidence into either zero revenue or proven monetisation.",
+        "labels": [
+          "Payment evidence",
+          "Missing commercial source",
+          "Revenue boundary"
+        ],
+        "question": "What separate evidence would support a real commercial claim?",
+        "recordValues": [
+          "Every paid_status value is unknown, not false.",
+          "No invoices, payment records or revenue ledger provided.",
+          "Unknown payment is neither zero revenue nor confirmed revenue."
+        ]
+      },
+      {
+        "title": "Connect a claim to a reviewer question.",
+        "lead": "When we make a progress statement, the next line should identify how a reviewer could inspect it. If the source is incomplete or the definition changes, the statement should become narrower rather than more confident.",
+        "body": "Use the source export, a metric dictionary and a question log. The supplied table only demonstrates that structure; it is not a verified reporting system or evidence of real operating controls.",
+        "labels": [
+          "Claim",
+          "Reviewable artifact",
+          "Definition question"
+        ],
+        "question": "Could another reader reproduce the headline from the source?",
+        "recordValues": [
+          "The synthetic register contains repeated session activity.",
+          "The downloadable 30-row source register.",
+          "What counts as a session, and over which period?"
+        ]
+      },
+      {
+        "title": "Turn the next milestone into a test.",
+        "lead": "The next useful milestone would establish a real observation unit, an appropriate collection context and a reason that the resulting signal matters. It would not be a larger invented number. A milestone should make a decision easier, including the decision to change direction.",
+        "body": "No real test, participant recruitment or collection permission is supplied. A genuine plan needs suitable context and independent review before collecting or interpreting information.",
+        "labels": [
+          "Milestone question",
+          "Suitable observation",
+          "Stop-or-revise condition"
+        ],
+        "question": "Which result would cause you to revise the current business hypothesis?",
+        "recordValues": [
+          "Can an appropriately defined task produce interpretable observations?",
+          "A bounded study with documented units and eligibility.",
+          "Revise if the unit or observation cannot support the claim."
+        ]
+      },
+      {
+        "title": "Tie resources to an evidence gap.",
+        "lead": "A financing discussion should connect the proposed use of resources to the uncertainty it addresses. In this example, the unresolved gaps concern real demand, meaningful repeat use and commercial conditions. No funding amount, valuation, runway or agreed investment terms are supplied.",
+        "body": "Keep a real ask separate from teaching arithmetic. Do not infer an actual raise from the 48 model events, and do not label a request funded or committed without a confirmed source.",
+        "labels": [
+          "Resource purpose",
+          "Evidence gap",
+          "Actual terms to establish"
+        ],
+        "question": "What must be learned before a larger commitment is justified?",
+        "recordValues": [
+          "Clarify definitions before expanding activity claims.",
+          "Missing observation window, cohort rules and payment evidence.",
+          "No actual investment amount, valuation or terms supplied."
+        ]
+      },
+      {
+        "title": "Invite verification, not belief.",
+        "lead": "We want the progress conversation to be inspectable: what is counted, which source supports it and what remains unknown. If you want to continue, the next step is to agree which real evidence would be useful and who would need to review it.",
+        "body": "Close with the metric boundary intact. The complete invented table accompanies the script; no real customer outcome, audited metric or investment offer is implied.",
+        "labels": [
+          "Verification request",
+          "Relevant source",
+          "Next discussion"
+        ],
+        "question": "What source would you ask to inspect first?",
+        "recordValues": [
+          "Recompute the totals and challenge the definitions.",
+          "Use the original CSV/JSON, not edited narrative as data.",
+          "Agree what real evidence would be appropriate to collect."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "technical-thesis",
+    "title": "TECHNICAL THESIS",
+    "subtitle": "技术论点型融资稿",
+    "category": "融资演讲稿",
+    "layout": "technical",
+    "color": "#4a507f",
+    "wash": "#e9e9f5",
+    "framework": "技术论点与验证路线",
+    "scope": "Fictional fundraising speech template. Spoken drafts, ventures, people and illustrative models are invented; no real traction, validated impact, technical performance, securities offer, investment terms or committed funding is supplied.",
+    "sources": [
+      "swatch/01",
+      "tideline/12",
+      "afterglow/11",
+      "open-shelf/03"
+    ],
+    "chapters": [
+      {
+        "title": "Make the technical thesis inspectable.",
+        "lead": "Trace Index is our fictional concept for making the relationship between a document passage and its source easier to inspect. The thesis is that a small, explicit reference structure could support better review. We are presenting a design intention, not claiming a deployed or independently tested system.",
+        "body": "Use the scope statement before any architecture discussion. No production software, performance benchmark, customer integration or proprietary technical advantage is supplied.",
+        "labels": [
+          "Technical thesis",
+          "Intended review task",
+          "Capability boundary"
+        ],
+        "question": "What would count as evidence that this design helps a real review task?",
+        "recordValues": [
+          "Trace Index proposes linking references to source context.",
+          "Help a human inspect an unresolved source relationship.",
+          "A concept, not demonstrated code or validated performance."
+        ]
+      },
+      {
+        "title": "Describe the technical problem narrowly.",
+        "lead": "A passage can travel farther than its source context. The problem we want to explore is how a reviewer locates that context and sees what it can support. We are not proposing that software can decide whether every statement is true.",
+        "body": "Avoid turning a broad information-quality concern into a claim of verified demand. The fictional problem statement needs real contextual evidence before it can describe an actual market or workflow.",
+        "labels": [
+          "Problem boundary",
+          "Reviewer task",
+          "Unsupported promise"
+        ],
+        "question": "Which part of the problem should remain a human judgement?",
+        "recordValues": [
+          "A reviewer may lose the context of a reference.",
+          "Inspect the reference, intended passage and unresolved context.",
+          "No claim of automated truth detection or full accuracy."
+        ]
+      },
+      {
+        "title": "Compare a credible alternative.",
+        "lead": "A careful manual reference list may already solve part of the task. Our concept should be compared with that baseline, not with a deliberately weak alternative. The question is whether the proposed structure adds useful traceability without creating more maintenance than the task warrants.",
+        "body": "No comparative test has been performed. The baseline is an option for evaluation, not a claim that manual work is ineffective or that an actual competitor lacks capability.",
+        "labels": [
+          "Manual baseline",
+          "Proposed difference",
+          "Comparison question"
+        ],
+        "question": "What would make the simpler alternative preferable?",
+        "recordValues": [
+          "A person keeps source notes and reviews them manually.",
+          "A proposed explicit relationship between reference and passage.",
+          "Does that relationship help review compared with a simple note?"
+        ]
+      },
+      {
+        "title": "Separate the architecture into roles.",
+        "lead": "The design has three proposed roles: capture a reference, link it to a passage and present it for review. These are conceptual stages, not an implemented pipeline. Each stage should have a clear input, an output and an explicit limit.",
+        "body": "The exported stage register contains three untested design hypotheses. It provides no code, deployment architecture, throughput figures or passing test results.",
+        "labels": [
+          "Stage input",
+          "Proposed output",
+          "Validation gap"
+        ],
+        "question": "Which stage has the most important untested assumption?",
+        "recordValues": [
+          "Capture a reference and its source context.",
+          "Link the reference to a passage; expose review questions.",
+          "All three conceptual stages remain not-tested."
+        ]
+      },
+      {
+        "title": "Describe validation before quoting performance.",
+        "lead": "A useful proof plan would ask whether a reviewer can find the intended source, recognise a stale reference and understand an unresolved link. We have not run those checks, so we are not reporting accuracy, latency or reliability.",
+        "body": "All stage evidence statuses are not-tested. A proposed test is not a successful test, and a worked diagram is not a benchmark or a security review.",
+        "labels": [
+          "Validation question",
+          "Test material needed",
+          "Result not supplied"
+        ],
+        "question": "Which failure would be most informative for the next design decision?",
+        "recordValues": [
+          "Can a reviewer identify and inspect a source relationship?",
+          "Appropriate examples, a manual baseline and an evaluation rule.",
+          "No benchmark, latency, accuracy or test result supplied."
+        ]
+      },
+      {
+        "title": "State the limits of the mechanism.",
+        "lead": "A link can point to a source without establishing the quality of that source or the truth of a claim. Review also depends on context, permissions and interpretation. Those boundaries are part of the product idea rather than an inconvenient footnote.",
+        "body": "No guarantee of correctness, compliance, safety, privacy or security is provided. Appropriate independent review would be required for any real implementation.",
+        "labels": [
+          "Mechanism limit",
+          "Human review role",
+          "Specialist review question"
+        ],
+        "question": "What conclusion must the interface avoid making automatically?",
+        "recordValues": [
+          "A reference link cannot prove that a statement is true.",
+          "A person must assess meaning and source appropriateness.",
+          "Security, privacy and specialist review remain unresolved."
+        ]
+      },
+      {
+        "title": "Connect the mechanism to a use situation.",
+        "lead": "Imagine a reader asking why a passage supports a proposal. The concept would aim to show the associated reference and the unresolved question. That is a proposed use situation, not a record of a customer successfully using a working product.",
+        "body": "The watercolor scenes are editorial illustrations, not interface captures or a product demonstration. Add real artifacts only with accurate provenance and verified capability descriptions.",
+        "labels": [
+          "Use situation",
+          "Proposed interaction",
+          "Real artifact needed"
+        ],
+        "question": "What would a first demonstration need to make visible?",
+        "recordValues": [
+          "A writer checks a passage before sharing a document.",
+          "Inspect the proposed reference link and its context.",
+          "An inspectable prototype, not an asserted deployed system."
+        ]
+      },
+      {
+        "title": "Identify the capability needed to build.",
+        "lead": "The work would need product judgement, implementation expertise and appropriate review of how source material is handled. We can name those roles without pretending that the team is staffed or that specialist approvals already exist.",
+        "body": "No biographies, patents, proprietary rights or appointments are supplied. Verify any real team or intellectual-property statement independently before adding it to a financing narrative.",
+        "labels": [
+          "Build responsibility",
+          "Review responsibility",
+          "Unconfirmed role"
+        ],
+        "question": "Which missing capability could change the technical scope?",
+        "recordValues": [
+          "Implement the smallest inspectable source-link interaction.",
+          "Design evaluation and retain unresolved failure cases.",
+          "No named technical team or confirmed appointments supplied."
+        ]
+      },
+      {
+        "title": "Frame the next technical gate.",
+        "lead": "The next gate should answer one decision-relevant question using suitable material, not promise a launch date unsupported by the work. Resources would be discussed against that gate and its dependencies. No actual funding amount or implementation commitment is supplied here.",
+        "body": "Keep proposed architecture, test plans and financing terms separate. There is no evidence of a deployed system or an investment arrangement in the stage register.",
+        "labels": [
+          "Gate question",
+          "Required artifact",
+          "Funding discussion boundary"
+        ],
+        "question": "What result would justify moving beyond the current concept?",
+        "recordValues": [
+          "Can a prototype make source context easier to inspect?",
+          "A bounded prototype with documented limitations and test material.",
+          "No actual funding ask, valuation or investment terms supplied."
+        ]
+      },
+      {
+        "title": "Close on a falsifiable direction.",
+        "lead": "The useful invitation is to challenge the thesis: can a small reference structure help a defined review task enough to justify its cost and maintenance? We should be prepared for a simpler approach to win. That is the discipline we want the next conversation to examine.",
+        "body": "Preserve the untested status of every stage and the absence of benchmarks. This fictional script is not an investment recommendation or a technical certification.",
+        "labels": [
+          "Thesis challenge",
+          "Alternative outcome",
+          "Next proof conversation"
+        ],
+        "question": "What evidence could persuade you that the proposed approach is unnecessary?",
+        "recordValues": [
+          "Does the explicit link help more than the manual baseline?",
+          "If not, revise the mechanism or reject the hypothesis.",
+          "Discuss the smallest credible test, not promised performance."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "impact-thesis",
+    "title": "IMPACT THESIS",
+    "subtitle": "影响力双轨融资稿",
+    "category": "融资演讲稿",
+    "layout": "impact",
+    "color": "#356b57",
+    "wash": "#e4f0e7",
+    "framework": "影响路径与商业路径双轨",
+    "scope": "Fictional fundraising speech template. Spoken drafts, ventures, people and illustrative models are invented; no real traction, validated impact, technical performance, securities offer, investment terms or committed funding is supplied.",
+    "sources": [
+      "common-ground/02",
+      "tideline/09",
+      "open-shelf/06",
+      "afterglow/05"
+    ],
+    "chapters": [
+      {
+        "title": "Hold two paths in view.",
+        "lead": "Open Shelf Resources is our fictional concept for making shared reading material easier to adapt. We want to examine both an intended positive change and a sustainable commercial route. Neither path is an established outcome, and success on one would not automatically prove the other.",
+        "body": "Introduce the two-track structure explicitly. No social-impact measurement, real beneficiary outcome, customer evidence or financial performance is supplied.",
+        "labels": [
+          "Intended change",
+          "Commercial question",
+          "Evidence boundary"
+        ],
+        "question": "How would you distinguish an appealing mission from demonstrated impact?",
+        "recordValues": [
+          "Improve access to context-sensitive learning resources.",
+          "Who would adopt and sustainably pay for a defined offering?",
+          "Both paths contain hypotheses, not validated outcomes."
+        ]
+      },
+      {
+        "title": "Define the problem without claiming representation.",
+        "lead": "The premise is that a resource may need adaptation before it fits a particular discussion. We do not claim to speak for every reader or setting. The problem needs real contextual evidence and meaningful input before it can support a broader statement of need.",
+        "body": "All illustrated people are fictional adults. Do not infer disadvantage, vulnerability, consent or a particular community’s priorities from an image.",
+        "labels": [
+          "Problem premise",
+          "Context to understand",
+          "Voice not represented"
+        ],
+        "question": "Whose perspective would need to shape a genuine problem statement?",
+        "recordValues": [
+          "A resource may be unavailable or unsuitable for its context.",
+          "Understand language, task, access and adaptation conditions.",
+          "No community consultation or representative voice established."
+        ]
+      },
+      {
+        "title": "Treat the audience as a research question.",
+        "lead": "A relevant audience would be defined by its task and context, not by a convenient demographic story. We would need to understand who adapts material, why they do it and what constraints matter before selecting a service model.",
+        "body": "No participant research, recruitment or community endorsement has occurred in this example. The script should request context rather than invent a representative persona.",
+        "labels": [
+          "Audience task",
+          "Context gap",
+          "Appropriate inquiry"
+        ],
+        "question": "What evidence would show that this audience definition is useful?",
+        "recordValues": [
+          "Find and adapt a resource for a particular learning task.",
+          "Actual setting, constraints and participant priorities unknown.",
+          "Use appropriate, consented inquiry rather than assumed demand."
+        ]
+      },
+      {
+        "title": "Explain an intended change pathway.",
+        "lead": "The intended pathway is to make a resource available, support a thoughtful adaptation and allow an appropriate use in context. Those are hypotheses connected by dependencies, not proof that the final outcome follows from producing an artifact.",
+        "body": "The source register records three impact hypotheses, each with an unverified evidence status. Output availability, meaningful use and positive outcomes must remain separate.",
+        "labels": [
+          "Proposed activity",
+          "Intended intermediate change",
+          "Dependency"
+        ],
+        "question": "Which link in the pathway is most likely to fail?",
+        "recordValues": [
+          "Make a resource available with usable context.",
+          "A person may judge whether adaptation is appropriate.",
+          "Availability does not imply use, learning or wider impact."
+        ]
+      },
+      {
+        "title": "Say what evidence would mean.",
+        "lead": "A count of materials distributed would describe an output, not establish that anyone benefited. A meaningful evaluation would need a defined question, appropriate methods and attention to unintended effects. We are not reporting measured impact or attributing a real change to this concept.",
+        "body": "Avoid inventing testimonials or success rates. A proposed outcome indicator is not a measured result, and a correlation would not automatically establish attribution.",
+        "labels": [
+          "Output measure",
+          "Outcome question",
+          "Attribution boundary"
+        ],
+        "question": "What would you need to know beyond the number of resources produced?",
+        "recordValues": [
+          "Count resources supplied only as an output.",
+          "Ask whether appropriate use changes a meaningful experience.",
+          "No measured impact or causal attribution supplied."
+        ]
+      },
+      {
+        "title": "Make the commercial pathway explicit.",
+        "lead": "The commercial questions concern the offering, the adopting organisation and sustainable payment conditions. We have not established a buyer, price or recurring revenue. A mission statement does not replace evidence that a real customer values a particular service.",
+        "body": "Three separate commercial hypotheses appear in the source register. None is marked validated, and the register contains no market size, transaction or revenue forecast.",
+        "labels": [
+          "Offering hypothesis",
+          "Buyer hypothesis",
+          "Payment conditions"
+        ],
+        "question": "What distinct evidence would support the commercial path?",
+        "recordValues": [
+          "A defined resource-and-support offering remains hypothetical.",
+          "An adopting organisation is a question, not a customer.",
+          "Price, willingness to pay and sustainable delivery are unknown."
+        ]
+      },
+      {
+        "title": "Name the trade-offs.",
+        "lead": "A commercially attractive format might not fit every context, while a highly tailored resource might create a maintenance burden. We want those tensions visible rather than claiming that mission and revenue automatically reinforce each other.",
+        "body": "Treat trade-offs as questions for responsible review. No real participants, contracts, safeguards or operating arrangements are supplied by this template.",
+        "labels": [
+          "Potential tension",
+          "Affected interest",
+          "Review question"
+        ],
+        "question": "Which trade-off could require changing the proposed model?",
+        "recordValues": [
+          "Access objectives may conflict with payment conditions.",
+          "People using resources and organisations funding provision.",
+          "Who bears the burden if the payment model limits access?"
+        ]
+      },
+      {
+        "title": "Separate governance from aspiration.",
+        "lead": "A credible account should explain who would review claims, who would hear concerns and how a direction could be revised. Naming a mechanism is not proof that a governance system exists or works. Those responsibilities would need real confirmation.",
+        "body": "Do not claim certification, ethical approval or impact credentials. The template supplies role questions, not appointments or an assurance assessment.",
+        "labels": [
+          "Claim review role",
+          "Concern route",
+          "Responsibility to confirm"
+        ],
+        "question": "Who could challenge an overstated impact claim?",
+        "recordValues": [
+          "Assign responsibility for checking any outcome statement.",
+          "Provide a route for concerns and correction.",
+          "No governance body, authority or appointments established."
+        ]
+      },
+      {
+        "title": "Connect resources to both kinds of uncertainty.",
+        "lead": "A resource discussion should not fund a mission story while ignoring commercial uncertainty, or the reverse. We would connect proposed work to a question on each path and the conditions for continuing. No actual raise amount, valuation or investment terms are supplied.",
+        "body": "The six-row hypothesis register is not a budget or a forecast. Appropriate entity, financial and legal context would be needed for a genuine financing request.",
+        "labels": [
+          "Impact question",
+          "Commercial question",
+          "Commitment boundary"
+        ],
+        "question": "What evidence on each path should precede a larger commitment?",
+        "recordValues": [
+          "What evidence would support appropriate use in context?",
+          "What evidence would support a sustainable offering?",
+          "No funding amount, commercial commitment or promised result."
+        ]
+      },
+      {
+        "title": "Invite a balanced next conversation.",
+        "lead": "We invite a conversation that keeps intended change, unintended effects and commercial conditions visible together. The next step is to decide which real questions matter most and what suitable evidence would address them. An attractive mission is a reason to ask carefully, not permission to skip verification.",
+        "body": "Close without promises of social return, financial return or a funding commitment. Preserve the fictional source labels and the distinction between intention and outcome.",
+        "labels": [
+          "Next impact inquiry",
+          "Next commercial inquiry",
+          "Decision sought"
+        ],
+        "question": "What would you need to learn before supporting further exploration?",
+        "recordValues": [
+          "Explore context and appropriate-use questions with affected people.",
+          "Explore adoption and payment questions separately.",
+          "Choose a next inquiry, not a presumed impact investment."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "roundtable-brief",
+    "title": "ROUNDTABLE BRIEF",
+    "subtitle": "融资圆桌问答稿",
+    "category": "融资演讲稿",
+    "layout": "roundtable",
+    "color": "#754d43",
+    "wash": "#f2e8e0",
+    "framework": "模块化问答与会谈卡",
+    "scope": "Fictional fundraising speech template. Spoken drafts, ventures, people and illustrative models are invented; no real traction, validated impact, technical performance, securities offer, investment terms or committed funding is supplied.",
+    "sources": [
+      "afterglow/09",
+      "open-shelf/06",
+      "common-ground/03",
+      "tideline/15"
+    ],
+    "chapters": [
+      {
+        "title": "What are you building?",
+        "lead": "We are exploring Common Page, a fictional concept for keeping a discussion question beside the material it refers to. The aim is a more inspectable conversation. This is a concept explanation, not a claim that a deployed product or a real company has been established.",
+        "body": "Follow-up: what would a first useful artifact demonstrate? Keep a short answer available before adding detail. The module index is a navigation aid, not a timed agenda or a record of an actual investor meeting.",
+        "labels": [
+          "Short answer",
+          "Evidence boundary",
+          "Follow-up question"
+        ],
+        "question": "What is the smallest claim that accurately describes the current concept?",
+        "recordValues": [
+          "Common Page is a fictional shared-context document concept.",
+          "No operating product or customer activity established.",
+          "Which task needs its context kept visible?"
+        ]
+      },
+      {
+        "title": "Why does this problem matter?",
+        "lead": "A reference can be hard to interpret when its intended use is missing. That is our working premise. We would need appropriate evidence about a defined context before calling it a recurring need, a market opportunity or a reason that a real customer should pay.",
+        "body": "Follow-up: whose task are we discussing? Do not replace evidence with a founder’s confidence or a fictional anecdote presented as a testimonial.",
+        "labels": [
+          "Problem premise",
+          "Relevant context",
+          "Source to seek"
+        ],
+        "question": "Which source would make the problem statement more than a plausible story?",
+        "recordValues": [
+          "Shared material can become difficult to interpret later.",
+          "Understand the original task and the later reader's need.",
+          "Seek appropriate observations, not an invented testimonial."
+        ]
+      },
+      {
+        "title": "What would the product actually do?",
+        "lead": "The proposed experience connects a passage, a question and a source note. That is an intended workflow. We have not supplied a working implementation, a validated user journey or a capability benchmark, so we should not imply that the illustration demonstrates those things.",
+        "body": "Follow-up: which interaction is most uncertain? Use a clearly labelled concept artifact when available; do not describe an editorial image as a product screenshot.",
+        "labels": [
+          "Proposed workflow",
+          "Unverified capability",
+          "Demonstration needed"
+        ],
+        "question": "Which capability could you responsibly demonstrate today?",
+        "recordValues": [
+          "Keep material beside its purpose and review questions.",
+          "Implementation and reliability have not been demonstrated.",
+          "An inspectable interaction with explicit limitations."
+        ]
+      },
+      {
+        "title": "What do you know about the market?",
+        "lead": "We have not supplied a market study or a verified market-size estimate. The useful starting question is which organisation has this task, what alternatives it already uses and under what conditions a different approach would matter. We should earn a market claim through relevant sources.",
+        "body": "Follow-up: what is the credible manual alternative? No competitor performance, customer segment size or growth rate is established by the module register.",
+        "labels": [
+          "Audience question",
+          "Existing alternative",
+          "Market evidence gap"
+        ],
+        "question": "What would establish a specific market boundary?",
+        "recordValues": [
+          "Which people and organisations face this task?",
+          "Manual notes or existing document practices may be enough.",
+          "No market size, demand or competitive research supplied."
+        ]
+      },
+      {
+        "title": "How could the model earn revenue?",
+        "lead": "The commercial hypothesis is that a defined service could be valuable under sustainable payment conditions. We have not established the offering, price, buyer or acquisition route. Activity, interest and revenue are different categories, and none should be substituted for another.",
+        "body": "Follow-up: what exactly would someone pay for? This script includes no transaction, signed contract, revenue forecast or statement of actual willingness to pay.",
+        "labels": [
+          "Offering hypothesis",
+          "Buyer question",
+          "Payment evidence needed"
+        ],
+        "question": "Which evidence would be most useful before discussing a revenue model?",
+        "recordValues": [
+          "A defined offering could be explored as a hypothesis.",
+          "Who would choose it, and under which conditions?",
+          "No price, contracts, invoices or revenue supplied."
+        ]
+      },
+      {
+        "title": "Who is responsible for the work?",
+        "lead": "The work would need product judgement, implementation and contextual review. Those are role categories, not appointments. A real team discussion should identify confirmed experience, involvement and gaps without borrowing credibility from invented biographies or unverified endorsements.",
+        "body": "Follow-up: which capability is missing? Replace role labels with people only when their involvement and relevant background are confirmed.",
+        "labels": [
+          "Confirmed role information",
+          "Capability gap",
+          "Appointment to verify"
+        ],
+        "question": "Which missing responsibility could block the next useful step?",
+        "recordValues": [
+          "No named appointments or verified team experience supplied.",
+          "Product, technical and inquiry responsibilities need definition.",
+          "Check availability, authority and relevant experience before sharing."
+        ]
+      },
+      {
+        "title": "What are you asking investors to support?",
+        "lead": "In this fictional conversation, the request is to examine the learning plan and the evidence it would need. No real funding amount, valuation, security, runway or agreed terms are supplied. A genuine financing request would need its own verified context and appropriate review.",
+        "body": "Follow-up: what decision should the next artifact enable? Keep an invitation to discuss separate from a securities offer or an implication that funding is committed.",
+        "labels": [
+          "Discussion request",
+          "Learning purpose",
+          "Terms not supplied"
+        ],
+        "question": "What would turn a broad resource request into an inspectable plan?",
+        "recordValues": [
+          "Discuss support for resolving the next evidence gap.",
+          "Define and inspect a bounded learning activity.",
+          "No investment amount, valuation or agreed terms supplied."
+        ]
+      },
+      {
+        "title": "What could make this fail?",
+        "lead": "The problem may not matter enough, a simpler alternative may be better, or maintenance could outweigh the benefit. Those possibilities should be visible before a financing conversation becomes a persuasive story. We would want evidence that can change our view, not only confirm it.",
+        "body": "Follow-up: which result would make us stop or revise? The list is a discussion aid, not a complete risk assessment or a guarantee that other risks are absent.",
+        "labels": [
+          "Key assumption",
+          "Disconfirming evidence",
+          "Revise condition"
+        ],
+        "question": "Which assumption would you test first if you wanted to challenge the concept?",
+        "recordValues": [
+          "People may not need the proposed shared-context interaction.",
+          "A credible alternative may solve the task more simply.",
+          "Revise or stop if appropriate inquiry rejects the premise."
+        ]
+      },
+      {
+        "title": "What difficult question remains unanswered?",
+        "lead": "The hardest question is whether the proposed structure improves a real task enough to justify adoption and maintenance. We cannot answer that from this template. A useful response is to name the gap, explain why it matters and identify the next appropriate source.",
+        "body": "Follow-up: what would we bring back to a second conversation? An unanswered question should stay open rather than being disguised as a confident forecast.",
+        "labels": [
+          "Unanswered question",
+          "Why it matters",
+          "Next source"
+        ],
+        "question": "Which answer should be deferred until evidence exists?",
+        "recordValues": [
+          "Whether the concept addresses a sufficiently useful task.",
+          "Without that evidence, build and business claims are premature.",
+          "An appropriately scoped task observation or concept review."
+        ]
+      },
+      {
+        "title": "What happens after this conversation?",
+        "lead": "We would record the questions raised, confirm who is responsible for any next discussion and identify a suitable artifact to review. That is not a promise of a second meeting, a funding commitment or a completed diligence process. The useful outcome is a clearer evidence request.",
+        "body": "Follow-up: what may be shared and with whom? Real confidentiality, rights and investment arrangements need their own authorised processes outside this fictional brief.",
+        "labels": [
+          "Question to carry forward",
+          "Responsibility to confirm",
+          "Sharing boundary"
+        ],
+        "question": "What exact response would make a next conversation worthwhile?",
+        "recordValues": [
+          "Which uncertainty deserves the next bounded inquiry?",
+          "Agree who can obtain and review the appropriate evidence.",
+          "No real meeting, commitment or permission to share implied."
+        ]
+      }
+    ]
+  }
+]

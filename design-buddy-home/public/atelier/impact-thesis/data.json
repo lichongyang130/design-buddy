@@ -1,0 +1,296 @@
+{
+  "work": {
+    "id": "impact-thesis",
+    "title": "IMPACT THESIS",
+    "subtitle": "影响力双轨融资稿",
+    "category": "融资演讲稿",
+    "layout": "impact",
+    "color": "#356b57",
+    "wash": "#e4f0e7",
+    "framework": "影响路径与商业路径双轨",
+    "scope": "Fictional fundraising speech template. Spoken drafts, ventures, people and illustrative models are invented; no real traction, validated impact, technical performance, securities offer, investment terms or committed funding is supplied.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "fundraising-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / IMPACT THESIS",
+      "title": "Hold two paths in view.",
+      "lead": "Open Shelf Resources is our fictional concept for making shared reading material easier to adapt. We want to examine both an intended positive change and a sustainable commercial route. Neither path is an established outcome, and success on one would not automatically prove the other.",
+      "body": "Introduce the two-track structure explicitly. No social-impact measurement, real beneficiary outcome, customer evidence or financial performance is supplied.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "How would you distinguish an appealing mission from demonstrated impact?",
+      "records": [
+        {
+          "label": "Intended change",
+          "prompt": "Improve access to context-sensitive learning resources."
+        },
+        {
+          "label": "Commercial question",
+          "prompt": "Who would adopt and sustainably pay for a defined offering?"
+        },
+        {
+          "label": "Evidence boundary",
+          "prompt": "Both paths contain hypotheses, not validated outcomes."
+        }
+      ],
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / IMPACT THESIS",
+      "title": "Define the problem without claiming representation.",
+      "lead": "The premise is that a resource may need adaptation before it fits a particular discussion. We do not claim to speak for every reader or setting. The problem needs real contextual evidence and meaningful input before it can support a broader statement of need.",
+      "body": "All illustrated people are fictional adults. Do not infer disadvantage, vulnerability, consent or a particular community’s priorities from an image.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "Whose perspective would need to shape a genuine problem statement?",
+      "records": [
+        {
+          "label": "Problem premise",
+          "prompt": "A resource may be unavailable or unsuitable for its context."
+        },
+        {
+          "label": "Context to understand",
+          "prompt": "Understand language, task, access and adaptation conditions."
+        },
+        {
+          "label": "Voice not represented",
+          "prompt": "No community consultation or representative voice established."
+        }
+      ],
+      "image": 1,
+      "kind": "body"
+    },
+    {
+      "section": "03 / IMPACT THESIS",
+      "title": "Treat the audience as a research question.",
+      "lead": "A relevant audience would be defined by its task and context, not by a convenient demographic story. We would need to understand who adapts material, why they do it and what constraints matter before selecting a service model.",
+      "body": "No participant research, recruitment or community endorsement has occurred in this example. The script should request context rather than invent a representative persona.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What evidence would show that this audience definition is useful?",
+      "records": [
+        {
+          "label": "Audience task",
+          "prompt": "Find and adapt a resource for a particular learning task."
+        },
+        {
+          "label": "Context gap",
+          "prompt": "Actual setting, constraints and participant priorities unknown."
+        },
+        {
+          "label": "Appropriate inquiry",
+          "prompt": "Use appropriate, consented inquiry rather than assumed demand."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / IMPACT THESIS",
+      "title": "Explain an intended change pathway.",
+      "lead": "The intended pathway is to make a resource available, support a thoughtful adaptation and allow an appropriate use in context. Those are hypotheses connected by dependencies, not proof that the final outcome follows from producing an artifact.",
+      "body": "The source register records three impact hypotheses, each with an unverified evidence status. Output availability, meaningful use and positive outcomes must remain separate.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "Which link in the pathway is most likely to fail?",
+      "records": [
+        {
+          "label": "Proposed activity",
+          "prompt": "Make a resource available with usable context."
+        },
+        {
+          "label": "Intended intermediate change",
+          "prompt": "A person may judge whether adaptation is appropriate."
+        },
+        {
+          "label": "Dependency",
+          "prompt": "Availability does not imply use, learning or wider impact."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / IMPACT THESIS",
+      "title": "Say what evidence would mean.",
+      "lead": "A count of materials distributed would describe an output, not establish that anyone benefited. A meaningful evaluation would need a defined question, appropriate methods and attention to unintended effects. We are not reporting measured impact or attributing a real change to this concept.",
+      "body": "Avoid inventing testimonials or success rates. A proposed outcome indicator is not a measured result, and a correlation would not automatically establish attribution.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What would you need to know beyond the number of resources produced?",
+      "records": [
+        {
+          "label": "Output measure",
+          "prompt": "Count resources supplied only as an output."
+        },
+        {
+          "label": "Outcome question",
+          "prompt": "Ask whether appropriate use changes a meaningful experience."
+        },
+        {
+          "label": "Attribution boundary",
+          "prompt": "No measured impact or causal attribution supplied."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / IMPACT THESIS",
+      "title": "Make the commercial pathway explicit.",
+      "lead": "The commercial questions concern the offering, the adopting organisation and sustainable payment conditions. We have not established a buyer, price or recurring revenue. A mission statement does not replace evidence that a real customer values a particular service.",
+      "body": "Three separate commercial hypotheses appear in the source register. None is marked validated, and the register contains no market size, transaction or revenue forecast.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What distinct evidence would support the commercial path?",
+      "records": [
+        {
+          "label": "Offering hypothesis",
+          "prompt": "A defined resource-and-support offering remains hypothetical."
+        },
+        {
+          "label": "Buyer hypothesis",
+          "prompt": "An adopting organisation is a question, not a customer."
+        },
+        {
+          "label": "Payment conditions",
+          "prompt": "Price, willingness to pay and sustainable delivery are unknown."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / IMPACT THESIS",
+      "title": "Name the trade-offs.",
+      "lead": "A commercially attractive format might not fit every context, while a highly tailored resource might create a maintenance burden. We want those tensions visible rather than claiming that mission and revenue automatically reinforce each other.",
+      "body": "Treat trade-offs as questions for responsible review. No real participants, contracts, safeguards or operating arrangements are supplied by this template.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "Which trade-off could require changing the proposed model?",
+      "records": [
+        {
+          "label": "Potential tension",
+          "prompt": "Access objectives may conflict with payment conditions."
+        },
+        {
+          "label": "Affected interest",
+          "prompt": "People using resources and organisations funding provision."
+        },
+        {
+          "label": "Review question",
+          "prompt": "Who bears the burden if the payment model limits access?"
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / IMPACT THESIS",
+      "title": "Separate governance from aspiration.",
+      "lead": "A credible account should explain who would review claims, who would hear concerns and how a direction could be revised. Naming a mechanism is not proof that a governance system exists or works. Those responsibilities would need real confirmation.",
+      "body": "Do not claim certification, ethical approval or impact credentials. The template supplies role questions, not appointments or an assurance assessment.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "Who could challenge an overstated impact claim?",
+      "records": [
+        {
+          "label": "Claim review role",
+          "prompt": "Assign responsibility for checking any outcome statement."
+        },
+        {
+          "label": "Concern route",
+          "prompt": "Provide a route for concerns and correction."
+        },
+        {
+          "label": "Responsibility to confirm",
+          "prompt": "No governance body, authority or appointments established."
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / IMPACT THESIS",
+      "title": "Connect resources to both kinds of uncertainty.",
+      "lead": "A resource discussion should not fund a mission story while ignoring commercial uncertainty, or the reverse. We would connect proposed work to a question on each path and the conditions for continuing. No actual raise amount, valuation or investment terms are supplied.",
+      "body": "The six-row hypothesis register is not a budget or a forecast. Appropriate entity, financial and legal context would be needed for a genuine financing request.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What evidence on each path should precede a larger commitment?",
+      "records": [
+        {
+          "label": "Impact question",
+          "prompt": "What evidence would support appropriate use in context?"
+        },
+        {
+          "label": "Commercial question",
+          "prompt": "What evidence would support a sustainable offering?"
+        },
+        {
+          "label": "Commitment boundary",
+          "prompt": "No funding amount, commercial commitment or promised result."
+        }
+      ],
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / IMPACT THESIS",
+      "title": "Invite a balanced next conversation.",
+      "lead": "We invite a conversation that keeps intended change, unintended effects and commercial conditions visible together. The next step is to decide which real questions matter most and what suitable evidence would address them. An attractive mission is a reason to ask carefully, not permission to skip verification.",
+      "body": "Close without promises of social return, financial return or a funding commitment. Preserve the fictional source labels and the distinction between intention and outcome.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What would you need to learn before supporting further exploration?",
+      "records": [
+        {
+          "label": "Next impact inquiry",
+          "prompt": "Explore context and appropriate-use questions with affected people."
+        },
+        {
+          "label": "Next commercial inquiry",
+          "prompt": "Explore adoption and payment questions separately."
+        },
+        {
+          "label": "Decision sought",
+          "prompt": "Choose a next inquiry, not a presumed impact investment."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for impact-thesis"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: common-ground/02.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: tideline/09.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: open-shelf/06.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: afterglow/05.jpg"
+    }
+  ]
+}
