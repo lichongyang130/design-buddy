@@ -1035,6 +1035,150 @@
       "sha256": "fd83179c7a26cd244ba1843b7318354bbd892505b9531d8b823f961cc189dd44",
       "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/5c820a43ae3ef504739326714398ae1be2f7b1af",
       "sourceCommit": "6af1dba2869d231982e2482c181f86fda02372c3"
+    },
+    {
+      "path": "public/atelier/role-onboarding/role-onboarding.docx",
+      "gitBlob": "b6adb4768482c6c8cee7aa739d9e0e358a54f692",
+      "bytes": 876537,
+      "sha256": "54299281671d34deeda56b351ef97ed78493cffdf0d79913e1eba1a77c021371",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/b6adb4768482c6c8cee7aa739d9e0e358a54f692",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/role-onboarding/role-onboarding.pdf",
+      "gitBlob": "c0dfc2acfb73e925992b542684939e97461ed444",
+      "bytes": 947500,
+      "sha256": "86a1c0b4c50faa903e1d19fa5ee284a197748f863061d178dc836396164cee6d",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/c0dfc2acfb73e925992b542684939e97461ed444",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/role-onboarding/role-onboarding-source.zip",
+      "gitBlob": "ff14e35868fe01f5af1f8448279be3ae11f84071",
+      "bytes": 1804030,
+      "sha256": "f0fd6a6bb54488f5e88e834cddba888b686910ea370da0897e44ff5b040b0312",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/ff14e35868fe01f5af1f8448279be3ae11f84071",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/scenario-practice/scenario-practice.docx",
+      "gitBlob": "e8c2854dfd06d2922dc2205f73b3f14a3fa76a4b",
+      "bytes": 814118,
+      "sha256": "e7a3ef00b61c0a02dc1bb99ba0a2cfe09782cbfebe052ec2fe58ebf635662147",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/e8c2854dfd06d2922dc2205f73b3f14a3fa76a4b",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/scenario-practice/scenario-practice.pdf",
+      "gitBlob": "76c9fbdcd961bfa8ff34e7560cf8ca4b13145834",
+      "bytes": 892814,
+      "sha256": "5ce1e18e6d46dfbb55a21685a693360539ee4c96ec6d9cee6950415e9e121ba8",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/76c9fbdcd961bfa8ff34e7560cf8ca4b13145834",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/scenario-practice/scenario-practice-source.zip",
+      "gitBlob": "ca8a50ba5e550776e6542ca6523fe8cc829ed337",
+      "bytes": 1680815,
+      "sha256": "85bc2415b4c16450142eba449cfa560fd321d4fc2c8afdee24125544e0551da0",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/ca8a50ba5e550776e6542ca6523fe8cc829ed337",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/facilitator-guide/facilitator-guide.docx",
+      "gitBlob": "1533ac7f612f146ddc132d6a69040ed7a6619d0e",
+      "bytes": 1011554,
+      "sha256": "b413c539b250822a8568449c91287e16f905be434f5333d3395d8108f51d1c0b",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/1533ac7f612f146ddc132d6a69040ed7a6619d0e",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/facilitator-guide/facilitator-guide.pdf",
+      "gitBlob": "c2e3c497d6d908be2cdcbcc764992ba78f41c557",
+      "bytes": 1083195,
+      "sha256": "1d7ba1eeef5b54a9d8b177f78d38d4652cbd3b766750084ad74fa869a2f97867",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/c2e3c497d6d908be2cdcbcc764992ba78f41c557",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/facilitator-guide/facilitator-guide-source.zip",
+      "gitBlob": "e82072196206dda0eccf16f25dc7171d1ca998f2",
+      "bytes": 2077222,
+      "sha256": "5106f5ff70ff4ce6ec717c876f0b265572f4bccfc2f669baa4ef51fb3a27753e",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/e82072196206dda0eccf16f25dc7171d1ca998f2",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/peer-coaching/peer-coaching.docx",
+      "gitBlob": "c81875b3d394237e0bd85981cb203290e0d43528",
+      "bytes": 807896,
+      "sha256": "004f6e7a1ed44708191300ad61c8b1803c4986ad09f769d323d9077ec5feba83",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/c81875b3d394237e0bd85981cb203290e0d43528",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/peer-coaching/peer-coaching.pdf",
+      "gitBlob": "763780cd0edd879fb9b9c8d397730d35528b642e",
+      "bytes": 877204,
+      "sha256": "e83ad7c47784a3ffa90d63689d724e8e5e393aaacdb50b446fa3d02d44c8e4bd",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/763780cd0edd879fb9b9c8d397730d35528b642e",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/peer-coaching/peer-coaching-source.zip",
+      "gitBlob": "4630e776bf55eb05aa2236b1f7ef996f816e1ce8",
+      "bytes": 1665641,
+      "sha256": "1cb722ce57be4ad370aa8d4489e49d76deebe4110f6c8d76483d78a6bd8c5ea9",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/4630e776bf55eb05aa2236b1f7ef996f816e1ce8",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/process-rehearsal/process-rehearsal.docx",
+      "gitBlob": "86638f4779a49f3b65c9092c3359a2d18aef003e",
+      "bytes": 891735,
+      "sha256": "6d7ae1c41b2a458bf0c05401fb957e6b121b14f98512d05ece4a8f153227a78f",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/86638f4779a49f3b65c9092c3359a2d18aef003e",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/process-rehearsal/process-rehearsal.pdf",
+      "gitBlob": "698a796a1107c052f513c22a871fcd34e9b92fc7",
+      "bytes": 961823,
+      "sha256": "eac13b9941cb059e93a170299a6c3150f2b30c947d58c1e3191209efd3bc23c9",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/698a796a1107c052f513c22a871fcd34e9b92fc7",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/process-rehearsal/process-rehearsal-source.zip",
+      "gitBlob": "cb2d12b53fc585a0f3901eaadde57492024fbad8",
+      "bytes": 1834251,
+      "sha256": "460af1f79e00cc185fb8272405bdf2082859da9ccfdb4a24b170aa2cda0d379b",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/cb2d12b53fc585a0f3901eaadde57492024fbad8",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/skills-portfolio/skills-portfolio.docx",
+      "gitBlob": "dd2d17f82bc98996fc3775c85391eb4011283390",
+      "bytes": 679093,
+      "sha256": "e80b9e8bde6c5ebdac10d0f97c017f4e02fcf3a99eff7394585e17c947437c4d",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/dd2d17f82bc98996fc3775c85391eb4011283390",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/skills-portfolio/skills-portfolio.pdf",
+      "gitBlob": "babcd3c40ae52b28a5ade07765ae7c3e2e415cab",
+      "bytes": 749843,
+      "sha256": "c39625875872a19780d7e6605ddab031f0e58b2d41edaf12fbabab93e3eda2f3",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/babcd3c40ae52b28a5ade07765ae7c3e2e415cab",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/skills-portfolio/skills-portfolio-source.zip",
+      "gitBlob": "adbcc3f9ff8501134b1469fba76676f046160336",
+      "bytes": 1407255,
+      "sha256": "19622ba007186823e53a5971bc96d07cdbda55bdd3c7b4c5965e5914b8953c95",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/adbcc3f9ff8501134b1469fba76676f046160336",
+      "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
     }
   ]
 }
