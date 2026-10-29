@@ -1,0 +1,5 @@
+step,lane,activity,input_artifact,output_artifact,status
+1,writer,prepare,invented passage,draft with question,not-rehearsed
+2,coordinator,check,draft with question,source-gap note,not-rehearsed
+3,reviewer,inspect,source-gap note,review question,not-rehearsed
+4,writer,return,review question,clarification needed,not-rehearsed

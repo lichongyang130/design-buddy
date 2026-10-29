@@ -246,3 +246,27 @@ Storage preservation: the original nine-document collection’s 27 unchanged exp
 Complete marketing export bytes were pushed in `6af1dba2869d231982e2482c181f86fda02372c3` before the 18 new distributions were SHA-pinned. The registry now contains **130** artifacts, including the 27 unchanged original-nine distributions. All 130 were physically moved aside, restored automatically from immutable Git history and verified against byte size and SHA-256. A comparison Word blob was independently fetched from GitHub and matched. All six marketing source CSV/JSON/JS/data files match pushed Git blobs exactly. No downloadable file or local personal work was removed.
 
 After cold restoration, marketing acceptance passed again (eight browser/data groups and six real ten-page edited Word renderings), as did all nine cache-migration groups and production integrity/build. All 44 original Office renderings had already passed; restored bytes are identical. The final cache suite also passed concurrently with marketing acceptance. Extant non-ignored cumulative patch content is approximately **108.25 MiB**, below 128 MiB. Keep auditing before future batches; artifact pinning is preservation in pushed history, not a deletion or an unverified release upload.
+
+
+## Training batch — 35 / 50 additional documents
+
+| Template | Distinct framework and editable module |
+|---|---|
+| ROLE ONBOARDING | Role-to-task learning passport, five learning gates, boundary/referral and feedback records |
+| SCENARIO PRACTICE | Three-route choice, assumption and debrief rehearsal; reversible branch navigation |
+| FACILITATOR GUIDE | SAY/ASK/OBSERVE cue fieldbook with five proposed timeboxes totalling 45 teaching minutes |
+| PEER COACHING | Bounded agreement, clarification, listening, options, action accord and ending record |
+| PROCESS REHEARSAL | Three-lane/four-step handoff loop with input/output continuity and exception cards |
+| SKILLS PORTFOLIO | Three-attempt/four-dimension evidence folio with revision rationale; no automatic grade |
+
+Each has ten complete English pages, five distinct illustrations, native editable Word, ten-page PDF, offline source ZIP, source CSV/JSON, image provenance and SHA manifests. The illustrations are five curated existing AI-generated assets per case (30 placements total), **not newly generated artwork**. The gallery and downloads state this accurately. Colours/layouts vary: ochre passport rail, terracotta branch board, copper cue deck, violet peer accord, navy swimlane ledger and forest evidence folio. Six browser geometries, six native Word block orders and framework-specific native tables differ.
+
+Collection: `/templates.html?format=文档&batch=training-expansion`. Combined originals: `/atelier/training-kit/download.html` (six editable Word + six PDF originals, byte-checked). Build: `npm run build:training-expansion`. Acceptance: `npm run test:training-expansion`. Sources: `scripts/training-expansion-content.json`, `scripts/prepare-training-expansion.py` and `tests/verify-training-models.mjs`. To prepare while preserving image bytes, run `python3 design-buddy-home/scripts/prepare-training-expansion.py --keep-images` from the repo root with Pillow installed in ignored `.cache/expansion-python`.
+
+The scenario branches work online and directly via file://: page 5 routes A/B/C to pages 6/7/8, each returning to page 5. Current exported HTML uses real internal anchors; Word originals/current exports use valid underscore-named bookmarks and internal hyperlinks. Branches are conceptual discussion routes, not predicted consequences or scored correct answers. Source excerpts/registers are read-only and stay fixed when practice prose/records are edited. Private notes are included in current Word/HTML and must be reviewed before sharing. Long edits may reflow.
+
+Model checks recompute the five unassessed onboarding gates, reversible branch graph, 5+8+12+12+8=45 teaching-minute plan, six planned coaching stages, four-step/three-role input-output chain and 3×4=12 unassessed evidence cells. CSV uses canonical LF; complete round trips preserve null unknown values and explicit not-assessed/not-rehearsed status. A missing score is not a zero or a failing grade. These examples establish no employment requirements, actual participants, attendance, confidentiality guarantee, operational authority, real performance improvement, professional accreditation or certification.
+
+Current additional expansion: **35 published / 50, 15 remaining**. Full gallery: **50 cases (49 published, one SWATCH draft), 606 authored pages**, target 65. Previous collections/local work are preserved. Gallery revision `20261030-rebuild-16` / SW v16 retain the existing activation handshake without clearing personal/unrelated caches. Next planned batch: five business-planning documents.
+
+At the start of this batch the local checkout was unexpectedly at the original base commit. Before any authoring, the active branch was fetched and fast-forwarded to the verified previous delivery `30a6473723855c7c98d4d697b66a8103a61603f4`, then all 130 existing pinned artifacts restored. Earlier deliveries were preserved, not recreated or silently rolled back.

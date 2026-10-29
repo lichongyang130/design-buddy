@@ -54,7 +54,13 @@
     "comparison-guide",
     "editorial-calendar",
     "brand-voice",
-    "campaign-playbook"
+    "campaign-playbook",
+    "role-onboarding",
+    "scenario-practice",
+    "facilitator-guide",
+    "peer-coaching",
+    "process-rehearsal",
+    "skills-portfolio"
   ],
   "documentRequirements": {
     "minPages": 10,
@@ -62,8 +68,8 @@
   },
   "additionalDocumentRequest": {
     "count": 50,
-    "published": 29,
-    "remaining": 21,
+    "published": 35,
+    "remaining": 15,
     "plan": "docs/document-expansion-50.json"
   }
 }

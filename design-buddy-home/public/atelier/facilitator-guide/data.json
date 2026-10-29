@@ -1,0 +1,396 @@
+{
+  "work": {
+    "id": "facilitator-guide",
+    "title": "FACILITATOR GUIDE",
+    "subtitle": "A cue-script and timebox fieldbook",
+    "category": "培训",
+    "layout": "facilitate",
+    "color": "#ab572b",
+    "wash": "#f9ead3",
+    "framework": "主持脚本与时间盒",
+    "scope": "Illustrative 45-minute context-note workshop. Timeboxes are planning units, not tested durations, staffing commitments, accessibility guarantees or actual session records.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "training-expansion",
+    "newIllustrations": 0,
+    "curatedIllustrations": 5
+  },
+  "pages": [
+    {
+      "section": "01 / FACILITATOR GUIDE",
+      "title": "Define what the session is for.",
+      "lead": "This practice session helps participants connect a saved passage with the question that gives it purpose. The intended artifact is one context note and one revision after discussion.",
+      "body": "The facilitator supports inquiry rather than certifying skill. Explain the fictional example, invite participants to pause or pass and avoid requesting confidential workplace material. No actual session or named facilitator is established.",
+      "subheading": "Session intention",
+      "detail": "The proposed five blocks total 45 teaching minutes. Adjust any real session to appropriate access needs, consent, group context and available support.",
+      "question": "What should participants be able to inspect at the end?",
+      "records": [
+        {
+          "label": "Artifact",
+          "prompt": "A passage, its question and a revised context note."
+        },
+        {
+          "label": "Learning focus",
+          "prompt": "Explain the relationship and its limits."
+        },
+        {
+          "label": "Scope",
+          "prompt": "Practice only; no certification or actual attendance record."
+        }
+      ],
+      "image": 1,
+      "kind": "cover",
+      "evidenceRows": [
+        [
+          "PROPOSED BLOCK",
+          "opening / 5 teaching minutes"
+        ],
+        [
+          "TIMEBOX MODEL",
+          "5 + 8 + 12 + 12 + 8 = 45 planned minutes; not actual time."
+        ]
+      ]
+    },
+    {
+      "section": "02 / FACILITATOR GUIDE",
+      "title": "Prepare materials and access routes.",
+      "lead": "Prepare an invented passage, a visible question and a blank space for a context note. Provide a text description for any illustration used as a prompt.",
+      "body": "Check how participants can receive instructions, ask questions or decline sharing. Do not assume that one format, speaking pace or group arrangement suits everyone. Real access arrangements need discussion with the relevant people.",
+      "subheading": "Before the group arrives",
+      "detail": "Use no personal or confidential material without an appropriate basis. A preparation checklist records intended checks, not verified readiness or legal compliance.",
+      "question": "Which missing arrangement would make participation unnecessarily difficult?",
+      "records": [
+        {
+          "label": "Materials",
+          "prompt": "Invented passage, question card and note surface."
+        },
+        {
+          "label": "Access check",
+          "prompt": "Offer appropriate ways to receive and respond."
+        },
+        {
+          "label": "Sharing check",
+          "prompt": "Explain that sharing a personal example is optional."
+        }
+      ],
+      "image": 1,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "PROPOSED BLOCK",
+          "demonstration / 8 teaching minutes"
+        ],
+        [
+          "TIMEBOX MODEL",
+          "5 + 8 + 12 + 12 + 8 = 45 planned minutes; not actual time."
+        ]
+      ]
+    },
+    {
+      "section": "03 / FACILITATOR GUIDE",
+      "title": "Open with a clear invitation.",
+      "lead": "Say: We will try keeping a question beside a saved passage. You can work with the invented sample, ask for clarification or pass on sharing your note.",
+      "body": "Explain that the workshop examines an idea, not whether someone is a good writer. State the task and the review point before introducing additional examples. The opening block is a proposed five minutes, not a proven duration.",
+      "subheading": "Opening cue / 5 teaching minutes",
+      "detail": "Ask participants to describe what they understand the task to be. If instructions are unclear, revise them instead of treating confusion as lack of attention.",
+      "question": "Can participants explain what is optional and what the task involves?",
+      "records": [
+        {
+          "label": "Say",
+          "prompt": "We are examining a note-and-question connection."
+        },
+        {
+          "label": "Ask",
+          "prompt": "What do you need to understand before trying it?"
+        },
+        {
+          "label": "Watch",
+          "prompt": "Instructions may need clarification or another format."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "PROPOSED BLOCK",
+          "practice / 12 teaching minutes"
+        ],
+        [
+          "TIMEBOX MODEL",
+          "5 + 8 + 12 + 12 + 8 = 45 planned minutes; not actual time."
+        ]
+      ]
+    },
+    {
+      "section": "04 / FACILITATOR GUIDE",
+      "title": "Demonstrate the reasoning, not a perfect answer.",
+      "lead": "Show the invented passage, name the question that made it relevant and write a short note explaining the connection. Make one uncertainty explicit rather than hiding it.",
+      "body": "Think aloud about why the note includes that detail. The demonstration block is proposed as eight minutes. Participants do not need to imitate the exact wording to engage with the task.",
+      "subheading": "Demonstration cue / 8 teaching minutes",
+      "detail": "Example: I saved this passage to examine how context changes a later explanation. I still need to check whether this example fits that question.",
+      "question": "Which reasoning step should a participant be able to see?",
+      "records": [
+        {
+          "label": "Show",
+          "prompt": "Passage, working question and context note together."
+        },
+        {
+          "label": "Explain",
+          "prompt": "Why this detail matters to the question."
+        },
+        {
+          "label": "Qualify",
+          "prompt": "Name an unresolved condition rather than implying certainty."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "PROPOSED BLOCK",
+          "discussion / 12 teaching minutes"
+        ],
+        [
+          "TIMEBOX MODEL",
+          "5 + 8 + 12 + 12 + 8 = 45 planned minutes; not actual time."
+        ]
+      ]
+    },
+    {
+      "section": "05 / FACILITATOR GUIDE",
+      "title": "Give one bounded practice instruction.",
+      "lead": "Ask participants to choose the supplied passage and write a question beside it. Then add one sentence explaining why the passage might matter to that question.",
+      "body": "Allow private drafting or another suitable response mode. The practice block is proposed as twelve minutes, not a performance target. Offer clarification without taking over the participant’s wording.",
+      "subheading": "Practice cue / 12 teaching minutes",
+      "detail": "Expected artifact: one passage reference, one question and one context sentence. Do not require personal disclosure to complete the activity.",
+      "question": "What would make the instruction small enough to try?",
+      "records": [
+        {
+          "label": "Instruction",
+          "prompt": "Write the question beside the supplied passage."
+        },
+        {
+          "label": "Output",
+          "prompt": "One sentence explaining a possible connection."
+        },
+        {
+          "label": "Choice",
+          "prompt": "Draft privately or use an agreed response mode."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "PROPOSED BLOCK",
+          "closing / 8 teaching minutes"
+        ],
+        [
+          "TIMEBOX MODEL",
+          "5 + 8 + 12 + 12 + 8 = 45 planned minutes; not actual time."
+        ]
+      ]
+    },
+    {
+      "section": "06 / FACILITATOR GUIDE",
+      "title": "Discuss the artifact before the person.",
+      "lead": "Invite participants to share only what they choose. Ask what the note makes visible, what still needs explanation and how another reader might interpret the connection.",
+      "body": "Keep the conversation descriptive. Avoid inferring motivation, intelligence or confidence from a short exercise. The discussion block is a proposed twelve minutes and may need adjustment in a real setting.",
+      "subheading": "Discussion cue / 12 teaching minutes",
+      "detail": "A useful prompt is: what can you understand from the note alone? Distinguish the writer’s intention from what the reader can actually see.",
+      "question": "Which question helps inspect the note without judging its author?",
+      "records": [
+        {
+          "label": "Prompt",
+          "prompt": "What does this note make visible?"
+        },
+        {
+          "label": "Follow-up",
+          "prompt": "Which condition or explanation is still missing?"
+        },
+        {
+          "label": "Boundary",
+          "prompt": "Discuss the artifact, not a presumed personal trait."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "PROPOSED BLOCK",
+          "opening / 5 teaching minutes"
+        ],
+        [
+          "TIMEBOX MODEL",
+          "5 + 8 + 12 + 12 + 8 = 45 planned minutes; not actual time."
+        ]
+      ]
+    },
+    {
+      "section": "07 / FACILITATOR GUIDE",
+      "title": "Offer feedback that can be used.",
+      "lead": "Describe one visible feature, ask one clarifying question and offer one optional revision. For example: the question is clear; which part of the passage speaks to it?",
+      "body": "Let the writer decide how to respond. Feedback is a proposal for examining the artifact, not an instruction to accept the facilitator’s phrasing. Keep any evaluation separate and explicitly agreed if a real programme requires it.",
+      "subheading": "Feedback pattern",
+      "detail": "During the closing block, allow time for a small revision or a note about what remains unresolved. Not every participant needs to share the result.",
+      "question": "Can the writer identify a concrete next revision?",
+      "records": [
+        {
+          "label": "Notice",
+          "prompt": "Name one visible feature of the note."
+        },
+        {
+          "label": "Ask",
+          "prompt": "Request clarification about the passage-question link."
+        },
+        {
+          "label": "Offer",
+          "prompt": "Suggest one bounded revision, with room to decline."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "PROPOSED BLOCK",
+          "demonstration / 8 teaching minutes"
+        ],
+        [
+          "TIMEBOX MODEL",
+          "5 + 8 + 12 + 12 + 8 = 45 planned minutes; not actual time."
+        ]
+      ]
+    },
+    {
+      "section": "08 / FACILITATOR GUIDE",
+      "title": "Adjust support without changing the purpose silently.",
+      "lead": "Participants may need more preparation time, a different format or a less public way to respond. Discuss suitable adjustments rather than assuming a single route demonstrates engagement.",
+      "body": "Keep the learning purpose visible while adapting the activity. No access arrangement is guaranteed by this fictional guide; the actual setting, resources and participant preferences need appropriate attention.",
+      "subheading": "Support options",
+      "detail": "Possible options include reading the sample aloud by agreement, providing the text in advance or discussing an invented note privately. Confirm suitability rather than prescribing a universal accommodation.",
+      "question": "What adjustment preserves the purpose while reducing an avoidable barrier?",
+      "records": [
+        {
+          "label": "Format",
+          "prompt": "Offer an appropriate way to receive the sample."
+        },
+        {
+          "label": "Pace",
+          "prompt": "Allow clarification or additional preparation where feasible."
+        },
+        {
+          "label": "Participation",
+          "prompt": "Permit a private response or a pass on sharing."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "PROPOSED BLOCK",
+          "practice / 12 teaching minutes"
+        ],
+        [
+          "TIMEBOX MODEL",
+          "5 + 8 + 12 + 12 + 8 = 45 planned minutes; not actual time."
+        ]
+      ]
+    },
+    {
+      "section": "09 / FACILITATOR GUIDE",
+      "title": "Close with a question to carry forward.",
+      "lead": "Say: Keep the note with its question, and add one thing you would want to check before reusing the passage. You may keep the work private.",
+      "body": "Summarise the difference between an intention, an inspectable connection and a verified claim. The closing block is proposed as eight minutes; feedback and revision can sit within it rather than adding hidden time to the plan.",
+      "subheading": "Closing cue / 8 teaching minutes",
+      "detail": "The five blocks are opening 5, demonstration 8, practice 12, discussion 12 and closing 8. Their total is 45, not a record of elapsed time.",
+      "question": "What remains worth checking after the session ends?",
+      "records": [
+        {
+          "label": "Summary",
+          "prompt": "A note can preserve a question without proving a claim."
+        },
+        {
+          "label": "Carry forward",
+          "prompt": "One unresolved source or interpretation question."
+        },
+        {
+          "label": "Time boundary",
+          "prompt": "45 planned teaching minutes; no actual session data."
+        }
+      ],
+      "image": 5,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "PROPOSED BLOCK",
+          "discussion / 12 teaching minutes"
+        ],
+        [
+          "TIMEBOX MODEL",
+          "5 + 8 + 12 + 12 + 8 = 45 planned minutes; not actual time."
+        ]
+      ]
+    },
+    {
+      "section": "10 / FACILITATOR GUIDE",
+      "title": "Review the facilitation, not an imagined result.",
+      "lead": "After a real session, distinguish the planned activity from what actually happened. Review which instructions needed clarification and whether participants had suitable ways to take part.",
+      "body": "This guide contains no attendance, satisfaction or learning-gain data. Record only appropriately collected observations and retain the limits of any interpretation. A completed activity does not by itself demonstrate lasting capability.",
+      "subheading": "Facilitator reflection",
+      "detail": "Choose one instruction to revise and one practical support question to investigate. Review the proposed timeboxes against actual circumstances rather than treating 45 minutes as validated.",
+      "question": "What should change before another appropriately planned session?",
+      "records": [
+        {
+          "label": "Keep",
+          "prompt": "Instructions that made the task understandable."
+        },
+        {
+          "label": "Revise",
+          "prompt": "One unclear cue or unnecessarily demanding step."
+        },
+        {
+          "label": "Investigate",
+          "prompt": "Actual participation needs and feasible support arrangements."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix",
+      "evidenceRows": [
+        [
+          "PROPOSED BLOCK",
+          "closing / 8 teaching minutes"
+        ],
+        [
+          "TIMEBOX MODEL",
+          "5 + 8 + 12 + 12 + 8 = 45 planned minutes; not actual time."
+        ]
+      ]
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "Curated existing AI-generated illustration: field-school/01.jpg"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: question-lab/02.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: story-workshop/01.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: editorial-calendar/01.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: creative-treatment/03.jpg"
+    }
+  ]
+}

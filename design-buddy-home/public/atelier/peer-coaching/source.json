@@ -1,0 +1,56 @@
+{
+  "source": "authored-fictional-training-register",
+  "synthetic": true,
+  "notCertification": true,
+  "summary": {
+    "plannedStages": 6,
+    "completedConversations": 0,
+    "actualActionCommitment": null,
+    "confidentialityGuarantee": false,
+    "professionalAccreditation": null
+  },
+  "records": [
+    {
+      "stage": "agreement",
+      "purpose": "define a bounded task and record use",
+      "status": "planned",
+      "actual_participant": null,
+      "actual_agreement": null
+    },
+    {
+      "stage": "clarify",
+      "purpose": "understand the speaker’s task",
+      "status": "planned",
+      "actual_participant": null,
+      "actual_agreement": null
+    },
+    {
+      "stage": "listen",
+      "purpose": "check a tentative reflection",
+      "status": "planned",
+      "actual_participant": null,
+      "actual_agreement": null
+    },
+    {
+      "stage": "explore",
+      "purpose": "compare options without prescription",
+      "status": "planned",
+      "actual_participant": null,
+      "actual_agreement": null
+    },
+    {
+      "stage": "action",
+      "purpose": "choose an inspectable next attempt",
+      "status": "planned",
+      "actual_participant": null,
+      "actual_agreement": null
+    },
+    {
+      "stage": "review",
+      "purpose": "revisit scope and ending",
+      "status": "planned",
+      "actual_participant": null,
+      "actual_agreement": null
+    }
+  ]
+}

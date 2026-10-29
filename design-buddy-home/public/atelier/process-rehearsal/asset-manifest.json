@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "process-rehearsal",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 16361,
+      "sha256": "0a6923af8445a0001794cc2a5562546de39cd65d2bd2911c15ff9fd88f9bb9af"
+    },
+    {
+      "path": "content.js",
+      "bytes": 12896,
+      "sha256": "95f0206af104ec826841bbf4065fd57f555e7d44653e8e325a188c0cf7bd0b3b"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 546,
+      "sha256": "c9e0e3b9b675af988b2148ae90169dda05ee298491a535d3c605e721afbc6e91"
+    },
+    {
+      "path": "process-rehearsal.docx",
+      "bytes": 891735,
+      "sha256": "6d7ae1c41b2a458bf0c05401fb957e6b121b14f98512d05ece4a8f153227a78f"
+    },
+    {
+      "path": "process-rehearsal.pdf",
+      "bytes": 961823,
+      "sha256": "eac13b9941cb059e93a170299a6c3150f2b30c947d58c1e3191209efd3bc23c9"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 327,
+      "sha256": "483a6f6a7b9132d5880ae7b384ded49ee5870883d2da7a72157a0071a1381902"
+    },
+    {
+      "path": "source.json",
+      "bytes": 1101,
+      "sha256": "e66a50f76bc5df25b6e9a1e6052a8dfd4e5ee95d042c91f6e4af01885b44efc4"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 199913,
+      "sha256": "d457d33595662c4c9f35acefbcefa3f8f86bca2ae2dcb85cd61d3ac2084900b8"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 194185,
+      "sha256": "ebfffa0a38bd27709fd1a519e49f2126754c576372fa198df0aa94e808bad427"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 183543,
+      "sha256": "f643cb186a0b6eaa8393fe53abfc26a5563ac9eec2b6c63a2d9e60e5e0b08868"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 151862,
+      "sha256": "9e71f2a336be9ef0d70ee6343a4af838c14fd6161ef0caade3a25cf3c7da94b7"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 152710,
+      "sha256": "c93ec3b6d7935db9d4791cf4cb0439fe532459a31bed8192bcfdbf560ff0be7a"
+    }
+  ]
+}

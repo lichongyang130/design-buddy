@@ -16,17 +16,17 @@ Open `/templates.html?format=文档&batch=nine-documents` for nine different cat
 
 Nine new theme illustrations are combined with 36 curated existing-image placements, not 45 new images. Report/model values are fictional. Original DOCX/PDF remain fixed; current edited Word/HTML/JSON exports include local edits and private notes. Long edits can reflow. Review notes before sharing.
 
-See [NEW-TEMPLATE-PLAN.md](NEW-TEMPLATE-PLAN.md) for the current 65-case target, current 43-published/1-draft status, frameworks, validation and remaining limits. SWATCH remains an honest draft, not a completed case.
+See [NEW-TEMPLATE-PLAN.md](NEW-TEMPLATE-PLAN.md) for the current 65-case target, current 49-published/1-draft status, frameworks, validation and remaining limits. SWATCH remains an honest draft, not a completed case.
 
 ## Artifact preservation
 
-Primary art, source, manifests and completed export bytes are backed up in Git. Distribution files can be stored in SHA-pinned, already-pushed immutable Git history rather than duplicated in the current tree. Currently 130 files (six older source ZIPs, five older PPTX and five older PDF files, and 114 original-nine/course/proposal/report/fundraising/marketing DOCX/PDF/source archives) are restored automatically before dev/start/check/build via `artifact-registry.json`. Their downloadable paths are unchanged. Local Git objects are preferred; the GitHub CLI is the remote fallback. Do not change an older archive without updating the registry. All pinned downloads have SHA/byte-size verification and automatic missing-file restoration; each new distribution batch is pushed before pinning. Standard full clones restore from local Git objects; shallow clones may require fetching history or authenticated GitHub CLI access. No successful GitHub release upload is claimed.
+Primary art, source, manifests and completed export bytes are backed up in Git. Distribution files can be stored in SHA-pinned, already-pushed immutable Git history rather than duplicated in the current tree. Currently 148 files (six older source ZIPs, five older PPTX and five older PDF files, and 132 original-nine/course/proposal/report/fundraising/marketing/training DOCX/PDF/source archives) are restored automatically before dev/start/check/build via `artifact-registry.json`. Their downloadable paths are unchanged. Local Git objects are preferred; the GitHub CLI is the remote fallback. Do not change an older archive without updating the registry. All pinned downloads have SHA/byte-size verification and automatic missing-file restoration; each new distribution batch is pushed before pinning. Standard full clones restore from local Git objects; shallow clones may require fetching history or authenticated GitHub CLI access. No successful GitHub release upload is claimed.
 
 ## Checks
 
 - `npm run check:templates`: registry, publication gates and SHA manifests, including shared document kit.
 - `npm run test:document-batch`: gallery, nine geometries, 90-page fit, editable exports, mobile, offline sources, model arithmetic and real edited Word rendering.
-- `npm run test:template-office`: all 44 originals rendered with real LibreOffice core at the expected page counts.
+- `npm run test:template-office`: all 50 originals rendered with real LibreOffice core at the expected page counts.
 - `npm run test:pantry-cache`: old-cache migration without deleting unrelated caches or personal storage.
 - Individual earlier cases retain their own `test:<case>` scripts.
 
@@ -34,7 +34,7 @@ Office tests require Node 22.19+ and `@deepseek-ai/libreoffice-kit` installed in
 
 ## 50-case expansion — course batch completed
 
-Twenty-nine of the 50 additional cases are complete (six courses, six proposals, six reports, five fundraising speeches and six marketing documents); 21 remain planned. Open `/templates.html?format=文档&batch=course-expansion`. The original nine-document collection remains nine cases. All previous 15 cases remain available, bringing the gallery to 44 cases (43 published, one SWATCH draft). The revised total target is 65: existing 15 plus 50 additional—not 50 including the old nine.
+Thirty-five of the 50 additional cases are complete (six courses, six proposals, six reports, five fundraising speeches, six marketing documents and six training documents); 15 remain planned. Open `/templates.html?format=文档&batch=course-expansion`. The original nine-document collection remains nine cases. All previous 15 cases remain available, bringing the gallery to 50 cases (49 published, one SWATCH draft). The revised total target is 65: existing 15 plus 50 additional—not 50 including the old nine.
 
 Six courses: QUESTION LAB (inquiry tree), STORY WORKSHOP (manuscript annotations), VISUAL LITERACY (image/analysis comparison), PROJECT STUDIO (task board), DEBATE ROOM (argument mapping), SELF-PACED ROUTE (branching route). Each has ten substantive pages, five images, one new hero and four curated assets. Worksheet cells are editable, persist per case and export in current DOCX/HTML/JSON. Native Word has six different content orders and appropriate native record tables; image assets remain raster. Original and edited copies rendered to ten pages each in real LibreOffice.
 
@@ -121,3 +121,27 @@ Storage preservation: the original nine-document collection’s 27 unchanged exp
 Complete marketing export bytes were pushed in `6af1dba2869d231982e2482c181f86fda02372c3` before the 18 new distributions were SHA-pinned. The registry now contains **130** artifacts, including the 27 unchanged original-nine distributions. All 130 were physically moved aside, restored automatically from immutable Git history and verified against byte size and SHA-256. A comparison Word blob was independently fetched from GitHub and matched. All six marketing source CSV/JSON/JS/data files match pushed Git blobs exactly. No downloadable file or local personal work was removed.
 
 After cold restoration, marketing acceptance passed again (eight browser/data groups and six real ten-page edited Word renderings), as did all nine cache-migration groups and production integrity/build. All 44 original Office renderings had already passed; restored bytes are identical. The final cache suite also passed concurrently with marketing acceptance. Extant non-ignored cumulative patch content is approximately **108.25 MiB**, below 128 MiB. Keep auditing before future batches; artifact pinning is preservation in pushed history, not a deletion or an unverified release upload.
+
+
+## Training batch — 35 / 50 additional documents
+
+| Template | Distinct framework and editable module |
+|---|---|
+| ROLE ONBOARDING | Role-to-task learning passport, five learning gates, boundary/referral and feedback records |
+| SCENARIO PRACTICE | Three-route choice, assumption and debrief rehearsal; reversible branch navigation |
+| FACILITATOR GUIDE | SAY/ASK/OBSERVE cue fieldbook with five proposed timeboxes totalling 45 teaching minutes |
+| PEER COACHING | Bounded agreement, clarification, listening, options, action accord and ending record |
+| PROCESS REHEARSAL | Three-lane/four-step handoff loop with input/output continuity and exception cards |
+| SKILLS PORTFOLIO | Three-attempt/four-dimension evidence folio with revision rationale; no automatic grade |
+
+Each has ten complete English pages, five distinct illustrations, native editable Word, ten-page PDF, offline source ZIP, source CSV/JSON, image provenance and SHA manifests. The illustrations are five curated existing AI-generated assets per case (30 placements total), **not newly generated artwork**. The gallery and downloads state this accurately. Colours/layouts vary: ochre passport rail, terracotta branch board, copper cue deck, violet peer accord, navy swimlane ledger and forest evidence folio. Six browser geometries, six native Word block orders and framework-specific native tables differ.
+
+Collection: `/templates.html?format=文档&batch=training-expansion`. Combined originals: `/atelier/training-kit/download.html` (six editable Word + six PDF originals, byte-checked). Build: `npm run build:training-expansion`. Acceptance: `npm run test:training-expansion`. Sources: `scripts/training-expansion-content.json`, `scripts/prepare-training-expansion.py` and `tests/verify-training-models.mjs`. To prepare while preserving image bytes, run `python3 design-buddy-home/scripts/prepare-training-expansion.py --keep-images` from the repo root with Pillow installed in ignored `.cache/expansion-python`.
+
+The scenario branches work online and directly via file://: page 5 routes A/B/C to pages 6/7/8, each returning to page 5. Current exported HTML uses real internal anchors; Word originals/current exports use valid underscore-named bookmarks and internal hyperlinks. Branches are conceptual discussion routes, not predicted consequences or scored correct answers. Source excerpts/registers are read-only and stay fixed when practice prose/records are edited. Private notes are included in current Word/HTML and must be reviewed before sharing. Long edits may reflow.
+
+Model checks recompute the five unassessed onboarding gates, reversible branch graph, 5+8+12+12+8=45 teaching-minute plan, six planned coaching stages, four-step/three-role input-output chain and 3×4=12 unassessed evidence cells. CSV uses canonical LF; complete round trips preserve null unknown values and explicit not-assessed/not-rehearsed status. A missing score is not a zero or a failing grade. These examples establish no employment requirements, actual participants, attendance, confidentiality guarantee, operational authority, real performance improvement, professional accreditation or certification.
+
+Current additional expansion: **35 published / 50, 15 remaining**. Full gallery: **50 cases (49 published, one SWATCH draft), 606 authored pages**, target 65. Previous collections/local work are preserved. Gallery revision `20261030-rebuild-16` / SW v16 retain the existing activation handshake without clearing personal/unrelated caches. Next planned batch: five business-planning documents.
+
+At the start of this batch the local checkout was unexpectedly at the original base commit. Before any authoring, the active branch was fetched and fast-forwarded to the verified previous delivery `30a6473723855c7c98d4d697b66a8103a61603f4`, then all 130 existing pinned artifacts restored. Earlier deliveries were preserved, not recreated or silently rolled back.

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "scenario-practice",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 17054,
+      "sha256": "6d318593d078786f0c9a04d52df98b20db261bde931cd1b243b6276483d44290"
+    },
+    {
+      "path": "content.js",
+      "bytes": 13305,
+      "sha256": "8cb714ec9b3fe91c3e483549c3e7df3553aac91a90dab004bfa51293371c6b9f"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 546,
+      "sha256": "ead98cfbfc5d6ac60d707252c93dcf1d60a9ca2a0f834f0ecb536d5aeb377b2c"
+    },
+    {
+      "path": "scenario-practice.docx",
+      "bytes": 814118,
+      "sha256": "e7a3ef00b61c0a02dc1bb99ba0a2cfe09782cbfebe052ec2fe58ebf635662147"
+    },
+    {
+      "path": "scenario-practice.pdf",
+      "bytes": 892814,
+      "sha256": "5ce1e18e6d46dfbb55a21685a693360539ee4c96ec6d9cee6950415e9e121ba8"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 224,
+      "sha256": "ffeca58e158668722019b177c9e98bfed73811f4c8c04118311e421ee5f5fd6e"
+    },
+    {
+      "path": "source.json",
+      "bytes": 779,
+      "sha256": "3a568168c87552d7122694259a241aa70030296daa386816e4de10d1e8f0dbd0"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 170299,
+      "sha256": "c12751b37d922c52903922110645a6f7f1934b3617b60f29d86ecab1f5aeca8e"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 155619,
+      "sha256": "9025fe7200b0b28a3abd6a40b2e8610c846c9779371078189096a3cd280cd231"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 160956,
+      "sha256": "6040d51c66d4452903c299be468c08740cbd14f258d11e061d5d7c96160b2a7c"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 174212,
+      "sha256": "7b64590acd7fbeecbdbabfeaf0629216ff69b2adf95a79e41a6d2dc4001538fb"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 143546,
+      "sha256": "b78eabd79d2c74e53f2530fe56b4698c8b11e4ea1800fb3b48e632b2c198f580"
+    }
+  ]
+}

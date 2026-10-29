@@ -1,0 +1,34 @@
+{
+  "source": "authored-fictional-training-register",
+  "synthetic": true,
+  "notCertification": true,
+  "summary": {
+    "routes": 3,
+    "decisionPage": 5,
+    "actualIncidents": 0,
+    "scoredAnswers": null
+  },
+  "records": [
+    {
+      "branch": "A",
+      "choice": "seek clarification",
+      "discussion_page": 6,
+      "return_page": 5,
+      "evidence_status": "conceptual-not-predicted"
+    },
+    {
+      "branch": "B",
+      "choice": "proceed on an assumption",
+      "discussion_page": 7,
+      "return_page": 5,
+      "evidence_status": "conceptual-not-predicted"
+    },
+    {
+      "branch": "C",
+      "choice": "pause and name the condition",
+      "discussion_page": 8,
+      "return_page": 5,
+      "evidence_status": "conceptual-not-predicted"
+    }
+  ]
+}

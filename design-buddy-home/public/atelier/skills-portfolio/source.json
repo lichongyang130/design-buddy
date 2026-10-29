@@ -1,0 +1,99 @@
+{
+  "source": "authored-fictional-training-register",
+  "synthetic": true,
+  "notCertification": true,
+  "summary": {
+    "proposedAttempts": 3,
+    "dimensions": 4,
+    "evidenceCells": 12,
+    "assessedCells": 0,
+    "actualGrowth": null,
+    "certification": null
+  },
+  "records": [
+    {
+      "attempt": "A01",
+      "dimension": "clarity",
+      "status": "not-assessed",
+      "actual_artifact": null,
+      "score": null
+    },
+    {
+      "attempt": "A01",
+      "dimension": "source-context",
+      "status": "not-assessed",
+      "actual_artifact": null,
+      "score": null
+    },
+    {
+      "attempt": "A01",
+      "dimension": "qualification",
+      "status": "not-assessed",
+      "actual_artifact": null,
+      "score": null
+    },
+    {
+      "attempt": "A01",
+      "dimension": "revision-rationale",
+      "status": "not-assessed",
+      "actual_artifact": null,
+      "score": null
+    },
+    {
+      "attempt": "A02",
+      "dimension": "clarity",
+      "status": "not-assessed",
+      "actual_artifact": null,
+      "score": null
+    },
+    {
+      "attempt": "A02",
+      "dimension": "source-context",
+      "status": "not-assessed",
+      "actual_artifact": null,
+      "score": null
+    },
+    {
+      "attempt": "A02",
+      "dimension": "qualification",
+      "status": "not-assessed",
+      "actual_artifact": null,
+      "score": null
+    },
+    {
+      "attempt": "A02",
+      "dimension": "revision-rationale",
+      "status": "not-assessed",
+      "actual_artifact": null,
+      "score": null
+    },
+    {
+      "attempt": "A03",
+      "dimension": "clarity",
+      "status": "not-assessed",
+      "actual_artifact": null,
+      "score": null
+    },
+    {
+      "attempt": "A03",
+      "dimension": "source-context",
+      "status": "not-assessed",
+      "actual_artifact": null,
+      "score": null
+    },
+    {
+      "attempt": "A03",
+      "dimension": "qualification",
+      "status": "not-assessed",
+      "actual_artifact": null,
+      "score": null
+    },
+    {
+      "attempt": "A03",
+      "dimension": "revision-rationale",
+      "status": "not-assessed",
+      "actual_artifact": null,
+      "score": null
+    }
+  ]
+}
