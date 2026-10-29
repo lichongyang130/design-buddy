@@ -1,0 +1,77 @@
+{
+  "source": "authored-illustrative-marketing-register",
+  "synthetic": true,
+  "notActualCampaign": true,
+  "summary": {
+    "rewritePairs": 8,
+    "testedWinners": 0,
+    "legalClearance": null,
+    "measuredEngagement": null
+  },
+  "records": [
+    {
+      "rule_id": "V01",
+      "before": "Transform your workflow instantly.",
+      "preferred": "Review one step and identify what needs context.",
+      "reason": "unsupported outcome",
+      "status": "editorial-choice",
+      "measured_lift": null
+    },
+    {
+      "rule_id": "V02",
+      "before": "Works for everyone.",
+      "preferred": "Check whether the approach fits your task and access needs.",
+      "reason": "universal claim",
+      "status": "editorial-choice",
+      "measured_lift": null
+    },
+    {
+      "rule_id": "V03",
+      "before": "Effortless.",
+      "preferred": "Follow one documented step and review the result.",
+      "reason": "erased conditions",
+      "status": "editorial-choice",
+      "measured_lift": null
+    },
+    {
+      "rule_id": "V04",
+      "before": "Guaranteed results.",
+      "preferred": "State only the outcome supported by the available evidence.",
+      "reason": "unverified commitment",
+      "status": "editorial-choice",
+      "measured_lift": null
+    },
+    {
+      "rule_id": "V05",
+      "before": "The best solution.",
+      "preferred": "Describe the specific task and relevant limits.",
+      "reason": "unsupported ranking",
+      "status": "editorial-choice",
+      "measured_lift": null
+    },
+    {
+      "rule_id": "V06",
+      "before": "Click here.",
+      "preferred": "Review the concept outline.",
+      "reason": "unclear action",
+      "status": "editorial-choice",
+      "measured_lift": null
+    },
+    {
+      "rule_id": "V07",
+      "before": "Hurry, do not miss out.",
+      "preferred": "Review the actual conditions before deciding.",
+      "reason": "unsupported urgency",
+      "status": "editorial-choice",
+      "measured_lift": null
+    },
+    {
+      "rule_id": "V08",
+      "before": "We fix everything.",
+      "preferred": "Identify which part of the task needs clarification.",
+      "reason": "unbounded capability",
+      "status": "editorial-choice",
+      "measured_lift": null
+    }
+  ]
+}

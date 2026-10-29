@@ -1,0 +1,396 @@
+{
+  "work": {
+    "id": "editorial-calendar",
+    "title": "EDITORIAL CALENDAR",
+    "subtitle": "A pillar-to-brief editorial operating plan",
+    "category": "营销材料",
+    "layout": "calendar",
+    "color": "#146573",
+    "wash": "#ddf1f1",
+    "framework": "主题支柱与编辑排程",
+    "scope": "An illustrative twelve-slot publishing plan for Context Journal. Relative slots are not dates, publication commitments, audience measurements or assigned staff.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "marketing-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / EDITORIAL CALENDAR",
+      "title": "Give the publication a useful purpose.",
+      "lead": "Context Journal is a fictional editorial series about making working material easier to understand. Its purpose is to answer reader questions, not to fill an arbitrary posting quota.",
+      "body": "Organise the plan around explanation, practice and reflection. These are editorial pillars, not audience-tested categories. The twelve-slot register is a working structure with no actual publication dates or committed contributors.",
+      "subheading": "Purpose before cadence",
+      "detail": "A schedule should support the quality and usefulness of the work. It cannot establish that an audience exists or that the proposed cadence is feasible.",
+      "question": "Which recurring reader question makes this series worth creating?",
+      "records": [
+        {
+          "label": "Purpose",
+          "prompt": "Help readers examine how context travels with material."
+        },
+        {
+          "label": "Editorial promise",
+          "prompt": "Explain a task and offer a bounded practice."
+        },
+        {
+          "label": "Planning boundary",
+          "prompt": "No live publication or actual readership established."
+        }
+      ],
+      "image": 1,
+      "kind": "cover",
+      "evidenceRows": [
+        [
+          "RELATIVE SLOT",
+          "S01 / explain / article"
+        ],
+        [
+          "PLANNING MODEL",
+          "12 proposed slots; no actual dates, publication or audience."
+        ]
+      ]
+    },
+    {
+      "section": "02 / EDITORIAL CALENDAR",
+      "title": "Collect questions before assigning topics.",
+      "lead": "Why did I save this? What does the next person need? When should a note be revised? These questions create more useful starting points than broad promotional themes.",
+      "body": "Treat the question pool as an editorial hypothesis. Actual reader inquiry needs an appropriate source and context. Do not present authored questions as survey findings or imply that they represent a community.",
+      "subheading": "A question-led assignment",
+      "detail": "Each topic should connect a question to an intended takeaway. If the connection is weak, revise the brief before selecting a channel.",
+      "question": "What should a reader understand or try after this piece?",
+      "records": [
+        {
+          "label": "Explain question",
+          "prompt": "Why does a saved note lose its purpose?"
+        },
+        {
+          "label": "Practice question",
+          "prompt": "What context belongs beside an instruction?"
+        },
+        {
+          "label": "Reflect question",
+          "prompt": "When should the original explanation be revisited?"
+        }
+      ],
+      "image": 1,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "RELATIVE SLOT",
+          "S02 / practice / email"
+        ],
+        [
+          "PLANNING MODEL",
+          "12 proposed slots; no actual dates, publication or audience."
+        ]
+      ]
+    },
+    {
+      "section": "03 / EDITORIAL CALENDAR",
+      "title": "Use pillars as editorial boundaries.",
+      "lead": "Explain clarifies a concept. Practice offers a small, inspectable activity. Reflect examines what remains uncertain after trying an approach. Each pillar has a different job.",
+      "body": "The source plan assigns four slots to each pillar. Equal counts are a planning choice, not a recommendation about an optimal content mix or a report of previous performance.",
+      "subheading": "Three pillars, three types of value",
+      "detail": "Keep the pillar visible in a brief so the writer knows whether to define, guide or question. A single article need not do all three equally.",
+      "question": "Does the proposed treatment fit its pillar’s job?",
+      "records": [
+        {
+          "label": "Explain",
+          "prompt": "Clarify an idea and its limits."
+        },
+        {
+          "label": "Practice",
+          "prompt": "Offer a specific activity with a review point."
+        },
+        {
+          "label": "Reflect",
+          "prompt": "Examine an assumption or unresolved condition."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "RELATIVE SLOT",
+          "S03 / reflect / social"
+        ],
+        [
+          "PLANNING MODEL",
+          "12 proposed slots; no actual dates, publication or audience."
+        ]
+      ]
+    },
+    {
+      "section": "04 / EDITORIAL CALENDAR",
+      "title": "Build a pool before committing slots.",
+      "lead": "Possible topics include a note with a question, a clearer handover, a source-context check and a revision note. Each can be shaped by a different reader task.",
+      "body": "An idea belongs in the pool until its purpose, source needs and scope are clear. A promising title does not reserve a publication date or imply that a contributor has accepted the work.",
+      "subheading": "From idea to viable brief",
+      "detail": "Separate backlog from scheduled work. The supplied twelve slots are relative planning units, not a real production calendar.",
+      "question": "Which idea has enough definition to move into a brief?",
+      "records": [
+        {
+          "label": "Topic route",
+          "prompt": "Keep a question beside a saved passage."
+        },
+        {
+          "label": "Source need",
+          "prompt": "An appropriate example with permission to use it."
+        },
+        {
+          "label": "Commitment status",
+          "prompt": "Proposed only; no actual assignment."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "RELATIVE SLOT",
+          "S04 / explain / handout"
+        ],
+        [
+          "PLANNING MODEL",
+          "12 proposed slots; no actual dates, publication or audience."
+        ]
+      ]
+    },
+    {
+      "section": "05 / EDITORIAL CALENDAR",
+      "title": "Design recognisable editorial formats.",
+      "lead": "A short explainer defines one idea. A practice sheet guides one task. A reflection note asks what the first explanation missed. Repetition of format can help readers know what to expect.",
+      "body": "The format should support the material rather than force every topic into the same length. Accessibility, image rights and source checking remain part of the brief for each treatment.",
+      "subheading": "Format is not a performance claim",
+      "detail": "No length, cadence or visual treatment is presented as proven to increase engagement. Choose a form that can communicate the task honestly.",
+      "question": "What does this format make easier to understand?",
+      "records": [
+        {
+          "label": "Explainer",
+          "prompt": "One idea, one concrete example, one limitation."
+        },
+        {
+          "label": "Practice sheet",
+          "prompt": "One task, clear steps and a review question."
+        },
+        {
+          "label": "Reflection note",
+          "prompt": "One assumption and a reason to revisit it."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "RELATIVE SLOT",
+          "S05 / practice / article"
+        ],
+        [
+          "PLANNING MODEL",
+          "12 proposed slots; no actual dates, publication or audience."
+        ]
+      ]
+    },
+    {
+      "section": "06 / EDITORIAL CALENDAR",
+      "title": "Make the brief usable by another editor.",
+      "lead": "A usable brief states the reader question, the intended takeaway and the evidence needed. It also identifies what the piece should not imply.",
+      "body": "For a context-note practice sheet, the takeaway is to connect a saved passage with its purpose. The source need is an appropriate example; the boundary is that completing the exercise does not establish a productivity benefit.",
+      "subheading": "An actual draft brief",
+      "detail": "Working title: Keep the question with the note. Treatment: a short explanation followed by a bounded annotation activity and a review question.",
+      "question": "Could another editor draft the piece without inventing its evidence?",
+      "records": [
+        {
+          "label": "Reader question",
+          "prompt": "Why did I save this passage?"
+        },
+        {
+          "label": "Takeaway",
+          "prompt": "Write the question beside the material."
+        },
+        {
+          "label": "Evidence boundary",
+          "prompt": "No measured improvement or customer result supplied."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "RELATIVE SLOT",
+          "S06 / reflect / email"
+        ],
+        [
+          "PLANNING MODEL",
+          "12 proposed slots; no actual dates, publication or audience."
+        ]
+      ]
+    },
+    {
+      "section": "07 / EDITORIAL CALENDAR",
+      "title": "Distribute without duplicating blindly.",
+      "lead": "The illustrative plan uses article, email, social and handout channels. Each appears in three relative slots, but the same treatment need not fit every channel.",
+      "body": "An email can introduce the question, an article can explain the task, a social post can point to the explanation and a handout can support practice. These are proposed roles, not actual sends or reach.",
+      "subheading": "Channel handoff",
+      "detail": "Retain the source link and the important qualification when shortening a piece. Verify real destinations before any release.",
+      "question": "What does the reader need at this particular touchpoint?",
+      "records": [
+        {
+          "label": "Article",
+          "prompt": "Explain the task and its limits."
+        },
+        {
+          "label": "Email or social",
+          "prompt": "Introduce one question and an honest next action."
+        },
+        {
+          "label": "Handout",
+          "prompt": "Support an activity without implying a guaranteed result."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "RELATIVE SLOT",
+          "S07 / explain / social"
+        ],
+        [
+          "PLANNING MODEL",
+          "12 proposed slots; no actual dates, publication or audience."
+        ]
+      ]
+    },
+    {
+      "section": "08 / EDITORIAL CALENDAR",
+      "title": "Protect review time in the workflow.",
+      "lead": "Move from idea to brief, draft, review and ready only when the relevant work has happened. A status label should describe the artifact, not express optimism.",
+      "body": "The supplied slot register remains proposed. No named writer, reviewer or publication authority is assigned. A real plan needs responsibility, accessible review routes and a method for handling corrections.",
+      "subheading": "Review before readiness",
+      "detail": "Distinguish editorial review from product, source and rights checks. A reviewer’s name is not permission to publish material outside the agreed scope.",
+      "question": "Which gate could still stop this piece from becoming ready?",
+      "records": [
+        {
+          "label": "Editorial check",
+          "prompt": "The piece answers its stated reader question."
+        },
+        {
+          "label": "Source check",
+          "prompt": "Claims match appropriate, reviewable material."
+        },
+        {
+          "label": "Rights check",
+          "prompt": "Distribution and adaptation permissions are confirmed."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "RELATIVE SLOT",
+          "S08 / practice / handout"
+        ],
+        [
+          "PLANNING MODEL",
+          "12 proposed slots; no actual dates, publication or audience."
+        ]
+      ]
+    },
+    {
+      "section": "09 / EDITORIAL CALENDAR",
+      "title": "Define observations before reporting rates.",
+      "lead": "A real review might examine delivery, reading, questions received or completion of an activity. Each observation needs a definition, time window and relevant denominator.",
+      "body": "This plan contains no audience, traffic or engagement data. Twelve proposed slots are not twelve published pieces, and an equal channel count is not evidence of equal reach or value.",
+      "subheading": "Planning counts are not outcomes",
+      "detail": "Choose observations that fit the editorial purpose. Do not substitute a convenient platform number for whether the explanation helped a reader understand the task.",
+      "question": "What observation would speak to the stated purpose?",
+      "records": [
+        {
+          "label": "Plan count",
+          "prompt": "12 proposed slots; none marked published."
+        },
+        {
+          "label": "Missing measurement",
+          "prompt": "No audience or delivery observations supplied."
+        },
+        {
+          "label": "Review question",
+          "prompt": "Did the piece answer its intended reader question?"
+        }
+      ],
+      "image": 5,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "RELATIVE SLOT",
+          "S09 / reflect / article"
+        ],
+        [
+          "PLANNING MODEL",
+          "12 proposed slots; no actual dates, publication or audience."
+        ]
+      ]
+    },
+    {
+      "section": "10 / EDITORIAL CALENDAR",
+      "title": "Use the review to change the next brief.",
+      "lead": "After actual publication, identify which questions the piece answered and which it left unresolved. Retain corrections and source changes as part of the editorial record.",
+      "body": "The next cycle should respond to appropriate evidence rather than merely repeat the same slot pattern. This fictional plan provides no results, so it cannot identify a winning pillar, channel or cadence.",
+      "subheading": "A learning record for the next cycle",
+      "detail": "Carry forward one useful revision to the brief, one unresolved source issue and one question worth returning to. Keep proposed work separate from completed publication.",
+      "question": "Which revision would make the next piece more useful?",
+      "records": [
+        {
+          "label": "Keep",
+          "prompt": "A clear relationship between question and treatment."
+        },
+        {
+          "label": "Change",
+          "prompt": "Any explanation that obscures its limits."
+        },
+        {
+          "label": "Investigate",
+          "prompt": "Actual reader needs and feasible editorial capacity."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix",
+      "evidenceRows": [
+        [
+          "RELATIVE SLOT",
+          "S10 / explain / email"
+        ],
+        [
+          "PLANNING MODEL",
+          "12 proposed slots; no actual dates, publication or audience."
+        ]
+      ]
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for editorial-calendar"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: story-workshop/01.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: bright-edit/03.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: creative-treatment/01.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: public-thread/02.jpg"
+    }
+  ]
+}

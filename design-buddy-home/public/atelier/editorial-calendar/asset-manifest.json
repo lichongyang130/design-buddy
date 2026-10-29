@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "editorial-calendar",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 16205,
+      "sha256": "49e4bb870574acb217bfa177255f5cd58fa1803eea87ee89c12441966e8e2e79"
+    },
+    {
+      "path": "content.js",
+      "bytes": 12751,
+      "sha256": "be433459739ce5965c4428d95fff5e59b0a6bb18eee499672196abd086c9e115"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 535,
+      "sha256": "198f42d2ee0954f2ae97f5bb011d50882ece555595366e39745bccdaab709b84"
+    },
+    {
+      "path": "editorial-calendar.docx",
+      "bytes": 855539,
+      "sha256": "7882ae1d07daff3c95133328d3df194af42b5ec29dde2dfd75e00c69fa84e55f"
+    },
+    {
+      "path": "editorial-calendar.pdf",
+      "bytes": 930048,
+      "sha256": "57fc77503199388996048ab0772cf4dc55d0b66d01542923e662159d7ab29da2"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 665,
+      "sha256": "63a722d558895d8fd9fe3829898c1dc206df478a6a42ccc364d1d99e5f878f38"
+    },
+    {
+      "path": "source.json",
+      "bytes": 2602,
+      "sha256": "ff338bd9281f3d189e2e619a21fa9229bfa379cc0dcb8eeece8068f6a5b5c218"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 216706,
+      "sha256": "346a4385c86da277367e5cd95b97294cd7d6ec72aa029aaca40cf676c9c79d51"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 182854,
+      "sha256": "cce1754fb63f2258f296a9120a590b024aff91e760618a6241eeb70c0d3e2391"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 144065,
+      "sha256": "e7a6e1f5ded392c75a4d399ee792b18984c52c40e0a8c8efae88913f928f438e"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 201821,
+      "sha256": "1b61d651c9fe2ba5e910c63e8868537ec03529cd3ba3c7c64e46516fa0708593"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 100912,
+      "sha256": "33a90d6718967d01c19258522a1c230be1e842df13f820e5bd8ec0968345ebf1"
+    }
+  ]
+}

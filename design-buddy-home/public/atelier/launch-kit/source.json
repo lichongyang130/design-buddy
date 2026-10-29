@@ -1,0 +1,33 @@
+{
+  "source": "authored-illustrative-marketing-register",
+  "synthetic": true,
+  "notActualCampaign": true,
+  "summary": {
+    "plannedChannels": 3,
+    "releasedPlacements": 0,
+    "actualResults": null
+  },
+  "records": [
+    {
+      "channel": "email",
+      "message": "A saved note can lose its question. Explore the Fold Notes concept.",
+      "action": "Review the concept outline",
+      "status": "draft",
+      "actual_sends": null
+    },
+    {
+      "channel": "social",
+      "message": "Keep the thought beside the note. Concept preview.",
+      "action": "Review the concept outline",
+      "status": "draft",
+      "actual_sends": null
+    },
+    {
+      "channel": "landing-page",
+      "message": "Read the proposed capture, connect and revisit workflow.",
+      "action": "Review the concept outline",
+      "status": "draft",
+      "actual_sends": null
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+slot,pillar,channel,topic,status,actual_date
+S01,explain,article,Why save a question?,proposed,
+S02,practice,email,Annotate one passage,proposed,
+S03,reflect,social,Revisit a changed note,proposed,
+S04,explain,handout,Explain a handover,proposed,
+S05,practice,article,Write a context card,proposed,
+S06,reflect,email,Question an instruction,proposed,
+S07,explain,social,Keep source context,proposed,
+S08,practice,handout,Check an intended reader,proposed,
+S09,reflect,article,Reflect on an exception,proposed,
+S10,explain,email,Explain a revision,proposed,
+S11,practice,social,Practice a source check,proposed,
+S12,reflect,handout,Review an open question,proposed,

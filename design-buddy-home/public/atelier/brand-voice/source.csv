@@ -1,0 +1,9 @@
+rule_id,before,preferred,reason,status,measured_lift
+V01,Transform your workflow instantly.,Review one step and identify what needs context.,unsupported outcome,editorial-choice,
+V02,Works for everyone.,Check whether the approach fits your task and access needs.,universal claim,editorial-choice,
+V03,Effortless.,Follow one documented step and review the result.,erased conditions,editorial-choice,
+V04,Guaranteed results.,State only the outcome supported by the available evidence.,unverified commitment,editorial-choice,
+V05,The best solution.,Describe the specific task and relevant limits.,unsupported ranking,editorial-choice,
+V06,Click here.,Review the concept outline.,unclear action,editorial-choice,
+V07,"Hurry, do not miss out.",Review the actual conditions before deciding.,unsupported urgency,editorial-choice,
+V08,We fix everything.,Identify which part of the task needs clarification.,unbounded capability,editorial-choice,

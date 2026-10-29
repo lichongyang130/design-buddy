@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    "launch-kit",
+    "case-story",
+    "comparison-guide",
+    "editorial-calendar",
+    "brand-voice",
+    "campaign-playbook"
+  ],
+  "pagesPerCase": 10,
+  "distinctImagesPerCase": 5,
+  "newImages": 6,
+  "curatedExistingImages": 24,
+  "completedOf50": 29
+}

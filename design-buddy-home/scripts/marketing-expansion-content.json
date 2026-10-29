@@ -1,0 +1,1436 @@
+[
+  {
+    "id": "launch-kit",
+    "title": "LAUNCH KIT",
+    "subtitle": "A channel-message launch system",
+    "category": "营销材料",
+    "layout": "launch",
+    "color": "#2049a0",
+    "wash": "#e6edff",
+    "framework": "渠道消息矩阵",
+    "sources": [
+      "bright-edit/02",
+      "creative-treatment/03",
+      "founder-narrative/01",
+      "story-workshop/02"
+    ],
+    "scope": "Fictional launch copy for Fold Notes, a proposed context-card concept. No product launch, subscriber list, deliverability or results are established.",
+    "chapters": [
+      {
+        "title": "Give the launch one clear job.",
+        "lead": "Keep the thought beside the note. Fold Notes is a fictional concept for returning to a saved idea without losing the question that made it useful.",
+        "body": "The launch job is explanation, not a promise of productivity. Invite a reader to inspect the concept and decide whether the proposed interaction fits a real task.",
+        "subheading": "One message, not every benefit",
+        "detail": "Proposed primary action: review the concept outline. No live destination, product access or release date is supplied.",
+        "question": "Can a reader explain the concept after one short encounter?",
+        "records": [
+          {
+            "label": "Message",
+            "prompt": "Keep the thought beside the note."
+          },
+          {
+            "label": "Desired action",
+            "prompt": "Review the concept outline; destination to be confirmed."
+          },
+          {
+            "label": "Success question",
+            "prompt": "Did the explanation make the proposed task clear?"
+          }
+        ]
+      },
+      {
+        "title": "Write for a task, not a stereotype.",
+        "lead": "The intended reader returns to saved material while writing, teaching or planning. The task matters more than an assumed age, title or purchasing habit.",
+        "body": "Separate a returning reader, a first-time reviewer and an organisational evaluator. These are planning lenses, not researched segments or confirmed demand.",
+        "subheading": "Three distinct entry points",
+        "detail": "Ask each reader what they need to understand before adapting a headline. Do not infer that task similarity establishes willingness to pay.",
+        "question": "Which reader question should this channel answer first?",
+        "records": [
+          {
+            "label": "Returning reader",
+            "prompt": "Why did I save this note?"
+          },
+          {
+            "label": "First-time reviewer",
+            "prompt": "What is the proposed interaction?"
+          },
+          {
+            "label": "Evaluator",
+            "prompt": "What evidence would support using this approach?"
+          }
+        ]
+      },
+      {
+        "title": "Build a message spine.",
+        "lead": "Save a note with its question. Return to the context before turning it into a new explanation. That is the proposed Fold Notes workflow.",
+        "body": "Use the same meaning across every channel. Shorter versions may remove detail, but must not upgrade a concept into a released feature or a measured customer benefit.",
+        "subheading": "Message hierarchy",
+        "detail": "Lead with the task, explain the interaction, then state the next action. Keep qualifications next to the claim they constrain.",
+        "question": "Does each adaptation preserve the same capability boundary?",
+        "records": [
+          {
+            "label": "Task",
+            "prompt": "Recover the reason a note was saved."
+          },
+          {
+            "label": "Proposed mechanism",
+            "prompt": "Keep a note linked to its original question."
+          },
+          {
+            "label": "Qualification",
+            "prompt": "Concept only; no working capability verified."
+          }
+        ]
+      },
+      {
+        "title": "Choose headlines by emphasis.",
+        "lead": "Keep the thought beside the note. A second route is: Return to the question, not just the quotation. A third is: Give a saved idea its context.",
+        "body": "The three headlines emphasise proximity, retrieval and interpretation. They are editorial alternatives, not the winners of an audience test. Choose against the page purpose before seeking appropriate feedback.",
+        "subheading": "Headline review",
+        "detail": "Avoid best, effortless and proven. None is supported by this fictional brief, and each could imply evidence the team does not have.",
+        "question": "Which headline best prepares the reader for the actual explanation?",
+        "records": [
+          {
+            "label": "Route A",
+            "prompt": "Keep the thought beside the note."
+          },
+          {
+            "label": "Route B",
+            "prompt": "Return to the question, not just the quotation."
+          },
+          {
+            "label": "Route C",
+            "prompt": "Give a saved idea its context."
+          }
+        ]
+      },
+      {
+        "title": "Explain the proposed interaction.",
+        "lead": "A context card brings together a saved passage, the question that prompted it and a note about where it might be useful next.",
+        "body": "The proposed workflow is capture, connect and revisit. Explain those steps as a design direction. Do not describe integrations, collaboration, security or offline operation as shipped features.",
+        "subheading": "Short product description",
+        "detail": "Fold Notes explores a simple question: could preserving the reason for a note make later review more meaningful? A concept review should test that question.",
+        "question": "Which part requires an actual demonstration before publication?",
+        "records": [
+          {
+            "label": "Capture",
+            "prompt": "Select material and retain its source context."
+          },
+          {
+            "label": "Connect",
+            "prompt": "Associate the material with a working question."
+          },
+          {
+            "label": "Revisit",
+            "prompt": "Review the connection before reusing the material."
+          }
+        ]
+      },
+      {
+        "title": "Keep proof beside the claim.",
+        "lead": "The phrase designed to preserve context describes an intention. The phrase improves recall would describe an outcome and needs different evidence.",
+        "body": "Maintain a claim register before publishing. Mark the concept statements as illustrative and outcome claims as unsupported. Copy approval is not scientific validation or permission to reuse someone else’s material.",
+        "subheading": "Claim review boundary",
+        "detail": "Use the supplied source register as an authored exercise. Replace it only after checking the relevant product, evidence and rights information.",
+        "question": "What would a reasonable reader believe this sentence proves?",
+        "records": [
+          {
+            "label": "Allowed direction",
+            "prompt": "A proposed way to keep notes with their questions."
+          },
+          {
+            "label": "Unsupported outcome",
+            "prompt": "No recall or productivity result supplied."
+          },
+          {
+            "label": "Review requirement",
+            "prompt": "Check capability, evidence and source rights separately."
+          }
+        ]
+      },
+      {
+        "title": "Adapt meaning to the channel.",
+        "lead": "Email: A saved note can lose its question. Explore the Fold Notes concept. Social: Keep the thought beside the note. Read the concept outline.",
+        "body": "Landing-page copy has room to explain capture, connect and revisit. Neither short form should omit the concept status when that omission changes the reader’s understanding.",
+        "subheading": "Channel-specific draft copy",
+        "detail": "These are proposed copy routes, not sent messages. The channel register contains three planned placements with no delivery or audience measurements.",
+        "question": "What must remain visible even in the shortest version?",
+        "records": [
+          {
+            "label": "Email",
+            "prompt": "Explore a concept for keeping notes in context."
+          },
+          {
+            "label": "Social",
+            "prompt": "Keep the thought beside the note. Concept preview."
+          },
+          {
+            "label": "Landing page",
+            "prompt": "Read the proposed workflow and its open questions."
+          }
+        ]
+      },
+      {
+        "title": "Make the next action honest.",
+        "lead": "Review the concept outline is more accurate than start now when no working product or public destination has been established.",
+        "body": "Match the action to a real destination before release. Describe any requested information and its purpose. Do not imply enrolment, availability or a promised reply without an operational basis.",
+        "subheading": "Action and destination check",
+        "detail": "A button label is not a functioning service. Verify the destination, accessible name, form behaviour and privacy notice in the actual publishing environment.",
+        "question": "Can the destination fulfil exactly what the action promises?",
+        "records": [
+          {
+            "label": "Primary action",
+            "prompt": "Review the concept outline."
+          },
+          {
+            "label": "Destination status",
+            "prompt": "No live destination supplied in this template."
+          },
+          {
+            "label": "Data request",
+            "prompt": "No sign-up flow or collection permission established."
+          }
+        ]
+      },
+      {
+        "title": "Review the release as a system.",
+        "lead": "Read the headline, description, qualification and next action together. A correct disclaimer cannot repair a misleading headline that the reader sees first.",
+        "body": "Assign product, editorial and rights review separately. The source register leaves all three placements at draft status. No reviewer or release authority has been appointed by this example.",
+        "subheading": "Pre-publication gates",
+        "detail": "Check accessible text, image rights and destination behaviour alongside the message. A completed checklist records a review; it does not certify compliance.",
+        "question": "Which unresolved gate should stop publication?",
+        "records": [
+          {
+            "label": "Editorial gate",
+            "prompt": "Meaning is consistent across the three placements."
+          },
+          {
+            "label": "Product gate",
+            "prompt": "Capability language matches an inspectable artifact."
+          },
+          {
+            "label": "Rights gate",
+            "prompt": "Use and distribution permissions are checked."
+          }
+        ]
+      },
+      {
+        "title": "Learn without inventing a launch result.",
+        "lead": "After a real release, compare the observed reader response with the explanation task. Start with what was actually delivered and which destinations were available.",
+        "body": "This template has no impressions, sends, clicks or conversions. Record denominators, time windows and consent conditions before reporting rates. Separate a reader’s confusion from a product-quality conclusion.",
+        "subheading": "Review questions, not reported performance",
+        "detail": "Carry forward the clearest unresolved question. Revise the message when its meaning fails; do not treat an untested headline choice as a measured winner.",
+        "question": "What evidence would justify keeping or changing the message?",
+        "records": [
+          {
+            "label": "Delivery record",
+            "prompt": "Not supplied; planned copy is not a sent campaign."
+          },
+          {
+            "label": "Comprehension question",
+            "prompt": "Could readers describe the proposed interaction?"
+          },
+          {
+            "label": "Next revision",
+            "prompt": "Change the smallest confusing part and review again."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-story",
+    "title": "CASE STORY",
+    "subtitle": "A permission-aware narrative feature",
+    "category": "营销材料",
+    "layout": "story",
+    "color": "#a14426",
+    "wash": "#f7e4d6",
+    "framework": "背景行动变化叙事",
+    "sources": [
+      "interview-synthesis/01",
+      "local-table/02",
+      "open-shelf/03",
+      "founder-narrative/01"
+    ],
+    "scope": "An authored fictional scenario about a workshop handover. Not a real customer case, interview, testimonial, permission record or measured improvement.",
+    "chapters": [
+      {
+        "title": "Name the story’s status first.",
+        "lead": "A clearer handover begins with a question. In this fictional workshop story, a maker wants the next person to understand why a production note matters.",
+        "body": "Use the narrative to explore a communication problem, not to imply a customer endorsement. The characters and sequence are authored examples, and no interview or publication permission has been obtained.",
+        "subheading": "Permission before promotion",
+        "detail": "An actual case study needs a defined scope, participant agreement and review process. Illustration does not provide likeness or testimonial rights.",
+        "question": "Would a reader mistake this story for a real customer account?",
+        "records": [
+          {
+            "label": "Story status",
+            "prompt": "Authored fictional scenario; no actual customer."
+          },
+          {
+            "label": "Permission status",
+            "prompt": "Not obtained; no real participant approached."
+          },
+          {
+            "label": "Publication boundary",
+            "prompt": "Do not present the narrative as a testimonial."
+          }
+        ]
+      },
+      {
+        "title": "Set a scene without a success claim.",
+        "lead": "A small ceramics workshop prepares materials for the next shift. A note lists the objects to finish, but does not explain why one batch needs special attention.",
+        "body": "The scene establishes a task and a missing piece of context. It does not establish the frequency of this problem, the size of the workshop or the financial cost of a misunderstanding.",
+        "subheading": "Background worth keeping",
+        "detail": "Describe only the details needed to understand the decision. In a real case, check the setting and operational details with the relevant participant.",
+        "question": "Which contextual detail explains the task rather than decorating it?",
+        "records": [
+          {
+            "label": "Setting",
+            "prompt": "Fictional ceramics workshop between shifts."
+          },
+          {
+            "label": "Task",
+            "prompt": "Explain a batch-specific decision to the next maker."
+          },
+          {
+            "label": "Missing context",
+            "prompt": "Why this batch needs a different review."
+          }
+        ]
+      },
+      {
+        "title": "Make the challenge observable.",
+        "lead": "The next maker can read what to do but cannot see the reasoning behind the instruction. The challenge is continuity of understanding, not a proven productivity loss.",
+        "body": "A real story would need evidence of the original practice and its limitations. Avoid manufacturing a dramatic before-state simply to make the proposed change appear effective.",
+        "subheading": "A narrow challenge statement",
+        "detail": "The note separates instruction from explanation. That is the fictional tension; claims about delays, mistakes or savings are not supplied.",
+        "question": "What observation would support the challenge in an actual workshop?",
+        "records": [
+          {
+            "label": "Before-state",
+            "prompt": "Instruction exists without its original rationale."
+          },
+          {
+            "label": "Consequence question",
+            "prompt": "Can the next maker interpret the exception?"
+          },
+          {
+            "label": "Evidence gap",
+            "prompt": "No observation or error record supplied."
+          }
+        ]
+      },
+      {
+        "title": "Explain the choice and alternatives.",
+        "lead": "The maker chooses to add a short context card beside the batch note. Another option would be a conversation or a clearer annotation on the original sheet.",
+        "body": "The choice is modest and reversible. It is not a claim that one product outperforms all alternatives. A credible case acknowledges what was considered and why the selected approach fit the immediate task.",
+        "subheading": "Decision rationale",
+        "detail": "Keep the rationale separate from an outcome. A plausible reason for trying something does not prove that the trial worked.",
+        "question": "Could a simpler alternative address the same need?",
+        "records": [
+          {
+            "label": "Chosen approach",
+            "prompt": "Add a short explanation beside the instruction."
+          },
+          {
+            "label": "Alternative",
+            "prompt": "Clarify the existing sheet or speak directly."
+          },
+          {
+            "label": "Selection reason",
+            "prompt": "Keep the rationale available at the handover."
+          }
+        ]
+      },
+      {
+        "title": "Show the action in sequence.",
+        "lead": "The maker writes the batch reference, the reason for the exception and the question the next shift should check before continuing.",
+        "body": "A second person reads the card and identifies what remains unclear. This is the authored action sequence, not an observed adoption process or a record of staff training.",
+        "subheading": "Action with a review point",
+        "detail": "The card does not replace specialist judgement or operational safety instructions. In an actual setting, confirm how the note fits authorised procedures.",
+        "question": "Where would the receiving person ask for clarification?",
+        "records": [
+          {
+            "label": "Step one",
+            "prompt": "Link the instruction to the relevant batch."
+          },
+          {
+            "label": "Step two",
+            "prompt": "Explain the reason for the exception."
+          },
+          {
+            "label": "Step three",
+            "prompt": "Leave an explicit question for the next reviewer."
+          }
+        ]
+      },
+      {
+        "title": "Describe change without making up a result.",
+        "lead": "The proposed after-state is a handover note that carries both instruction and rationale. Whether that changes understanding or work quality remains an open question.",
+        "body": "No before-and-after measurement, time saving or customer quotation exists in this example. A real outcome section should identify its source, timeframe and uncertainty instead of substituting a persuasive number.",
+        "subheading": "Outcome evidence is absent",
+        "detail": "Use the phrase proposed after-state until an appropriate observation exists. The narrative structure is complete even when a real-world result is unknown.",
+        "question": "What source would support a change in understanding?",
+        "records": [
+          {
+            "label": "Proposed change",
+            "prompt": "Instruction and rationale appear together."
+          },
+          {
+            "label": "Measured result",
+            "prompt": "Not supplied; no before-and-after comparison."
+          },
+          {
+            "label": "Quote status",
+            "prompt": "No participant quotation or endorsement supplied."
+          }
+        ]
+      },
+      {
+        "title": "Keep a source trail for every assertion.",
+        "lead": "A publishable case lets a reviewer distinguish direct observation, participant interpretation and the writer’s summary. This fictional story contains only authored narrative.",
+        "body": "The five-item source register marks setting, challenge, action, outcome and quotation boundaries. It is not an interview transcript or a record of participant approval.",
+        "subheading": "Source classes, not invented citations",
+        "detail": "For a real case, retain reviewable notes and the permitted scope of use. Do not treat a polished sentence as evidence merely because it sounds specific.",
+        "question": "Can each assertion be traced to an appropriate source?",
+        "records": [
+          {
+            "label": "Observation",
+            "prompt": "None supplied for this authored scenario."
+          },
+          {
+            "label": "Interpretation",
+            "prompt": "Writer’s illustrative explanation, not participant testimony."
+          },
+          {
+            "label": "Approval",
+            "prompt": "No actual source or participant review completed."
+          }
+        ]
+      },
+      {
+        "title": "Give limitations space in the story.",
+        "lead": "A context card may help only when the next person can find it, interpret it and act within the relevant procedure. The card itself guarantees none of those conditions.",
+        "body": "The example does not generalise to other workshops or tasks. An actual case should describe dependencies and alternative explanations rather than turning one account into a universal benefit.",
+        "subheading": "Limits that affect interpretation",
+        "detail": "Permission, accessibility, workflow fit and operational responsibility need separate checks. A narrative cannot settle them by implication.",
+        "question": "Which condition could make the proposed approach unsuitable?",
+        "records": [
+          {
+            "label": "Dependency",
+            "prompt": "The receiving person can find and interpret the note."
+          },
+          {
+            "label": "Alternative explanation",
+            "prompt": "A clearer original instruction may be sufficient."
+          },
+          {
+            "label": "Generalisation",
+            "prompt": "No broader effectiveness claim established."
+          }
+        ]
+      },
+      {
+        "title": "Extract a useful lesson, not an endorsement.",
+        "lead": "The lesson is to keep an instruction close to its reason and to leave room for the next person’s question. That is an editorial principle, not a customer result.",
+        "body": "If adapting a real case, distinguish a paraphrase from a quotation and agree the permitted attribution. Do not place invented words inside quotation marks or attach them to a real person.",
+        "subheading": "A reusable editorial takeaway",
+        "detail": "Try this review question: what would the next person need to understand before using this note? It invites inquiry without claiming a guaranteed outcome.",
+        "question": "Does the takeaway remain honest without the story’s fictional setting?",
+        "records": [
+          {
+            "label": "Lesson",
+            "prompt": "Keep the reason near the instruction."
+          },
+          {
+            "label": "Attribution",
+            "prompt": "No actual speaker or participant endorsement."
+          },
+          {
+            "label": "Reuse boundary",
+            "prompt": "Check quotation and attribution permissions separately."
+          }
+        ]
+      },
+      {
+        "title": "Close with a relevant conversation.",
+        "lead": "If your handovers lose context, start by examining one note with the people who use it. Ask what information is missing before choosing a new tool.",
+        "body": "This is an invitation to consider a task, not an offer of a functioning service. A real contact destination should explain what the reader can expect and how any shared information will be used.",
+        "subheading": "Next step with a clear boundary",
+        "detail": "Review the story status and permissions again before sharing. Retain the distinction between an illustrative case and evidence from an actual organisation.",
+        "question": "What is the smallest appropriate next conversation?",
+        "records": [
+          {
+            "label": "Reader action",
+            "prompt": "Review one handover note with its intended reader."
+          },
+          {
+            "label": "Contact status",
+            "prompt": "No live contact service or response promise supplied."
+          },
+          {
+            "label": "Sharing check",
+            "prompt": "Keep fictional status and source limits visible."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "comparison-guide",
+    "title": "COMPARISON GUIDE",
+    "subtitle": "A task-first option decision workbook",
+    "category": "营销材料",
+    "layout": "compare",
+    "color": "#5b386e",
+    "wash": "#eee4f6",
+    "framework": "需求到选项对照",
+    "sources": [
+      "visual-literacy/01",
+      "form-study/02",
+      "landscape-scan/01",
+      "technical-thesis/01"
+    ],
+    "scope": "Three fictional note-organising concepts, with assumed capabilities for teaching comparison. Not verified products, procurement advice, prices or market research.",
+    "chapters": [
+      {
+        "title": "Start with the decision task.",
+        "lead": "Choose a way to keep working material understandable when you return to it. This guide compares three fictional approaches, not real competing products.",
+        "body": "Begin with the task and the constraints that would make an option unsuitable. The point is to expose trade-offs, not to manufacture a winner or imply that a larger feature count means greater value.",
+        "subheading": "Decision before feature counting",
+        "detail": "The comparison uses authored assumptions. Validate any real product capability and procurement requirement independently before adapting the guide.",
+        "question": "What must the chosen approach help the reader do?",
+        "records": [
+          {
+            "label": "Task",
+            "prompt": "Return to material with enough context to use it."
+          },
+          {
+            "label": "Decision scope",
+            "prompt": "Compare fictional organising approaches."
+          },
+          {
+            "label": "Non-goal",
+            "prompt": "No ranking of actual vendors or products."
+          }
+        ]
+      },
+      {
+        "title": "Turn needs into checkable criteria.",
+        "lead": "A useful criterion describes a task condition: keep an order, add a context note, or carry a small set of material without a network connection.",
+        "body": "Separate essential constraints from preferences. A reader may care more about portability than indexing, while another may need a clear review trail. Those differences should remain visible rather than disappear inside an unexplained score.",
+        "subheading": "Needs without arbitrary weights",
+        "detail": "The guide supplies four binary assumptions for illustration. It does not assign importance on behalf of a buyer or claim that the assumptions are verified.",
+        "question": "Which requirement would rule out an otherwise appealing option?",
+        "records": [
+          {
+            "label": "Essential",
+            "prompt": "Define the task condition that cannot be compromised."
+          },
+          {
+            "label": "Preference",
+            "prompt": "Record a benefit that may be traded off."
+          },
+          {
+            "label": "Unknown",
+            "prompt": "Check requirements that the current model does not address."
+          }
+        ]
+      },
+      {
+        "title": "Use the same comparison rules.",
+        "lead": "The three concepts are a sequence folio, a context-card box and a review binder. Each is described using the same four capability assumptions.",
+        "body": "A yes means assumed present in this fictional model; a no means assumed absent. Neither means independently tested, universally available or unsuitable for every reader. Unknown real-world facts must not be silently converted into no.",
+        "subheading": "A visible comparison key",
+        "detail": "The four dimensions are sequence, context note, portable set and review trail. They are not a comprehensive product specification.",
+        "question": "Would another reviewer interpret each flag the same way?",
+        "records": [
+          {
+            "label": "Yes",
+            "prompt": "Assumed present in this illustrative concept."
+          },
+          {
+            "label": "No",
+            "prompt": "Assumed absent, not a verified product limitation."
+          },
+          {
+            "label": "Unknown real fact",
+            "prompt": "Requires checking; do not replace it with a model flag."
+          }
+        ]
+      },
+      {
+        "title": "Describe the options in plain language.",
+        "lead": "The sequence folio keeps material in an intended order. The context-card box emphasises a question beside a note. The review binder keeps a structured review trail.",
+        "body": "These are design concepts, not offers for sale. Their descriptions explain a comparison lens without implying construction quality, security, support or compatibility.",
+        "subheading": "Three different organising priorities",
+        "detail": "A useful description helps the reader picture the task. Keep promotional superlatives out of a guide that is meant to support a considered choice.",
+        "question": "Which organising priority matches the task rather than the headline?",
+        "records": [
+          {
+            "label": "Sequence folio",
+            "prompt": "Ordered material with a portable set."
+          },
+          {
+            "label": "Context-card box",
+            "prompt": "Context notes with a portable set."
+          },
+          {
+            "label": "Review binder",
+            "prompt": "Ordered material, context notes and a review trail."
+          }
+        ]
+      },
+      {
+        "title": "Read the matrix without a score.",
+        "lead": "The fictional matrix contains eight yes flags across twelve cells. The total describes the model only; it is not a quality rating or a market statistic.",
+        "body": "Sequence folio has sequence, portable set and review trail. Context-card box has context note and portable set. Review binder has sequence, context note and review trail, but not portable set. These are authored assumptions, not tested product capabilities.",
+        "subheading": "Assumptions are inspectable",
+        "detail": "Check source CSV or JSON for every flag. Do not add a feature to the narrative without changing the source register and rebuilding the guide.",
+        "question": "Which individual flag matters to this reader’s task?",
+        "records": [
+          {
+            "label": "Sequence folio",
+            "prompt": "Sequence, portable set and review trail assumed."
+          },
+          {
+            "label": "Context-card box",
+            "prompt": "Context note and portable set assumed."
+          },
+          {
+            "label": "Review binder",
+            "prompt": "Sequence, context note and review trail assumed."
+          }
+        ]
+      },
+      {
+        "title": "Match a scenario before recommending.",
+        "lead": "For a person carrying a small set of references, portability may matter first. For a person explaining why a passage was saved, a context note may matter more.",
+        "body": "The scenarios show how priorities change the conversation. They do not establish a universally best option. A real recommendation needs actual constraints, verified capabilities and the reader’s informed judgement.",
+        "subheading": "Scenario routes",
+        "detail": "Use a scenario to ask what would happen in practice. If two options remain plausible, identify the smallest appropriate comparison activity.",
+        "question": "Which scenario is closest to the actual task?",
+        "records": [
+          {
+            "label": "Carry a small set",
+            "prompt": "Check the portable-set assumption first."
+          },
+          {
+            "label": "Recover the reason",
+            "prompt": "Check the context-note assumption first."
+          },
+          {
+            "label": "Review a sequence",
+            "prompt": "Check sequence and review-trail assumptions together."
+          }
+        ]
+      },
+      {
+        "title": "Treat cost as an unanswered question.",
+        "lead": "No prices, implementation effort or support conditions are supplied. A lower apparent purchase price would not by itself establish lower total cost.",
+        "body": "Ask about setup, maintenance, storage, accessibility and the work of changing an existing practice. Keep monetary amounts unknown until an appropriate, current source supports them.",
+        "subheading": "Commercial information not supplied",
+        "detail": "The source model contains capabilities only. It cannot justify an affordability claim, a savings figure or a procurement budget.",
+        "question": "Which ongoing responsibility could change the cost conversation?",
+        "records": [
+          {
+            "label": "Purchase terms",
+            "prompt": "No price or commercial offer supplied."
+          },
+          {
+            "label": "Ongoing effort",
+            "prompt": "Setup and maintenance need investigation."
+          },
+          {
+            "label": "Comparison boundary",
+            "prompt": "Capability flags do not establish total cost."
+          }
+        ]
+      },
+      {
+        "title": "Make omissions visible.",
+        "lead": "The model says nothing about durability, privacy, accessibility or specialist requirements. Those omissions may matter more than the four displayed dimensions.",
+        "body": "A comparison guide should tell a reader what it does not cover. Do not use a neat matrix to imply a complete assessment, certification or suitability decision.",
+        "subheading": "Unassessed dimensions",
+        "detail": "If an omitted condition is essential, pause the choice and obtain the relevant information. A blank in the evidence is not permission to assume a favourable answer.",
+        "question": "Which missing dimension should prevent a decision today?",
+        "records": [
+          {
+            "label": "Unassessed",
+            "prompt": "Durability and accessibility are not evaluated."
+          },
+          {
+            "label": "Unverified",
+            "prompt": "No actual product, vendor or test result supplied."
+          },
+          {
+            "label": "Pause condition",
+            "prompt": "An essential requirement lacks appropriate evidence."
+          }
+        ]
+      },
+      {
+        "title": "Write a provisional choice record.",
+        "lead": "A good decision record states the task, the option considered and the unresolved condition that could change the choice. It need not pretend certainty.",
+        "body": "Use the three fields below as a working decision note. The example favours no real product and does not replace organisational procurement, specialist review or a buyer’s own evaluation.",
+        "subheading": "A choice that can be revisited",
+        "detail": "Keep the evidence version with the record. If an assumed capability changes, revisit the reasoning rather than preserving the old conclusion for consistency.",
+        "question": "What new fact would cause this provisional choice to change?",
+        "records": [
+          {
+            "label": "Task condition",
+            "prompt": "A portable set is essential for this scenario."
+          },
+          {
+            "label": "Options to inspect",
+            "prompt": "Sequence folio and context-card box remain plausible."
+          },
+          {
+            "label": "Open condition",
+            "prompt": "Verify actual context and review requirements."
+          }
+        ]
+      },
+      {
+        "title": "Ask for the missing information.",
+        "lead": "Before committing, ask a provider or maker to demonstrate the exact task and explain the limits of the proposed option. Request current, attributable information.",
+        "body": "This guide supplies no live consultation destination or purchasing service. Use its questions to structure a real evaluation, and preserve the distinction between an authored model and verified product evidence.",
+        "subheading": "Next-step conversation",
+        "detail": "A useful enquiry describes the task and the unresolved criterion. Avoid asking only whether an option is best, because the comparison has not defined a universal winner.",
+        "question": "What demonstration would reduce the most important uncertainty?",
+        "records": [
+          {
+            "label": "Question to send",
+            "prompt": "Show how the option handles this specific task."
+          },
+          {
+            "label": "Evidence to request",
+            "prompt": "Current capability information and relevant conditions."
+          },
+          {
+            "label": "Commitment boundary",
+            "prompt": "No purchase or procurement approval established."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "editorial-calendar",
+    "title": "EDITORIAL CALENDAR",
+    "subtitle": "A pillar-to-brief editorial operating plan",
+    "category": "营销材料",
+    "layout": "calendar",
+    "color": "#146573",
+    "wash": "#ddf1f1",
+    "framework": "主题支柱与编辑排程",
+    "sources": [
+      "story-workshop/01",
+      "bright-edit/03",
+      "creative-treatment/01",
+      "public-thread/02"
+    ],
+    "scope": "An illustrative twelve-slot publishing plan for Context Journal. Relative slots are not dates, publication commitments, audience measurements or assigned staff.",
+    "chapters": [
+      {
+        "title": "Give the publication a useful purpose.",
+        "lead": "Context Journal is a fictional editorial series about making working material easier to understand. Its purpose is to answer reader questions, not to fill an arbitrary posting quota.",
+        "body": "Organise the plan around explanation, practice and reflection. These are editorial pillars, not audience-tested categories. The twelve-slot register is a working structure with no actual publication dates or committed contributors.",
+        "subheading": "Purpose before cadence",
+        "detail": "A schedule should support the quality and usefulness of the work. It cannot establish that an audience exists or that the proposed cadence is feasible.",
+        "question": "Which recurring reader question makes this series worth creating?",
+        "records": [
+          {
+            "label": "Purpose",
+            "prompt": "Help readers examine how context travels with material."
+          },
+          {
+            "label": "Editorial promise",
+            "prompt": "Explain a task and offer a bounded practice."
+          },
+          {
+            "label": "Planning boundary",
+            "prompt": "No live publication or actual readership established."
+          }
+        ]
+      },
+      {
+        "title": "Collect questions before assigning topics.",
+        "lead": "Why did I save this? What does the next person need? When should a note be revised? These questions create more useful starting points than broad promotional themes.",
+        "body": "Treat the question pool as an editorial hypothesis. Actual reader inquiry needs an appropriate source and context. Do not present authored questions as survey findings or imply that they represent a community.",
+        "subheading": "A question-led assignment",
+        "detail": "Each topic should connect a question to an intended takeaway. If the connection is weak, revise the brief before selecting a channel.",
+        "question": "What should a reader understand or try after this piece?",
+        "records": [
+          {
+            "label": "Explain question",
+            "prompt": "Why does a saved note lose its purpose?"
+          },
+          {
+            "label": "Practice question",
+            "prompt": "What context belongs beside an instruction?"
+          },
+          {
+            "label": "Reflect question",
+            "prompt": "When should the original explanation be revisited?"
+          }
+        ]
+      },
+      {
+        "title": "Use pillars as editorial boundaries.",
+        "lead": "Explain clarifies a concept. Practice offers a small, inspectable activity. Reflect examines what remains uncertain after trying an approach. Each pillar has a different job.",
+        "body": "The source plan assigns four slots to each pillar. Equal counts are a planning choice, not a recommendation about an optimal content mix or a report of previous performance.",
+        "subheading": "Three pillars, three types of value",
+        "detail": "Keep the pillar visible in a brief so the writer knows whether to define, guide or question. A single article need not do all three equally.",
+        "question": "Does the proposed treatment fit its pillar’s job?",
+        "records": [
+          {
+            "label": "Explain",
+            "prompt": "Clarify an idea and its limits."
+          },
+          {
+            "label": "Practice",
+            "prompt": "Offer a specific activity with a review point."
+          },
+          {
+            "label": "Reflect",
+            "prompt": "Examine an assumption or unresolved condition."
+          }
+        ]
+      },
+      {
+        "title": "Build a pool before committing slots.",
+        "lead": "Possible topics include a note with a question, a clearer handover, a source-context check and a revision note. Each can be shaped by a different reader task.",
+        "body": "An idea belongs in the pool until its purpose, source needs and scope are clear. A promising title does not reserve a publication date or imply that a contributor has accepted the work.",
+        "subheading": "From idea to viable brief",
+        "detail": "Separate backlog from scheduled work. The supplied twelve slots are relative planning units, not a real production calendar.",
+        "question": "Which idea has enough definition to move into a brief?",
+        "records": [
+          {
+            "label": "Topic route",
+            "prompt": "Keep a question beside a saved passage."
+          },
+          {
+            "label": "Source need",
+            "prompt": "An appropriate example with permission to use it."
+          },
+          {
+            "label": "Commitment status",
+            "prompt": "Proposed only; no actual assignment."
+          }
+        ]
+      },
+      {
+        "title": "Design recognisable editorial formats.",
+        "lead": "A short explainer defines one idea. A practice sheet guides one task. A reflection note asks what the first explanation missed. Repetition of format can help readers know what to expect.",
+        "body": "The format should support the material rather than force every topic into the same length. Accessibility, image rights and source checking remain part of the brief for each treatment.",
+        "subheading": "Format is not a performance claim",
+        "detail": "No length, cadence or visual treatment is presented as proven to increase engagement. Choose a form that can communicate the task honestly.",
+        "question": "What does this format make easier to understand?",
+        "records": [
+          {
+            "label": "Explainer",
+            "prompt": "One idea, one concrete example, one limitation."
+          },
+          {
+            "label": "Practice sheet",
+            "prompt": "One task, clear steps and a review question."
+          },
+          {
+            "label": "Reflection note",
+            "prompt": "One assumption and a reason to revisit it."
+          }
+        ]
+      },
+      {
+        "title": "Make the brief usable by another editor.",
+        "lead": "A usable brief states the reader question, the intended takeaway and the evidence needed. It also identifies what the piece should not imply.",
+        "body": "For a context-note practice sheet, the takeaway is to connect a saved passage with its purpose. The source need is an appropriate example; the boundary is that completing the exercise does not establish a productivity benefit.",
+        "subheading": "An actual draft brief",
+        "detail": "Working title: Keep the question with the note. Treatment: a short explanation followed by a bounded annotation activity and a review question.",
+        "question": "Could another editor draft the piece without inventing its evidence?",
+        "records": [
+          {
+            "label": "Reader question",
+            "prompt": "Why did I save this passage?"
+          },
+          {
+            "label": "Takeaway",
+            "prompt": "Write the question beside the material."
+          },
+          {
+            "label": "Evidence boundary",
+            "prompt": "No measured improvement or customer result supplied."
+          }
+        ]
+      },
+      {
+        "title": "Distribute without duplicating blindly.",
+        "lead": "The illustrative plan uses article, email, social and handout channels. Each appears in three relative slots, but the same treatment need not fit every channel.",
+        "body": "An email can introduce the question, an article can explain the task, a social post can point to the explanation and a handout can support practice. These are proposed roles, not actual sends or reach.",
+        "subheading": "Channel handoff",
+        "detail": "Retain the source link and the important qualification when shortening a piece. Verify real destinations before any release.",
+        "question": "What does the reader need at this particular touchpoint?",
+        "records": [
+          {
+            "label": "Article",
+            "prompt": "Explain the task and its limits."
+          },
+          {
+            "label": "Email or social",
+            "prompt": "Introduce one question and an honest next action."
+          },
+          {
+            "label": "Handout",
+            "prompt": "Support an activity without implying a guaranteed result."
+          }
+        ]
+      },
+      {
+        "title": "Protect review time in the workflow.",
+        "lead": "Move from idea to brief, draft, review and ready only when the relevant work has happened. A status label should describe the artifact, not express optimism.",
+        "body": "The supplied slot register remains proposed. No named writer, reviewer or publication authority is assigned. A real plan needs responsibility, accessible review routes and a method for handling corrections.",
+        "subheading": "Review before readiness",
+        "detail": "Distinguish editorial review from product, source and rights checks. A reviewer’s name is not permission to publish material outside the agreed scope.",
+        "question": "Which gate could still stop this piece from becoming ready?",
+        "records": [
+          {
+            "label": "Editorial check",
+            "prompt": "The piece answers its stated reader question."
+          },
+          {
+            "label": "Source check",
+            "prompt": "Claims match appropriate, reviewable material."
+          },
+          {
+            "label": "Rights check",
+            "prompt": "Distribution and adaptation permissions are confirmed."
+          }
+        ]
+      },
+      {
+        "title": "Define observations before reporting rates.",
+        "lead": "A real review might examine delivery, reading, questions received or completion of an activity. Each observation needs a definition, time window and relevant denominator.",
+        "body": "This plan contains no audience, traffic or engagement data. Twelve proposed slots are not twelve published pieces, and an equal channel count is not evidence of equal reach or value.",
+        "subheading": "Planning counts are not outcomes",
+        "detail": "Choose observations that fit the editorial purpose. Do not substitute a convenient platform number for whether the explanation helped a reader understand the task.",
+        "question": "What observation would speak to the stated purpose?",
+        "records": [
+          {
+            "label": "Plan count",
+            "prompt": "12 proposed slots; none marked published."
+          },
+          {
+            "label": "Missing measurement",
+            "prompt": "No audience or delivery observations supplied."
+          },
+          {
+            "label": "Review question",
+            "prompt": "Did the piece answer its intended reader question?"
+          }
+        ]
+      },
+      {
+        "title": "Use the review to change the next brief.",
+        "lead": "After actual publication, identify which questions the piece answered and which it left unresolved. Retain corrections and source changes as part of the editorial record.",
+        "body": "The next cycle should respond to appropriate evidence rather than merely repeat the same slot pattern. This fictional plan provides no results, so it cannot identify a winning pillar, channel or cadence.",
+        "subheading": "A learning record for the next cycle",
+        "detail": "Carry forward one useful revision to the brief, one unresolved source issue and one question worth returning to. Keep proposed work separate from completed publication.",
+        "question": "Which revision would make the next piece more useful?",
+        "records": [
+          {
+            "label": "Keep",
+            "prompt": "A clear relationship between question and treatment."
+          },
+          {
+            "label": "Change",
+            "prompt": "Any explanation that obscures its limits."
+          },
+          {
+            "label": "Investigate",
+            "prompt": "Actual reader needs and feasible editorial capacity."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "brand-voice",
+    "title": "BRAND VOICE",
+    "subtitle": "A voice scale and rewrite field guide",
+    "category": "营销材料",
+    "layout": "voice",
+    "color": "#8a345c",
+    "wash": "#f5dfeb",
+    "framework": "语气标尺与改写对照",
+    "sources": [
+      "story-workshop/03",
+      "creative-treatment/02",
+      "case-story/01",
+      "visual-literacy/02"
+    ],
+    "scope": "A fictional voice guide for Plain Thread. Preferred phrases are editorial choices, not legal clearance, evidence of product capabilities or tested persuasion results.",
+    "chapters": [
+      {
+        "title": "Give the voice a practical intention.",
+        "lead": "Plain Thread speaks with clarity, care and room for questions. The voice should help a reader understand a task without making the brand sound more certain than its evidence.",
+        "body": "This guide is an editorial direction for a fictional organisation. It does not establish product features, legal approval or tested communication performance. Use it to make choices visible rather than turn style into a claim.",
+        "subheading": "A useful voice promise",
+        "detail": "We explain what we mean, say what remains uncertain and invite a relevant next step. That is a writing principle, not a guaranteed customer experience.",
+        "question": "Does this sentence make the task clearer without overstating certainty?",
+        "records": [
+          {
+            "label": "Clarity",
+            "prompt": "Use concrete verbs and explain unfamiliar terms."
+          },
+          {
+            "label": "Care",
+            "prompt": "Respect the reader’s context and ability to choose."
+          },
+          {
+            "label": "Honesty",
+            "prompt": "State meaningful limits near the relevant claim."
+          }
+        ]
+      },
+      {
+        "title": "Change tone when the situation changes.",
+        "lead": "A welcome can feel open. An instruction should be direct. A correction should be accountable. The underlying voice remains recognisable while the tone responds to the reader’s situation.",
+        "body": "Do not assume that every audience wants informality, humour or reassurance. A difficult issue may require a plain acknowledgement and a practical action rather than an upbeat brand flourish.",
+        "subheading": "Context before personality",
+        "detail": "Review the reader’s task, risk and likely information need. Avoid using a style rule to conceal an unresolved service or product problem.",
+        "question": "What does the reader need from this message right now?",
+        "records": [
+          {
+            "label": "Welcome",
+            "prompt": "Offer orientation without assuming enthusiasm."
+          },
+          {
+            "label": "Instruction",
+            "prompt": "Name the action and its relevant condition."
+          },
+          {
+            "label": "Correction",
+            "prompt": "Acknowledge the issue and state a verified next step."
+          }
+        ]
+      },
+      {
+        "title": "Make the principles observable.",
+        "lead": "Prefer a specific action to a vague benefit. Keep a qualification beside its claim. Use a question when the next step genuinely depends on information the reader has.",
+        "body": "These principles help an editor explain a revision. They do not make every short sentence good or every technical term wrong. Keep the detail that the task requires.",
+        "subheading": "Three reviewable principles",
+        "detail": "Ask what the sentence lets a reader do or understand. If it only makes the brand sound impressive, look for the missing practical meaning.",
+        "question": "Which editing principle explains the change you propose?",
+        "records": [
+          {
+            "label": "Specific",
+            "prompt": "Say what the reader can inspect or do."
+          },
+          {
+            "label": "Qualified",
+            "prompt": "Retain conditions that affect the meaning."
+          },
+          {
+            "label": "Open",
+            "prompt": "Leave room for a question when facts are incomplete."
+          }
+        ]
+      },
+      {
+        "title": "Use a tone scale, not a personality score.",
+        "lead": "The working scale runs from reserved to expressive, formal to conversational and directive to exploratory. It is a discussion tool, not an audience measurement.",
+        "body": "For a concept explanation, use moderately conversational and exploratory language. For a procedural instruction, move toward directness while preserving care. The scale has no optimal numerical setting or conversion promise.",
+        "subheading": "Tone changes with the task",
+        "detail": "Explain the reason for each adjustment. A team should be able to disagree about a tone choice without pretending the scale has measured a person’s preference.",
+        "question": "Which dimension should change for this specific message?",
+        "records": [
+          {
+            "label": "Reserved to expressive",
+            "prompt": "Use emphasis only when it serves understanding."
+          },
+          {
+            "label": "Formal to conversational",
+            "prompt": "Match the setting without artificial familiarity."
+          },
+          {
+            "label": "Directive to exploratory",
+            "prompt": "Be direct about actions, open about unknowns."
+          }
+        ]
+      },
+      {
+        "title": "Choose words with a clear job.",
+        "lead": "Explore describes an invitation to inspect. Review describes a deliberate check. May preserves uncertainty when an outcome has not been established. None should be used mechanically.",
+        "body": "The phrase register offers eight authored alternatives to overstatement or vague instruction. A preferred phrase is not automatically appropriate; check whether it accurately describes the actual product and destination.",
+        "subheading": "Vocabulary as a decision aid",
+        "detail": "Avoid replacing every strong word with a weak one. The goal is accurate meaning, not blandness or a universal ban on confident language.",
+        "question": "What exactly does this word imply in the current sentence?",
+        "records": [
+          {
+            "label": "Explore",
+            "prompt": "Use when the reader can inspect a real explanation."
+          },
+          {
+            "label": "Review",
+            "prompt": "Use when a specific check is appropriate."
+          },
+          {
+            "label": "May",
+            "prompt": "Use only when uncertainty genuinely matters to the claim."
+          }
+        ]
+      },
+      {
+        "title": "Do not let familiar slogans hide claims.",
+        "lead": "Effortless, guaranteed and everyone can each imply more than a writer may intend. They can erase conditions, evidence requirements or differences between readers.",
+        "body": "The guide recommends checking or replacing these expressions in this fictional context. It does not declare them unlawful in every setting or provide legal clearance for a preferred alternative.",
+        "subheading": "Restricted phrases need a reason",
+        "detail": "Record the implied claim before rewriting. A calmer adjective is not enough if the underlying statement still promises an unsupported outcome.",
+        "question": "Which implied claim needs evidence or a more accurate description?",
+        "records": [
+          {
+            "label": "Effortless",
+            "prompt": "Can imply no meaningful work or conditions."
+          },
+          {
+            "label": "Guaranteed",
+            "prompt": "Can imply a commitment that must actually exist."
+          },
+          {
+            "label": "Everyone can",
+            "prompt": "Can hide access barriers or unsupported universality."
+          }
+        ]
+      },
+      {
+        "title": "Show the change in meaning.",
+        "lead": "Before: Transform your workflow instantly. After: Review one step of your workflow and identify what needs context. The rewrite exchanges an unsupported promise for an inspectable activity.",
+        "body": "Before: Our solution works for everyone. After: Check whether this approach fits your task and access needs. A useful rewrite changes the claim, not only the mood of the sentence.",
+        "subheading": "Before and after, with a rationale",
+        "detail": "Neither example establishes a functioning service or verified capability. Use the comparison to discuss meaning before adapting it to actual copy.",
+        "question": "Does the revised sentence remove the unsupported implication?",
+        "records": [
+          {
+            "label": "Before",
+            "prompt": "Transform your workflow instantly."
+          },
+          {
+            "label": "After",
+            "prompt": "Review one step and identify what needs context."
+          },
+          {
+            "label": "Rationale",
+            "prompt": "An activity replaces an unverified universal benefit."
+          }
+        ]
+      },
+      {
+        "title": "Apply the voice in real message shapes.",
+        "lead": "Welcome: Start with the question you want to explore. Instruction: Add the source beside the passage before sharing it. Correction: The earlier note omitted a condition; please review the updated explanation.",
+        "body": "These are authored copy examples, not actual customer communications. A correction should describe the real issue and a verified next step; do not copy the example as though an event occurred.",
+        "subheading": "Three context-sensitive examples",
+        "detail": "A consistent voice can carry different tones. Keep essential instructions and uncertainty visible even when a short channel leaves little space.",
+        "question": "What would make this example accurate in the actual setting?",
+        "records": [
+          {
+            "label": "Welcome",
+            "prompt": "Start with the question you want to explore."
+          },
+          {
+            "label": "Instruction",
+            "prompt": "Add the source beside the passage before sharing."
+          },
+          {
+            "label": "Correction",
+            "prompt": "Name the verified issue and the available next step."
+          }
+        ]
+      },
+      {
+        "title": "Review meaning before polishing rhythm.",
+        "lead": "First check whether the statement is true and appropriately qualified. Then review whether the reader can understand the action. Only then refine tone, rhythm and repetition.",
+        "body": "An editorial checklist does not replace product, legal, accessibility or specialist review. Keep responsibility for those decisions explicit rather than assigning every concern to a voice editor.",
+        "subheading": "A review sequence",
+        "detail": "Read the copy beside its destination or supporting artifact. A beautifully consistent phrase can still mislead if the underlying action cannot be fulfilled.",
+        "question": "Which unresolved meaning issue should stop stylistic approval?",
+        "records": [
+          {
+            "label": "Meaning check",
+            "prompt": "Claims and conditions match appropriate evidence."
+          },
+          {
+            "label": "Task check",
+            "prompt": "The reader can identify the next action."
+          },
+          {
+            "label": "Voice check",
+            "prompt": "The tone supports the context without hiding limits."
+          }
+        ]
+      },
+      {
+        "title": "Keep a change record that explains why.",
+        "lead": "A living voice guide records the phrase, the reason for a revision and the context in which the change applies. A new preference should not silently rewrite past evidence.",
+        "body": "The supplied register is an authored version-one guide, not a history of approved organisational decisions. Test revisions against appropriate tasks and retain earlier wording when a review needs to understand the change.",
+        "subheading": "Versioning with a useful boundary",
+        "detail": "Do not report a rewrite as proven to improve engagement unless a suitable evaluation supports that claim. Editorial preference and measured effect are different kinds of evidence.",
+        "question": "What reason would help another editor understand this revision?",
+        "records": [
+          {
+            "label": "Version",
+            "prompt": "Authored guide v1; no organisational approval implied."
+          },
+          {
+            "label": "Reason",
+            "prompt": "Replace vague or unsupported meaning with a specific task."
+          },
+          {
+            "label": "Outcome boundary",
+            "prompt": "No measured persuasion or engagement effect supplied."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "campaign-playbook",
+    "title": "CAMPAIGN PLAYBOOK",
+    "subtitle": "A coordinated touchpoint journey",
+    "category": "营销材料",
+    "layout": "campaign",
+    "color": "#18614d",
+    "wash": "#def0e5",
+    "framework": "触点旅程与传播协同",
+    "sources": [
+      "open-saturday/01",
+      "launch-kit/01",
+      "bright-edit/04",
+      "impact-thesis/01"
+    ],
+    "scope": "Fictional campaign planning for Open Table Studio. Journey order is conceptual, not actual user behaviour, scheduled activity, consent, reach or campaign results.",
+    "chapters": [
+      {
+        "title": "State the campaign’s purpose plainly.",
+        "lead": "Open Table Studio is a fictional creative-workshop concept. The campaign purpose is to help an interested person understand the proposed experience before deciding whether to ask a question.",
+        "body": "No actual event, registration service or public programme is established. Plan the communication around informed choice rather than urgency, scarcity or an unsupported promise of personal transformation.",
+        "subheading": "Purpose and audience action",
+        "detail": "The proposed primary action is to read the workshop outline. A real campaign must verify the outline, destination and operational information before publishing.",
+        "question": "What must a reader understand before taking the next step?",
+        "records": [
+          {
+            "label": "Purpose",
+            "prompt": "Explain a proposed shared creative-workshop experience."
+          },
+          {
+            "label": "Reader action",
+            "prompt": "Review the outline before considering an enquiry."
+          },
+          {
+            "label": "Operational boundary",
+            "prompt": "No actual event, booking or availability supplied."
+          }
+        ]
+      },
+      {
+        "title": "Treat the journey as a hypothesis.",
+        "lead": "A person may discover the idea, inspect the outline and ask a practical question. Another may begin with a recommendation or leave without taking any next step.",
+        "body": "The six-touchpoint plan is a conceptual sequence, not a funnel observed in analytics. Do not assume every person follows the same path or that one contact caused a later decision.",
+        "subheading": "A map, not measured behaviour",
+        "detail": "Use the journey to identify information needs. Revisit it after appropriate observation rather than presenting the planning sequence as a conversion model.",
+        "question": "Where might a real reader enter, skip or leave this sequence?",
+        "records": [
+          {
+            "label": "Discover",
+            "prompt": "Encounter a concise description of the idea."
+          },
+          {
+            "label": "Consider",
+            "prompt": "Inspect the proposed experience and relevant limits."
+          },
+          {
+            "label": "Ask",
+            "prompt": "Seek information that the outline does not resolve."
+          }
+        ]
+      },
+      {
+        "title": "Give each touchpoint one job.",
+        "lead": "A poster introduces the idea. A social post points to the outline. The outline explains the concept. An email, enquiry reply and follow-up answer progressively more specific questions.",
+        "body": "All six touchpoints remain planned. Their order numbers express the model only; no dates, delivery, audience exposure or actual contacts are recorded.",
+        "subheading": "Touchpoints with an information role",
+        "detail": "Avoid repeating the same promotional sentence at every stage. Keep the core meaning stable while adding the detail appropriate to the reader’s question.",
+        "question": "What question does this touchpoint answer that the previous one did not?",
+        "records": [
+          {
+            "label": "Awareness assets",
+            "prompt": "Poster and social post introduce the concept."
+          },
+          {
+            "label": "Explanation assets",
+            "prompt": "Outline and email clarify the proposed experience."
+          },
+          {
+            "label": "Conversation assets",
+            "prompt": "Enquiry reply and follow-up address open questions."
+          }
+        ]
+      },
+      {
+        "title": "Let the message develop honestly.",
+        "lead": "First say what the concept is. Then explain what a participant might do. Finally clarify the conditions that would matter before any real commitment.",
+        "body": "The message should gain specificity without gaining unsupported certainty. A journey map cannot justify changing proposed to available or may to will merely because a reader moves to a later touchpoint.",
+        "subheading": "Information progression",
+        "detail": "Keep the concept status visible throughout the sequence. No later-stage copy should imply a real booking, confirmed timetable or promised outcome.",
+        "question": "Does the next message add useful detail rather than pressure?",
+        "records": [
+          {
+            "label": "Opening message",
+            "prompt": "Explore a proposed shared creative-workshop format."
+          },
+          {
+            "label": "Explanation",
+            "prompt": "Read the outline and the questions still unresolved."
+          },
+          {
+            "label": "Later conversation",
+            "prompt": "Check actual arrangements before any commitment."
+          }
+        ]
+      },
+      {
+        "title": "Build assets around the reader’s task.",
+        "lead": "The campaign needs a concise introduction, an accessible concept outline and a practical response guide. Each asset should support a distinct information need.",
+        "body": "The illustrations in this template are fictional scenes, not photographs of a real programme or participants. Confirm actual image permissions, source rights and accessible alternatives when adapting the assets.",
+        "subheading": "An asset is more than a format",
+        "detail": "Keep a source and qualification with any claim repeated across assets. A visually polished poster does not make an unsupported statement safer to distribute.",
+        "question": "Which asset is necessary for a useful next step?",
+        "records": [
+          {
+            "label": "Introduction",
+            "prompt": "A short concept description with an honest action."
+          },
+          {
+            "label": "Outline",
+            "prompt": "Proposed experience, limits and unresolved arrangements."
+          },
+          {
+            "label": "Response guide",
+            "prompt": "Specific questions and verified operational answers."
+          }
+        ]
+      },
+      {
+        "title": "Coordinate channels without inventing a schedule.",
+        "lead": "Use one source of truth for the concept description and operational status. Channel adaptations should link back to the same current explanation.",
+        "body": "No publication times or assigned people are supplied. A real coordination plan needs responsibilities, review gates, destination checks and a correction method before distribution begins.",
+        "subheading": "Relative sequence, not release dates",
+        "detail": "The touchpoint register contains six distinct roles, all planned. Neither the order numbers nor channel names establish actual delivery or permission to contact anyone.",
+        "question": "Who would be responsible for keeping each adaptation accurate?",
+        "records": [
+          {
+            "label": "Shared reference",
+            "prompt": "One current outline with visible version status."
+          },
+          {
+            "label": "Channel owner",
+            "prompt": "Not assigned; confirm responsibility before release."
+          },
+          {
+            "label": "Correction route",
+            "prompt": "Update the source and every affected adaptation."
+          }
+        ]
+      },
+      {
+        "title": "Write replies that respect the question.",
+        "lead": "If asked whether the workshop is available, say that this is a concept example and no actual booking information is supplied. Do not substitute enthusiasm for an answer.",
+        "body": "If asked about accessibility, price or requirements, identify the missing information and the appropriate person or source that would need to confirm it. Do not promise a reply time without a real service arrangement.",
+        "subheading": "A bounded response script",
+        "detail": "Thank the reader for the specific question, state what is known and distinguish what remains unconfirmed. Collect no personal information without an appropriate purpose and permission.",
+        "question": "Does the reply answer the question without inventing an arrangement?",
+        "records": [
+          {
+            "label": "Availability reply",
+            "prompt": "No actual event or booking is established here."
+          },
+          {
+            "label": "Practical enquiry",
+            "prompt": "Price, access and requirements need real confirmation."
+          },
+          {
+            "label": "Response boundary",
+            "prompt": "No contact service or reply-time promise supplied."
+          }
+        ]
+      },
+      {
+        "title": "Define a measure before collecting it.",
+        "lead": "A real campaign review might examine delivered messages, visits to the outline or practical questions received. Each has a different denominator and interpretation.",
+        "body": "The six planned touchpoints are not six interactions. No reach, clicks, enquiries or conversions are supplied. Establish a legitimate collection purpose, relevant definitions and appropriate privacy safeguards before measuring.",
+        "subheading": "Do not turn the map into a funnel report",
+        "detail": "A later enquiry does not by itself establish which touchpoint caused it. Keep attribution assumptions separate from observed counts.",
+        "question": "Which observation would tell us whether the explanation was useful?",
+        "records": [
+          {
+            "label": "Planning count",
+            "prompt": "6 touchpoints, all planned, none delivered."
+          },
+          {
+            "label": "Missing outcome",
+            "prompt": "No observed audience or response data supplied."
+          },
+          {
+            "label": "Attribution boundary",
+            "prompt": "Sequence does not establish causation or conversion."
+          }
+        ]
+      },
+      {
+        "title": "Check the points where trust can break.",
+        "lead": "A misleading availability claim, inaccessible explanation or unverified image can undermine the campaign before any response is measured. Review the whole path, not only the first asset.",
+        "body": "Scarcity language and social proof need an actual basis. The template supplies no limited places, endorsements, partner approvals or participant results. Do not add them as decorative persuasion.",
+        "subheading": "Release checks with stop conditions",
+        "detail": "Pause if an essential destination does not work, if the operational status is unclear or if the relevant permission is missing. A checklist is not a certification.",
+        "question": "Which unresolved issue should stop this campaign from being shared?",
+        "records": [
+          {
+            "label": "Truth check",
+            "prompt": "Concept status remains visible at every touchpoint."
+          },
+          {
+            "label": "Access check",
+            "prompt": "The actual explanation and action are accessible."
+          },
+          {
+            "label": "Rights check",
+            "prompt": "Distribution and participant permissions are verified."
+          }
+        ]
+      },
+      {
+        "title": "Close the loop with a useful question.",
+        "lead": "After an actual campaign, ask which explanation helped people make an informed decision and which practical question kept returning. Keep the review tied to the original purpose.",
+        "body": "This example contains no delivered activity or results. Its final page is a review method, not a success report. Preserve source versions and distinguish observations from the team’s interpretation.",
+        "subheading": "A learning loop, not a victory slide",
+        "detail": "Choose a revision that improves the next explanation. Do not claim that the campaign worked simply because the planned assets were produced.",
+        "question": "What should change before the next real communication?",
+        "records": [
+          {
+            "label": "Observe",
+            "prompt": "Record actual delivery and appropriately collected questions."
+          },
+          {
+            "label": "Interpret",
+            "prompt": "Separate information gaps from assumptions about demand."
+          },
+          {
+            "label": "Revise",
+            "prompt": "Improve the source outline and affected touchpoints."
+          }
+        ]
+      }
+    ]
+  }
+]
