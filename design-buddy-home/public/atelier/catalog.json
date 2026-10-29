@@ -15,6 +15,11 @@
     "open-shelf",
     "tideline",
     "afterglow",
-    "swatch"
-  ]
+    "swatch",
+    "common-ground"
+  ],
+  "documentRequirements": {
+    "minPages": 10,
+    "minMainIllustrations": 5
+  }
 }
