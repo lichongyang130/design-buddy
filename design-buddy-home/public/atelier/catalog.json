@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "targetCases": 56,
+  "targetCases": 65,
   "pageRange": [
     28,
     35
@@ -25,10 +25,22 @@
     "shift-ready",
     "local-table",
     "open-saturday",
-    "form-study"
+    "form-study",
+    "question-lab",
+    "story-workshop",
+    "visual-literacy",
+    "project-studio",
+    "debate-room",
+    "self-paced-route"
   ],
   "documentRequirements": {
     "minPages": 10,
     "minMainIllustrations": 5
+  },
+  "additionalDocumentRequest": {
+    "count": 50,
+    "published": 6,
+    "remaining": 44,
+    "plan": "docs/document-expansion-50.json"
   }
 }

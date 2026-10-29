@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "work": "question-lab",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 10310,
+      "sha256": "9363c4b4ead88d04638dc9aa179f9138493d32aa3fe533962774d1ef78d30258"
+    },
+    {
+      "path": "content.js",
+      "bytes": 9016,
+      "sha256": "d259e7e4bbd56b381178273e57db00a5bb169e823559a22fd03a7785c6a202ae"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 499,
+      "sha256": "1386090ae370626980ac274aca9ef9529b7d4debf72dad3ae3dff9758fdde7ff"
+    },
+    {
+      "path": "question-lab.docx",
+      "bytes": 1096270,
+      "sha256": "a94dcdaa8fe7b61e9c4f84ef7076e0d87ee76b4f374421e250bb0e249fc112c0"
+    },
+    {
+      "path": "question-lab.pdf",
+      "bytes": 1160518,
+      "sha256": "494eb1cfda227fb805a822d263b9a61c67a4efb6d23d23363b066fda98511e3c"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 213984,
+      "sha256": "ee7a7828abbee4fc02ff195f0ad690f30f70aedbf1dec3c893fba2692b782a1a"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 245818,
+      "sha256": "2fe924b730eb22ac7072460074f9ab777fd82c7a1415949d20cf7832f4babeba"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 205433,
+      "sha256": "8d54ede72d027d2ac0038c7f5feff610a15025b5b7d41adaf0e70f3b5fa14c1c"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 223714,
+      "sha256": "3e41a4c2d60230b3ab1612a89351d9ac7abe3d5f1f8a7966ff8dcd0aa918f1cc"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 200215,
+      "sha256": "31f7309270d44a2c2a57ae75d0d542845f4b7c2d7e7fc203fb9f0c8c361733ae"
+    }
+  ]
+}

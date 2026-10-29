@@ -1,0 +1,165 @@
+{
+  "work": {
+    "id": "visual-literacy",
+    "title": "VISUAL LITERACY",
+    "subtitle": "视觉阅读课程",
+    "category": "课程",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "framework": "图像标注与对读",
+    "scope": "Fictional adult learning exercises. Illustrations are not records of real participants or research evidence. No accredited qualification or actual learner outcomes are supplied.",
+    "layout": "visual",
+    "color": "#244fa2",
+    "wash": "#e5edfb",
+    "expansion": "documents-50",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / VISUAL LITERACY",
+      "title": "Read an image in layers.",
+      "lead": "This course treats visual reading as a sequence of description, attention and interpretation. The illustrations are authored images, not documentary evidence of real places.",
+      "body": "Start with what is present, then ask how it is arranged, then consider possible meanings. Keep those three layers visible in your notes.",
+      "subheading": "Visible elements / arrangement / possible reading",
+      "detail": "Working record: Describe the classroom image in three sentences, one for each layer. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Describe the classroom image in three sentences, one for each layer.",
+      "image": 1,
+      "kind": "cover",
+      "module": "阅读目标"
+    },
+    {
+      "section": "02 / VISUAL LITERACY",
+      "title": "Mark the composition.",
+      "lead": "Locate the largest shapes and their relationship to the frame. Describe position and proportion in ordinary language rather than claiming exact measurements from a stylised illustration.",
+      "body": "A bright table may sit low in the frame while a dark wall forms the background. The contrast can guide attention without proving which object matters to the people shown.",
+      "subheading": "Foreground / middle ground / background / focal area",
+      "detail": "Working record: Sketch a simple composition map using no more than five labelled shapes. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Sketch a simple composition map using no more than five labelled shapes.",
+      "image": 1,
+      "kind": "body",
+      "module": "构图标注"
+    },
+    {
+      "section": "03 / VISUAL LITERACY",
+      "title": "Build a colour vocabulary.",
+      "lead": "Name hue, relative lightness and contrast separately. A colour description is more precise when it explains a relationship instead of assigning a universal mood.",
+      "body": "Cobalt blue beside mustard yellow creates a strong visible contrast. Calling that contrast cheerful is an interpretation that another viewer may not share.",
+      "subheading": "Colour pair / contrast / tentative association",
+      "detail": "Working record: Describe two colour relationships and label any emotional association as your interpretation. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Describe two colour relationships and label any emotional association as your interpretation.",
+      "image": 2,
+      "kind": "body",
+      "module": "色彩词汇"
+    },
+    {
+      "section": "04 / VISUAL LITERACY",
+      "title": "Trace the order of attention.",
+      "lead": "Record where you looked first, second and third, then ask which visible features might explain that route. Your viewing order is a personal observation, not a population result.",
+      "body": "A pale sheet against a dark tabletop may attract attention through contrast. Another reader may notice a face first. Neither route is a measured general rule.",
+      "subheading": "First noticed / next noticed / visible cue",
+      "detail": "Working record: Write your attention sequence and compare it with a second possible route. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Write your attention sequence and compare it with a second possible route.",
+      "image": 2,
+      "kind": "body",
+      "module": "视觉层级"
+    },
+    {
+      "section": "05 / VISUAL LITERACY",
+      "title": "Distinguish object from symbol.",
+      "lead": "An object can support more than one symbolic reading. Connect a proposed meaning to the image and its context rather than treating a symbol as a fixed dictionary entry.",
+      "body": "An open notebook might suggest learning, unfinished work or simply a useful tabletop object. The image alone does not decide among those readings.",
+      "subheading": "Object / possible meaning / supporting clue / uncertainty",
+      "detail": "Working record: Offer two readings of one object without selecting a definitive meaning. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Offer two readings of one object without selecting a definitive meaning.",
+      "image": 3,
+      "kind": "body",
+      "module": "符号讨论"
+    },
+    {
+      "section": "06 / VISUAL LITERACY",
+      "title": "Compare two visual choices.",
+      "lead": "Use the same comparison dimensions for both images. A consistent comparison is easier to inspect than a sequence of personal preferences.",
+      "body": "Compare where the brightest area appears, how figures are grouped and which edges are cropped. Avoid turning a compositional difference into a claim about actual behaviour.",
+      "subheading": "Dimension / image A / image B / interpretation",
+      "detail": "Working record: Complete a three-row comparison using composition, contrast and grouping. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Complete a three-row comparison using composition, contrast and grouping.",
+      "image": 3,
+      "kind": "body",
+      "module": "双图对读"
+    },
+    {
+      "section": "07 / VISUAL LITERACY",
+      "title": "Ask where the image came from.",
+      "lead": "Record authorship, production method and what the source actually supplies. These case illustrations are AI-generated editorial images, with individual provenance listed alongside the document.",
+      "body": "A source note establishes how an asset was selected; it does not establish that the depicted lesson took place. Keep illustration provenance separate from claims about a real subject.",
+      "subheading": "Asset / production method / source note / evidence limit",
+      "detail": "Working record: Write a caption that identifies an illustration without presenting it as a photograph of an event. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Write a caption that identifies an illustration without presenting it as a photograph of an event.",
+      "image": 4,
+      "kind": "body",
+      "module": "来源辨识"
+    },
+    {
+      "section": "08 / VISUAL LITERACY",
+      "title": "Name the edge of interpretation.",
+      "lead": "List what cannot be established from the image. Being explicit about the boundary makes a visual analysis more useful, not less imaginative.",
+      "body": "Attendance, accessibility, learning outcomes and relationships between the figures are not supplied by the illustration. These would require relevant independent information.",
+      "subheading": "Interpretation / missing context / needed source",
+      "detail": "Working record: Choose one tempting claim and name the source that would be needed to examine it. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Choose one tempting claim and name the source that would be needed to examine it.",
+      "image": 4,
+      "kind": "body",
+      "module": "解读边界"
+    },
+    {
+      "section": "09 / VISUAL LITERACY",
+      "title": "Compose a short visual analysis.",
+      "lead": "Bring description, arrangement and interpretation into a compact paragraph. Mark the transition between an observable feature and your proposed reading.",
+      "body": "A useful sentence might begin The bright table contrasts with the darker wall, followed by I read this as a focus on shared work. The wording keeps the interpretation attributable to the reader.",
+      "subheading": "Description / arrangement / interpretation / boundary",
+      "detail": "Working record: Write a short analysis with one clearly marked interpretive sentence. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Write a short analysis with one clearly marked interpretive sentence.",
+      "image": 5,
+      "kind": "body",
+      "module": "分析练习"
+    },
+    {
+      "section": "10 / VISUAL LITERACY",
+      "title": "Keep a visual reading archive.",
+      "lead": "Save the source note, composition map, comparison and final analysis together. The archive records your reading process rather than certifying a correct interpretation.",
+      "body": "Use an earlier and later caption to show how your language became more precise. Record one question that the images could not answer.",
+      "subheading": "Artifact / revision / lesson / next question",
+      "detail": "Working record: Choose one sentence whose evidence boundary became clearer and explain the revision. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Choose one sentence whose evidence boundary became clearer and explain the revision.",
+      "image": 5,
+      "kind": "appendix",
+      "module": "阅读档案"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated illustration for visual-literacy"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: swatch/02.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: tideline/02.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: open-shelf/09.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: swatch/04.jpg"
+    }
+  ]
+}

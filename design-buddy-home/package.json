@@ -31,7 +31,9 @@
     "restore:artifacts": "node scripts/restore-template-artifacts.mjs",
     "predev": "npm run restore:artifacts",
     "prestart": "npm run restore:artifacts",
-    "precheck:templates": "npm run restore:artifacts"
+    "precheck:templates": "npm run restore:artifacts",
+    "build:course-expansion": "node scripts/build-course-expansion.mjs",
+    "test:course-expansion": "node tests/verify-course-expansion.mjs"
   },
   "devDependencies": {
     "@sparticuz/chromium": "^153.0.0",

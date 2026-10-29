@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "work": "story-workshop",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 10244,
+      "sha256": "0e746deae6ba0ad38302a87e58bd9d6ccdb2a39c9b06deed89e4c59c4607b602"
+    },
+    {
+      "path": "content.js",
+      "bytes": 8943,
+      "sha256": "9e7b2187a016af776ca91e4358251d8804a49a6882bbbbc64081804e146c6679"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 506,
+      "sha256": "899b44f42bfe209eef5b2f01f4540e93d15d191527678c29f694ff9c14073b52"
+    },
+    {
+      "path": "story-workshop.docx",
+      "bytes": 993265,
+      "sha256": "28ebe23fb756030be78fdbe52b863b427553cb055c2c38beb38eeb5023497af3"
+    },
+    {
+      "path": "story-workshop.pdf",
+      "bytes": 1207881,
+      "sha256": "d54991ce3ba62723fcc8e7060472913ca770ba222f63ce187f122f869e3cb614"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 233352,
+      "sha256": "f120f660c97844badfddfa9a3c80a882cef12620843687699c53b8f3943ba935"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 169470,
+      "sha256": "7a9626e465032fd93e45593511d38a3475789a4374c671b4a38cef8c889ecdfd"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 200215,
+      "sha256": "31f7309270d44a2c2a57ae75d0d542845f4b7c2d7e7fc203fb9f0c8c361733ae"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 156965,
+      "sha256": "e1935a3497cfb04adc93327b94572e5334bca034d6bcbd72c19ff2b4726df7be"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 226155,
+      "sha256": "d09444844d5f295c6239e1ffbbaffd21c744e539ad822095e53b142403f70b53"
+    }
+  ]
+}

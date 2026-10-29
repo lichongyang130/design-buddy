@@ -1,0 +1,38 @@
+[
+  {
+    "id": "question-lab",
+    "title": "QUESTION LAB",
+    "category": "\u8bfe\u7a0b",
+    "layout": "inquiry"
+  },
+  {
+    "id": "story-workshop",
+    "title": "STORY WORKSHOP",
+    "category": "\u8bfe\u7a0b",
+    "layout": "manuscript"
+  },
+  {
+    "id": "visual-literacy",
+    "title": "VISUAL LITERACY",
+    "category": "\u8bfe\u7a0b",
+    "layout": "visual"
+  },
+  {
+    "id": "project-studio",
+    "title": "PROJECT STUDIO",
+    "category": "\u8bfe\u7a0b",
+    "layout": "studio"
+  },
+  {
+    "id": "debate-room",
+    "title": "DEBATE ROOM",
+    "category": "\u8bfe\u7a0b",
+    "layout": "argument"
+  },
+  {
+    "id": "self-paced-route",
+    "title": "SELF-PACED ROUTE",
+    "category": "\u8bfe\u7a0b",
+    "layout": "pathway"
+  }
+]

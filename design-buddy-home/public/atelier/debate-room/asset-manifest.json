@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "work": "debate-room",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 10064,
+      "sha256": "1d3ef11b73d3ef9d1df05efbe20bdb04ce506ef4916362bbf6dec9cbb312714c"
+    },
+    {
+      "path": "content.js",
+      "bytes": 8767,
+      "sha256": "54b3e53e11c38dd95e08c1b5306c683f8a5644b60100b69cc130a082ddcdfa1f"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 502,
+      "sha256": "9051e67afe7863b932fe5a719dd55f5cced3af2fedcb9cc4eb5150d3c1fcf890"
+    },
+    {
+      "path": "debate-room.docx",
+      "bytes": 1059895,
+      "sha256": "7a043f64b2c544931cba1d02a8e4ecf969255812eefb1c380986465341dd7a20"
+    },
+    {
+      "path": "debate-room.pdf",
+      "bytes": 1122091,
+      "sha256": "ebcf7d14dffc266fa332546863456cc3c84a94748b244923d3498b3949f89a56"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 218212,
+      "sha256": "834f35908ae4b1408a1932a7c544a5d29f0b4c96e268402becb5896e975a36e0"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 183088,
+      "sha256": "38688cf3524681f8c598b5489b0fbf891bc5ecb79f89ed1ba381ad83708bdd9f"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 202413,
+      "sha256": "dfc336f6ff6b119074575c622feb52017533ea57f44e0a488bbaa11e7e7ffb8c"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 226155,
+      "sha256": "d09444844d5f295c6239e1ffbbaffd21c744e539ad822095e53b142403f70b53"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 223197,
+      "sha256": "0f89ebee5e4901898fe7885b03222633cf28f411687d8d28e2dc8bd954aee385"
+    }
+  ]
+}

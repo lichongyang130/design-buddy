@@ -19,7 +19,7 @@
     "form-study"
   ],
   "additionalCases": 50,
-  "publishedFromThisExpansion": 0,
+  "publishedFromThisExpansion": 6,
   "counts": {
     "课程": 6,
     "提案": 6,
@@ -31,7 +31,7 @@
     "活动": 5,
     "产品设计": 5
   },
-  "storageGate": "Existing cumulative patch is ~126.7 MiB. Establish and byte-verify external/generated artifact storage before adding more large image/export binaries. Never remove prior download availability.",
+  "storageGate": "Artifacts are byte-pinned in already-pushed immutable Git history; restored automatically before dev/start/check/build. Keep downloads intact. Check cumulative snapshot before further batches.",
   "cases": [
     {
       "id": "question-lab",
@@ -50,8 +50,8 @@
         "迁移任务",
         "学习反思"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -71,7 +71,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/question-lab/index.html",
+      "verification": "Browser desktop/mobile/offline exports and actual original/edited DOCX LibreOffice rendering passed at ten pages"
     },
     {
       "id": "story-workshop",
@@ -90,8 +96,8 @@
         "作品清单",
         "作者反思"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -111,7 +117,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/story-workshop/index.html",
+      "verification": "Browser desktop/mobile/offline exports and actual original/edited DOCX LibreOffice rendering passed at ten pages"
     },
     {
       "id": "visual-literacy",
@@ -130,8 +142,8 @@
         "分析练习",
         "阅读档案"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -151,7 +163,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/visual-literacy/index.html",
+      "verification": "Browser desktop/mobile/offline exports and actual original/edited DOCX LibreOffice rendering passed at ten pages"
     },
     {
       "id": "project-studio",
@@ -170,8 +188,8 @@
         "成果陈述",
         "复盘迁移"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -191,7 +209,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/project-studio/index.html",
+      "verification": "Browser desktop/mobile/offline exports and actual original/edited DOCX LibreOffice rendering passed at ten pages"
     },
     {
       "id": "debate-room",
@@ -210,8 +234,8 @@
         "论证修订",
         "个人立场"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -231,7 +255,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/debate-room/index.html",
+      "verification": "Browser desktop/mobile/offline exports and actual original/edited DOCX LibreOffice rendering passed at ten pages"
     },
     {
       "id": "self-paced-route",
@@ -250,8 +280,8 @@
         "成果整理",
         "后续路线"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -271,7 +301,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/self-paced-route/index.html",
+      "verification": "Browser desktop/mobile/offline exports and actual original/edited DOCX LibreOffice rendering passed at ten pages"
     },
     {
       "id": "pilot-charter",
@@ -2033,5 +2069,6 @@
         "old-case-regression"
       ]
     }
-  ]
+  ],
+  "remaining": 44
 }

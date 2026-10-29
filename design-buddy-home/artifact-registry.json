@@ -43,6 +43,46 @@
       "bytes": 1983204,
       "sha256": "21be743293d0121a24c34e51c73c96cb80d3ba8352e0d123dcc7c1f920104160",
       "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/403554ba3173b609bec877ce24b7643141eb9c94"
+    },
+    {
+      "path": "public/atelier/pantry-notes/pantry-notes-preview.pptx",
+      "gitBlob": "afef1a8dc1bdd132def26daf5e08ac5786bb47b4",
+      "bytes": 3144068,
+      "sha256": "b1b7d4e48bd420265b600e236e01381ec44c0d9b38e7328e088ae0f72b012d1e",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/afef1a8dc1bdd132def26daf5e08ac5786bb47b4",
+      "sourceCommit": "673131a7de309ab0ce87779bd9a2b05067f6dbd4"
+    },
+    {
+      "path": "public/atelier/open-shelf/open-shelf-preview.pptx",
+      "gitBlob": "3d85dd54ad19a3a7a95aeced3f47fa88694d9dcd",
+      "bytes": 3797170,
+      "sha256": "3e65af750eef8977624c03abc5ae50d88be55209860a20aa7daee24da47a4a72",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/3d85dd54ad19a3a7a95aeced3f47fa88694d9dcd",
+      "sourceCommit": "673131a7de309ab0ce87779bd9a2b05067f6dbd4"
+    },
+    {
+      "path": "public/atelier/tideline/tideline-preview.pptx",
+      "gitBlob": "3ee09db8515f363e03e15f2f27d69412c78ed5ef",
+      "bytes": 4014272,
+      "sha256": "1338f2882fe92c678d8186d5b4f1e10c2c44f08e1e9be683c2cc7f356b66de3d",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/3ee09db8515f363e03e15f2f27d69412c78ed5ef",
+      "sourceCommit": "673131a7de309ab0ce87779bd9a2b05067f6dbd4"
+    },
+    {
+      "path": "public/atelier/afterglow/afterglow-preview.pptx",
+      "gitBlob": "bb2489de5ff4bb612da486d5952ae8fa8c506848",
+      "bytes": 3403152,
+      "sha256": "c150f38d287192e90b3c248a165a33800d60ab77b66f6ad8d3e78c5297175f32",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/bb2489de5ff4bb612da486d5952ae8fa8c506848",
+      "sourceCommit": "673131a7de309ab0ce87779bd9a2b05067f6dbd4"
+    },
+    {
+      "path": "public/atelier/swatch/swatch-preview.pptx",
+      "gitBlob": "d62e7a99f2230dcc840cab86bf23e60ad36ae206",
+      "bytes": 2460178,
+      "sha256": "4f8d791cd54671fb3f364040d3f1ae425cf96819e242cdfbe08d5f91c16c4845",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/d62e7a99f2230dcc840cab86bf23e60ad36ae206",
+      "sourceCommit": "673131a7de309ab0ce87779bd9a2b05067f6dbd4"
     }
   ]
 }

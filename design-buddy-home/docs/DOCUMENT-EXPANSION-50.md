@@ -1,6 +1,6 @@
 # 50 additional documents — production queue
 
-**Status: 50 framework outlines, zero completed or published from this expansion. Existing 15 cases are unchanged.**
+**Status: 6/50 completed and published (the six courses), 44 remain planned. Existing 15 cases are preserved.**
 
 This request adds 50 cases, rather than renaming or counting the previous nine. The previous 56-case target must not be used to claim this new request is complete. Every case requires at least ten pages and five distinct images, actual editable DOCX, PDF and offline source. A new name/palette is not a distinct framework.
 
@@ -11,7 +11,7 @@ This request adds 50 cases, rather than renaming or counting the previous nine. 
 3. Select or create five distinct relevant images with explicit provenance. Do not claim curated images are newly generated.
 4. Build originals and offline sources; verify desktop fit, mobile, edits, current exports, real Office page count and SHA hashes.
 5. Regress old gallery, cache and downloads; only then publish that case.
-6. Current patch budget is approximately 126.7 MiB / 128 MiB. Establish verified artifact storage or on-demand generation before adding large new artifacts. Do not silently delete past sources.
+6. Distribution artifacts are pinned by immutable Git blob and SHA after a verified push, then restored automatically before dev/start/check/build. Do not delete downloads or add unchecked large binaries.
 
 ## Case allocation
 
@@ -142,3 +142,9 @@ This request adds 50 cases, rather than renaming or counting the previous nine. 
 - **原型研究文档** (`prototype-study`): 任务脚本与观察矩阵。
   研究目标 → 原型范围 → 情境设定 → 任务脚本 → 观察口径 → 记录矩阵 → 问题聚类 → 方案迭代 → 局限说明 → 下一轮研究。
 
+
+## Course batch acceptance
+
+All six courses have ten pages/five distinct images, actual native editable Word tables and headings, PDF and file:// offline source. Six new heroes plus 24 curated images, not 30 new illustrations. Record cells persist and export with current Word/HTML/JSON. Six distinct desktop geometries; 60 pages fit; mobile and offline exports pass. Real LibreOffice renders both original and edited copies to ten pages each. Longer edits may reflow.
+
+Collection: `/templates.html?format=文档&batch=course-expansion`. Batch download: `/atelier/inquiry-kit/download.html`. `npm run build:course-expansion` and `npm run test:course-expansion`. The original nine-case collection remains nine cases, not fifteen.
