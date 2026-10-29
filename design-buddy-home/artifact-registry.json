@@ -227,6 +227,46 @@
       "sha256": "1bdd5d3f8a9d5d4d14dd3a1dd32c6d9cb63ebcb21062c170a5b2acc0381b4996",
       "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/59ff6be4808e1eada20fb188d6aeab1fc70fd10e",
       "sourceCommit": "4db86e63941bc26d3e4cda1bc2f9aaa20179dd26"
+    },
+    {
+      "path": "public/atelier/pantry-notes/pantry-notes-preview.pdf",
+      "gitBlob": "b40d6e8925ab675dc5c1c19c1b69c9d06d581bbd",
+      "bytes": 3154440,
+      "sha256": "5bc29f9ba4de3149afaa60a1171f0a9a625c8c4ff42e306a4755414546d6fa8c",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/b40d6e8925ab675dc5c1c19c1b69c9d06d581bbd",
+      "sourceCommit": "7376ca5377733c7d076604420392246d1d6b1c13"
+    },
+    {
+      "path": "public/atelier/open-shelf/open-shelf-preview.pdf",
+      "gitBlob": "cfc255e8685b17e0fd89227ddf1dd1827ca7aef3",
+      "bytes": 3865041,
+      "sha256": "0c2df29c919d89b7e7260a3596e5878017735e2f4d595851bd817885eb307a91",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/cfc255e8685b17e0fd89227ddf1dd1827ca7aef3",
+      "sourceCommit": "7376ca5377733c7d076604420392246d1d6b1c13"
+    },
+    {
+      "path": "public/atelier/tideline/tideline-preview.pdf",
+      "gitBlob": "a9243c509cf4377e28b27e345a0122b44d7dba9b",
+      "bytes": 4109875,
+      "sha256": "734942b664f529a255189df88698e5eba22dd3309a25022cb262fb6c12fd5b94",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/a9243c509cf4377e28b27e345a0122b44d7dba9b",
+      "sourceCommit": "7376ca5377733c7d076604420392246d1d6b1c13"
+    },
+    {
+      "path": "public/atelier/afterglow/afterglow-preview.pdf",
+      "gitBlob": "d45e6829c0d911b0b085e04365ba8c937414f5d9",
+      "bytes": 3433124,
+      "sha256": "3efb3b13d4e0fbb43ff87fbba4d6ebc8d7aa167d36f407444ba80ef9ed87d243",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/d45e6829c0d911b0b085e04365ba8c937414f5d9",
+      "sourceCommit": "7376ca5377733c7d076604420392246d1d6b1c13"
+    },
+    {
+      "path": "public/atelier/swatch/swatch-preview.pdf",
+      "gitBlob": "c35b148fde1f0218ed001c098c3864569d3b504a",
+      "bytes": 2581727,
+      "sha256": "5cc103007683c2b5d051b94cae1f1514da04c32f27ff8d8e039b9c0109d21a54",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/c35b148fde1f0218ed001c098c3864569d3b504a",
+      "sourceCommit": "7376ca5377733c7d076604420392246d1d6b1c13"
     }
   ]
 }

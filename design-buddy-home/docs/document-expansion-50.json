@@ -19,7 +19,7 @@
     "form-study"
   ],
   "additionalCases": 50,
-  "publishedFromThisExpansion": 6,
+  "publishedFromThisExpansion": 12,
   "counts": {
     "课程": 6,
     "提案": 6,
@@ -326,8 +326,8 @@
         "评估计划",
         "决策请求"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -347,7 +347,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/pilot-charter/index.html",
+      "verification": "60-page desktop fit; six geometries and six native Word orders; record-cell edits, mobile, offline and batch-original bytes; real original/edited DOCX LibreOffice renderings at ten pages"
     },
     {
       "id": "service-blueprint",
@@ -366,8 +372,8 @@
         "交接条件",
         "讨论结论"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -387,7 +393,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/service-blueprint/index.html",
+      "verification": "60-page desktop fit; six geometries and six native Word orders; record-cell edits, mobile, offline and batch-original bytes; real original/edited DOCX LibreOffice renderings at ten pages"
     },
     {
       "id": "partnership-canvas",
@@ -406,8 +418,8 @@
         "退出条件",
         "下一步请求"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -427,7 +439,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/partnership-canvas/index.html",
+      "verification": "60-page desktop fit; six geometries and six native Word orders; record-cell edits, mobile, offline and batch-original bytes; real original/edited DOCX LibreOffice renderings at ten pages"
     },
     {
       "id": "research-commission",
@@ -446,8 +464,8 @@
         "交付定义",
         "委托讨论"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -467,7 +485,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/research-commission/index.html",
+      "verification": "60-page desktop fit; six geometries and six native Word orders; record-cell edits, mobile, offline and batch-original bytes; real original/edited DOCX LibreOffice renderings at ten pages"
     },
     {
       "id": "change-case",
@@ -486,8 +510,8 @@
         "验证条件",
         "决策记录"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -507,7 +531,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/change-case/index.html",
+      "verification": "60-page desktop fit; six geometries and six native Word orders; record-cell edits, mobile, offline and batch-original bytes; real original/edited DOCX LibreOffice renderings at ten pages"
     },
     {
       "id": "creative-treatment",
@@ -526,8 +556,8 @@
         "评审问题",
         "方向选择"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -547,7 +577,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/creative-treatment/index.html",
+      "verification": "60-page desktop fit; six geometries and six native Word orders; record-cell edits, mobile, offline and batch-original bytes; real original/edited DOCX LibreOffice renderings at ten pages"
     },
     {
       "id": "evidence-review",
@@ -2070,5 +2106,5 @@
       ]
     }
   ],
-  "remaining": 44
+  "remaining": 38
 }

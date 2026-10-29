@@ -1,0 +1,296 @@
+{
+  "work": {
+    "id": "service-blueprint",
+    "title": "SERVICE BLUEPRINT",
+    "subtitle": "服务改进提案",
+    "category": "提案",
+    "layout": "blueprint",
+    "color": "#156b75",
+    "wash": "#e0f3f1",
+    "framework": "前后台服务蓝图",
+    "scope": "Fictional library welcome-service concept. No actual service research, staffing agreement, system integration or operational approval is supplied.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "proposal-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / SERVICE BLUEPRINT",
+      "title": "Connect the visible service to its support.",
+      "lead": "This proposal explores an imagined library welcome interaction. The blueprint links a visitor action, a visible response and the behind-the-scenes support that might make that response possible.",
+      "body": "The decision is whether this service concept deserves contextual research and responsible review. The illustrated desk is a visual reference only; it supplies no site dimensions, staffing capacity or evidence about real visitors.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which service question should the blueprint make easier to discuss?",
+      "records": [
+        {
+          "label": "Visitor intention",
+          "prompt": "Draft visitor intention: not yet confirmed."
+        },
+        {
+          "label": "Visible response",
+          "prompt": "Draft visible response: not yet confirmed."
+        },
+        {
+          "label": "Supporting activity",
+          "prompt": "Draft supporting activity: not yet confirmed."
+        }
+      ],
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / SERVICE BLUEPRINT",
+      "title": "Begin with a situation, not a persona claim.",
+      "lead": "Describe the task a fictional visitor is trying to accomplish and the information they may lack. Avoid presenting a made-up profile as research about an actual population.",
+      "body": "Example situation: a first-time reader wants to understand where a group discussion might happen. Their familiarity, access needs and preferences remain unknown. A real service proposal would investigate those conditions through appropriate methods.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What contextual information would change how the welcome interaction is designed?",
+      "records": [
+        {
+          "label": "Situation",
+          "prompt": "Draft situation: not yet confirmed."
+        },
+        {
+          "label": "Visitor question",
+          "prompt": "Draft visitor question: not yet confirmed."
+        },
+        {
+          "label": "Unknown context",
+          "prompt": "Draft unknown context: not yet confirmed."
+        }
+      ],
+      "image": 1,
+      "kind": "body"
+    },
+    {
+      "section": "03 / SERVICE BLUEPRINT",
+      "title": "Map the frontstage contact.",
+      "lead": "Frontstage actions are the visible words, objects and responses a visitor encounters. State what the interaction is intended to clarify rather than promising that it works.",
+      "body": "A proposed welcome card might explain the purpose of a session and where to ask a question. It should not imply guaranteed availability, accessibility or eligibility. The wording needs review against the real service context before use.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What should the visitor understand after this touchpoint, and what remains unconfirmed?",
+      "records": [
+        {
+          "label": "Visible touchpoint",
+          "prompt": "Draft visible touchpoint: not yet confirmed."
+        },
+        {
+          "label": "Intended clarification",
+          "prompt": "Draft intended clarification: not yet confirmed."
+        },
+        {
+          "label": "Review question",
+          "prompt": "Draft review question: not yet confirmed."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / SERVICE BLUEPRINT",
+      "title": "Reveal the backstage work.",
+      "lead": "A simple visible response can depend on preparation that visitors do not see. Put those backstage activities on the same page so the proposal does not hide its implementation burden.",
+      "body": "A welcome card could require a current session description, an agreed point of contact and a way to update the copy. These are proposed activities; no role or organisation has accepted them through this document.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which backstage task must exist before the proposed frontstage response is credible?",
+      "records": [
+        {
+          "label": "Backstage preparation",
+          "prompt": "Draft backstage preparation: not yet confirmed."
+        },
+        {
+          "label": "Update responsibility",
+          "prompt": "Draft update responsibility: not yet confirmed."
+        },
+        {
+          "label": "Dependency",
+          "prompt": "Draft dependency: not yet confirmed."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / SERVICE BLUEPRINT",
+      "title": "Identify the supporting systems.",
+      "lead": "Distinguish a service idea from the information and coordination systems it would need. The blueprint should make gaps visible rather than imply that a real technical integration already exists.",
+      "body": "A current information source, a version record and a route for questions might support the welcome interaction. Do not invent a booking system, identity check or confirmed database connection to make the diagram appear complete.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Where would the service obtain a reliable answer when information changes?",
+      "records": [
+        {
+          "label": "Information source",
+          "prompt": "Draft information source: not yet confirmed."
+        },
+        {
+          "label": "Coordination mechanism",
+          "prompt": "Draft coordination mechanism: not yet confirmed."
+        },
+        {
+          "label": "Unresolved interface",
+          "prompt": "Draft unresolved interface: not yet confirmed."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / SERVICE BLUEPRINT",
+      "title": "Mark the points of uncertainty.",
+      "lead": "A breakpoint is a place where the proposed flow could fail to answer the visitor’s question or depend on missing support. Name the uncertainty before selecting a solution.",
+      "body": "For example, an outdated card could direct a visitor to a session that is not confirmed. The issue might concern information ownership rather than the visual design of the card. These are hypothetical failure modes, not observed incidents.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which breakpoint could not be fixed by rewriting the visible message alone?",
+      "records": [
+        {
+          "label": "Potential breakpoint",
+          "prompt": "Draft potential breakpoint: not yet confirmed."
+        },
+        {
+          "label": "Underlying dependency",
+          "prompt": "Draft underlying dependency: not yet confirmed."
+        },
+        {
+          "label": "Clarification needed",
+          "prompt": "Draft clarification needed: not yet confirmed."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / SERVICE BLUEPRINT",
+      "title": "Compare a lighter alternative.",
+      "lead": "Test the concept against an option with fewer dependencies. An alternative is useful when it pursues the same visitor intention rather than simply offering a different-looking desk.",
+      "body": "Compare a maintained welcome card with a clearly identified route for asking a question. The latter may reduce copy maintenance but depend more on an available contact. Neither option is confirmed as suitable for a real service.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What evidence would make the lighter option preferable?",
+      "records": [
+        {
+          "label": "Option A",
+          "prompt": "Draft option a: not yet confirmed."
+        },
+        {
+          "label": "Option B",
+          "prompt": "Draft option b: not yet confirmed."
+        },
+        {
+          "label": "Dependency trade-off",
+          "prompt": "Draft dependency trade-off: not yet confirmed."
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / SERVICE BLUEPRINT",
+      "title": "Turn assumptions into research questions.",
+      "lead": "Translate the most important uncertainties into questions a suitable inquiry could address. Keep proposed research separate from actual findings.",
+      "body": "Questions might concern what first-time readers need to know, who maintains information and how changes reach the visible touchpoint. An illustration cannot answer any of these questions, and this template contains no participant study.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which question should be investigated before the service concept is developed further?",
+      "records": [
+        {
+          "label": "Assumption",
+          "prompt": "Draft assumption: not yet confirmed."
+        },
+        {
+          "label": "Research question",
+          "prompt": "Draft research question: not yet confirmed."
+        },
+        {
+          "label": "Appropriate source to seek",
+          "prompt": "Draft appropriate source to seek: not yet confirmed."
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / SERVICE BLUEPRINT",
+      "title": "Define the service handoff.",
+      "lead": "A handoff should identify the current concept version, the unresolved dependencies and the role that would need to accept further work. Passing a file is not the same as transferring responsibility.",
+      "body": "The proposed package includes a blueprint, copy draft and question list. A real owner would need to confirm which artifacts are useful and which operating conditions apply. Do not label a concept reviewed or approved without that confirmation.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What confirmation would distinguish a useful handoff from an unsupported assignment?",
+      "records": [
+        {
+          "label": "Handoff artifact",
+          "prompt": "Draft handoff artifact: not yet confirmed."
+        },
+        {
+          "label": "Receiving role to confirm",
+          "prompt": "Draft receiving role to confirm: not yet confirmed."
+        },
+        {
+          "label": "Acceptance condition",
+          "prompt": "Draft acceptance condition: not yet confirmed."
+        }
+      ],
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / SERVICE BLUEPRINT",
+      "title": "Record the concept decision.",
+      "lead": "Invite a reader to keep, revise or pause the service concept, with a reason tied to its dependencies. A decision record should preserve the uncertainty rather than make the diagram look final.",
+      "body": "A bounded response might request contextual research before choosing between the card and contact-route options. Keep the distinction between a concept discussion and an operating service visible in every exported copy.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What needs to change in the blueprint before another review would be useful?",
+      "records": [
+        {
+          "label": "Decision option",
+          "prompt": "Draft decision option: not yet confirmed."
+        },
+        {
+          "label": "Dependency to resolve",
+          "prompt": "Draft dependency to resolve: not yet confirmed."
+        },
+        {
+          "label": "Next version change",
+          "prompt": "Draft next version change: not yet confirmed."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for service-blueprint"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: open-shelf/03.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: common-ground/02.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: tideline/09.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: swatch/05.jpg"
+    }
+  ]
+}

@@ -31,7 +31,13 @@
     "visual-literacy",
     "project-studio",
     "debate-room",
-    "self-paced-route"
+    "self-paced-route",
+    "pilot-charter",
+    "service-blueprint",
+    "partnership-canvas",
+    "research-commission",
+    "change-case",
+    "creative-treatment"
   ],
   "documentRequirements": {
     "minPages": 10,
@@ -39,8 +45,8 @@
   },
   "additionalDocumentRequest": {
     "count": 50,
-    "published": 6,
-    "remaining": 44,
+    "published": 12,
+    "remaining": 38,
     "plan": "docs/document-expansion-50.json"
   }
 }

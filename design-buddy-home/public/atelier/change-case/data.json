@@ -1,0 +1,296 @@
+{
+  "work": {
+    "id": "change-case",
+    "title": "CHANGE CASE",
+    "subtitle": "变更提案",
+    "category": "提案",
+    "layout": "delta",
+    "color": "#3d6651",
+    "wash": "#e6f0e4",
+    "framework": "现状到目标差异分析",
+    "scope": "Fictional change from an unstructured prompt folder to a versioned prompt index. No real migration, system access, staff appointment or operational approval is supplied.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "proposal-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / CHANGE CASE",
+      "title": "Explain why a change deserves review.",
+      "lead": "This proposal compares an imagined unstructured folder of discussion prompts with a versioned index. The decision sought is whether to investigate a change, not whether to replace a working system immediately.",
+      "body": "The fictional concern is that a reader may not know which prompt version to use. No real incident, measured error rate or user complaint is supplied. The case for change therefore begins as a question requiring contextual evidence.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which source would show whether the proposed change addresses a real problem?",
+      "records": [
+        {
+          "label": "Current concern",
+          "prompt": "Draft current concern: not yet confirmed."
+        },
+        {
+          "label": "Proposed direction",
+          "prompt": "Draft proposed direction: not yet confirmed."
+        },
+        {
+          "label": "Decision sought",
+          "prompt": "Draft decision sought: not yet confirmed."
+        }
+      ],
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / CHANGE CASE",
+      "title": "Describe the current state fairly.",
+      "lead": "A current-state description should capture useful features as well as difficulties. Avoid making the existing approach look artificially poor to justify the preferred solution.",
+      "body": "A simple folder can be easy to browse and require little maintenance. Its limitations might concern version visibility or ownership, but those are hypotheses until the actual context is examined. No real system audit has been performed.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What should the proposed change preserve from the current approach?",
+      "records": [
+        {
+          "label": "Current strength",
+          "prompt": "Draft current strength: not yet confirmed."
+        },
+        {
+          "label": "Possible limitation",
+          "prompt": "Draft possible limitation: not yet confirmed."
+        },
+        {
+          "label": "Evidence gap",
+          "prompt": "Draft evidence gap: not yet confirmed."
+        }
+      ],
+      "image": 1,
+      "kind": "body"
+    },
+    {
+      "section": "03 / CHANGE CASE",
+      "title": "Define the target condition.",
+      "lead": "Describe the capability the change is intended to create rather than jumping straight to a product or tool. A target should be inspectable and remain open to more than one implementation.",
+      "body": "The proposed condition is that a reader can identify a prompt version and a contact for questions. This does not require a particular platform, and it does not establish that a real contact or maintenance process exists.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "How could a reviewer recognise the target condition without assuming a particular tool?",
+      "records": [
+        {
+          "label": "Target capability",
+          "prompt": "Draft target capability: not yet confirmed."
+        },
+        {
+          "label": "Intended reader benefit",
+          "prompt": "Draft intended reader benefit: not yet confirmed."
+        },
+        {
+          "label": "Boundary",
+          "prompt": "Draft boundary: not yet confirmed."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / CHANGE CASE",
+      "title": "Map the differences.",
+      "lead": "Compare current and target conditions using consistent dimensions. A difference map should show where a change creates new work as well as where it could reduce uncertainty.",
+      "body": "Dimensions might include version labels, ownership information and update effort. A versioned index could clarify the current copy while creating an ongoing maintenance dependency. Both sides belong in the proposal.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which difference produces the largest new responsibility?",
+      "records": [
+        {
+          "label": "Current condition",
+          "prompt": "Draft current condition: not yet confirmed."
+        },
+        {
+          "label": "Target condition",
+          "prompt": "Draft target condition: not yet confirmed."
+        },
+        {
+          "label": "New dependency",
+          "prompt": "Draft new dependency: not yet confirmed."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / CHANGE CASE",
+      "title": "Consider affected roles.",
+      "lead": "Identify categories of people who could be affected and the questions each would need answered. Listing a role does not prove that a person has been consulted or has accepted the change.",
+      "body": "A prompt author might need a revision route; a facilitator might need a stable reference; a maintainer might need update authority. These are discussion roles, not actual appointments or research findings about a workforce.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Whose perspective could reveal a cost missing from the preferred change story?",
+      "records": [
+        {
+          "label": "Role affected",
+          "prompt": "Draft role affected: not yet confirmed."
+        },
+        {
+          "label": "Possible effect",
+          "prompt": "Draft possible effect: not yet confirmed."
+        },
+        {
+          "label": "Consultation question",
+          "prompt": "Draft consultation question: not yet confirmed."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / CHANGE CASE",
+      "title": "Keep more than one option.",
+      "lead": "Compare a full index, a lighter version label and retaining the current folder while clarifying its limits. An option set should include a credible no-change or smaller-change alternative.",
+      "body": "The lighter option may require less maintenance but offer less discoverability. The full index may improve structure while increasing update work. No option is established as feasible or superior in a real environment.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What criterion would distinguish a useful change from unnecessary complexity?",
+      "records": [
+        {
+          "label": "Full option",
+          "prompt": "Draft full option: not yet confirmed."
+        },
+        {
+          "label": "Lighter option",
+          "prompt": "Draft lighter option: not yet confirmed."
+        },
+        {
+          "label": "Retain-current option",
+          "prompt": "Draft retain-current option: not yet confirmed."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / CHANGE CASE",
+      "title": "Propose a staged transition.",
+      "lead": "A transition plan should make dependencies and reversibility visible. Do not present a fictional sequence as an agreed migration schedule or permission to change actual records.",
+      "body": "A paper prototype could be reviewed before any real material is moved. A later trial, if independently authorised, could preserve the existing reference while examining the new structure. Actual access, retention and ownership conditions remain unresolved.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which step should remain reversible until the ownership questions are answered?",
+      "records": [
+        {
+          "label": "Review stage",
+          "prompt": "Draft review stage: not yet confirmed."
+        },
+        {
+          "label": "Reversible step",
+          "prompt": "Draft reversible step: not yet confirmed."
+        },
+        {
+          "label": "Commitment boundary",
+          "prompt": "Draft commitment boundary: not yet confirmed."
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / CHANGE CASE",
+      "title": "Name the change risks.",
+      "lead": "Describe a risk as an uncertain event, a possible consequence and a question for responsible review. Avoid treating a short risk table as a complete assurance process.",
+      "body": "A stale index could create false confidence about which copy is current. A missing maintainer could leave the new structure unsupported. These hypothetical risks point to governance questions, not evidence that a real failure has occurred.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which risk would undermine the reason for making the change at all?",
+      "records": [
+        {
+          "label": "Uncertain event",
+          "prompt": "Draft uncertain event: not yet confirmed."
+        },
+        {
+          "label": "Possible consequence",
+          "prompt": "Draft possible consequence: not yet confirmed."
+        },
+        {
+          "label": "Review question",
+          "prompt": "Draft review question: not yet confirmed."
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / CHANGE CASE",
+      "title": "Define what would count as useful evidence.",
+      "lead": "Before recommending adoption, identify what a review would need to establish. Keep usability, maintenance and responsibility questions separate rather than reducing them to one success label.",
+      "body": "A future review might examine whether the version is identifiable and whether update ownership is accepted. It could not infer a broader productivity improvement without suitable evidence. This document contains no trial results or real measurements.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What evidence would justify revising or abandoning the preferred option?",
+      "records": [
+        {
+          "label": "Review question",
+          "prompt": "Draft review question: not yet confirmed."
+        },
+        {
+          "label": "Suitable evidence",
+          "prompt": "Draft suitable evidence: not yet confirmed."
+        },
+        {
+          "label": "Unsupported inference",
+          "prompt": "Draft unsupported inference: not yet confirmed."
+        }
+      ],
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / CHANGE CASE",
+      "title": "Record a conditional decision.",
+      "lead": "Invite a decision about the next review, with explicit prerequisites and unresolved questions. A conditional decision should not be written as completed implementation.",
+      "body": "Possible response: develop a paper index after confirming the intended use and source material. Keep the alternative options and the current-state strengths attached, so a later reviewer can reconsider the direction rather than inherit a foregone conclusion.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What exactly is authorised for discussion, and what remains outside this proposal?",
+      "records": [
+        {
+          "label": "Response",
+          "prompt": "Draft response: not yet confirmed."
+        },
+        {
+          "label": "Prerequisite",
+          "prompt": "Draft prerequisite: not yet confirmed."
+        },
+        {
+          "label": "Next review artifact",
+          "prompt": "Draft next review artifact: not yet confirmed."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for change-case"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: swatch/03.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: open-shelf/03.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: afterglow/11.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: tideline/04.jpg"
+    }
+  ]
+}

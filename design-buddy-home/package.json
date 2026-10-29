@@ -34,7 +34,9 @@
     "precheck:templates": "npm run restore:artifacts",
     "build:course-expansion": "node scripts/build-course-expansion.mjs",
     "test:course-expansion": "node tests/verify-course-expansion.mjs",
-    "pin:artifacts": "node scripts/pin-template-artifacts.mjs"
+    "pin:artifacts": "node scripts/pin-template-artifacts.mjs",
+    "build:proposal-expansion": "node scripts/build-proposal-expansion.mjs",
+    "test:proposal-expansion": "node tests/verify-proposal-expansion.mjs"
   },
   "devDependencies": {
     "@sparticuz/chromium": "^153.0.0",

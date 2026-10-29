@@ -1,6 +1,6 @@
 # 50 additional documents — production queue
 
-**Status: 6/50 completed and published (the six courses), 44 remain planned. Existing 15 cases are preserved.**
+**Status: 12/50 completed and published (six courses + six proposals), 38 remain planned. Existing 15 cases are preserved.**
 
 This request adds 50 cases, rather than renaming or counting the previous nine. The previous 56-case target must not be used to claim this new request is complete. Every case requires at least ten pages and five distinct images, actual editable DOCX, PDF and offline source. A new name/palette is not a distinct framework.
 
@@ -148,3 +148,24 @@ This request adds 50 cases, rather than renaming or counting the previous nine. 
 All six courses have ten pages/five distinct images, actual native editable Word tables and headings, PDF and file:// offline source. Six new heroes plus 24 curated images, not 30 new illustrations. Record cells persist and export with current Word/HTML/JSON. Six distinct desktop geometries; 60 pages fit; mobile and offline exports pass. Real LibreOffice renders both original and edited copies to ten pages each. Longer edits may reflow.
 
 Collection: `/templates.html?format=文档&batch=course-expansion`. Batch download: `/atelier/inquiry-kit/download.html`. `npm run build:course-expansion` and `npm run test:course-expansion`. The original nine-case collection remains nine cases, not fifteen.
+
+## Proposal batch — six completed documents
+
+| Case | Independent framework | Editable record modules |
+|---|---|---|
+| PILOT CHARTER | Stage-gate charter and review rail | Decision, sponsor, scope, gate artifact, pause condition |
+| SERVICE BLUEPRINT | Frontstage/backstage service lanes | Visitor intention, touchpoint, support, dependencies, handoff |
+| PARTNERSHIP CANVAS | Bilateral party panels and shared conditions | A/B context, contributions, reciprocal value, independent responses |
+| RESEARCH COMMISSION | Vertical title register and method ledger | Research question, candidate method, source scope, analysis, limitations |
+| CHANGE CASE | Current/target/dependency comparison cards | Current state, target condition, options, transition, review evidence |
+| CREATIVE TREATMENT | Image-led treatment and script-notes margin | Concept, narrative beats, draft copy, adaptations, production conditions |
+
+Every case has ten authored pages, five different images, six newly generated theme heroes in total and 24 curated existing-image placements. Every page has an actual illustration. These are fictional proposals, not confirmed partner agreements, approved operations or empirical results. Native DOCX contains editable paragraphs, headings and record tables, never a full-page screenshot. Each case has a different native block order as well as a different browser geometry.
+
+Collection: `/templates.html?format=文档&batch=proposal-expansion`. Combined download: `/atelier/proposal-kit/download.html` (six Word + six PDF files, byte-checked against the actual originals). Each case also offers direct PDF/DOCX and a file:// offline source ZIP. Edits and private notes persist per case and export as current DOCX/HTML/JSON. Long edits can reflow; review private notes before sharing.
+
+Build: `npm run build:proposal-expansion`. Acceptance: `npm run test:proposal-expansion`. The eight browser/data groups exercise all 60 pages, six geometries, multiple editable record cells, mobile, offline, original download bytes and zero runtime errors; six actual edited-Word renderings are ten pages each. Original six DOCX files separately rendered to ten pages. Native original XML is compared with the family generator, and all six native block orders must differ. Course acceptance now has the same guard; its original builder import was corrected to use inquiry-kit, matching current Word exports instead of the generic nine-document generator.
+
+Primary JPEGs, authored content, independent toolkit, HTML and manifests stay in the current Git tree. Complete generated distribution files are committed/pushed first, then SHA-pinned in immutable Git history and automatically restored before dev/start/check/build. No download URL is removed. Do not add a template to the gallery merely because its ten-heading outline exists.
+
+Next batch: six reports. Thirty-eight of the requested fifty remain unfinished, not published placeholders.

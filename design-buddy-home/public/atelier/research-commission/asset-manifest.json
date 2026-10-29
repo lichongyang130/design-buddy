@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "work": "research-commission",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 14092,
+      "sha256": "231d27a705edadca6f639256936bbede34490e4bf0a285021042322eb704e89c"
+    },
+    {
+      "path": "content.js",
+      "bytes": 11554,
+      "sha256": "1d49ac7b6cd9e73eadb1aaa469064c87068e5cffd8b3adce9cf85bfef6f21c17"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 519,
+      "sha256": "90dc2580d9ff23e1e921b399e7bf1c229a66befc2de209fc3058a01d2627bd88"
+    },
+    {
+      "path": "research-commission.docx",
+      "bytes": 1045401,
+      "sha256": "f81da9cd1f000260ba97ee6f09b47a50a27ef783e66a959674af39470b4c2ce9"
+    },
+    {
+      "path": "research-commission.pdf",
+      "bytes": 1109951,
+      "sha256": "7c951ecb0316aa1029131094c7d6cfb1b91df19bdb517c31c340b194467550de"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 208963,
+      "sha256": "10525a507f190084d35cf8af6e78439af533ff29ff3c929bf82a4ec163f25b5b"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 164173,
+      "sha256": "1dd3f4e2ea8d2f2c7a06553acbe26b348e0b56d0b27e68c90510f7d144da92ac"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 214824,
+      "sha256": "68c891ff7c70d9024f7744e76a01eca10a34885f057ec22348e005b86809be61"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 223714,
+      "sha256": "3e41a4c2d60230b3ab1612a89351d9ac7abe3d5f1f8a7966ff8dcd0aa918f1cc"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 226155,
+      "sha256": "d09444844d5f295c6239e1ffbbaffd21c744e539ad822095e53b142403f70b53"
+    }
+  ]
+}

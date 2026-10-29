@@ -1,0 +1,296 @@
+{
+  "work": {
+    "id": "partnership-canvas",
+    "title": "PARTNERSHIP CANVAS",
+    "subtitle": "合作提案",
+    "category": "提案",
+    "layout": "bilateral",
+    "color": "#783e6b",
+    "wash": "#f5e5ef",
+    "framework": "双边价值与责任画布",
+    "scope": "Fictional collaboration between two reading organisations. No partner endorsement, signed agreement, resource commitment or legal terms are supplied.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "proposal-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / PARTNERSHIP CANVAS",
+      "title": "Propose a shared purpose.",
+      "lead": "This canvas explores a possible collaboration between two fictional reading organisations. Begin with a purpose that both sides could question, rather than a list of benefits asserted on their behalf.",
+      "body": "The imagined purpose is to develop a discussion resource that each organisation could adapt. The proposal requests a conversation about fit and boundaries; it does not establish a partnership or authorise use of either party’s name.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What common purpose is worth discussing without assuming either organisation has agreed?",
+      "records": [
+        {
+          "label": "Shared intention",
+          "prompt": "Draft shared intention: not yet confirmed."
+        },
+        {
+          "label": "Partner A question",
+          "prompt": "Draft partner a question: not yet confirmed."
+        },
+        {
+          "label": "Partner B question",
+          "prompt": "Draft partner b question: not yet confirmed."
+        }
+      ],
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / PARTNERSHIP CANVAS",
+      "title": "Make each side’s context visible.",
+      "lead": "Record the context each prospective partner would need to confirm. Balanced treatment means allowing different constraints, not inventing equal capacity or identical priorities.",
+      "body": "Partner A might contribute editorial experience; partner B might understand a particular discussion setting. These are placeholders for conversation, not descriptions of real organisations or commitments they have made.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which assumption about either partner would most change the proposed collaboration?",
+      "records": [
+        {
+          "label": "Partner A context",
+          "prompt": "Draft partner a context: not yet confirmed."
+        },
+        {
+          "label": "Partner B context",
+          "prompt": "Draft partner b context: not yet confirmed."
+        },
+        {
+          "label": "Information to confirm",
+          "prompt": "Draft information to confirm: not yet confirmed."
+        }
+      ],
+      "image": 1,
+      "kind": "body"
+    },
+    {
+      "section": "03 / PARTNERSHIP CANVAS",
+      "title": "Frame a genuinely shared problem.",
+      "lead": "A collaboration needs a problem for which working together could be relevant. Separate a shared concern from two unrelated tasks placed in the same document.",
+      "body": "The fictional issue is that a discussion resource may need both clear writing and contextual adaptation. Whether those needs are real, and whether these partners are suitable, remains to be established through independent information.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What part of the problem would remain difficult if either partner worked alone?",
+      "records": [
+        {
+          "label": "Common problem",
+          "prompt": "Draft common problem: not yet confirmed."
+        },
+        {
+          "label": "A-specific concern",
+          "prompt": "Draft a-specific concern: not yet confirmed."
+        },
+        {
+          "label": "B-specific concern",
+          "prompt": "Draft b-specific concern: not yet confirmed."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / PARTNERSHIP CANVAS",
+      "title": "Describe contributions without assigning them.",
+      "lead": "List the kind of contribution each side might offer and the conditions that would need confirmation. Avoid using the canvas to allocate real work to people who have not accepted it.",
+      "body": "A possible editorial contribution is a draft prompt set. A possible contextual contribution is feedback on where that set needs adaptation. Actual availability, expertise, ownership and review responsibility are not supplied by the template.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What would each side need to know before accepting a contribution?",
+      "records": [
+        {
+          "label": "Possible A contribution",
+          "prompt": "Draft possible a contribution: not yet confirmed."
+        },
+        {
+          "label": "Possible B contribution",
+          "prompt": "Draft possible b contribution: not yet confirmed."
+        },
+        {
+          "label": "Confirmation condition",
+          "prompt": "Draft confirmation condition: not yet confirmed."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / PARTNERSHIP CANVAS",
+      "title": "Show value in both directions.",
+      "lead": "Explain what each partner could learn or gain, while leaving room for a response that the proposed exchange is not worthwhile. Reciprocal value need not be identical.",
+      "body": "Partner A might learn about contextual limitations in its writing. Partner B might gain a reusable discussion format. Neither benefit is a measured result, a testimonial or a promise about a real organisation.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "How would you check whether the proposed value matters to each side?",
+      "records": [
+        {
+          "label": "Value for A",
+          "prompt": "Draft value for a: not yet confirmed."
+        },
+        {
+          "label": "Value for B",
+          "prompt": "Draft value for b: not yet confirmed."
+        },
+        {
+          "label": "Benefit assumption",
+          "prompt": "Draft benefit assumption: not yet confirmed."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / PARTNERSHIP CANVAS",
+      "title": "Set responsibility and ownership boundaries.",
+      "lead": "Distinguish producing a draft, reviewing a draft and making a decision about its use. Ownership, permissions and legal terms require their own appropriate agreement outside this fictional canvas.",
+      "body": "A working discussion can ask who would maintain the text and who could authorise a real publication. It should not mark an asset shared, licensed or approved merely because both parties appear on a page.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which responsibility or permission must be resolved before any shared material is used?",
+      "records": [
+        {
+          "label": "Drafting responsibility",
+          "prompt": "Draft drafting responsibility: not yet confirmed."
+        },
+        {
+          "label": "Review responsibility",
+          "prompt": "Draft review responsibility: not yet confirmed."
+        },
+        {
+          "label": "Permission question",
+          "prompt": "Draft permission question: not yet confirmed."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / PARTNERSHIP CANVAS",
+      "title": "Agree how conversations would work.",
+      "lead": "A communication proposal should clarify the purpose of each exchange and the artifact to bring. Do not invent a calendar or imply that contacts have been appointed.",
+      "body": "An initial conversation could review the shared problem; a later exchange could discuss a draft and its unresolved questions. The useful unit is a reviewable artifact, not a schedule presented as an agreed commitment.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What would make a first conversation useful for both sides?",
+      "records": [
+        {
+          "label": "Conversation purpose",
+          "prompt": "Draft conversation purpose: not yet confirmed."
+        },
+        {
+          "label": "Artifact to bring",
+          "prompt": "Draft artifact to bring: not yet confirmed."
+        },
+        {
+          "label": "Contact to confirm",
+          "prompt": "Draft contact to confirm: not yet confirmed."
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / PARTNERSHIP CANVAS",
+      "title": "Plan for a difference of view.",
+      "lead": "Keep a route for disagreement alongside the preferred collaboration story. A difference can concern scope, wording or timing without implying bad faith.",
+      "body": "For example, one side may want a broad resource while the other needs a narrow exercise. Record both concerns and ask whether a smaller shared component would preserve useful collaboration. This is a discussion method, not dispute-resolution advice.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What disagreement would require revisiting the shared purpose rather than simply editing a sentence?",
+      "records": [
+        {
+          "label": "A concern",
+          "prompt": "Draft a concern: not yet confirmed."
+        },
+        {
+          "label": "B concern",
+          "prompt": "Draft b concern: not yet confirmed."
+        },
+        {
+          "label": "Smaller common option",
+          "prompt": "Draft smaller common option: not yet confirmed."
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / PARTNERSHIP CANVAS",
+      "title": "Keep an exit or pause option.",
+      "lead": "A responsible collaboration proposal allows either side to decide that the fit is not yet right. Clarify what would need to be preserved or withdrawn if the discussion stops.",
+      "body": "A pause might leave each side with its own notes while avoiding any public partnership claim. Real confidentiality, retention and intellectual-property arrangements require appropriate independent agreement; none is established here.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "How can the discussion end without implying an obligation that was never accepted?",
+      "records": [
+        {
+          "label": "Pause condition",
+          "prompt": "Draft pause condition: not yet confirmed."
+        },
+        {
+          "label": "Material question",
+          "prompt": "Draft material question: not yet confirmed."
+        },
+        {
+          "label": "Follow-up boundary",
+          "prompt": "Draft follow-up boundary: not yet confirmed."
+        }
+      ],
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / PARTNERSHIP CANVAS",
+      "title": "Invite two independent responses.",
+      "lead": "Close with space for each partner’s response and a shared next question. A single signature-like box would hide the fact that the parties may have different conditions.",
+      "body": "Ask each side to identify interest, concerns and a prerequisite source. A future agreement would need its own authorised process. Keep this canvas labelled as a fictional proposal until actual context and consent are established.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which next question is genuinely shared after both responses are considered?",
+      "records": [
+        {
+          "label": "Partner A response",
+          "prompt": "Draft partner a response: not yet confirmed."
+        },
+        {
+          "label": "Partner B response",
+          "prompt": "Draft partner b response: not yet confirmed."
+        },
+        {
+          "label": "Shared next question",
+          "prompt": "Draft shared next question: not yet confirmed."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for partnership-canvas"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: common-ground/04.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: afterglow/05.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: open-shelf/06.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: tideline/15.jpg"
+    }
+  ]
+}
