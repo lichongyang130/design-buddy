@@ -16,7 +16,9 @@
     "test:template-office": "node scripts/verify-template-office.mjs",
     "test:pantry-cache": "node tests/verify-pantry-cache.mjs",
     "build:open-shelf": "node scripts/build-open-shelf.mjs",
-    "test:open-shelf": "node tests/verify-open-shelf.mjs"
+    "test:open-shelf": "node tests/verify-open-shelf.mjs",
+    "build:tideline": "node scripts/build-tideline.mjs",
+    "test:tideline": "node tests/verify-tideline.mjs"
   },
   "devDependencies": {
     "@sparticuz/chromium": "^153.0.0",

@@ -2,13 +2,13 @@
 
 ## New user-authorised scope
 
-On 2026-10-29 the user requested a new rebuild, not recovery of the missing prior binaries. Each case must now contain **28–35 pages and 15–20 independently generated main illustrations**. This replaces the earlier 28–40-page allowance. The latest attached kitchen image is the background/style reference: warm ivory paper, pale sage surroundings, delicate ink contours and soft natural watercolour. It supersedes the prior dark-background direction for this new batch. Each case must have a genuinely distinct framework. Preserve native gallery rail/sidebar/filter/workspace behaviour and existing user work storage.
+On 2026-10-29 the user requested a new rebuild, not recovery of the missing prior binaries. Each case must now contain **28–35 pages and 15–20 independently generated main illustrations**. This replaces the earlier 28–40-page allowance. The attached kitchen image initially guided the first two cases: warm ivory, pale sage, delicate ink and soft watercolour. The subsequent latest instruction explicitly requires varied backgrounds, not this same pale palette throughout. From case three onward, vary environment, time of day, light and colour by theme while retaining fine-line watercolour quality. Preserve the first two cases unchanged. Each case must have a genuinely distinct framework. Preserve native gallery rail/sidebar/filter/workspace behaviour and existing user work storage.
 
 Target remains 56 cases. Legacy bulk sources are retained, not used to populate the rebuilt gallery. Prior MEASURE/CORNER LIBRARY/FOOTFALL/AFTER HOURS originals remain unrecovered; this batch must not be described as recovery of those files.
 
 ## Actual progress
 
-**Published: 2 / 56. Drafts: 0. Not started: 54. Authored pages: 64. Actual independent main illustrations: 32 / 32. Missing primary art: 0.**
+**Published: 2 / 56. Drafts: 1. Not started: 53. Authored pages including draft: 96. Actual independent main illustrations: 42 / 48 planned across these three cases. Missing primary art: 6, all in the third draft.**
 
 PANTRY NOTES is a new 32-page kitchen-measurement learning journal. All 16 genuine primary illustrations are present. The final six show equal-group planning, comparison of observation notes, provenance review, method handoff, careful revision and a closing notebook still life. All 32 pages show their assigned primary illustration; no pending-art diagram remains. Repeated placements do not increase the independent primary-art count. The case is published after browser, offline, cache, export and real Office checks passed.
 
@@ -24,7 +24,7 @@ All 16 independent warm-ivory/pale-sage illustrations are present. The final six
 
 The resource model is fictional: 1,800 + 1,400 + 600 + 400 = 4,200 units; adding 800 gives 5,000. Staffing, venue costs, specialist review and other categories are explicitly not supplied. It is not a quote, real funding or a complete budget.
 
-The gallery now reads the case registry rather than a hardcoded single case. Search, OR category filtering, name/date sort, recent views, collection, archive/restore and mobile sidebar operate across both cases without modifying legacy personal-work storage. Production checks accept an honest draft but forbid publishing art-incomplete metadata.
+The gallery now reads the case registry rather than a hardcoded single case. Search, OR category filtering, name/date sort, recent views, collection, archive/restore and mobile sidebar operate across all three cases without modifying legacy personal-work storage. Production checks accept an honest draft but forbid publishing art-incomplete metadata.
 
 ## Reproduction and safeguards
 
@@ -34,8 +34,8 @@ Run from `design-buddy-home`:
 - `npm run dev -- --host 0.0.0.0 --port 5174 --strictPort`
 - `npm run build:pantry-notes` (uses `PANTRY_BASE_URL`, default `http://127.0.0.1:5174`)
 - `npm run check:templates` verifies the new catalog, source counts, distinct actual JPEGs and SHA-256 asset manifest. Drafts may exist but cannot count as published. Missing/corrupt originals block production builds.
-- `npm run build:open-shelf` and `npm run test:open-shelf` build and exercise the independent second draft (`OPEN_SHELF_BASE_URL`, default port 5174).
-- `npm run test:pantry-cache` verifies old-cache migration and both actual offline case reloads.
+- `npm run build:open-shelf` and `npm run test:open-shelf` build and exercise the independent second case (`OPEN_SHELF_BASE_URL`, default port 5174).
+- `npm run test:pantry-cache` verifies old-cache migration and all three actual offline case reloads.
 - `npm run test:pantry-notes` exercises browser behaviour, per-page fit, editing, downloads, real touch and direct-file offline source.
 - `npm run test:template-office` requires the optional LibreOffice kit at `.cache/office/node_modules/@deepseek-ai/libreoffice-kit/lib/index.js`, or `OFFICE_KIT_MODULE`; it runs real LibreOffice core, not Microsoft Office GUI.
 - `npm run build` runs integrity checks before compiling.
@@ -44,13 +44,21 @@ The browser helper automatically extracts packaged Chromium runtime libraries in
 
 The service worker uses exact-request network-first caching, keeps unrelated caches, and never substitutes homepage HTML for a missing work/module. Versioned gallery and case modules prevent old unversioned caches from replacing new content.
 
-## Next
+## TIDELINE — third case (draft)
 
-Author a genuinely different third case with the latest reference’s ivory/pale-sage fine-line watercolour. Each case needs 28–35 pages and 15–20 independent main illustrations before publication. The remaining 54 cases are not authored. Do not count reused placements, supporting diagrams or draft shells as completed cases or extra primary art. Keep verified GitHub checkpoints including the actual JPEGs, source and reproducible exports.
+32 original portrait atlas pages use a masthead, live scoped metrics, full-colour coastal scene, abstract segment index, source chart and analyst question. This is neither the kitchen journal nor the landscape proposal board. Eight chapter palettes accompany ten independently generated scenes: blue sea, coral sunset, overcast harbour, forest green, red boats, sand-gold overlook, deep-teal interior, fog, coastal gardens and indigo night. Not all backgrounds are ivory or sage.
 
-## Published case verification
+Only 10 of 16 primary illustrations exist. Pages 21–32 use explicit pending-art scope diagrams, which are not counted as primary illustrations. The case stays draft until the other six genuine artworks and full checks are completed. No extra art is claimed from repeated placements.
 
-PANTRY NOTES passes eight browser groups, OPEN SHELF passes nine, and five old-worker/offline checks pass. Real LibreOffice renders both native-text PPTX files to 32 pages each. Production build passes both manifests and preserves byte-identical atelier source/production copies. Both cases have 16 primary illustrations and meet their art gates. The OPEN SHELF v2 viewer and registry v4 bypass poisoned v1 draft modules, including the actual final artwork on offline reload. The versioned viewer/gallery bypass poisoned old draft modules, and the final illustration loads correctly on an offline reload. Regenerable Office/browser evidence is in ignored `.cache/pantry-notes/` and can be regenerated.
+The deterministic source model has 240 invented entry-event rows: day totals 42/50/46/58/44, segment totals 70/80/90. These are not unique people, occupancy, weather, a real walking route or empirical evidence. Segment selection genuinely recalculates KPIs/charts, a 25-row paginated source ledger and selected CSV. Prose explicitly remains full-model teaching context. Scope, edits and a private note persist independently under `design-buddy-tideline-rebuild-v1`. Current HTML includes all 32 pages, actual selected charts and embedded artwork; JSON records scope/edits. Original full-model PDF/PPTX are unchanged by edits.
+
+`npm run build:tideline` uses `TIDELINE_BASE_URL` (default port 5174), generates the 32-page PDF, native-text/shape 32-slide PPTX, full CSV/JSON, cover/inside, SHA manifest and offline source ZIP. `npm run test:tideline` exercises ten groups, including mobile, exact scoped CSV and direct-file offline exports. Source ZIP includes all ten actual JPEGs, not duplicate original PDF/PPTX.
+
+## Verification and next steps
+
+PANTRY NOTES passes eight browser groups, OPEN SHELF nine, TIDELINE ten and old-worker/offline regression six. Real LibreOffice renders each of the three native-text PPTX files to 32 pages. Registry v5/SW v5 bypass stale v4 gallery modules without deleting personal storage or unrelated caches. Production integrity accepts the honest third draft but does not count it as published.
+
+Next: finish TIDELINE's six missing independent illustrations with varied environments and colours, then rebuild and rerun checks. There are 53 cases not started. Each case still needs 28–35 pages, 15–20 independent main illustrations and its own framework. Reused placements, diagrams and incomplete drafts must not be reported as completed cases. Preserve verified GitHub checkpoints with actual artwork, source and reproducible exports.
 
 The existing history already on this same remote branch is merged without replacing the rebuilt template page with its legacy catalog. Those historical sources are retained; they are not counted as new completed cases.
 

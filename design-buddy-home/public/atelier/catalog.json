@@ -9,9 +9,10 @@
     15,
     20
   ],
-  "style": "Fine pen and soft watercolor, warm ivory paper and pale sage environments as the latest reference",
+  "style": "Fine ink and watercolor with varied theme-specific backgrounds: coastal blue, coral sunsets, forest green, overcast gray, night interiors; do not default every case to ivory/sage. Preserve the existing two cases.",
   "cases": [
     "pantry-notes",
-    "open-shelf"
+    "open-shelf",
+    "tideline"
   ]
 }
