@@ -169,3 +169,5 @@ Build: `npm run build:proposal-expansion`. Acceptance: `npm run test:proposal-ex
 Primary JPEGs, authored content, independent toolkit, HTML and manifests stay in the current Git tree. Complete generated distribution files are committed/pushed first, then SHA-pinned in immutable Git history and automatically restored before dev/start/check/build. No download URL is removed. Do not add a template to the gallery merely because its ten-heading outline exists.
 
 Next batch: six reports. Thirty-eight of the requested fifty remain unfinished, not published placeholders.
+
+Final checkpoint: all 27 original Office exports render correctly; original-case, nine-document, course, proposal and cache regressions plus production build pass. All 52 pinned artifacts were actually restored from missing local files and byte/SHA checked. A remote proposal Word blob was independently fetched and verified. Current patch budget is about 111.05 MiB; the six proposals’ complete export bytes are backed by pushed commit `3c373411bfd6e3a61d55afa7c04ee4714dc98d75`.

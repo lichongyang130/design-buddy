@@ -1,12 +1,10 @@
 node_modules/
 dist/
 *.local
-
 # Never commit provider credentials
 .env
 .env.*
 !.env.example
-
 # Immutable GitHub-backed source archives; restored before dev/build/start.
 /public/atelier/pantry-notes/pantry-notes-source.zip
 /public/atelier/open-shelf/open-shelf-source.zip
@@ -42,3 +40,21 @@ dist/
 /public/atelier/tideline/tideline-preview.pdf
 /public/atelier/afterglow/afterglow-preview.pdf
 /public/atelier/swatch/swatch-preview.pdf
+/public/atelier/pilot-charter/pilot-charter.docx
+/public/atelier/pilot-charter/pilot-charter.pdf
+/public/atelier/pilot-charter/pilot-charter-source.zip
+/public/atelier/service-blueprint/service-blueprint.docx
+/public/atelier/service-blueprint/service-blueprint.pdf
+/public/atelier/service-blueprint/service-blueprint-source.zip
+/public/atelier/partnership-canvas/partnership-canvas.docx
+/public/atelier/partnership-canvas/partnership-canvas.pdf
+/public/atelier/partnership-canvas/partnership-canvas-source.zip
+/public/atelier/research-commission/research-commission.docx
+/public/atelier/research-commission/research-commission.pdf
+/public/atelier/research-commission/research-commission-source.zip
+/public/atelier/change-case/change-case.docx
+/public/atelier/change-case/change-case.pdf
+/public/atelier/change-case/change-case-source.zip
+/public/atelier/creative-treatment/creative-treatment.docx
+/public/atelier/creative-treatment/creative-treatment.pdf
+/public/atelier/creative-treatment/creative-treatment-source.zip
