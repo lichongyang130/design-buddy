@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    "discovery-map",
+    "interaction-contract",
+    "design-critique",
+    "component-system",
+    "prototype-study"
+  ],
+  "pagesPerCase": 10,
+  "distinctImagesPerCase": 5,
+  "newImages": 0,
+  "curatedExistingImages": 25,
+  "completedOf50": 50
+}

@@ -1,0 +1,396 @@
+{
+  "work": {
+    "id": "design-critique",
+    "title": "DESIGN CRITIQUE",
+    "subtitle": "A principle rubric and alternative-annotation review",
+    "category": "产品设计",
+    "layout": "annotations",
+    "color": "#934938",
+    "wash": "#f5dfd4",
+    "framework": "原则评分与批注对照",
+    "scope": "An authored critique plan for two fictional Context Card alternatives. The rubric is defined, but all six principle/alternative scores and real reviewer opinions remain unrecorded.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "product-expansion",
+    "newIllustrations": 0,
+    "curatedIllustrations": 5
+  },
+  "pages": [
+    {
+      "section": "01 / DESIGN CRITIQUE",
+      "title": "Critique a decision, not the designer.",
+      "lead": "This workbook compares two authored Context Card alternatives. Alternative A places an excerpt beside the note; alternative B offers a source link below it. Neither is a built or tested interface.",
+      "body": "The review asks how each treatment explains the source relationship, supports recovery and uses space. It does not rank a real team's work or invent reviewer approval.",
+      "subheading": "Review purpose",
+      "detail": "Separate a principle, an annotation and a recommendation. A recommendation needs a stated reason, and a reason may still depend on an untested assumption.",
+      "question": "Which decision is this review meant to inform?",
+      "records": [
+        {
+          "label": "Alternatives",
+          "prompt": "A adjacent excerpt; B compact note with a source link."
+        },
+        {
+          "label": "Decision",
+          "prompt": "Choose what to investigate, not which design has won."
+        },
+        {
+          "label": "Evidence",
+          "prompt": "No actual reviewer comments or assessment scores collected."
+        }
+      ],
+      "image": 1,
+      "kind": "cover",
+      "evidenceRows": [
+        [
+          "REVIEW CELL",
+          "A / P01 / context traceability"
+        ],
+        [
+          "RUBRIC BOUNDARY",
+          "0 not represented; 1 partly represented; 2 coherent. All 6 scores null."
+        ]
+      ]
+    },
+    {
+      "section": "02 / DESIGN CRITIQUE",
+      "title": "State the constraints before scoring.",
+      "lead": "Both alternatives use the same invented note and passage. Assume a narrow reading surface and no live source retrieval. Those are comparison conditions, not measured device or service constraints.",
+      "body": "Do not penalize B for an unimplemented link response while treating A's unimplemented behavior as complete. Compare represented information separately from missing functionality.",
+      "subheading": "Comparison boundary",
+      "detail": "A screen-shaped illustration is not an interactive prototype. Record what the artifact actually represents before judging how it would respond.",
+      "question": "Are both alternatives being judged on the same basis?",
+      "records": [
+        {
+          "label": "Held constant",
+          "prompt": "Passage, note wording and intended reading task."
+        },
+        {
+          "label": "Assumed",
+          "prompt": "Narrow surface and no live retrieval in the concept artifacts."
+        },
+        {
+          "label": "Unknown",
+          "prompt": "Real content length, implementation behavior and user context."
+        }
+      ],
+      "image": 1,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "REVIEW CELL",
+          "A / P02 / recovery clarity"
+        ],
+        [
+          "RUBRIC BOUNDARY",
+          "0 not represented; 1 partly represented; 2 coherent. All 6 scores null."
+        ]
+      ]
+    },
+    {
+      "section": "03 / DESIGN CRITIQUE",
+      "title": "Describe both alternatives without a verdict.",
+      "lead": "A keeps context visible but lengthens the card. B shortens the initial view but moves context behind a navigation step. These are authored structural descriptions, not observations of actual readers.",
+      "body": "An annotation should identify an inspectable feature, such as the placement of the source reference. Avoid calling one design intuitive before someone has interpreted it under a defined task.",
+      "subheading": "Alternative overview",
+      "detail": "Keep a neutral description separate from the reason a reviewer might prefer it. This allows another reader to challenge the reason without denying the visible structure.",
+      "question": "Can the description stand without an evaluative adjective?",
+      "records": [
+        {
+          "label": "A",
+          "prompt": "Note and source excerpt share the initial concept view."
+        },
+        {
+          "label": "B",
+          "prompt": "Note remains compact and a source link follows the text."
+        },
+        {
+          "label": "Open",
+          "prompt": "Neither treatment establishes comprehension or preference."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "REVIEW CELL",
+          "A / P03 / reading economy"
+        ],
+        [
+          "RUBRIC BOUNDARY",
+          "0 not represented; 1 partly represented; 2 coherent. All 6 scores null."
+        ]
+      ]
+    },
+    {
+      "section": "04 / DESIGN CRITIQUE",
+      "title": "Define a rubric without inventing a score.",
+      "lead": "The three principles are context traceability, recovery clarity and reading economy. Use an ordinal rubric: 0 means not represented, 1 means partly represented, and 2 means coherently represented in the artifact.",
+      "body": "The source matrix has two alternatives by three principles, giving six cells. Every score remains null and unassessed. The levels are not interval measurements, so no average or percentage is supplied.",
+      "subheading": "Principle rubric",
+      "detail": "A future score needs an artifact version and an inspectable rationale. A score of 2 would describe a review judgment, not proven usability.",
+      "question": "Would two reviewers understand what each level means?",
+      "records": [
+        {
+          "label": "P01",
+          "prompt": "Can the source relationship be traced from the represented artifact?"
+        },
+        {
+          "label": "P02",
+          "prompt": "Does the represented recovery path explain its next step?"
+        },
+        {
+          "label": "P03",
+          "prompt": "Does the initial view retain necessary information without redundancy?"
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "REVIEW CELL",
+          "B / P01 / context traceability"
+        ],
+        [
+          "RUBRIC BOUNDARY",
+          "0 not represented; 1 partly represented; 2 coherent. All 6 scores null."
+        ]
+      ]
+    },
+    {
+      "section": "05 / DESIGN CRITIQUE",
+      "title": "Review a flow at its actual level of fidelity.",
+      "lead": "For A, inspect the note and adjacent excerpt together. For B, identify the link and discuss what the destination would need to preserve. Neither artifact demonstrates a working navigation flow.",
+      "body": "A missing destination can be recorded as an unresolved dependency rather than a failed observed task. Keep a speculative issue separate from an actual interaction failure.",
+      "subheading": "Flow review",
+      "detail": "A static comparison can reveal a missing explanation. It cannot establish completion time, error rate or successful navigation.",
+      "question": "What can this artifact show, and what does it only suggest?",
+      "records": [
+        {
+          "label": "A path",
+          "prompt": "Inspect note and visible excerpt in one represented view."
+        },
+        {
+          "label": "B path",
+          "prompt": "Inspect note, then identify a proposed source-link destination."
+        },
+        {
+          "label": "Dependency",
+          "prompt": "Destination content and return behavior are unspecified."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "REVIEW CELL",
+          "B / P02 / recovery clarity"
+        ],
+        [
+          "RUBRIC BOUNDARY",
+          "0 not represented; 1 partly represented; 2 coherent. All 6 scores null."
+        ]
+      ]
+    },
+    {
+      "section": "06 / DESIGN CRITIQUE",
+      "title": "Anchor an annotation to a visible feature.",
+      "lead": "Name the alternative, principle and feature before recording an interpretation. For example, B's source link may raise a question about returning to the note. That is an authored concern, not a quoted finding.",
+      "body": "Keep the original feature description intact when a recommendation changes. A later reviewer should be able to see why the discussion began rather than only the final proposed fix.",
+      "subheading": "Annotation anatomy",
+      "detail": "Use a stable annotation ID and artifact version in any real review. Do not attach a fictional reviewer name to make the example look witnessed.",
+      "question": "Can someone locate the feature behind the comment?",
+      "records": [
+        {
+          "label": "Locator",
+          "prompt": "Alternative B, source-link placement beneath the note."
+        },
+        {
+          "label": "Interpretation",
+          "prompt": "Returning to the note may need a visible relationship."
+        },
+        {
+          "label": "Question",
+          "prompt": "What should remain visible at the proposed destination?"
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "REVIEW CELL",
+          "B / P03 / reading economy"
+        ],
+        [
+          "RUBRIC BOUNDARY",
+          "0 not represented; 1 partly represented; 2 coherent. All 6 scores null."
+        ]
+      ]
+    },
+    {
+      "section": "07 / DESIGN CRITIQUE",
+      "title": "Explore an alternative that addresses a named tension.",
+      "lead": "A third sketch could pair a short excerpt with a fuller source reference. It may reduce the need to navigate while retaining a longer context route, but it also adds content to the card.",
+      "body": "This is a possible response to the tension, not a scored third alternative in the six-cell matrix. Add it to the source model only when the comparison scope is deliberately revised.",
+      "subheading": "Alternative generation",
+      "detail": "A hybrid is not automatically better. Ask which original uncertainty it addresses and what new ambiguity it introduces.",
+      "question": "Does the new sketch address the reason for the critique?",
+      "records": [
+        {
+          "label": "Candidate",
+          "prompt": "A short excerpt plus an explicit fuller-source reference."
+        },
+        {
+          "label": "Potential cost",
+          "prompt": "More initial content and another relationship to explain."
+        },
+        {
+          "label": "Boundary",
+          "prompt": "The current scored-scope matrix still contains A and B only."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "REVIEW CELL",
+          "A / P01 / context traceability"
+        ],
+        [
+          "RUBRIC BOUNDARY",
+          "0 not represented; 1 partly represented; 2 coherent. All 6 scores null."
+        ]
+      ]
+    },
+    {
+      "section": "08 / DESIGN CRITIQUE",
+      "title": "Preserve disagreement instead of averaging it away.",
+      "lead": "One reviewer could favor visible context while another could prioritize a compact view. This is a hypothetical disagreement, not an actual meeting record. Neither position becomes evidence by being repeated.",
+      "body": "If a real review differs, record each rationale and the criterion involved. Do not manufacture consensus through a mean of ordinal scores or describe silence as agreement.",
+      "subheading": "Disagreement record",
+      "detail": "A next action may be to test a particular question rather than choose a winner. Unresolved disagreement can be useful if its source is clear.",
+      "question": "What would distinguish a difference in values from a missing fact?",
+      "records": [
+        {
+          "label": "Position example",
+          "prompt": "Visible context may support traceability."
+        },
+        {
+          "label": "Counterpoint example",
+          "prompt": "A compact surface may reduce initial reading burden."
+        },
+        {
+          "label": "Next question",
+          "prompt": "Which information is needed to explain the note's source?"
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "REVIEW CELL",
+          "A / P02 / recovery clarity"
+        ],
+        [
+          "RUBRIC BOUNDARY",
+          "0 not represented; 1 partly represented; 2 coherent. All 6 scores null."
+        ]
+      ]
+    },
+    {
+      "section": "09 / DESIGN CRITIQUE",
+      "title": "Turn a concern into a bounded revision request.",
+      "lead": "A revision request should name an artifact feature, the intended explanation and a check. For B, specify that the destination must preserve a visible route back to the note before planning a walkthrough.",
+      "body": "Do not promise that adding a return cue resolves all navigation problems. The request describes a change to inspect, not a measured improvement or an assigned delivery commitment.",
+      "subheading": "Revision list",
+      "detail": "Keep unresolved assumptions alongside proposed changes. Otherwise a cleaner sketch can conceal the question it was meant to answer.",
+      "question": "What evidence would allow this request to be closed?",
+      "records": [
+        {
+          "label": "Change",
+          "prompt": "Describe a note-linked destination and an explicit return cue."
+        },
+        {
+          "label": "Check",
+          "prompt": "Inspect whether the relationship remains understandable in the sketch."
+        },
+        {
+          "label": "Owner",
+          "prompt": "No actual implementer, deadline or approval has been assigned."
+        }
+      ],
+      "image": 5,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "REVIEW CELL",
+          "A / P03 / reading economy"
+        ],
+        [
+          "RUBRIC BOUNDARY",
+          "0 not represented; 1 partly represented; 2 coherent. All 6 scores null."
+        ]
+      ]
+    },
+    {
+      "section": "10 / DESIGN CRITIQUE",
+      "title": "Review the quality of the review itself.",
+      "lead": "The matrix contains six unassessed cells, not six low scores. The useful output is a clearer set of questions about two alternatives and the criteria used to compare them.",
+      "body": "Before sharing, check that annotations distinguish description, interpretation and recommendation. Remove invented quotations, numerical claims and approval language unsupported by real review records.",
+      "subheading": "Critique handoff",
+      "detail": "A later real assessment should preserve artifact versions and rationales. Completion of this workbook is not an endorsement or a release gate.",
+      "question": "Which part of the critique remains an assumption?",
+      "records": [
+        {
+          "label": "Matrix",
+          "prompt": "Two alternatives, three principles, six null scores."
+        },
+        {
+          "label": "Output",
+          "prompt": "Traceable questions and bounded revision suggestions."
+        },
+        {
+          "label": "Limit",
+          "prompt": "No real review, usability result or stakeholder approval recorded."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix",
+      "evidenceRows": [
+        [
+          "REVIEW CELL",
+          "B / P01 / context traceability"
+        ],
+        [
+          "RUBRIC BOUNDARY",
+          "0 not represented; 1 partly represented; 2 coherent. All 6 scores null."
+        ]
+      ]
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "Curated existing AI-generated illustration: creative-treatment/01.jpg"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: comparison-guide/01.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: visual-literacy/01.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: brand-voice/01.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: project-studio/01.jpg"
+    }
+  ]
+}

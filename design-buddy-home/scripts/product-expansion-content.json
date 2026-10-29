@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "discovery-map",
+    "title": "DISCOVERY MAP",
+    "subtitle": "An opportunity tree and research-hypothesis workbook",
+    "category": "产品设计",
+    "layout": "branches",
+    "color": "#66501f",
+    "wash": "#f4e7c3",
+    "framework": "机会树与研究假设",
+    "sources": [
+      "research-commission/01",
+      "visual-literacy/02",
+      "project-studio/01",
+      "partnership-canvas/01",
+      "creative-treatment/01"
+    ],
+    "scope": "Fictional exploration of a Context Library concept. Opportunities and hypotheses are authored, not user findings, validated needs or a product commitment.",
+    "chapters": [
+      {
+        "title": "Start with a learning decision.",
+        "lead": "Context Library is an invented concept for keeping a short note beside the passage that prompted it. Discovery asks whether the relationship is understandable before proposing a product roadmap.",
+        "body": "The outcome O00 is to make the passage-note relationship inspectable. It is a design intention, not a measured improvement or evidence that a real audience needs this service.",
+        "subheading": "Exploration charter",
+        "detail": "The tree has one outcome, two opportunity branches and four hypotheses. Its structure makes assumptions traceable without turning them into findings.",
+        "question": "What decision could a small inquiry change?",
+        "records": [
+          {
+            "label": "Decision",
+            "prompt": "Choose which uncertainty to investigate before implementation."
+          },
+          {
+            "label": "Boundary",
+            "prompt": "No actual users, market demand or release commitment established."
+          },
+          {
+            "label": "Artifact",
+            "prompt": "A versioned tree with questions attached to each hypothesis."
+          }
+        ]
+      },
+      {
+        "title": "Map a context without inventing a persona.",
+        "lead": "Imagine a reader returning to a note after the surrounding passage has been forgotten. The scenario identifies a possible context for inquiry, not a representative user profile.",
+        "body": "Separate the moment of writing from the moment of return. A note that seems clear during writing may lack enough context later; that possibility requires investigation rather than an invented quotation.",
+        "subheading": "Context map",
+        "detail": "Use the same invented passage across alternatives so that a changing example does not explain differences attributed to the design.",
+        "question": "What distinguishes the writing moment from the return moment?",
+        "records": [
+          {
+            "label": "Situation",
+            "prompt": "A reader returns to a saved note and its source passage."
+          },
+          {
+            "label": "Unknown",
+            "prompt": "Whether the missing relationship is actually a recurring difficulty."
+          },
+          {
+            "label": "Control",
+            "prompt": "Hold passage, note and task wording constant across examples."
+          }
+        ]
+      },
+      {
+        "title": "Describe the problem before a feature.",
+        "lead": "Opportunity O01 asks how a returning reader might recover relevant context. O02 asks how a reader might understand a note's revision status. Both are authored problem statements.",
+        "body": "Neither branch requires a particular interface. A source excerpt, a reference link or a clear explanation could address O01 in different ways. Do not select a solution by how neatly it fits the tree.",
+        "subheading": "Problem framing",
+        "detail": "A branch is worth keeping only if the proposed inquiry can reveal something about it. Remove redundant labels rather than counting more branches as progress.",
+        "question": "Could the problem still be discussed without naming a screen?",
+        "records": [
+          {
+            "label": "O01",
+            "prompt": "Recover the context needed to interpret a note."
+          },
+          {
+            "label": "O02",
+            "prompt": "Understand whether a note is provisional or revised."
+          },
+          {
+            "label": "Exclusion",
+            "prompt": "No evidence that either opportunity represents a known population."
+          }
+        ]
+      },
+      {
+        "title": "Keep the tree's parent links explicit.",
+        "lead": "O00 connects to O01 and O02. Hypotheses H11 and H12 belong to O01; H21 and H22 belong to O02. Every non-root node has exactly one parent.",
+        "body": "A single parent keeps this small teaching tree readable. It does not claim that real needs are independent. Cross-cutting uncertainty belongs in a note rather than a duplicate node presented as new evidence.",
+        "subheading": "Opportunity branches",
+        "detail": "The source register stores seven nodes with unique IDs. Parent references must exist, and traversing them must reach O00 without a cycle.",
+        "question": "Can another reader reconstruct the tree from the register alone?",
+        "records": [
+          {
+            "label": "Root",
+            "prompt": "O00, an intended outcome rather than a metric."
+          },
+          {
+            "label": "Children",
+            "prompt": "O01 and O02, both unvalidated opportunities."
+          },
+          {
+            "label": "Leaves",
+            "prompt": "H11, H12, H21 and H22, all untested hypotheses."
+          }
+        ]
+      },
+      {
+        "title": "Make each hypothesis refutable.",
+        "lead": "H11 proposes that an adjacent source excerpt helps recover context. H12 proposes that an explicit source link does so. Neither is a claim that one treatment works.",
+        "body": "H21 proposes that a visible revision label helps explain status. H22 proposes that a brief change note helps explain what changed. A reader may misunderstand either treatment even when the designer finds it obvious.",
+        "subheading": "Solution hypotheses",
+        "detail": "An inquiry should allow a treatment to be confusing or unnecessary. A question that only asks which version looks attractive cannot establish comprehension.",
+        "question": "What observation would make this hypothesis less plausible?",
+        "records": [
+          {
+            "label": "H11 / H12",
+            "prompt": "Compare an excerpt and a source link for context recovery."
+          },
+          {
+            "label": "H21 / H22",
+            "prompt": "Compare a status label and a change note for revision meaning."
+          },
+          {
+            "label": "Status",
+            "prompt": "All four remain untested; no actual outcomes recorded."
+          }
+        ]
+      },
+      {
+        "title": "Ask a question that does not supply its answer.",
+        "lead": "A useful research question asks how a reader explains the relation between a note and its passage. It does not ask whether the new context feature is helpful.",
+        "body": "Prepare prompts that allow uncertainty, disagreement and an unexpected explanation. Ask what the person inspected before naming the intended cue; otherwise the prompt may teach the answer being evaluated.",
+        "subheading": "Question design",
+        "detail": "Keep the researcher's hypothesis outside the initial task. Record later clarification separately from an unaided interpretation.",
+        "question": "Would the wording still make sense if the hypothesis were wrong?",
+        "records": [
+          {
+            "label": "Prompt",
+            "prompt": "Explain what the note refers to and what remains unclear."
+          },
+          {
+            "label": "Probe",
+            "prompt": "Which part of the artifact informed that interpretation?"
+          },
+          {
+            "label": "Avoid",
+            "prompt": "Do not ask whether the proposed improvement is successful."
+          }
+        ]
+      },
+      {
+        "title": "Match the method to the uncertainty.",
+        "lead": "A small artifact walkthrough could explore whether the connection is understandable. It would not establish market size, sustained use or a statistically reliable preference between treatments.",
+        "body": "Show a paper concept or a clearly bounded prototype, describe what it can and cannot do, and use an appropriate participation arrangement. This document schedules no actual session or recruitment.",
+        "subheading": "Method boundary",
+        "detail": "An unimplemented control cannot support a conclusion about its response time or reliability. Keep concept interpretation separate from functional usability.",
+        "question": "What could this method legitimately teach?",
+        "records": [
+          {
+            "label": "Method",
+            "prompt": "An optional future walkthrough of two authored alternatives."
+          },
+          {
+            "label": "Observation",
+            "prompt": "Record interpretation and the cue used, not just preference."
+          },
+          {
+            "label": "Limit",
+            "prompt": "No actual sessions, recruitment or longitudinal evidence exist."
+          }
+        ]
+      },
+      {
+        "title": "Record a trade-off as a hypothesis too.",
+        "lead": "An excerpt might preserve context while making the card longer. A link might keep the card compact while requiring another step. These are design tensions, not measured costs.",
+        "body": "Choose what the next inquiry needs to distinguish. A temporary choice can narrow an experiment without becoming an approved product direction. Explain why the other alternative is retained or deferred.",
+        "subheading": "Trade-off record",
+        "detail": "Do not give invented reach, confidence or effort scores to make a choice look objective. Unknown evidence stays unknown.",
+        "question": "Which assumption carries the temporary decision?",
+        "records": [
+          {
+            "label": "Candidate",
+            "prompt": "Explore the adjacent excerpt first for a bounded walkthrough."
+          },
+          {
+            "label": "Reason",
+            "prompt": "The relationship is visible without another navigation step."
+          },
+          {
+            "label": "Revisit",
+            "prompt": "Retain the link alternative until interpretation has been examined."
+          }
+        ]
+      },
+      {
+        "title": "Keep a learning ledger separate from the tree.",
+        "lead": "The authored tree contains no observed findings. A later ledger should link an observation to its task, artifact version, source permission and the hypothesis it informs.",
+        "body": "A single comment should not silently become a finding about everyone. Preserve counterexamples and distinguish what was said from a researcher's explanation of why it happened.",
+        "subheading": "Learning synthesis",
+        "detail": "A hypothesis can remain uncertain after a useful session. Avoid treating the completion of research activities as validation.",
+        "question": "What source would justify changing a node's status?",
+        "records": [
+          {
+            "label": "Current",
+            "prompt": "Four untested hypotheses and no collected observations."
+          },
+          {
+            "label": "Future",
+            "prompt": "Link any permitted observation to task and artifact version."
+          },
+          {
+            "label": "Rule",
+            "prompt": "Separate raw observation, interpretation and proposed action."
+          }
+        ]
+      },
+      {
+        "title": "Choose the next question, not a launch date.",
+        "lead": "The next step is to prepare a bounded comparison for O01 and review whether its task wording exposes the intended uncertainty. No real release date or staffing commitment follows.",
+        "body": "Check the tree, the source boundary and the planned participation process before any study. Keep O02 visible so that a convenient first inquiry does not erase the revision-status question.",
+        "subheading": "Exploration handoff",
+        "detail": "Share the source register and the reason for the next inquiry. A successor should be able to disagree without reconstructing missing assumptions.",
+        "question": "What remains unlearned after this workbook?",
+        "records": [
+          {
+            "label": "Next",
+            "prompt": "Prepare a clearly labeled excerpt-versus-link concept comparison."
+          },
+          {
+            "label": "Open",
+            "prompt": "Revision meaning, real contexts and long-term usefulness remain unknown."
+          },
+          {
+            "label": "Handoff",
+            "prompt": "Carry the tree version, scope exclusions and unanswered questions."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "interaction-contract",
+    "title": "INTERACTION CONTRACT",
+    "subtitle": "A state-machine and behavior-contract specification",
+    "category": "产品设计",
+    "layout": "states",
+    "color": "#694268",
+    "wash": "#eddfef",
+    "framework": "状态机与行为契约",
+    "sources": [
+      "form-study/01",
+      "process-rehearsal/01",
+      "project-studio/01",
+      "service-blueprint/01",
+      "brand-voice/01"
+    ],
+    "scope": "An authored specification for a fictional local note editor. The transition model is testable as a contract, not a claim that a shipped or accessible product exists.",
+    "chapters": [
+      {
+        "title": "Define the interaction's observable promise.",
+        "lead": "This specification describes a fictional local note editor with draft, review, saved and error states. Its purpose is to make allowed transitions inspectable before implementation.",
+        "body": "The contract models six transitions for one note. It does not implement storage, authentication, collaboration or a live service. A model passing its own checks is not evidence that a product behaves correctly.",
+        "subheading": "Interaction goal",
+        "detail": "Review means a chance to inspect a note before a save attempt. Saved is a modeled outcome that an implementation must justify with a real storage result.",
+        "question": "What must a reader be able to predict?",
+        "records": [
+          {
+            "label": "Object",
+            "prompt": "One fictional note, with text and an immutable source reference."
+          },
+          {
+            "label": "Contract",
+            "prompt": "Four named states and six explicit event transitions."
+          },
+          {
+            "label": "Non-goal",
+            "prompt": "No live persistence or production capability is claimed."
+          }
+        ]
+      },
+      {
+        "title": "Separate the actor from the authority.",
+        "lead": "The modeled actor can edit the note body, review it and request a local save. The source reference is not editable through this contract and does not imply rights to the source.",
+        "body": "There are no administrator, reviewer or shared-workspace roles. The state named review refers to the author's own inspection, not another person's approval or a permission workflow.",
+        "subheading": "Actor boundary",
+        "detail": "A disabled action is not an access-control boundary. Any future real service would need its own authorization and data-handling design.",
+        "question": "Which actions are within this actor's remit?",
+        "records": [
+          {
+            "label": "Actor",
+            "prompt": "A hypothetical single author in a local editing context."
+          },
+          {
+            "label": "Editable",
+            "prompt": "Note text, not source ownership or sharing permissions."
+          },
+          {
+            "label": "Excluded",
+            "prompt": "No reviewer assignment, access grant or account role exists."
+          }
+        ]
+      },
+      {
+        "title": "Give each object a stable meaning.",
+        "lead": "The note body is a string; its source reference identifies the invented exercise passage. The model's state is separate from the note text and must not be inferred from styling alone.",
+        "body": "The event vocabulary is review, edit, save-ok, save-fail and retry. These events have meaning only with their defined source state. An unspecified state-event pair is rejected by the contract.",
+        "subheading": "Object dictionary",
+        "detail": "A real implementation should distinguish the user's save request from the asynchronous result. Here save-ok and save-fail name result events, not clickable product controls.",
+        "question": "Can a label be mistaken for a stored result?",
+        "records": [
+          {
+            "label": "Text",
+            "prompt": "The authored note body being revised."
+          },
+          {
+            "label": "Source",
+            "prompt": "A stable reference outside the editable body."
+          },
+          {
+            "label": "Events",
+            "prompt": "Review, edit, save-ok, save-fail and retry are model tokens."
+          }
+        ]
+      },
+      {
+        "title": "Make the four states mutually exclusive.",
+        "lead": "Draft permits text editing. Review presents the current text for inspection. Saved represents a successful modeled save result. Error represents a failed modeled save result and preserves the text.",
+        "body": "Exactly one state is active for one modeled note. The specification has no background saving or concurrent session. Those omissions must be revisited rather than hidden behind an ambiguous loading indicator.",
+        "subheading": "State inventory",
+        "detail": "State labels should remain understandable without color. This is a design requirement to review, not a tested accessibility outcome.",
+        "question": "Can the current state be explained without the visual treatment?",
+        "records": [
+          {
+            "label": "Draft",
+            "prompt": "Editable text before a review decision."
+          },
+          {
+            "label": "Review",
+            "prompt": "Inspect the current text before a save result."
+          },
+          {
+            "label": "Saved / error",
+            "prompt": "Distinct result states; neither silently changes the note."
+          }
+        ]
+      },
+      {
+        "title": "List transitions rather than implying them.",
+        "lead": "Draft plus review enters review. Review plus edit returns to draft. Review plus save-ok enters saved, while review plus save-fail enters error. Error plus retry returns to review; saved plus edit returns to draft.",
+        "body": "These six rows form the complete modeled transition relation. Each state-event pair is unique. All four states are reachable from draft, and every state has an outgoing path.",
+        "subheading": "Transition register",
+        "detail": "A missing pair is rejected, leaving state and text unchanged. Do not invent an implicit transition because a button happens to look available.",
+        "question": "What happens when an event has no defined transition?",
+        "records": [
+          {
+            "label": "Success path",
+            "prompt": "Draft → review → saved, using review then save-ok."
+          },
+          {
+            "label": "Recovery path",
+            "prompt": "Review → error → review, using save-fail then retry."
+          },
+          {
+            "label": "Invalid input",
+            "prompt": "Reject an unspecified pair without mutating text or state."
+          }
+        ]
+      },
+      {
+        "title": "Treat input and a save result separately.",
+        "lead": "Editing a note changes text only in draft. Leaving saved through edit returns to draft before text changes. Review is an inspection state, not a second text editor.",
+        "body": "A real save request would require validation and a defined pending state or request boundary. This simplified model deliberately starts at result events and must not be wired directly to a server without extension.",
+        "subheading": "Input contract",
+        "detail": "No network request, live pending state or concurrency guarantee is supplied. Preserve that limitation when handing the model to implementation.",
+        "question": "Which event represents user intent and which represents a result?",
+        "records": [
+          {
+            "label": "Text rule",
+            "prompt": "Apply body edits only while the note is in draft."
+          },
+          {
+            "label": "Result rule",
+            "prompt": "Process save-ok or save-fail only while in review."
+          },
+          {
+            "label": "Extension",
+            "prompt": "Define request and pending behavior before a real asynchronous save."
+          }
+        ]
+      },
+      {
+        "title": "Explain feedback without overstating persistence.",
+        "lead": "A saved message must follow the implementation's confirmed storage outcome, not merely a click. An error message should preserve the author's text and explain a bounded next action.",
+        "body": "The model can verify that error permits retry and that retry returns to review. It cannot establish data durability, storage quota, recovery after a crash or synchronization across devices.",
+        "subheading": "Feedback semantics",
+        "detail": "A future implementation must name what was actually saved and where. Avoid a universal success message when only a temporary local buffer exists.",
+        "question": "What evidence permits the word saved?",
+        "records": [
+          {
+            "label": "Saved",
+            "prompt": "Requires a confirmed implementation result outside this model."
+          },
+          {
+            "label": "Error",
+            "prompt": "Keep the body available and explain retry without data-loss promises."
+          },
+          {
+            "label": "Boundary",
+            "prompt": "No durability, cloud sync or cross-device behavior is verified."
+          }
+        ]
+      },
+      {
+        "title": "Reject an invalid event predictably.",
+        "lead": "Sending retry in draft is not defined. The modeled reducer rejects that pair and keeps the original state. Likewise, save-ok in error cannot leap directly to saved.",
+        "body": "This keeps recovery visible: error must return to review through retry before a new result event is considered. An implementation still needs to decide how impossible or stale events are logged without exposing private text.",
+        "subheading": "Exception handling",
+        "detail": "A stale callback is not automatically valid because its result once belonged to a request. The simplified model has no request IDs; concurrency needs a larger contract.",
+        "question": "Could an out-of-order result overwrite a newer edit?",
+        "records": [
+          {
+            "label": "Example",
+            "prompt": "Draft plus retry is rejected with draft unchanged."
+          },
+          {
+            "label": "Example",
+            "prompt": "Error plus save-ok is rejected with error unchanged."
+          },
+          {
+            "label": "Open",
+            "prompt": "Request identity and stale-result handling are not yet specified."
+          }
+        ]
+      },
+      {
+        "title": "Review usability as an open question.",
+        "lead": "A model can be deterministic and still be hard to understand. Ask whether the review step is useful, whether state wording is clear and whether error recovery is discoverable.",
+        "body": "Any future evaluation needs a working artifact, task boundaries and an appropriate participation process. Do not describe graph reachability as proof of usability or accessibility.",
+        "subheading": "Evaluation questions",
+        "detail": "Keyboard, focus, announcements and error comprehension require implementation-specific testing. This document records requirements and questions, not a conformance result.",
+        "question": "What should a future task reveal about the state labels?",
+        "records": [
+          {
+            "label": "Comprehension",
+            "prompt": "Can a person distinguish review from a successful save?"
+          },
+          {
+            "label": "Recovery",
+            "prompt": "Can the person explain what retry preserves and changes?"
+          },
+          {
+            "label": "Access",
+            "prompt": "Keyboard and assistive-technology behavior remain unverified."
+          }
+        ]
+      },
+      {
+        "title": "Check the contract before handing it over.",
+        "lead": "The source register must contain exactly six unique state-event pairs, valid endpoints and four reachable states. The reducer rejects every pair outside that relation without mutation.",
+        "body": "A walkthrough trace reaches saved through review and returns through edit. A second trace enters error, retries and then reaches saved. These are model checks, not executed product journeys.",
+        "subheading": "Specification review",
+        "detail": "Keep the register, reducer assumptions and exclusions together. Adding a pending state requires revised tests and prose, not just a new badge.",
+        "question": "What would invalidate the current specification?",
+        "records": [
+          {
+            "label": "Checks",
+            "prompt": "Unique pairs, known states, reachability and rejection behavior."
+          },
+          {
+            "label": "Trace",
+            "prompt": "Draft, review, error, review, saved is a valid modeled sequence."
+          },
+          {
+            "label": "Handoff",
+            "prompt": "No shipped editor, live save or usability validation is claimed."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "design-critique",
+    "title": "DESIGN CRITIQUE",
+    "subtitle": "A principle rubric and alternative-annotation review",
+    "category": "产品设计",
+    "layout": "annotations",
+    "color": "#934938",
+    "wash": "#f5dfd4",
+    "framework": "原则评分与批注对照",
+    "sources": [
+      "creative-treatment/01",
+      "comparison-guide/01",
+      "visual-literacy/01",
+      "brand-voice/01",
+      "project-studio/01"
+    ],
+    "scope": "An authored critique plan for two fictional Context Card alternatives. The rubric is defined, but all six principle/alternative scores and real reviewer opinions remain unrecorded.",
+    "chapters": [
+      {
+        "title": "Critique a decision, not the designer.",
+        "lead": "This workbook compares two authored Context Card alternatives. Alternative A places an excerpt beside the note; alternative B offers a source link below it. Neither is a built or tested interface.",
+        "body": "The review asks how each treatment explains the source relationship, supports recovery and uses space. It does not rank a real team's work or invent reviewer approval.",
+        "subheading": "Review purpose",
+        "detail": "Separate a principle, an annotation and a recommendation. A recommendation needs a stated reason, and a reason may still depend on an untested assumption.",
+        "question": "Which decision is this review meant to inform?",
+        "records": [
+          {
+            "label": "Alternatives",
+            "prompt": "A adjacent excerpt; B compact note with a source link."
+          },
+          {
+            "label": "Decision",
+            "prompt": "Choose what to investigate, not which design has won."
+          },
+          {
+            "label": "Evidence",
+            "prompt": "No actual reviewer comments or assessment scores collected."
+          }
+        ]
+      },
+      {
+        "title": "State the constraints before scoring.",
+        "lead": "Both alternatives use the same invented note and passage. Assume a narrow reading surface and no live source retrieval. Those are comparison conditions, not measured device or service constraints.",
+        "body": "Do not penalize B for an unimplemented link response while treating A's unimplemented behavior as complete. Compare represented information separately from missing functionality.",
+        "subheading": "Comparison boundary",
+        "detail": "A screen-shaped illustration is not an interactive prototype. Record what the artifact actually represents before judging how it would respond.",
+        "question": "Are both alternatives being judged on the same basis?",
+        "records": [
+          {
+            "label": "Held constant",
+            "prompt": "Passage, note wording and intended reading task."
+          },
+          {
+            "label": "Assumed",
+            "prompt": "Narrow surface and no live retrieval in the concept artifacts."
+          },
+          {
+            "label": "Unknown",
+            "prompt": "Real content length, implementation behavior and user context."
+          }
+        ]
+      },
+      {
+        "title": "Describe both alternatives without a verdict.",
+        "lead": "A keeps context visible but lengthens the card. B shortens the initial view but moves context behind a navigation step. These are authored structural descriptions, not observations of actual readers.",
+        "body": "An annotation should identify an inspectable feature, such as the placement of the source reference. Avoid calling one design intuitive before someone has interpreted it under a defined task.",
+        "subheading": "Alternative overview",
+        "detail": "Keep a neutral description separate from the reason a reviewer might prefer it. This allows another reader to challenge the reason without denying the visible structure.",
+        "question": "Can the description stand without an evaluative adjective?",
+        "records": [
+          {
+            "label": "A",
+            "prompt": "Note and source excerpt share the initial concept view."
+          },
+          {
+            "label": "B",
+            "prompt": "Note remains compact and a source link follows the text."
+          },
+          {
+            "label": "Open",
+            "prompt": "Neither treatment establishes comprehension or preference."
+          }
+        ]
+      },
+      {
+        "title": "Define a rubric without inventing a score.",
+        "lead": "The three principles are context traceability, recovery clarity and reading economy. Use an ordinal rubric: 0 means not represented, 1 means partly represented, and 2 means coherently represented in the artifact.",
+        "body": "The source matrix has two alternatives by three principles, giving six cells. Every score remains null and unassessed. The levels are not interval measurements, so no average or percentage is supplied.",
+        "subheading": "Principle rubric",
+        "detail": "A future score needs an artifact version and an inspectable rationale. A score of 2 would describe a review judgment, not proven usability.",
+        "question": "Would two reviewers understand what each level means?",
+        "records": [
+          {
+            "label": "P01",
+            "prompt": "Can the source relationship be traced from the represented artifact?"
+          },
+          {
+            "label": "P02",
+            "prompt": "Does the represented recovery path explain its next step?"
+          },
+          {
+            "label": "P03",
+            "prompt": "Does the initial view retain necessary information without redundancy?"
+          }
+        ]
+      },
+      {
+        "title": "Review a flow at its actual level of fidelity.",
+        "lead": "For A, inspect the note and adjacent excerpt together. For B, identify the link and discuss what the destination would need to preserve. Neither artifact demonstrates a working navigation flow.",
+        "body": "A missing destination can be recorded as an unresolved dependency rather than a failed observed task. Keep a speculative issue separate from an actual interaction failure.",
+        "subheading": "Flow review",
+        "detail": "A static comparison can reveal a missing explanation. It cannot establish completion time, error rate or successful navigation.",
+        "question": "What can this artifact show, and what does it only suggest?",
+        "records": [
+          {
+            "label": "A path",
+            "prompt": "Inspect note and visible excerpt in one represented view."
+          },
+          {
+            "label": "B path",
+            "prompt": "Inspect note, then identify a proposed source-link destination."
+          },
+          {
+            "label": "Dependency",
+            "prompt": "Destination content and return behavior are unspecified."
+          }
+        ]
+      },
+      {
+        "title": "Anchor an annotation to a visible feature.",
+        "lead": "Name the alternative, principle and feature before recording an interpretation. For example, B's source link may raise a question about returning to the note. That is an authored concern, not a quoted finding.",
+        "body": "Keep the original feature description intact when a recommendation changes. A later reviewer should be able to see why the discussion began rather than only the final proposed fix.",
+        "subheading": "Annotation anatomy",
+        "detail": "Use a stable annotation ID and artifact version in any real review. Do not attach a fictional reviewer name to make the example look witnessed.",
+        "question": "Can someone locate the feature behind the comment?",
+        "records": [
+          {
+            "label": "Locator",
+            "prompt": "Alternative B, source-link placement beneath the note."
+          },
+          {
+            "label": "Interpretation",
+            "prompt": "Returning to the note may need a visible relationship."
+          },
+          {
+            "label": "Question",
+            "prompt": "What should remain visible at the proposed destination?"
+          }
+        ]
+      },
+      {
+        "title": "Explore an alternative that addresses a named tension.",
+        "lead": "A third sketch could pair a short excerpt with a fuller source reference. It may reduce the need to navigate while retaining a longer context route, but it also adds content to the card.",
+        "body": "This is a possible response to the tension, not a scored third alternative in the six-cell matrix. Add it to the source model only when the comparison scope is deliberately revised.",
+        "subheading": "Alternative generation",
+        "detail": "A hybrid is not automatically better. Ask which original uncertainty it addresses and what new ambiguity it introduces.",
+        "question": "Does the new sketch address the reason for the critique?",
+        "records": [
+          {
+            "label": "Candidate",
+            "prompt": "A short excerpt plus an explicit fuller-source reference."
+          },
+          {
+            "label": "Potential cost",
+            "prompt": "More initial content and another relationship to explain."
+          },
+          {
+            "label": "Boundary",
+            "prompt": "The current scored-scope matrix still contains A and B only."
+          }
+        ]
+      },
+      {
+        "title": "Preserve disagreement instead of averaging it away.",
+        "lead": "One reviewer could favor visible context while another could prioritize a compact view. This is a hypothetical disagreement, not an actual meeting record. Neither position becomes evidence by being repeated.",
+        "body": "If a real review differs, record each rationale and the criterion involved. Do not manufacture consensus through a mean of ordinal scores or describe silence as agreement.",
+        "subheading": "Disagreement record",
+        "detail": "A next action may be to test a particular question rather than choose a winner. Unresolved disagreement can be useful if its source is clear.",
+        "question": "What would distinguish a difference in values from a missing fact?",
+        "records": [
+          {
+            "label": "Position example",
+            "prompt": "Visible context may support traceability."
+          },
+          {
+            "label": "Counterpoint example",
+            "prompt": "A compact surface may reduce initial reading burden."
+          },
+          {
+            "label": "Next question",
+            "prompt": "Which information is needed to explain the note's source?"
+          }
+        ]
+      },
+      {
+        "title": "Turn a concern into a bounded revision request.",
+        "lead": "A revision request should name an artifact feature, the intended explanation and a check. For B, specify that the destination must preserve a visible route back to the note before planning a walkthrough.",
+        "body": "Do not promise that adding a return cue resolves all navigation problems. The request describes a change to inspect, not a measured improvement or an assigned delivery commitment.",
+        "subheading": "Revision list",
+        "detail": "Keep unresolved assumptions alongside proposed changes. Otherwise a cleaner sketch can conceal the question it was meant to answer.",
+        "question": "What evidence would allow this request to be closed?",
+        "records": [
+          {
+            "label": "Change",
+            "prompt": "Describe a note-linked destination and an explicit return cue."
+          },
+          {
+            "label": "Check",
+            "prompt": "Inspect whether the relationship remains understandable in the sketch."
+          },
+          {
+            "label": "Owner",
+            "prompt": "No actual implementer, deadline or approval has been assigned."
+          }
+        ]
+      },
+      {
+        "title": "Review the quality of the review itself.",
+        "lead": "The matrix contains six unassessed cells, not six low scores. The useful output is a clearer set of questions about two alternatives and the criteria used to compare them.",
+        "body": "Before sharing, check that annotations distinguish description, interpretation and recommendation. Remove invented quotations, numerical claims and approval language unsupported by real review records.",
+        "subheading": "Critique handoff",
+        "detail": "A later real assessment should preserve artifact versions and rationales. Completion of this workbook is not an endorsement or a release gate.",
+        "question": "Which part of the critique remains an assumption?",
+        "records": [
+          {
+            "label": "Matrix",
+            "prompt": "Two alternatives, three principles, six null scores."
+          },
+          {
+            "label": "Output",
+            "prompt": "Traceable questions and bounded revision suggestions."
+          },
+          {
+            "label": "Limit",
+            "prompt": "No real review, usability result or stakeholder approval recorded."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "component-system",
+    "title": "COMPONENT SYSTEM",
+    "subtitle": "A Context Card anatomy and variant-rule reference",
+    "category": "产品设计",
+    "layout": "anatomy",
+    "color": "#205d65",
+    "wash": "#d6ecea",
+    "framework": "组件解剖与变体规则",
+    "sources": [
+      "form-study/01",
+      "visual-literacy/01",
+      "process-rehearsal/01",
+      "project-studio/01",
+      "launch-kit/01"
+    ],
+    "scope": "A fictional Context Card component specification. Slot and variant rules are authored requirements, not a shipped component library or accessibility certification.",
+    "chapters": [
+      {
+        "title": "Give the component one clear responsibility.",
+        "lead": "Context Card groups a note with a source reference and a visible context state. It is a fictional specification for a reusable content unit, not a functioning UI library.",
+        "body": "The component should explain the relationship without claiming that a link proves source ownership or that a successful render proves accessible behavior. Keep its responsibility narrower than an entire reading workspace.",
+        "subheading": "System intention",
+        "detail": "The model defines five slots and three mutually exclusive variants. Implementation and assistive-technology verification remain future work.",
+        "question": "What belongs inside this component, and what does not?",
+        "records": [
+          {
+            "label": "Owns",
+            "prompt": "The local presentation of a note-source relationship."
+          },
+          {
+            "label": "Does not own",
+            "prompt": "Authentication, source rights, navigation history or cloud storage."
+          },
+          {
+            "label": "Deliverable",
+            "prompt": "An inspectable anatomy and rule set, not a packaged widget."
+          }
+        ]
+      },
+      {
+        "title": "Index slots and variants before drawing states.",
+        "lead": "The five slots are heading, source, body, action and status. Default, expanded and unavailable are the three modeled variants. They describe context presentation, not the note editor's save state.",
+        "body": "Default offers an expansion action. Expanded exposes context with a collapse action. Unavailable shows a reason without an action. Avoid mixing these names with loading or save-result tokens from another contract.",
+        "subheading": "Component index",
+        "detail": "Slot presence and slot meaning are separate. A visually present action must still have a meaningful label and an appropriate interaction behavior.",
+        "question": "Can a consumer find the rule for each slot?",
+        "records": [
+          {
+            "label": "Slots",
+            "prompt": "Heading, source, body, action and status."
+          },
+          {
+            "label": "Variants",
+            "prompt": "Default, expanded and unavailable are mutually exclusive."
+          },
+          {
+            "label": "Boundary",
+            "prompt": "No pending, authenticated or persisted variant is supplied."
+          }
+        ]
+      },
+      {
+        "title": "Describe the anatomy as content relationships.",
+        "lead": "Heading names the note; source names its reference; body holds the note text. Action changes the context presentation where available, and status explains the current variant in words.",
+        "body": "Do not encode the relationship only through position or color. A source that moves beneath the body on a narrow surface should retain a clear textual association with the note.",
+        "subheading": "Slot anatomy",
+        "detail": "A future implementation must select appropriate semantics for its actual host page. This document does not prescribe a heading level independently of surrounding content.",
+        "question": "Which relationship must survive a layout change?",
+        "records": [
+          {
+            "label": "Heading / body",
+            "prompt": "Identify the note and preserve the note text."
+          },
+          {
+            "label": "Source",
+            "prompt": "Explain what the reference relates to without inventing provenance."
+          },
+          {
+            "label": "Action / status",
+            "prompt": "Name the available change and the current context condition."
+          }
+        ]
+      },
+      {
+        "title": "Define properties with constrained values.",
+        "lead": "Variant accepts default, expanded or unavailable. The heading, source and body are required non-empty strings in this authored schema. The unavailable reason is required only for the unavailable variant.",
+        "body": "Action label is derived from the variant rather than independently supplied: Show context, Hide context or no action. Conflicting labels and variant values must be rejected or normalized by an explicit implementation rule.",
+        "subheading": "Property contract",
+        "detail": "The source records store derived visibility and action text. They are a specification fixture, not a runtime validator shipped to consumers.",
+        "question": "Could a consumer create a contradictory combination?",
+        "records": [
+          {
+            "label": "Required",
+            "prompt": "Heading, source and body must contain non-whitespace text."
+          },
+          {
+            "label": "Enum",
+            "prompt": "Variant is exactly default, expanded or unavailable."
+          },
+          {
+            "label": "Conditional",
+            "prompt": "Unavailable requires a reason and supplies no action."
+          }
+        ]
+      },
+      {
+        "title": "Keep the three variants internally consistent.",
+        "lead": "Default hides the context excerpt and offers Show context. Expanded reveals the context excerpt and offers Hide context. Unavailable hides it, omits the action and requires a reason.",
+        "body": "The source fixture sets action_enabled true only for default and expanded. Hidden content is not represented as an empty visible field. A real implementation must define focus and announcement behavior when presentation changes.",
+        "subheading": "Variant matrix",
+        "detail": "Three rows define the complete fixture. There is no approved fourth combination with an unavailable message and an enabled expansion action.",
+        "question": "Can every variant be explained without a screenshot?",
+        "records": [
+          {
+            "label": "Default",
+            "prompt": "Context hidden; Show context action enabled."
+          },
+          {
+            "label": "Expanded",
+            "prompt": "Context visible; Hide context action enabled."
+          },
+          {
+            "label": "Unavailable",
+            "prompt": "Context hidden; no action; explanation required."
+          }
+        ]
+      },
+      {
+        "title": "Compose cards without losing identity.",
+        "lead": "A list can contain several cards, but each needs its own note identity and context state. Expanding one should not silently change every card unless that behavior is explicitly specified.",
+        "body": "Use stable keys for actual instances and keep source association local to each card. Do not infer identity from visible position; sorting or filtering can change that position.",
+        "subheading": "Composition rules",
+        "detail": "This reference defines no global expand-all control, virtualization behavior or collection data model. Those require separate interaction contracts.",
+        "question": "What should stay stable when cards are reordered?",
+        "records": [
+          {
+            "label": "Identity",
+            "prompt": "Use an instance identity separate from the display order."
+          },
+          {
+            "label": "Isolation",
+            "prompt": "One card's presentation state must not overwrite another's."
+          },
+          {
+            "label": "Excluded",
+            "prompt": "No bulk action or list persistence behavior is implemented here."
+          }
+        ]
+      },
+      {
+        "title": "Write labels that describe the action's result.",
+        "lead": "Show context and Hide context name opposite changes to the same content. Avoid a vague More label when several different things could expand. An unavailable reason should explain the actual limitation without blaming the reader.",
+        "body": "Do not show a success sentence where no save happened. The card's context variant and the note's persistence status are separate concepts even when both appear on the same screen.",
+        "subheading": "Content guidance",
+        "detail": "Use source labels that fit the material actually supplied. A citation-shaped string is not verified provenance merely because it is formatted consistently.",
+        "question": "Could the wording imply a capability the card does not have?",
+        "records": [
+          {
+            "label": "Action copy",
+            "prompt": "Show context or Hide context, matching the current variant."
+          },
+          {
+            "label": "Unavailable copy",
+            "prompt": "Describe the missing context and any real next step."
+          },
+          {
+            "label": "Avoid",
+            "prompt": "No saved, verified source or permission claim without evidence."
+          }
+        ]
+      },
+      {
+        "title": "Treat accessibility as implementation work.",
+        "lead": "The proposed control should have a meaningful name, a visible focus treatment and an explicit expanded relationship where applicable. Text must remain readable when content grows and the layout reflows.",
+        "body": "These are review questions and requirements, not a WCAG pass. Keyboard activation, focus order, announcements, contrast and reading order must be checked against the implemented host and its actual content.",
+        "subheading": "Access review",
+        "detail": "Removing an unavailable action must not strand focus. The specification has not implemented or tested that transition, so record it as an unresolved integration question.",
+        "question": "What needs a real implementation before it can be verified?",
+        "records": [
+          {
+            "label": "Semantics",
+            "prompt": "Choose actual control and heading semantics in host context."
+          },
+          {
+            "label": "Behavior",
+            "prompt": "Verify keyboard, focus and expanded-state announcements."
+          },
+          {
+            "label": "Status",
+            "prompt": "No conformance test or assistive-technology result is claimed."
+          }
+        ]
+      },
+      {
+        "title": "Specify the implementation boundary explicitly.",
+        "lead": "Consumers provide content and a valid variant. A future component emits a context-toggle intent for available variants; the host owns the state change. Unavailable emits no toggle intent.",
+        "body": "Do not let a presentational component fetch sources or silently persist notes. Such behavior would add error, permission and lifecycle responsibilities not covered by this three-row fixture.",
+        "subheading": "Interface handoff",
+        "detail": "Define a stable payload containing the instance identity if integrating a real event callback. No executable package, event bus or API endpoint is delivered by this document.",
+        "question": "Which responsibility belongs to the host rather than the card?",
+        "records": [
+          {
+            "label": "Input",
+            "prompt": "Content strings, instance identity and a valid variant."
+          },
+          {
+            "label": "Intent",
+            "prompt": "A bounded request to toggle context when an action exists."
+          },
+          {
+            "label": "Host",
+            "prompt": "Own state updates, retrieval and any real persistence decisions."
+          }
+        ]
+      },
+      {
+        "title": "Version the rule change, not just the drawing.",
+        "lead": "Version 0.1 describes this authored three-variant fixture. A new pending variant would change the enum, property dependencies, action rules, tests and content guidance, not merely add a spinner.",
+        "body": "Keep a change record that explains the compatibility impact. Existing consumers must not receive an unfamiliar variant while the documentation still claims only three accepted values.",
+        "subheading": "Version review",
+        "detail": "The fixture can be internally consistent without being complete for a product. Extension should follow a known need and a revised contract.",
+        "question": "What must change together when a variant is added?",
+        "records": [
+          {
+            "label": "Current",
+            "prompt": "Five slots and three mutually exclusive context variants."
+          },
+          {
+            "label": "Change set",
+            "prompt": "Schema, action copy, source matrix and review tests."
+          },
+          {
+            "label": "Limit",
+            "prompt": "No shipped consumers, migration or production compatibility verified."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prototype-study",
+    "title": "PROTOTYPE STUDY",
+    "subtitle": "A task-script and observation-matrix research plan",
+    "category": "产品设计",
+    "layout": "matrix",
+    "color": "#364b79",
+    "wash": "#e2e7f5",
+    "framework": "任务脚本与观察矩阵",
+    "sources": [
+      "research-commission/01",
+      "project-studio/01",
+      "comparison-guide/01",
+      "visual-literacy/02",
+      "creative-treatment/01"
+    ],
+    "scope": "An unexecuted study plan for a fictional paper Context Card prototype. Nine observation cells are unrecorded; no participant data, usability findings or completion metrics exist.",
+    "chapters": [
+      {
+        "title": "Choose a question the prototype can expose.",
+        "lead": "This plan asks whether an invented Context Card lets a reader explain a note's source relationship and the available context change. It is a plan for inquiry, not a completed usability report.",
+        "body": "Three tasks are crossed with three observation checkpoints. All nine cells are unrecorded. No participant identities, recruitment, session dates or results are supplied.",
+        "subheading": "Study intention",
+        "detail": "The intended output is a traceable record of what an actual artifact might reveal under a bounded task. It is not a success-rate target.",
+        "question": "Which uncertainty requires observation rather than another opinion?",
+        "records": [
+          {
+            "label": "Question",
+            "prompt": "How is the note-source relationship interpreted?"
+          },
+          {
+            "label": "Scope",
+            "prompt": "A future walkthrough of a clearly labeled paper concept."
+          },
+          {
+            "label": "Current",
+            "prompt": "Three tasks, nine empty cells and no actual sessions."
+          }
+        ]
+      },
+      {
+        "title": "Describe what the prototype cannot do.",
+        "lead": "The paper concept represents a note, its source reference and alternate context panels. It has no live save, network retrieval, authentication or assistive-technology implementation.",
+        "body": "A facilitator may substitute an authored panel after a participant describes an intended action, if that procedure is explained. The substitution is not a working response-time or reliability test.",
+        "subheading": "Fidelity boundary",
+        "detail": "Do not interpret a missing implementation as a participant error. Separate artifact limitations, task ambiguity and observed interaction difficulty.",
+        "question": "Could a result be caused by the prototype's limitation?",
+        "records": [
+          {
+            "label": "Represents",
+            "prompt": "Content grouping and proposed context states."
+          },
+          {
+            "label": "Does not run",
+            "prompt": "Saving, source retrieval or a real navigation service."
+          },
+          {
+            "label": "Procedure",
+            "prompt": "Any panel substitution must be explained and recorded."
+          }
+        ]
+      },
+      {
+        "title": "Set a scenario without teaching the cue.",
+        "lead": "Invite a future participant to imagine returning to a note written beside an invented passage. Ask what the note refers to before pointing to the source reference or expansion action.",
+        "body": "The scenario must not imply that a good reader will choose a particular route. Participation and recording arrangements must be established for a real study; this template grants no permission to collect data.",
+        "subheading": "Scenario setup",
+        "detail": "Use non-sensitive invented material. Avoid requiring personal reading history or private documents merely to make a task feel realistic.",
+        "question": "Does the setup reveal the answer it is meant to investigate?",
+        "records": [
+          {
+            "label": "Context",
+            "prompt": "Return to an authored note after a fictional interval."
+          },
+          {
+            "label": "Material",
+            "prompt": "Use the same invented passage and note across tasks."
+          },
+          {
+            "label": "Choice",
+            "prompt": "Any real participation or recording needs a separate arrangement."
+          }
+        ]
+      },
+      {
+        "title": "Give each task an inspectable goal.",
+        "lead": "T01 asks the reader to explain which passage the note concerns. T02 asks how they would reveal more context. T03 asks what they would do when context is unavailable.",
+        "body": "Read one task at a time without naming the intended control. The script records a goal and a boundary, not a compulsory sequence or a declared success event.",
+        "subheading": "Task scripts",
+        "detail": "A participant may choose a route the designer did not anticipate. Record the route before deciding whether the task or artifact needs revision.",
+        "question": "Can the goal be understood without a button name?",
+        "records": [
+          {
+            "label": "T01",
+            "prompt": "Explain which source passage the note concerns."
+          },
+          {
+            "label": "T02",
+            "prompt": "Describe how to reveal more of the note's context."
+          },
+          {
+            "label": "T03",
+            "prompt": "Explain the next step when context is unavailable."
+          }
+        ]
+      },
+      {
+        "title": "Separate observation from interpretation.",
+        "lead": "The checkpoints are first interpretation, attempted action and unresolved question. A permitted record should capture what happened at each checkpoint before explaining why it may have happened.",
+        "body": "Do not infer confusion from a pause without further context. A quiet reader, an incomplete paper panel and an unclear task can produce similar outward behavior for different reasons.",
+        "subheading": "Observation vocabulary",
+        "detail": "Keep quotations distinct from paraphrases and mark any facilitator intervention. The source matrix currently contains neither quotations nor observed actions.",
+        "question": "Could another researcher distinguish the event from its explanation?",
+        "records": [
+          {
+            "label": "First interpretation",
+            "prompt": "Record the initial explanation in permitted form."
+          },
+          {
+            "label": "Attempted action",
+            "prompt": "Record the action or described intention and any intervention."
+          },
+          {
+            "label": "Unresolved question",
+            "prompt": "Record what remains uncertain without inventing a cause."
+          }
+        ]
+      },
+      {
+        "title": "Leave unobserved cells genuinely empty.",
+        "lead": "The matrix crosses T01, T02 and T03 with the three checkpoints, yielding nine planned cells. Each has status unrecorded and a null observation; none means a failed task.",
+        "body": "Do not fill empty cells with plausible behavior to make the report look finished. A real session may produce no relevant observation at a checkpoint, which should be represented explicitly and separately.",
+        "subheading": "Recording matrix",
+        "detail": "A future record needs task, artifact version, session reference and an appropriate permission basis. This workbook contains no actual session identifiers.",
+        "question": "Can an empty field be mistaken for a result?",
+        "records": [
+          {
+            "label": "Rows",
+            "prompt": "Three task IDs, each with three planned checkpoints."
+          },
+          {
+            "label": "Values",
+            "prompt": "All nine observations remain null and unrecorded."
+          },
+          {
+            "label": "Meaning",
+            "prompt": "Absence of a record is not failure, zero time or dissatisfaction."
+          }
+        ]
+      },
+      {
+        "title": "Cluster only after preserving the source records.",
+        "lead": "Potential themes might concern source association, action wording or unavailable-context explanation. These are planning categories, not findings derived from participants.",
+        "body": "A real synthesis should retain links to the observations it groups, preserve exceptions and distinguish artifact issues from task-script issues. Frequency alone cannot establish severity without context.",
+        "subheading": "Issue synthesis",
+        "detail": "Do not report that most people struggled when no sessions occurred. Avoid inventing severity ratings or completion percentages from an empty matrix.",
+        "question": "What observation would support the proposed theme?",
+        "records": [
+          {
+            "label": "Candidate theme",
+            "prompt": "Source relationship may require a clearer explanation."
+          },
+          {
+            "label": "Evidence state",
+            "prompt": "No observed records support or contradict that possibility."
+          },
+          {
+            "label": "Rule",
+            "prompt": "Preserve traceable exceptions rather than forcing every note into a theme."
+          }
+        ]
+      },
+      {
+        "title": "Connect a revision to a specific uncertainty.",
+        "lead": "If a future record suggests the source relation is unclear, a revised panel could change the reference placement while keeping wording constant. That is a proposed next comparison, not a validated fix.",
+        "body": "Record the version difference and the question it addresses. Changing task wording, content and layout at once can obscure what explains an observed difference.",
+        "subheading": "Iteration plan",
+        "detail": "A cleaner drawing is not evidence of improved usability. Any claim about improvement needs an appropriate comparison and a transparent boundary.",
+        "question": "What would a follow-up task distinguish?",
+        "records": [
+          {
+            "label": "Hypothetical change",
+            "prompt": "Adjust reference placement without changing note wording."
+          },
+          {
+            "label": "Control",
+            "prompt": "Retain the same passage and task goal."
+          },
+          {
+            "label": "Status",
+            "prompt": "No actual issue, revision result or measured improvement exists."
+          }
+        ]
+      },
+      {
+        "title": "Make the limitations part of the result format.",
+        "lead": "Even a completed small walkthrough would be bounded by its artifact, tasks, participants and setting. This plan has additional limits because it has not been executed at all.",
+        "body": "Paper panels cannot establish persistence, live latency, keyboard operation or assistive-technology behavior. No claim about a population, business outcome or accessibility conformance follows from this plan.",
+        "subheading": "Study limits",
+        "detail": "Keep missing evidence visible in the handoff. A reader should not have to infer that a polished matrix is empty of participant data.",
+        "question": "Which conclusion is outside the method's reach?",
+        "records": [
+          {
+            "label": "Not measured",
+            "prompt": "Task completion, time, error rate or satisfaction."
+          },
+          {
+            "label": "Not tested",
+            "prompt": "Live behavior, keyboard access or assistive technology."
+          },
+          {
+            "label": "Not inferred",
+            "prompt": "Population preference, adoption or business value."
+          }
+        ]
+      },
+      {
+        "title": "Prepare the next study without announcing findings.",
+        "lead": "The next step is to review the task script and the paper panels for misleading cues, then establish a real participation and recording process if the study proceeds.",
+        "body": "Keep the unrecorded matrix as a planning fixture. Any future data must be versioned and sourced rather than silently overwriting null cells while retaining this document's claim that no sessions occurred.",
+        "subheading": "Research handoff",
+        "detail": "Share the question, artifact limits, task goals and observation vocabulary together. A successor should know both what to collect and what not to conclude.",
+        "question": "What is required before any cell becomes evidence?",
+        "records": [
+          {
+            "label": "Prepare",
+            "prompt": "Review task wording and clearly label the paper concept."
+          },
+          {
+            "label": "Arrange",
+            "prompt": "Establish actual participation, recording and data-handling terms."
+          },
+          {
+            "label": "Preserve",
+            "prompt": "Version the fixture before adding real observations."
+          }
+        ]
+      }
+    ]
+  }
+]

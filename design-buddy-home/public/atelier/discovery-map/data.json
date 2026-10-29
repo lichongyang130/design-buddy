@@ -1,0 +1,396 @@
+{
+  "work": {
+    "id": "discovery-map",
+    "title": "DISCOVERY MAP",
+    "subtitle": "An opportunity tree and research-hypothesis workbook",
+    "category": "产品设计",
+    "layout": "branches",
+    "color": "#66501f",
+    "wash": "#f4e7c3",
+    "framework": "机会树与研究假设",
+    "scope": "Fictional exploration of a Context Library concept. Opportunities and hypotheses are authored, not user findings, validated needs or a product commitment.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "product-expansion",
+    "newIllustrations": 0,
+    "curatedIllustrations": 5
+  },
+  "pages": [
+    {
+      "section": "01 / DISCOVERY MAP",
+      "title": "Start with a learning decision.",
+      "lead": "Context Library is an invented concept for keeping a short note beside the passage that prompted it. Discovery asks whether the relationship is understandable before proposing a product roadmap.",
+      "body": "The outcome O00 is to make the passage-note relationship inspectable. It is a design intention, not a measured improvement or evidence that a real audience needs this service.",
+      "subheading": "Exploration charter",
+      "detail": "The tree has one outcome, two opportunity branches and four hypotheses. Its structure makes assumptions traceable without turning them into findings.",
+      "question": "What decision could a small inquiry change?",
+      "records": [
+        {
+          "label": "Decision",
+          "prompt": "Choose which uncertainty to investigate before implementation."
+        },
+        {
+          "label": "Boundary",
+          "prompt": "No actual users, market demand or release commitment established."
+        },
+        {
+          "label": "Artifact",
+          "prompt": "A versioned tree with questions attached to each hypothesis."
+        }
+      ],
+      "image": 1,
+      "kind": "cover",
+      "evidenceRows": [
+        [
+          "TREE NODE",
+          "O00 / outcome / intended"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "7 authored nodes: 1 outcome, 2 opportunities, 4 untested hypotheses."
+        ]
+      ]
+    },
+    {
+      "section": "02 / DISCOVERY MAP",
+      "title": "Map a context without inventing a persona.",
+      "lead": "Imagine a reader returning to a note after the surrounding passage has been forgotten. The scenario identifies a possible context for inquiry, not a representative user profile.",
+      "body": "Separate the moment of writing from the moment of return. A note that seems clear during writing may lack enough context later; that possibility requires investigation rather than an invented quotation.",
+      "subheading": "Context map",
+      "detail": "Use the same invented passage across alternatives so that a changing example does not explain differences attributed to the design.",
+      "question": "What distinguishes the writing moment from the return moment?",
+      "records": [
+        {
+          "label": "Situation",
+          "prompt": "A reader returns to a saved note and its source passage."
+        },
+        {
+          "label": "Unknown",
+          "prompt": "Whether the missing relationship is actually a recurring difficulty."
+        },
+        {
+          "label": "Control",
+          "prompt": "Hold passage, note and task wording constant across examples."
+        }
+      ],
+      "image": 1,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "TREE NODE",
+          "O01 / opportunity / unvalidated"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "7 authored nodes: 1 outcome, 2 opportunities, 4 untested hypotheses."
+        ]
+      ]
+    },
+    {
+      "section": "03 / DISCOVERY MAP",
+      "title": "Describe the problem before a feature.",
+      "lead": "Opportunity O01 asks how a returning reader might recover relevant context. O02 asks how a reader might understand a note's revision status. Both are authored problem statements.",
+      "body": "Neither branch requires a particular interface. A source excerpt, a reference link or a clear explanation could address O01 in different ways. Do not select a solution by how neatly it fits the tree.",
+      "subheading": "Problem framing",
+      "detail": "A branch is worth keeping only if the proposed inquiry can reveal something about it. Remove redundant labels rather than counting more branches as progress.",
+      "question": "Could the problem still be discussed without naming a screen?",
+      "records": [
+        {
+          "label": "O01",
+          "prompt": "Recover the context needed to interpret a note."
+        },
+        {
+          "label": "O02",
+          "prompt": "Understand whether a note is provisional or revised."
+        },
+        {
+          "label": "Exclusion",
+          "prompt": "No evidence that either opportunity represents a known population."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "TREE NODE",
+          "O02 / opportunity / unvalidated"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "7 authored nodes: 1 outcome, 2 opportunities, 4 untested hypotheses."
+        ]
+      ]
+    },
+    {
+      "section": "04 / DISCOVERY MAP",
+      "title": "Keep the tree's parent links explicit.",
+      "lead": "O00 connects to O01 and O02. Hypotheses H11 and H12 belong to O01; H21 and H22 belong to O02. Every non-root node has exactly one parent.",
+      "body": "A single parent keeps this small teaching tree readable. It does not claim that real needs are independent. Cross-cutting uncertainty belongs in a note rather than a duplicate node presented as new evidence.",
+      "subheading": "Opportunity branches",
+      "detail": "The source register stores seven nodes with unique IDs. Parent references must exist, and traversing them must reach O00 without a cycle.",
+      "question": "Can another reader reconstruct the tree from the register alone?",
+      "records": [
+        {
+          "label": "Root",
+          "prompt": "O00, an intended outcome rather than a metric."
+        },
+        {
+          "label": "Children",
+          "prompt": "O01 and O02, both unvalidated opportunities."
+        },
+        {
+          "label": "Leaves",
+          "prompt": "H11, H12, H21 and H22, all untested hypotheses."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "TREE NODE",
+          "H11 / hypothesis / untested"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "7 authored nodes: 1 outcome, 2 opportunities, 4 untested hypotheses."
+        ]
+      ]
+    },
+    {
+      "section": "05 / DISCOVERY MAP",
+      "title": "Make each hypothesis refutable.",
+      "lead": "H11 proposes that an adjacent source excerpt helps recover context. H12 proposes that an explicit source link does so. Neither is a claim that one treatment works.",
+      "body": "H21 proposes that a visible revision label helps explain status. H22 proposes that a brief change note helps explain what changed. A reader may misunderstand either treatment even when the designer finds it obvious.",
+      "subheading": "Solution hypotheses",
+      "detail": "An inquiry should allow a treatment to be confusing or unnecessary. A question that only asks which version looks attractive cannot establish comprehension.",
+      "question": "What observation would make this hypothesis less plausible?",
+      "records": [
+        {
+          "label": "H11 / H12",
+          "prompt": "Compare an excerpt and a source link for context recovery."
+        },
+        {
+          "label": "H21 / H22",
+          "prompt": "Compare a status label and a change note for revision meaning."
+        },
+        {
+          "label": "Status",
+          "prompt": "All four remain untested; no actual outcomes recorded."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "TREE NODE",
+          "H12 / hypothesis / untested"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "7 authored nodes: 1 outcome, 2 opportunities, 4 untested hypotheses."
+        ]
+      ]
+    },
+    {
+      "section": "06 / DISCOVERY MAP",
+      "title": "Ask a question that does not supply its answer.",
+      "lead": "A useful research question asks how a reader explains the relation between a note and its passage. It does not ask whether the new context feature is helpful.",
+      "body": "Prepare prompts that allow uncertainty, disagreement and an unexpected explanation. Ask what the person inspected before naming the intended cue; otherwise the prompt may teach the answer being evaluated.",
+      "subheading": "Question design",
+      "detail": "Keep the researcher's hypothesis outside the initial task. Record later clarification separately from an unaided interpretation.",
+      "question": "Would the wording still make sense if the hypothesis were wrong?",
+      "records": [
+        {
+          "label": "Prompt",
+          "prompt": "Explain what the note refers to and what remains unclear."
+        },
+        {
+          "label": "Probe",
+          "prompt": "Which part of the artifact informed that interpretation?"
+        },
+        {
+          "label": "Avoid",
+          "prompt": "Do not ask whether the proposed improvement is successful."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "TREE NODE",
+          "H21 / hypothesis / untested"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "7 authored nodes: 1 outcome, 2 opportunities, 4 untested hypotheses."
+        ]
+      ]
+    },
+    {
+      "section": "07 / DISCOVERY MAP",
+      "title": "Match the method to the uncertainty.",
+      "lead": "A small artifact walkthrough could explore whether the connection is understandable. It would not establish market size, sustained use or a statistically reliable preference between treatments.",
+      "body": "Show a paper concept or a clearly bounded prototype, describe what it can and cannot do, and use an appropriate participation arrangement. This document schedules no actual session or recruitment.",
+      "subheading": "Method boundary",
+      "detail": "An unimplemented control cannot support a conclusion about its response time or reliability. Keep concept interpretation separate from functional usability.",
+      "question": "What could this method legitimately teach?",
+      "records": [
+        {
+          "label": "Method",
+          "prompt": "An optional future walkthrough of two authored alternatives."
+        },
+        {
+          "label": "Observation",
+          "prompt": "Record interpretation and the cue used, not just preference."
+        },
+        {
+          "label": "Limit",
+          "prompt": "No actual sessions, recruitment or longitudinal evidence exist."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "TREE NODE",
+          "H22 / hypothesis / untested"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "7 authored nodes: 1 outcome, 2 opportunities, 4 untested hypotheses."
+        ]
+      ]
+    },
+    {
+      "section": "08 / DISCOVERY MAP",
+      "title": "Record a trade-off as a hypothesis too.",
+      "lead": "An excerpt might preserve context while making the card longer. A link might keep the card compact while requiring another step. These are design tensions, not measured costs.",
+      "body": "Choose what the next inquiry needs to distinguish. A temporary choice can narrow an experiment without becoming an approved product direction. Explain why the other alternative is retained or deferred.",
+      "subheading": "Trade-off record",
+      "detail": "Do not give invented reach, confidence or effort scores to make a choice look objective. Unknown evidence stays unknown.",
+      "question": "Which assumption carries the temporary decision?",
+      "records": [
+        {
+          "label": "Candidate",
+          "prompt": "Explore the adjacent excerpt first for a bounded walkthrough."
+        },
+        {
+          "label": "Reason",
+          "prompt": "The relationship is visible without another navigation step."
+        },
+        {
+          "label": "Revisit",
+          "prompt": "Retain the link alternative until interpretation has been examined."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "TREE NODE",
+          "O00 / outcome / intended"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "7 authored nodes: 1 outcome, 2 opportunities, 4 untested hypotheses."
+        ]
+      ]
+    },
+    {
+      "section": "09 / DISCOVERY MAP",
+      "title": "Keep a learning ledger separate from the tree.",
+      "lead": "The authored tree contains no observed findings. A later ledger should link an observation to its task, artifact version, source permission and the hypothesis it informs.",
+      "body": "A single comment should not silently become a finding about everyone. Preserve counterexamples and distinguish what was said from a researcher's explanation of why it happened.",
+      "subheading": "Learning synthesis",
+      "detail": "A hypothesis can remain uncertain after a useful session. Avoid treating the completion of research activities as validation.",
+      "question": "What source would justify changing a node's status?",
+      "records": [
+        {
+          "label": "Current",
+          "prompt": "Four untested hypotheses and no collected observations."
+        },
+        {
+          "label": "Future",
+          "prompt": "Link any permitted observation to task and artifact version."
+        },
+        {
+          "label": "Rule",
+          "prompt": "Separate raw observation, interpretation and proposed action."
+        }
+      ],
+      "image": 5,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "TREE NODE",
+          "O01 / opportunity / unvalidated"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "7 authored nodes: 1 outcome, 2 opportunities, 4 untested hypotheses."
+        ]
+      ]
+    },
+    {
+      "section": "10 / DISCOVERY MAP",
+      "title": "Choose the next question, not a launch date.",
+      "lead": "The next step is to prepare a bounded comparison for O01 and review whether its task wording exposes the intended uncertainty. No real release date or staffing commitment follows.",
+      "body": "Check the tree, the source boundary and the planned participation process before any study. Keep O02 visible so that a convenient first inquiry does not erase the revision-status question.",
+      "subheading": "Exploration handoff",
+      "detail": "Share the source register and the reason for the next inquiry. A successor should be able to disagree without reconstructing missing assumptions.",
+      "question": "What remains unlearned after this workbook?",
+      "records": [
+        {
+          "label": "Next",
+          "prompt": "Prepare a clearly labeled excerpt-versus-link concept comparison."
+        },
+        {
+          "label": "Open",
+          "prompt": "Revision meaning, real contexts and long-term usefulness remain unknown."
+        },
+        {
+          "label": "Handoff",
+          "prompt": "Carry the tree version, scope exclusions and unanswered questions."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix",
+      "evidenceRows": [
+        [
+          "TREE NODE",
+          "O02 / opportunity / unvalidated"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "7 authored nodes: 1 outcome, 2 opportunities, 4 untested hypotheses."
+        ]
+      ]
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "Curated existing AI-generated illustration: research-commission/01.jpg"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: visual-literacy/02.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: project-studio/01.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: partnership-canvas/01.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: creative-treatment/01.jpg"
+    }
+  ]
+}

@@ -19,7 +19,7 @@
     "form-study"
   ],
   "additionalCases": 50,
-  "publishedFromThisExpansion": 45,
+  "publishedFromThisExpansion": 50,
   "counts": {
     "课程": 6,
     "提案": 6,
@@ -1759,7 +1759,7 @@
         "活动回看"
       ],
       "status": "published",
-      "published": false,
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -1801,7 +1801,7 @@
         "策展回看"
       ],
       "status": "published",
-      "published": false,
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -1843,7 +1843,7 @@
         "复盘清单"
       ],
       "status": "published",
-      "published": false,
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -1885,7 +1885,7 @@
         "沙龙回看"
       ],
       "status": "published",
-      "published": false,
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -1927,7 +1927,7 @@
         "展示复盘"
       ],
       "status": "published",
-      "published": false,
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -1968,8 +1968,8 @@
         "学习汇总",
         "探索下一步"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -1989,7 +1989,9 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "illustrations": 5
     },
     {
       "id": "interaction-contract",
@@ -2008,8 +2010,8 @@
         "可用性问题",
         "规格检查"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -2029,7 +2031,9 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "illustrations": 5
     },
     {
       "id": "design-critique",
@@ -2048,8 +2052,8 @@
         "修订清单",
         "评审回看"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -2069,7 +2073,9 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "illustrations": 5
     },
     {
       "id": "component-system",
@@ -2088,8 +2094,8 @@
         "实现接口",
         "版本变更"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -2109,7 +2115,9 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "illustrations": 5
     },
     {
       "id": "prototype-study",
@@ -2128,8 +2136,8 @@
         "局限说明",
         "下一轮研究"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -2149,7 +2157,9 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "illustrations": 5
     }
   ],
   "remaining": 10

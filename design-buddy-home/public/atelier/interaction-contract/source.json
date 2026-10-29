@@ -1,0 +1,63 @@
+{
+  "source": "authored-fictional-product-specification",
+  "synthetic": true,
+  "notActualProductEvidence": true,
+  "summary": {
+    "states": [
+      "draft",
+      "review",
+      "saved",
+      "error"
+    ],
+    "initialState": "draft",
+    "transitions": 6,
+    "undefinedPair": "reject-without-mutation",
+    "livePersistence": null,
+    "usabilityResults": null,
+    "accessibilityConformance": null
+  },
+  "records": [
+    {
+      "from_state": "draft",
+      "event": "review",
+      "to_state": "review",
+      "source_type": "authored-contract",
+      "implemented": false
+    },
+    {
+      "from_state": "review",
+      "event": "edit",
+      "to_state": "draft",
+      "source_type": "authored-contract",
+      "implemented": false
+    },
+    {
+      "from_state": "review",
+      "event": "save-ok",
+      "to_state": "saved",
+      "source_type": "authored-contract",
+      "implemented": false
+    },
+    {
+      "from_state": "review",
+      "event": "save-fail",
+      "to_state": "error",
+      "source_type": "authored-contract",
+      "implemented": false
+    },
+    {
+      "from_state": "error",
+      "event": "retry",
+      "to_state": "review",
+      "source_type": "authored-contract",
+      "implemented": false
+    },
+    {
+      "from_state": "saved",
+      "event": "edit",
+      "to_state": "draft",
+      "source_type": "authored-contract",
+      "implemented": false
+    }
+  ]
+}

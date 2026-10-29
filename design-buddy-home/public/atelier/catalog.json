@@ -70,7 +70,12 @@
     "exhibition-guide",
     "workshop-runbook",
     "reading-salon",
-    "demo-day"
+    "demo-day",
+    "discovery-map",
+    "interaction-contract",
+    "design-critique",
+    "component-system",
+    "prototype-study"
   ],
   "documentRequirements": {
     "minPages": 10,
@@ -78,8 +83,8 @@
   },
   "additionalDocumentRequest": {
     "count": 50,
-    "published": 45,
-    "remaining": 5,
+    "published": 50,
+    "remaining": 0,
     "plan": "docs/document-expansion-50.json"
   }
 }
