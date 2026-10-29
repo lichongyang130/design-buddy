@@ -1,0 +1,7 @@
+note_id,topic_id,kind,note,source_type,actual_contributor
+N01,T01,proposal,Keep a short orientation note beside a catalogue.,authored-prompt,
+N02,T01,question,Who determines what a new reader needs to understand?,authored-prompt,
+N03,T02,proposal,Keep a shared resource catalogue with source context.,authored-prompt,
+N04,T02,question,Who checks whether the explanation remains current?,authored-prompt,
+N05,T03,proposal,Offer a clearly described voluntary contribution route.,authored-prompt,
+N06,T03,question,Who could agree and carry the relevant responsibility?,authored-prompt,

@@ -65,7 +65,12 @@
     "scenario-ledger",
     "service-economics",
     "growth-options",
-    "operating-model"
+    "operating-model",
+    "community-forum",
+    "exhibition-guide",
+    "workshop-runbook",
+    "reading-salon",
+    "demo-day"
   ],
   "documentRequirements": {
     "minPages": 10,
@@ -73,8 +78,8 @@
   },
   "additionalDocumentRequest": {
     "count": 50,
-    "published": 40,
-    "remaining": 10,
+    "published": 45,
+    "remaining": 5,
     "plan": "docs/document-expansion-50.json"
   }
 }

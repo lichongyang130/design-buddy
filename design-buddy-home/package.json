@@ -46,7 +46,9 @@
     "build:training-expansion": "node scripts/build-training-expansion.mjs",
     "test:training-expansion": "node tests/verify-training-expansion.mjs",
     "build:business-expansion": "node scripts/build-business-expansion.mjs",
-    "test:business-expansion": "node tests/verify-business-expansion.mjs"
+    "test:business-expansion": "node tests/verify-business-expansion.mjs",
+    "build:event-expansion": "node scripts/build-event-expansion.mjs",
+    "test:event-expansion": "node tests/verify-event-expansion.mjs"
   },
   "devDependencies": {
     "@sparticuz/chromium": "^153.0.0",

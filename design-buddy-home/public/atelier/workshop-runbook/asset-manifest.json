@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "workshop-runbook",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 17042,
+      "sha256": "330f8b08c96fe15cb10f0e7924b45b856f9f2dafd0a5b72040b51ea61a03613c"
+    },
+    {
+      "path": "content.js",
+      "bytes": 13593,
+      "sha256": "a9d7aba9743796cd9d607d38161318733bf567fd8b61e6e5619cc61df1459f65"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 530,
+      "sha256": "69a65d51120a3f54290bcdc6082905168f7431b3a82f1aa13e1cec2ddb384c26"
+    },
+    {
+      "path": "workshop-runbook.docx",
+      "bytes": 980662,
+      "sha256": "e96eaa282f237202b83a76f79c67c7a007157bcddf0fdb58bce07806b9e85046"
+    },
+    {
+      "path": "workshop-runbook.pdf",
+      "bytes": 1050310,
+      "sha256": "a5922430d6a463552f710dcdffaf1c41965b873c69990005810bc079c89c7848"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 436,
+      "sha256": "b2678dd440ce2abe886d36e69002800a98f147df86c8637235dfecf60fff6f7e"
+    },
+    {
+      "path": "source.json",
+      "bytes": 1735,
+      "sha256": "94ec05db4312a87dbd47db698fd8bc64611da4f51fb063936a4879b49ca56f89"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 204036,
+      "sha256": "9f11d785aafe00ad67aa4fd6321b7cffc2d89cb2eddcd92934c0b84eede18915"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 113232,
+      "sha256": "c0b779cc6a901e2db8bef9cc18c2f81bf322bf058cdf97b4a83004909a340b2a"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 259237,
+      "sha256": "7b27411866588998984b352cb406b0249324042957cf48e59de6b8465530163c"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 185065,
+      "sha256": "811f8ec6341fa07c5dc8b99ada1e8250922351ae65ff833d571dece1ff320b5d"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 209325,
+      "sha256": "198042f377e07cf87bad5ff352f97245d2bfb249f4db7a8e1b80b53aea29eab4"
+    }
+  ]
+}

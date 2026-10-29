@@ -1,0 +1,63 @@
+{
+  "source": "authored-fictional-event-register",
+  "synthetic": true,
+  "notActualEvent": true,
+  "summary": {
+    "topicCircles": 3,
+    "authoredNoteExamples": 6,
+    "actualParticipants": null,
+    "actualVotes": null,
+    "actualConsensus": null,
+    "consensusNotEstablished": true
+  },
+  "records": [
+    {
+      "note_id": "N01",
+      "topic_id": "T01",
+      "kind": "proposal",
+      "note": "Keep a short orientation note beside a catalogue.",
+      "source_type": "authored-prompt",
+      "actual_contributor": null
+    },
+    {
+      "note_id": "N02",
+      "topic_id": "T01",
+      "kind": "question",
+      "note": "Who determines what a new reader needs to understand?",
+      "source_type": "authored-prompt",
+      "actual_contributor": null
+    },
+    {
+      "note_id": "N03",
+      "topic_id": "T02",
+      "kind": "proposal",
+      "note": "Keep a shared resource catalogue with source context.",
+      "source_type": "authored-prompt",
+      "actual_contributor": null
+    },
+    {
+      "note_id": "N04",
+      "topic_id": "T02",
+      "kind": "question",
+      "note": "Who checks whether the explanation remains current?",
+      "source_type": "authored-prompt",
+      "actual_contributor": null
+    },
+    {
+      "note_id": "N05",
+      "topic_id": "T03",
+      "kind": "proposal",
+      "note": "Offer a clearly described voluntary contribution route.",
+      "source_type": "authored-prompt",
+      "actual_contributor": null
+    },
+    {
+      "note_id": "N06",
+      "topic_id": "T03",
+      "kind": "question",
+      "note": "Who could agree and carry the relevant responsibility?",
+      "source_type": "authored-prompt",
+      "actual_contributor": null
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "source": "authored-fictional-event-register",
+  "synthetic": true,
+  "notActualEvent": true,
+  "summary": {
+    "authoredUnits": 3,
+    "feedbackFields": 3,
+    "feedbackCells": 9,
+    "actualPresentations": null,
+    "actualAudience": null,
+    "actualEndorsements": null,
+    "actualContacts": null
+  },
+  "records": [
+    {
+      "unit_id": "D01",
+      "unit_title": "Context Card",
+      "feedback_field": "clarity",
+      "status": "uncollected",
+      "actual_feedback": null,
+      "contact_opt_in": null
+    },
+    {
+      "unit_id": "D01",
+      "unit_title": "Context Card",
+      "feedback_field": "open-question",
+      "status": "uncollected",
+      "actual_feedback": null,
+      "contact_opt_in": null
+    },
+    {
+      "unit_id": "D01",
+      "unit_title": "Context Card",
+      "feedback_field": "next-artifact",
+      "status": "uncollected",
+      "actual_feedback": null,
+      "contact_opt_in": null
+    },
+    {
+      "unit_id": "D02",
+      "unit_title": "Folded Route",
+      "feedback_field": "clarity",
+      "status": "uncollected",
+      "actual_feedback": null,
+      "contact_opt_in": null
+    },
+    {
+      "unit_id": "D02",
+      "unit_title": "Folded Route",
+      "feedback_field": "open-question",
+      "status": "uncollected",
+      "actual_feedback": null,
+      "contact_opt_in": null
+    },
+    {
+      "unit_id": "D02",
+      "unit_title": "Folded Route",
+      "feedback_field": "next-artifact",
+      "status": "uncollected",
+      "actual_feedback": null,
+      "contact_opt_in": null
+    },
+    {
+      "unit_id": "D03",
+      "unit_title": "Revision Window",
+      "feedback_field": "clarity",
+      "status": "uncollected",
+      "actual_feedback": null,
+      "contact_opt_in": null
+    },
+    {
+      "unit_id": "D03",
+      "unit_title": "Revision Window",
+      "feedback_field": "open-question",
+      "status": "uncollected",
+      "actual_feedback": null,
+      "contact_opt_in": null
+    },
+    {
+      "unit_id": "D03",
+      "unit_title": "Revision Window",
+      "feedback_field": "next-artifact",
+      "status": "uncollected",
+      "actual_feedback": null,
+      "contact_opt_in": null
+    }
+  ]
+}

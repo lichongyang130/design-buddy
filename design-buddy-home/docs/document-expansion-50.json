@@ -19,7 +19,7 @@
     "form-study"
   ],
   "additionalCases": 50,
-  "publishedFromThisExpansion": 40,
+  "publishedFromThisExpansion": 45,
   "counts": {
     "课程": 6,
     "提案": 6,
@@ -1758,7 +1758,7 @@
         "后续承接",
         "活动回看"
       ],
-      "status": "planned",
+      "status": "published",
       "published": false,
       "minPages": 10,
       "minDistinctImages": 5,
@@ -1779,7 +1779,9 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "illustrations": 5
     },
     {
       "id": "exhibition-guide",
@@ -1798,7 +1800,7 @@
         "参观反馈",
         "策展回看"
       ],
-      "status": "planned",
+      "status": "published",
       "published": false,
       "minPages": 10,
       "minDistinctImages": 5,
@@ -1819,7 +1821,9 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "illustrations": 5
     },
     {
       "id": "workshop-runbook",
@@ -1838,7 +1842,7 @@
         "异常讨论",
         "复盘清单"
       ],
-      "status": "planned",
+      "status": "published",
       "published": false,
       "minPages": 10,
       "minDistinctImages": 5,
@@ -1859,7 +1863,9 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "illustrations": 5
     },
     {
       "id": "reading-salon",
@@ -1878,7 +1884,7 @@
         "延伸阅读",
         "沙龙回看"
       ],
-      "status": "planned",
+      "status": "published",
       "published": false,
       "minPages": 10,
       "minDistinctImages": 5,
@@ -1899,7 +1905,9 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "illustrations": 5
     },
     {
       "id": "demo-day",
@@ -1918,7 +1926,7 @@
         "后续联系",
         "展示复盘"
       ],
-      "status": "planned",
+      "status": "published",
       "published": false,
       "minPages": 10,
       "minDistinctImages": 5,
@@ -1939,7 +1947,9 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "illustrations": 5
     },
     {
       "id": "discovery-map",
