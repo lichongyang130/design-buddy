@@ -1,1 +1,17 @@
-{"schemaVersion":2,"targetCases":56,"pageRange":[28,35],"mainArtRange":[15,20],"style":"Fine pen and soft watercolor, warm ivory paper and pale sage environments as the latest reference","cases":["pantry-notes"]}
+{
+  "schemaVersion": 2,
+  "targetCases": 56,
+  "pageRange": [
+    28,
+    35
+  ],
+  "mainArtRange": [
+    15,
+    20
+  ],
+  "style": "Fine pen and soft watercolor, warm ivory paper and pale sage environments as the latest reference",
+  "cases": [
+    "pantry-notes",
+    "open-shelf"
+  ]
+}

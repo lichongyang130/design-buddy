@@ -14,7 +14,9 @@
     "build:pantry-notes": "node scripts/build-pantry-notes.mjs",
     "test:pantry-notes": "node tests/verify-pantry-notes.mjs",
     "test:template-office": "node scripts/verify-template-office.mjs",
-    "test:pantry-cache": "node tests/verify-pantry-cache.mjs"
+    "test:pantry-cache": "node tests/verify-pantry-cache.mjs",
+    "build:open-shelf": "node scripts/build-open-shelf.mjs",
+    "test:open-shelf": "node tests/verify-open-shelf.mjs"
   },
   "devDependencies": {
     "@sparticuz/chromium": "^153.0.0",
