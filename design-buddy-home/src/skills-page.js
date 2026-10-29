@@ -93,6 +93,7 @@ const headHtml = (s, { installed, attr }) => `
     <span class="sk-card-text">
       <span class="sk-card-title">${s.name}${s.risk === 'review' ? '<b class="ex-badge">高风险</b>' : ''}</span>
       <span class="sk-card-desc">${s.paid ? '<b class="sk-paid">付费</b>' : ''}${s.desc}</span>
+      ${s.expertName ? `<span class="sk-expert">所属专家：${s.expertName}</span>` : ''}
     </span>
     ${plusButton(s.name, attr, s.id, installed)}
   </div>`

@@ -41,7 +41,7 @@ check('image workbench asks for an image',
   $('#prompt-input').placeholder === '描述您想要创建的图像')
 check('image workbench keeps the back pill', $('#back-btn').hidden === false)
 check('quick type row steps aside', $('#quick-types').hidden === true)
-check('recommended templates step aside', $('#rec-templates').hidden === true)
+check('recommended templates removed from home', !$('#rec-templates'))
 
 /* ---------- 2. 工具条顺序（截图） ---------- */
 
@@ -81,7 +81,7 @@ check('reference pill label stays on one line in image mode',
   cssCompact.includes('.is-image-mode.content.img-mode-btn{width:auto;height:34px')
   && cssCompact.includes('white-space:nowrap'))
 check('quick type / example / also cards also cannot be squeezed',
-  cssCompact.includes('.content.quick-type,.content.pill-ghost')
+  cssCompact.includes('.content.quick-type,.content.pill-browse')
   && cssCompact.includes('flex:none;white-space:nowrap'))
 check('image toolbar spacing is tighter to keep one row',
   cssCompact.includes('.is-image-mode.content.prompt-toolbar{gap:8px}')
@@ -199,7 +199,7 @@ check('image extras step out of the toolbar',
 check('reference button returns to the right toolbar',
   $('.img-menu-wrap').parentElement.className.includes('toolbar-right'))
 check('headline and placeholder go back to the default home',
-  $('.hero-title').textContent.startsWith('很高兴见到您')
+  $('.hero-title').textContent.startsWith('DesignBuddy')
   && $('#prompt-input').placeholder.includes('LinkedIn 轮播图'))
 check('您还可以制作 disappears outside image mode', $('#also-make').hidden === true)
 check('default examples come back', $('#example-cat-label').textContent === '设计与产品')

@@ -35,3 +35,9 @@ The service worker uses exact-request network-first caching, keeps unrelated cac
 ## Next
 
 Generate six new independent reference-style scenes (11–16): equal-group portion planning, comparing discrepant notes, provenance/source review, method handoff, careful revision, and a closing notebook still life. Update image count, actual alt descriptions, page diagrams, all preview labels, manifest, exports, library and tests together. Rebuild and revalidate before publishing. Do not start additional incomplete case shells to inflate the catalog.
+
+## This draft's verification
+
+Eight browser acceptance groups pass; four old-worker/offline checks pass. Real LibreOffice renders the final native-text PPTX to 32 pages. Production build passes integrity checks, and all 22 files in the new `public/atelier` tree match their production copies byte-for-byte. These checks do not waive the missing-six-art publication gate. Optional Office/browser evidence is in ignored `.cache/pantry-notes/` and can be regenerated.
+
+The existing history already on this same remote branch is merged without replacing the rebuilt template page with its legacy catalog. Those historical sources are retained; they are not counted as new completed cases.

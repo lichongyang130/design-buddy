@@ -37,15 +37,15 @@ await tick()
 
 check('picking 美化 persists the type', readState(storage).ui.type === '美化')
 check('beautify workbench keeps the greeting headline',
-  $('.hero-title').textContent.startsWith('很高兴见到您'))
+  $('.hero-title').textContent.startsWith('DesignBuddy'))
 check('beautify workbench swaps the hero artwork',
   $('.hero-photo').getAttribute('src') === '/covers/hero-beautify.jpg'
   && fs.existsSync(path.join(DIST, 'covers/hero-beautify.jpg')))
 check('beautify placeholder asks what to improve',
   $('#prompt-input').placeholder === '描述您希望更改或改进的内容')
 check('beautify workbench keeps the back pill', $('#back-btn').hidden === false)
-check('quick type row and recommended templates step aside',
-  $('#quick-types').hidden === true && $('#rec-templates').hidden === true)
+check('quick type row steps aside',
+  $('#quick-types').hidden === true && !$('#rec-templates'))
 
 /* ---------- 2. 虚线投放区 ---------- */
 

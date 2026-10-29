@@ -7,7 +7,7 @@
 import { loadPage, click, input, tick, readState } from './helpers.mjs'
 import { resolveLinkTarget } from '../src/settings-effects.js'
 import { SKILL_REGISTRY } from '../src/skill-registry.js'
-import { AVAILABLE_MODELS } from '../src/model-config.js'
+import { SELECTABLE_MODELS as AVAILABLE_MODELS } from '../src/model-config.js'
 
 let passed = 0
 const fails = []
@@ -126,8 +126,10 @@ const pickOption = async (w, wrap, label) => {
   vp = await openSection('models')
   if (AVAILABLE_MODELS.length) {
     const modelIds = AVAILABLE_MODELS.map((m) => m.id)
-    check('i18n: model rows match hardcoded available list',
+    check('i18n: model rows match verified-or-preset choices',
       [...vp.querySelectorAll('[data-model]')].map((b) => b.dataset.model).join('|') === modelIds.join('|'))
+    if (AVAILABLE_MODELS.some(m => !m.verified)) check('model presets explicitly labeled unverified', vp.textContent.includes('not verified'))
+    check('model setup explains preference is not an AI connection', vp.querySelector('[data-model-setup]')?.textContent.includes('not an AI connection'))
     const firstId = modelIds[0]
     click(w, [...vp.querySelectorAll('[data-model]')].find((b) => b.dataset.model === firstId))
     await tick()

@@ -1,0 +1,19 @@
+import batchScenes from './content-art-batch.json' with { type: 'json' }
+import { sourceSnapshot } from './content-art-source.js'
+// Dedicated AI scene illustrations for the six-case pilot. Match the actual
+// source page so edited/reordered content cannot silently inherit stale artwork.
+const PILOT_SCENES = [
+  { templateId: 'guide-doc-0', title: 'What is Software Engineering?', body: 'DocuGuide 1 provides comprehensive guidance on Software Engineering. This guide covers everything from basic concepts to advanced implementation.', file: 'software-engineering', brief: 'Software engineering as an architectural workshop: code modules, assembly, testing and delivery. Isometric editorial ink, cream, green and copper. No invented data or readable labels.' },
+  { templateId: 'qbr-report', title: 'Above Plan on Every Metric', body: 'We exceeded our Q4 revenue target by 12%, grew net new logos by 34%, and reduced churn to a record-low 1.8%.', file: 'quarterly-review', brief: 'An expanding business atrium with a stable foundation, welcoming new entrances and a courtyard symbolizing retention. Axonometric gouache. A conceptual spatial metaphor, not a measured growth chart.' },
+  { templateId: 'pitch-deck', title: 'Why Now', body: 'Three converging forces — model capability, cost reduction, and regulatory pressure — are creating a once-in-a-decade window for AI infrastructure.', file: 'ai-opportunity', brief: 'Three distinct sculptural channels for capability, compute efficiency and protective regulatory structure converge at a gateway. Ink-blue glass and amber. Conceptual, not a factual architecture.' },
+  { templateId: 'launch-keynote', title: 'Enterprise AI is Stuck', body: '73% of AI projects never reach production. The bottleneck is not models — it is infrastructure.', file: 'ai-bottleneck', brief: 'Computational modules waiting at an unfinished narrow deployment connection to a server room. Cobalt and orange screenprint. Infrastructure bottleneck metaphor, without fabricated percentages.' },
+  { templateId: 'training-0', title: 'Mastering Agricultural Technology', body: 'This comprehensive training program is designed to take you from foundational knowledge to advanced mastery of Agricultural Technology, with hands-on exercises and real-world projects.', file: 'agricultural-learning', brief: 'Mentor and learner inspect real soil sensors and irrigation equipment in a greenhouse and experimental crop plot. Botanical gouache field-notebook style. No generic educational icons.' },
+  { templateId: 'market-strategy', title: 'Strong Foundation, Global Ambitions', body: 'We have proven our model in three mature markets. Now we replicate that success in five high-growth regions.', file: 'market-expansion', brief: 'A central established commercial hub connected to emerging neighborhoods in an abstract coastal landscape. Architectural miniature in stone, teal and copper. Not a factual geographic map.' },
+].map(scene => ({ ...scene, src: `/art/content/${scene.file}.webp`, medium: 'ai-illustration', status: 'pilot', source: 'AI-generated conceptual illustration, not documentary photography' }))
+
+export const CONTENT_SCENES = [...PILOT_SCENES, ...batchScenes]
+
+export function contentSceneFor(tpl, index) {
+  const page = tpl.pages?.[index]
+  return CONTENT_SCENES.find(scene => scene.templateId === tpl.id && (scene.sourceSnapshot ? scene.sourceSnapshot === sourceSnapshot(page) : scene.title === page?.title && scene.body === page?.body)) || null
+}

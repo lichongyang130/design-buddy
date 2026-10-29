@@ -1,3 +1,8 @@
 node_modules/
 dist/
 *.local
+
+# Never commit provider credentials
+.env
+.env.*
+!.env.example

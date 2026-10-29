@@ -53,9 +53,11 @@ const STATUS_CLASS = { 排队中: 'is-queued', 进行中: 'is-running', 已完�
  * @param {()=>void} opts.pickFiles 调起系统文件选择器
  * @param {()=>void} opts.openRefPicker 打开完整媒体库弹窗
  * @param {(text:string, files?:Array)=>void} opts.fillPrompt 把计划/任务写回输入框
+ * @param {(skill:object)=>void} opts.onPickSkill 点击技能行调用技能
+ * @param {()=>{name:string}|null} opts.currentSkill 当前已调用的技能
  * @returns {{ show:(name:string)=>void, hide:()=>void, current:()=>string, refresh:()=>void }}
  */
-export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRefPicker, fillPrompt, onAttachmentsChange, closeMenu }) {
+export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRefPicker, fillPrompt, onAttachmentsChange, closeMenu, onPickSkill, currentSkill }) {
   const popover = $('#add-popover')
   const wrap = $('#add-sub')
   if (!popover || !wrap) return { show() {}, hide() {}, current: () => '', refresh() {} }
@@ -73,14 +75,16 @@ export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRe
     const skills = store.state.skills ?? []
     const on = skills.filter((s) => s.enabled).length
     if (count) count.textContent = `${on} 个已启用 / 共 ${skills.length} 个`
+    const active = currentSkill?.() ?? null
     list.innerHTML = skills.length ? skills.map((s) => `
-      <button class="add-item${s.enabled ? ' is-on' : ''}" type="button" role="menuitemcheckbox"
-        aria-checked="${!!s.enabled}" data-toggle-skill="${esc(s.id)}" title="${s.enabled ? '点击停用' : '点击启用'}">
+      <button class="add-item${s.enabled ? ' is-on' : ''}${s.name === active?.name ? ' is-called' : ''}" type="button" role="menuitemcheckbox"
+        aria-checked="${!!s.enabled}" data-toggle-skill="${esc(s.id)}" title="${s.enabled ? '点击调用' : '未启用'}">
         <span class="add-item-ic">${esc((s.name || '技')[0])}</span>
         <span class="add-item-main">
           <span class="add-item-name">${esc(s.name)}</span>
-          <span class="add-item-meta">v${esc(s.version || '1.0.0')} · ${s.enabled ? '已启用，创作时自动调用' : '已停用'}</span>
+          <span class="add-item-meta">v${esc(s.version || '1.0.0')} · ${s.name === active?.name ? '本次已调用' : (s.enabled ? '已启用' : '已停用')}</span>
         </span>
+        ${s.name === active?.name ? '<span class="add-item-pill is-on">已调用</span>' : ''}
         <span class="mini-switch ${s.enabled ? 'is-on' : ''}" aria-hidden="true"></span>
       </button>`).join('')
       : '<p class="add-sub-empty">还没有安装技能，去技能页挑一个。</p>'
@@ -302,14 +306,21 @@ export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRe
     if (skill) {
       const sk = store.state.skills.find((s) => s.id === skill.dataset.toggleSkill)
       if (!sk) return
-      if (!sk.enabled && !store.state.settings.trustedSkills) {
-        toast('请先在「设置 → 通用」中开启信任技能，再启用技能')
+      // 开关：切换启用 / 停用
+      if (el.closest('.mini-switch')) {
+        if (!sk.enabled && !store.state.settings.trustedSkills) {
+          toast('请先在「设置 → 通用」中开启信任技能，再启用技能')
+          return
+        }
+        sk.enabled = !sk.enabled
+        store.save()
+        renderSkills()
+        toast(`${sk.name} 已${sk.enabled ? '启用' : '停用'}`)
         return
       }
-      sk.enabled = !sk.enabled
-      store.save()
+      // 行点击：调用技能（与输入框里输入 / 的效果一致）
+      onPickSkill?.(sk)
       renderSkills()
-      toast(`${sk.name} 已${sk.enabled ? '启用' : '停用'}`)
       return
     }
 

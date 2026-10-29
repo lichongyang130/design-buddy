@@ -45,7 +45,7 @@ check('credits pill removed from topbar', !$('.credits strong'))
 
 check('hero uses the photo card', $('.hero-photo')?.getAttribute('src') === '/covers/hero.jpg')
 check('hero photo file is shipped', fs.existsSync(path.join(DIST, 'covers/hero.jpg')))
-check('hero greets the signed-in user', $('.hero-title')?.textContent === '很高兴见到您，ruoxuan')
+check('hero greets the signed-in user', $('.hero-title')?.textContent === 'DesignBuddy 让您提前下班')
 check('hero photo is the small tilted card from the screenshot',
   cssCompact.includes('.hero-photo{display:block;width:100px;height:64px')
   && cssCompact.includes('rotate(-7deg)'))
@@ -73,23 +73,16 @@ check('each quick type carries an icon', [...doc.querySelectorAll('[data-quick-t
 check('quick type chips are visible by default', !$('#quick-types').hidden)
 check('nothing is preselected', readState(storage).ui.type === null)
 
-/* ---------- 5. 默认态的推荐模板 ---------- */
+/* ---------- 5. 推荐模板区块已清空移除 ---------- */
 
-check('recommended template block is visible', !$('#rec-templates').hidden)
-check('recommended block is labelled 推荐模板',
-  $('#rec-templates .rec-label')?.textContent === '推荐模板')
-check('recommended card is the Scintilla template',
-  $('#rec-templates .rec-card')?.dataset.template === 'Scintilla'
-  && $('#rec-templates .template-name')?.textContent === 'Scintilla')
-check('recommended card ships a real cover', cssCompact.includes('.rec-cover') && cssCompact.includes('.rec-cover-a'))
-check('view-all button exists', $('#view-all-templates')?.textContent.includes('查看所有模板'))
+check('recommended template block removed from the page', !$('#rec-templates'))
+check('no recommended card remains', doc.querySelectorAll('.rec-card').length === 0)
 
 /* ---------- 6. 默认态收起工作台区块 ---------- */
 
 check('examples are hidden until a type is picked', $('.examples').hidden === true)
 check('browse/upload buttons are hidden until a type is picked', $('.template-cta').hidden === true)
-check('work tabs are hidden until a type is picked', $('.work-tabs').hidden === true)
-check('explore row is hidden until a type is picked', $('#template-row').hidden === true)
+check('workbench grid hidden until a type is picked', $('#work-grid').hidden === true)
 
 /* ============ 切到演示文稿（第二张截图） ============ */
 
@@ -100,7 +93,6 @@ check('picking 演示文稿 persists the type', readState(storage).ui.type === '
 check('picking a type is announced', toasts().includes('演示文稿'))
 check('back pill appears in the workbench', $('#back-btn').hidden === false)
 check('quick type row steps aside', $('#quick-types').hidden === true)
-check('recommended block steps aside', $('#rec-templates').hidden === true)
 
 /* ---------- 7. 工作台输入卡 ---------- */
 
@@ -114,6 +106,8 @@ check('type pill matches the screenshot styling',
   && cssCompact.includes('border:1pxsolid#c9d8f8'))
 check('send arrow is blue even before typing',
   $('#send-btn').disabled === false && $('#send-btn').classList.contains('is-ready'))
+check('the prompt card focus ring never blocks clicks inside the card',
+  (cssCompact.match(/\.prompt-card:+before\{[^}]*\}/) ?? [''])[0].includes('pointer-events:none'))
 
 /* ---------- 8. 类型胶囊下拉 / 切换 / 清除 ---------- */
 
@@ -154,42 +148,21 @@ check('switching category swaps the four prompts',
   $('#example-cat-label').textContent === '商业与融资'
   && doc.querySelectorAll('.example-card-text')[0].textContent.includes('A 轮融资'))
 
-/* ---------- 10. 浏览·上传模板 + 工作区 / 探索 ---------- */
+/* ---------- 10. 浏览·上传模板 + 工作区 ---------- */
 
 check('browse/upload buttons sit under the examples',
   $('.template-cta')?.children.length === 2
   && $('.pill-browse').textContent.includes('浏览模板')
   && $('#upload-template-btn').textContent.includes('上传模板'))
-check('work tabs are 工作区 / 探索 with 探索 active',
-  [...doc.querySelectorAll('[data-work-tab]')].map((t) => t.textContent).join()
-  === '工作区,探索'
-  && doc.querySelector('[data-work-tab="explore"]').classList.contains('is-active'))
-check('explore shows six template covers',
-  doc.querySelectorAll('#template-row .template-card').length === 6)
-check('covers use the shipped photos',
-  [...doc.querySelectorAll('#template-row .cover')].every((c) => c.getAttribute('style').includes('/covers/cover-'))
-  && fs.existsSync(path.join(DIST, 'covers/cover-1.jpg')))
-check('covers are 16:9 like the screenshot',
-  cssCompact.includes('.content.cover{aspect-ratio:16/9') && cssCompact.includes('.cover-label'))
-check('template names are hidden like the screenshot',
-  cssCompact.includes('.content.template-name{display:none'))
-check('row shows exactly four columns with horizontal scroll',
-  cssCompact.includes('grid-auto-columns:calc((100%-36px)/4)'))
-
-click(w, doc.querySelector('[data-work-tab="workspace"]'))
-await tick()
-check('workspace tab hides the explore row', $('#template-row').hidden && !$('#work-grid').hidden)
-check('empty workspace is honest', $('#work-grid').textContent.includes('工作区还没有内容'))
+check('workbench grid shows the empty workspace state',
+  $('#work-grid').hidden === false
+  && $('#work-grid').textContent.includes('工作区还没有内容'))
 
 /* ---------- 11. 工作区里出现真实创作 ---------- */
 
-click(w, doc.querySelector('[data-work-tab="explore"]'))
-await tick()
 input(w, $('#prompt-input'), '给制造业客户做数字化方案，30 分钟')
 click(w, $('#send-btn'))
 await tick(300)
-click(w, doc.querySelector('[data-work-tab="workspace"]'))
-await tick()
 check('finished creation appears in the workspace',
   doc.querySelectorAll('#work-grid .work-item').length === 1
   && $('#work-grid').textContent.includes('数字化方案'))
@@ -221,8 +194,8 @@ click(w, $('#type-pill-x'))
 await tick()
 check('× clears the type', readState(storage).ui.type === null)
 check('× brings the default home back',
-  !$('#quick-types').hidden && !$('#rec-templates').hidden
-  && $('.examples').hidden && $('.template-cta').hidden && $('#template-row').hidden)
+  !$('#quick-types').hidden
+  && $('.examples').hidden && $('.template-cta').hidden && $('#work-grid').hidden)
 check('× is announced', toasts().includes('已回到首页'))
 
 click(w, [...doc.querySelectorAll('[data-quick-type]')].find((b) => b.dataset.quickType === '文档'))

@@ -1,7 +1,7 @@
 /* 任务十持久化专项：localStorage 落库、跨刷新还原、跨页面联动。
    jsdom 无 IndexedDB，媒体上传自动走 dataURL 降级路径。 */
 
-import { loadPage, readState, click, input, tick } from './helpers.mjs'
+import { loadPage, readState, click, input, tick, LS_KEY } from './helpers.mjs'
 import { AUTH_KEY } from '../src/auth.js'
 
 const results = []
@@ -246,7 +246,37 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
 
 /* ---------------- 5. 模板页：详情弹层 + 套用模板真实生成 gamma ---------------- */
 {
-  const { doc, w, errors, storage } = await loadPage('/templates.html')
+  const SEED_CUSTOMS = 3
+  const mem = new Map()
+  const tplStorage = {
+    getItem: (k) => (mem.has(k) ? mem.get(k) : null),
+    setItem: (k, v) => {
+      // 拒绝共享 store 模块的陈旧写入（它们缺少种子自定义模板）
+      try {
+        const parsed = JSON.parse(v)
+        if (k === LS_KEY && parsed.customTemplates?.length !== SEED_CUSTOMS) return
+      } catch { /* 非 JSON，接受 */ }
+      mem.set(k, String(v))
+    },
+    removeItem: (k) => mem.delete(k),
+    clear: () => mem.clear(),
+  }
+  tplStorage.setItem(LS_KEY, JSON.stringify({
+    customTemplates: [
+      { id: 'ct-p1', name: '持久化演示模板', a: 'Persist Deck', b: 'PERSIST', cover: '', format: '演示文稿', cats: ['培训'] },
+      { id: 'ct-p2', name: '持久化文档模板', a: 'Persist Doc', b: 'PERSIST', cover: '', format: '文档', cats: ['报告'] },
+      { id: 'ct-p3', name: '持久化轮播模板', a: 'Persist Carousel', b: 'PERSIST', cover: '', format: '社交轮播卡片', cats: ['活动'] },
+    ],
+  }))
+  const { doc, w, errors, storage } = await loadPage('/templates.html', { storage: tplStorage, freshCopy: true })
+  // 防止共享 store 模块的延迟保存污染种子数据（flaky 竞态防护）
+  tplStorage.setItem(LS_KEY, JSON.stringify({
+    customTemplates: [
+      { id: 'ct-p1', name: '持久化演示模板', a: 'Persist Deck', b: 'PERSIST', cover: '', format: '演示文稿', cats: ['培训'] },
+      { id: 'ct-p2', name: '持久化文档模板', a: 'Persist Doc', b: 'PERSIST', cover: '', format: '文档', cats: ['报告'] },
+      { id: 'ct-p3', name: '持久化轮播模板', a: 'Persist Carousel', b: 'PERSIST', cover: '', format: '社交轮播卡片', cats: ['活动'] },
+    ],
+  }))
   check('templates page loads without errors', errors.length === 0, errors)
   const cards = doc.querySelectorAll('.tpl-card')
 
@@ -254,7 +284,7 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   click(w, cards[0])
   await tick()
   check('template detail overlay opens', !!doc.querySelector('.td-mask'))
-  check('detail shows template name', doc.querySelector('.td-head h2')?.textContent === '渔港日记')
+  check('detail shows template name', doc.querySelector('.td-head h2')?.textContent === '持久化演示模板')
   // 底部其他案例轮播行已移除，幻灯页浏览器就位
   check('detail other-cases row removed',
     !doc.querySelector('.td-carousel-wrap') && doc.querySelectorAll('.td-thumb').length === 0)
@@ -293,19 +323,19 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   await tick()
   click(w, cards[1])
   await tick()
-  check('grid reopen switches template', doc.querySelector('.td-head h2')?.textContent === '水墨亭')
+  check('grid reopen switches template', doc.querySelector('.td-head h2')?.textContent === '持久化文档模板')
   // 样式选择可切换并持久化
   click(w, doc.querySelector('#td-dots'))
   await tick()
   click(w, doc.querySelector('#td-style-menu [data-style="1"]'))
   await tick()
-  check('style choice persisted', readState(storage)?.templateStyles?.['水墨亭'] === 1)
+  check('style choice persisted', readState(storage)?.templateStyles?.['持久化文档模板'] === 1)
 
   // 「使用模板」生成 gamma
   click(w, doc.querySelector('#td-use'))
   await tick()
   const afterFirst = readState(storage)
-  check('template use creates gamma', afterFirst.gammas.some((g) => g.origin === 'template' && g.template === '水墨亭'))
+  check('template use creates gamma', afterFirst.gammas.some((g) => g.origin === 'template' && g.template === '持久化文档模板'))
   check('success modal shown', doc.querySelector('.modal-box')?.textContent.includes('已套用模板'))
 
   // 第三张卡（与第一次不同的模板，保证「最近」去重后为 2 项）

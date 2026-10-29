@@ -19,9 +19,9 @@ function check(name, cond, extra) {
 
 const expertsOnly = () => EXPERT_CATALOG.filter((e) => e.kind === 'expert')
 
-/* 目录契约：每个专家都要对应产品真实能解决的问题，不做泛行业占位 */
-check('catalog stays focused (16 experts + 4 teams)',
-  expertsOnly().length === 16 && EXPERT_CATALOG.filter((e) => e.kind === 'team').length === 4)
+/* 目录契约：只保留最有用的办公专家（Gamma 团队架构 + 网页原型） */
+check('catalog stays focused (12 experts, no teams)',
+  expertsOnly().length === 12 && EXPERT_CATALOG.filter((e) => e.kind === 'team').length === 0)
 check('every expert maps to a product capability category',
   EXPERT_CATALOG.every((e) => EXPERT_FILTERS.includes(e.category)))
 check('every expert spells out the problems it solves',
@@ -33,10 +33,10 @@ check('every expert carries persona and version for the drawer',
 check('no generic industry filler left in the catalog', !EXPERT_CATALOG.some((e) =>
   ['金融投资', '健康医疗', '游戏空间', '教育学习', '法务安全', '销售商务', '运营人力'].includes(e.category)))
 check('categories and chips describe product problems',
-  EXPERT_CATEGORIES.map((c) => c.name).join() === '提案与演示,品牌与视觉,文档与报告,社媒与增长,网站与原型,导入与交付'
-  && EXPERT_FILTERS.join() === '全部,提案演示,品牌视觉,文档报告,社媒增长,网站原型,导入与交付')
-check('each scenario card lists three real experts from its own category',
-  EXPERT_CATEGORIES.every((c) => c.subs.length === 3
+  EXPERT_CATEGORIES.map((c) => c.name).join() === '提案与演示,品牌与视觉,文档与报告,网站与原型,导入与交付,办公与协同,研究与情报,总调度'
+  && EXPERT_FILTERS.join() === '全部,提案演示,品牌视觉,文档报告,网站原型,导入与交付,办公协同,研究分析,总调度')
+check('each scenario card lists real experts from its own category',
+  EXPERT_CATEGORIES.every((c) => c.subs.length >= 1
     && c.subs.every((name) => EXPERT_CATALOG.some((e) => e.name === name && e.category === c.filter))))
 
 /* 产物 CSS 契约：截图布局的关键数值，防止后续改动悄悄退回旧观感 */
@@ -75,16 +75,23 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   /* 头像：西方动画电影式 3D 肖像（本地 webp），缺图的专家回退首字 */
   const cards = [...doc.querySelectorAll('.ex-card')]
   const portraits = cards.filter((c) => c.querySelector('.expert-avatar.has-photo img'))
+  const initials = cards.filter((c) => !c.querySelector('.expert-avatar.has-photo img'))
   check('every expert card paints a 3D portrait avatar', portraits.length === cards.length, `${portraits.length}/${cards.length}`)
   check('portrait avatars point at local webp files',
     portraits.every((c) => /^\/avatars\/ec-[a-z-]+\.webp$/.test(c.querySelector('.expert-avatar img').getAttribute('src'))))
   check('portraits lazy-load and stay decorative',
     portraits.every((c) => c.querySelector('.expert-avatar img').getAttribute('loading') === 'lazy'
       && c.querySelector('.expert-avatar img').getAttribute('alt') === ''))
-  check('no card is left on the initials fallback',
-    cards.every((c) => c.querySelector('.expert-avatar.has-photo img')))
+  check('cards without a portrait fall back to single-char initials',
+    initials.every((c) => c.querySelector('.expert-avatar').textContent.trim().length === 1))
   check('every catalog expert has an avatar file registered',
     EXPERT_CATALOG.every((e) => /^\/avatars\/ec-[a-z-]+\.webp$/.test(EXPERT_AVATARS[e.id] ?? '')))
+  check('avatar files exist on disk and are reasonable size',
+    EXPERT_CATALOG.every((e) => {
+      const p = path.join(DIST, EXPERT_AVATARS[e.id])
+      const st = fs.statSync(p)
+      return st.isFile() && st.size > 2000 && st.size < 40000
+    }))
   check('avatar contract in built CSS',
     cssCompact.includes('.expert-avatar.has-photo{overflow:hidden')
     && cssCompact.includes('.expert-avatar.has-photoimg{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit}'))
@@ -104,8 +111,8 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   check('6 scenario cards rendered', doc.querySelectorAll('.ex-cat').length === EXPERT_CATEGORIES.length)
   check('each scenario card carries its banner art',
     [...doc.querySelectorAll('.ex-cat-banner')].every((b) => (b.getAttribute('style') ?? '').includes('/art/illustration/')))
-  check('scenario cards show 3 sub entries each',
-    [...doc.querySelectorAll('.ex-cat')].every((c) => c.querySelectorAll('.ex-cat-sub').length === 3))
+  check('scenario cards show their expert subs',
+    [...doc.querySelectorAll('.ex-cat')].every((c) => c.querySelectorAll('.ex-cat-sub').length >= 1))
   check('scenario card titles match catalog',
     [...doc.querySelectorAll('.ex-cat-name')].map((n) => n.textContent).join() === EXPERT_CATEGORIES.map((c) => c.name).join())
 
@@ -161,11 +168,11 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   check('all chip restores full grid', doc.querySelectorAll('.ex-card').length === expertsOnly().length)
 
   /* ---------- 5. 搜索：实时过滤 + 诚实空态 ---------- */
-  input(w, doc.querySelector('#ex-search-input'), '轮播')
+  input(w, doc.querySelector('#ex-search-input'), '审核')
   await tick()
   check('search filters by name/desc/tags',
     doc.querySelectorAll('.ex-card').length >= 1
-    && [...doc.querySelectorAll('.ex-card-name')].some((n) => n.textContent.includes('社媒轮播编导')))
+    && [...doc.querySelectorAll('.ex-card-name')].some((n) => n.textContent.includes('质量审核专家')))
   input(w, doc.querySelector('#ex-search-input'), 'no-such-expert-xyz')
   await tick()
   check('no-match shows honest empty state',
@@ -208,9 +215,9 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
     await tick()
   }
   const drawer = () => doc.querySelector('.ex-drawer-mask')
-  const py = EXPERT_CATALOG.find((e) => e.id === 'ec-deck-writer')
+  const py = EXPERT_CATALOG.find((e) => e.id === 'ec-ppt')
 
-  await openCard('ec-deck-writer')
+  await openCard('ec-ppt')
   check('clicking an expert card opens the detail drawer',
     !!drawer()?.querySelector('.ex-drawer[role="dialog"]'))
   check('drawer is portalled to body, above the page', drawer()?.parentElement === doc.body)
@@ -240,13 +247,17 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
     drawer().querySelectorAll('.ex-prompt').length === 3
     && [...drawer().querySelectorAll('.ex-prompt-text')].every((t) => t.textContent.startsWith('「') && t.textContent.endsWith('」'))
     && [...drawer().querySelectorAll('.ex-prompt-text')].map((t) => t.textContent.slice(1, -1)).join('\u0000') === py.prompts.join('\u0000'))
-  check('drawer sections cover run, solves, help and more', (() => {
+  check('drawer lists the expert skill set',
+    drawer().querySelectorAll('.ex-skill-chip').length === (py.skills ?? []).length
+    && [...drawer().querySelectorAll('.ex-skill-chip')].map((c) => c.textContent).join() === py.skills.join())
+  check('drawer sections cover run, solves, help, skills and more', (() => {
     const heads = [...drawer().querySelectorAll('.ex-drawer-sec-title')].map((t) => t.textContent.replace(/\s+/g, ''))
-    return heads.length === 4
+    return heads.length === 5
       && heads[0].startsWith('直接开工')
       && heads[1] === '它能解决'
       && heads[2] === '专家帮你做'
-      && heads[3] === '更多'
+      && heads[3] === '技能清单'
+      && heads[4] === '更多'
   })())
   check('drawer ends with a copyable expert id',
     drawer().querySelector('[data-copy-id]')?.textContent.trim() === `ID: ${py.id}`)
@@ -260,12 +271,12 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   await tick()
   check('close button dismisses the drawer', !drawer())
 
-  await openCard('ec-deck-writer')
+  await openCard('ec-ppt')
   doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
   await tick()
   check('Escape dismisses the drawer', !drawer())
 
-  await openCard('ec-deck-writer')
+  await openCard('ec-ppt')
   click(w, drawer())
   await tick()
   check('clicking the scrim dismisses the drawer', !drawer())
@@ -298,19 +309,19 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   summonMask.remove()
   storage.removeItem('design-buddy-summon-v1')
 
-  await openCard('ec-editor-in-chief')
-  const boardPrompt = EXPERT_CATALOG.find((e) => e.id === 'ec-editor-in-chief').prompts[0]
+  await openCard('ec-content')
+  const boardPrompt = EXPERT_CATALOG.find((e) => e.id === 'ec-content').prompts[0]
   click(w, doc.querySelector('.ex-prompt'))
   await tick()
   const withPrompt = JSON.parse(storage.getItem('design-buddy-summon-v1') ?? 'null')
   check('a prompt row carries its text to the home page',
-    withPrompt?.name === '改稿与精简编辑' && withPrompt?.prompt === boardPrompt && !drawer())
+    withPrompt?.name === '内容优化专家' && withPrompt?.prompt === boardPrompt && !drawer())
   check('a prompt row also runs the summon loading screen',
     !!doc.querySelector('.ex-summon-mask'))
   doc.querySelector('.ex-summon-mask')?.remove()
   storage.removeItem('design-buddy-summon-v1')
 
-  await openCard('ec-editor-in-chief')
+  await openCard('ec-content')
   click(w, doc.querySelector('[data-copy-id]'))
   await tick()
   check('copying the id surfaces feedback',
@@ -318,8 +329,8 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   click(w, doc.querySelector('[data-drawer-close]'))
   await tick()
 
-  // 数据图表师不在默认种子里，固定状态只能来自这次点击
-  const unmutedId = 'ec-data-viz'
+  // 质量审核专家不在默认种子里，固定状态只能来自这次点击
+  const unmutedId = 'ec-qa'
   const unmutedName = EXPERT_CATALOG.find((e) => e.id === unmutedId).name
   click(w, doc.querySelector(`[data-pin="${unmutedId}"]`))
   await tick()
@@ -364,20 +375,20 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
 /* ---------- 11. 首页接收召唤：选好专家并带入提示词 ---------- */
 {
   const { storage } = await loadPage('/experts.html', { freshCopy: true })
-  storage.setItem('design-buddy-summon-v1', JSON.stringify({ name: '改稿与精简编辑', prompt: '把这段改写成像人写的' }))
+  storage.setItem('design-buddy-summon-v1', JSON.stringify({ name: '网页原型工程师', prompt: '做一个 B 端产品的落地页原型' }))
   const home = await loadPage('/index.html', { storage, freshCopy: true })
   check('home prefills the summoned prompt',
-    home.doc.querySelector('#prompt-input')?.value === '把这段改写成像人写的')
+    home.doc.querySelector('#prompt-input')?.value === '做一个 B 端产品的落地页原型')
   /* 输入框工具栏左侧：+ / 专家胶囊（第二项，参数按钮已移除） */
   const left = home.doc.querySelector('.toolbar-left')
   const chip = home.doc.querySelector('#prompt-expert')
   check('summoned expert sits in the prompt toolbar',
     !!chip && left.children[1] === chip)
   check('the expert chip names the summoned expert',
-    chip.querySelector('.prompt-expert-name')?.textContent === '改稿与精简编辑'
-    && chip.querySelector('img.prompt-expert-avatar')?.getAttribute('src') === '/avatars/ec-editor-in-chief.webp')
+    chip.querySelector('.prompt-expert-name')?.textContent === '网页原型工程师'
+    && chip.querySelector('img.prompt-expert-avatar')?.getAttribute('src') === '/avatars/ec-web-prototype.webp')
   check('the expert chip explains itself on hover',
-    chip.title.includes('改稿与精简编辑') && chip.getAttribute('aria-label')?.includes('改稿与精简编辑'))
+    chip.title.includes('网页原型工程师') && chip.getAttribute('aria-label')?.includes('网页原型工程师'))
   check('the expert chip animates in when summoned',
     chip.classList.contains('is-arriving'))
   click(home.w, chip)
@@ -387,20 +398,21 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   check('dismissing the chip is announced',
     home.doc.querySelector('#toast')?.textContent.includes('已取消召唤'))
 
-  // 有肖像的专家：第二项显示的是头像图片（参数按钮已移除）
-  storage.setItem('design-buddy-summon-v1', JSON.stringify({ name: '提案叙事专家', prompt: '' }))
+  // 没有肖像的专家：第二项显示首字 + 渐变底（而不是头像图片）
+  storage.setItem('design-buddy-summon-v1', JSON.stringify({ name: '特邀顾问', prompt: '' }))
   const home2 = await loadPage('/index.html', { storage, freshCopy: true })
   const chip2 = home2.doc.querySelector('#prompt-expert')
-  check('experts with a portrait render it in the toolbar chip',
-    chip2?.querySelector('img.prompt-expert-avatar')?.getAttribute('src') === '/avatars/ec-deck-writer.webp'
-    && chip2.querySelector('.prompt-expert-name')?.textContent === '提案叙事专家'
+  check('experts without a portrait render initials in the toolbar chip',
+    chip2?.querySelector('.prompt-expert-avatar.is-initial')?.textContent === '特'
+    && !chip2.querySelector('img.prompt-expert-avatar')
+    && chip2.querySelector('.prompt-expert-name')?.textContent === '特邀顾问'
     && home2.doc.querySelector('.toolbar-left').children[1] === chip2)
   check('toolbar chip contract in built CSS',
     cssCompact.includes('.prompt-expert{display:inline-flex;align-items:center;gap:7px;height:36px')
     && cssCompact.includes('.prompt-expert-avatar{width:26px;height:26px')
     && cssCompact.includes('animation:prompt-expert-arrive1.4sease'))
   check('home announces the summoned expert',
-    home.doc.querySelector('#toast')?.textContent.includes('改稿与精简编辑'))
+    home.doc.querySelector('#toast')?.textContent.includes('网页原型工程师'))
   check('summon payload is one-shot and cleared on arrival',
     storage.getItem('design-buddy-summon-v1') === null)
   check('home handles the summon without errors', home.errors.length === 0, home.errors)
@@ -410,7 +422,7 @@ const layoutOk = cssCompact.includes('.ex-cat-grid{display:grid;grid-template-co
   await tick()
   const homeExperts = [...home.doc.querySelectorAll('.expert-item')]
   check('home expert menu reuses the portrait avatars',
-    homeExperts.filter((i) => i.querySelector('.expert-avatar img')).length >= 3
+    homeExperts.filter((i) => i.querySelector('.expert-avatar img')).length >= 1
     && homeExperts.filter((i) => i.querySelector('.expert-avatar img'))
       .every((i) => /^\/avatars\/ec-[a-z-]+\.webp$/.test(i.querySelector('img').getAttribute('src'))))
   check('home expert menu keeps initials for unmatched names',

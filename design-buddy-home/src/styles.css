@@ -636,6 +636,7 @@ a:focus-visible {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.25s ease;
 }
 
@@ -908,7 +909,7 @@ a:focus-visible {
   color: var(--blue-deep);
 }
 
-/* ================= 推荐模板 ================= */
+/* ================= 区块标题（示例指令 / 美化方式 / 更多选择 / 您还可以制作） ================= */
 
 .section-label {
   margin: 36px 0 16px;
@@ -917,401 +918,7 @@ a:focus-visible {
   color: var(--navy-soft);
 }
 
-.template-row {
-  width: 100%;
-  max-width: 1180px;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 18px;
-}
-
-.template-card {
-  cursor: pointer;
-}
-
-.cover {
-  position: relative;
-  aspect-ratio: 1.72 / 1;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-}
-
-.template-card:hover .cover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(23, 43, 92, 0.16);
-}
-
-.template-name {
-  margin-top: 9px;
-  font-size: 13.5px;
-  font-weight: 500;
-  color: var(--text-2);
-  text-align: center;
-}
-
-.cover-kicker,
-.cover-title,
-.cover-tag,
-.cover-bar {
-  position: absolute;
-  z-index: 2;
-}
-
-/* 1. Graha — 深空星球 */
-.cover-graha {
-  background: linear-gradient(160deg, #131c3d 0%, #070a18 100%);
-}
-
-.cover-graha .cover-kicker {
-  top: 12px;
-  left: 12px;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.4px;
-}
-
-.cover-graha .cover-title {
-  top: 25px;
-  left: 12px;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  line-height: 1.25;
-}
-
-.cover-graha .cover-tag {
-  left: 12px;
-  bottom: 10px;
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 7.5px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-}
-
-.planet {
-  position: absolute;
-  right: -26px;
-  bottom: -28px;
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 32% 28%, #ff8aa0 0%, #dd4163 45%, #8a1638 100%);
-  box-shadow: 0 0 26px rgba(255, 90, 120, 0.45);
-}
-
-.planet::after {
-  content: '';
-  position: absolute;
-  inset: -14px;
-  border-radius: 50%;
-  border: 3px solid rgba(255, 150, 170, 0.55);
-  transform: rotate(-18deg) scaleY(0.32);
-}
-
-/* 2. Jelly Canvas — 浅色 3D 玩具 */
-.cover-jelly {
-  background: linear-gradient(160deg, #fbfbfd 0%, #eef1f7 100%);
-}
-
-.coin {
-  position: absolute;
-  top: 20px;
-  left: 22px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #ffe88f, #f4b813 75%);
-  box-shadow: 0 4px 10px rgba(214, 160, 20, 0.45);
-  z-index: 2;
-}
-
-.jelly-cross {
-  position: absolute;
-  right: 16px;
-  bottom: 20px;
-  width: 42px;
-  height: 42px;
-  border-radius: 11px;
-  background: linear-gradient(145deg, #7db0ff 0%, #2f66f6 60%, #1d49c8 100%);
-  transform: rotate(45deg);
-  box-shadow:
-    inset 0 4px 8px rgba(255, 255, 255, 0.35),
-    0 8px 16px rgba(47, 102, 246, 0.4);
-  z-index: 2;
-}
-
-.cover-jelly .cover-title {
-  left: 12px;
-  bottom: 10px;
-  color: #141a2b;
-  font-size: 14px;
-  font-weight: 900;
-  letter-spacing: 0.5px;
-}
-
-/* 3. Olympus — 古典神殿 */
-.cover-olympus {
-  background: linear-gradient(180deg, #eccf8f 0%, #c19a55 52%, #87642f 100%);
-}
-
-.temple {
-  position: absolute;
-  left: 50%;
-  top: 14px;
-  transform: translateX(-50%);
-  width: 64px;
-  height: 52px;
-  background:
-    linear-gradient(to top, #6e4f25 0 58%, transparent 58%),
-    linear-gradient(to right, transparent 0 12%, #7a5a2e 12% 20%, transparent 20% 36%, #7a5a2e 36% 44%, transparent 44% 60%, #7a5a2e 60% 68%, transparent 68% 84%, #7a5a2e 84% 92%, transparent 92%);
-  clip-path: polygon(50% 0, 100% 26%, 92% 26%, 92% 100%, 8% 100%, 8% 26%, 0 26%);
-  opacity: 0.92;
-}
-
-.cover-bar {
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  background: rgba(20, 32, 66, 0.92);
-  color: #fff;
-  font-size: 7px;
-  font-weight: 700;
-  letter-spacing: 0.6px;
-  text-align: center;
-  padding: 5px 6px;
-  border-radius: 4px;
-}
-
-/* 4. Terrace Set — 深蓝演出卡 */
-.cover-terrace {
-  background: linear-gradient(155deg, #17294f 0%, #0b1630 100%);
-}
-
-.stack {
-  position: absolute;
-  border: 1.5px solid rgba(255, 255, 255, 0.28);
-  border-radius: 7px;
-}
-
-.stack.s1 {
-  width: 58px;
-  height: 72px;
-  right: 14px;
-  top: 12px;
-}
-
-.stack.s2 {
-  width: 44px;
-  height: 58px;
-  right: 34px;
-  top: 26px;
-  border-color: rgba(255, 255, 255, 0.18);
-}
-
-.badge-421 {
-  position: absolute;
-  right: 12px;
-  top: 12px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #ffe17a, #f0b413);
-  color: #1e2b4d;
-  font-size: 9px;
-  font-weight: 900;
-  display: grid;
-  place-items: center;
-  z-index: 3;
-  box-shadow: 0 3px 8px rgba(240, 180, 19, 0.5);
-}
-
-.cover-terrace .cover-title {
-  left: 12px;
-  bottom: 10px;
-  color: #fff;
-  font-size: 11.5px;
-  line-height: 1.4;
-  max-width: 62%;
-}
-
-.serif {
-  font-family: Georgia, 'Times New Roman', 'Songti SC', serif;
-}
-
-/* 5. Reliquary — 暖色收藏馆 */
-.cover-reliquary {
-  background: linear-gradient(180deg, #f1e6d1 0%, #e0cba6 100%);
-}
-
-.candle {
-  position: absolute;
-  bottom: 26px;
-  width: 7px;
-  border-radius: 4px 4px 2px 2px;
-  background: linear-gradient(#9a784f, #6f5233);
-}
-
-.candle::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: -16px;
-  transform: translateX(-50%);
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 205, 120, 0.85), rgba(255, 205, 120, 0) 70%);
-}
-
-.candle.c1 {
-  left: 22px;
-  height: 30px;
-}
-
-.candle.c2 {
-  left: 50%;
-  transform: translateX(-50%);
-  height: 42px;
-}
-
-.candle.c3 {
-  right: 22px;
-  height: 24px;
-}
-
-.cover-reliquary .cover-title {
-  left: 0;
-  right: 0;
-  top: 14px;
-  text-align: center;
-  font-size: 12px;
-  line-height: 1.45;
-}
-
-.brown {
-  color: #5c4326;
-}
-
-/* 6. Altitude — 青绿海岸 */
-.cover-altitude {
-  background: linear-gradient(135deg, #0c7772 0%, #24b096 58%, #93d9c5 100%);
-}
-
-.wave {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.85);
-}
-
-.wave.w1 {
-  width: 130px;
-  height: 46px;
-  left: -24px;
-  bottom: -18px;
-}
-
-.wave.w2 {
-  width: 110px;
-  height: 38px;
-  right: -28px;
-  bottom: -12px;
-  background: rgba(255, 255, 255, 0.55);
-}
-
-.cover-altitude .cover-kicker {
-  top: 12px;
-  left: 12px;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.8px;
-}
-
-.cover-altitude .cover-title {
-  top: 25px;
-  left: 12px;
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.light {
-  color: #fff;
-}
-
-/* 查看所有模板 */
-.pill-outline {
-  margin-top: 30px;
-  background: transparent;
-  font-weight: 600;
-  color: var(--navy);
-}
-
-/* 帮助悬浮按钮 */
-.help-fab {
-  position: fixed;
-  right: 26px;
-  bottom: 26px;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-soft);
-  color: var(--navy);
-  font-size: 16px;
-  font-weight: 600;
-  display: grid;
-  place-items: center;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.help-fab:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(23, 43, 92, 0.14);
-}
-
-/* Toast 提示 */
-.toast {
-  position: fixed;
-  left: 50%;
-  bottom: 34px;
-  transform: translate(-50%, 18px);
-  background: var(--navy);
-  color: #fff;
-  font-size: 13.5px;
-  padding: 11px 22px;
-  border-radius: 10px;
-  box-shadow: 0 12px 30px rgba(15, 25, 50, 0.28);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.22s ease, transform 0.22s ease;
-  z-index: 130;
-  max-width: 70vw;
-}
-
-.toast.show {
-  opacity: 1;
-  transform: translate(-50%, 0);
-}
-
 /* ================= 响应式 ================= */
-
-@media (max-width: 1240px) {
-  .template-row {
-    display: flex;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    scroll-snap-type: x mandatory;
-  }
-
-  .template-card {
-    flex: 0 0 178px;
-    scroll-snap-align: start;
-  }
-}
 
 @media (max-width: 900px) {
   .sidebar {
@@ -2319,10 +1926,8 @@ a:focus-visible {
 .content > .examples,
 .content > .template-cta,
 .content > .work-tabs,
-.content > .template-row,
 .content > .work-grid,
 .content > .quick-types,
-.content > .rec-templates,
 .content > .also-make,
 .content > .beautify-styles,
 .content > .import-choices {
@@ -2650,78 +2255,6 @@ a:focus-visible {
   background: var(--navy);
 }
 
-/* ---------- 图册卡片：大图封面 + 图上标题 ---------- */
-
-.content .template-row {
-  display: grid;
-  grid-template-columns: none;
-  grid-template-rows: none;
-  grid-auto-flow: column;
-  grid-auto-columns: calc((100% - 3 * 12px) / 4);
-  gap: 12px;
-  max-width: none;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding-bottom: 4px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-
-.content .template-row::-webkit-scrollbar {
-  display: none;
-}
-
-.content .template-card {
-  scroll-snap-align: start;
-}
-
-.content .cover {
-  aspect-ratio: 16 / 9;
-  border-radius: 10px;
-  background-image:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.18)),
-    var(--img);
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0 6px 18px rgba(23, 43, 92, 0.12);
-}
-
-.content .cover-label {
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  z-index: 2;
-  font-size: 14px;
-  line-height: 1.28;
-  letter-spacing: 0.2px;
-}
-
-.content .cover-label.bottom {
-  bottom: 12px;
-  color: #fff;
-  font-family: Georgia, 'Times New Roman', serif;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.32);
-}
-
-.content .cover-label.top {
-  top: 12px;
-}
-
-.content .cover-label.ink {
-  color: #243027;
-}
-
-.content .cover-label.bold {
-  font-family: inherit;
-  font-weight: 800;
-  font-size: 15px;
-  letter-spacing: 0.6px;
-}
-
-.content .template-name {
-  display: none;
-}
-
 /* 工作区视图：真实创作列表 */
 .work-grid {
   display: grid;
@@ -2782,10 +2315,8 @@ a:focus-visible {
   .content > .examples,
   .content > .template-cta,
   .content > .work-tabs,
-  .content > .template-row,
   .content > .work-grid,
-  .content > .quick-types,
-  .content > .rec-templates {
+  .content > .quick-types {
     width: 100%;
   }
 
@@ -2796,19 +2327,13 @@ a:focus-visible {
   .content .hero-title {
     font-size: 30px;
   }
-
-  .content .template-row {
-    grid-auto-columns: 62%;
-  }
 }
 
 /* hidden 优先级高于组件自身的 display，避免"设了 hidden 却还显示" */
-.content .template-row[hidden],
 .content .work-grid[hidden],
 .content .work-tabs[hidden],
 .content .examples[hidden],
 .content .quick-types[hidden],
-.content .rec-templates[hidden],
 .content .template-cta[hidden],
 .pill-back[hidden],
 .content .type-menu-wrap[hidden],
@@ -2913,110 +2438,6 @@ a:focus-visible {
   height: 16px;
   color: #4a5568;
 }
-
-.rec-templates {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-top: 30px;
-}
-
-.rec-label {
-  font-size: 13px;
-  font-weight: 500;
-  color: #6b7280;
-  letter-spacing: 0.2px;
-}
-
-.rec-card {
-  width: 146px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  cursor: pointer;
-}
-
-.rec-cover {
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-  background: #5b3cc4;
-  box-shadow: 0 8px 20px rgba(23, 43, 92, 0.16);
-  transition: transform 0.16s ease, box-shadow 0.16s ease;
-}
-
-.rec-card:hover .rec-cover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(23, 43, 92, 0.2);
-}
-
-.rec-cover-a {
-  position: absolute;
-  left: 10px;
-  right: 10px;
-  top: 10px;
-  font-size: 10px;
-  line-height: 1.35;
-  font-weight: 600;
-  color: #ffd84d;
-}
-
-.rec-cover-b {
-  position: absolute;
-  left: 10px;
-  bottom: 9px;
-  font-size: 7px;
-  letter-spacing: 0.14em;
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.rec-cover::before {
-  content: '';
-  position: absolute;
-  right: 12%;
-  bottom: 16%;
-  width: 26px;
-  height: 17px;
-  border-radius: 50%;
-  background: repeating-linear-gradient(90deg, #ffd84d 0 4px, #3b2386 4px 7px);
-}
-
-.rec-cover::after {
-  content: '✿';
-  position: absolute;
-  right: 9%;
-  top: 9%;
-  font-size: 16px;
-  color: rgba(255, 216, 77, 0.7);
-}
-
-.rec-card .template-name {
-  display: block;
-  text-align: center;
-  font-size: 12px;
-  color: #6b7280;
-}
-
-.pill-ghost {
-  display: inline-flex;
-  align-items: center;
-  height: 34px;
-  padding: 0 16px;
-  border: 1px solid #dfe3ec;
-  border-radius: 999px;
-  background: #fff;
-  font-size: 13px;
-  font-weight: 500;
-  color: #263244;
-  transition: background 0.13s ease, border-color 0.13s ease;
-}
-
-.pill-ghost:hover {
-  background: #f6f8fc;
-  border-color: #c9d3e8;
-}
-
 
 /* ============================================================
    输入框里的 @ 引用文件 / / 调用技能 弹层
@@ -3526,7 +2947,6 @@ a:focus-visible {
 }
 
 .content .quick-type,
-.content .pill-ghost,
 .content .pill-browse,
 .content .pill-upload,
 .content .example-cat,
@@ -3932,7 +3352,7 @@ a:focus-visible {
 
 .content .ref-card.is-template .ref-thumb { border-color: #e8e0fb; background-color: #f5f0ff; }
 
-/* 移除按钮：平时淡出，悬停/聚焦才出现 */
+/* 移除按钮：始终可见，悬停/聚焦加深反馈 */
 .content .ref-card button {
   width: 22px;
   height: 22px;
@@ -3941,13 +3361,13 @@ a:focus-visible {
   place-items: center;
   border-radius: 50%;
   color: #98a1b2;
-  opacity: 0;
-  transition: opacity 0.12s ease, background 0.12s ease, color 0.12s ease;
+  opacity: 1;
+  transition: background 0.12s ease, color 0.12s ease;
 }
 
-.content .ref-card:hover button,
 .content .ref-card button:focus-visible {
-  opacity: 1;
+  outline: 2px solid #7c3aed;
+  outline-offset: 1px;
 }
 
 .content .ref-card button:hover {
