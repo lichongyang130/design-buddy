@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "operating-model",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 16966,
+      "sha256": "a6c21bed0a644f6902b0f32053230c9d28ce0c496cee9093ead53d57753c3918"
+    },
+    {
+      "path": "content.js",
+      "bytes": 13503,
+      "sha256": "d93eb81e33b340fe2c5eae7fc80c73911563e7b5014a86dca61de7bb573f64dd"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 544,
+      "sha256": "00f905f529a05de48665c77a603310f9eb7470c8384dc06fd58df6c3561f851f"
+    },
+    {
+      "path": "operating-model.docx",
+      "bytes": 891954,
+      "sha256": "c69955608349090cbda87d3300472fa2c9b14a767bb624b90a44ee76de4eebcb"
+    },
+    {
+      "path": "operating-model.pdf",
+      "bytes": 967622,
+      "sha256": "543d8955dcde02917d532ab09fdd4142cb4d75c835ca8c4d8506cc67bc0cf1ff"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 495,
+      "sha256": "9e7b846580cea9a363053b315c7fac50469eef502acb444846bd023555f2c4f0"
+    },
+    {
+      "path": "source.json",
+      "bytes": 1849,
+      "sha256": "32d0eca1b6667a3782cbc35e23a48cbb84e5e1fb2edb35ce288f582e752eb3f1"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 199785,
+      "sha256": "19d3859291f14dcf257e620abbc709d1a8a82239cc46ba08239189d208f9f213"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 199913,
+      "sha256": "d457d33595662c4c9f35acefbcefa3f8f86bca2ae2dcb85cd61d3ac2084900b8"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 203913,
+      "sha256": "74231d2fa251caa1891a3b87593c973f93503678e8f06da0a8775cf808138f8a"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 126109,
+      "sha256": "dfc46dd9776fc3f66dda94fceec672445aaf7b44581125e844a15945c5182b1f"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 152710,
+      "sha256": "c93ec3b6d7935db9d4791cf4cb0439fe532459a31bed8192bcfdbf560ff0be7a"
+    }
+  ]
+}

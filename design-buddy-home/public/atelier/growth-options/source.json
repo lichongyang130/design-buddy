@@ -1,0 +1,65 @@
+{
+  "source": "authored-fictional-business-model",
+  "synthetic": true,
+  "notActualForecast": true,
+  "summary": {
+    "options": 5,
+    "totalRequestedTokens": 20,
+    "illustrativeAllowance": 8,
+    "tokensNotCurrency": true,
+    "actualGrowth": null,
+    "actualReturn": null,
+    "approvedBudget": null
+  },
+  "records": [
+    {
+      "option": "O01",
+      "name": "core-task",
+      "teaching_tokens": 2,
+      "depends_on": [],
+      "status": "not-explored",
+      "actual_result": null
+    },
+    {
+      "option": "O02",
+      "name": "companion-worksheet",
+      "teaching_tokens": 3,
+      "depends_on": [
+        "O01"
+      ],
+      "status": "not-explored",
+      "actual_result": null
+    },
+    {
+      "option": "O03",
+      "name": "team-use-format",
+      "teaching_tokens": 5,
+      "depends_on": [
+        "O01",
+        "O02"
+      ],
+      "status": "not-explored",
+      "actual_result": null
+    },
+    {
+      "option": "O04",
+      "name": "editorial-channel",
+      "teaching_tokens": 4,
+      "depends_on": [
+        "O01"
+      ],
+      "status": "not-explored",
+      "actual_result": null
+    },
+    {
+      "option": "O05",
+      "name": "partner-introduction",
+      "teaching_tokens": 6,
+      "depends_on": [
+        "O04"
+      ],
+      "status": "not-explored",
+      "actual_result": null
+    }
+  ]
+}

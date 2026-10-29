@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    "lean-venture",
+    "scenario-ledger",
+    "service-economics",
+    "growth-options",
+    "operating-model"
+  ],
+  "pagesPerCase": 10,
+  "distinctImagesPerCase": 5,
+  "newImages": 0,
+  "curatedExistingImages": 25,
+  "completedOf50": 40
+}

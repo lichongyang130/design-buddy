@@ -60,7 +60,12 @@
     "facilitator-guide",
     "peer-coaching",
     "process-rehearsal",
-    "skills-portfolio"
+    "skills-portfolio",
+    "lean-venture",
+    "scenario-ledger",
+    "service-economics",
+    "growth-options",
+    "operating-model"
   ],
   "documentRequirements": {
     "minPages": 10,
@@ -68,8 +73,8 @@
   },
   "additionalDocumentRequest": {
     "count": 50,
-    "published": 35,
-    "remaining": 15,
+    "published": 40,
+    "remaining": 10,
     "plan": "docs/document-expansion-50.json"
   }
 }

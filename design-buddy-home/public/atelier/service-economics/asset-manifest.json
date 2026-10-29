@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "service-economics",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 17148,
+      "sha256": "7020e35831168455aee6bc0c4792e177786bbf503a62334f6c78e399e982eff8"
+    },
+    {
+      "path": "content.js",
+      "bytes": 13673,
+      "sha256": "e1442efc0a00c9d934f29a40eb6452b3053245ac237cfd128153153efccc0729"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 556,
+      "sha256": "b6ac007c838ad68426a56b36d5e03ea2a4f1ed0e151ee69fd037bbeb6f8f2074"
+    },
+    {
+      "path": "service-economics.docx",
+      "bytes": 877886,
+      "sha256": "651910c63dc7c6b7c3316426e4652d6dd9178822fdcbe9264b92b4366deebb53"
+    },
+    {
+      "path": "service-economics.pdf",
+      "bytes": 949696,
+      "sha256": "b8ddccfde05cc73f859b57f47db77b4e8974c5171d0386b4f00e7f2d951232dd"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 290,
+      "sha256": "f947855259648a752d2223bca3e09b362a299df4e8286d1e2c30d48a5ccf6460"
+    },
+    {
+      "path": "source.json",
+      "bytes": 1413,
+      "sha256": "2f99cd94c67c99e6b2866f893f25ee76cf378983e2be36aa337f8eb3378629de"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 162622,
+      "sha256": "7517f79071c938d7e19efc565ce4f97929c8eb8a6e431ff8486eb4ae10e31570"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 199913,
+      "sha256": "d457d33595662c4c9f35acefbcefa3f8f86bca2ae2dcb85cd61d3ac2084900b8"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 171076,
+      "sha256": "ef1c2bfdfc90971a4c9d4b6cfd2bc53fae3d451bf2a7c12d5ea74f26af2cff75"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 174212,
+      "sha256": "7b64590acd7fbeecbdbabfeaf0629216ff69b2adf95a79e41a6d2dc4001538fb"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 160956,
+      "sha256": "6040d51c66d4452903c299be468c08740cbd14f258d11e061d5d7c96160b2a7c"
+    }
+  ]
+}

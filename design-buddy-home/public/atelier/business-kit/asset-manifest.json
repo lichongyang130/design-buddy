@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "path": "render.js",
+      "bytes": 2789,
+      "sha256": "57c23ba56e99712a1bad59960b89051b0c7cebf36511772d6cafc20f877e9448"
+    },
+    {
+      "path": "docx.js",
+      "bytes": 8297,
+      "sha256": "1fa2dcb4223c11fdd5761558d5097ffbb12623f61028ab2f6ca2da2803596beb"
+    },
+    {
+      "path": "app.js",
+      "bytes": 6791,
+      "sha256": "5d4f5cd3961930d3df4d57698187358c0796488ea3908a6c6d6b1cdb9808a215"
+    },
+    {
+      "path": "style.css",
+      "bytes": 13720,
+      "sha256": "3bf5146392385e3eb96a9f4bf1be7dcae3852bf6f39369786a4fbb9ab36b6b7e"
+    },
+    {
+      "path": "viewer.js",
+      "bytes": 25166,
+      "sha256": "3806e2d486dddf757470d76d2cf223cdfc897f87f49ec663378e21d62c6daa3d"
+    },
+    {
+      "path": "download.js",
+      "bytes": 1448,
+      "sha256": "8fd427be92a48d2180a2836cca501f5e2ca07ea6d175dfa1a9aeb7469d8ea143"
+    },
+    {
+      "path": "download.bundle.js",
+      "bytes": 10197,
+      "sha256": "23e96f4dcfe946550b704826521ca416dce12e679d7e043b265682e13bec390f"
+    },
+    {
+      "path": "download.html",
+      "bytes": 1606,
+      "sha256": "c0d037b1913d61ed6f720a040c77f0f10480f9b24faa6442217991bf0ae10928"
+    }
+  ]
+}

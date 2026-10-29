@@ -16,17 +16,17 @@ Open `/templates.html?format=文档&batch=nine-documents` for nine different cat
 
 Nine new theme illustrations are combined with 36 curated existing-image placements, not 45 new images. Report/model values are fictional. Original DOCX/PDF remain fixed; current edited Word/HTML/JSON exports include local edits and private notes. Long edits can reflow. Review notes before sharing.
 
-See [NEW-TEMPLATE-PLAN.md](NEW-TEMPLATE-PLAN.md) for the current 65-case target, current 49-published/1-draft status, frameworks, validation and remaining limits. SWATCH remains an honest draft, not a completed case.
+See [NEW-TEMPLATE-PLAN.md](NEW-TEMPLATE-PLAN.md) for the current 65-case target, current 54-published/1-draft status, frameworks, validation and remaining limits. SWATCH remains an honest draft, not a completed case.
 
 ## Artifact preservation
 
-Primary art, source, manifests and completed export bytes are backed up in Git. Distribution files can be stored in SHA-pinned, already-pushed immutable Git history rather than duplicated in the current tree. Currently 148 files (six older source ZIPs, five older PPTX and five older PDF files, and 132 original-nine/course/proposal/report/fundraising/marketing/training DOCX/PDF/source archives) are restored automatically before dev/start/check/build via `artifact-registry.json`. Their downloadable paths are unchanged. Local Git objects are preferred; the GitHub CLI is the remote fallback. Do not change an older archive without updating the registry. All pinned downloads have SHA/byte-size verification and automatic missing-file restoration; each new distribution batch is pushed before pinning. Standard full clones restore from local Git objects; shallow clones may require fetching history or authenticated GitHub CLI access. No successful GitHub release upload is claimed.
+Primary art, source, manifests and completed export bytes are backed up in Git. Distribution files can be stored in SHA-pinned, already-pushed immutable Git history rather than duplicated in the current tree. Currently 163 files (six older source ZIPs, five older PPTX and five older PDF files, and 147 original-nine/course/proposal/report/fundraising/marketing/training/business DOCX/PDF/source archives) are restored automatically before dev/start/check/build via `artifact-registry.json`. Their downloadable paths are unchanged. Local Git objects are preferred; the GitHub CLI is the remote fallback. Do not change an older archive without updating the registry. All pinned downloads have SHA/byte-size verification and automatic missing-file restoration; each new distribution batch is pushed before pinning. Standard full clones restore from local Git objects; shallow clones may require fetching history or authenticated GitHub CLI access. No successful GitHub release upload is claimed.
 
 ## Checks
 
 - `npm run check:templates`: registry, publication gates and SHA manifests, including shared document kit.
 - `npm run test:document-batch`: gallery, nine geometries, 90-page fit, editable exports, mobile, offline sources, model arithmetic and real edited Word rendering.
-- `npm run test:template-office`: all 50 originals rendered with real LibreOffice core at the expected page counts.
+- `npm run test:template-office`: all 55 originals rendered with real LibreOffice core at the expected page counts.
 - `npm run test:pantry-cache`: old-cache migration without deleting unrelated caches or personal storage.
 - Individual earlier cases retain their own `test:<case>` scripts.
 
@@ -34,7 +34,7 @@ Office tests require Node 22.19+ and `@deepseek-ai/libreoffice-kit` installed in
 
 ## 50-case expansion — course batch completed
 
-Thirty-five of the 50 additional cases are complete (six courses, six proposals, six reports, five fundraising speeches, six marketing documents and six training documents); 15 remain planned. Open `/templates.html?format=文档&batch=course-expansion`. The original nine-document collection remains nine cases. All previous 15 cases remain available, bringing the gallery to 50 cases (49 published, one SWATCH draft). The revised total target is 65: existing 15 plus 50 additional—not 50 including the old nine.
+Forty of the 50 additional cases are complete (six courses, six proposals, six reports, five fundraising speeches, six marketing documents, six training documents and five business-planning documents); 10 remain planned. Open `/templates.html?format=文档&batch=course-expansion`. The original nine-document collection remains nine cases. All previous 15 cases remain available, bringing the gallery to 55 cases (54 published, one SWATCH draft). The revised total target is 65: existing 15 plus 50 additional—not 50 including the old nine.
 
 Six courses: QUESTION LAB (inquiry tree), STORY WORKSHOP (manuscript annotations), VISUAL LITERACY (image/analysis comparison), PROJECT STUDIO (task board), DEBATE ROOM (argument mapping), SELF-PACED ROUTE (branching route). Each has ten substantive pages, five images, one new hero and four curated assets. Worksheet cells are editable, persist per case and export in current DOCX/HTML/JSON. Native Word has six different content orders and appropriate native record tables; image assets remain raster. Original and edited copies rendered to ten pages each in real LibreOffice.
 
@@ -155,3 +155,26 @@ All **50 original Office files** rendered at their expected page counts with rea
 Original-nine, course, proposal, report, fundraising and marketing suites pass, including their edited Word checks. All six earlier individual case suites pass. The nine-group cache migration suite passed twice consecutively, retaining unrelated caches and personal storage. After the actual cold restore, training acceptance passed again (eight browser/data groups and six actual ten-page edited Word renderings), and production integrity/build passed. No Microsoft Word GUI validation, actual learner assessment or certification is claimed.
 
 The final extant non-ignored cumulative patch content is approximately **115.48 MiB**, below 128 MiB. Recheck before the final fifteen documents; do not add complete distribution bytes to the current tree without the established pushed-byte pinning/storage workflow. The next batch is five business-planning frameworks.
+
+
+## Business-planning batch — 40 / 50 additional documents
+
+| Template | Independent framework / editable module |
+|---|---|
+| LEAN VENTURE | Six untested hypotheses, assumption canvas, validation backlog and revision rules |
+| SCENARIO LEDGER | Three demand cases, capacity-constrained delivery, point ledger and one-variable sensitivity |
+| SERVICE ECONOMICS | Demand/capacity, reserved time, unit contribution and a whole-unit teaching threshold |
+| GROWTH OPTIONS | Five options, an acyclic dependency graph, token-constrained portfolios and stop rules |
+| OPERATING MODEL | Capability map, four functional roles, five interfaces and responsibility/authority boundaries |
+
+Each has ten complete English pages, five distinct curated illustrations, native editable Word, ten-page PDF, offline source ZIP, source CSV/JSON, provenance and SHA manifests. Twenty-five curated existing AI-generated illustration placements, not newly generated art. Visual structures vary: gold canvas with a learning backlog, navy driver ledger, terracotta capacity board, forest option desk and graphite interface rail. Five browser geometries, five native Word block orders and five framework-specific native table treatments are independently checked. Text/tables are native editable content, not screenshots.
+
+Collection: `/templates.html?format=文档&batch=business-expansion`. Batch originals: `/atelier/business-kit/download.html` (five Word + five PDF entries, byte-checked). Build: `npm run build:business-expansion`. Acceptance: `npm run test:business-expansion`, including `tests/verify-business-models.mjs`. Preparation from repo root: `python3 design-buddy-home/scripts/prepare-business-expansion.py --keep-images` with Pillow in ignored `.cache/expansion-python`. Authored source is `scripts/business-expansion-content.json`. Original model excerpts and source registers stay fixed when planning prose or records are edited; edit sources and rebuild to change the model. No live forecast calculator is claimed. Current Word/HTML include private notes; review before sharing. Long edits may reflow.
+
+The models distinguish planning arithmetic from actual business evidence. Six canvas hypotheses remain untested. Three scenario rows and three sensitivity rows use delivered=min(demand,capacity), separate unmet/unused units, four benefit points per delivery and 12+2×delivery resource points; net values are not money or profit. The service model uses (450−90)/45=8 sessions, a 6-credit unit contribution and ceil(20/6)=4 whole sessions as a teaching threshold, not financial break-even. Demand cases 6/8/10 deliver 6/8/8 with net credits 16/28/28. The five growth options request 20 non-monetary tokens against an illustrative allowance of 8; dependencies are checked for valid prior nodes and cycles. Five operating interfaces preserve role/artifact continuity, with no real appointments or delegated authority. Unknown real customers, demand, money, growth and performance stay null.
+
+Current expansion: **40 published / 50, 10 remaining**. Full gallery: **55 cases (54 published, one SWATCH draft), 656 authored pages**, target 65. Previous batch filters and local-work mechanisms remain preserved. Gallery revision `20261030-rebuild-17` / SW v17 retain the existing activation handshake; no cache or user-data deletion is used. Next planned batch: five event documents, then five product-design documents.
+
+Validation covers all fifty pages, five distinct sourced-image hashes per case, editable title/prose/records, saved edits, native Word XML/family-generator equivalence, current DOCX/HTML/JSON, real original downloads, 390px mobile, direct file:// editing/export, source downloads and offline bytes, canonical LF CSV/JSON round trips, arithmetic, whole-unit boundaries and dependencies. Five edited business Word exports render to ten pages each with real LibreOffice. The fifty previous original Office files and five new originals all rendered at their expected page counts. All seven prior document-batch regression suites (including their edited Word tests), and six original individual-case suites pass. No Microsoft Word GUI validation is claimed.
+
+Known cache-test limitation: the old/current worker handover intermittently times out with the new worker installed/waiting and the legacy fixture still controlling, even though the current gallery content loaded. This was reproduced and recorded, not treated as a pass or bypassed by clearing data. Listener-order and bounded-retry experiments did not eliminate it and were reverted; production activation behaviour is unchanged except the version bump. The final isolated nine-group migration run passed, including exact offline works and retention of unrelated caches/personal storage. Failure-only registration-state diagnostics remain in the test to aid a future lifecycle investigation. Do not claim the handover flake is fixed or that repeated stress runs are all green.

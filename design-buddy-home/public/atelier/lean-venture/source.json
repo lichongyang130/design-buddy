@@ -1,0 +1,56 @@
+{
+  "source": "authored-fictional-business-model",
+  "synthetic": true,
+  "notActualForecast": true,
+  "summary": {
+    "hypotheses": 6,
+    "validatedHypotheses": 0,
+    "actualCustomers": null,
+    "actualRevenue": null,
+    "actualFunding": null
+  },
+  "records": [
+    {
+      "hypothesis": "H01",
+      "domain": "customer",
+      "question": "Who uses, chooses and authorises the offering?",
+      "status": "untested",
+      "actual_evidence": null
+    },
+    {
+      "hypothesis": "H02",
+      "domain": "problem",
+      "question": "Does the task warrant a separate offering?",
+      "status": "untested",
+      "actual_evidence": null
+    },
+    {
+      "hypothesis": "H03",
+      "domain": "value",
+      "question": "Does the mechanism make a useful difference to the task?",
+      "status": "untested",
+      "actual_evidence": null
+    },
+    {
+      "hypothesis": "H04",
+      "domain": "channel",
+      "question": "Can an appropriate reader understand the concept?",
+      "status": "untested",
+      "actual_evidence": null
+    },
+    {
+      "hypothesis": "H05",
+      "domain": "revenue",
+      "question": "Who would pay for which defined engagement?",
+      "status": "untested",
+      "actual_evidence": null
+    },
+    {
+      "hypothesis": "H06",
+      "domain": "cost",
+      "question": "What work and resources would delivery require?",
+      "status": "untested",
+      "actual_evidence": null
+    }
+  ]
+}
