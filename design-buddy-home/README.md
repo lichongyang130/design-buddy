@@ -40,7 +40,7 @@ Six courses: QUESTION LAB (inquiry tree), STORY WORKSHOP (manuscript annotations
 
 `npm run build:course-expansion` and `npm run test:course-expansion` reproduce and check this batch. `/atelier/inquiry-kit/download.html` assembles six Word and six PDF originals in the browser; the ZIP was unpacked and all entries checked against actual originals. `docs/DOCUMENT-EXPANSION-50.md` records all 50 distinct frameworks and honest progress.
 
-For future artifact updates: rebuild, check, force-add any ignored regenerated exports, commit and push their actual bytes first. Only then run `npm run pin:artifacts -- case-id ...` and commit/push the resulting registry/ignore changes. This helper refuses unpushed or mismatching bytes and never removes local download files. Do not run it on an uncommitted export or claim pinning alone created a backup. Current cumulative snapshot content is approximately 124 MiB; audit it before each further batch.
+For future artifact updates: rebuild, check, force-add any ignored regenerated exports, commit and push their actual bytes first. Only then run `npm run pin:artifacts -- case-id ...` and commit/push the resulting registry/ignore changes. This helper refuses unpushed or mismatching bytes and never removes local download files. Do not run it on an uncommitted export or claim pinning alone created a backup. Current cumulative snapshot content is approximately 124.75 MiB; audit it before each further batch.
 
 ## Proposal batch completed
 
@@ -84,3 +84,10 @@ Open `/templates.html?format=文档&batch=fundraising-expansion`; `/atelier/fund
 All scenarios are fictional, not investment offers: teaching units are not currency or an actual ask; 30 invented workspaces/48 events/14 repeated workspaces are not retention or growth; payment is unknown, not zero; three technical stages are untested, not deployed code; six impact/commercial hypotheses are unverified, not measured outcomes; the question index is not a real meeting or agreed terms. Original sources stay fixed when prose/records are edited. Current Word/HTML include the private note; review it before sharing. Longer edits may reflow. No Microsoft Word GUI validation is claimed.
 
 Current expansion: 23 published, 27 remaining; gallery 38 cases (37 published, one SWATCH draft), 486 authored pages. Existing collections and local workspace mechanisms are preserved. Gallery revision 14 / SW v14 use the existing activation handshake without deleting personal data. Next planned batch: six marketing documents.
+
+
+### Final fundraising backup / reproducibility checkpoint
+
+Export bytes were committed and pushed before pinning: `97e3c88d` (five DOCX, five PDFs, five offline source ZIPs). All **85** registered artifacts were physically moved aside, automatically restored from immutable Git history and verified against SHA-256 and byte sizes. An actual remote traction Word blob was independently fetched with GitHub CLI and matched. All five source CSV/JSON/JS/data files match pushed Git bytes exactly; canonical LF CSV round trips pass.
+
+All 38 original Office documents rendered at their expected page counts with real LibreOffice, including five ten-page fundraising originals. Five fundraising edited Word exports also rendered to ten pages. Old six-case browser suites, original nine-document, six-course, six-proposal, six-report suites and all nine cache-migration checks pass. Final integrity and production build pass after cold restoration. Extant non-ignored snapshot content is approximately **124.75 MiB**, below 128 MiB. Audit/release storage before the next batch; do not remove downloads or add another full batch without a storage plan. Original-nine exports may be candidates for the same pushed-byte pinning workflow, but are not pinned yet.

@@ -555,6 +555,126 @@
       "sha256": "63376015d2053b6883bc61a6e12a21da148f3f73e123095e4c3c75674ce58109",
       "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/416e3ff6a210cbe5409edd381fbd59e580f4685b",
       "sourceCommit": "195eaa8ceeafebc8350b686628261b05c042a3fa"
+    },
+    {
+      "path": "public/atelier/founder-narrative/founder-narrative.docx",
+      "gitBlob": "2d57e3a98251338b0a76a1b902393ca909c8b49d",
+      "bytes": 879346,
+      "sha256": "86760d755f46f54076c56b8b8366cf2e1335cf1b825a000448cd8308fa2014e3",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/2d57e3a98251338b0a76a1b902393ca909c8b49d",
+      "sourceCommit": "97e3c88de34fa5df19b1eb3af10443539891392d"
+    },
+    {
+      "path": "public/atelier/founder-narrative/founder-narrative.pdf",
+      "gitBlob": "a5d99c491a8517f252a25f7b3b8eb69527a14221",
+      "bytes": 949982,
+      "sha256": "282650a4d48a8ae28cdd51363ff0f6c2f43771ebfb31215249410ba83e9c7ada",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/a5d99c491a8517f252a25f7b3b8eb69527a14221",
+      "sourceCommit": "97e3c88de34fa5df19b1eb3af10443539891392d"
+    },
+    {
+      "path": "public/atelier/founder-narrative/founder-narrative-source.zip",
+      "gitBlob": "f108386e9fdd56f7a1f06f8954c8b45fdc66cee8",
+      "bytes": 1807875,
+      "sha256": "04aea1bb8f7bcb38a648bf7a75c185934a946c31c6cd9cea9693a85cb78c187b",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/f108386e9fdd56f7a1f06f8954c8b45fdc66cee8",
+      "sourceCommit": "97e3c88de34fa5df19b1eb3af10443539891392d"
+    },
+    {
+      "path": "public/atelier/traction-dialogue/traction-dialogue.docx",
+      "gitBlob": "8b9a450d82df0775c4d2ca38c230f70e2958bef1",
+      "bytes": 925059,
+      "sha256": "199a0d605c32c1431541289826de08427fae370da66d1dfd28adfafb24a5e8f3",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/8b9a450d82df0775c4d2ca38c230f70e2958bef1",
+      "sourceCommit": "97e3c88de34fa5df19b1eb3af10443539891392d"
+    },
+    {
+      "path": "public/atelier/traction-dialogue/traction-dialogue.pdf",
+      "gitBlob": "52e999157e0c1b4e145ea1d09811726c7cb6d9c6",
+      "bytes": 995875,
+      "sha256": "250553b4f992a74743afc7008e996567c49dd68467481e6877229d5b51bad62e",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/52e999157e0c1b4e145ea1d09811726c7cb6d9c6",
+      "sourceCommit": "97e3c88de34fa5df19b1eb3af10443539891392d"
+    },
+    {
+      "path": "public/atelier/traction-dialogue/traction-dialogue-source.zip",
+      "gitBlob": "78f5078d56e18c92c5e6254fa1000a43659fe19c",
+      "bytes": 1899304,
+      "sha256": "c54e2a61f939cc25b5d6631cc9869daefa71cdebcce6bf12cb36e035a0884d81",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/78f5078d56e18c92c5e6254fa1000a43659fe19c",
+      "sourceCommit": "97e3c88de34fa5df19b1eb3af10443539891392d"
+    },
+    {
+      "path": "public/atelier/technical-thesis/technical-thesis.docx",
+      "gitBlob": "482bfa8cc761f7017b67373a42c8f200b204c7dc",
+      "bytes": 786152,
+      "sha256": "ab8a1a3199a6aa1c7bc0695de4d4700a738ac0dfd4bab7470d1b7f92d2150565",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/482bfa8cc761f7017b67373a42c8f200b204c7dc",
+      "sourceCommit": "97e3c88de34fa5df19b1eb3af10443539891392d"
+    },
+    {
+      "path": "public/atelier/technical-thesis/technical-thesis.pdf",
+      "gitBlob": "48693d64ecb8109cebe87adcb4d8b4bcfb8c2aba",
+      "bytes": 856944,
+      "sha256": "ce90d2b7391e194e9d8880190066624ccbb9edfa5d83c4dc64aeba047d73c7a5",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/48693d64ecb8109cebe87adcb4d8b4bcfb8c2aba",
+      "sourceCommit": "97e3c88de34fa5df19b1eb3af10443539891392d"
+    },
+    {
+      "path": "public/atelier/technical-thesis/technical-thesis-source.zip",
+      "gitBlob": "7ad1ab72005fd5e1a777b535e086d4ef8fd798d4",
+      "bytes": 1618642,
+      "sha256": "b0507e78cef1c31cf22296192dbc99e7a4f1314f46859e0ad09a2fcb86f7d531",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/7ad1ab72005fd5e1a777b535e086d4ef8fd798d4",
+      "sourceCommit": "97e3c88de34fa5df19b1eb3af10443539891392d"
+    },
+    {
+      "path": "public/atelier/impact-thesis/impact-thesis.docx",
+      "gitBlob": "48e5c2d729a5e6461e6497676af10402d4d19f4f",
+      "bytes": 1027035,
+      "sha256": "8cf7f8b822303394f759e16d6b2492c682f7f5d7355164c65eb31fd7f5361318",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/48e5c2d729a5e6461e6497676af10402d4d19f4f",
+      "sourceCommit": "97e3c88de34fa5df19b1eb3af10443539891392d"
+    },
+    {
+      "path": "public/atelier/impact-thesis/impact-thesis.pdf",
+      "gitBlob": "a9bab179072e13614e0fd4542a695eb7c7785246",
+      "bytes": 1096831,
+      "sha256": "80f4d915f4691f018ad64e3002d98a93536be439a6149bfcbd1ac6885c3a3242",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/a9bab179072e13614e0fd4542a695eb7c7785246",
+      "sourceCommit": "97e3c88de34fa5df19b1eb3af10443539891392d"
+    },
+    {
+      "path": "public/atelier/impact-thesis/impact-thesis-source.zip",
+      "gitBlob": "2b4fcd3e76fa657c443e3e31efb23240e410eef2",
+      "bytes": 2106279,
+      "sha256": "a705d69d2d583722537a1c2b1c72df5fbb9a3b9b367a4b642239eaa79163ad94",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/2b4fcd3e76fa657c443e3e31efb23240e410eef2",
+      "sourceCommit": "97e3c88de34fa5df19b1eb3af10443539891392d"
+    },
+    {
+      "path": "public/atelier/roundtable-brief/roundtable-brief.docx",
+      "gitBlob": "ea794bc781434646184ca8c7c14cfd38df94f637",
+      "bytes": 912120,
+      "sha256": "224304d8471355a38648c126d81fc47cac0cd6ac659f665bcb5509d27b15a9a5",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/ea794bc781434646184ca8c7c14cfd38df94f637",
+      "sourceCommit": "97e3c88de34fa5df19b1eb3af10443539891392d"
+    },
+    {
+      "path": "public/atelier/roundtable-brief/roundtable-brief.pdf",
+      "gitBlob": "a4d7389cc1582af920b9adaa2cf7b8196f17ef88",
+      "bytes": 988191,
+      "sha256": "438d0d0abb7dfbf965a2606542ab60a6dd23e5d9240eaa85b02af308e8e55397",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/a4d7389cc1582af920b9adaa2cf7b8196f17ef88",
+      "sourceCommit": "97e3c88de34fa5df19b1eb3af10443539891392d"
+    },
+    {
+      "path": "public/atelier/roundtable-brief/roundtable-brief-source.zip",
+      "gitBlob": "cd1ed26528f29f1fb56a00ece66057938b23577b",
+      "bytes": 1873923,
+      "sha256": "a13ecf0cb9f144da93aa0966f1b1c02d2f2ef7357e39db5c816e7988a8edf65a",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/cd1ed26528f29f1fb56a00ece66057938b23577b",
+      "sourceCommit": "97e3c88de34fa5df19b1eb3af10443539891392d"
     }
   ]
 }
