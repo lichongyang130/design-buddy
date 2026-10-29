@@ -1,6 +1,6 @@
 import './rail-flyout.js';
 if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});
-const $=s=>document.querySelector(s),revision='20261029-rebuild-6';
+const $=s=>document.querySelector(s),revision='20261029-rebuild-7';
 async function load(){const r=await fetch(new URL(`atelier/catalog.json?v=${revision}`,document.baseURI));if(!r.ok)throw Error('Catalog unavailable');const catalog=await r.json();const modules=await Promise.all(catalog.cases.map(id=>import(/* @vite-ignore */new URL(`atelier/${id}/content.js?v=${revision}`,document.baseURI).href)));const works=modules.map(m=>m.work),published=works.filter(w=>w.status==='published'),drafts=works.filter(w=>w.status==='draft');
 $('.tpl-subtitle').textContent='重新制作 56 个案例 · 每例 28–35 页 / 15–20 张独立主图';
 const progress=document.createElement('section');progress.className='rebuild-progress';progress.innerHTML=`<span>NEW REBUILD / 按主题变化背景 / 每例独立框架</span><h2>先把一例做完整，再正式上架。</h2><p>正式完成 <strong>${published.length} / ${catalog.targetCases}</strong> · 制作中 ${drafts.length} 例 · 尚未开始 ${catalog.targetCases-works.length} 例。每例 28–35 页、15–20 张独立主图，缺图不计完成。</p><p>这是新制作的案例，不是此前四例原文件的恢复。旧源码和个人作品存储不删除。</p>`;$('.tpl-toolbar').before(progress);
