@@ -1179,6 +1179,126 @@
       "sha256": "19622ba007186823e53a5971bc96d07cdbda55bdd3c7b4c5965e5914b8953c95",
       "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/adbcc3f9ff8501134b1469fba76676f046160336",
       "sourceCommit": "63263732623945a82a169eb665a8e50ee0035049"
+    },
+    {
+      "path": "public/atelier/lean-venture/lean-venture.docx",
+      "gitBlob": "1c510fd69acc8734269fbfc988883348b1e73480",
+      "bytes": 1004162,
+      "sha256": "d76d75535802a2bcd3367a8c4efc2e93acaaf9c5bd0e19be1d436c93a75f2008",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/1c510fd69acc8734269fbfc988883348b1e73480",
+      "sourceCommit": "3df0a4a4f8fb470c751c8629ffd451eb22524023"
+    },
+    {
+      "path": "public/atelier/lean-venture/lean-venture.pdf",
+      "gitBlob": "0f4f3d6c9aefa8fa19f8be2f203c0e70e5592438",
+      "bytes": 1074440,
+      "sha256": "f00308c4155a6c98a4289c381a7bca72ef9926cf3cf1a614259ec85f74aade2b",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/0f4f3d6c9aefa8fa19f8be2f203c0e70e5592438",
+      "sourceCommit": "3df0a4a4f8fb470c751c8629ffd451eb22524023"
+    },
+    {
+      "path": "public/atelier/lean-venture/lean-venture-source.zip",
+      "gitBlob": "56d2ffb4c7e4e9245a82f75bbc110c00532ec2f4",
+      "bytes": 2061783,
+      "sha256": "164f1e3918f7fd7cb2905dd26a6fb4796cb2828c02e7276c81469a20bd21bef4",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/56d2ffb4c7e4e9245a82f75bbc110c00532ec2f4",
+      "sourceCommit": "3df0a4a4f8fb470c751c8629ffd451eb22524023"
+    },
+    {
+      "path": "public/atelier/scenario-ledger/scenario-ledger.docx",
+      "gitBlob": "b4c1d15d5ee903d9dba3c39f9c2f798668f23d04",
+      "bytes": 847047,
+      "sha256": "8337756fc4a61fe8df89a88ab07a69e1ab6b9b4d75cd49a0af102014d47ad6ae",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/b4c1d15d5ee903d9dba3c39f9c2f798668f23d04",
+      "sourceCommit": "3df0a4a4f8fb470c751c8629ffd451eb22524023"
+    },
+    {
+      "path": "public/atelier/scenario-ledger/scenario-ledger.pdf",
+      "gitBlob": "553c5044b891f3a56476c6b74ed75ee236ee316e",
+      "bytes": 917509,
+      "sha256": "ab784ccbfd79e6ef03f845ee8b492a5303a60270c7a01c2168e624d864e4973b",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/553c5044b891f3a56476c6b74ed75ee236ee316e",
+      "sourceCommit": "3df0a4a4f8fb470c751c8629ffd451eb22524023"
+    },
+    {
+      "path": "public/atelier/scenario-ledger/scenario-ledger-source.zip",
+      "gitBlob": "44a1296e9c8e06294b4e5c554ff5ac909165bfed",
+      "bytes": 1742433,
+      "sha256": "af44c236122ff054ce7585e9158efe0c4a17a82fcb1fd921b1cb615fcee63d11",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/44a1296e9c8e06294b4e5c554ff5ac909165bfed",
+      "sourceCommit": "3df0a4a4f8fb470c751c8629ffd451eb22524023"
+    },
+    {
+      "path": "public/atelier/service-economics/service-economics.docx",
+      "gitBlob": "3848cae5335cdb4c27f50bf0ebc97cafe724870d",
+      "bytes": 877886,
+      "sha256": "651910c63dc7c6b7c3316426e4652d6dd9178822fdcbe9264b92b4366deebb53",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/3848cae5335cdb4c27f50bf0ebc97cafe724870d",
+      "sourceCommit": "3df0a4a4f8fb470c751c8629ffd451eb22524023"
+    },
+    {
+      "path": "public/atelier/service-economics/service-economics.pdf",
+      "gitBlob": "85330695c6e2addb07451290233e263e23352e4b",
+      "bytes": 949696,
+      "sha256": "b8ddccfde05cc73f859b57f47db77b4e8974c5171d0386b4f00e7f2d951232dd",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/85330695c6e2addb07451290233e263e23352e4b",
+      "sourceCommit": "3df0a4a4f8fb470c751c8629ffd451eb22524023"
+    },
+    {
+      "path": "public/atelier/service-economics/service-economics-source.zip",
+      "gitBlob": "8c040e15df7b26b66438ee9ebd6eda362f135e87",
+      "bytes": 1806527,
+      "sha256": "f8d76a2368a18703bade68922957ccb34cd6e4a5df785883164eaa8f164e16f3",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/8c040e15df7b26b66438ee9ebd6eda362f135e87",
+      "sourceCommit": "3df0a4a4f8fb470c751c8629ffd451eb22524023"
+    },
+    {
+      "path": "public/atelier/growth-options/growth-options.docx",
+      "gitBlob": "f05a87ab8213177e38054125bc51b3b6c082e660",
+      "bytes": 1031837,
+      "sha256": "9ad3a8635a5ce6fe14ed033d78830ea3c692625688a1bac814cbf26c1c4b49b1",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/f05a87ab8213177e38054125bc51b3b6c082e660",
+      "sourceCommit": "3df0a4a4f8fb470c751c8629ffd451eb22524023"
+    },
+    {
+      "path": "public/atelier/growth-options/growth-options.pdf",
+      "gitBlob": "e93755ab3afa9e560329f686a4dbccd2effec2a0",
+      "bytes": 1106216,
+      "sha256": "3b351d08115abc45bd7ea2af6c5c3a1c3df666590d16702388023af199e4aabe",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/e93755ab3afa9e560329f686a4dbccd2effec2a0",
+      "sourceCommit": "3df0a4a4f8fb470c751c8629ffd451eb22524023"
+    },
+    {
+      "path": "public/atelier/growth-options/growth-options-source.zip",
+      "gitBlob": "c52493711833ae02deae75179d6c1722536f6396",
+      "bytes": 2117738,
+      "sha256": "6bf7939c3ae34bd6465c7d930fe5e6b15b6741beaf3a6be36b89cbce094cb01b",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/c52493711833ae02deae75179d6c1722536f6396",
+      "sourceCommit": "3df0a4a4f8fb470c751c8629ffd451eb22524023"
+    },
+    {
+      "path": "public/atelier/operating-model/operating-model.docx",
+      "gitBlob": "dd64c6c14c125b3a21d93b5f6bef652ee6fead7f",
+      "bytes": 891954,
+      "sha256": "c69955608349090cbda87d3300472fa2c9b14a767bb624b90a44ee76de4eebcb",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/dd64c6c14c125b3a21d93b5f6bef652ee6fead7f",
+      "sourceCommit": "3df0a4a4f8fb470c751c8629ffd451eb22524023"
+    },
+    {
+      "path": "public/atelier/operating-model/operating-model.pdf",
+      "gitBlob": "4c1bdb66795afeaef3e1d3c7a5b6ab8832c6b560",
+      "bytes": 967622,
+      "sha256": "543d8955dcde02917d532ab09fdd4142cb4d75c835ca8c4d8506cc67bc0cf1ff",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/4c1bdb66795afeaef3e1d3c7a5b6ab8832c6b560",
+      "sourceCommit": "3df0a4a4f8fb470c751c8629ffd451eb22524023"
+    },
+    {
+      "path": "public/atelier/operating-model/operating-model-source.zip",
+      "gitBlob": "43aa64d253271a65d930982e21b0fd16a2f9ad87",
+      "bytes": 1833830,
+      "sha256": "c326af440b43705a23c12e5c229090f9a3aadab62d1010517ecce4a538ea736c",
+      "url": "https://api.github.com/repos/lichongyang130/design-buddy/git/blobs/43aa64d253271a65d930982e21b0fd16a2f9ad87",
+      "sourceCommit": "3df0a4a4f8fb470c751c8629ffd451eb22524023"
     }
   ]
 }
