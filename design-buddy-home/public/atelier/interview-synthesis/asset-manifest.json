@@ -25,17 +25,17 @@
     {
       "path": "interview-synthesis.docx",
       "bytes": 904237,
-      "sha256": "0b34792fd9520dcb98ae5f3335351bf39e41060ce2e8f3d7daaeb6e05824ea8d"
+      "sha256": "f146009e088f1eaa1d66fd54eac4f787502d37f69234c6d4dade1db16695635f"
     },
     {
       "path": "interview-synthesis.pdf",
       "bytes": 974459,
-      "sha256": "b28e150c65906ee712bbf249be605d3867dc021a25145426bdb166a88825fa82"
+      "sha256": "a61c8d9f3140e305f84fb023ebb8bb58a637c13ad617517eed500f6bc274872c"
     },
     {
       "path": "source.csv",
-      "bytes": 562,
-      "sha256": "da1251b5fa26993569f7e79b64070d5cd151b38844c9cc1db5a19efa2abe6e6d"
+      "bytes": 555,
+      "sha256": "18de2adad37487786191045e90eadd8121d8d840d798b00a19cfc7da8ddafeb1"
     },
     {
       "path": "source.json",

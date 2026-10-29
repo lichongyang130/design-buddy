@@ -25,17 +25,17 @@
     {
       "path": "operations-review.docx",
       "bytes": 1054916,
-      "sha256": "974ffbce04e869da564d84d4597efc2d6ef2b6f77a26ff686542dc38fea7d271"
+      "sha256": "3f1575f901b163b37e09145116379dfd8f24f723900420f54a0859824ab978b1"
     },
     {
       "path": "operations-review.pdf",
       "bytes": 1123149,
-      "sha256": "2693e5d570419638bccacc5dd58acaf16017036e87a3b64c147cc00944152585"
+      "sha256": "f574990482cd55597f3bf33550b0ba1df20faa12a5b91436648436c9aa117cc7"
     },
     {
       "path": "source.csv",
-      "bytes": 174,
-      "sha256": "6e7008394afe264d892b1228009c8d0f47b4e76f0f4958c69abc8e62479b9dd9"
+      "bytes": 167,
+      "sha256": "ca62b99f5e9fd93cce8a61dbe7d165e7dd9d2b45fd1f1cf130e19d1ad2bf0b74"
     },
     {
       "path": "source.json",

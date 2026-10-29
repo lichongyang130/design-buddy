@@ -41,7 +41,7 @@ for s in specs:
    case,num=s['sources'][n-1].split('/');src=r/'public/atelier'/case/'images'/(num+'.jpg')
   im=Image.open(src).convert('RGB');im.thumbnail((1050,760));im.save(target,quality=83,optimize=True)
  (directory/'data.json').write_text(json.dumps(dict(work=work,pages=pages,provenance=provenance),ensure_ascii=False,indent=2)+'\n');(directory/'content.js').write_text('export const work='+json.dumps(work,ensure_ascii=False)+';\nexport const imageCount=5;\nexport const pages='+json.dumps(pages,ensure_ascii=False)+';\n')
- (directory/'source.json').write_text(json.dumps(source,ensure_ascii=False,indent=2)+'\n');stream=io.StringIO();writer=csv.DictWriter(stream,fieldnames=list(source['records'][0]));writer.writeheader()
+ (directory/'source.json').write_text(json.dumps(source,ensure_ascii=False,indent=2)+'\n');stream=io.StringIO();writer=csv.DictWriter(stream,fieldnames=list(source['records'][0]),lineterminator='\n');writer.writeheader()
  for row in source['records']:writer.writerow({k:json.dumps(v,ensure_ascii=False)if isinstance(v,(list,dict))else v for k,v in row.items()})
  (directory/'source.csv').write_text(stream.getvalue())
 (r/'public/atelier/report-expansion.json').write_text(json.dumps(dict(schemaVersion=1,cases=[s['id']for s in specs],pagesPerCase=10,distinctImagesPerCase=5,newImages=6,curatedExistingImages=24,completedOf50=18),indent=2)+'\n')

@@ -25,17 +25,17 @@
     {
       "path": "experiment-readout.docx",
       "bytes": 950018,
-      "sha256": "d9c1dbbb37440ebbed3e19f0d6614a5924ef897af19c60478948a0ee8a5a0d36"
+      "sha256": "fb2281c107f1bb69daa4c287bf733f84b20f35d670edf6b6bcdf9b1a1f9963c8"
     },
     {
       "path": "experiment-readout.pdf",
       "bytes": 1020721,
-      "sha256": "35b8c1e9c62a870138edd6e1a7ff804db99d7244a21f4270b379c9b64cc4774d"
+      "sha256": "ee2fc55d2997084a66a9681c46a0336e9eb1209cbc91d30e03b92b68dbca38dc"
     },
     {
       "path": "source.csv",
-      "bytes": 388,
-      "sha256": "0ca05bb84418b0b429c1a6c24ac03ce7fb4819d502a00b018197a84f0eec4c1c"
+      "bytes": 363,
+      "sha256": "dd161f56c31aee20ee7f6dcc6c5a322a8f6efe5002f6b3f07cf530ab1e772a03"
     },
     {
       "path": "source.json",

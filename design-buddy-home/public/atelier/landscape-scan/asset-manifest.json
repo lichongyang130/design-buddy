@@ -25,17 +25,17 @@
     {
       "path": "landscape-scan.docx",
       "bytes": 1054982,
-      "sha256": "669b71d8f5be54fcbf2b9920a0ad4fe6991037c31ce71801028f1bafd4b200bb"
+      "sha256": "12875d3a5688c93d84f76a3dd1099f06930a6867e2045d0d9dec92adb6bef79d"
     },
     {
       "path": "landscape-scan.pdf",
       "bytes": 1122073,
-      "sha256": "ebc85c0b2f085b32cf17761584b0e84b29a1b3cb4ea4d868ce833302358a5708"
+      "sha256": "595b01e7bf3bf2b40c05c758092ca5f628de96ea6822c4dc72d28356b53bdb9c"
     },
     {
       "path": "source.csv",
-      "bytes": 251,
-      "sha256": "bd88e2fa3cf9e8109f5743b02974db7106b8211c83e8a7efaddf8f6df3b35fb8"
+      "bytes": 244,
+      "sha256": "c1ccc1f413c3bba8edc553bc520972cb9f6c2ebc8ca1607515bdb9f84c995fea"
     },
     {
       "path": "source.json",
