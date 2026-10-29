@@ -192,3 +192,9 @@ Build: `npm run build:report-expansion`. Acceptance: `npm run test:report-expans
 Current gallery: 33 cases (32 published, one SWATCH draft), target 65. Prior nine-document, six-course and six-proposal collections remain independently filtered. Revision `20261029-rebuild-13` and SW v13 prevent previous version modules from replacing current content without deleting unrelated caches or private work. Distribution bytes are committed/pushed before SHA-pinning; primary images, authored source, HTML and manifests remain in the current tree.
 
 Next batch: five fundraising scripts. Thirty-two of the requested fifty remain planned, not published placeholders.
+
+### Final report backup / reproducibility checkpoint
+
+Complete final report export bytes are backed by pushed commit `195eaa8ceeafebc8350b686628261b05c042a3fa`. All 70 pinned artifacts were actually removed locally, automatically reconstructed from immutable Git history and verified against byte size/SHA-256. A report Word blob was independently downloaded from GitHub and matched exactly. The six restored final original Word files were rendered again with real LibreOffice: ten pages each. Production integrity/build passes after the cold restore. Cumulative extant non-ignored patch content is approximately **118.4 MiB**, below 128 MiB.
+
+The CSV writer now emits canonical LF, matching the repository’s enforced LF checkout. All source CSV/JSON/JS bytes were compared with their pushed Git blobs; manifests and offline archives were rebuilt after canonicalisation. This prevents a fresh clone from failing byte-level integrity because of CRLF normalisation. Model round trips, report browser/mobile/offline/download tests and six edited-Word renderings passed again after that correction. No current download was removed by artifact pinning.
