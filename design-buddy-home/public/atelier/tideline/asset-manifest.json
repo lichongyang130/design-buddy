@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
   "work": "tideline",
-  "status": "draft",
+  "status": "published",
   "pages": 32,
-  "mainIllustrations": 10,
+  "mainIllustrations": 16,
   "expectedIllustrations": 16,
   "files": [
     {
       "path": "content.js",
-      "bytes": 19045,
-      "sha256": "74dda431b08c4b348cbb68b8084d6da466036bf74e45f047dc5606a654f3a647"
+      "bytes": 19395,
+      "sha256": "27a83287abccc3404faa5db6e58745e76afc08bc041f60392ee49132ce068c13"
     },
     {
       "path": "viewer.js",
-      "bytes": 7143,
-      "sha256": "2c7c8aed12ffd324ffd88df2a25327a6ed776e9e19b9f87f85f2ea2a2410733a"
+      "bytes": 7127,
+      "sha256": "f6a5ad57e981ece03cfa2eb6bd1c6105b709a3e484db960c2542fe5a57a38067"
     },
     {
       "path": "style.css",
@@ -23,8 +23,8 @@
     },
     {
       "path": "offline.js",
-      "bytes": 24789,
-      "sha256": "f15b97a3f3324e34da1f6d52e5be753b19a5086bd00db00420ddc6b40944f0c3"
+      "bytes": 25123,
+      "sha256": "db1d891fd9207b57e16ea0ea47554b25d11d79051a020d8aae99f090e535309d"
     },
     {
       "path": "tideline-data.csv",
@@ -38,13 +38,13 @@
     },
     {
       "path": "tideline-preview.pdf",
-      "bytes": 2746886,
-      "sha256": "3b07b93a7323f0de4f0ac85d9050e8a8546ad2c87c2f0d126eb2e51adf252e4b"
+      "bytes": 4109875,
+      "sha256": "4971c53ea71c60c6acfe27fa20f81a1e1f6afba0d53a3e9b0b802bfef9ad1cc0"
     },
     {
       "path": "tideline-preview.pptx",
-      "bytes": 6767343,
-      "sha256": "0d48fd1d1b039c4e410f6c92107e5f12c95c1f04c008f3ba9fe997f961d44e28"
+      "bytes": 8789499,
+      "sha256": "5ff1e44b72b432e1c79c79c3fadb5c1ae9498ba6dd10f428d512847f0cbedbb0"
     },
     {
       "path": "images/01.jpg",
@@ -95,6 +95,36 @@
       "path": "images/10.jpg",
       "bytes": 247347,
       "sha256": "dfdcd2d2b04b745a5bc39162a796f86f3a654184ebd5e6032dbc66a35e1692a0"
+    },
+    {
+      "path": "images/11.jpg",
+      "bytes": 182467,
+      "sha256": "f8a63ef00eaac435f8ce127749e39524d552c33afca645be6aa14945ce5be3c6"
+    },
+    {
+      "path": "images/12.jpg",
+      "bytes": 239465,
+      "sha256": "f2ef8bd8bc0861844493e77a7db6c112fe946eee042db19586d18aa10816b6ab"
+    },
+    {
+      "path": "images/13.jpg",
+      "bytes": 224526,
+      "sha256": "e2b3c2937be8fe34de63ab4486b07e0275aa79e4757c0c97aad5610277963755"
+    },
+    {
+      "path": "images/14.jpg",
+      "bytes": 269983,
+      "sha256": "2a1be8fd8c92c0ade6daa415c5c5eea6fc0912d779a333486460a1af59ab198a"
+    },
+    {
+      "path": "images/15.jpg",
+      "bytes": 247962,
+      "sha256": "48b57ee1a36908de9124a1c65cb14fc0444b54df60557fa8dbfc7a46982a69a1"
+    },
+    {
+      "path": "images/16.jpg",
+      "bytes": 204571,
+      "sha256": "81d4ef95b11d35446c29e2254f883c51dd8ff98064e845e1e1705347b3b1d26f"
     }
   ]
 }

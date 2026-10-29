@@ -8,7 +8,7 @@ Target remains 56 cases. Legacy bulk sources are retained, not used to populate 
 
 ## Actual progress
 
-**Published: 2 / 56. Drafts: 1. Not started: 53. Authored pages including draft: 96. Actual independent main illustrations: 42 / 48 planned across these three cases. Missing primary art: 6, all in the third draft.**
+**Published: 3 / 56. Drafts: 1. Not started: 52. Authored pages including draft: 126. Actual independent main illustrations: 52 / 63 planned across these four cases. Missing primary art: 11, all in the fourth draft.**
 
 PANTRY NOTES is a new 32-page kitchen-measurement learning journal. All 16 genuine primary illustrations are present. The final six show equal-group planning, comparison of observation notes, provenance review, method handoff, careful revision and a closing notebook still life. All 32 pages show their assigned primary illustration; no pending-art diagram remains. Repeated placements do not increase the independent primary-art count. The case is published after browser, offline, cache, export and real Office checks passed.
 
@@ -24,7 +24,7 @@ All 16 independent warm-ivory/pale-sage illustrations are present. The final six
 
 The resource model is fictional: 1,800 + 1,400 + 600 + 400 = 4,200 units; adding 800 gives 5,000. Staffing, venue costs, specialist review and other categories are explicitly not supplied. It is not a quote, real funding or a complete budget.
 
-The gallery now reads the case registry rather than a hardcoded single case. Search, OR category filtering, name/date sort, recent views, collection, archive/restore and mobile sidebar operate across all three cases without modifying legacy personal-work storage. Production checks accept an honest draft but forbid publishing art-incomplete metadata.
+The gallery now reads the case registry rather than a hardcoded single case. Search, OR category filtering, name/date sort, recent views, collection, archive/restore and mobile sidebar operate across all four cases without modifying legacy personal-work storage. Production checks accept an honest draft but forbid publishing art-incomplete metadata.
 
 ## Reproduction and safeguards
 
@@ -35,7 +35,7 @@ Run from `design-buddy-home`:
 - `npm run build:pantry-notes` (uses `PANTRY_BASE_URL`, default `http://127.0.0.1:5174`)
 - `npm run check:templates` verifies the new catalog, source counts, distinct actual JPEGs and SHA-256 asset manifest. Drafts may exist but cannot count as published. Missing/corrupt originals block production builds.
 - `npm run build:open-shelf` and `npm run test:open-shelf` build and exercise the independent second case (`OPEN_SHELF_BASE_URL`, default port 5174).
-- `npm run test:pantry-cache` verifies old-cache migration and all three actual offline case reloads.
+- `npm run test:pantry-cache` verifies old-cache migration and all four actual offline case reloads.
 - `npm run test:pantry-notes` exercises browser behaviour, per-page fit, editing, downloads, real touch and direct-file offline source.
 - `npm run test:template-office` requires the optional LibreOffice kit at `.cache/office/node_modules/@deepseek-ai/libreoffice-kit/lib/index.js`, or `OFFICE_KIT_MODULE`; it runs real LibreOffice core, not Microsoft Office GUI.
 - `npm run build` runs integrity checks before compiling.
@@ -44,21 +44,35 @@ The browser helper automatically extracts packaged Chromium runtime libraries in
 
 The service worker uses exact-request network-first caching, keeps unrelated caches, and never substitutes homepage HTML for a missing work/module. Versioned gallery and case modules prevent old unversioned caches from replacing new content.
 
-## TIDELINE — third case (draft)
+## TIDELINE — third case (published)
 
-32 original portrait atlas pages use a masthead, live scoped metrics, full-colour coastal scene, abstract segment index, source chart and analyst question. This is neither the kitchen journal nor the landscape proposal board. Eight chapter palettes accompany ten independently generated scenes: blue sea, coral sunset, overcast harbour, forest green, red boats, sand-gold overlook, deep-teal interior, fog, coastal gardens and indigo night. Not all backgrounds are ivory or sage.
+32 original portrait atlas pages use a masthead, live scoped metrics, full-colour coastal scene, abstract segment index, source chart and analyst question. This is neither the kitchen journal nor the landscape proposal board. Eight chapter palettes accompany sixteen independently generated scenes: blue sea, coral sunset, overcast harbour, forest green, red boats, sand-gold overlook, deep-teal interior, fog, coastal gardens, indigo night, midnight analyst studio, storm-grey harbour, copper wetland, emerald porch, ochre sunroom and lavender dawn. Not all backgrounds are ivory or sage.
 
-Only 10 of 16 primary illustrations exist. Pages 21–32 use explicit pending-art scope diagrams, which are not counted as primary illustrations. The case stays draft until the other six genuine artworks and full checks are completed. No extra art is claimed from repeated placements.
+All 16 independent primary illustrations are present. All 32 pages use their actual assigned artwork; no pending-art frame remains. The case is published after all browser, data, mobile, cache, offline, export and real Office checks pass. Repeated placements do not add extra primary art.
 
 The deterministic source model has 240 invented entry-event rows: day totals 42/50/46/58/44, segment totals 70/80/90. These are not unique people, occupancy, weather, a real walking route or empirical evidence. Segment selection genuinely recalculates KPIs/charts, a 25-row paginated source ledger and selected CSV. Prose explicitly remains full-model teaching context. Scope, edits and a private note persist independently under `design-buddy-tideline-rebuild-v1`. Current HTML includes all 32 pages, actual selected charts and embedded artwork; JSON records scope/edits. Original full-model PDF/PPTX are unchanged by edits.
 
-`npm run build:tideline` uses `TIDELINE_BASE_URL` (default port 5174), generates the 32-page PDF, native-text/shape 32-slide PPTX, full CSV/JSON, cover/inside, SHA manifest and offline source ZIP. `npm run test:tideline` exercises ten groups, including mobile, exact scoped CSV and direct-file offline exports. Source ZIP includes all ten actual JPEGs, not duplicate original PDF/PPTX.
+`npm run build:tideline` uses `TIDELINE_BASE_URL` (default port 5174), generates the 32-page PDF, native-text/shape 32-slide PPTX, full CSV/JSON, cover/inside, SHA manifest and offline source ZIP. `npm run test:tideline` exercises ten groups, including mobile, exact scoped CSV and direct-file offline exports. Source ZIP includes all sixteen actual JPEGs, not duplicate original PDF/PPTX.
+
+## AFTERGLOW — fourth case (draft)
+
+30 original dark landscape creative folios replace the portrait atlas with a vertical identity spine, five-act navigation, a six-beat reading rail, theatre scene/intention pairing and three editable prompt cards. Five chapter backgrounds are burgundy, midnight blue, copper, deep green and aubergine. The four existing independent artworks show a crimson auditorium, cobalt rehearsal room, copper costume-storytelling room and aubergine/emerald lobby.
+
+Only four of fifteen main artworks exist. The first eight pages use their assigned actual illustrations; the remaining twenty-two pages explicitly show missing-art typography, not main illustrations. Eleven artworks remain missing. This case is draft and does not count as completed. The image tool confirmed a per-turn ten-image ceiling after this turn's six TIDELINE completions and four AFTERGLOW artworks; no failed generation is counted.
+
+The thirty authored pages form Arrival / Contrast / Movement / Revision / Handoff, six reading beats each. Beat order is not elapsed time, a real show call sheet, blocking or a production plan. All examples concern fictional adults and creative writing. No booking, permissions, funding, accessibility approval, technical instruction or real participant study is supplied.
+
+Act buttons and within-act beat buttons genuinely navigate pages. Each page has an independent local creative mark (unmarked/try/revise/park), six editable text fields and a separate private note. Local state uses `design-buddy-afterglow-rebuild-v1`; reset preserves other cases. Current HTML exports all thirty pages with actual text, marks, embedded artwork and the private note; JSON exports the state. Original PDF/PPTX are fixed drafts and are not rewritten by browser edits.
+
+`npm run build:afterglow` uses `AFTERGLOW_BASE_URL` (default port 5174) and generates a 30-page PDF, 30-slide native-text/shape PPTX, cover/inside, SHA manifest and direct-file offline ZIP. The source ZIP contains all four actual JPEGs and a bundled viewer, not duplicated original PDF/PPTX. `npm run test:afterglow` exercises nine groups including every page, touch navigation, editing, exact local marks, genuine downloads and self-contained offline export.
 
 ## Verification and next steps
 
-PANTRY NOTES passes eight browser groups, OPEN SHELF nine, TIDELINE ten and old-worker/offline regression six. Real LibreOffice renders each of the three native-text PPTX files to 32 pages. Registry v5/SW v5 bypass stale v4 gallery modules without deleting personal storage or unrelated caches. Production integrity accepts the honest third draft but does not count it as published.
+PANTRY NOTES passes eight browser groups, OPEN SHELF nine, TIDELINE ten, AFTERGLOW nine and old-worker/offline regression seven. Real LibreOffice renders the first three PPTX files to 32 pages each and the fourth to 30. Registry v6/SW v6 bypass stale v5 gallery and TIDELINE v1 draft modules without deleting personal storage or unrelated caches. All 99 atelier files in public/dist are byte-identical. Production integrity accepts the honest fourth draft but does not count it as published.
 
-Next: finish TIDELINE's six missing independent illustrations with varied environments and colours, then rebuild and rerun checks. There are 53 cases not started. Each case still needs 28–35 pages, 15–20 independent main illustrations and its own framework. Reused placements, diagrams and incomplete drafts must not be reported as completed cases. Preserve verified GitHub checkpoints with actual artwork, source and reproducible exports.
+Next: finish AFTERGLOW's eleven missing independent illustrations, preserving varied saturated environments rather than repeating the same room. Planned image slots 05–15: cobalt quiet lounge; teal story-card discussion; crimson dialogue rehearsal; ochre object/character workshop; forest-green transition doorway; copper revision studio; royal-purple alternatives discussion; olive reading nook; crimson informal notebook handoff; midnight-navy draft comparison; indigo empty-stage closing still life. These are plans, not generated files or counted artwork.
+
+After completing those eleven, update every final-art caption and draft label, regenerate all exports/manifests/offline bundle, rerun the full suite and verify a GitHub checkpoint. There are 52 cases not started. Each still needs 28–35 pages, 15–20 independent main illustrations and its own framework. Never count reused placements, diagrams or incomplete drafts as finished cases.
 
 The existing history already on this same remote branch is merged without replacing the rebuilt template page with its legacy catalog. Those historical sources are retained; they are not counted as new completed cases.
 

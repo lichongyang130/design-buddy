@@ -18,7 +18,9 @@
     "build:open-shelf": "node scripts/build-open-shelf.mjs",
     "test:open-shelf": "node tests/verify-open-shelf.mjs",
     "build:tideline": "node scripts/build-tideline.mjs",
-    "test:tideline": "node tests/verify-tideline.mjs"
+    "test:tideline": "node tests/verify-tideline.mjs",
+    "build:afterglow": "node scripts/build-afterglow.mjs",
+    "test:afterglow": "node tests/verify-afterglow.mjs"
   },
   "devDependencies": {
     "@sparticuz/chromium": "^153.0.0",
