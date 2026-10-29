@@ -8,13 +8,13 @@ Target remains 56 cases. Legacy bulk sources are retained, not used to populate 
 
 ## Actual progress
 
-**Published: 0 / 56. Drafts: 1. Not started: 55.**
+**Published: 1 / 56. Drafts: 0. Not started: 55. Authored pages: 32. Independent primary illustrations: 16. Missing primary art: 0.**
 
-PANTRY NOTES is a new 32-page kitchen-measurement learning journal. Ten genuine primary illustrations are present; the case targets 16. The last twelve pages explicitly use supporting context diagrams because art 11–16 is missing. Repeated placements and supporting diagrams do not increase the primary-art count. Do not publish until all 16 are present and acceptance passes.
+PANTRY NOTES is a new 32-page kitchen-measurement learning journal. All 16 genuine primary illustrations are present. The final six show equal-group planning, comparison of observation notes, provenance review, method handoff, careful revision and a closing notebook still life. All 32 pages show their assigned primary illustration; no pending-art diagram remains. Repeated placements do not increase the independent primary-art count. The case is published after browser, offline, cache, export and real Office checks passed.
 
 The framework is a specimen window, observation/method margin and reflection strip. Mobile uses full-width stacked art and readable prose, not a tiny desktop screenshot. Text and a private note save under a separate local key. Current HTML and JSON exports preserve edits; original PDF/PPTX do not change with browser edits. All numerical examples are fictional arithmetic, not readings from the illustrated scale/jug, cooking instructions, calibration, nutrition or safety advice.
 
-Preview PDF has 32 pages. Preview PPTX has 32 slides with native editable text and primary raster art or explicitly labelled supporting maps. Source ZIP opens directly with `file://`, includes all ten illustrations and a bundled viewer, and can generate self-contained current HTML. Original PDF/PPTX are separate downloads, not duplicated in the source archive. File-origin storage can be unavailable; use exports to retain edits.
+Final PDF has 32 pages. Final PPTX has 32 slides with native editable text and all 16 primary raster illustrations. Historical `pantry-notes-preview.pdf` and `.pptx` URLs remain compatible; download filenames are `pantry-notes.pdf` and `.pptx`. Source ZIP opens directly with `file://`, includes all 16 illustrations and a bundled viewer, and can generate self-contained current HTML. Original PDF/PPTX are separate downloads, not duplicated in the source archive. File-origin storage can be unavailable; use exports to retain edits.
 
 ## Reproduction and safeguards
 
@@ -34,10 +34,12 @@ The service worker uses exact-request network-first caching, keeps unrelated cac
 
 ## Next
 
-Generate six new independent reference-style scenes (11–16): equal-group portion planning, comparing discrepant notes, provenance/source review, method handoff, careful revision, and a closing notebook still life. Update image count, actual alt descriptions, page diagrams, all preview labels, manifest, exports, library and tests together. Rebuild and revalidate before publishing. Do not start additional incomplete case shells to inflate the catalog.
+Author a genuinely different second case, not a renamed copy of the notebook framework. Continue the latest reference-led ivory/sage fine-line watercolour backgrounds. Each case must contain 28–35 pages and 15–20 independent main illustrations before publication. The remaining 55 cases are not authored. Maintain a verified Git/remote checkpoint including original art and reproducible export sources.
 
-## This draft's verification
+## Published case verification
 
-Eight browser acceptance groups pass; four old-worker/offline checks pass. Real LibreOffice renders the final native-text PPTX to 32 pages. Production build passes integrity checks, and all 22 files in the new `public/atelier` tree match their production copies byte-for-byte. These checks do not waive the missing-six-art publication gate. Optional Office/browser evidence is in ignored `.cache/pantry-notes/` and can be regenerated.
+Eight browser acceptance groups pass; four old-worker/offline checks pass. Real LibreOffice renders the final native-text PPTX to 32 pages. Production build passes integrity checks, and all 28 files in the new `public/atelier` tree match their production copies byte-for-byte. All 16 primary illustrations meet the art gate. The v2 viewer/gallery bypass poisoned v1 draft modules, and the final illustration loads correctly on an offline reload. Regenerable Office/browser evidence is in ignored `.cache/pantry-notes/` and can be regenerated.
 
 The existing history already on this same remote branch is merged without replacing the rebuilt template page with its legacy catalog. Those historical sources are retained; they are not counted as new completed cases.
+
+Export PDFs/PPTX/source archives currently remain in Git as requested deliverables. Before broad expansion, plan artifact generation/storage rather than duplicating these binaries indefinitely; preserve primary art and reproducibility and respect the workspace snapshot size limit.
