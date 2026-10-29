@@ -1,6 +1,6 @@
 # 50 additional documents — production queue
 
-**Status: 12/50 completed and published (six courses + six proposals), 38 remain planned. Existing 15 cases are preserved.**
+**Status: 18/50 completed and published (six courses + six proposals + six reports), 32 remain planned. Existing 15 cases are preserved.**
 
 This request adds 50 cases, rather than renaming or counting the previous nine. The previous 56-case target must not be used to claim this new request is complete. Every case requires at least ten pages and five distinct images, actual editable DOCX, PDF and offline source. A new name/palette is not a distinct framework.
 
@@ -171,3 +171,24 @@ Primary JPEGs, authored content, independent toolkit, HTML and manifests stay in
 Next batch: six reports. Thirty-eight of the requested fifty remain unfinished, not published placeholders.
 
 Final checkpoint: all 27 original Office exports render correctly; original-case, nine-document, course, proposal and cache regressions plus production build pass. All 52 pinned artifacts were actually restored from missing local files and byte/SHA checked. A remote proposal Word blob was independently fetched and verified. Current patch budget is about 111.05 MiB; the six proposals’ complete export bytes are backed by pushed commit `3c373411bfd6e3a61d55afa7c04ee4714dc98d75`.
+
+## Report batch — six completed analytical frameworks
+
+| Case | Framework | Actual synthetic source |
+|---|---|---|
+| EVIDENCE REVIEW | Source register, inclusion roles and theme trace | 8 invented cards: 5 included, 3 excluded; included roles 2/2/1 |
+| EXPERIMENT READOUT | Hypothesis, denominator and conditional-time comparison | 24 invented task rows: 12 A/12 B; 8/9 completions; completed-only means 11.5/11.0 |
+| OPERATIONS REVIEW | Flow reconciliation, exception flag and action ledger | 6 invented periods: opening 10 + received 268 − closed 259 = ending 19 |
+| INTERVIEW SYNTHESIS | Extract index, overlapping codes and reflexive note | 6 authored extracts, 9 tag assignments, 0 actual interviews |
+| LANDSCAPE SCAN | Capability matrix, two-axis projection and opportunity questions | 6 fictional concepts × 4 binary flags; 15 true flags of 24 cells, not market share |
+| DECISION AUDIT | Decision-time information, version trail and hindsight boundary | 5 invented events; choice V3; V4/V5 are later information, not pre-choice evidence |
+
+Every case has ten authored pages, five distinct images, complete native editable DOCX, PDF, provenance and offline source ZIP. Six new theme heroes plus 24 curated images, not thirty new artworks. Every page includes both a source-summary panel and editable analyst records. Browser summaries and source CSV/JSON originals remain fixed when text/records are edited; replace the source and rebuild to change model data. Word exports retain native tables and current edits rather than a screenshot. Long edits can reflow; private notes are included in current exports and should be reviewed before sharing.
+
+Collection: `/templates.html?format=文档&batch=report-expansion`. Combined originals: `/atelier/report-kit/download.html` (six Word + six PDF entries, byte-checked). Each source CSV/JSON is downloadable and also byte-identical in the file:// source ZIP. All figures and source statements are invented; do not claim actual experiments, operational performance, market research or interviews.
+
+Build: `npm run build:report-expansion`. Acceptance: `npm run test:report-expansion`, including `verify-report-models.mjs`. The model checks recompute inclusion roles, completion denominators, null-value rules, completed-only means/medians, period balances, overlapping theme counts, matrix flags and decision-time boundaries. CSV round trips reproduce all source JSON records. Browser checks exercise 60-page fit, six geometries, six native block orders, multiple record edits, original XML/family-generator equivalence, HTML/JSON, 390px mobile, file:// Word and genuine downloads. Original and edited Word files are actually rendered with LibreOffice at ten pages each.
+
+Current gallery: 33 cases (32 published, one SWATCH draft), target 65. Prior nine-document, six-course and six-proposal collections remain independently filtered. Revision `20261029-rebuild-13` and SW v13 prevent previous version modules from replacing current content without deleting unrelated caches or private work. Distribution bytes are committed/pushed before SHA-pinning; primary images, authored source, HTML and manifests remain in the current tree.
+
+Next batch: five fundraising scripts. Thirty-two of the requested fifty remain planned, not published placeholders.

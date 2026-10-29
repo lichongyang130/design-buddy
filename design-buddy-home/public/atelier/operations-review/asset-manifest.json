@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "operations-review",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 16420,
+      "sha256": "fcfc6b11d88031d0ed39c331c562122e9f8715e4acb5c31f827b2f6be497c8ed"
+    },
+    {
+      "path": "content.js",
+      "bytes": 12986,
+      "sha256": "6817ededb2fcba5a3d42e312fd3386fc4ad94dadbd04192da9c79e6bb71866ac"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 515,
+      "sha256": "33cf47bac570ebee3f16e5506d8819de14f51a3d81ee5e98edaa304a62fbdb22"
+    },
+    {
+      "path": "operations-review.docx",
+      "bytes": 1054916,
+      "sha256": "974ffbce04e869da564d84d4597efc2d6ef2b6f77a26ff686542dc38fea7d271"
+    },
+    {
+      "path": "operations-review.pdf",
+      "bytes": 1123149,
+      "sha256": "2693e5d570419638bccacc5dd58acaf16017036e87a3b64c147cc00944152585"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 174,
+      "sha256": "6e7008394afe264d892b1228009c8d0f47b4e76f0f4958c69abc8e62479b9dd9"
+    },
+    {
+      "path": "source.json",
+      "bytes": 1092,
+      "sha256": "bf4e878538397a2ba138468ab1b5728ef1aeaa31109b076afdd7ab067675c25f"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 212946,
+      "sha256": "fc0bf3adfd5ab9610330ee77f7cd2709ec9c7e9c2ef4d3038c35af49717ac78d"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 222155,
+      "sha256": "1ad1b9a7fe3b0cf429520c3834ed38b66028e19095096fa7f4fe9769b27b540f"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 212809,
+      "sha256": "a0d62acb99e62b21f3da5bddfabb47c6bd6a3667af8cc81a1c9071ae81f65121"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 185156,
+      "sha256": "066fed84b81347d76e2fb1115aecbed9f0ff03990bf9264182d10e742e781e60"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 213374,
+      "sha256": "e41f199232f7ab21b0379f0aee54447d7e9d1103feb51712872270ba349d8255"
+    }
+  ]
+}

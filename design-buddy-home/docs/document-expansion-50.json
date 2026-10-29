@@ -19,7 +19,7 @@
     "form-study"
   ],
   "additionalCases": 50,
-  "publishedFromThisExpansion": 12,
+  "publishedFromThisExpansion": 18,
   "counts": {
     "课程": 6,
     "提案": 6,
@@ -602,8 +602,8 @@
         "综合解释",
         "后续问题"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -623,7 +623,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/evidence-review/index.html",
+      "verification": "60-page desktop fit; six browser geometries and six native Word orders; multi-cell records, immutable synthetic summaries, CSV/JSON round trips and source arithmetic; mobile/offline/combined originals; actual original and edited DOCX renderings at ten pages"
     },
     {
       "id": "experiment-readout",
@@ -642,8 +648,8 @@
         "结论边界",
         "复验计划"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -663,7 +669,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/experiment-readout/index.html",
+      "verification": "60-page desktop fit; six browser geometries and six native Word orders; multi-cell records, immutable synthetic summaries, CSV/JSON round trips and source arithmetic; mobile/offline/combined originals; actual original and edited DOCX renderings at ten pages"
     },
     {
       "id": "operations-review",
@@ -682,8 +694,8 @@
         "责任讨论",
         "下期关注"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -703,7 +715,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/operations-review/index.html",
+      "verification": "60-page desktop fit; six browser geometries and six native Word orders; multi-cell records, immutable synthetic summaries, CSV/JSON round trips and source arithmetic; mobile/offline/combined originals; actual original and edited DOCX renderings at ten pages"
     },
     {
       "id": "interview-synthesis",
@@ -722,8 +740,8 @@
         "发现边界",
         "验证问题"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -743,7 +761,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/interview-synthesis/index.html",
+      "verification": "60-page desktop fit; six browser geometries and six native Word orders; multi-cell records, immutable synthetic summaries, CSV/JSON round trips and source arithmetic; mobile/offline/combined originals; actual original and edited DOCX renderings at ten pages"
     },
     {
       "id": "landscape-scan",
@@ -762,8 +786,8 @@
         "机会假设",
         "监测清单"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -783,7 +807,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/landscape-scan/index.html",
+      "verification": "60-page desktop fit; six browser geometries and six native Word orders; multi-cell records, immutable synthetic summaries, CSV/JSON round trips and source arithmetic; mobile/offline/combined originals; actual original and edited DOCX renderings at ten pages"
     },
     {
       "id": "decision-audit",
@@ -802,8 +832,8 @@
         "经验提炼",
         "改进机制"
       ],
-      "status": "planned",
-      "published": false,
+      "status": "published",
+      "published": true,
       "minPages": 10,
       "minDistinctImages": 5,
       "requiredDeliverables": [
@@ -823,7 +853,13 @@
         "offline-file-export",
         "real-office-render",
         "old-case-regression"
-      ]
+      ],
+      "pages": 10,
+      "distinctImages": 5,
+      "newImages": 1,
+      "curatedImages": 4,
+      "url": "/atelier/decision-audit/index.html",
+      "verification": "60-page desktop fit; six browser geometries and six native Word orders; multi-cell records, immutable synthetic summaries, CSV/JSON round trips and source arithmetic; mobile/offline/combined originals; actual original and edited DOCX renderings at ten pages"
     },
     {
       "id": "founder-narrative",
@@ -2106,5 +2142,5 @@
       ]
     }
   ],
-  "remaining": 38
+  "remaining": 32
 }

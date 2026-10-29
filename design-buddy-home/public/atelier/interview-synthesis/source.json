@@ -1,0 +1,68 @@
+{
+  "source": "deterministic-invented-teaching-records",
+  "synthetic": true,
+  "summary": {
+    "extracts": 6,
+    "tagAssignments": 9,
+    "themeCounts": {
+      "findability": 3,
+      "version": 2,
+      "clarification": 3,
+      "example": 1
+    },
+    "actualInterviews": 0
+  },
+  "records": [
+    {
+      "extract_id": "E1",
+      "text": "I can find the current card when its version is visible.",
+      "tags": [
+        "findability",
+        "version"
+      ],
+      "invented": true
+    },
+    {
+      "extract_id": "E2",
+      "text": "I ask another reader when two cards look similar.",
+      "tags": [
+        "findability",
+        "clarification"
+      ],
+      "invented": true
+    },
+    {
+      "extract_id": "E3",
+      "text": "A short example helps me understand what to write.",
+      "tags": [
+        "example",
+        "clarification"
+      ],
+      "invented": true
+    },
+    {
+      "extract_id": "E4",
+      "text": "I keep the earlier version to compare the change.",
+      "tags": [
+        "version"
+      ],
+      "invented": true
+    },
+    {
+      "extract_id": "E5",
+      "text": "I want to know whom to ask about an unfamiliar term.",
+      "tags": [
+        "clarification"
+      ],
+      "invented": true
+    },
+    {
+      "extract_id": "E6",
+      "text": "An index lets me return to the card I used before.",
+      "tags": [
+        "findability"
+      ],
+      "invented": true
+    }
+  ]
+}

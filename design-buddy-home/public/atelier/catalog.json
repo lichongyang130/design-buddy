@@ -37,7 +37,13 @@
     "partnership-canvas",
     "research-commission",
     "change-case",
-    "creative-treatment"
+    "creative-treatment",
+    "evidence-review",
+    "experiment-readout",
+    "operations-review",
+    "interview-synthesis",
+    "landscape-scan",
+    "decision-audit"
   ],
   "documentRequirements": {
     "minPages": 10,
@@ -45,8 +51,8 @@
   },
   "additionalDocumentRequest": {
     "count": 50,
-    "published": 12,
-    "remaining": 38,
+    "published": 18,
+    "remaining": 32,
     "plan": "docs/document-expansion-50.json"
   }
 }

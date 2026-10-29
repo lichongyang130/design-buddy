@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "evidence-review",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 16535,
+      "sha256": "7d3d85c383a8a0a64ecb4b17aceb4689f40994a91dd214c5547f3840c5214292"
+    },
+    {
+      "path": "content.js",
+      "bytes": 13100,
+      "sha256": "6302dd5e81970d86d60e220506bea471effba9a1d01c9f7a3a98caf1fc5f7fc9"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 516,
+      "sha256": "ceca2d7f49d300b27330914730c0eee0783ae9a0496a26bd620c3336389d4aa0"
+    },
+    {
+      "path": "evidence-review.docx",
+      "bytes": 947225,
+      "sha256": "ece69e66c9520c09461065ad4d20001128f0e85f4f8c55ca77ac1411f6680f27"
+    },
+    {
+      "path": "evidence-review.pdf",
+      "bytes": 1022084,
+      "sha256": "d5bda44dd50f7050332e2e6f767fc8d56ec15a3056682df5abef64e56a86cd1c"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 379,
+      "sha256": "203f1bf2e1488d0a1e9f80f064c7a26a456b0fecedb897cff79a31c1dc684af8"
+    },
+    {
+      "path": "source.json",
+      "bytes": 1433,
+      "sha256": "96ebd0067955512aad2fb4799af489ee565114e730925ca5361fcb8226f3e905"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 187121,
+      "sha256": "f5ba9d93a86b15da814fda40c5790e7d1d86fcb22c36887472623e4f3c88413e"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 148003,
+      "sha256": "9c3da09a8df584b4d2a37e975baff5d8daa716f077b5b3a28dde895b68fcb485"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 201642,
+      "sha256": "cd7c0039cc2712196a0ba99c053c49f2bac9ce44e72b74681f657580460d41b4"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 221434,
+      "sha256": "9a6b0e24710b726e30e09e363768ab404a217db4e1627b7ad9261cd94abc80bd"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 180995,
+      "sha256": "24366ff798c88d5cb0d5c5e626df7bbb7b0e9c1f35821fc97e7e203366757ef4"
+    }
+  ]
+}

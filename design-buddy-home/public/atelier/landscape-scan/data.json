@@ -1,0 +1,396 @@
+{
+  "work": {
+    "id": "landscape-scan",
+    "title": "LANDSCAPE SCAN",
+    "subtitle": "领域扫描报告",
+    "category": "报告",
+    "layout": "landscape",
+    "color": "#2a6b73",
+    "wash": "#e2f0ec",
+    "framework": "比较地图与机会空白",
+    "scope": "Entirely synthetic report exercise: source records, statements and version events are invented. Illustrations are not empirical evidence. No actual study, operational result, market research or participant interview is supplied.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "report-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / LANDSCAPE SCAN",
+      "title": "Scan a fictional option space.",
+      "lead": "This report compares six invented prompt-management concepts across four binary feature dimensions. The exercise is a comparison model, not a market survey, competitor benchmark or description of real products.",
+      "body": "North, Bridge, Grove, Beacon, Harbor and Thread are placeholders. Fifteen of the 24 feature flags are true. A feature count can describe the model but cannot establish quality, value, usability or a winning product.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "What decision could this comparison help frame without pretending to be real market research?",
+      "records": [
+        {
+          "label": "Scan question",
+          "prompt": "Record scan question and its source boundary."
+        },
+        {
+          "label": "Option boundary",
+          "prompt": "Record option boundary and its source boundary."
+        },
+        {
+          "label": "Ranking not supplied",
+          "prompt": "Record ranking not supplied and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPARISON MODEL",
+          "6 invented options × 4 flags"
+        ],
+        [
+          "FEATURE TOTALS",
+          "15 true flags / 24 cells; not market share"
+        ]
+      ],
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / LANDSCAPE SCAN",
+      "title": "Declare the scan boundary.",
+      "lead": "A landscape is shaped by what it includes and excludes. Here the closed set contains six authored concepts, with no external product search or verification.",
+      "body": "A real scan would need source locations, observation dates, inclusion logic and a plan to revisit changing information. The exported six-row source makes this small fictional boundary inspectable rather than suggesting exhaustive market coverage.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "What would need to change before the report could claim actual landscape coverage?",
+      "records": [
+        {
+          "label": "Included concepts",
+          "prompt": "Record included concepts and its source boundary."
+        },
+        {
+          "label": "Search not performed",
+          "prompt": "Record search not performed and its source boundary."
+        },
+        {
+          "label": "External source needed",
+          "prompt": "Record external source needed and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPARISON MODEL",
+          "6 invented options × 4 flags"
+        ],
+        [
+          "FEATURE TOTALS",
+          "15 true flags / 24 cells; not market share"
+        ]
+      ],
+      "image": 1,
+      "kind": "body"
+    },
+    {
+      "section": "03 / LANDSCAPE SCAN",
+      "title": "Choose consistent dimensions.",
+      "lead": "The four dimensions are visible version labels, a shared index, an offline copy and a review note. A binary flag means only that the capability is stipulated in the fictional row.",
+      "body": "True does not mean tested, well implemented or appropriate for a particular user. False means absent in this model, not a verified weakness of a real product. Keep definition questions separate from capability counts.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which dimension would require a more precise definition before comparing actual products?",
+      "records": [
+        {
+          "label": "Dimension",
+          "prompt": "Record dimension and its source boundary."
+        },
+        {
+          "label": "Meaning of true",
+          "prompt": "Record meaning of true and its source boundary."
+        },
+        {
+          "label": "Meaning of false",
+          "prompt": "Record meaning of false and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPARISON MODEL",
+          "6 invented options × 4 flags"
+        ],
+        [
+          "FEATURE TOTALS",
+          "15 true flags / 24 cells; not market share"
+        ]
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / LANDSCAPE SCAN",
+      "title": "Keep the option index inspectable.",
+      "lead": "Each concept has an identifier and all four flags in the source. Do not hide inconvenient attributes behind a single summary score.",
+      "body": "North has version and index flags; Bridge has version, offline and review; Grove has index and offline. Beacon has version, index and review; Harbor has offline and review; Thread has version, index and offline. These are invented configurations.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Can a reader reconstruct every concept without relying on an unqualified score?",
+      "records": [
+        {
+          "label": "Option identifier",
+          "prompt": "Record option identifier and its source boundary."
+        },
+        {
+          "label": "Stipulated features",
+          "prompt": "Record stipulated features and its source boundary."
+        },
+        {
+          "label": "Source trace",
+          "prompt": "Record source trace and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPARISON MODEL",
+          "6 invented options × 4 flags"
+        ],
+        [
+          "FEATURE TOTALS",
+          "15 true flags / 24 cells; not market share"
+        ]
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / LANDSCAPE SCAN",
+      "title": "Read the capability matrix.",
+      "lead": "Version, index and offline flags each appear in four of the six rows. Review-note flags appear in three. The column counts sum to 15 true flags across 24 cells.",
+      "body": "That total does not mean that 62.5% of an actual market supports these features. It is a property of six authored examples. Keep the denominator and fictional source label beside any summary of the matrix.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which phrasing would incorrectly turn a model count into a market statistic?",
+      "records": [
+        {
+          "label": "Column totals",
+          "prompt": "Record column totals and its source boundary."
+        },
+        {
+          "label": "Total flags",
+          "prompt": "Record total flags and its source boundary."
+        },
+        {
+          "label": "Denominator boundary",
+          "prompt": "Record denominator boundary and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPARISON MODEL",
+          "6 invented options × 4 flags"
+        ],
+        [
+          "FEATURE TOTALS",
+          "15 true flags / 24 cells; not market share"
+        ]
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / LANDSCAPE SCAN",
+      "title": "Map a pair of dimensions.",
+      "lead": "A two-dimension map is a projection, not the full landscape. Use version visibility and offline copy to show how different configurations can occupy the same region.",
+      "body": "Bridge and Thread both have version and offline flags. North and Beacon have version without offline; Grove and Harbor have offline without version. No concept occupies neither cell in this particular model. The omitted dimensions still matter.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "What important difference is hidden when two concepts share one map cell?",
+      "records": [
+        {
+          "label": "Map axes",
+          "prompt": "Record map axes and its source boundary."
+        },
+        {
+          "label": "Overlapping options",
+          "prompt": "Record overlapping options and its source boundary."
+        },
+        {
+          "label": "Omitted dimensions",
+          "prompt": "Record omitted dimensions and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPARISON MODEL",
+          "6 invented options × 4 flags"
+        ],
+        [
+          "FEATURE TOTALS",
+          "15 true flags / 24 cells; not market share"
+        ]
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / LANDSCAPE SCAN",
+      "title": "Treat a signal as a hypothesis.",
+      "lead": "A pattern in the comparison can suggest a question to investigate, but it is not a verified trend. This source has no time series, adoption data or external observations.",
+      "body": "The combination of offline access and review notes could prompt a design discussion. It cannot be called emerging demand, a growth segment or an underserved market on the basis of these six invented configurations.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which independent source would be needed before calling the pattern a real trend?",
+      "records": [
+        {
+          "label": "Pattern noticed",
+          "prompt": "Record pattern noticed and its source boundary."
+        },
+        {
+          "label": "Hypothesis",
+          "prompt": "Record hypothesis and its source boundary."
+        },
+        {
+          "label": "Evidence not supplied",
+          "prompt": "Record evidence not supplied and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPARISON MODEL",
+          "6 invented options × 4 flags"
+        ],
+        [
+          "FEATURE TOTALS",
+          "15 true flags / 24 cells; not market share"
+        ]
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / LANDSCAPE SCAN",
+      "title": "Mark information gaps honestly.",
+      "lead": "A binary feature matrix leaves out usability, maintenance, cost, rights and context. Unknown information should stay unknown rather than being filled with assumed ratings.",
+      "body": "The model supplies no prices, quality tests, product maturity or actual service commitments. A richer real comparison would need relevant sources for each dimension and could reveal that the initial four-feature framing is insufficient.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which missing dimension could reverse a choice based only on feature presence?",
+      "records": [
+        {
+          "label": "Missing dimension",
+          "prompt": "Record missing dimension and its source boundary."
+        },
+        {
+          "label": "Needed source",
+          "prompt": "Record needed source and its source boundary."
+        },
+        {
+          "label": "Effect on comparison",
+          "prompt": "Record effect on comparison and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPARISON MODEL",
+          "6 invented options × 4 flags"
+        ],
+        [
+          "FEATURE TOTALS",
+          "15 true flags / 24 cells; not market share"
+        ]
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / LANDSCAPE SCAN",
+      "title": "Frame an opportunity without claiming demand.",
+      "lead": "An apparent empty combination can be a prompt for exploration, not evidence of a valuable opportunity. A concept still needs a coherent purpose and appropriate validation.",
+      "body": "The model has no row with all four flags, but adding every capability is not automatically a useful design. Context, maintenance and user intent could make a narrower option preferable. No market size or commercial result is supplied.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "What would show that filling a matrix gap is useful rather than merely possible?",
+      "records": [
+        {
+          "label": "Potential combination",
+          "prompt": "Record potential combination and its source boundary."
+        },
+        {
+          "label": "Intended purpose",
+          "prompt": "Record intended purpose and its source boundary."
+        },
+        {
+          "label": "Validation question",
+          "prompt": "Record validation question and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPARISON MODEL",
+          "6 invented options × 4 flags"
+        ],
+        [
+          "FEATURE TOTALS",
+          "15 true flags / 24 cells; not market share"
+        ]
+      ],
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / LANDSCAPE SCAN",
+      "title": "Leave a monitoring plan.",
+      "lead": "Close with the sources and comparison rules a real scan would need to maintain. Distinguish a proposed monitoring activity from a task accepted by an actual owner.",
+      "body": "A future scan could record verified product versions, source dates and unresolved feature definitions. The present report remains a six-concept teaching matrix. Preserve the complete source and the fictional labels when sharing a modified version.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "What should a later reviewer check before reusing this comparison?",
+      "records": [
+        {
+          "label": "Future source",
+          "prompt": "Record future source and its source boundary."
+        },
+        {
+          "label": "Revisit rule",
+          "prompt": "Record revisit rule and its source boundary."
+        },
+        {
+          "label": "Role to confirm",
+          "prompt": "Record role to confirm and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPARISON MODEL",
+          "6 invented options × 4 flags"
+        ],
+        [
+          "FEATURE TOTALS",
+          "15 true flags / 24 cells; not market share"
+        ]
+      ],
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for landscape-scan"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: tideline/02.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: swatch/02.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: open-shelf/09.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: common-ground/05.jpg"
+    }
+  ]
+}

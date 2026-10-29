@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "interview-synthesis",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 16674,
+      "sha256": "dc587857c2eb5979c552e4231cb8d7445f687f9153abf2d60f910595226a0474"
+    },
+    {
+      "path": "content.js",
+      "bytes": 13235,
+      "sha256": "2e929eef8340506ae25027169b16eacec6dfb2153ec3aa5f9468e4974e63bb09"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 520,
+      "sha256": "d246d21f21cba2a0e1c2f26b84e4f25babb9733f543454487d6af7fe109c8c98"
+    },
+    {
+      "path": "interview-synthesis.docx",
+      "bytes": 904237,
+      "sha256": "0b34792fd9520dcb98ae5f3335351bf39e41060ce2e8f3d7daaeb6e05824ea8d"
+    },
+    {
+      "path": "interview-synthesis.pdf",
+      "bytes": 974459,
+      "sha256": "b28e150c65906ee712bbf249be605d3867dc021a25145426bdb166a88825fa82"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 562,
+      "sha256": "da1251b5fa26993569f7e79b64070d5cd151b38844c9cc1db5a19efa2abe6e6d"
+    },
+    {
+      "path": "source.json",
+      "bytes": 1436,
+      "sha256": "e866d559bdf76a14923a237b719d06f9e758277c8a7194db57ef5f985aba65b5"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 185587,
+      "sha256": "f40f12d6e70a30c768c458f2136db70c2f7703a0ccf82dc052214fada4fa328c"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 152781,
+      "sha256": "4c512f1f12316fb73d5b3d612c79be0fff2583474af526037fb1deeff7ae39dc"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 154716,
+      "sha256": "38a7594a88872a2d91eacc3bcfd138b36d0251c9e8af2a9c61a2616f68b3319c"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 201643,
+      "sha256": "d8f25509bd9b9e305ec30fd7e5aeddee30e49daa55a584e625a46948b33b4243"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 201642,
+      "sha256": "cd7c0039cc2712196a0ba99c053c49f2bac9ce44e72b74681f657580460d41b4"
+    }
+  ]
+}

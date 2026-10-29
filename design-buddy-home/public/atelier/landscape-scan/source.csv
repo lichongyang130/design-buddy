@@ -1,0 +1,7 @@
+option,version,index,offline,review,invented
+North,True,True,False,False,True
+Bridge,True,False,True,True,True
+Grove,False,True,True,False,True
+Beacon,True,True,False,True,True
+Harbor,False,False,True,True,True
+Thread,True,True,True,False,True

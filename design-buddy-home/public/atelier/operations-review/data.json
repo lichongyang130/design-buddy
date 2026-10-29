@@ -1,0 +1,396 @@
+{
+  "work": {
+    "id": "operations-review",
+    "title": "OPERATIONS REVIEW",
+    "subtitle": "运营复盘报告",
+    "category": "报告",
+    "layout": "operations",
+    "color": "#3e6553",
+    "wash": "#e6efe6",
+    "framework": "指标异常与行动台账",
+    "scope": "Entirely synthetic report exercise: source records, statements and version events are invented. Illustrations are not empirical evidence. No actual study, operational result, market research or participant interview is supplied.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "report-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / OPERATIONS REVIEW",
+      "title": "Reconcile the work before explaining it.",
+      "lead": "This operations review uses six invented periods of request counts. Received work totals 268, closed work totals 259 and the opening balance is 10. The resulting ending balance is 19.",
+      "body": "The model demonstrates reconciliation, trend reading and action review. It is not actual operational performance, customer demand or staff productivity. P1–P6 are sequence labels, not real calendar periods, and the rows contain no people or customer records.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which totals should reconcile before any operational explanation is proposed?",
+      "records": [
+        {
+          "label": "Review scope",
+          "prompt": "Record review scope and its source boundary."
+        },
+        {
+          "label": "Main reconciliation",
+          "prompt": "Record main reconciliation and its source boundary."
+        },
+        {
+          "label": "Operational boundary",
+          "prompt": "Record operational boundary and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "FLOW TOTALS",
+          "268 received / 259 closed"
+        ],
+        [
+          "BALANCE RECONCILIATION",
+          "10 + 268 − 259 = 19"
+        ]
+      ],
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / OPERATIONS REVIEW",
+      "title": "Keep a metric dictionary.",
+      "lead": "Define received, closed and balance as different quantities. A period’s closed work can include requests carried from earlier periods, so it is not a subset of that period’s receipts.",
+      "body": "Balance follows opening plus received minus closed. In the source, each period records all four components and its ending balance. A real review would also need consistent case definitions and recording practices; the teaching model stipulates those quantities.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Why is closed divided by received not automatically a cohort completion rate?",
+      "records": [
+        {
+          "label": "Received definition",
+          "prompt": "Record received definition and its source boundary."
+        },
+        {
+          "label": "Closed definition",
+          "prompt": "Record closed definition and its source boundary."
+        },
+        {
+          "label": "Balance rule",
+          "prompt": "Record balance rule and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "FLOW TOTALS",
+          "268 received / 259 closed"
+        ],
+        [
+          "BALANCE RECONCILIATION",
+          "10 + 268 − 259 = 19"
+        ]
+      ],
+      "image": 1,
+      "kind": "body"
+    },
+    {
+      "section": "03 / OPERATIONS REVIEW",
+      "title": "Read the six-period overview.",
+      "lead": "Received counts are 40, 44, 39, 48, 46 and 51. Closed counts are 36, 42, 40, 44, 48 and 49. The totals are 268 and 259 respectively.",
+      "body": "The opening 10 plus the net increase of nine produces 19 at the end. Received work averages about 44.7 per period, but an average does not reveal the path of the balance or explain why the model changes.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "What important information disappears if the six periods are replaced by one average?",
+      "records": [
+        {
+          "label": "Received series",
+          "prompt": "Record received series and its source boundary."
+        },
+        {
+          "label": "Closed series",
+          "prompt": "Record closed series and its source boundary."
+        },
+        {
+          "label": "Ending balance",
+          "prompt": "Record ending balance and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "FLOW TOTALS",
+          "268 received / 259 closed"
+        ],
+        [
+          "BALANCE RECONCILIATION",
+          "10 + 268 − 259 = 19"
+        ]
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / OPERATIONS REVIEW",
+      "title": "Trace the balance, not only the volume.",
+      "lead": "Ending balances progress through 14, 16, 15, 19, 17 and 19. The balance can fall even when a period receives new work, because closures may include prior-period requests.",
+      "body": "P3 receives 39 and closes 40, reducing the previous balance from 16 to 15. P5 receives 46 and closes 48, reducing 19 to 17. These are arithmetic changes in a fictional ledger, not evidence of a particular team action.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which period best illustrates the difference between workload flow and remaining balance?",
+      "records": [
+        {
+          "label": "Prior balance",
+          "prompt": "Record prior balance and its source boundary."
+        },
+        {
+          "label": "Net change",
+          "prompt": "Record net change and its source boundary."
+        },
+        {
+          "label": "New balance",
+          "prompt": "Record new balance and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "FLOW TOTALS",
+          "268 received / 259 closed"
+        ],
+        [
+          "BALANCE RECONCILIATION",
+          "10 + 268 − 259 = 19"
+        ]
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / OPERATIONS REVIEW",
+      "title": "Flag an exception with a rule.",
+      "lead": "An exception should be defined against a stated rule rather than chosen because a chart looks dramatic. For this exercise, flag any period with a net balance increase of at least four.",
+      "body": "P1 and P4 each meet that stipulated threshold. The rule is a discussion device, not a validated service target. It identifies periods to inspect but does not establish that a failure, staffing shortage or unusual real event occurred.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "What would be needed before this threshold could become a real operational target?",
+      "records": [
+        {
+          "label": "Flag rule",
+          "prompt": "Record flag rule and its source boundary."
+        },
+        {
+          "label": "Flagged periods",
+          "prompt": "Record flagged periods and its source boundary."
+        },
+        {
+          "label": "Meaning of the flag",
+          "prompt": "Record meaning of the flag and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "FLOW TOTALS",
+          "268 received / 259 closed"
+        ],
+        [
+          "BALANCE RECONCILIATION",
+          "10 + 268 − 259 = 19"
+        ]
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / OPERATIONS REVIEW",
+      "title": "Distinguish a factor from a cause.",
+      "lead": "Received volume, closure counts and carryover can be described directly. Explanations about staffing, process changes or seasonality are absent from the source and must remain hypotheses.",
+      "body": "P4 increases the balance by four because 48 are received and 44 closed. That identity does not explain the underlying reasons. The report should request context rather than invent a narrative about the people who supposedly performed the work.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which proposed explanation cannot be checked against the available ledger?",
+      "records": [
+        {
+          "label": "Arithmetic explanation",
+          "prompt": "Record arithmetic explanation and its source boundary."
+        },
+        {
+          "label": "Causal hypothesis",
+          "prompt": "Record causal hypothesis and its source boundary."
+        },
+        {
+          "label": "Context needed",
+          "prompt": "Record context needed and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "FLOW TOTALS",
+          "268 received / 259 closed"
+        ],
+        [
+          "BALANCE RECONCILIATION",
+          "10 + 268 − 259 = 19"
+        ]
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / OPERATIONS REVIEW",
+      "title": "Review actions without fabricating impact.",
+      "lead": "An action review should link a proposed action, its intended mechanism and a suitable observation. This source contains no action log, so no improvement can be attributed to an intervention.",
+      "body": "A future review might examine whether clearer request definitions affect recording consistency. The current template can organise that question, but it cannot say a process change reduced the balance or improved service based on these six authored rows.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "How would you avoid crediting a hypothetical action for a model change?",
+      "records": [
+        {
+          "label": "Action to examine",
+          "prompt": "Record action to examine and its source boundary."
+        },
+        {
+          "label": "Intended mechanism",
+          "prompt": "Record intended mechanism and its source boundary."
+        },
+        {
+          "label": "Missing action evidence",
+          "prompt": "Record missing action evidence and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "FLOW TOTALS",
+          "268 received / 259 closed"
+        ],
+        [
+          "BALANCE RECONCILIATION",
+          "10 + 268 − 259 = 19"
+        ]
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / OPERATIONS REVIEW",
+      "title": "Keep unresolved issues in the ledger.",
+      "lead": "Separate a data-quality question from a performance question. An unresolved definition may need attention before a target or resource discussion is useful.",
+      "body": "Examples include whether all received requests use the same unit and whether closure dates are recorded consistently. Those issues are not observed defects in a real system; they illustrate the kinds of questions a genuine review should preserve.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which unresolved issue could change the meaning of every period total?",
+      "records": [
+        {
+          "label": "Definition issue",
+          "prompt": "Record definition issue and its source boundary."
+        },
+        {
+          "label": "Performance question",
+          "prompt": "Record performance question and its source boundary."
+        },
+        {
+          "label": "Source to seek",
+          "prompt": "Record source to seek and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "FLOW TOTALS",
+          "268 received / 259 closed"
+        ],
+        [
+          "BALANCE RECONCILIATION",
+          "10 + 268 − 259 = 19"
+        ]
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / OPERATIONS REVIEW",
+      "title": "Make responsibility a confirmation.",
+      "lead": "A next-step table should identify the role that needs to confirm responsibility and the evidence to bring back. A template must not appoint actual staff or authorise operational changes.",
+      "body": "A data steward could review metric definitions; an authorised service owner could discuss decision needs. These are role categories only. The proposed review is not a staffing plan, schedule or accepted task assignment.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "What confirmation would be needed before a proposed action becomes an agreed responsibility?",
+      "records": [
+        {
+          "label": "Review task",
+          "prompt": "Record review task and its source boundary."
+        },
+        {
+          "label": "Role to confirm",
+          "prompt": "Record role to confirm and its source boundary."
+        },
+        {
+          "label": "Return artifact",
+          "prompt": "Record return artifact and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "FLOW TOTALS",
+          "268 received / 259 closed"
+        ],
+        [
+          "BALANCE RECONCILIATION",
+          "10 + 268 − 259 = 19"
+        ]
+      ],
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / OPERATIONS REVIEW",
+      "title": "Close with a reconciled handoff.",
+      "lead": "Share the complete period ledger, metric definitions, flags and unanswered context questions. The report’s reliable result is a transparent model reconciliation, not a performance verdict.",
+      "body": "Opening 10 plus received 268 minus closed 259 equals ending 19. This equality should remain visible alongside any proposed next question. Keep the synthetic label and period-unit boundary attached when the report is reused or edited.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which question should the next review answer rather than merely repeat?",
+      "records": [
+        {
+          "label": "Reconciliation",
+          "prompt": "Record reconciliation and its source boundary."
+        },
+        {
+          "label": "Remaining question",
+          "prompt": "Record remaining question and its source boundary."
+        },
+        {
+          "label": "Next review focus",
+          "prompt": "Record next review focus and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "FLOW TOTALS",
+          "268 received / 259 closed"
+        ],
+        [
+          "BALANCE RECONCILIATION",
+          "10 + 268 − 259 = 19"
+        ]
+      ],
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for operations-review"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: tideline/04.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: open-shelf/09.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: swatch/03.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: common-ground/05.jpg"
+    }
+  ]
+}

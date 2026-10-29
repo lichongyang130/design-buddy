@@ -36,7 +36,9 @@
     "test:course-expansion": "node tests/verify-course-expansion.mjs",
     "pin:artifacts": "node scripts/pin-template-artifacts.mjs",
     "build:proposal-expansion": "node scripts/build-proposal-expansion.mjs",
-    "test:proposal-expansion": "node tests/verify-proposal-expansion.mjs"
+    "test:proposal-expansion": "node tests/verify-proposal-expansion.mjs",
+    "build:report-expansion": "node scripts/build-report-expansion.mjs",
+    "test:report-expansion": "node tests/verify-report-expansion.mjs"
   },
   "devDependencies": {
     "@sparticuz/chromium": "^153.0.0",

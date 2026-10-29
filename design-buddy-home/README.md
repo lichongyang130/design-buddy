@@ -16,17 +16,17 @@ Open `/templates.html?format=文档&batch=nine-documents` for nine different cat
 
 Nine new theme illustrations are combined with 36 curated existing-image placements, not 45 new images. Report/model values are fictional. Original DOCX/PDF remain fixed; current edited Word/HTML/JSON exports include local edits and private notes. Long edits can reflow. Review notes before sharing.
 
-See [NEW-TEMPLATE-PLAN.md](NEW-TEMPLATE-PLAN.md) for the complete 56-case target, current 26-published/1-draft status, frameworks, validation and remaining limits. SWATCH remains an honest draft, not a completed case.
+See [NEW-TEMPLATE-PLAN.md](NEW-TEMPLATE-PLAN.md) for the current 65-case target, current 32-published/1-draft status, frameworks, validation and remaining limits. SWATCH remains an honest draft, not a completed case.
 
 ## Artifact preservation
 
-Primary art, source, manifests and completed export bytes are backed up in Git. Distribution files can be stored in SHA-pinned, already-pushed immutable Git history rather than duplicated in the current tree. Currently 52 files (six older source ZIPs, five older PPTX and five older PDF files, and 36 course/proposal DOCX/PDF/source archives) are restored automatically before dev/start/check/build via `artifact-registry.json`. Their downloadable paths are unchanged. Local Git objects are preferred; the GitHub CLI is the remote fallback. Do not change an older archive without updating the registry. All 52 pinned artifacts were actually removed locally and reconstructed byte-for-byte; a new proposal Word blob was also downloaded from GitHub and SHA-verified. Standard full clones restore from local Git objects; shallow clones may require fetching history or authenticated GitHub CLI access. No successful GitHub release upload is claimed.
+Primary art, source, manifests and completed export bytes are backed up in Git. Distribution files can be stored in SHA-pinned, already-pushed immutable Git history rather than duplicated in the current tree. Currently 70 files (six older source ZIPs, five older PPTX and five older PDF files, and 54 course/proposal/report DOCX/PDF/source archives) are restored automatically before dev/start/check/build via `artifact-registry.json`. Their downloadable paths are unchanged. Local Git objects are preferred; the GitHub CLI is the remote fallback. Do not change an older archive without updating the registry. All pinned downloads have SHA/byte-size verification and automatic missing-file restoration; each new distribution batch is pushed before pinning. Standard full clones restore from local Git objects; shallow clones may require fetching history or authenticated GitHub CLI access. No successful GitHub release upload is claimed.
 
 ## Checks
 
 - `npm run check:templates`: registry, publication gates and SHA manifests, including shared document kit.
 - `npm run test:document-batch`: gallery, nine geometries, 90-page fit, editable exports, mobile, offline sources, model arithmetic and real edited Word rendering.
-- `npm run test:template-office`: all 27 originals rendered with real LibreOffice core at the expected page counts.
+- `npm run test:template-office`: all 33 originals rendered with real LibreOffice core at the expected page counts.
 - `npm run test:pantry-cache`: old-cache migration without deleting unrelated caches or personal storage.
 - Individual earlier cases retain their own `test:<case>` scripts.
 
@@ -34,13 +34,13 @@ Office tests require Node 22.19+ and `@deepseek-ai/libreoffice-kit` installed in
 
 ## 50-case expansion — course batch completed
 
-Twelve of the 50 additional cases are complete (six courses and six proposals); 38 remain planned. Open `/templates.html?format=文档&batch=course-expansion`. The original nine-document collection remains nine cases. All previous 15 cases remain available, bringing the gallery to 27 cases (26 published, one SWATCH draft). The revised total target is 65: existing 15 plus 50 additional—not 50 including the old nine.
+Eighteen of the 50 additional cases are complete (six courses, six proposals and six reports); 32 remain planned. Open `/templates.html?format=文档&batch=course-expansion`. The original nine-document collection remains nine cases. All previous 15 cases remain available, bringing the gallery to 33 cases (32 published, one SWATCH draft). The revised total target is 65: existing 15 plus 50 additional—not 50 including the old nine.
 
 Six courses: QUESTION LAB (inquiry tree), STORY WORKSHOP (manuscript annotations), VISUAL LITERACY (image/analysis comparison), PROJECT STUDIO (task board), DEBATE ROOM (argument mapping), SELF-PACED ROUTE (branching route). Each has ten substantive pages, five images, one new hero and four curated assets. Worksheet cells are editable, persist per case and export in current DOCX/HTML/JSON. Native Word has six different content orders and appropriate native record tables; image assets remain raster. Original and edited copies rendered to ten pages each in real LibreOffice.
 
 `npm run build:course-expansion` and `npm run test:course-expansion` reproduce and check this batch. `/atelier/inquiry-kit/download.html` assembles six Word and six PDF originals in the browser; the ZIP was unpacked and all entries checked against actual originals. `docs/DOCUMENT-EXPANSION-50.md` records all 50 distinct frameworks and honest progress.
 
-For future artifact updates: rebuild, check, force-add any ignored regenerated exports, commit and push their actual bytes first. Only then run `npm run pin:artifacts -- case-id ...` and commit/push the resulting registry/ignore changes. This helper refuses unpushed or mismatching bytes and never removes local download files. Do not run it on an uncommitted export or claim pinning alone created a backup. Current cumulative snapshot content is approximately 111.05 MiB; audit it before each further batch.
+For future artifact updates: rebuild, check, force-add any ignored regenerated exports, commit and push their actual bytes first. Only then run `npm run pin:artifacts -- case-id ...` and commit/push the resulting registry/ignore changes. This helper refuses unpushed or mismatching bytes and never removes local download files. Do not run it on an uncommitted export or claim pinning alone created a backup. Current cumulative snapshot content is approximately 118.4 MiB; audit it before each further batch.
 
 ## Proposal batch completed
 
@@ -53,3 +53,17 @@ Browser and native Word structures are independently checked: all six geometries
 The original nine-document collection, six-course collection, full-library native filters and local workspace state are preserved. Regression totals now derive from catalog metadata instead of requiring a manual hardcoded count change on every batch.
 
 Final proposal checkpoint: all 27 original Office files rendered with real LibreOffice at their expected page counts; all six proposal originals and six edited copies were ten pages. Old six-case suites, nine-document suite, course suite, proposal suite, poisoned-cache migration, integrity and production build pass. All 52 pinned artifacts passed a missing-file cold restore; SHA/byte-size verification and a real remote proposal Word blob fetch pass. Export source commit: `3c373411bfd6e3a61d55afa7c04ee4714dc98d75`. Cumulative non-ignored patch content: approximately 111.05 MiB. The pin helper currently targets document families; earlier presentation distribution pins require the same explicit pushed-blob verification workflow when regenerated.
+
+## Report batch completed
+
+Open `/templates.html?format=文档&batch=report-expansion` for EVIDENCE REVIEW, EXPERIMENT READOUT, OPERATIONS REVIEW, INTERVIEW SYNTHESIS, LANDSCAPE SCAN and DECISION AUDIT. Each report has ten authored pages/five distinct illustrations, native editable Word, PDF, complete synthetic-source CSV/JSON, provenance and file:// offline source. Six new heroes plus 24 curated placements, not thirty newly generated artworks.
+
+The six structures differ: source-register review, denominator-led experiment readout, flow/balance operations ledger, overlapping qualitative code synthesis, capability matrix landscape and decision-time version audit. Dedicated source-summary panels remain fixed while analyst records and prose are edited; the originals do not silently recalculate. Update sources and rebuild to change the model. Actual source files are included in offline ZIPs, while current HTML/Word preserve the model summaries and current edits. Long edits can reflow and private notes travel in current exports.
+
+`/atelier/report-kit/download.html` assembles six Word and six PDF originals entirely in the browser; all twelve entries are actually checked against originals. `npm run build:report-expansion` and `npm run test:report-expansion` reproduce and verify the batch. The test also invokes `verify-report-models.mjs`: CSV/JSON round trips, inclusion roles, 24 task rows/17 completions with completed-only time summaries, 10+268−259=19 balance reconciliation, six invented extracts/nine overlapping tags, 15 flags/24 matrix cells and V3 decision-time boundaries. No real experiments, operational outcomes, interviews or market findings are claimed.
+
+All 33 original Office exports were rendered with real LibreOffice at their expected page counts in this checkpoint. All four document batches, older case suites, native gallery and cache regression pass. Six report geometries, six native block orders, original XML/generator equality, record-cell persistence, source downloads, 390px mobile, current exports and file:// Word were exercised. Six edited report Word files render to ten pages each; this is not Microsoft Word GUI verification.
+
+The gallery now requests uncached service-worker updates and messages an already-installed waiting worker to activate; it never reloads the page or erases personal work/caches. The legacy-worker fixture waits for the initial installation to settle before replacing it, avoiding a synthetic two-installer race. Cache migration and exact offline work reloads pass without deleting unrelated caches.
+
+Optional image/source preparation: install Pillow to ignored `.cache/expansion-python`, then run `python3 design-buddy-home/scripts/prepare-report-expansion.py` from the repository root. Authored JSON and deterministic datasets are checked in; existing heroes are valid fallbacks when the ignored generation cache is absent. Regeneration requires updating manifests and committing/pushing actual export bytes before repinning.
