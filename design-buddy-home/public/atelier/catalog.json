@@ -9,11 +9,12 @@
     15,
     20
   ],
-  "style": "Fine ink and watercolor with varied theme-specific backgrounds: coastal blue, coral sunsets, forest green, overcast gray, night interiors; do not default every case to ivory/sage. Preserve the existing two cases. Afterglow uses burgundy, cobalt, copper, emerald and aubergine theatrical backgrounds with a dark five-act cue-folio framework.",
+  "style": "Fine ink and watercolor with varied theme-specific backgrounds: coastal blue, coral sunsets, forest green, overcast gray, night interiors; do not default every case to ivory/sage. Preserve the existing two cases. Afterglow uses burgundy, cobalt, copper, emerald and aubergine theatrical backgrounds with a dark five-act cue-folio framework. SWATCH uses sunny industrial cobalt, yellow, tangerine, mint, coral and violet, with a perforated specimen-card index rather than theatrical folios.",
   "cases": [
     "pantry-notes",
     "open-shelf",
     "tideline",
-    "afterglow"
+    "afterglow",
+    "swatch"
   ]
 }

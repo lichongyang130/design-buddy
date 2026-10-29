@@ -20,7 +20,9 @@
     "build:tideline": "node scripts/build-tideline.mjs",
     "test:tideline": "node tests/verify-tideline.mjs",
     "build:afterglow": "node scripts/build-afterglow.mjs",
-    "test:afterglow": "node tests/verify-afterglow.mjs"
+    "test:afterglow": "node tests/verify-afterglow.mjs",
+    "build:swatch": "node scripts/build-swatch.mjs",
+    "test:swatch": "node tests/verify-swatch.mjs"
   },
   "devDependencies": {
     "@sparticuz/chromium": "^153.0.0",

@@ -8,7 +8,7 @@ Target remains 56 cases. Legacy bulk sources are retained, not used to populate 
 
 ## Actual progress
 
-**Published: 3 / 56. Drafts: 1. Not started: 52. Authored pages including draft: 126. Actual independent main illustrations: 62 / 63 planned across these four cases. Missing primary art: 1, in the fourth draft.**
+**Published: 4 / 56. Drafts: 1. Not started: 51. Authored pages including draft: 156. Actual independent main illustrations: 72 / 78 planned across these five cases. Missing primary art: 6, all in the fifth draft.**
 
 PANTRY NOTES is a new 32-page kitchen-measurement learning journal. All 16 genuine primary illustrations are present. The final six show equal-group planning, comparison of observation notes, provenance review, method handoff, careful revision and a closing notebook still life. All 32 pages show their assigned primary illustration; no pending-art diagram remains. Repeated placements do not increase the independent primary-art count. The case is published after browser, offline, cache, export and real Office checks passed.
 
@@ -24,7 +24,7 @@ All 16 independent warm-ivory/pale-sage illustrations are present. The final six
 
 The resource model is fictional: 1,800 + 1,400 + 600 + 400 = 4,200 units; adding 800 gives 5,000. Staffing, venue costs, specialist review and other categories are explicitly not supplied. It is not a quote, real funding or a complete budget.
 
-The gallery now reads the case registry rather than a hardcoded single case. Search, OR category filtering, name/date sort, recent views, collection, archive/restore and mobile sidebar operate across all four cases without modifying legacy personal-work storage. Production checks accept an honest draft but forbid publishing art-incomplete metadata.
+The gallery now reads the case registry rather than a hardcoded single case. Search, OR category filtering, name/date sort, recent views, collection, archive/restore and mobile sidebar operate across all five cases without modifying legacy personal-work storage. Production checks accept an honest draft but forbid publishing art-incomplete metadata.
 
 ## Reproduction and safeguards
 
@@ -35,7 +35,7 @@ Run from `design-buddy-home`:
 - `npm run build:pantry-notes` (uses `PANTRY_BASE_URL`, default `http://127.0.0.1:5174`)
 - `npm run check:templates` verifies the new catalog, source counts, distinct actual JPEGs and SHA-256 asset manifest. Drafts may exist but cannot count as published. Missing/corrupt originals block production builds.
 - `npm run build:open-shelf` and `npm run test:open-shelf` build and exercise the independent second case (`OPEN_SHELF_BASE_URL`, default port 5174).
-- `npm run test:pantry-cache` verifies old-cache migration and all four actual offline case reloads.
+- `npm run test:pantry-cache` verifies old-cache migration and all five actual offline case reloads.
 - `npm run test:pantry-notes` exercises browser behaviour, per-page fit, editing, downloads, real touch and direct-file offline source.
 - `npm run test:template-office` requires the optional LibreOffice kit at `.cache/office/node_modules/@deepseek-ai/libreoffice-kit/lib/index.js`, or `OFFICE_KIT_MODULE`; it runs real LibreOffice core, not Microsoft Office GUI.
 - `npm run build` runs integrity checks before compiling.
@@ -54,25 +54,35 @@ The deterministic source model has 240 invented entry-event rows: day totals 42/
 
 `npm run build:tideline` uses `TIDELINE_BASE_URL` (default port 5174), generates the 32-page PDF, native-text/shape 32-slide PPTX, full CSV/JSON, cover/inside, SHA manifest and offline source ZIP. `npm run test:tideline` exercises ten groups, including mobile, exact scoped CSV and direct-file offline exports. Source ZIP includes all sixteen actual JPEGs, not duplicate original PDF/PPTX.
 
-## AFTERGLOW — fourth case (draft)
+## AFTERGLOW — fourth case (published)
 
-30 original dark landscape creative folios replace the portrait atlas with a vertical identity spine, five-act navigation, a six-beat reading rail, theatre scene/intention pairing and three editable prompt cards. Five chapter backgrounds are burgundy, midnight blue, copper, deep green and aubergine. Fourteen independent artworks now show varied environments: crimson auditorium, cobalt rehearsal room, copper costume-storytelling room, aubergine/emerald lobby, cobalt quiet lounge, emerald story discussion, crimson dialogue rehearsal, ochre object workshop, forest-green transition doorway, copper revision room, royal-purple alternatives discussion, olive reading nook, crimson informal handoff and midnight-navy writing studio.
+30 original dark landscape creative folios replace the portrait atlas with a vertical identity spine, five-act navigation, a six-beat reading rail, theatre scene/intention pairing and three editable prompt cards. Five chapter backgrounds are burgundy, midnight blue, copper, deep green and aubergine. Fifteen independent artworks now show varied environments: crimson auditorium, cobalt rehearsal room, copper costume-storytelling room, aubergine/emerald lobby, cobalt quiet lounge, emerald story discussion, crimson dialogue rehearsal, ochre object workshop, forest-green transition doorway, copper revision room, royal-purple alternatives discussion, olive reading nook, crimson informal handoff midnight-navy writing studio and an indigo empty-stage closing still life.
 
-Fourteen of fifteen main artworks exist. Pages 1–28 use their assigned actual illustrations; pages 29–30 explicitly show the missing final artwork frame, not a counted illustration. One independent closing still-life artwork remains missing. This case stays draft and does not count as completed. This turn used ten image generations to add images 05–14, following the previous four. The per-turn ten-image limit prevents generating the fifteenth this turn; no duplicate placement or typographic frame is counted as extra art.
+All fifteen independent main artworks are present. All thirty pages show their assigned actual illustration; no pending frame remains. The closing still life is imaginary, not a record of a real show. Publication follows browser/mobile, editing, local-state, offline, cache, export, integrity and real Office checks. Repeated placements are not extra art.
 
 The thirty authored pages form Arrival / Contrast / Movement / Revision / Handoff, six reading beats each. Beat order is not elapsed time, a real show call sheet, blocking or a production plan. All examples concern fictional adults and creative writing. No booking, permissions, funding, accessibility approval, technical instruction or real participant study is supplied.
 
-Act buttons and within-act beat buttons genuinely navigate pages. Each page has an independent local creative mark (unmarked/try/revise/park), six editable text fields and a separate private note. Local state uses `design-buddy-afterglow-rebuild-v1`; reset preserves other cases. Current HTML exports all thirty pages with actual text, marks, embedded artwork and the private note; JSON exports the state. Original PDF/PPTX are fixed drafts and are not rewritten by browser edits.
+Act buttons and within-act beat buttons genuinely navigate pages. Each page has an independent local creative mark (unmarked/try/revise/park), six editable text fields and a separate private note. Local state uses `design-buddy-afterglow-rebuild-v1`; reset preserves other cases. Current HTML exports all thirty pages with actual text, marks, embedded artwork and the private note; JSON exports the state. Original PDF/PPTX are fixed full-case builds and are not rewritten by browser edits.
 
-`npm run build:afterglow` uses `AFTERGLOW_BASE_URL` (default port 5174) and generates a 30-page PDF, 30-slide native-text/shape PPTX, cover/inside, SHA manifest and direct-file offline ZIP. The source ZIP contains all fourteen actual JPEGs and a bundled viewer, not duplicated original PDF/PPTX. `npm run test:afterglow` exercises nine groups including every page, touch navigation, editing, exact local marks, genuine downloads and self-contained offline export.
+`npm run build:afterglow` uses `AFTERGLOW_BASE_URL` (default port 5174) and generates a 30-page PDF, 30-slide native-text/shape PPTX, cover/inside, SHA manifest and direct-file offline ZIP. The source ZIP contains all fifteen actual JPEGs and a bundled viewer, not duplicated original PDF/PPTX. `npm run test:afterglow` exercises nine groups including every page, touch navigation, editing, exact local marks, genuine downloads and self-contained offline export.
+
+## SWATCH — fifth case (draft)
+
+Thirty original material-question cards use a portrait perforated tear-sheet rather than the previous theatrical folio. A bold catalogue masthead, large colour scene, context boundary and four detachable slips separate LOOK / DO NOT ASSUME / ASK NEXT / KEEP ATTACHED. Five chapter palettes accompany nine genuinely independent main illustrations in cobalt, sunflower yellow, tangerine, turquoise, mint, coral, violet and lime industrial studios. First two cases' original backgrounds and authored content are preserved.
+
+Nine of fifteen primary artworks exist. Pages 1–18 show actual assigned art. Pages 19–30 explicitly mark six pending main illustrations; filing frames are not counted as art. The draft does not count as completed. This turn's ten image generations were one AFTERGLOW closing still life plus nine SWATCH scenes. No sixth case is counted.
+
+Five chapter filters restrict the actual card directory to six records each. The current card stays visible until a directory record is chosen. Users can pin up to three page references, compare current assumptions/questions, remove references, edit six fields and save a private note. The tray does not rank materials or show physical measurements. State saves under `design-buddy-swatch-rebuild-v1`; reset preserves other cases. JSON records actual pinned IDs and edits. Current thirty-card HTML embeds artwork, edited text, pinned IDs and the private note. Original PDF/PPTX are unchanged by browser edits. No tested material properties, supplier evidence, engineering specification, certification, procurement or equipment instruction is supplied.
+
+`npm run build:swatch` uses `SWATCH_BASE_URL` (default port 5174), builds the thirty-page PDF, thirty-slide native-text/shape PPTX, cover/inside, SHA manifest and source ZIP with all nine actual JPEGs. `npm run test:swatch` exercises nine groups including the three-card limit, current edited comparison text, pin removal, chapter filtering, mobile, direct-file offline use and actual downloads.
 
 ## Verification and next steps
 
-PANTRY NOTES passes eight browser groups, OPEN SHELF nine, TIDELINE ten, AFTERGLOW nine and old-worker/offline regression seven. Real LibreOffice renders the first three PPTX files to 32 pages each and the fourth to 30. Registry v7/SW v7 bypass stale v6 gallery, AFTERGLOW v1 four-art draft modules and TIDELINE v1 draft modules without deleting personal storage or unrelated caches. All 109 atelier files in public/dist are byte-identical. Production integrity accepts the honest fourth draft but does not count it as published.
+PANTRY NOTES passes eight browser groups, OPEN SHELF nine, TIDELINE ten, AFTERGLOW nine, SWATCH nine and old-worker/offline regression eight. Real LibreOffice renders the first three PPTX files to 32 pages each and both later cases to 30. Registry v8/SW v8 bypass stale v7 gallery and AFTERGLOW v2 draft modules without deleting personal storage or unrelated caches. All 130 atelier public/dist files are byte-identical. Integrity checks accept the honest fifth draft but exclude it from completed totals.
 
-Next: generate AFTERGLOW image 15 only, an indigo empty-stage closing still life with burgundy curtains, a closed plum notebook, golden blank card and amber lamp. This is a plan, not generated or counted artwork. The existing framework remains the distinct dark five-act cue folio; no fifth case has been silently counted or substituted.
+All five PPTX builders now losslessly deduplicate byte-identical embedded images using `scripts/dedupe-pptx-media.mjs`. Reused images point to shared OpenXML media; primary JPEGs, text, shapes, page counts and appearances are unchanged. Integrity verifies no duplicate embedded bytes or broken image relationships; real Office rendering passes after this optimisation. Manifests and source ZIPs were rebuilt. This reduces cumulative changed workspace content from roughly 139.5 MiB to 120.6 MiB, keeping this checkpoint under the snapshot budget without discarding originals. Before broad expansion, move generated distribution artifacts to a verified external artifact store rather than exceeding the budget; do not remove primary art or silently lose downloadable files.
 
-After that final image, update its alt/caption, the closing prose, every draft/missing-art label and publication metadata; regenerate all exports, manifest and offline bundle; rerun the full suite and verify a GitHub checkpoint before calling it complete. There are 52 cases not started. Each still needs 28–35 pages, 15–20 independent main illustrations and its own framework. Never count reused placements, diagrams or incomplete drafts as finished cases.
+Next: create SWATCH images 10–15 only, with varied sunlit workshop, open-air courtyard, violet/yellow source room, turquoise question nook, bright informal handoff, navy/green record review and blue/yellow closing still-life moods as appropriate. These are plans, not generated files. Keep each final image matched to its paired pages. Then update all missing-art/draft labels, alt text, publication metadata and exports; rerun the full suite and verify GitHub before calling it complete. There are 51 cases not started. Each needs 28–35 pages, 15–20 independent main illustrations and its own framework. Do not count diagrams or repeated placements as additional main art.
 
 The existing history already on this same remote branch is merged without replacing the rebuilt template page with its legacy catalog. Those historical sources are retained; they are not counted as new completed cases.
 

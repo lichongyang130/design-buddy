@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "work": "swatch",
+  "status": "draft",
+  "pages": 30,
+  "mainIllustrations": 9,
+  "expectedIllustrations": 15,
+  "files": [
+    {
+      "path": "content.js",
+      "bytes": 15655,
+      "sha256": "dd44c00d882836da35e9f43ae404a3ccbeada91dcb20cdfe7c63b77fdabe9e1e"
+    },
+    {
+      "path": "viewer.js",
+      "bytes": 7338,
+      "sha256": "7e8ad586170330ce815bf58b7689cbcc91eda9bb2fc81e077fb8a74a3702c208"
+    },
+    {
+      "path": "style.css",
+      "bytes": 6900,
+      "sha256": "4dc2e30861d4fe5ce040c880806fbbc30b647ad62b9c221a60ad15ac96e513a6"
+    },
+    {
+      "path": "offline.js",
+      "bytes": 22012,
+      "sha256": "e672e48e4faaddf8900e48c33952449fedac790224e67ecc988c1a423f374bad"
+    },
+    {
+      "path": "swatch-preview.pdf",
+      "bytes": 2581727,
+      "sha256": "5cc103007683c2b5d051b94cae1f1514da04c32f27ff8d8e039b9c0109d21a54"
+    },
+    {
+      "path": "swatch-preview.pptx",
+      "bytes": 2460178,
+      "sha256": "4f8d791cd54671fb3f364040d3f1ae425cf96819e242cdfbe08d5f91c16c4845"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 255472,
+      "sha256": "122469fc261e3897ae80e9ccc71aaf55ffba63a903da5fbe9dd2e542db99f171"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 274920,
+      "sha256": "b065348f80ff6fc9e246320ddd806fa3146aaba95c05f187c9b1fda8ceeda111"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 228088,
+      "sha256": "df73d6547efa2991d4828e114a8a4813ed3f4c37a2caef742c40c4eb2e96dff4"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 248460,
+      "sha256": "14f1d2f315759d5813d9a73f74926ea8a99d4a67ea0c312d396a3b17a66e0de2"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 295695,
+      "sha256": "fb62ab892d62050668fa24d7797cc4e0a5adf3860ac63a9e943c66dd593d7900"
+    },
+    {
+      "path": "images/06.jpg",
+      "bytes": 251483,
+      "sha256": "df85ed6c6eebb31c5050e6f65fc98e2f73dbd639eaaa1227d021f0aff3210d15"
+    },
+    {
+      "path": "images/07.jpg",
+      "bytes": 260487,
+      "sha256": "357b31bbc24c851a5e6fa69ee0ad9643f038c1303b6a089bd806bb2e749420ad"
+    },
+    {
+      "path": "images/08.jpg",
+      "bytes": 240243,
+      "sha256": "d77dc1decbfb8f9556de23afb7bd56858aaa2c70c2502264c91aaeac7100a4c1"
+    },
+    {
+      "path": "images/09.jpg",
+      "bytes": 275443,
+      "sha256": "cccbf67b51cd25aa215987964ad81fe9dd808a2199019d7df60cb48f8f1989bc"
+    }
+  ]
+}
