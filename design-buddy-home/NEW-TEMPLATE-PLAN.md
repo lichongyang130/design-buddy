@@ -8,7 +8,7 @@ Target remains 56 cases. Legacy bulk sources are retained, not used to populate 
 
 ## Actual progress
 
-**Published: 1 / 56. Drafts: 1. Not started: 54. Published pages/art: 32 / 16. Draft pages/art: 32 / 10 (six main artworks still missing). Total authored pages: 64. Total actual primary illustrations: 26.**
+**Published: 2 / 56. Drafts: 0. Not started: 54. Authored pages: 64. Actual independent main illustrations: 32 / 32. Missing primary art: 0.**
 
 PANTRY NOTES is a new 32-page kitchen-measurement learning journal. All 16 genuine primary illustrations are present. The final six show equal-group planning, comparison of observation notes, provenance review, method handoff, careful revision and a closing notebook still life. All 32 pages show their assigned primary illustration; no pending-art diagram remains. Repeated placements do not increase the independent primary-art count. The case is published after browser, offline, cache, export and real Office checks passed.
 
@@ -16,11 +16,11 @@ The framework is a specimen window, observation/method margin and reflection str
 
 Final PDF has 32 pages. Final PPTX has 32 slides with native editable text and all 16 primary raster illustrations. Historical `pantry-notes-preview.pdf` and `.pptx` URLs remain compatible; download filenames are `pantry-notes.pdf` and `.pptx`. Source ZIP opens directly with `file://`, includes all 16 illustrations and a bundled viewer, and can generate self-contained current HTML. Original PDF/PPTX are separate downloads, not duplicated in the source archive. File-origin storage can be unavailable; use exports to retain edits.
 
-## OPEN SHELF — second case (in progress)
+## OPEN SHELF — second case (published)
 
 The second case contains 32 authored spatial concept boards, not a recoloured notebook. Its distinct structure combines a full-width proposal heading, responsibility strip, conceptual zoning map, watercolor scene, lower evidence/action columns and per-board local review marks. Native PPTX exports include editable zoning shapes and text; primary watercolor art remains raster. The diagram is not to scale and is not construction, accessibility, safety, privacy, procurement or operational approval.
 
-Ten independent warm-ivory/pale-sage illustrations are actually present. Six are still missing (11–16); the last twelve boards explicitly show supporting responsibility maps, not fake primary illustrations. The case remains a draft, excluded from the completed count. Local review values are open/revise/discuss/defer, not official approval, and are saved separately for each board under a separate case key. Edits, note and review marks survive current HTML/JSON export and direct-file offline use. Original PDF/PPTX remain unchanged by browser edits.
+All 16 independent warm-ivory/pale-sage illustrations are present. The final six show specialist-question review, unresolved planning notes, source review, private draft discussion, a bounded notebook handoff and a closing project still life. All 32 boards now use their assigned main illustration; no pending-art map remains. The case is published after all acceptance gates pass. Historical `open-shelf-preview.pdf`/`.pptx` paths remain compatible; download filenames omit `preview`. Local review values are open/revise/discuss/defer, not official approval, and are saved separately for each board under a separate case key. Edits, note and review marks survive current HTML/JSON export and direct-file offline use. Original PDF/PPTX remain unchanged by browser edits.
 
 The resource model is fictional: 1,800 + 1,400 + 600 + 400 = 4,200 units; adding 800 gives 5,000. Staffing, venue costs, specialist review and other categories are explicitly not supplied. It is not a quote, real funding or a complete budget.
 
@@ -46,11 +46,11 @@ The service worker uses exact-request network-first caching, keeps unrelated cac
 
 ## Next
 
-Complete OPEN SHELF main illustrations 11–16: specialist-question review, unresolved dependencies, provenance/source review, private review discussion, bounded handoff and closing project-folder still life. Keep the latest reference’s ivory/pale-sage fine-line watercolour. Update all actual counts, alt descriptions, pending maps, metadata/revision, exports and tests together. Revalidate and publish only after all 16 images are present. Do not add more incomplete case shells to inflate progress. Then author a genuinely different third framework. The remaining 54 cases are not authored.
+Author a genuinely different third case with the latest reference’s ivory/pale-sage fine-line watercolour. Each case needs 28–35 pages and 15–20 independent main illustrations before publication. The remaining 54 cases are not authored. Do not count reused placements, supporting diagrams or draft shells as completed cases or extra primary art. Keep verified GitHub checkpoints including the actual JPEGs, source and reproducible exports.
 
 ## Published case verification
 
-PANTRY NOTES passes eight browser groups, OPEN SHELF passes nine, and five old-worker/offline checks pass. Real LibreOffice renders both native-text PPTX files to 32 pages each. Production build passes both manifests and preserves byte-identical atelier source/production copies. PANTRY NOTES has all 16 primary illustrations and meets the art gate; OPEN SHELF remains short by six and is not publishable. The versioned viewer/gallery bypass poisoned old draft modules, and the final illustration loads correctly on an offline reload. Regenerable Office/browser evidence is in ignored `.cache/pantry-notes/` and can be regenerated.
+PANTRY NOTES passes eight browser groups, OPEN SHELF passes nine, and five old-worker/offline checks pass. Real LibreOffice renders both native-text PPTX files to 32 pages each. Production build passes both manifests and preserves byte-identical atelier source/production copies. Both cases have 16 primary illustrations and meet their art gates. The OPEN SHELF v2 viewer and registry v4 bypass poisoned v1 draft modules, including the actual final artwork on offline reload. The versioned viewer/gallery bypass poisoned old draft modules, and the final illustration loads correctly on an offline reload. Regenerable Office/browser evidence is in ignored `.cache/pantry-notes/` and can be regenerated.
 
 The existing history already on this same remote branch is merged without replacing the rebuilt template page with its legacy catalog. Those historical sources are retained; they are not counted as new completed cases.
 
