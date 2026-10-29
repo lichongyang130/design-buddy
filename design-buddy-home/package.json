@@ -10,7 +10,7 @@
     "preview": "node server.mjs",
     "discover-models": "node scripts/discover-models.mjs",
     "check:templates": "node scripts/verify-template-integrity.mjs",
-    "prebuild": "npm run check:templates",
+    "prebuild": "npm run restore:artifacts && npm run check:templates",
     "build:pantry-notes": "node scripts/build-pantry-notes.mjs",
     "test:pantry-notes": "node tests/verify-pantry-notes.mjs",
     "test:template-office": "node scripts/verify-template-office.mjs",
@@ -24,7 +24,14 @@
     "build:swatch": "node scripts/build-swatch.mjs",
     "test:swatch": "node tests/verify-swatch.mjs",
     "build:common-ground": "node scripts/build-common-ground.mjs",
-    "test:common-ground": "node tests/verify-common-ground.mjs"
+    "test:common-ground": "node tests/verify-common-ground.mjs",
+    "prepare:document-batch": "node scripts/prepare-document-batch.mjs",
+    "build:document-batch": "node scripts/build-document-batch.mjs",
+    "test:document-batch": "node tests/verify-document-batch.mjs",
+    "restore:artifacts": "node scripts/restore-template-artifacts.mjs",
+    "predev": "npm run restore:artifacts",
+    "prestart": "npm run restore:artifacts",
+    "precheck:templates": "npm run restore:artifacts"
   },
   "devDependencies": {
     "@sparticuz/chromium": "^153.0.0",

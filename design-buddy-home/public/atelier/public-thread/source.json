@@ -1,0 +1,1686 @@
+{
+  "unit": "entry-event",
+  "source": "synthetic-teaching-model",
+  "records": [
+    {
+      "event_id": "MODEL-0001",
+      "day": "Mon",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0002",
+      "day": "Mon",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0003",
+      "day": "Mon",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0004",
+      "day": "Mon",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0005",
+      "day": "Mon",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0006",
+      "day": "Mon",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0007",
+      "day": "Mon",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0008",
+      "day": "Mon",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0009",
+      "day": "Mon",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0010",
+      "day": "Mon",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0011",
+      "day": "Mon",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0012",
+      "day": "Mon",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0013",
+      "day": "Mon",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0014",
+      "day": "Mon",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0015",
+      "day": "Mon",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0016",
+      "day": "Mon",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0017",
+      "day": "Mon",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0018",
+      "day": "Mon",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0019",
+      "day": "Mon",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0020",
+      "day": "Mon",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0021",
+      "day": "Mon",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0022",
+      "day": "Mon",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0023",
+      "day": "Mon",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0024",
+      "day": "Mon",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0025",
+      "day": "Mon",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0026",
+      "day": "Mon",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0027",
+      "day": "Mon",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0028",
+      "day": "Mon",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0029",
+      "day": "Mon",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0030",
+      "day": "Mon",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0031",
+      "day": "Mon",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0032",
+      "day": "Mon",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0033",
+      "day": "Mon",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0034",
+      "day": "Mon",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0035",
+      "day": "Mon",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0036",
+      "day": "Mon",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0037",
+      "day": "Mon",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0038",
+      "day": "Mon",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0039",
+      "day": "Mon",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0040",
+      "day": "Mon",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0041",
+      "day": "Mon",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0042",
+      "day": "Mon",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0043",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0044",
+      "day": "Tue",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0045",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0046",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0047",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0048",
+      "day": "Tue",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0049",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0050",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0051",
+      "day": "Tue",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0052",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0053",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0054",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0055",
+      "day": "Tue",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0056",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0057",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0058",
+      "day": "Tue",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0059",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0060",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0061",
+      "day": "Tue",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0062",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0063",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0064",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0065",
+      "day": "Tue",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0066",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0067",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0068",
+      "day": "Tue",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0069",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0070",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0071",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0072",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0073",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0074",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0075",
+      "day": "Tue",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0076",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0077",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0078",
+      "day": "Tue",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0079",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0080",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0081",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0082",
+      "day": "Tue",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0083",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0084",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0085",
+      "day": "Tue",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0086",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0087",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0088",
+      "day": "Tue",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0089",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0090",
+      "day": "Tue",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0091",
+      "day": "Tue",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0092",
+      "day": "Tue",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0093",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0094",
+      "day": "Wed",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0095",
+      "day": "Wed",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0096",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0097",
+      "day": "Wed",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0098",
+      "day": "Wed",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0099",
+      "day": "Wed",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0100",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0101",
+      "day": "Wed",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0102",
+      "day": "Wed",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0103",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0104",
+      "day": "Wed",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0105",
+      "day": "Wed",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0106",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0107",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0108",
+      "day": "Wed",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0109",
+      "day": "Wed",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0110",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0111",
+      "day": "Wed",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0112",
+      "day": "Wed",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0113",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0114",
+      "day": "Wed",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0115",
+      "day": "Wed",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0116",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0117",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0118",
+      "day": "Wed",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0119",
+      "day": "Wed",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0120",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0121",
+      "day": "Wed",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0122",
+      "day": "Wed",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0123",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0124",
+      "day": "Wed",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0125",
+      "day": "Wed",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0126",
+      "day": "Wed",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0127",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0128",
+      "day": "Wed",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0129",
+      "day": "Wed",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0130",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0131",
+      "day": "Wed",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0132",
+      "day": "Wed",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0133",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0134",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0135",
+      "day": "Wed",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0136",
+      "day": "Wed",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0137",
+      "day": "Wed",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0138",
+      "day": "Wed",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0139",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0140",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0141",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0142",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0143",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0144",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0145",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0146",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0147",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0148",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0149",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0150",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0151",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0152",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0153",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0154",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0155",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0156",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0157",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0158",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0159",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0160",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0161",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0162",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0163",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0164",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0165",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0166",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0167",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0168",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0169",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0170",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0171",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0172",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0173",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0174",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0175",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0176",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0177",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0178",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0179",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0180",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0181",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0182",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0183",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0184",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0185",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0186",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0187",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0188",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0189",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0190",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0191",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0192",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0193",
+      "day": "Thu",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0194",
+      "day": "Thu",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0195",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0196",
+      "day": "Thu",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0197",
+      "day": "Fri",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0198",
+      "day": "Fri",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0199",
+      "day": "Fri",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0200",
+      "day": "Fri",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0201",
+      "day": "Fri",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0202",
+      "day": "Fri",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0203",
+      "day": "Fri",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0204",
+      "day": "Fri",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0205",
+      "day": "Fri",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0206",
+      "day": "Fri",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0207",
+      "day": "Fri",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0208",
+      "day": "Fri",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0209",
+      "day": "Fri",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0210",
+      "day": "Fri",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0211",
+      "day": "Fri",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0212",
+      "day": "Fri",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0213",
+      "day": "Fri",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0214",
+      "day": "Fri",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0215",
+      "day": "Fri",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0216",
+      "day": "Fri",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0217",
+      "day": "Fri",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0218",
+      "day": "Fri",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0219",
+      "day": "Fri",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0220",
+      "day": "Fri",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0221",
+      "day": "Fri",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0222",
+      "day": "Fri",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0223",
+      "day": "Fri",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0224",
+      "day": "Fri",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0225",
+      "day": "Fri",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0226",
+      "day": "Fri",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0227",
+      "day": "Fri",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0228",
+      "day": "Fri",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0229",
+      "day": "Fri",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0230",
+      "day": "Fri",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0231",
+      "day": "Fri",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0232",
+      "day": "Fri",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0233",
+      "day": "Fri",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0234",
+      "day": "Fri",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0235",
+      "day": "Fri",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0236",
+      "day": "Fri",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0237",
+      "day": "Fri",
+      "segment": "Quay",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0238",
+      "day": "Fri",
+      "segment": "Overlook",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0239",
+      "day": "Fri",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    },
+    {
+      "event_id": "MODEL-0240",
+      "day": "Fri",
+      "segment": "Garden Bend",
+      "unit": "entry-event",
+      "source": "synthetic-teaching-model"
+    }
+  ]
+}

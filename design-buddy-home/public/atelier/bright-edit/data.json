@@ -1,0 +1,152 @@
+{
+  "work": {
+    "id": "bright-edit",
+    "title": "BRIGHT EDIT",
+    "subtitle": "品牌信息与内容手册",
+    "category": "营销材料",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "framework": "marketing: Copy and proof boundary / distinct native A4 document layout",
+    "scope": "Fictional editorial campaign. No real product endorsement, conversion result, customer testimonial or unsupported performance claim.",
+    "layout": "marketing",
+    "color": "#b13c61",
+    "wash": "#fae4eb"
+  },
+  "pages": [
+    {
+      "section": "01 / BRIGHT EDIT",
+      "title": "Make the message easy to understand.",
+      "lead": "BRIGHT EDIT is a fictional messaging handbook for an imagined creative collection. It separates a clear invitation from a claim that would need evidence.",
+      "body": "The aim is to practise coherent language across a headline, short description and next action. The artwork suggests tone; it does not demonstrate product performance.",
+      "subheading": "Copy and proof boundary",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What should a reader understand after the first paragraph?",
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / BRIGHT EDIT",
+      "title": "Read the message system.",
+      "lead": "The handbook moves from audience question to message, proof boundary, tone, content formats and review. It is a document for writers, not a live campaign dashboard.",
+      "body": "Pages 3–5 define the intended conversation. Pages 6–8 adapt it to formats and review claims. Pages 9–10 prepare a handoff and retain the source boundary.",
+      "subheading": "Copy and proof boundary",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which section should a new contributor read first?",
+      "image": 1,
+      "kind": "contents"
+    },
+    {
+      "section": "03 / BRIGHT EDIT",
+      "title": "Use an audience question, not a stereotype.",
+      "lead": "Imagine a reader who wants to understand a creative idea quickly. This is a writing premise, not a researched persona or statement about a demographic group.",
+      "body": "Do not invent personal characteristics or needs. Frame the task as a question the copy should answer, such as What is this and why might I explore it?",
+      "subheading": "Copy and proof boundary",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which reader question can the text actually answer?",
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / BRIGHT EDIT",
+      "title": "Write one central message.",
+      "lead": "Suggested fictional message: Explore a clearer way to collect creative references. It describes an invitation rather than a guaranteed benefit.",
+      "body": "Keep the promise smaller than the missing evidence. Avoid claims such as proven to improve results when no relevant study, product or measurement exists.",
+      "subheading": "Copy and proof boundary",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which word makes the message stronger than its support?",
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / BRIGHT EDIT",
+      "title": "Attach a proof boundary.",
+      "lead": "A photograph, illustration or attractive sentence is not proof of effectiveness. This case provides no customer results, test data or testimonial.",
+      "body": "A useful proof note distinguishes an available demonstration from an outcome claim. Where a source is missing, keep the statement provisional or remove it.",
+      "subheading": "Copy and proof boundary",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What evidence would this sentence require?",
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / BRIGHT EDIT",
+      "title": "Use a recognisable voice.",
+      "lead": "The proposed voice is clear, curious and specific. That is an editorial direction, not a claim that every audience will respond positively.",
+      "body": "Prefer concrete nouns and short explanations. A sentence can be warm without exaggeration, and confident without implying certainty about an untested outcome.",
+      "subheading": "Copy and proof boundary",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which sentence could be made more concrete?",
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / BRIGHT EDIT",
+      "title": "Adapt without changing the promise.",
+      "lead": "A brochure paragraph, a short caption and an email opening can share one message while differing in length. The underlying evidence boundary should not disappear in shorter copy.",
+      "body": "Write the long version first, then remove repetition rather than qualifications that affect meaning. Keep a link or note for context where the format allows it.",
+      "subheading": "Copy and proof boundary",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which qualification must survive the short version?",
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / BRIGHT EDIT",
+      "title": "Review the call to action.",
+      "lead": "A fictional call to action might invite a reader to view the concept or ask a question. It should not imply an available product, guaranteed offer or completed transaction.",
+      "body": "The example contains no live checkout, price or promotion. State what the reader can genuinely do in the actual context before publishing a real campaign.",
+      "subheading": "Copy and proof boundary",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Does the requested action actually exist?",
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / BRIGHT EDIT",
+      "title": "Hand over the message set.",
+      "lead": "Share the headline, description, evidence note, tone guidance and unresolved questions together. A contributor should not have to guess which claim has been checked.",
+      "body": "Label approved wording only after a real responsible process exists. In this exercise, all messages remain fictional drafts for discussion.",
+      "subheading": "Copy and proof boundary",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What should the next writer keep unchanged?",
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / BRIGHT EDIT",
+      "title": "Check claims before publishing.",
+      "lead": "Review every factual statement, implied outcome and quotation. Remove invented results and clearly identify visual inspiration.",
+      "body": "This handbook does not supply a legal review or a compliance guarantee. A real campaign requires appropriate source checks and responsible editorial review.",
+      "subheading": "Copy and proof boundary",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which sentence should not be published without verification?",
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for this case"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: swatch/03.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: swatch/04.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: swatch/07.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: swatch/08.jpg"
+    }
+  ]
+}

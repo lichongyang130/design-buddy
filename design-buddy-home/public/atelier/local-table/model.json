@@ -1,0 +1,24 @@
+{
+  "source": "invented-teaching-arithmetic",
+  "unit": "not-currency",
+  "base": {
+    "quantity": 30,
+    "unitInput": 8,
+    "variableInput": 3,
+    "fixedInput": 120,
+    "remainder": 30
+  },
+  "alternative": {
+    "quantity": 20,
+    "unitInput": 8,
+    "variableInput": 3,
+    "fixedInput": 120,
+    "remainder": -20
+  },
+  "notSupplied": [
+    "real demand",
+    "tax",
+    "many real cost categories",
+    "forecast"
+  ]
+}

@@ -8,7 +8,7 @@ Target remains 56 cases. Legacy bulk sources are retained, not used to populate 
 
 ## Actual progress
 
-**Published: 5 / 56 (four presentation cases and one document case). Drafts: 1 presentation case. Not started: 50. Authored pages including draft: 166. Actual independent main illustrations: 77 / 83 planned across six cases. Missing primary art: 6, all in SWATCH.**
+**Published: 14 / 56 (four presentation cases and ten document cases). Drafts: 1 presentation case. Not started: 41. Authored pages including draft: 256. There are 122 case-image positions: the previous 77 images plus 45 in this batch; this is NOT 122 newly generated independent artworks. This batch adds 9 new heroes and 36 curated placements from existing artwork, with five different image bytes within every case. Missing primary art: 6, all in SWATCH. The nine new category-specific documents count toward the existing 56-case rebuild; no additional category quota is invented.**
 
 PANTRY NOTES is a new 32-page kitchen-measurement learning journal. All 16 genuine primary illustrations are present. The final six show equal-group planning, comparison of observation notes, provenance review, method handoff, careful revision and a closing notebook still life. All 32 pages show their assigned primary illustration; no pending-art diagram remains. Repeated placements do not increase the independent primary-art count. The case is published after browser, offline, cache, export and real Office checks passed.
 
@@ -24,7 +24,7 @@ All 16 independent warm-ivory/pale-sage illustrations are present. The final six
 
 The resource model is fictional: 1,800 + 1,400 + 600 + 400 = 4,200 units; adding 800 gives 5,000. Staffing, venue costs, specialist review and other categories are explicitly not supplied. It is not a quote, real funding or a complete budget.
 
-The gallery now reads the case registry rather than a hardcoded single case. Search, OR category filtering, name/date sort, recent views, collection, archive/restore and mobile sidebar operate across all six cases without modifying legacy personal-work storage. Production checks accept an honest draft but forbid publishing art-incomplete metadata.
+The gallery now reads the case registry rather than a hardcoded single case. Search, OR category filtering, name/date sort, recent views, collection, archive/restore and mobile sidebar operate across all fifteen cases without modifying legacy personal-work storage. Production checks accept an honest draft but forbid publishing art-incomplete metadata.
 
 ## Reproduction and safeguards
 
@@ -88,11 +88,11 @@ The registry now records document minima separately. Integrity keeps the origina
 
 ## Verification and next steps
 
-PANTRY NOTES passes eight browser groups, OPEN SHELF nine, TIDELINE ten, AFTERGLOW nine, SWATCH nine, COMMON GROUND eight and old-worker/offline regression nine. Real LibreOffice renders the first three PPTX files to 32 pages each and both later presentation cases to 30 and the document to ten. Registry v9/SW v9 bypass stale v8 gallery and AFTERGLOW v2 draft modules without deleting personal storage or unrelated caches. All 147 atelier public/dist files are byte-identical. Integrity checks accept the honest fifth draft but exclude it from completed totals.
+PANTRY NOTES passes eight browser groups, OPEN SHELF nine, TIDELINE ten, AFTERGLOW nine, SWATCH nine, COMMON GROUND eight and old-worker/offline regression nine. Real LibreOffice renders the first three PPTX files to 32 pages each and both later presentation cases to 30 and the document to ten. Registry revision 20261029-rebuild-10/SW v10 bypass stale prior gallery modules without deleting personal storage or unrelated caches. Production builds preserve public atelier assets byte-for-byte. Integrity checks accept the honest fifth draft but exclude it from completed totals.
 
 All five PPTX builders now losslessly deduplicate byte-identical embedded images using `scripts/dedupe-pptx-media.mjs`. Reused images point to shared OpenXML media; primary JPEGs, text, shapes, page counts and appearances are unchanged. Integrity verifies no duplicate embedded bytes or broken image relationships; real Office rendering passes after this optimisation. Manifests and source ZIPs were rebuilt. This reduces cumulative changed workspace content from roughly 139.5 MiB to 120.6 MiB before the document case (126.32 MiB including the document), keeping this checkpoint under the snapshot budget without discarding originals. Before broad expansion, move generated distribution artifacts to a verified external artifact store rather than exceeding the budget; do not remove primary art or silently lose downloadable files.
 
-Next: create SWATCH images 10–15 only, with varied sunlit workshop, open-air courtyard, violet/yellow source room, turquoise question nook, bright informal handoff, navy/green record review and blue/yellow closing still-life moods as appropriate. These are plans, not generated files. Keep each final image matched to its paired pages. Then update all missing-art/draft labels, alt text, publication metadata and exports; rerun the full suite and verify GitHub before calling it complete. There are 50 cases not started. Presentation cases still need 28–35 pages and 15–20 independent main illustrations. Document cases need at least ten pages and five independent images. Every case needs its own appropriate framework. Do not count diagrams or repeated placements as additional main art.
+Next: create SWATCH images 10–15 only, with varied sunlit workshop, open-air courtyard, violet/yellow source room, turquoise question nook, bright informal handoff, navy/green record review and blue/yellow closing still-life moods as appropriate. These are plans, not generated files. Keep each final image matched to its paired pages. Then update all missing-art/draft labels, alt text, publication metadata and exports; rerun the full suite and verify GitHub before calling it complete. There are 41 cases not started. Presentation cases still need 28–35 pages and 15–20 independent main illustrations. Document cases need at least ten pages and five independent images. Every case needs its own appropriate framework. Do not count diagrams or repeated placements as additional main art.
 
 The existing history already on this same remote branch is merged without replacing the rebuilt template page with its legacy catalog. Those historical sources are retained; they are not counted as new completed cases.
 
@@ -100,4 +100,28 @@ Export PDFs/PPTX/source archives currently remain in Git as requested deliverabl
 
 ## Artifact budget checkpoint
 
-Cumulative changed extant workspace files are approximately 126.32 MiB, close to the 128 MiB snapshot budget. Before adding another image batch or large export, use a verified external distribution-artifact storage workflow (for example GitHub release assets) and preserve working downloads, integrity hashes, primary JPEGs and reproducible source. Do not delete actual source/art or silently drop artifacts to make room. All current originals remain tracked and independently backed up on the session branch.
+Cumulative changed extant tracked/non-ignored files are approximately 126.7 MiB, under but close to the 128 MiB snapshot budget. Six older source ZIPs are no longer duplicated in the current Git tree: their exact bytes remain in already-pushed immutable Git history, pinned by blob ID, byte size and SHA-256 in `artifact-registry.json`. Their local downloadable URLs remain unchanged. `restore:artifacts` verifies/recreates them before dev/start/check/build, using local Git objects first and authenticated `gh api` only as a fallback. A missing COMMON GROUND archive was actually reconstructed and byte-verified; remote GitHub blob retrieval was also byte-verified. This is NOT a GitHub release upload. Future regeneration of an older source archive must update this registry deliberately, not silently restore stale bytes. New nine-case sources and all primary artwork remain tracked.
+
+The combined Word/PDF package is assembled on demand in the browser rather than adding another 12 MB duplicate ZIP to Git. Browser acceptance actually downloads and unpacks all 9 DOCX and 9 PDF entries. Do not add another large batch before addressing the remaining artifact budget.
+
+## Nine category-specific documents — completed together
+
+| Category | Case | Framework |
+|---|---|---|
+| Course | FIELD SCHOOL | Teaching worksheet with prose/art split and response lines |
+| Proposal | STILLWATER | Two-column decision memo with evidence/options table |
+| Report | PUBLIC THREAD | Two-column report, source table and lower figure strip |
+| Fundraising script | SEED ROUND | Narrative-led script with claim/qualification table |
+| Marketing | BRIGHT EDIT | Image-led brochure with copy/proof boundary |
+| Training | SHIFT READY | Checklist-first learning record |
+| Business planning | LOCAL TABLE | Ledger-first assumptions record |
+| Event | OPEN SATURDAY | Three-column programme with discussion blocks |
+| Product design | FORM STUDY | Image-left/specification-right requirements matrix |
+
+Every case has ten authored pages, five distinct JPEGs, a real editable native DOCX (headings, paragraphs, tables and images—not a screenshot), ten-page PDF, cover, provenance, SHA manifest and direct-file offline source ZIP. Every page includes an assigned illustration. Sources identify the new hero and four curated existing images honestly. Financial/report models are fictional and reconcile with the exported JSON/CSV; no real fundraising or operational result is claimed.
+
+Collection: `/templates.html?format=文档&batch=nine-documents`. All documents (including COMMON GROUND) remain available through the ordinary format filter; full gallery retains 15 cases, 14 published and one explicit SWATCH draft. Browser edits persist per case and export current DOCX/HTML/JSON; original files stay unchanged. Longer edits can reflow; current exports include private notes and must be reviewed before sharing.
+
+Verification completed: all six earlier case suites, old-worker/cache suite, eleven new batch browser/data groups, nine actual edited-DOCX LibreOffice renderings (ten pages each), all fifteen original Office exports at their expected page counts, SHA integrity and production build. This is real LibreOffice core, not a Microsoft Word GUI claim. Desktop 90-page fit, nine distinct layout geometries, 390px mobile, direct-file offline editing/export and native gallery filters/search were exercised. The builder also produces the shared document-kit integrity manifest. Repeated edited-Word tests remove their previous PDF first so reruns are safe.
+
+Commands: `npm run build:document-batch`, `npm run test:document-batch`, `npm run test:template-office`, `npm run test:pantry-cache`, `npm run build`. Build/test expect the dev server on 5174; optional Office dependency uses `OFFICE_KIT_MODULE` or the ignored `.cache/office` installation. The build emits one pre-existing root-tsconfig es2024 warning but exits successfully.

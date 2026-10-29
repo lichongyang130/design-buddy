@@ -1,0 +1,152 @@
+{
+  "work": {
+    "id": "field-school",
+    "title": "FIELD SCHOOL",
+    "subtitle": "观察与提问课程讲义",
+    "category": "课程",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "framework": "course: Practice response / distinct native A4 document layout",
+    "scope": "Fictional adult visual-observation course. Not botanical identification, field safety instruction, certification or evidence about real learners.",
+    "layout": "course",
+    "color": "#236854",
+    "wash": "#edf4da"
+  },
+  "pages": [
+    {
+      "section": "01 / FIELD SCHOOL",
+      "title": "A course in noticing carefully.",
+      "lead": "Learn to distinguish a visible detail from the explanation you attach to it. The garden scenes are prompts for adult discussion, not a real field class or a verified site.",
+      "body": "The learning objective is to write one observation, identify one assumption and ask one source-aware question. Completion is a personal practice record, not an accredited qualification.",
+      "subheading": "Practice response",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Write an observation without naming a cause.",
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / FIELD SCHOOL",
+      "title": "Read the learning route.",
+      "lead": "The ten-page route moves from description to interpretation, comparison and reflection. Read the numbered headings in order or return to the exercise that addresses your current question.",
+      "body": "Pages 3–4 practise neutral description. Pages 5–6 separate interpretation and context. Pages 7–8 compare wording and rehearse feedback. Pages 9–10 collect a bounded response and a next question.",
+      "subheading": "Practice response",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Mark the exercise you want to revisit.",
+      "image": 1,
+      "kind": "contents"
+    },
+    {
+      "section": "03 / FIELD SCHOOL",
+      "title": "Describe before explaining.",
+      "lead": "Choose one visible object in the illustration. Describe its shape, colour and relative position using ordinary language rather than a story about why it is there.",
+      "body": "For example, a blue gate is a visible detail. Calling the gate welcoming is an interpretation. Both may be useful, but they answer different questions and should not be merged into one finding.",
+      "subheading": "Practice response",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Write two sentences labelled detail and interpretation.",
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / FIELD SCHOOL",
+      "title": "Keep the frame in view.",
+      "lead": "The picture has an edge. Anything outside that edge is not supplied by the exercise. A path disappearing behind a wall does not establish a destination, distance or accessible route.",
+      "body": "Practise naming one missing piece of context beside each observation. The aim is not to make the illustration less engaging; it is to make the limits of your description readable.",
+      "subheading": "Practice response",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Name information that the frame does not supply.",
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / FIELD SCHOOL",
+      "title": "Offer more than one interpretation.",
+      "lead": "An empty bench could suggest quiet, an unoccupied moment or simply an artistic choice. The exercise contains no attendance record or statement of local preference.",
+      "body": "Write two plausible readings without choosing a winner. A useful interpretation remains connected to a visible detail while admitting what would need a separate source.",
+      "subheading": "Practice response",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Offer a second reading of the same detail.",
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / FIELD SCHOOL",
+      "title": "Ask a source-aware question.",
+      "lead": "Turn an interpretation into a question that could be clarified with appropriate evidence. Keep the request narrow enough that another reader understands what information is missing.",
+      "body": "Replace Is this a good garden? with What real context would help us understand how this place is used? The latter does not invent a result or assume that the fictional place actually exists.",
+      "subheading": "Practice response",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Rewrite a broad judgement as a bounded question.",
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / FIELD SCHOOL",
+      "title": "Compare two descriptions.",
+      "lead": "Read a short neutral description beside a more interpretive one. Identify which words introduce an assumption about use, mood or intent.",
+      "body": "The comparison is between sentences, not between real places or learner ability. No score, ranking or claim about participant performance is supplied.",
+      "subheading": "Practice response",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Underline one word that reaches beyond the picture.",
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / FIELD SCHOOL",
+      "title": "Practise generous feedback.",
+      "lead": "Respond to another invented description by naming what is clear and asking what remains uncertain. This is a writing exercise, not an assessment of a real person.",
+      "body": "Try the response I can locate the blue gate; I cannot tell which source supports the claimed mood. Specific feedback is easier to act on than a global judgement such as good or bad.",
+      "subheading": "Practice response",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Write one acknowledgement and one clarification question.",
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / FIELD SCHOOL",
+      "title": "Collect a learning response.",
+      "lead": "Bring together one observation, one assumption, one missing source and one next question. Keep the response compact enough that a reader can check each part.",
+      "body": "This response sheet is evidence of what you wrote in the exercise, not evidence that the illustrated setting has been studied. Do not include personal information about other participants.",
+      "subheading": "Practice response",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Complete the four-part response in your own words.",
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / FIELD SCHOOL",
+      "title": "Leave with a better question.",
+      "lead": "Review which distinction became clearer: description versus interpretation, absence versus zero, or an attractive story versus a supported claim.",
+      "body": "Keep an earlier sentence and a revised sentence if that helps your reflection. This template supplies no passing grade or certificate; the useful outcome is a more precise question.",
+      "subheading": "Practice response",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Name one question you can now ask more clearly.",
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for this case"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: common-ground/02.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: tideline/04.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: tideline/09.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: common-ground/05.jpg"
+    }
+  ]
+}

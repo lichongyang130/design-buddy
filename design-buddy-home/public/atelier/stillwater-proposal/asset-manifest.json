@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "work": "stillwater-proposal",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 9553,
+      "sha256": "543716ca9c18d307d5638b3b2754c30589809af0808d5d1f6f679c9f1099a00a"
+    },
+    {
+      "path": "content.js",
+      "bytes": 8203,
+      "sha256": "010882a000103f96ec4f6174330de19794735d72296a307634d35bc71a673cc9"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 507,
+      "sha256": "a691b67c7a2fdfc6be5310d13546188717efa666d473bb6d49accb59ac8773fd"
+    },
+    {
+      "path": "stillwater-proposal.docx",
+      "bytes": 684055,
+      "sha256": "9261af9daf119add8edd3aee852f9106455478851034de3d6d8e3480cdefb16d"
+    },
+    {
+      "path": "stillwater-proposal.pdf",
+      "bytes": 742731,
+      "sha256": "a41125b61749d9b8539bca1203e6cde32326239cb2e41dddade38de4ab8e3ee5"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 156020,
+      "sha256": "e49cfcbbeb3e90b13c3e656d7454f7a58b0c353664860d546298c08ffc0bdf02"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 138243,
+      "sha256": "0dde63cbf160d41ffe093fe0c544c5c6bf3b675414d5a4c988eda93ca01fddc0"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 134066,
+      "sha256": "4fad527c494792456e5dd89699ae69f3cc9a8ae70591d3d0477209f4b8f8966d"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 113776,
+      "sha256": "7b6e0d4c79fed4da31800c38683fac9513d21941c19cc411193f96319da55bd5"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 135309,
+      "sha256": "51888b70157abaafd0f8145fee51c1633c4f033aba9e2cc186e3240dce99c1f4"
+    }
+  ]
+}

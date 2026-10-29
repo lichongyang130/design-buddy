@@ -6,3 +6,11 @@ dist/
 .env
 .env.*
 !.env.example
+
+# Immutable GitHub-backed source archives; restored before dev/build/start.
+/public/atelier/pantry-notes/pantry-notes-source.zip
+/public/atelier/open-shelf/open-shelf-source.zip
+/public/atelier/tideline/tideline-source.zip
+/public/atelier/afterglow/afterglow-source.zip
+/public/atelier/swatch/swatch-source.zip
+/public/atelier/common-ground/common-ground-source.zip

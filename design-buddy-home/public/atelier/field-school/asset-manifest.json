@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "work": "field-school",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 9624,
+      "sha256": "c13a4c14826cda62474aee355a8f3449a2ccb2820767afde94bdb79b1d87fa8e"
+    },
+    {
+      "path": "content.js",
+      "bytes": 8269,
+      "sha256": "ddbb7159c5e64b953ec983b95ccbaf01f17d00a385655d103d1ee7d831e98137"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 512,
+      "sha256": "c1da669976af7386b6bcc7309a4860f0e0b28f7e4102ce714da601e27ccc578f"
+    },
+    {
+      "path": "field-school.docx",
+      "bytes": 838600,
+      "sha256": "184800bd162de74f676c560307142762f04175dec0a0f1d0ba3711320f35268e"
+    },
+    {
+      "path": "field-school.pdf",
+      "bytes": 1028852,
+      "sha256": "fafec8d8691b01ff7cd92df237a5b5f2e5a02eaa1878c2e1f26d8511dfd7fb94"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 200708,
+      "sha256": "85635db718e6d602b84fabefece3312ed2c32c26a7fd931c3aa6d3f883eeec09"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 163303,
+      "sha256": "18bf5d1471613f31c2e5b21eb30af9e35a4d3e0a6c1f98c8f085668a8e8c82ce"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 144711,
+      "sha256": "81ed5ee6e6c87d3bbe24bb3bd4b5bd97a1a619284448fb8cca63df170b3ea2f5"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 166688,
+      "sha256": "a70d9119b9b1a16d19696c5f51096ad908cb7603a468aac337865d2fd0b6ac3c"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 156330,
+      "sha256": "ebb48c45bd4ac68b5e0942dc44cfa57171367c4cddb319164ddeb8c4e300a59e"
+    }
+  ]
+}
