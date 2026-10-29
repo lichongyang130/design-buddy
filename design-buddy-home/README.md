@@ -16,17 +16,17 @@ Open `/templates.html?format=文档&batch=nine-documents` for nine different cat
 
 Nine new theme illustrations are combined with 36 curated existing-image placements, not 45 new images. Report/model values are fictional. Original DOCX/PDF remain fixed; current edited Word/HTML/JSON exports include local edits and private notes. Long edits can reflow. Review notes before sharing.
 
-See [NEW-TEMPLATE-PLAN.md](NEW-TEMPLATE-PLAN.md) for the current 65-case target, current 54-published/1-draft status, frameworks, validation and remaining limits. SWATCH remains an honest draft, not a completed case.
+See [NEW-TEMPLATE-PLAN.md](NEW-TEMPLATE-PLAN.md) for the current 65-case target, current 59-published/1-draft status, frameworks, validation and remaining limits. SWATCH remains an honest draft, not a completed case.
 
 ## Artifact preservation
 
-Primary art, source, manifests and completed export bytes are backed up in Git. Distribution files can be stored in SHA-pinned, already-pushed immutable Git history rather than duplicated in the current tree. Currently 163 files (six older source ZIPs, five older PPTX and five older PDF files, and 147 original-nine/course/proposal/report/fundraising/marketing/training/business DOCX/PDF/source archives) are restored automatically before dev/start/check/build via `artifact-registry.json`. Their downloadable paths are unchanged. Local Git objects are preferred; the GitHub CLI is the remote fallback. Do not change an older archive without updating the registry. All pinned downloads have SHA/byte-size verification and automatic missing-file restoration; each new distribution batch is pushed before pinning. Standard full clones restore from local Git objects; shallow clones may require fetching history or authenticated GitHub CLI access. No successful GitHub release upload is claimed.
+Primary art, source, manifests and completed export bytes are backed up in Git. Distribution files can be stored in SHA-pinned, already-pushed immutable Git history rather than duplicated in the current tree. Currently 233 files (178 original distributions, including the five event documents, plus 55 already-backed-up QA cover PNGs) are restored automatically before dev/start/check/build via `artifact-registry.json`. Their downloadable paths are unchanged. Local Git objects are preferred; the GitHub CLI is the remote fallback. Do not change an older archive without updating the registry. All pinned downloads have SHA/byte-size verification and automatic missing-file restoration; each new distribution batch is pushed before pinning. Standard full clones restore from local Git objects; shallow clones may require fetching history or authenticated GitHub CLI access. No successful GitHub release upload is claimed.
 
 ## Checks
 
 - `npm run check:templates`: registry, publication gates and SHA manifests, including shared document kit.
 - `npm run test:document-batch`: gallery, nine geometries, 90-page fit, editable exports, mobile, offline sources, model arithmetic and real edited Word rendering.
-- `npm run test:template-office`: all 55 originals rendered with real LibreOffice core at the expected page counts.
+- `npm run test:template-office`: all 60 originals rendered with real LibreOffice core at the expected page counts.
 - `npm run test:pantry-cache`: old-cache migration without deleting unrelated caches or personal storage.
 - Individual earlier cases retain their own `test:<case>` scripts.
 
@@ -34,7 +34,7 @@ Office tests require Node 22.19+ and `@deepseek-ai/libreoffice-kit` installed in
 
 ## 50-case expansion — course batch completed
 
-Forty of the 50 additional cases are complete (six courses, six proposals, six reports, five fundraising speeches, six marketing documents, six training documents and five business-planning documents); 10 remain planned. Open `/templates.html?format=文档&batch=course-expansion`. The original nine-document collection remains nine cases. All previous 15 cases remain available, bringing the gallery to 55 cases (54 published, one SWATCH draft). The revised total target is 65: existing 15 plus 50 additional—not 50 including the old nine.
+Forty-five of the 50 additional cases are complete (six courses, six proposals, six reports, five fundraising speeches, six marketing documents, six training documents, five business-planning documents and five event documents); five product-design cases remain planned. Open `/templates.html?format=文档&batch=course-expansion`. The original nine-document collection remains nine cases. All previous 15 cases remain available, bringing the gallery to 60 cases (59 published, one SWATCH draft). The revised total target is 65: existing 15 plus 50 additional—not 50 including the old nine.
 
 Six courses: QUESTION LAB (inquiry tree), STORY WORKSHOP (manuscript annotations), VISUAL LITERACY (image/analysis comparison), PROJECT STUDIO (task board), DEBATE ROOM (argument mapping), SELF-PACED ROUTE (branching route). Each has ten substantive pages, five images, one new hero and four curated assets. Worksheet cells are editable, persist per case and export in current DOCX/HTML/JSON. Native Word has six different content orders and appropriate native record tables; image assets remain raster. Original and edited copies rendered to ten pages each in real LibreOffice.
 
@@ -186,3 +186,32 @@ Complete final business export bytes were pushed in `3df0a4a4f8fb470c751c8629ffd
 After cold restoration, business acceptance passed again (seven browser/data groups and five actual ten-page edited Word renderings); integrity and production build passed. All 55 original Office renderings were verified against the catalog (50 prior plus 5 new), and restored bytes are identical. No Microsoft Word GUI verification is claimed. The cache-handover limitation above remains unresolved; the final isolated run passed, but failed stress iterations were not counted as passes and no speculative lifecycle workaround was retained.
 
 Extant non-ignored cumulative patch content is approximately **121.80 MiB**, below 128 MiB. Only about 6.2 MiB remains before that cap. Audit and make a preservation plan before the final ten documents; unused already-pushed QA cover PNGs may be candidates for the same immutable-history pin/restore workflow, but no covers have been pinned yet. Do not remove original art, downloads or personal work to meet the budget.
+
+
+## Event batch — 45 / 50 additional documents
+
+| Template | Independent framework / native editable module |
+|---|---|
+| COMMUNITY FORUM | Three topic circles, six authored note examples, difference-preserving synthesis and follow-up questions |
+| EXHIBITION GUIDE | Three conceptual exhibition zones, six fictional work cards, a zone index and return links |
+| WORKSHOP RUNBOOK | Two task stations, input/output continuity, functional roles and a six-block illustrative run sheet |
+| READING SALON | Three original exercise passages, three discussion rounds and nine unrecorded discussion cells |
+| DEMO DAY | Three fictional concept units, clarification questions and nine uncollected feedback cells |
+
+Each document contains ten complete English A4 pages, five distinct illustrations with an image on every page, native editable Word, ten-page PDF, offline source ZIP, source CSV/JSON and provenance. All 25 illustrations are curated from existing AI-generated artwork and prepared as attributable derivatives; no newly generated artwork is claimed. Visual structures differ: green topic-circle cards, lilac exhibition catalogue/banner, terracotta station rail, blue text-first reading spread and cobalt feedback strip. Browser geometries, five native Word block orders and five framework-specific native table structures differ; text and tables are not flattened screenshots.
+
+Collection: `/templates.html?format=文档&batch=event-expansion`. Batch originals: `/atelier/event-kit/download.html` (five Word + five PDF files, byte-compared with actual originals). Build: `npm run build:event-expansion`. Acceptance: `npm run test:event-expansion`, including `tests/verify-event-models.mjs`. Preparation from repo root: `python3 design-buddy-home/scripts/prepare-event-expansion.py --keep-images`, with Pillow installed in ignored `.cache/expansion-python`. Authored source: `scripts/event-expansion-content.json`.
+
+The models explicitly separate authored material from real events. Forum notes are proposals/questions, not submissions, votes or consensus; no contributor names are invented. Exhibition work cards are fictional and routes are document links, not venue/safety plans or installed works. The workshop's 5+12+3+15+15+10=60 minutes is planned illustrative time, not measured delivery; station input/output continuity is checked. Salon passages are original exercises, not external quotations; all nine response cells remain unrecorded. Demo concepts are not running products, and all nine feedback cells remain uncollected. Real attendance, consent, feedback, appointments, endorsements and contact opt-in are not asserted. Original source excerpts/registers remain fixed when copy is edited; update sources and rebuild to change them. Current exports include private notes; review before sharing. Long edits may reflow in Word.
+
+Current expansion: **45 published / 50, 5 remaining (product design)**. Full gallery: **60 cases (59 published, one SWATCH draft), 706 authored pages**, target 65. Existing artwork, download URLs, collections, local work and prior batch filters are preserved. Gallery revision `20261030-rebuild-18` / SW v18 use the existing activation handshake; no unrelated-cache or personal-data deletion is introduced. The previously documented intermittent old-worker handover timeout is **not fixed**. This batch's nine-group isolated cache check passed; it does not erase earlier failed stress runs.
+
+Validation covers all fifty page layouts, five distinct sourced-image hashes per case, editable titles/prose/records, persistence, immutable source excerpts, native Word generator equivalence, actual DOCX/PDF downloads, current Word/HTML/JSON, 390px touch layout and file:// offline Word export. Source CSV/JSON round trips preserve all rows, nulls and canonical LF. Exhibition index-to-zone and return navigation is exercised on desktop, touch and file://; Word uses six valid internal hyperlinks to its ten module bookmarks. All 60 original Office exports render at their expected page counts with real LibreOffice core (55 prior, five new); five edited event exports render to ten pages each. All eight previous document-family suites and six earlier individual-case suites pass. No Microsoft Word GUI verification is claimed.
+
+### Event backup and storage checkpoint
+
+Complete event distribution bytes were committed and pushed in `bf117e42` before pinning their 15 Word/PDF/source archives. To stay under the snapshot limit without removing deliverables, 55 existing QA cover PNGs were also byte-verified against already-pushed `20aaa853` and added to the explicit immutable-history restore workflow. Their local site paths remain present; no primary illustration or personal work was removed. Pinning covers requires explicit `--covers` and catalog membership; restore permits only the narrow existing artifact-path whitelist plus `cover.png`.
+
+The registry contains **233 files: 178 distributions and 55 QA covers**. Every file was physically moved aside, restored automatically from immutable Git history, and checked against original bytes, byte size and SHA-256. An actual remote exhibition Word blob was independently fetched with GitHub CLI and matched. All 20 event data/content/source CSV/JSON files match pushed Git blobs byte-for-byte. Restoring before dev/start/check/build preserves download and gallery paths. Full clones prefer local Git objects; shallow clones may need history or authenticated GitHub CLI access. Do not claim these binaries remain duplicated in the latest Git tree.
+
+After actual cold restoration, event acceptance passed again, including all desktop/touch/file:// exhibition routes, seven browser/data groups and five real ten-page edited-Word renders. Integrity and production build passed. Final extant non-ignored cumulative content is approximately **108.54 MiB**, below 128 MiB; recheck before the final product-design batch.
