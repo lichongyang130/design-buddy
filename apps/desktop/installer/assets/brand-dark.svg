@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="196" viewBox="0 0 600 196">
+  <rect x="228" y="4" width="144" height="144" rx="34" fill="#1e2b4d"/>
+  <g transform="translate(175 -22) scale(1.7)">
+    <path d="M38 30h20c23 0 38 14 38 34S81 98 58 98H38V30Zm19 15v38h2c13 0 21-7 21-19s-8-19-21-19h-2Z" fill="#20c8b9"/>
+    <path d="m96 19 3.5 9.5L109 32l-9.5 3.5L96 45l-3.5-9.5L83 32l9.5-3.5L96 19Z" fill="#ffd166"/>
+  </g>
+  <text x="300" y="184" text-anchor="middle" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="30" font-weight="700" letter-spacing="-0.5">Design Buddy</text>
+</svg>

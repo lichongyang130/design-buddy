@@ -1,11 +1,11 @@
 {
-  "name": "DeepSeek Harness",
-  "short_name": "DSH",
+  "name": "Design Buddy",
+  "short_name": "Design Buddy",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "background_color": "#1e2b4d",
+  "theme_color": "#1e2b4d",
   "icons": [
     {
       "src": "icon-192.png",

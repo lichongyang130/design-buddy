@@ -12,6 +12,9 @@
   },
   "type": "module",
   "main": "lib/index.js",
+  "scripts": {
+    "build": "tsdown --config-loader native"
+  },
   "types": "lib/types/index.d.ts",
   "exports": {
     ".": {

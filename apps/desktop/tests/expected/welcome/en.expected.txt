@@ -1,6 +1,6 @@
-DeepSeek Harness
-DeepSeek Harness
-Welcome to DeepSeek Harness
+Design Buddy
+Design Buddy
+Welcome to Design Buddy
 Build potential. Explore intelligence.
 Sign in
 Add API Key
