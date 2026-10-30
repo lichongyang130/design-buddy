@@ -92,38 +92,13 @@ export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRe
 
   /* ---------------- 连接器 ---------------- */
 
-  const cnState = (name) => store.state.connectors.find((c) => c.name === name)
-
   const renderConnectors = () => {
-    const list = $('#add-cn-list')
-    const count = $('#add-cn-count')
+    const list = $('#add-cn-list'), count = $('#add-cn-count')
     if (!list) return
     const search = ($('#add-cn-search')?.value ?? '').trim().toLowerCase()
-    const connected = store.state.connectors.filter((c) => c.connected)
-    if (count) count.textContent = `${connected.length} 个已连接 / 共 ${store.state.connectors.length} 个`
-    // 已连接的排在前面；目录里的其它连接器作为可一键连接的建议
-    const cards = [
-      ...store.state.connectors.map((c) => ({
-        name: c.name, desc: c.desc || '已连接的服务', color: c.color || '#5b6ef5', connected: !!c.connected,
-      })),
-      ...CONNECTOR_CATALOG
-        .filter((c) => !store.state.connectors.some((k) => k.name === c.name))
-        .map((c) => ({ name: c.name, desc: c.desc, color: c.color, connected: false })),
-    ]
-      .filter((c) => !search || `${c.name} ${c.desc}`.toLowerCase().includes(search))
-      .sort((a, b) => Number(b.connected) - Number(a.connected))
-      .slice(0, 14)
-    list.innerHTML = cards.length ? cards.map((c) => `
-      <button class="add-item${c.connected ? ' is-on' : ''}" type="button" role="menuitemcheckbox"
-        aria-checked="${c.connected}" data-toggle-connector="${esc(c.name)}" title="${c.connected ? '点击断开' : '点击连接'}">
-        <span class="add-dot" style="--c:${esc(c.color)}"></span>
-        <span class="add-item-main">
-          <span class="add-item-name">${esc(c.name)}</span>
-          <span class="add-item-meta">${c.connected ? '已连接' : esc(c.desc)}</span>
-        </span>
-        <span class="add-item-pill${c.connected ? ' is-on' : ''}">${c.connected ? '已连' : '连接'}</span>
-      </button>`).join('')
-      : '<p class="add-sub-empty">没有匹配的连接器。</p>'
+    if (count) count.textContent = '六个核心连接入口，前往连接器页验证'
+    const cards = CONNECTOR_CATALOG.filter(c => !search || `${c.name} ${c.desc}`.toLowerCase().includes(search))
+    list.innerHTML = cards.map(c => `<button class="add-item" type="button" data-toggle-connector="${esc(c.name)}"><span class="add-dot" style="--c:${esc(c.color)}"></span><span class="add-item-main"><span class="add-item-name">${esc(c.name)}</span><span class="add-item-meta">${esc(c.desc)}</span></span><span class="add-item-pill">管理连接</span></button>`).join('') || '<p class="add-sub-empty">没有匹配的连接器。</p>'
   }
 
   /* ---------------- 模式：计划 + 任务 ---------------- */
@@ -326,21 +301,8 @@ export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRe
 
     const cn = el.closest('[data-toggle-connector]')
     if (cn) {
-      const name = cn.dataset.toggleConnector
-      const entry = store.state.connectors.find((c) => c.name === name)
-      if (entry) {
-        entry.connected = !entry.connected
-      } else {
-        const cat = CONNECTOR_CATALOG.find((c) => c.name === name)
-        store.state.connectors.push({
-          id: `cn-${Date.now().toString(36)}`, name, connected: true,
-          desc: cat?.desc, color: cat?.color, shape: cat?.shape, category: cat?.category,
-        })
-      }
-      store.save()
-      renderConnectors()
-      const now = store.state.connectors.find((c) => c.name === name)?.connected
-      toast(`${name} 已${now ? '连接' : '断开'}`)
+      const provider = CONNECTOR_CATALOG.find(c => c.name === cn.dataset.toggleConnector)
+      location.href = 'connectors.html?provider=' + encodeURIComponent(provider?.id || '')
       return
     }
 

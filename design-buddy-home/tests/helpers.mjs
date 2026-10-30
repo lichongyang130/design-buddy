@@ -12,6 +12,9 @@ export const base = 'http://127.0.0.1:5174'
 export const DIST = path.resolve(new URL('../dist', import.meta.url).pathname)
 export const LS_KEY = 'design-buddy-state-v1'
 
+const temporaryModuleRoots = new Set()
+process.once('exit', () => { for (const dir of temporaryModuleRoots) fs.rmSync(dir, { recursive: true, force: true }) })
+
 const SHIM_KEYS = [
   'window', 'document', 'localStorage', 'navigator', 'location', 'HTMLElement',
   'Node', 'Event', 'MouseEvent', 'KeyboardEvent', 'CustomEvent', 'Blob', 'File',
@@ -55,7 +58,9 @@ export async function loadPage(file, { storage, freshCopy = false } = {}) {
   let entry = path.join(DIST, jsPath)
   if (freshCopy) {
     const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'db-page-'))
-    fs.cpSync(DIST, tmp, { recursive: true })
+    // Only the ESM graph needs isolation; copying all template distributions exhausts the sandbox disk.
+    temporaryModuleRoots.add(tmp)
+    fs.cpSync(path.join(DIST, 'assets'), path.join(tmp, 'assets'), { recursive: true })
     entry = path.join(tmp, jsPath)
   }
   try {

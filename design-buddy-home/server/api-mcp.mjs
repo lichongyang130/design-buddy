@@ -1,3 +1,5 @@
+import { isVerifiedEndpoint } from '../src/connector-policy.js'
+import { normalizePermissions, issueApproval, authorizeCall } from './mcp-permissions.mjs'
 /**
  * MCP 网关 API：同源路由 /api/mcp/*
  * 全部同源校验、token 不回显、限流、限额、审计。
@@ -6,7 +8,7 @@
 import { mcpHandshake, mcpCall, McpError, assertPublicHost } from './mcp-client.mjs'
 import {
   addServer, removeServer, getServer, listServersPublic, updateHandshake,
-  updateAuth, decryptToken, pushLog, getLogs, publicView,
+  updateAuth, updatePermissions, failHandshake, decryptToken, pushLog, getLogs, publicView,
 } from './mcp-registry.mjs'
 
 const MAX_SERVERS = 32
@@ -90,9 +92,10 @@ export async function handleMcpRequest(req, res) {
       const body = await readBody(req)
       let parsed
       try { parsed = JSON.parse(body) } catch { return fail(res, 400, 'BAD_JSON', '请求体不是合法 JSON') }
-      const { label, url, auth, allowPrivate, timeoutMs } = parsed
+      const { label, url, auth, allowPrivate, timeoutMs, providerId } = parsed
       if (!label || typeof label !== 'string') return fail(res, 400, 'BAD_INPUT', '缺少 label')
       if (!url || typeof url !== 'string') return fail(res, 400, 'BAD_INPUT', '缺少 url')
+      try { const endpoint = new URL(url); if (endpoint.username || endpoint.password || endpoint.search || endpoint.hash) return fail(res, 400, 'BAD_INPUT', 'MCP 地址不能包含账号密码、查询参数或片段；请使用认证字段') } catch { return fail(res, 400, 'BAD_INPUT', 'MCP 地址格式不正确') }
       // SSRF 预检
       try { await assertPublicHost(url, { allowPrivate }) } catch (err) {
         return fail(res, 400, err.code, err.message)
@@ -106,7 +109,7 @@ export async function handleMcpRequest(req, res) {
         return fail(res, 500, 'INTERNAL', err.message)
       }
       // 握手成功才落盘
-      const record = await addServer({ label, url, auth, allowPrivate, timeoutMs, handshakeResult: hs })
+      const record = await addServer({ label, url, auth, allowPrivate, timeoutMs, handshakeResult: hs, providerId })
       await pushLog(record.id, { action: 'handshake', ok: true, latency: hs.ms, requestId: hs.requestId, detail: `${hs.toolCount} 个工具` })
       return ok(res, { server: publicView(record) })
     }
@@ -123,6 +126,7 @@ export async function handleMcpRequest(req, res) {
       try {
         hs = await mcpHandshake({ url: server.url, auth, allowPrivate: server.allowPrivate, timeoutMs: 10000, maxBytes: MAX_RESPONSE })
       } catch (err) {
+        await failHandshake(id, err.code || 'INTERNAL')
         if (err instanceof McpError) return fail(res, err.status ?? 400, err.code, err.message, { requestId: err.requestId })
         return fail(res, 500, 'INTERNAL', err.message)
       }
@@ -130,6 +134,27 @@ export async function handleMcpRequest(req, res) {
       await pushLog(id, { action: 'handshake', ok: true, latency: hs.ms, requestId: hs.requestId, detail: `${hs.toolCount} 个工具` })
       const updated = await getServer(id)
       return ok(res, { server: publicView(updated) })
+    }
+
+    const permissionMatch = urlPath.match(/^\/api\/mcp\/servers\/([^/]+)\/permissions$/)
+    if (req.method === 'PATCH' && permissionMatch) {
+      const server = await getServer(permissionMatch[1])
+      if (!server) return fail(res, 404, 'NOT_FOUND', '服务不存在')
+      try {
+        const permissions = normalizePermissions(JSON.parse(await readBody(req)), server.tools)
+        const updated = await updatePermissions(server.id, permissions)
+        await pushLog(server.id, { action: 'permissions', ok: true, detail: '用户更新工具白名单' })
+        return ok(res, { server: publicView(updated) })
+      } catch (error) { return fail(res, 400, 'BAD_PERMISSIONS', error.message) }
+    }
+    const approvalMatch = urlPath.match(/^\/api\/mcp\/servers\/([^/]+)\/approvals$/)
+    if (req.method === 'POST' && approvalMatch) {
+      const server = await getServer(approvalMatch[1])
+      if (!server) return fail(res, 404, 'NOT_FOUND', '服务不存在')
+      try {
+        const { toolName, args } = JSON.parse(await readBody(req))
+        return ok(res, { approvalToken: issueApproval(server, toolName, args) })
+      } catch (error) { return fail(res, 403, 'WRITE_NOT_ALLOWED', error.message) }
     }
 
     // PATCH /api/mcp/servers/:id — 换凭据
@@ -151,6 +176,7 @@ export async function handleMcpRequest(req, res) {
       try {
         hs = await mcpHandshake({ url: updated.url, auth: authForCall, allowPrivate: updated.allowPrivate, timeoutMs: 10000, maxBytes: MAX_RESPONSE })
       } catch (err) {
+        await failHandshake(id, err.code || 'INTERNAL')
         if (err instanceof McpError) return fail(res, err.status ?? 400, err.code, err.message, { requestId: err.requestId })
         return fail(res, 500, 'INTERNAL', err.message)
       }
@@ -181,12 +207,14 @@ export async function handleMcpRequest(req, res) {
       const body = await readBody(req)
       let parsed
       try { parsed = JSON.parse(body) } catch { return fail(res, 400, 'BAD_JSON', '请求体不是合法 JSON') }
-      const { toolName, args } = parsed
+      const { toolName, args, approvalToken } = parsed
       if (!toolName || typeof toolName !== 'string') return fail(res, 400, 'BAD_INPUT', '缺少 toolName')
+      if (!isVerifiedEndpoint(server)) return fail(res, 409, 'NOT_VERIFIED', '请先重新验证远端连接')
+      if (!server.tools?.some(t => t.name === toolName) || !authorizeCall(server, toolName, args, approvalToken)) return fail(res, 403, 'TOOL_NOT_ALLOWED', '工具未授权，或写入操作缺少有效的一次性确认')
       const auth = server.auth?.mode === 'none' ? null : { mode: server.auth.mode, headerName: server.auth.headerName, token: await decryptToken(server) }
       concurrentCalls++
       try {
-        const result = await mcpCall({ url: server.url, auth, server, toolName, args, timeoutMs: 30000, maxBytes: MAX_RESPONSE })
+        const result = await mcpCall({ url: server.url, auth, server: { ...server, ...server.protocol }, toolName, args, timeoutMs: 30000, maxBytes: MAX_RESPONSE })
         await pushLog(id, { action: 'call', ok: !result.isError, latency: result.ms, bytes: result.bytes, requestId: result.requestId, detail: `${toolName} · ${result.content?.length ?? 0} 段内容` })
         return ok(res, { result })
       } catch (err) {

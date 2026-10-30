@@ -89,7 +89,7 @@ try {
   assert.equal(await page.locator('[data-summon]').innerText(), 'Summon')
   assert.match(await page.locator('[data-run-expert]').innerText(), /Break down and coordinate/)
   await page.goto(base + '/connectors.html')
-  await page.locator('.cn-card').first().click()
+  await page.locator('#cn-grid .cn-configure').first().click()
   assert.match(await page.locator('#cn-test').innerText(), /Authentication/)
   await page.goto(base + '/settings.html')
   await page.locator('[data-settings="models"]').click()

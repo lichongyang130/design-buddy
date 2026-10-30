@@ -921,3 +921,56 @@ HTML 响应式规则检查|HTML responsive-rule check|HTML レスポンシブ規
 范围|Scope|範囲
 {name}（旧版能力）|{name} (legacy capability)|{name}（旧版機能）
 已从推荐移除，保留旧安装记录；可能仅转发专家规则或输出方案，不执行名称暗示的外部操作。|Removed from recommendations; existing installs are retained. May only forward to expert rules or produce a plan, not perform external actions implied by the name.|おすすめから除外しました。既存の導入記録は保持します。専門家の規則や計画の出力のみで、名称が示す外部操作を実行しない場合があります。
+选定团队文档作为创作资料，按需回传成果|Use selected team documents as source material and return results as needed.|選択したチーム文書を資料に使い、必要に応じて成果を返します。
+导入选定知识库页面，保存创作结果|Import selected knowledge pages and save creative output.|選択したナレッジページを取り込み、成果を保存します。
+读取指定仓库资料，确认后提交原型源码|Read selected repository resources and submit prototype source after confirmation.|指定リポジトリを参照し、確認後にプロトタイプのソースを送信します。
+选择云端文件作为素材，保存导出成果|Use selected cloud files as source material and save exports.|選択したクラウドファイルを素材に使い、成果を保存します。
+导入协作文档资料，按需回传交付文档|Import collaborative documents and return deliverables as needed.|共同文書を取り込み、必要に応じて成果文書を返します。
+确认后将成果链接发送到指定频道|Send result links to a selected channel after confirmation.|確認後に指定チャンネルへ成果のリンクを送信します。
+网关暂不可用；历史配置保留，不能据此判断远端已连接。|Gateway unavailable. Saved configurations are retained, but remote connectivity cannot be verified.|ゲートウェイを利用できません。保存済み設定は保持しますが、外部接続は確認できません。
+连接器服务暂不可用|Connector service unavailable|コネクターサービスを利用できません
+已验证（MCP 端点）|Verified (MCP endpoint)|検証済み（MCP エンドポイント）
+已配置，未验证|Configured, not verified|設定済み・未検証
+连接异常|Connection error|接続エラー
+本地演示|Local demo|ローカルデモ
+未配置|Not configured|未設定
+管理连接|Manage connection|接続を管理
+配置连接|Configure connection|接続を設定
+尚无已验证的远端连接|No verified remote connections yet|検証済みの外部接続はありません
+围绕资料导入、创作和交付，只保留六个核心连接入口。配置真实端点后才能验证，不提供模拟授权。|Six core connections for importing, creating and delivering. Verification requires a real endpoint; simulated authorization is not provided.|取り込み・制作・納品に必要な6つの接続に絞りました。実際のエンドポイントで検証し、模擬認証は行いません。
+仅展示有远端握手记录的 MCP 服务；验证范围与时间可在管理面板查看。|Shows MCP services with remote handshake records. Check scope and verification time in their management panel.|外部ハンドシェイクの記録がある MCP サービスを表示します。管理パネルで検証範囲と日時を確認できます。
+推荐连接|Recommended connections|おすすめの接続
+已验证的远端服务|Verified remote services|検証済みの外部サービス
+高级设置|Advanced settings|詳細設定
+自定义 MCP 服务、历史配置和调用记录不再混入推荐列表。|Custom MCP services, legacy settings and call history are separate from recommendations.|カスタム MCP・過去の設定・呼び出し履歴はおすすめと分けて管理します。
+历史配置（保留兼容）|Legacy settings (retained)|過去の設定（互換性のため保持）
+查看旧配置|View legacy settings|過去の設定を見る
+没有历史配置|No legacy settings|過去の設定はありません
+验证仅针对你配置的 MCP 端点，不代表厂商官方授权或所有业务操作均可用。|Verification covers only your configured MCP endpoint, not official provider authorization or all business operations.|検証対象は設定した MCP エンドポイントのみで、公式認証や全業務機能の利用を保証しません。
+默认不授权任何工具。请核对工具的真实行为，将需要的工具加入只读或写入白名单；名称和远端标注不能证明它只读。资源访问范围还必须在服务商侧限制到选定内容。|No tools are authorized by default. Verify behavior before adding tools to read or write allowlists. Names and annotations do not prove read-only behavior. Restrict accessible resources with your provider too.|既定では全ツール未許可です。動作を確認して読み取り・書き込み許可リストに追加してください。名称や注釈は安全性の証明ではありません。サービス側でも参照範囲を限定してください。
+管理权限|Manage permissions|権限を管理
+确认写入后运行|Run after write confirmation|書き込み確認後に実行
+运行只读工具|Run read-only tool|読み取りツールを実行
+未授权|Not authorized|未許可
+尚未接通厂商服务。请配置你有权访问的 MCP 端点；本应用不会伪造 OAuth 授权或厂商连接。|Provider service is not connected. Configure an authorized MCP endpoint; this app does not simulate OAuth or provider connectivity.|サービスは未接続です。権限のある MCP エンドポイントを設定してください。OAuth や公式接続を模擬することはありません。
+由你提供的 MCP 服务决定|Determined by your MCP service|設定する MCP サービスに依存します
+只连接你信任且有权访问的 MCP 服务。不会自动接入厂商账号；授权范围请在服务商侧限制。|Connect only trusted MCP services you are authorized to access. Provider accounts are not connected automatically; limit permissions with the provider.|信頼できるアクセス権のある MCP のみ接続してください。サービス側アカウントは自動接続せず、権限範囲はサービス側で制限してください。
+请输入 Token|Enter a token|トークンを入力してください
+默认禁止所有工具。请逐项核对真实行为；不能仅根据工具名称将它标为只读。写入工具每次运行前仍需确认。|All tools are denied by default. Verify behavior before classifying tools as read-only. Write tools require confirmation on every run.|既定では全ツール禁止です。名称だけで読み取り専用と判断せず動作を確認してください。書き込みは毎回確認が必要です。
+只读|Read-only|読み取り専用
+写入（每次确认）|Write (confirm each time)|書き込み（毎回確認）
+请只传入用户选定内容所需的资源 ID 或路径，不要请求全量资料。|Pass only resource IDs or paths for selected content; do not request all data.|選択された内容に必要なリソース ID・パスのみ渡し、全データを要求しないでください。
+JSON 参数|JSON arguments|JSON 引数
+JSON 参数必须是对象|JSON arguments must be an object|JSON 引数はオブジェクトにしてください
+确认外部写入|Confirm external write|外部書き込みを確認
+确认执行|Confirm execution|実行を確認
+请先测试连接|Test the connection first|先に接続テストを実行してください
+将删除此远端服务配置与服务端保存的凭据，旧本地演示记录不受影响。|Deletes this remote service configuration and its server-side credentials. Legacy local demo records are unchanged.|この接続設定とサーバー上の認証情報を削除します。過去のローカルデモ記録は変更しません。
+旧记录仅作兼容保留，不代表真实厂商授权。不会在这里执行本地模拟连接。|Legacy records are retained for compatibility, not proof of provider authorization. No simulated connections run here.|過去の記録は互換性のため保持し、公式認証の証明ではありません。ここでは模擬接続を実行しません。
+六个核心连接入口，前往连接器页验证|Six core connections. Verify them on the Connectors page.|6つの基本接続。コネクターページで検証してください。
+{name} · 管理连接|{name} · Manage connection|{name}・接続を管理
+重新验证后工具白名单会清空，请重新核对权限。|Reverification clears tool allowlists. Review permissions again.|再検証でツール許可リストを解除します。権限を再確認してください。
+请先重新验证远端连接|Reverify the remote connection first|先に外部接続を再検証してください
+MCP 地址不能包含账号密码、查询参数或片段；请使用认证字段|MCP URLs cannot contain credentials, query parameters or fragments. Use authentication fields.|MCP URL に認証情報・クエリ・フラグメントを含めないでください。認証欄を使用してください。
+MCP 地址格式不正确|Invalid MCP URL|MCP URL が正しくありません
+端点验证有效期为 30 分钟，过期需重新验证；这不是持续在线监测。|Endpoint verification lasts 30 minutes and must then be repeated. This is not continuous availability monitoring.|検証は30分間有効です。期限後は再検証が必要です。常時の稼働監視ではありません。

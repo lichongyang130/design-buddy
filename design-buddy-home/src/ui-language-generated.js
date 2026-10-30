@@ -5537,5 +5537,323 @@ export default [
     "en": "Removed from recommendations; existing installs are retained. May only forward to expert rules or produce a plan, not perform external actions implied by the name.",
     "ja": "おすすめから除外しました。既存の導入記録は保持します。専門家の規則や計画の出力のみで、名称が示す外部操作を実行しない場合があります。",
     "zh-TW": "已從推薦移除，保留舊安裝記錄；可能僅轉發專家規則或輸出方案，不執行名稱暗示的外部操作。"
+  },
+  {
+    "zh": "选定团队文档作为创作资料，按需回传成果",
+    "en": "Use selected team documents as source material and return results as needed.",
+    "ja": "選択したチーム文書を資料に使い、必要に応じて成果を返します。",
+    "zh-TW": "選定團隊文檔作為創作資料，按需回傳成果"
+  },
+  {
+    "zh": "导入选定知识库页面，保存创作结果",
+    "en": "Import selected knowledge pages and save creative output.",
+    "ja": "選択したナレッジページを取り込み、成果を保存します。",
+    "zh-TW": "導入選定知識庫頁面，保存創作結果"
+  },
+  {
+    "zh": "读取指定仓库资料，确认后提交原型源码",
+    "en": "Read selected repository resources and submit prototype source after confirmation.",
+    "ja": "指定リポジトリを参照し、確認後にプロトタイプのソースを送信します。",
+    "zh-TW": "讀取指定倉庫資料，確認後提交原型源碼"
+  },
+  {
+    "zh": "选择云端文件作为素材，保存导出成果",
+    "en": "Use selected cloud files as source material and save exports.",
+    "ja": "選択したクラウドファイルを素材に使い、成果を保存します。",
+    "zh-TW": "選擇雲端文件作為素材，保存導出成果"
+  },
+  {
+    "zh": "导入协作文档资料，按需回传交付文档",
+    "en": "Import collaborative documents and return deliverables as needed.",
+    "ja": "共同文書を取り込み、必要に応じて成果文書を返します。",
+    "zh-TW": "導入協作文檔資料，按需回傳交付文檔"
+  },
+  {
+    "zh": "确认后将成果链接发送到指定频道",
+    "en": "Send result links to a selected channel after confirmation.",
+    "ja": "確認後に指定チャンネルへ成果のリンクを送信します。",
+    "zh-TW": "確認後將成果鏈接發送到指定頻道"
+  },
+  {
+    "zh": "网关暂不可用；历史配置保留，不能据此判断远端已连接。",
+    "en": "Gateway unavailable. Saved configurations are retained, but remote connectivity cannot be verified.",
+    "ja": "ゲートウェイを利用できません。保存済み設定は保持しますが、外部接続は確認できません。",
+    "zh-TW": "網關暫不可用；歷史配置保留，不能據此判斷遠端已連接。"
+  },
+  {
+    "zh": "连接器服务暂不可用",
+    "en": "Connector service unavailable",
+    "ja": "コネクターサービスを利用できません",
+    "zh-TW": "連接器服務暫不可用"
+  },
+  {
+    "zh": "已验证（MCP 端点）",
+    "en": "Verified (MCP endpoint)",
+    "ja": "検証済み（MCP エンドポイント）",
+    "zh-TW": "已驗證（MCP 端點）"
+  },
+  {
+    "zh": "已配置，未验证",
+    "en": "Configured, not verified",
+    "ja": "設定済み・未検証",
+    "zh-TW": "已配置，未驗證"
+  },
+  {
+    "zh": "连接异常",
+    "en": "Connection error",
+    "ja": "接続エラー",
+    "zh-TW": "連接異常"
+  },
+  {
+    "zh": "本地演示",
+    "en": "Local demo",
+    "ja": "ローカルデモ",
+    "zh-TW": "本地演示"
+  },
+  {
+    "zh": "未配置",
+    "en": "Not configured",
+    "ja": "未設定",
+    "zh-TW": "未配置"
+  },
+  {
+    "zh": "管理连接",
+    "en": "Manage connection",
+    "ja": "接続を管理",
+    "zh-TW": "管理連接"
+  },
+  {
+    "zh": "配置连接",
+    "en": "Configure connection",
+    "ja": "接続を設定",
+    "zh-TW": "配置連接"
+  },
+  {
+    "zh": "尚无已验证的远端连接",
+    "en": "No verified remote connections yet",
+    "ja": "検証済みの外部接続はありません",
+    "zh-TW": "尚無已驗證的遠端連接"
+  },
+  {
+    "zh": "围绕资料导入、创作和交付，只保留六个核心连接入口。配置真实端点后才能验证，不提供模拟授权。",
+    "en": "Six core connections for importing, creating and delivering. Verification requires a real endpoint; simulated authorization is not provided.",
+    "ja": "取り込み・制作・納品に必要な6つの接続に絞りました。実際のエンドポイントで検証し、模擬認証は行いません。",
+    "zh-TW": "圍繞資料導入、創作和交付，只保留六個核心連接入口。配置真實端點後才能驗證，不提供模擬授權。"
+  },
+  {
+    "zh": "仅展示有远端握手记录的 MCP 服务；验证范围与时间可在管理面板查看。",
+    "en": "Shows MCP services with remote handshake records. Check scope and verification time in their management panel.",
+    "ja": "外部ハンドシェイクの記録がある MCP サービスを表示します。管理パネルで検証範囲と日時を確認できます。",
+    "zh-TW": "僅展示有遠端握手記錄的 MCP 服務；驗證範圍與時間可在管理面板查看。"
+  },
+  {
+    "zh": "推荐连接",
+    "en": "Recommended connections",
+    "ja": "おすすめの接続",
+    "zh-TW": "推薦連接"
+  },
+  {
+    "zh": "已验证的远端服务",
+    "en": "Verified remote services",
+    "ja": "検証済みの外部サービス",
+    "zh-TW": "已驗證的遠端服務"
+  },
+  {
+    "zh": "高级设置",
+    "en": "Advanced settings",
+    "ja": "詳細設定",
+    "zh-TW": "高級設置"
+  },
+  {
+    "zh": "自定义 MCP 服务、历史配置和调用记录不再混入推荐列表。",
+    "en": "Custom MCP services, legacy settings and call history are separate from recommendations.",
+    "ja": "カスタム MCP・過去の設定・呼び出し履歴はおすすめと分けて管理します。",
+    "zh-TW": "自定義 MCP 服務、歷史配置和調用記錄不再混入推薦列表。"
+  },
+  {
+    "zh": "历史配置（保留兼容）",
+    "en": "Legacy settings (retained)",
+    "ja": "過去の設定（互換性のため保持）",
+    "zh-TW": "歷史配置（保留兼容）"
+  },
+  {
+    "zh": "查看旧配置",
+    "en": "View legacy settings",
+    "ja": "過去の設定を見る",
+    "zh-TW": "查看舊配置"
+  },
+  {
+    "zh": "没有历史配置",
+    "en": "No legacy settings",
+    "ja": "過去の設定はありません",
+    "zh-TW": "沒有歷史配置"
+  },
+  {
+    "zh": "验证仅针对你配置的 MCP 端点，不代表厂商官方授权或所有业务操作均可用。",
+    "en": "Verification covers only your configured MCP endpoint, not official provider authorization or all business operations.",
+    "ja": "検証対象は設定した MCP エンドポイントのみで、公式認証や全業務機能の利用を保証しません。",
+    "zh-TW": "驗證僅針對你配置的 MCP 端點，不代表廠商官方授權或所有業務操作均可用。"
+  },
+  {
+    "zh": "默认不授权任何工具。请核对工具的真实行为，将需要的工具加入只读或写入白名单；名称和远端标注不能证明它只读。资源访问范围还必须在服务商侧限制到选定内容。",
+    "en": "No tools are authorized by default. Verify behavior before adding tools to read or write allowlists. Names and annotations do not prove read-only behavior. Restrict accessible resources with your provider too.",
+    "ja": "既定では全ツール未許可です。動作を確認して読み取り・書き込み許可リストに追加してください。名称や注釈は安全性の証明ではありません。サービス側でも参照範囲を限定してください。",
+    "zh-TW": "默認不授權任何工具。請核對工具的真實行為，將需要的工具加入只讀或寫入白名單；名稱和遠端標註不能證明它只讀。資源訪問範圍還必須在服務商側限制到選定內容。"
+  },
+  {
+    "zh": "管理权限",
+    "en": "Manage permissions",
+    "ja": "権限を管理",
+    "zh-TW": "管理權限"
+  },
+  {
+    "zh": "确认写入后运行",
+    "en": "Run after write confirmation",
+    "ja": "書き込み確認後に実行",
+    "zh-TW": "確認寫入後運行"
+  },
+  {
+    "zh": "运行只读工具",
+    "en": "Run read-only tool",
+    "ja": "読み取りツールを実行",
+    "zh-TW": "運行只讀工具"
+  },
+  {
+    "zh": "未授权",
+    "en": "Not authorized",
+    "ja": "未許可",
+    "zh-TW": "未授權"
+  },
+  {
+    "zh": "尚未接通厂商服务。请配置你有权访问的 MCP 端点；本应用不会伪造 OAuth 授权或厂商连接。",
+    "en": "Provider service is not connected. Configure an authorized MCP endpoint; this app does not simulate OAuth or provider connectivity.",
+    "ja": "サービスは未接続です。権限のある MCP エンドポイントを設定してください。OAuth や公式接続を模擬することはありません。",
+    "zh-TW": "尚未接通廠商服務。請配置你有權訪問的 MCP 端點；本應用不會偽造 OAuth 授權或廠商連接。"
+  },
+  {
+    "zh": "由你提供的 MCP 服务决定",
+    "en": "Determined by your MCP service",
+    "ja": "設定する MCP サービスに依存します",
+    "zh-TW": "由你提供的 MCP 服務決定"
+  },
+  {
+    "zh": "只连接你信任且有权访问的 MCP 服务。不会自动接入厂商账号；授权范围请在服务商侧限制。",
+    "en": "Connect only trusted MCP services you are authorized to access. Provider accounts are not connected automatically; limit permissions with the provider.",
+    "ja": "信頼できるアクセス権のある MCP のみ接続してください。サービス側アカウントは自動接続せず、権限範囲はサービス側で制限してください。",
+    "zh-TW": "只連接你信任且有權訪問的 MCP 服務。不會自動接入廠商賬號；授權範圍請在服務商側限制。"
+  },
+  {
+    "zh": "请输入 Token",
+    "en": "Enter a token",
+    "ja": "トークンを入力してください",
+    "zh-TW": "請輸入 Token"
+  },
+  {
+    "zh": "默认禁止所有工具。请逐项核对真实行为；不能仅根据工具名称将它标为只读。写入工具每次运行前仍需确认。",
+    "en": "All tools are denied by default. Verify behavior before classifying tools as read-only. Write tools require confirmation on every run.",
+    "ja": "既定では全ツール禁止です。名称だけで読み取り専用と判断せず動作を確認してください。書き込みは毎回確認が必要です。",
+    "zh-TW": "默認禁止所有工具。請逐項核對真實行為；不能僅根據工具名稱將它標為只讀。寫入工具每次運行前仍需確認。"
+  },
+  {
+    "zh": "只读",
+    "en": "Read-only",
+    "ja": "読み取り専用",
+    "zh-TW": "只讀"
+  },
+  {
+    "zh": "写入（每次确认）",
+    "en": "Write (confirm each time)",
+    "ja": "書き込み（毎回確認）",
+    "zh-TW": "寫入（每次確認）"
+  },
+  {
+    "zh": "请只传入用户选定内容所需的资源 ID 或路径，不要请求全量资料。",
+    "en": "Pass only resource IDs or paths for selected content; do not request all data.",
+    "ja": "選択された内容に必要なリソース ID・パスのみ渡し、全データを要求しないでください。",
+    "zh-TW": "請只傳入用戶選定內容所需的資源 ID 或路徑，不要請求全量資料。"
+  },
+  {
+    "zh": "JSON 参数",
+    "en": "JSON arguments",
+    "ja": "JSON 引数",
+    "zh-TW": "JSON 參數"
+  },
+  {
+    "zh": "JSON 参数必须是对象",
+    "en": "JSON arguments must be an object",
+    "ja": "JSON 引数はオブジェクトにしてください",
+    "zh-TW": "JSON 參數必須是對象"
+  },
+  {
+    "zh": "确认外部写入",
+    "en": "Confirm external write",
+    "ja": "外部書き込みを確認",
+    "zh-TW": "確認外部寫入"
+  },
+  {
+    "zh": "确认执行",
+    "en": "Confirm execution",
+    "ja": "実行を確認",
+    "zh-TW": "確認執行"
+  },
+  {
+    "zh": "请先测试连接",
+    "en": "Test the connection first",
+    "ja": "先に接続テストを実行してください",
+    "zh-TW": "請先測試連接"
+  },
+  {
+    "zh": "将删除此远端服务配置与服务端保存的凭据，旧本地演示记录不受影响。",
+    "en": "Deletes this remote service configuration and its server-side credentials. Legacy local demo records are unchanged.",
+    "ja": "この接続設定とサーバー上の認証情報を削除します。過去のローカルデモ記録は変更しません。",
+    "zh-TW": "將刪除此遠端服務配置與服務端保存的憑據，舊本地演示記錄不受影響。"
+  },
+  {
+    "zh": "旧记录仅作兼容保留，不代表真实厂商授权。不会在这里执行本地模拟连接。",
+    "en": "Legacy records are retained for compatibility, not proof of provider authorization. No simulated connections run here.",
+    "ja": "過去の記録は互換性のため保持し、公式認証の証明ではありません。ここでは模擬接続を実行しません。",
+    "zh-TW": "舊記錄僅作兼容保留，不代表真實廠商授權。不會在這裡執行本地模擬連接。"
+  },
+  {
+    "zh": "六个核心连接入口，前往连接器页验证",
+    "en": "Six core connections. Verify them on the Connectors page.",
+    "ja": "6つの基本接続。コネクターページで検証してください。",
+    "zh-TW": "六個核心連接入口，前往連接器頁驗證"
+  },
+  {
+    "zh": "{name} · 管理连接",
+    "en": "{name} · Manage connection",
+    "ja": "{name}・接続を管理",
+    "zh-TW": "{name} · 管理連接"
+  },
+  {
+    "zh": "重新验证后工具白名单会清空，请重新核对权限。",
+    "en": "Reverification clears tool allowlists. Review permissions again.",
+    "ja": "再検証でツール許可リストを解除します。権限を再確認してください。",
+    "zh-TW": "重新驗證後工具白名單會清空，請重新核對權限。"
+  },
+  {
+    "zh": "请先重新验证远端连接",
+    "en": "Reverify the remote connection first",
+    "ja": "先に外部接続を再検証してください",
+    "zh-TW": "請先重新驗證遠端連接"
+  },
+  {
+    "zh": "MCP 地址不能包含账号密码、查询参数或片段；请使用认证字段",
+    "en": "MCP URLs cannot contain credentials, query parameters or fragments. Use authentication fields.",
+    "ja": "MCP URL に認証情報・クエリ・フラグメントを含めないでください。認証欄を使用してください。",
+    "zh-TW": "MCP 地址不能包含賬號密碼、查詢參數或片段；請使用認證字段"
+  },
+  {
+    "zh": "MCP 地址格式不正确",
+    "en": "Invalid MCP URL",
+    "ja": "MCP URL が正しくありません",
+    "zh-TW": "MCP 地址格式不正確"
+  },
+  {
+    "zh": "端点验证有效期为 30 分钟，过期需重新验证；这不是持续在线监测。",
+    "en": "Endpoint verification lasts 30 minutes and must then be repeated. This is not continuous availability monitoring.",
+    "ja": "検証は30分間有効です。期限後は再検証が必要です。常時の稼働監視ではありません。",
+    "zh-TW": "端點驗證有效期為 30 分鐘，過期需重新驗證；這不是持續在線監測。"
   }
 ]

@@ -272,3 +272,7 @@ Validation: `npm run build`; `npm run test:ui-language` against the built server
 ### Creation-focused skills
 
 The skill discovery catalog is now curated to 18 distinct creation/delivery capabilities instead of exposing every expert alias. Three offline tools were added: document structure checks, static HTML accessibility checks, and asset-reference inventories. Capability labels now match the implementation (CSV rather than XLSX editing, HTML `.doc` rather than native DOCX, source rules rather than screenshot comparison). Existing installs and runtime aliases are preserved; retired entries are marked in the installed view. See [技能定位与精简](docs/skills-focus.md) for the inventory, boundaries and tests. Run `npm run test:creation-skills` against the built preview server.
+
+### Focused connectors
+
+Connector discovery now has six creation-focused provider entries (Feishu, Notion, GitHub, Google Drive, Tencent Docs and Slack), plus advanced custom MCP and retained legacy settings. Provider cards require a user-supplied authorized MCP endpoint; they do not claim built-in official OAuth integration. Local demo flags no longer mean verified remote connections, including from home-page menus. Tools are denied by default; explicit tool allowlists and single-use, parameter-bound write confirmations are enforced by the backend. See [核心连接器与真实验证](docs/connectors-focus.md) for limits, deployment cautions and tests. Run `npm run test:connector-focus` for isolated real-protocol Mock tests.

@@ -729,7 +729,7 @@ function showResult(gamma, bodyEl, footEl) {
     const checks = [
       ['文件读取', `${files.length} 个文件已加入本次工作区${files.length ? '' : '（还没有文件）'}`],
       ['格式识别', files.length ? [...new Set(files.map((f) => kindOf(f.name)))].join('、') : '—'],
-      ['来源', source ? `${source}${store.state.connectors.find((c) => c.name === source)?.connected ? ' · 已连接' : ''}` : '本地文件'],
+      ['来源', source ? source : '本地文件'],
       ['下一步', '选择「导入模板」把内容固化成模板，或直接开始创作'],
     ]
     finishTask(gamma, `${files.length} 个文件`)
@@ -1894,20 +1894,7 @@ $('[data-import-template]')?.addEventListener('click', openImportTemplateModal)
 ui.importSource ??= null
 
 function importSourceList() {
-  const list = (store.state.connectors ?? []).map((c) => ({
-    name: c.name, color: c.color || '#5b6ef5', shape: c.shape || 'cloud', connected: !!c.connected,
-  }))
-  // 优先补办公/知识类工具，避免把行情类连接器塞进「从您喜爱的工具导入」提示里
-  const PREFERRED = ['腾讯文档', '飞书', 'QQ邮箱', '腾讯会议', '乐享知识库']
-  const extras = [
-    ...PREFERRED.map((name) => CONNECTOR_CATALOG.find((c) => c.name === name)).filter(Boolean),
-    ...CONNECTOR_CATALOG,
-  ]
-  for (const c of extras) {
-    if (list.length >= IMPORT_SOURCES) break
-    if (!list.some((x) => x.name === c.name)) list.push({ name: c.name, color: c.color, shape: c.shape, connected: false })
-  }
-  return list.slice(0, IMPORT_SOURCES)
+  return CONNECTOR_CATALOG.slice(0, 6).map(c => ({ ...c, connected: false }))
 }
 
 function renderImportSources() {
@@ -1916,7 +1903,7 @@ function renderImportSources() {
   box.innerHTML = importSourceList().map((c) => `
     <button class="is-logo${ui.importSource === c.name ? ' is-active' : ''}" type="button"
       data-import-connector="${c.name}" style="--c:${c.color}"
-      title="${c.name}${c.connected ? ' · 已连接' : ' · 未连接'}">
+      title="${c.name} · 管理连接">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${CONNECTOR_ICONS[c.shape] ?? CONNECTOR_ICONS.cloud}</svg>
     </button>`).join('')
 }
@@ -1925,25 +1912,8 @@ renderImportSources()
 $('#import-sources')?.addEventListener('click', (event) => {
   const btn = event.target.closest('[data-import-connector]')
   if (!btn) return
-  const name = btn.dataset.importConnector
-  let entry = store.state.connectors.find((c) => c.name === name)
-  let newly = false
-  if (!entry) {
-    const cat = CONNECTOR_CATALOG.find((c) => c.name === name)
-    entry = {
-      id: `cn-${Date.now().toString(36)}`, name, connected: true,
-      desc: cat?.desc, color: cat?.color, shape: cat?.shape, category: cat?.category,
-    }
-    store.state.connectors.push(entry)
-    newly = true
-  } else if (!entry.connected) {
-    entry.connected = true
-    newly = true
-  }
-  ui.importSource = name
-  store.save()
-  renderImportSources()
-  toast(`${newly ? `已连接「${name}」，` : ''}导入来源：${name}`)
+  const provider = CONNECTOR_CATALOG.find(c => c.name === btn.dataset.importConnector)
+  location.href = 'connectors.html?provider=' + encodeURIComponent(provider?.id || '')
 })
 
 /* ---------------- 努力模式上弹菜单 ---------------- */

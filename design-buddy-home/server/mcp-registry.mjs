@@ -8,7 +8,7 @@ import { existsSync } from 'node:fs'
 import { createCipheriv, createDecipheriv, randomBytes, scryptSync, createHash } from 'node:crypto'
 import path from 'node:path'
 
-const DATA_DIR = path.resolve(import.meta.dirname ?? '.', '..', '.data')
+const DATA_DIR = process.env.MCP_DATA_DIR ? path.resolve(process.env.MCP_DATA_DIR) : path.resolve(import.meta.dirname ?? '.', '..', '.data')
 const SERVERS_FILE = path.join(DATA_DIR, 'mcp-servers.json')
 const KEY_FILE = path.join(DATA_DIR, 'key')
 const LOG_RING_SIZE = 50
@@ -84,18 +84,21 @@ export async function saveServers(list) {
 }
 
 /** 添加服务：先握手、拿到工具清单再落盘。失败不落。 */
-export async function addServer({ label, url, auth, allowPrivate, timeoutMs, handshakeResult }) {
+export async function addServer({ label, url, auth, allowPrivate, timeoutMs, handshakeResult, providerId }) {
   const servers = await loadServers()
   const id = `srv_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`
   const key = await getKey()
   const record = {
     id,
+    providerId: ['cn-feishu', 'cn-notion', 'cn-drive', 'cn-docs', 'cn-github', 'cn-slack'].includes(providerId) ? providerId : null,
+    permissions: { readTools: [], writeTools: [] },
     label,
     url,
     allowPrivate: !!allowPrivate,
     createdAt: Date.now(),
     protocol: { mode: handshakeResult.mode, version: handshakeResult.version },
     transport: handshakeResult.transport,
+    sessionId: handshakeResult.sessionId,
     serverInfo: handshakeResult.serverInfo,
     capabilities: handshakeResult.capabilities,
     instructions: handshakeResult.instructions,
@@ -143,6 +146,8 @@ export async function listServersPublic() {
 export function publicView(server) {
   return {
     id: server.id,
+    providerId: server.providerId || null,
+    permissions: server.permissions || { readTools: [], writeTools: [] },
     label: server.label,
     url: server.url,
     allowPrivate: server.allowPrivate,
@@ -172,6 +177,8 @@ export async function updateHandshake(id, handshakeResult) {
   const s = servers.find((x) => x.id === id)
   if (!s) return null
   s.protocol = { mode: handshakeResult.mode, version: handshakeResult.version }
+  s.sessionId = handshakeResult.sessionId
+  s.permissions = { readTools: [], writeTools: [] }
   s.serverInfo = handshakeResult.serverInfo
   s.capabilities = handshakeResult.capabilities
   s.instructions = handshakeResult.instructions
@@ -228,4 +235,18 @@ export async function getLogs(id) {
   const servers = await loadServers()
   const s = servers.find((x) => x.id === id)
   return s?.logs ?? []
+}
+
+export async function updatePermissions(id, permissions) {
+  const servers = await loadServers(), server = servers.find(s => s.id === id)
+  if (!server) return null
+  server.permissions = permissions
+  await saveServers(servers)
+  return server
+}
+export async function failHandshake(id, code) {
+  const servers = await loadServers(), server = servers.find(s => s.id === id)
+  if (!server) return
+  server.lastHandshake = { at: Date.now(), ok: false, code }
+  await saveServers(servers)
 }
