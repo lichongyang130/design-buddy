@@ -280,3 +280,7 @@ Connector discovery now has six creation-focused provider entries (Feishu, Notio
 ### Unified UI typography
 
 The application uses self-hosted Inter and locale-specific Noto Sans SC / TC / JP fonts, text-only size preferences and a 12px UI minimum. Original case canvases, theme previews and exports retain their authored typography. See [UI typography](docs/ui-typography.md) for scope, font licenses and regression checks. Run `npm run test:ui-typography` with the built site on port 5174.
+
+### File processing and plugin packages
+
+Skills now provide actual XLSX cell editing/export, PDF.js text extraction and page previews, native DOCX generation, sandboxed browser accessibility checks with keyboard evidence, and separately installed declarative plugin packages. Built-in tools are labelled **Enable**; plugin packages require reviewed installation. See [File skills and plugin packages](docs/file-skills.md) for supported formats, security boundaries and limitations. Run `npm run test:file-skills` against the built site on port 5174.

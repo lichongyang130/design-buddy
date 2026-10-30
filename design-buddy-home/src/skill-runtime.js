@@ -32,7 +32,10 @@ const RUNNERS = {
   '深度联网调研': researchEngine,
   '自动化工作流执行': workflowEngine,
   'Excel 表格处理': tableEngine,
-  'Word 文档处理': docxEngine,
+  'Word 文档处理': async (ctx, input) => {
+    const { markdownDocx, MIME_DOCX } = await import('./office-file-engines.js')
+    return { kind: 'docx', title: '原生 Word 文档', summary: '已生成原生 DOCX；外链图片保留为文字引用，不会自动下载。', stats: [], blocks: [], findings: [], artifacts: [{ name: 'document.docx', mime: MIME_DOCX, content: await markdownDocx(input) }] }
+  },
   '数据即查': sqlEngine,
   'PDF 文档处理': pagingEngine,
   'grill-me': grillingEngine,
@@ -126,7 +129,7 @@ const genericRunner = (ctx, input) => {
 
 /**
  * 按技能名运行真实引擎
- * @returns {object|null} 结果对象（结构与专家结果一致，可直接交给 resultHTML）
+ * @returns {object|Promise<object>|null} 结果对象（结构与专家结果一致，可直接交给 resultHTML）
  */
 export function runSkill(name, input) {
   const cap = SKILL_CAPS[name]
@@ -137,5 +140,5 @@ export function runSkill(name, input) {
     return { skill: name, ...genericRunner(ctx, text) }
   }
   const result = cap.run(ctx, text || cap.sample)
-  return { skill: name, ...result }
+  return result?.then ? result.then(value => ({ skill: name, ...value })) : { skill: name, ...result }
 }

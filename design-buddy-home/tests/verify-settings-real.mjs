@@ -304,7 +304,7 @@ const pickOption = async (w, wrap, label) => {
   const sk1 = await loadPage('/skills.html', { storage, freshCopy: true })
   const skModal = (page) => page.doc.querySelector('.skills-page')
   check('skills: page renders installed and catalog sections',
-    !!skModal(sk1) && sk1.doc.body.textContent.includes('已安装') && sk1.doc.body.textContent.includes('精选技能'))
+    !!skModal(sk1) && sk1.doc.body.textContent.includes('已启用') && sk1.doc.body.textContent.includes('精选技能'))
   const catalogCount = sk1.doc.querySelectorAll('#sk-grid [data-install]').length
   check('skills: registry offers uninstalled entries', catalogCount > 0)
   const regInstallCount = [...sk1.doc.querySelectorAll('#sk-grid [data-install]')]
@@ -319,7 +319,7 @@ const pickOption = async (w, wrap, label) => {
     .find((b) => b.dataset.install.startsWith('reg-'))
   click(sk1.w, trustedReg)
   await tick()
-  let confirmBox = [...sk1.doc.querySelectorAll('.modal-box')].find((m) => m.textContent.includes('手动安装'))
+  let confirmBox = [...sk1.doc.querySelectorAll('.modal-box')].find((m) => m.textContent.includes('手动启用'))
   check('skills: untrusted install requires confirmation', !!confirmBox)
   click(sk1.w, confirmBox.querySelector('[data-act="cancel"]'))
   await tick()
@@ -338,7 +338,7 @@ const pickOption = async (w, wrap, label) => {
   check('skills: trusted skill auto-installed without confirm',
     readState(storage).skills.some((sk) => sk.name === installingName))
   check('skills: auto install toast shown',
-    [...sk2.doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('自动安装')))
+    [...sk2.doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('自动启用')))
   // Unsafe/misleading external-action entries are retired from discovery; existing installs survive.
   const retired = SKILL_REGISTRY.find(r => r.retired && r.risk === 'review')
   check('skills: external-action legacy entry is explicitly retired', !!retired)

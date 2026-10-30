@@ -22,7 +22,7 @@ try {
   assert.match(installedSkillPresentation('背景移除').displayName, /旧版/)
   for (const entry of PAGE_SKILLS) {
     assert(skillCap(entry.name), entry.name)
-    const result = runSkill(entry.name, skillCap(entry.name).sample)
+    const result = await runSkill(entry.name, skillCap(entry.name).sample)
     assert(result?.artifacts?.length, entry.name + ' needs actual output')
     assert(result.artifacts.every(a => a.content && a.name))
   }
@@ -64,7 +64,7 @@ try {
   assert.equal(await page.locator('#sk-grid [data-skill-card]').count(), 18)
   assert.equal(await page.locator('#sk-grid [data-sk-name="背景移除"]').count(), 0)
   const before = await page.evaluate(() => JSON.parse(localStorage.getItem('design-buddy-state-v1')).skills)
-  for (const name of ['文档结构检查', '页面可访问性检查', '素材引用清单']) {
+  for (const name of ['文档结构检查', '素材引用清单']) {
     await page.locator(`#sk-grid [data-sk-name="${name}"]`).click()
     const input = name === '文档结构检查' ? '# Plan\n\n### TODO {{owner}}' : '<h1>Title</h1><img src="https://skill-test.invalid/no-fetch.jpg"><button></button><script>window.__skillExecuted=true</script>'
     await page.locator('#sk-run-input').fill(input)
@@ -76,7 +76,7 @@ try {
     const download = await downloadPromise, json = JSON.parse(await fs.readFile(await download.path(), 'utf8'))
     assert(json.findings.length > 0)
     assert(!await page.evaluate(() => window.__skillExecuted))
-    if (name === '页面可访问性检查') {
+    if (name === '素材引用清单') {
       await page.locator('[data-sk-install-inline]').click()
       if (await page.locator('[data-act="ok"]').count()) await page.locator('[data-act="ok"]').click()
       await page.waitForFunction(name => JSON.parse(localStorage.getItem('design-buddy-state-v1')).skills.some(s => s.name === name), name)
@@ -85,7 +85,7 @@ try {
   }
   await page.reload()
   const after = await page.evaluate(() => JSON.parse(localStorage.getItem('design-buddy-state-v1')).skills)
-  assert(after.some(s => s.name === '页面可访问性检查'))
+  assert(after.some(s => s.name === '素材引用清单'))
   for (const original of before) assert(after.some(s => s.id === original.id && s.name === original.name && s.enabled === original.enabled))
   const legacy = after.find(s => s.id === 'legacy-user-install')
   assert.equal(legacy.desc, '原个人备注')

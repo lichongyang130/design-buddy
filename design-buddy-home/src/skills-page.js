@@ -1,10 +1,11 @@
+import { mountFileSkill } from './file-skills-ui.js'
 import { requiresSkillConfirmation } from './creation-skill-policy.js'
 /* ============================================================
    技能页：把截图式发现区做成真实页面（左侧沿用首页窄栏 rail）
    - 顶部 专家 / 技能 / 连接器：三者都是独立页面
    - 精选技能 5 张 + 换一批；推荐 / SkillHub / 套件；分类 chips；搜索
    - 安装走真实持久化 + 信任门控（高风险始终手动确认）
-   - 「已安装」视图接管原先左侧管理栏：启停开关、版本、检查更新、手动更新
+   - 「已启用」视图接管原先左侧管理栏：启停开关、版本、检查更新、手动更新
    ============================================================ */
 
 import './rail-flyout.js'
@@ -43,11 +44,11 @@ const installSkill = async (entry) => {
   const canAuto = !requiresSkillConfirmation(entry, store.state.settings.trustedSkills)
   if (!canAuto) {
     const ok = await confirmModal(
-      entry.risk === 'review' ? '安装高风险技能' : '安装技能',
+      entry.risk === 'review' ? '启用高风险技能' : '启用内置技能',
       entry.risk === 'review'
-        ? `「${entry.name}」涉及外部数据访问或代为执行操作，高风险技能始终需要手动确认。确认安装吗？`
-        : `自动安装可信技能未开启，确认手动安装「${entry.name}」吗？`,
-      '确认安装',
+        ? `「${entry.name}」涉及外部数据访问或代为执行操作，高风险技能始终需要手动确认。确认启用吗？`
+        : `自动启用可信技能未开启，确认手动启用「${entry.name}」吗？`,
+      '确认启用',
     )
     if (!ok) return false
   }
@@ -56,7 +57,7 @@ const installSkill = async (entry) => {
     version: entry.version || SEED_SKILL_VERSION,
   })
   store.save()
-  toast(canAuto ? `可信技能「${entry.name}」已自动安装` : `技能「${entry.name}」已安装`)
+  toast(canAuto ? `可信技能「${entry.name}」已自动启用` : `技能「${entry.name}」已启用`)
   return true
 }
 
@@ -79,11 +80,11 @@ const popoverHtml = (name, category, space, updatedAt) => `
 /* ---------- 卡片 ---------- */
 
 // No fabricated marketplace usage/download totals.
-const STATS = () => '<span class="sk-stats"><span class="sk-stat">本地规则引擎</span><span class="sk-stat">暂无调用统计</span></span>'
+const STATS = entry => `<span class="sk-stats"><span class="sk-stat">${['Excel 表格处理','Word 文档处理','PDF 文档处理'].includes(entry.name) ? '本地文件引擎' : entry.name === '页面可访问性检查' ? '浏览器检查' : '本地规则引擎'}</span><span class="sk-stat">暂无调用统计</span></span>`
 
 const plusButton = (name, attr, id, installed) => installed
-  ? '<span class="sk-plus is-installed" title="已安装">✓</span>'
-  : `<button class="sk-plus" type="button" ${attr}="${id}" aria-label="安装">+</button>`
+  ? '<span class="sk-plus is-installed" title="已启用">✓</span>'
+  : `<button class="sk-plus" type="button" ${attr}="${id}" aria-label="启用">+</button>`
 
 const headHtml = (s, { installed, attr }) => `
   <div class="sk-card-top">
@@ -109,11 +110,11 @@ const renderFeatured = () => {
     <div class="sk-feature-card" data-feature-card="${f.id}" data-sk-name="${f.name}" tabindex="0">
       ${popoverHtml(f.name, f.category, f.space, f.updatedAt)}
       ${headHtml(f, { installed: names.has(f.name), attr: 'data-featured-install' })}
-      ${STATS(f.usage, f.downloads)}
+      ${STATS(f)}
     </div>`).join('')
 }
 
-/* ---------- 已安装视图：启停 / 版本 / 更新 ---------- */
+/* ---------- 已启用视图：启停 / 版本 / 更新 ---------- */
 
 const installedCard = (sk) => {
   const reg = SKILL_REGISTRY.find((r) => r.name === sk.name)
@@ -148,9 +149,9 @@ const renderInstalledGrid = () => {
         <span class="mini-switch ${s.record.enabled ? 'is-on' : ''}" data-sk="${s.record.id}" role="switch"
           aria-checked="${s.record.enabled}" tabindex="0" aria-label="启用 ${s.name}"></span>
       </div>
-      ${STATS(s.usage, s.downloads)}
+      ${STATS(s)}
     </div>`).join('')
-    : '<p class="ex-empty">还没有安装技能，回到「推荐」挑一个试试。</p>')
+    : '<p class="ex-empty">还没有启用内置技能，回到「推荐」挑一个试试。</p>')
 }
 
 /* ---------- 发现网格 ---------- */
@@ -173,7 +174,7 @@ const renderGrid = () => {
     <div class="sk-card${s.installed ? ' is-installed' : ''}" data-skill-card="${s.id}" data-sk-name="${s.name}" tabindex="0">
       ${popoverHtml(s.name, s.category, s.space, s.updatedAt)}
       ${headHtml(s, { installed: s.installed, attr: 'data-install' })}
-      ${STATS(s.usage, s.downloads)}
+      ${STATS(s)}
     </div>`).join('')
     : '<p class="ex-empty">没有匹配的技能，换个关键词或筛选条件试试。</p>'
 }
@@ -181,14 +182,14 @@ const renderGrid = () => {
 /* ---------- 顶栏与会话标题 ---------- */
 
 const renderTopbar = () => {
-  $('#sk-installed-count').textContent = `已安装(${store.state.skills.length})`
+  $('#sk-installed-count').textContent = `已启用(${store.state.skills.length})`
   $('[data-installed-toggle]').classList.toggle('is-active', ui.installedOnly)
 }
 
 const renderSectionHead = () => {
   const head = $('#sk-section-head')
   head.innerHTML = ui.installedOnly
-    ? `<h4 class="sk-section-title">已安装技能（${store.state.skills.length}）</h4>
+    ? `<h4 class="sk-section-title">已启用技能（${store.state.skills.length}）</h4>
        <button class="sk-shuffle" type="button" data-check-update>
          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
          检查更新</button>`
@@ -227,6 +228,13 @@ const checkUpdates = (silent = false) => {
 /* ---------- 直接开工：技能运行面板（真实算法 + 可下载产物） ---------- */
 
 const panel = $('#sk-run-panel')
+const fileLaunchers = document.createElement('nav')
+fileLaunchers.className = 'fs-launchers'
+fileLaunchers.setAttribute('aria-label', '文件处理与插件')
+fileLaunchers.innerHTML = [['Excel 表格处理','Excel 文件编辑'],['PDF 文档处理','PDF 文件解析'],['Word 文档处理','导出 DOCX'],['页面可访问性检查','浏览器无障碍检查'],['插件包管理','技能插件包']].map(([name,label])=>`<button type="button" data-file-skill="${name}">${label}</button>`).join('')
+panel.before(fileLaunchers)
+fileLaunchers.onclick = event => { const button = event.target.closest('[data-file-skill]'); if (button) openRunPanel(button.dataset.fileSkill) }
+
 let runName = ''
 let runArtifacts = []
 let runText = ''
@@ -250,12 +258,12 @@ const renderPanel = (keep = '') => {
     </div>
     <div class="sk-run-tools">
       ${cap ? `<button class="sk-run-sample" type="button" data-sk-sample>填入示例</button>` : ''}
-      <span class="sk-run-hint">${installed ? '已安装，可在首页直接调用' : '运行不需要安装；安装后可在首页调用'}</span>
+      <span class="sk-run-hint">${installed ? '已启用，可在首页直接调用' : '运行不需要启用；启用后可在首页调用'}</span>
     </div>
     <textarea class="sk-run-input" id="sk-run-input" rows="3" placeholder="${cap ? cap.sample : '把要整理的内容贴进来…'}"></textarea>
     <div class="sk-run-actions">
       <button class="sk-run-btn" type="button" data-sk-run>运行</button>
-      <button class="sk-run-install" type="button" data-sk-install-inline ${installed ? 'hidden' : ''}>安装技能</button>
+      <button class="sk-run-install" type="button" data-sk-install-inline ${installed ? 'hidden' : ''}>启用内置技能</button>
       <span class="sk-run-hint">真实运行 · 产物可下载</span>
     </div>
     <div class="sk-run-out" id="sk-run-out" hidden></div>`
@@ -268,6 +276,7 @@ const renderPanel = (keep = '') => {
 
 const openRunPanel = (name, keep = '') => {
   runName = name
+  if (mountFileSkill(panel, name)) { panel.scrollIntoView?.({ behavior: 'smooth', block: 'nearest' }); return }
   runArtifacts = []
   runText = ''
   renderPanel(keep)
@@ -281,8 +290,9 @@ const runCurrent = () => {
   const raw = input?.value.trim() ?? ''
   out.hidden = false
   out.innerHTML = '<div class="xr-running"><span></span>正在运行…</div>'
-  setTimeout(() => {
-    const result = runSkill(runName, raw)
+  setTimeout(async () => {
+    try {
+    const result = await runSkill(runName, raw)
     if (!result) {
       out.innerHTML = '<p class="sk-run-empty">先输入要处理的内容，再运行。</p>'
       return
@@ -295,7 +305,8 @@ const runCurrent = () => {
         <button class="xr-act" type="button" data-sk-copy>复制结果</button>
         <button class="xr-act ghost" type="button" data-sk-clear>收起</button>
       </div>`
-  }, 180)
+    } catch (error) { out.textContent = '处理失败：' + error.message }
+  }, 0)
 }
 
 panel.addEventListener('click', async (ev) => {
@@ -325,7 +336,7 @@ panel.addEventListener('click', async (ev) => {
       const keep = panel.querySelector('#sk-run-input')?.value ?? ''
       renderPanel(keep)
       renderAll()
-      toast(`技能「${runName}」已安装，现在可以在首页直接调用`)
+      toast(`技能「${runName}」已启用，现在可以在首页直接调用`)
     }
     return
   }
@@ -366,9 +377,7 @@ $('.ex-top-actions').addEventListener('click', async (ev) => {
     return
   }
   if (el.dataset.addSkill !== undefined) {
-    const name = typeof globalThis.prompt === 'function' ? globalThis.prompt('技能名称') : null
-    if (!name?.trim()) return
-    if (await installSkill({ name: name.trim(), desc: '自定义本地技能', risk: 'trusted', version: SEED_SKILL_VERSION })) renderAll()
+    openRunPanel('插件包管理')
   }
 })
 
@@ -485,3 +494,6 @@ $('#sk-feature-track').addEventListener('keydown', cardKeydown)
 
 renderAll()
 if (store.state.settings.skillAutoUpdate) checkUpdates(true)
+
+const requestedFileSkill = new URLSearchParams(location.search).get('tool')
+if (['Excel 表格处理','Word 文档处理','PDF 文档处理','页面可访问性检查','插件包管理'].includes(requestedFileSkill)) openRunPanel(requestedFileSkill)

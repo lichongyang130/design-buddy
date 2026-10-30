@@ -467,6 +467,17 @@ const promptTriggers = initPromptTriggers({
 
 function submitPrompt() {
   promptTriggers.close()
+  if (['Excel 表格处理','Word 文档处理','PDF 文档处理','页面可访问性检查'].includes(activeSkill?.name)) {
+    const selected = activeSkill.name, draft = input.value
+    import('./file-skills-ui.js').then(api => {
+      const host = document.createElement('div')
+      openModal({ title: '文件处理与插件', body: host, wide: true, onClose: () => api.disposeFileSkill(host) })
+      api.mountFileSkill(host, selected)
+      const field = host.querySelector('#fs-text')
+      if (field && draft.trim() && ['Word 文档处理','页面可访问性检查'].includes(selected)) field.value = draft
+    }).catch(error => toast('处理失败：' + error.message))
+    return
+  }
   if (ui.type === '导入' && !attachments.length) {
     toast('先在上方添加要导入的文件（PPTX / DOCX / PDF）')
     return
@@ -647,11 +658,21 @@ function runGeneration(gamma) {
   })
 }
 
-function showResult(gamma, bodyEl, footEl) {
+async function showResult(gamma, bodyEl, footEl) {
   // 用「/」调用了技能：真实跑一遍技能引擎，结果与产物都来自本地实现
   if (gamma.skill) {
+    if (['Excel 表格处理','Word 文档处理','PDF 文档处理','页面可访问性检查'].includes(gamma.skill)) {
+      bodyEl.replaceChildren()
+      const info = document.createElement('p'); info.textContent = '此技能需要在文件工作台中选择文件或输入内容；本次尚未执行文件处理。'
+      const link = document.createElement('a'); link.textContent = '打开文件工作台'; link.href = '/skills.html?tool=' + encodeURIComponent(gamma.skill); link.className = 'btn btn-primary'
+      bodyEl.append(info, link)
+      footEl.innerHTML = '<button class="btn btn-ghost" data-done>关闭</button>'
+      footEl.querySelector('[data-done]').onclick = () => footEl.closest('.modal-mask').remove()
+      const task = taskOf(gamma); if (task) { task.status = '等待输入'; task.finishedAt = null; task.artifact = null }
+      store.save(); addSub.refresh(); return
+    }
     const skillPrompt = [gamma.prompt, gamma.attachContext].filter(Boolean).join('\n\n')
-    const result = runSkill(gamma.skill, skillPrompt)
+    const result = await runSkill(gamma.skill, skillPrompt)
     if (result) {
       finishTask(gamma, result.artifacts?.[0]?.name ?? null)
       const files = (gamma.attachments ?? []).map((a) => a.name)

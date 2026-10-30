@@ -1,5 +1,5 @@
 // Normalize application chrome only. Never process authored slides, themes or App cases.
-const uiFiles = new Set(['styles.css','features.css','settings.css','auth.css','connectors.css','experts.css','skills.css','media.css','rebuilt-library.css','apps.css','art-library.css','art-review.css','question-chat.css','themes.css','templates.css'])
+const uiFiles = new Set(['styles.css','features.css','settings.css','auth.css','connectors.css','experts.css','skills.css','media.css','rebuilt-library.css','apps.css','art-library.css','art-review.css','file-skills.css','question-chat.css','themes.css','templates.css'])
 const artwork = /(?:theme-preview|te-preview|pv-|td-slide|td-style-slide|deck-page)/
 export const scaledSize = value => value.replace(/(?<![\w.-])(\d+(?:\.\d+)?)px/g, (_, n) => `max(12px, calc(${n}px * var(--font-scale, 1)))`)
 export function uiTypographyPostcss() {

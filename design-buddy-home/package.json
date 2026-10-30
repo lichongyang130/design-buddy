@@ -10,7 +10,7 @@
     "preview": "node server.mjs",
     "discover-models": "node scripts/discover-models.mjs",
     "check:templates": "node scripts/verify-template-integrity.mjs",
-    "prebuild": "npm run build:ui-language && npm run restore:artifacts && npm run style:template-detail && npm run check:templates",
+    "prebuild": "node scripts/prepare-file-skill-assets.mjs && npm run build:ui-language && npm run restore:artifacts && npm run style:template-detail && npm run check:templates",
     "build:pantry-notes": "node scripts/build-pantry-notes.mjs",
     "test:pantry-notes": "node tests/verify-pantry-notes.mjs",
     "test:template-office": "node scripts/verify-template-office.mjs",
@@ -29,7 +29,7 @@
     "build:document-batch": "node scripts/build-document-batch.mjs",
     "test:document-batch": "node tests/verify-document-batch.mjs",
     "restore:artifacts": "node scripts/restore-template-artifacts.mjs",
-    "predev": "npm run build:ui-language && npm run restore:artifacts && npm run style:template-detail",
+    "predev": "node scripts/prepare-file-skill-assets.mjs && npm run build:ui-language && npm run restore:artifacts && npm run style:template-detail",
     "prestart": "npm run build:ui-language && npm run restore:artifacts && npm run style:template-detail",
     "precheck:templates": "npm run restore:artifacts",
     "build:course-expansion": "node scripts/build-course-expansion.mjs",
@@ -73,7 +73,8 @@
     "test:ui-language": "node tests/verify-ui-language.mjs",
     "test:creation-skills": "node tests/verify-creation-skills.mjs",
     "test:connector-focus": "node tests/verify-connector-focus.mjs",
-    "test:ui-typography": "node tests/verify-ui-typography.mjs"
+    "test:ui-typography": "node tests/verify-ui-typography.mjs",
+    "test:file-skills": "node tests/verify-file-skills.mjs"
   },
   "devDependencies": {
     "@sparticuz/chromium": "^153.0.0",
@@ -84,5 +85,16 @@
     "playwright-core": "^1.64.1",
     "pptxgenjs": "^4.0.1",
     "vite": "^5.4.21"
+  },
+  "dependencies": {
+    "axe-core": "^4.11.1",
+    "docx": "^9.7.1",
+    "dompurify": "^3.4.17",
+    "exceljs": "^4.4.0",
+    "markdown-it": "^15.0.3",
+    "pdfjs-dist": "^5.4.624"
+  },
+  "overrides": {
+    "uuid": "11.1.1"
   }
 }

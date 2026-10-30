@@ -974,3 +974,86 @@ JSON 参数必须是对象|JSON arguments must be an object|JSON 引数はオブ
 MCP 地址不能包含账号密码、查询参数或片段；请使用认证字段|MCP URLs cannot contain credentials, query parameters or fragments. Use authentication fields.|MCP URL に認証情報・クエリ・フラグメントを含めないでください。認証欄を使用してください。
 MCP 地址格式不正确|Invalid MCP URL|MCP URL が正しくありません
 端点验证有效期为 30 分钟，过期需重新验证；这不是持续在线监测。|Endpoint verification lasts 30 minutes and must then be repeated. This is not continuous availability monitoring.|検証は30分間有効です。期限後は再検証が必要です。常時の稼働監視ではありません。
+Excel 文件编辑（.xlsx）|Excel file editor (.xlsx)|Excel ファイル編集（.xlsx）
+Markdown 转 Word（.docx）|Markdown to Word (.docx)|Markdown から Word（.docx）
+PDF 文本与页面解析|PDF text and page extraction|PDF テキストとページ解析
+浏览器无障碍检查|Browser accessibility audit|ブラウザーのアクセシビリティ検査
+技能插件包|Skill plugin packages|スキルプラグインパッケージ
+文件处理与插件|Files and plugins|ファイル処理とプラグイン
+Excel 文件编辑|Excel file editor|Excel ファイル編集
+PDF 文件解析|Parse a PDF file|PDF ファイル解析
+导出 DOCX|Export DOCX|DOCX を出力
+导入插件包|Import plugin package|プラグインパッケージをインポート
+启用内置技能|Enable built-in skill|内蔵スキルを有効化
+确认启用|Confirm enable|有効化を確認
+已启用({count})|Enabled ({count})|有効（{count}）
+已启用技能（{count}）|Enabled skills ({count})|有効なスキル（{count}）
+还没有启用技能，回到「推荐」挑一个试试。|No skills enabled. Choose one from Recommended.|有効なスキルはありません。おすすめから選択してください。
+已启用，可在首页直接调用|Enabled; available from the home page|有効です。ホームから呼び出せます
+运行不需要启用；启用后可在首页调用|Try without enabling; enable to call from home|有効化せず試せます。有効化するとホームから呼び出せます
+自动启用可信技能未开启，确认手动启用「{name}」吗？|Automatic enabling is off. Enable “{name}” manually?|自動有効化はオフです。「{name}」を手動で有効にしますか？
+技能「{name}」已启用|Skill “{name}” enabled|スキル「{name}」を有効にしました
+可信技能「{name}」已自动启用|Trusted skill “{name}” automatically enabled|信頼済みスキル「{name}」を自動で有効にしました
+技能「{name}」已启用，现在可以在首页直接调用|Skill “{name}” enabled and available from home|スキル「{name}」を有効にしました。ホームから呼び出せます
+上传 XLSX、切换工作表、编辑单元格并导出原生 XLSX；不执行宏或外部公式|Upload XLSX, switch sheets, edit cells and export native XLSX; no macros or external formulas|XLSX の読込、シート切替、セル編集、出力に対応。マクロや外部数式は実行しません
+将 Markdown 标题、段落、列表和表格生成原生 DOCX，不自动下载外链图片|Create native DOCX headings, paragraphs, lists and tables from Markdown; linked images are not downloaded|Markdown の見出し、段落、リスト、表からネイティブ DOCX を作成。外部画像は取得しません
+上传 PDF，提取真实文字层、目录和页码并预览页面；扫描件提示需要 OCR|Upload PDF, extract its text layer, outline and page numbers, and preview pages; scans are marked as needing OCR|PDF の文字層、目次、ページ番号を抽出しプレビュー。スキャンには OCR が必要と表示します
+隔离浏览器中运行 axe-core，记录真实 Tab 操作并导出报告；不等于完整认证|Run axe-core in an isolated browser, record real Tab events and export a report; not a certification|隔離ブラウザーで axe-core を実行し実際の Tab 操作を記録。完全な認証ではありません
+文件只在当前浏览器处理，不上传服务器。插件单独保存在此浏览器。|Files are processed in this browser, not uploaded. Plugins are stored separately in this browser.|ファイルはブラウザー内で処理され、送信されません。プラグインはこのブラウザーに別途保存されます。
+生成原生 Office Open XML 文档，支持标题、段落、加粗、斜体、列表、表格和链接。图片引用保留为文字，不自动下载或嵌入外链图片。|Generate native Office Open XML with headings, paragraphs, bold, italics, lists, tables and links. Image references remain text; linked images are not downloaded or embedded.|見出し、段落、太字、斜体、リスト、表、リンクに対応したネイティブ Office Open XML を生成。画像参照は文字として保持し、外部画像は取得しません。
+支持 .xlsx 单元格和工作表编辑。公式不在浏览器计算，导出后由 Excel 重算。不支持宏、外部链接、图表编辑；复杂工作簿可能丢失部分特性，请保留原件。|Edit .xlsx cells across worksheets. Formulas are recalculated by Excel, not this browser. Macros, external workbook links and chart editing are unsupported; complex features may not survive export. Keep the original.|.xlsx のセルをシートごとに編集できます。数式は Excel で再計算します。マクロ、外部ブックリンク、グラフ編集は非対応です。複雑な機能が失われる場合があるため原本を保存してください。
+解析真实 PDF 的文字层、页码和目录，可预览页面。扫描件不会伪造文字：没有文字层的页面会提示需要 OCR。暂不支持 OCR、PDF 内容编辑或签名。|Extract actual PDF text, page numbers and outlines, and preview pages. Pages without a text layer are marked as needing OCR. OCR, PDF content editing and signatures are not supported.|PDF の文字層、ページ番号、目次を抽出しプレビューします。文字層のないページには OCR が必要と表示します。OCR、PDF 本文編集、署名は非対応です。
+在隔离浏览器预览中运行 axe-core，检查 WCAG 2.1 A/AA 相关自动规则。脚本、外部资源、表单提交被禁用；结果仅覆盖此受限预览，不等于完整 WCAG 认证。|Run axe-core against WCAG 2.1 A/AA automated rules in an isolated preview. Scripts, external resources and form submissions are blocked. Results cover only this restricted preview, not full WCAG certification.|隔離プレビューで axe-core の WCAG 2.1 A/AA 自動ルールを実行。スクリプト、外部リソース、フォーム送信は無効です。この制限されたプレビューのみを検査し、完全な WCAG 認証ではありません。
+导入受限声明式插件包，安装实际程序、版本、依赖和权限凭证。只支持 db-text-v1 引擎，不支持任意 JavaScript、npm、网络或系统文件访问。SHA-256 用于完整性检查，不证明作者可信。|Install a restricted declarative plugin program with version, dependency and permission records. Only db-text-v1 is supported; no arbitrary JavaScript, npm, network or system file access. SHA-256 checks integrity, not publisher trust.|制限付き宣言型プログラムをバージョン、依存関係、権限記録とともにインストール。db-text-v1 のみ対応し、任意の JavaScript、npm、ネットワーク、システムファイルにはアクセスできません。SHA-256 は完全性の確認であり作者の信頼性を保証しません。
+Markdown 文件|Markdown file|Markdown ファイル
+Markdown 内容|Markdown content|Markdown 内容
+Excel 文件|Excel file|Excel ファイル
+工作表|Worksheet|ワークシート
+上一页|Previous page|前のページ
+下一页|Next page|次のページ
+单元格|Cell|セル
+类型|Type|種類
+文本|Text|テキスト
+数值|Number|数値
+公式|Formula|数式
+新值|New value|新しい値
+保存单元格|Save cell|セルを保存
+导出 XLSX|Export XLSX|XLSX を出力
+PDF 文件|PDF file|PDF ファイル
+PDF 密码（可选）|PDF password (optional)|PDF パスワード（任意）
+解析 PDF|Parse PDF|PDF を解析
+页码|Page number|ページ番号
+预览页面|Preview page|ページをプレビュー
+提取结果|Extracted text|抽出結果
+导出解析报告|Export extraction report|解析レポートを出力
+HTML 内容|HTML content|HTML 内容
+运行浏览器检查|Run browser audit|ブラウザー検査を実行
+开始键盘测试|Start keyboard testing|キーボードテストを開始
+人工键盘结论|Manual keyboard verdict|手動キーボード判定
+未测试|Not tested|未テスト
+通过（人工确认）|Pass (manually confirmed)|合格（手動確認）
+存在问题|Issues found|問題あり
+导出检查报告|Export audit report|検査レポートを出力
+下载示例插件包|Download sample plugin package|サンプルプラグインをダウンロード
+插件包|Plugin package|プラグインパッケージ
+审核并安装插件|Review and install plugin|プラグインを確認してインストール
+运行插件|Run plugin|プラグインを実行
+卸载插件|Uninstall plugin|プラグインをアンインストール
+插件输入|Plugin input|プラグイン入力
+运行结果|Execution output|実行結果
+下载运行结果|Download execution output|実行結果をダウンロード
+尚未安装插件包|No plugin packages installed|インストール済みのプラグインはありません
+插件安装权限确认|Review plugin installation permissions|プラグインの権限を確認
+已取消安装|Installation cancelled|インストールをキャンセルしました
+删除此插件包及安装记录？|Delete this plugin package and its installation record?|このプラグインとインストール記録を削除しますか？
+确认卸载|Confirm uninstall|アンインストールを確認
+处理完成|Processing complete|処理が完了しました
+处理失败：{message}|Processing failed: {message}|処理失敗: {message}
+请在预览中实际按 Tab / Shift+Tab，检查焦点和顺序；Esc 退出。|Press Tab / Shift+Tab in the preview to inspect focus and order; Esc exits.|プレビュー内で Tab / Shift+Tab を押してフォーカスと順序を確認してください。Esc で終了します。
+打开文件工作台|Open file workbench|ファイルワークベンチを開く
+此技能需要在文件工作台中选择文件或输入内容；本次尚未执行文件处理。|Select a file or enter content in the file workbench; no file processing has run yet.|ファイルワークベンチでファイルまたは内容を入力してください。ファイル処理はまだ実行されていません。
+本地文件引擎|Local file engine|ローカルファイルエンジン
+浏览器检查|Browser audit|ブラウザー検査
+等待输入|Awaiting input|入力待ち
+正在处理…|Processing…|処理中…
+仅处理你提交给插件的文字，不授予账号、网络或系统权限。|Only text you submit is available to the plugin. No account, network or system permissions are granted.|プラグインが扱えるのは送信した文字のみです。アカウント、ネットワーク、システム権限は付与されません。

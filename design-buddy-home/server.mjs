@@ -28,6 +28,10 @@ const MIME = {
   '.webp': 'image/webp',
   '.ico': 'image/x-icon',
   '.woff2': 'font/woff2',
+  '.wasm': 'application/wasm',
+  '.ttf': 'font/ttf',
+  '.bcmap': 'application/octet-stream',
+  '.pfb': 'application/octet-stream',
   '.txt': 'text/plain; charset=utf-8',
 }
 

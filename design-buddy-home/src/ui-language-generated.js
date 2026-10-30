@@ -5855,5 +5855,503 @@ export default [
     "en": "Endpoint verification lasts 30 minutes and must then be repeated. This is not continuous availability monitoring.",
     "ja": "検証は30分間有効です。期限後は再検証が必要です。常時の稼働監視ではありません。",
     "zh-TW": "端點驗證有效期為 30 分鐘，過期需重新驗證；這不是持續在線監測。"
+  },
+  {
+    "zh": "Excel 文件编辑（.xlsx）",
+    "en": "Excel file editor (.xlsx)",
+    "ja": "Excel ファイル編集（.xlsx）",
+    "zh-TW": "Excel 文件編輯（.xlsx）"
+  },
+  {
+    "zh": "Markdown 转 Word（.docx）",
+    "en": "Markdown to Word (.docx)",
+    "ja": "Markdown から Word（.docx）",
+    "zh-TW": "Markdown 轉 Word（.docx）"
+  },
+  {
+    "zh": "PDF 文本与页面解析",
+    "en": "PDF text and page extraction",
+    "ja": "PDF テキストとページ解析",
+    "zh-TW": "PDF 文本與頁面解析"
+  },
+  {
+    "zh": "浏览器无障碍检查",
+    "en": "Browser accessibility audit",
+    "ja": "ブラウザーのアクセシビリティ検査",
+    "zh-TW": "瀏覽器無障礙檢查"
+  },
+  {
+    "zh": "技能插件包",
+    "en": "Skill plugin packages",
+    "ja": "スキルプラグインパッケージ",
+    "zh-TW": "技能插件包"
+  },
+  {
+    "zh": "文件处理与插件",
+    "en": "Files and plugins",
+    "ja": "ファイル処理とプラグイン",
+    "zh-TW": "文件處理與插件"
+  },
+  {
+    "zh": "Excel 文件编辑",
+    "en": "Excel file editor",
+    "ja": "Excel ファイル編集",
+    "zh-TW": "Excel 文件編輯"
+  },
+  {
+    "zh": "PDF 文件解析",
+    "en": "Parse a PDF file",
+    "ja": "PDF ファイル解析",
+    "zh-TW": "PDF 文件解析"
+  },
+  {
+    "zh": "导出 DOCX",
+    "en": "Export DOCX",
+    "ja": "DOCX を出力",
+    "zh-TW": "導出 DOCX"
+  },
+  {
+    "zh": "导入插件包",
+    "en": "Import plugin package",
+    "ja": "プラグインパッケージをインポート",
+    "zh-TW": "導入插件包"
+  },
+  {
+    "zh": "启用内置技能",
+    "en": "Enable built-in skill",
+    "ja": "内蔵スキルを有効化",
+    "zh-TW": "啟用內置技能"
+  },
+  {
+    "zh": "确认启用",
+    "en": "Confirm enable",
+    "ja": "有効化を確認",
+    "zh-TW": "確認啟用"
+  },
+  {
+    "zh": "已启用({count})",
+    "en": "Enabled ({count})",
+    "ja": "有効（{count}）",
+    "zh-TW": "已啟用({count})"
+  },
+  {
+    "zh": "已启用技能（{count}）",
+    "en": "Enabled skills ({count})",
+    "ja": "有効なスキル（{count}）",
+    "zh-TW": "已啟用技能（{count}）"
+  },
+  {
+    "zh": "还没有启用技能，回到「推荐」挑一个试试。",
+    "en": "No skills enabled. Choose one from Recommended.",
+    "ja": "有効なスキルはありません。おすすめから選択してください。",
+    "zh-TW": "還沒有啟用技能，回到「推薦」挑一個試試。"
+  },
+  {
+    "zh": "已启用，可在首页直接调用",
+    "en": "Enabled; available from the home page",
+    "ja": "有効です。ホームから呼び出せます",
+    "zh-TW": "已啟用，可在首頁直接調用"
+  },
+  {
+    "zh": "运行不需要启用；启用后可在首页调用",
+    "en": "Try without enabling; enable to call from home",
+    "ja": "有効化せず試せます。有効化するとホームから呼び出せます",
+    "zh-TW": "運行不需要啟用；啟用後可在首頁調用"
+  },
+  {
+    "zh": "自动启用可信技能未开启，确认手动启用「{name}」吗？",
+    "en": "Automatic enabling is off. Enable “{name}” manually?",
+    "ja": "自動有効化はオフです。「{name}」を手動で有効にしますか？",
+    "zh-TW": "自動啟用可信技能未開啟，確認手動啟用「{name}」嗎？"
+  },
+  {
+    "zh": "技能「{name}」已启用",
+    "en": "Skill “{name}” enabled",
+    "ja": "スキル「{name}」を有効にしました",
+    "zh-TW": "技能「{name}」已啟用"
+  },
+  {
+    "zh": "可信技能「{name}」已自动启用",
+    "en": "Trusted skill “{name}” automatically enabled",
+    "ja": "信頼済みスキル「{name}」を自動で有効にしました",
+    "zh-TW": "可信技能「{name}」已自動啟用"
+  },
+  {
+    "zh": "技能「{name}」已启用，现在可以在首页直接调用",
+    "en": "Skill “{name}” enabled and available from home",
+    "ja": "スキル「{name}」を有効にしました。ホームから呼び出せます",
+    "zh-TW": "技能「{name}」已啟用，現在可以在首頁直接調用"
+  },
+  {
+    "zh": "上传 XLSX、切换工作表、编辑单元格并导出原生 XLSX；不执行宏或外部公式",
+    "en": "Upload XLSX, switch sheets, edit cells and export native XLSX; no macros or external formulas",
+    "ja": "XLSX の読込、シート切替、セル編集、出力に対応。マクロや外部数式は実行しません",
+    "zh-TW": "上傳 XLSX、切換工作表、編輯單元格並導出原生 XLSX；不執行宏或外部公式"
+  },
+  {
+    "zh": "将 Markdown 标题、段落、列表和表格生成原生 DOCX，不自动下载外链图片",
+    "en": "Create native DOCX headings, paragraphs, lists and tables from Markdown; linked images are not downloaded",
+    "ja": "Markdown の見出し、段落、リスト、表からネイティブ DOCX を作成。外部画像は取得しません",
+    "zh-TW": "將 Markdown 標題、段落、列表和表格生成原生 DOCX，不自動下載外鏈圖片"
+  },
+  {
+    "zh": "上传 PDF，提取真实文字层、目录和页码并预览页面；扫描件提示需要 OCR",
+    "en": "Upload PDF, extract its text layer, outline and page numbers, and preview pages; scans are marked as needing OCR",
+    "ja": "PDF の文字層、目次、ページ番号を抽出しプレビュー。スキャンには OCR が必要と表示します",
+    "zh-TW": "上傳 PDF，提取真實文字層、目錄和頁碼並預覽頁面；掃描件提示需要 OCR"
+  },
+  {
+    "zh": "隔离浏览器中运行 axe-core，记录真实 Tab 操作并导出报告；不等于完整认证",
+    "en": "Run axe-core in an isolated browser, record real Tab events and export a report; not a certification",
+    "ja": "隔離ブラウザーで axe-core を実行し実際の Tab 操作を記録。完全な認証ではありません",
+    "zh-TW": "隔離瀏覽器中運行 axe-core，記錄真實 Tab 操作並導出報告；不等於完整認證"
+  },
+  {
+    "zh": "文件只在当前浏览器处理，不上传服务器。插件单独保存在此浏览器。",
+    "en": "Files are processed in this browser, not uploaded. Plugins are stored separately in this browser.",
+    "ja": "ファイルはブラウザー内で処理され、送信されません。プラグインはこのブラウザーに別途保存されます。",
+    "zh-TW": "文件只在當前瀏覽器處理，不上傳服務器。插件單獨保存在此瀏覽器。"
+  },
+  {
+    "zh": "生成原生 Office Open XML 文档，支持标题、段落、加粗、斜体、列表、表格和链接。图片引用保留为文字，不自动下载或嵌入外链图片。",
+    "en": "Generate native Office Open XML with headings, paragraphs, bold, italics, lists, tables and links. Image references remain text; linked images are not downloaded or embedded.",
+    "ja": "見出し、段落、太字、斜体、リスト、表、リンクに対応したネイティブ Office Open XML を生成。画像参照は文字として保持し、外部画像は取得しません。",
+    "zh-TW": "生成原生 Office Open XML 文檔，支持標題、段落、加粗、斜體、列表、表格和鏈接。圖片引用保留為文字，不自動下載或嵌入外鏈圖片。"
+  },
+  {
+    "zh": "支持 .xlsx 单元格和工作表编辑。公式不在浏览器计算，导出后由 Excel 重算。不支持宏、外部链接、图表编辑；复杂工作簿可能丢失部分特性，请保留原件。",
+    "en": "Edit .xlsx cells across worksheets. Formulas are recalculated by Excel, not this browser. Macros, external workbook links and chart editing are unsupported; complex features may not survive export. Keep the original.",
+    "ja": ".xlsx のセルをシートごとに編集できます。数式は Excel で再計算します。マクロ、外部ブックリンク、グラフ編集は非対応です。複雑な機能が失われる場合があるため原本を保存してください。",
+    "zh-TW": "支持 .xlsx 單元格和工作表編輯。公式不在瀏覽器計算，導出後由 Excel 重算。不支持宏、外部鏈接、圖表編輯；複雜工作簿可能丟失部分特性，請保留原件。"
+  },
+  {
+    "zh": "解析真实 PDF 的文字层、页码和目录，可预览页面。扫描件不会伪造文字：没有文字层的页面会提示需要 OCR。暂不支持 OCR、PDF 内容编辑或签名。",
+    "en": "Extract actual PDF text, page numbers and outlines, and preview pages. Pages without a text layer are marked as needing OCR. OCR, PDF content editing and signatures are not supported.",
+    "ja": "PDF の文字層、ページ番号、目次を抽出しプレビューします。文字層のないページには OCR が必要と表示します。OCR、PDF 本文編集、署名は非対応です。",
+    "zh-TW": "解析真實 PDF 的文字層、頁碼和目錄，可預覽頁面。掃描件不會偽造文字：沒有文字層的頁面會提示需要 OCR。暫不支持 OCR、PDF 內容編輯或簽名。"
+  },
+  {
+    "zh": "在隔离浏览器预览中运行 axe-core，检查 WCAG 2.1 A/AA 相关自动规则。脚本、外部资源、表单提交被禁用；结果仅覆盖此受限预览，不等于完整 WCAG 认证。",
+    "en": "Run axe-core against WCAG 2.1 A/AA automated rules in an isolated preview. Scripts, external resources and form submissions are blocked. Results cover only this restricted preview, not full WCAG certification.",
+    "ja": "隔離プレビューで axe-core の WCAG 2.1 A/AA 自動ルールを実行。スクリプト、外部リソース、フォーム送信は無効です。この制限されたプレビューのみを検査し、完全な WCAG 認証ではありません。",
+    "zh-TW": "在隔離瀏覽器預覽中運行 axe-core，檢查 WCAG 2.1 A/AA 相關自動規則。腳本、外部資源、表單提交被禁用；結果僅覆蓋此受限預覽，不等於完整 WCAG 認證。"
+  },
+  {
+    "zh": "导入受限声明式插件包，安装实际程序、版本、依赖和权限凭证。只支持 db-text-v1 引擎，不支持任意 JavaScript、npm、网络或系统文件访问。SHA-256 用于完整性检查，不证明作者可信。",
+    "en": "Install a restricted declarative plugin program with version, dependency and permission records. Only db-text-v1 is supported; no arbitrary JavaScript, npm, network or system file access. SHA-256 checks integrity, not publisher trust.",
+    "ja": "制限付き宣言型プログラムをバージョン、依存関係、権限記録とともにインストール。db-text-v1 のみ対応し、任意の JavaScript、npm、ネットワーク、システムファイルにはアクセスできません。SHA-256 は完全性の確認であり作者の信頼性を保証しません。",
+    "zh-TW": "導入受限聲明式插件包，安裝實際程序、版本、依賴和權限憑證。只支持 db-text-v1 引擎，不支持任意 JavaScript、npm、網絡或系統文件訪問。SHA-256 用於完整性檢查，不證明作者可信。"
+  },
+  {
+    "zh": "Markdown 文件",
+    "en": "Markdown file",
+    "ja": "Markdown ファイル",
+    "zh-TW": "Markdown 文件"
+  },
+  {
+    "zh": "Markdown 内容",
+    "en": "Markdown content",
+    "ja": "Markdown 内容",
+    "zh-TW": "Markdown 內容"
+  },
+  {
+    "zh": "Excel 文件",
+    "en": "Excel file",
+    "ja": "Excel ファイル",
+    "zh-TW": "Excel 文件"
+  },
+  {
+    "zh": "工作表",
+    "en": "Worksheet",
+    "ja": "ワークシート",
+    "zh-TW": "工作表"
+  },
+  {
+    "zh": "上一页",
+    "en": "Previous page",
+    "ja": "前のページ",
+    "zh-TW": "上一頁"
+  },
+  {
+    "zh": "下一页",
+    "en": "Next page",
+    "ja": "次のページ",
+    "zh-TW": "下一頁"
+  },
+  {
+    "zh": "单元格",
+    "en": "Cell",
+    "ja": "セル",
+    "zh-TW": "單元格"
+  },
+  {
+    "zh": "类型",
+    "en": "Type",
+    "ja": "種類",
+    "zh-TW": "類型"
+  },
+  {
+    "zh": "文本",
+    "en": "Text",
+    "ja": "テキスト",
+    "zh-TW": "文本"
+  },
+  {
+    "zh": "数值",
+    "en": "Number",
+    "ja": "数値",
+    "zh-TW": "數值"
+  },
+  {
+    "zh": "公式",
+    "en": "Formula",
+    "ja": "数式",
+    "zh-TW": "公式"
+  },
+  {
+    "zh": "新值",
+    "en": "New value",
+    "ja": "新しい値",
+    "zh-TW": "新值"
+  },
+  {
+    "zh": "保存单元格",
+    "en": "Save cell",
+    "ja": "セルを保存",
+    "zh-TW": "保存單元格"
+  },
+  {
+    "zh": "导出 XLSX",
+    "en": "Export XLSX",
+    "ja": "XLSX を出力",
+    "zh-TW": "導出 XLSX"
+  },
+  {
+    "zh": "PDF 文件",
+    "en": "PDF file",
+    "ja": "PDF ファイル",
+    "zh-TW": "PDF 文件"
+  },
+  {
+    "zh": "PDF 密码（可选）",
+    "en": "PDF password (optional)",
+    "ja": "PDF パスワード（任意）",
+    "zh-TW": "PDF 密碼（可選）"
+  },
+  {
+    "zh": "解析 PDF",
+    "en": "Parse PDF",
+    "ja": "PDF を解析",
+    "zh-TW": "解析 PDF"
+  },
+  {
+    "zh": "页码",
+    "en": "Page number",
+    "ja": "ページ番号",
+    "zh-TW": "頁碼"
+  },
+  {
+    "zh": "预览页面",
+    "en": "Preview page",
+    "ja": "ページをプレビュー",
+    "zh-TW": "預覽頁面"
+  },
+  {
+    "zh": "提取结果",
+    "en": "Extracted text",
+    "ja": "抽出結果",
+    "zh-TW": "提取結果"
+  },
+  {
+    "zh": "导出解析报告",
+    "en": "Export extraction report",
+    "ja": "解析レポートを出力",
+    "zh-TW": "導出解析報告"
+  },
+  {
+    "zh": "HTML 内容",
+    "en": "HTML content",
+    "ja": "HTML 内容",
+    "zh-TW": "HTML 內容"
+  },
+  {
+    "zh": "运行浏览器检查",
+    "en": "Run browser audit",
+    "ja": "ブラウザー検査を実行",
+    "zh-TW": "運行瀏覽器檢查"
+  },
+  {
+    "zh": "开始键盘测试",
+    "en": "Start keyboard testing",
+    "ja": "キーボードテストを開始",
+    "zh-TW": "開始鍵盤測試"
+  },
+  {
+    "zh": "人工键盘结论",
+    "en": "Manual keyboard verdict",
+    "ja": "手動キーボード判定",
+    "zh-TW": "人工鍵盤結論"
+  },
+  {
+    "zh": "未测试",
+    "en": "Not tested",
+    "ja": "未テスト",
+    "zh-TW": "未測試"
+  },
+  {
+    "zh": "通过（人工确认）",
+    "en": "Pass (manually confirmed)",
+    "ja": "合格（手動確認）",
+    "zh-TW": "通過（人工確認）"
+  },
+  {
+    "zh": "存在问题",
+    "en": "Issues found",
+    "ja": "問題あり",
+    "zh-TW": "存在問題"
+  },
+  {
+    "zh": "导出检查报告",
+    "en": "Export audit report",
+    "ja": "検査レポートを出力",
+    "zh-TW": "導出檢查報告"
+  },
+  {
+    "zh": "下载示例插件包",
+    "en": "Download sample plugin package",
+    "ja": "サンプルプラグインをダウンロード",
+    "zh-TW": "下載示例插件包"
+  },
+  {
+    "zh": "插件包",
+    "en": "Plugin package",
+    "ja": "プラグインパッケージ",
+    "zh-TW": "插件包"
+  },
+  {
+    "zh": "审核并安装插件",
+    "en": "Review and install plugin",
+    "ja": "プラグインを確認してインストール",
+    "zh-TW": "審核並安裝插件"
+  },
+  {
+    "zh": "运行插件",
+    "en": "Run plugin",
+    "ja": "プラグインを実行",
+    "zh-TW": "運行插件"
+  },
+  {
+    "zh": "卸载插件",
+    "en": "Uninstall plugin",
+    "ja": "プラグインをアンインストール",
+    "zh-TW": "卸載插件"
+  },
+  {
+    "zh": "插件输入",
+    "en": "Plugin input",
+    "ja": "プラグイン入力",
+    "zh-TW": "插件輸入"
+  },
+  {
+    "zh": "运行结果",
+    "en": "Execution output",
+    "ja": "実行結果",
+    "zh-TW": "運行結果"
+  },
+  {
+    "zh": "下载运行结果",
+    "en": "Download execution output",
+    "ja": "実行結果をダウンロード",
+    "zh-TW": "下載運行結果"
+  },
+  {
+    "zh": "尚未安装插件包",
+    "en": "No plugin packages installed",
+    "ja": "インストール済みのプラグインはありません",
+    "zh-TW": "尚未安裝插件包"
+  },
+  {
+    "zh": "插件安装权限确认",
+    "en": "Review plugin installation permissions",
+    "ja": "プラグインの権限を確認",
+    "zh-TW": "插件安裝權限確認"
+  },
+  {
+    "zh": "已取消安装",
+    "en": "Installation cancelled",
+    "ja": "インストールをキャンセルしました",
+    "zh-TW": "已取消安裝"
+  },
+  {
+    "zh": "删除此插件包及安装记录？",
+    "en": "Delete this plugin package and its installation record?",
+    "ja": "このプラグインとインストール記録を削除しますか？",
+    "zh-TW": "刪除此插件包及安裝記錄？"
+  },
+  {
+    "zh": "确认卸载",
+    "en": "Confirm uninstall",
+    "ja": "アンインストールを確認",
+    "zh-TW": "確認卸載"
+  },
+  {
+    "zh": "处理完成",
+    "en": "Processing complete",
+    "ja": "処理が完了しました",
+    "zh-TW": "處理完成"
+  },
+  {
+    "zh": "处理失败：{message}",
+    "en": "Processing failed: {message}",
+    "ja": "処理失敗: {message}",
+    "zh-TW": "處理失敗：{message}"
+  },
+  {
+    "zh": "请在预览中实际按 Tab / Shift+Tab，检查焦点和顺序；Esc 退出。",
+    "en": "Press Tab / Shift+Tab in the preview to inspect focus and order; Esc exits.",
+    "ja": "プレビュー内で Tab / Shift+Tab を押してフォーカスと順序を確認してください。Esc で終了します。",
+    "zh-TW": "請在預覽中實際按 Tab / Shift+Tab，檢查焦點和順序；Esc 退出。"
+  },
+  {
+    "zh": "打开文件工作台",
+    "en": "Open file workbench",
+    "ja": "ファイルワークベンチを開く",
+    "zh-TW": "打開文件工作臺"
+  },
+  {
+    "zh": "此技能需要在文件工作台中选择文件或输入内容；本次尚未执行文件处理。",
+    "en": "Select a file or enter content in the file workbench; no file processing has run yet.",
+    "ja": "ファイルワークベンチでファイルまたは内容を入力してください。ファイル処理はまだ実行されていません。",
+    "zh-TW": "此技能需要在文件工作臺中選擇文件或輸入內容；本次尚未執行文件處理。"
+  },
+  {
+    "zh": "本地文件引擎",
+    "en": "Local file engine",
+    "ja": "ローカルファイルエンジン",
+    "zh-TW": "本地文件引擎"
+  },
+  {
+    "zh": "浏览器检查",
+    "en": "Browser audit",
+    "ja": "ブラウザー検査",
+    "zh-TW": "瀏覽器檢查"
+  },
+  {
+    "zh": "等待输入",
+    "en": "Awaiting input",
+    "ja": "入力待ち",
+    "zh-TW": "等待輸入"
+  },
+  {
+    "zh": "正在处理…",
+    "en": "Processing…",
+    "ja": "処理中…",
+    "zh-TW": "正在處理…"
+  },
+  {
+    "zh": "仅处理你提交给插件的文字，不授予账号、网络或系统权限。",
+    "en": "Only text you submit is available to the plugin. No account, network or system permissions are granted.",
+    "ja": "プラグインが扱えるのは送信した文字のみです。アカウント、ネットワーク、システム権限は付与されません。",
+    "zh-TW": "僅處理你提交給插件的文字，不授予賬號、網絡或系統權限。"
   }
 ]

@@ -6,6 +6,7 @@ import { uiTypographyHtml, uiTypographyPostcss } from './scripts/ui-typography.m
 // (node_modules symlink). VITE_ALLOWED_HOST gates the sandbox preview proxy
 // host; without it, Vite keeps its default host checking.
 export default defineConfig({
+  worker: { format: 'es' },
   plugins: [uiTypographyHtml()],
   css: { postcss: { plugins: [uiTypographyPostcss()] } },
   server: {

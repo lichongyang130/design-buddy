@@ -255,7 +255,7 @@ export function toast(message) {
 
 /* ---------------- 通用弹窗 ---------------- */
 
-export function openModal({ title, body, footer, wide = false }) {
+export function openModal({ title, body, footer, wide = false, onClose }) {
   const mask = document.createElement('div')
   mask.className = 'modal-mask'
   mask.innerHTML = `
@@ -277,23 +277,27 @@ export function openModal({ title, body, footer, wide = false }) {
     if (typeof footer === 'string') footEl.innerHTML = footer
     else if (footer instanceof Node) footEl.append(footer)
   }
-  const close = () => mask.remove()
+  let closed = false
+  const close = () => { if (closed) return; closed = true; mask.remove(); document.removeEventListener('keydown', onEsc); onClose?.() }
   mask.addEventListener('click', (e) => {
     if (e.target === mask || e.target.closest('.modal-close')) close()
   })
-  document.addEventListener('keydown', function onEsc(e) {
+  function onEsc(e) {
     if (e.key === 'Escape' && document.body.contains(mask)) {
       close()
       document.removeEventListener('keydown', onEsc)
     }
-  })
+  }
+  document.addEventListener('keydown', onEsc)
   document.body.append(mask)
   return { mask, close, bodyEl, footEl: mask.querySelector('.modal-foot') }
 }
 
 export function confirmModal(title, message, dangerText = '确认') {
   return new Promise((resolve) => {
+    let confirmed = false
     const { close, footEl } = openModal({
+      onClose: () => resolve(confirmed),
       title,
       body: `<p class="modal-copy">${message}</p>`,
       footer: `
@@ -303,8 +307,8 @@ export function confirmModal(title, message, dangerText = '确认') {
     footEl.addEventListener('click', (e) => {
       const act = e.target.dataset.act
       if (!act) return
+      confirmed = act === 'ok'
       close()
-      resolve(act === 'ok')
     })
   })
 }
