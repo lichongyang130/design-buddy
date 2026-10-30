@@ -1,3 +1,6 @@
+import './ui-language-bootstrap.js'
+import { store } from './core.js'
+import { uiText } from './ui-language.js'
 /* ============================================================
    登录 / 注册页交互：tab 切换、双语、邮箱注册登录、
    Google/GitHub 诚实本地演示身份、忘记密码说明
@@ -76,12 +79,13 @@ const DICT = {
   },
 }
 
-let lang = localStorage.getItem('db-auth-lang') || 'zh'
+const languageNames = { zh: '简体中文', 'zh-TW': '繁體中文', en: 'English', ja: '日本語' }
+let lang = Object.keys(languageNames).find(k => languageNames[k] === store.state.settings.language) || localStorage.getItem('db-auth-lang') || 'zh'
 let mode = 'login'
 
 const $ = (sel) => document.querySelector(sel)
-const dict = () => DICT[lang]
-const t = (key) => dict()[key] ?? DICT.zh[key] ?? key
+const dict = () => DICT[lang] || DICT.zh
+const t = (key) => uiText(dict()[key] ?? DICT.zh[key] ?? key, languageNames[lang])
 
 function applyLang() {
   document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN'
@@ -146,7 +150,7 @@ if (currentUser()) {
 }
 
 document.querySelectorAll('.auth-lang-btn').forEach((b) =>
-  b.addEventListener('click', () => { lang = b.dataset.authLang; applyLang() }))
+  b.addEventListener('click', () => { lang = b.dataset.authLang; store.state.settings.language = languageNames[lang]; applyLang(); store.save() }))
 document.querySelectorAll('.auth-tab').forEach((b) =>
   b.addEventListener('click', () => setMode(b.dataset.tab)))
 

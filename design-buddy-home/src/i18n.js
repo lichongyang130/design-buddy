@@ -12,7 +12,7 @@ export const LANG_HTML = {
   日本語: 'ja',
 }
 
-const DICT = {
+export const DICT = {
   /* ---------- 五页共享导航 rail ---------- */
   'rail.home': { zh: '首页', 'zh-TW': '首頁', en: 'Home', ja: 'ホーム' },
   'rail.media': { zh: '媒体', 'zh-TW': '媒體', en: 'Media', ja: 'メディア' },

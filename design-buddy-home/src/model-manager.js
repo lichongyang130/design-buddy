@@ -1,3 +1,4 @@
+import { uiText } from './ui-language.js'
 import { modelRequest } from './models-api.js'
 // Model metadata only. Never collect or persist API secrets in the browser.
 const escape = (value) =>
@@ -115,7 +116,7 @@ export function createModelManager({
   setupText,
 }) {
   const en = () => language() === 'English',
-    say = (zh, english) => (en() ? english : zh)
+    say = (zh, english) => (en() ? english : uiText(zh, language()))
   const models = () =>
     ensureCustomModels(store.state.settings, presets, baseURL)
   const save = () => {

@@ -10,7 +10,7 @@
     "preview": "node server.mjs",
     "discover-models": "node scripts/discover-models.mjs",
     "check:templates": "node scripts/verify-template-integrity.mjs",
-    "prebuild": "npm run restore:artifacts && npm run style:template-detail && npm run check:templates",
+    "prebuild": "npm run build:ui-language && npm run restore:artifacts && npm run style:template-detail && npm run check:templates",
     "build:pantry-notes": "node scripts/build-pantry-notes.mjs",
     "test:pantry-notes": "node tests/verify-pantry-notes.mjs",
     "test:template-office": "node scripts/verify-template-office.mjs",
@@ -29,8 +29,8 @@
     "build:document-batch": "node scripts/build-document-batch.mjs",
     "test:document-batch": "node tests/verify-document-batch.mjs",
     "restore:artifacts": "node scripts/restore-template-artifacts.mjs",
-    "predev": "npm run restore:artifacts && npm run style:template-detail",
-    "prestart": "npm run restore:artifacts && npm run style:template-detail",
+    "predev": "npm run build:ui-language && npm run restore:artifacts && npm run style:template-detail",
+    "prestart": "npm run build:ui-language && npm run restore:artifacts && npm run style:template-detail",
     "precheck:templates": "npm run restore:artifacts",
     "build:course-expansion": "node scripts/build-course-expansion.mjs",
     "test:course-expansion": "node tests/verify-course-expansion.mjs",
@@ -68,13 +68,16 @@
     "postbuild:training-expansion": "npm run style:template-detail",
     "postbuild:business-expansion": "npm run style:template-detail",
     "postbuild:event-expansion": "npm run style:template-detail",
-    "postbuild:product-expansion": "npm run style:template-detail"
+    "postbuild:product-expansion": "npm run style:template-detail",
+    "build:ui-language": "node scripts/build-ui-language.mjs",
+    "test:ui-language": "node tests/verify-ui-language.mjs"
   },
   "devDependencies": {
     "@sparticuz/chromium": "^153.0.0",
     "esbuild": "^0.28.2",
     "fflate": "^0.8.3",
     "jsdom": "^30.1.3",
+    "opencc-js": "^1.4.2",
     "playwright-core": "^1.64.1",
     "pptxgenjs": "^4.0.1",
     "vite": "^5.4.21"

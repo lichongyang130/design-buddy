@@ -1,3 +1,4 @@
+import { sourceText } from './ui-language.js'
 import { initQuestionChat, isStandaloneQuestion, escapeQuestionText } from './question-chat.js'
 /* ============================================================
    Design Buddy 首页：真实创作流 + localStorage 持久化
@@ -892,7 +893,7 @@ const typePillIcon = $('#type-pill-icon')
 
 function syncTypeUI() {
   typeChips().forEach((chip) => {
-    chip.classList.toggle('chip-active', chip.textContent.trim() === ui.type)
+    chip.classList.toggle('chip-active', sourceText(chip.textContent.trim()) === ui.type)
   })
   if (typePillLabel) typePillLabel.textContent = ui.type || '类型'
   if (typePillIcon) typePillIcon.innerHTML = TYPE_PILL_ICONS[ui.type] ?? TYPE_PILL_ICONS.演示文稿
@@ -931,7 +932,7 @@ typePillX?.addEventListener('click', (event) => {
 typeChips().forEach((chip) => {
   chip.addEventListener('click', (event) => {
     event.stopPropagation()
-    setType(chip.textContent.trim(), { quiet: true })
+    setType(sourceText(chip.textContent.trim()), { quiet: true })
     toast(`创作类型：${ui.type}`)
   })
 })
@@ -2066,7 +2067,7 @@ function bindGammaList(bodyEl, { trash = false } = {}) {
         title: g.title,
         wide: true,
         body: `
-          <p class="modal-copy">${g.prompt || '（空白 Design Buddy，暂无提示词）'}</p>
+          <p class="modal-copy" translate="no">${g.prompt || '（空白 Design Buddy，暂无提示词）'}</p>
           <p class="hint" style="margin-top:10px">
             ${TYPE_ICONS[g.type] ?? ''} ${g.type} · ${g.mode} 模式 · 图片：${g.imgMode}
             ${g.expert ? ` · 专家：${g.expert}` : ''}${g.template ? ` · 模板：${g.template}` : ''}
@@ -2077,13 +2078,14 @@ function bindGammaList(bodyEl, { trash = false } = {}) {
             <label>归入文件夹</label>
             <select id="detail-folder">
               <option value="">未分组</option>
-              ${store.state.folders.map((f) => `<option value="${f.id}" ${g.folderId === f.id ? 'selected' : ''}>${f.name}</option>`).join('')}
+              ${store.state.folders.map((f) => `<option translate="no" value="${f.id}" ${g.folderId === f.id ? 'selected' : ''}>${f.name}</option>`).join('')}
             </select>
           </div>`,
         footer: `
           <button class="btn btn-ghost" id="detail-share">${g.shared ? '取消共享' : '共享给协作成员'}</button>
           <button class="btn btn-primary" data-close>完成</button>`,
       })
+      b2.closest('.modal-box')?.querySelector('.modal-head h3')?.setAttribute('translate', 'no')
       b2.querySelector('#detail-folder').addEventListener('change', (ev) => {
         g.folderId = ev.target.value || null
         g.updatedAt = Date.now()
@@ -2117,7 +2119,7 @@ function openGammaList(title, list, opts = {}) {
 $$('[data-nav]').forEach((item) => {
   item.addEventListener('click', (event) => {
     event.preventDefault()
-    const label = item.textContent.trim()
+    const label = sourceText(item.textContent.trim())
     if (item.id === 'nav-search') return openPalette()
     $$('[data-nav]').forEach((nav) => nav.classList.remove('nav-item-active'))
     item.classList.add('nav-item-active')
@@ -2186,7 +2188,7 @@ function renderFolders() {
       return `
         <button class="folder-row" data-folder="${f.id}">
           <svg class="icon folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-          <span>${f.name}</span>
+          <span translate="no">${f.name}</span>
           <span class="count-pill">${count}</span>
         </button>`
     }).join('')}
@@ -2398,7 +2400,7 @@ $('.pill-upgrade').addEventListener('click', openUpgrade)
 $('.help-fab').addEventListener('click', openHelp)
 $$('.rail-footer .footer-icon').forEach((btn) => {
   btn.addEventListener('click', () => {
-    const label = btn.getAttribute('aria-label')
+    const label = sourceText(btn.getAttribute('aria-label'))
     if (label === '邀请成员') openInvite()
     else if (label === '消息') openMessages()
   })
