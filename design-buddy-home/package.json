@@ -70,7 +70,8 @@
     "postbuild:event-expansion": "npm run style:template-detail",
     "postbuild:product-expansion": "npm run style:template-detail",
     "build:ui-language": "node scripts/build-ui-language.mjs",
-    "test:ui-language": "node tests/verify-ui-language.mjs"
+    "test:ui-language": "node tests/verify-ui-language.mjs",
+    "test:creation-skills": "node tests/verify-creation-skills.mjs"
   },
   "devDependencies": {
     "@sparticuz/chromium": "^153.0.0",

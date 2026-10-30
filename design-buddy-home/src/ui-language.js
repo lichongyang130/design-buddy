@@ -21,7 +21,8 @@ export function uiText(text, language = '简体中文', depth = 0) {
     const values = Object.fromEntries(names.map((name, i) => [name, match[i + 1]]))
     return (entry[key(language)] ?? entry.zh).replace(/\{(\w+)\}/g, (_, name) => {
       const value = values[name]
-      const translateValue = ['category', 'format', 'status', 'names'].includes(name) || /所属专家|的核心能力/.test(entry.zh)
+      const translateValue = ['category', 'format', 'status', 'names'].includes(name) || /所属专家|的核心能力|旧版能力/.test(entry.zh)
+      if (entry.zh === '所属空间：{name}' && value === '本地') return uiText(value, language, depth + 1)
       if (!translateValue) return value
       return value.split('、').map(part => uiText(part, language, depth + 1)).join(key(language) === 'en' ? ', ' : '、')
     })

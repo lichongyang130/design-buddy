@@ -5273,5 +5273,269 @@ export default [
     "en": "＋ Add color",
     "ja": "＋ 色を追加",
     "zh-TW": "＋ 添加顏色"
+  },
+  {
+    "zh": "文档结构检查",
+    "en": "Document structure check",
+    "ja": "文書構造チェック",
+    "zh-TW": "文檔結構檢查"
+  },
+  {
+    "zh": "页面可访问性检查",
+    "en": "Page accessibility check",
+    "ja": "ページのアクセシビリティチェック",
+    "zh-TW": "頁面可訪問性檢查"
+  },
+  {
+    "zh": "素材引用清单",
+    "en": "Asset reference inventory",
+    "ja": "素材参照一覧",
+    "zh-TW": "素材引用清單"
+  },
+  {
+    "zh": "检查标题层级、重复标题、待填项和长段落，导出目录与问题清单",
+    "en": "Check heading hierarchy, duplicate headings, placeholders and long paragraphs; export an outline and findings.",
+    "ja": "見出し階層・重複・未記入項目・長い段落を確認し、目次と指摘を出力します。",
+    "zh-TW": "檢查標題層級、重複標題、待填項和長段落，導出目錄與問題清單"
+  },
+  {
+    "zh": "静态检查 HTML 的图片替代文本、表单标签、按钮名称和标题层级，不替代浏览器无障碍审计",
+    "en": "Statically check HTML image alternatives, form labels, button names and headings; not a browser accessibility audit.",
+    "ja": "HTML の代替テキスト・フォームラベル・ボタン名・見出しを静的に確認します。ブラウザー監査の代替ではありません。",
+    "zh-TW": "靜態檢查 HTML 的圖片替代文本、表單標籤、按鈕名稱和標題層級，不替代瀏覽器無障礙審計"
+  },
+  {
+    "zh": "提取 HTML 或 Markdown 的资源引用并去重，不下载、不验证版权或链接可用性",
+    "en": "Extract and deduplicate HTML or Markdown references; no downloads, licensing or availability verification.",
+    "ja": "HTML・Markdown の参照を抽出・重複排除します。取得・著作権・リンク有効性は確認しません。",
+    "zh-TW": "提取 HTML 或 Markdown 的資源引用並去重，不下載、不驗證版權或鏈接可用性"
+  },
+  {
+    "zh": "根据主题生成逐页大纲与讲稿分配，不直接导出 PPT 文件",
+    "en": "Create page-by-page outlines and speaker allocations, not PPT files.",
+    "ja": "ページごとの構成と発表内容を配分します。PPT ファイルは出力しません。",
+    "zh-TW": "根據主題生成逐頁大綱與講稿分配，不直接導出 PPT 文件"
+  },
+  {
+    "zh": "本地规则清理套话和冗余，输出修改前后对比，不代替大模型改写",
+    "en": "Remove stock phrases and redundancy using local rules, with a before/after comparison; not model-based rewriting.",
+    "ja": "ローカル規則で定型句・冗長表現を整理し前後を比較します。大規模モデルの書き直しではありません。",
+    "zh-TW": "本地規則清理套話和冗餘，輸出修改前後對比，不代替大模型改寫"
+  },
+  {
+    "zh": "解析粘贴的数值并生成 SVG 图表，不联网获取数据",
+    "en": "Parse pasted numbers into SVG charts without fetching online data.",
+    "ja": "貼り付けた数値から SVG 図表を作成します。オンライン取得は行いません。",
+    "zh-TW": "解析粘貼的數值並生成 SVG 圖表，不聯網獲取數據"
+  },
+  {
+    "zh": "按本地句子评分提取摘要，不进行事实核验",
+    "en": "Extract summaries using local sentence scoring, without fact verification.",
+    "ja": "文のスコアで要約を抽出します。事実確認は行いません。",
+    "zh-TW": "按本地句子評分提取摘要，不進行事實核驗"
+  },
+  {
+    "zh": "从输入提取关键词和页面标题建议，不提供搜索量数据",
+    "en": "Extract keywords and page title suggestions, without search-volume data.",
+    "ja": "入力からキーワード・ページタイトルを提案します。検索数は取得しません。",
+    "zh-TW": "從輸入提取關鍵詞和頁面標題建議，不提供搜索量數據"
+  },
+  {
+    "zh": "CSV / TSV 表格分析",
+    "en": "CSV / TSV analysis",
+    "ja": "CSV / TSV 分析",
+    "zh-TW": "CSV / TSV 表格分析"
+  },
+  {
+    "zh": "解析粘贴的 CSV / TSV，统计数值列并导出 CSV，不读取 XLSX 文件",
+    "en": "Analyze pasted CSV / TSV and export CSV; does not read XLSX files.",
+    "ja": "貼り付けた CSV / TSV の数値を集計し CSV を出力します。XLSX は読み込みません。",
+    "zh-TW": "解析粘貼的 CSV / TSV，統計數值列並導出 CSV，不讀取 XLSX 文件"
+  },
+  {
+    "zh": "Markdown 转 Word（.doc）",
+    "en": "Markdown to Word (.doc)",
+    "ja": "Markdown から Word（.doc）",
+    "zh-TW": "Markdown 轉 Word（.doc）"
+  },
+  {
+    "zh": "把粘贴的 Markdown 转成 Word 可打开的 HTML .doc，不是原生 DOCX",
+    "en": "Convert pasted Markdown to Word-compatible HTML .doc, not native DOCX.",
+    "ja": "Markdown を Word 対応の HTML .doc に変換します。ネイティブ DOCX ではありません。",
+    "zh-TW": "把粘貼的 Markdown 轉成 Word 可打開的 HTML .doc，不是原生 DOCX"
+  },
+  {
+    "zh": "文本分页与目录",
+    "en": "Text pagination and outline",
+    "ja": "テキストのページ分割と目次",
+    "zh-TW": "文本分頁與目錄"
+  },
+  {
+    "zh": "按段落和字数规划分页，导出 Markdown 目录，不解析或导出 PDF",
+    "en": "Plan pages from text and export a Markdown outline; does not parse or export PDFs.",
+    "ja": "段落・文字数から分割を計画し Markdown 目次を出力します。PDF の解析・出力は行いません。",
+    "zh-TW": "按段落和字數規劃分頁，導出 Markdown 目錄，不解析或導出 PDF"
+  },
+  {
+    "zh": "HTML 转 Markdown",
+    "en": "HTML to Markdown",
+    "ja": "HTML から Markdown",
+    "zh-TW": "HTML 轉 Markdown"
+  },
+  {
+    "zh": "将粘贴的 HTML 转为 Markdown，不读取 PDF、Word 或 PPT 文件",
+    "en": "Convert pasted HTML to Markdown; does not read PDF, Word or PPT files.",
+    "ja": "HTML を Markdown に変換します。PDF・Word・PPT は読み込みません。",
+    "zh-TW": "將粘貼的 HTML 轉為 Markdown，不讀取 PDF、Word 或 PPT 文件"
+  },
+  {
+    "zh": "交付文本与源码自检",
+    "en": "Delivery text and source check",
+    "ja": "納品テキストとソースのチェック",
+    "zh-TW": "交付文本與源碼自檢"
+  },
+  {
+    "zh": "检查输入文本和 HTML 源码中的常见问题，不验证实际 Office 导出文件",
+    "en": "Check common text and HTML issues; does not verify actual Office exports.",
+    "ja": "テキストと HTML の一般的な問題を確認します。実際の Office 出力は検証しません。",
+    "zh-TW": "檢查輸入文本和 HTML 源碼中的常見問題，不驗證實際 Office 導出文件"
+  },
+  {
+    "zh": "方案假设与风险审查",
+    "en": "Proposal assumptions and risks",
+    "ja": "提案の前提とリスク審査",
+    "zh-TW": "方案假設與風險審查"
+  },
+  {
+    "zh": "根据输入生成本地规则追问清单，不联网核验结论",
+    "en": "Generate follow-up questions using local rules, without online verification.",
+    "ja": "ローカル規則で追加質問を作成します。オンライン検証は行いません。",
+    "zh-TW": "根據輸入生成本地規則追問清單，不聯網核驗結論"
+  },
+  {
+    "zh": "HTML 响应式规则检查",
+    "en": "HTML responsive-rule check",
+    "ja": "HTML レスポンシブ規則チェック",
+    "zh-TW": "HTML 響應式規則檢查"
+  },
+  {
+    "zh": "检查粘贴源码的固定宽度、视口等规则，不读取截图或自动改代码",
+    "en": "Check source rules for fixed widths and viewports; no screenshot reading or automatic code changes.",
+    "ja": "固定幅・ビューポート等を確認します。画像の読み取りや自動修正は行いません。",
+    "zh-TW": "檢查粘貼源碼的固定寬度、視口等規則，不讀取截圖或自動改代碼"
+  },
+  {
+    "zh": "按输入内容量估算密度并给出版式方案，不测量真实渲染页面",
+    "en": "Estimate density from input and suggest layouts; does not measure rendered pages.",
+    "ja": "入力の量から密度とレイアウトを提案します。実際の描画は計測しません。",
+    "zh-TW": "按輸入內容量估算密度並給出版式方案，不測量真實渲染頁面"
+  },
+  {
+    "zh": "品牌色与设计令牌",
+    "en": "Brand colors and design tokens",
+    "ja": "ブランドカラーとデザイントークン",
+    "zh-TW": "品牌色與設計令牌"
+  },
+  {
+    "zh": "从输入色值推导色阶、字体和间距令牌，不自动提取品牌文件",
+    "en": "Derive color, type and spacing tokens from input colors, not brand files.",
+    "ja": "入力の色値から色階・文字・余白のトークンを作成します。ブランドファイルの自動解析は行いません。",
+    "zh-TW": "從輸入色值推導色階、字體和間距令牌，不自動提取品牌文件"
+  },
+  {
+    "zh": "按输入生成可下载的单文件 HTML 原型，不代替生产后端",
+    "en": "Create a downloadable single-file HTML prototype, not a production backend.",
+    "ja": "取得可能な単一 HTML プロトタイプを作成します。本番バックエンドではありません。",
+    "zh-TW": "按輸入生成可下載的單文件 HTML 原型，不代替生產後端"
+  },
+  {
+    "zh": "本地规则引擎",
+    "en": "Local rule engine",
+    "ja": "ローカル規則エンジン",
+    "zh-TW": "本地規則引擎"
+  },
+  {
+    "zh": "暂无调用统计",
+    "en": "Usage statistics unavailable",
+    "ja": "利用統計なし",
+    "zh-TW": "暫無調用統計"
+  },
+  {
+    "zh": "创作交付",
+    "en": "Creative delivery",
+    "ja": "制作と納品",
+    "zh-TW": "創作交付"
+  },
+  {
+    "zh": "标题目录",
+    "en": "Heading outline",
+    "ja": "見出し一覧",
+    "zh-TW": "標題目錄"
+  },
+  {
+    "zh": "仍需人工验证",
+    "en": "Manual checks still required",
+    "ja": "引き続き手動確認が必要",
+    "zh-TW": "仍需人工驗證"
+  },
+  {
+    "zh": "资源引用",
+    "en": "Resource references",
+    "ja": "リソース参照",
+    "zh-TW": "資源引用"
+  },
+  {
+    "zh": "控件",
+    "en": "Controls",
+    "ja": "コントロール",
+    "zh-TW": "控件"
+  },
+  {
+    "zh": "待填项",
+    "en": "Placeholders",
+    "ja": "未記入項目",
+    "zh-TW": "待填項"
+  },
+  {
+    "zh": "引用次数",
+    "en": "Reference occurrences",
+    "ja": "参照回数",
+    "zh-TW": "引用次數"
+  },
+  {
+    "zh": "去重引用",
+    "en": "Unique references",
+    "ja": "重複排除後の参照",
+    "zh-TW": "去重引用"
+  },
+  {
+    "zh": "层级",
+    "en": "Level",
+    "ja": "階層",
+    "zh-TW": "層級"
+  },
+  {
+    "zh": "路径",
+    "en": "Path",
+    "ja": "パス",
+    "zh-TW": "路徑"
+  },
+  {
+    "zh": "范围",
+    "en": "Scope",
+    "ja": "範囲",
+    "zh-TW": "範圍"
+  },
+  {
+    "zh": "{name}（旧版能力）",
+    "en": "{name} (legacy capability)",
+    "ja": "{name}（旧版機能）",
+    "zh-TW": "{name}（舊版能力）"
+  },
+  {
+    "zh": "已从推荐移除，保留旧安装记录；可能仅转发专家规则或输出方案，不执行名称暗示的外部操作。",
+    "en": "Removed from recommendations; existing installs are retained. May only forward to expert rules or produce a plan, not perform external actions implied by the name.",
+    "ja": "おすすめから除外しました。既存の導入記録は保持します。専門家の規則や計画の出力のみで、名称が示す外部操作を実行しない場合があります。",
+    "zh-TW": "已從推薦移除，保留舊安裝記錄；可能僅轉發專家規則或輸出方案，不執行名稱暗示的外部操作。"
   }
 ]

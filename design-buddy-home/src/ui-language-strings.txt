@@ -877,3 +877,47 @@ MCP 地址|MCP URL|MCP URL
 颜色|Colors|色
 （默认）|(Default)|（既定）
 ＋ 添加颜色|＋ Add color|＋ 色を追加
+文档结构检查|Document structure check|文書構造チェック
+页面可访问性检查|Page accessibility check|ページのアクセシビリティチェック
+素材引用清单|Asset reference inventory|素材参照一覧
+检查标题层级、重复标题、待填项和长段落，导出目录与问题清单|Check heading hierarchy, duplicate headings, placeholders and long paragraphs; export an outline and findings.|見出し階層・重複・未記入項目・長い段落を確認し、目次と指摘を出力します。
+静态检查 HTML 的图片替代文本、表单标签、按钮名称和标题层级，不替代浏览器无障碍审计|Statically check HTML image alternatives, form labels, button names and headings; not a browser accessibility audit.|HTML の代替テキスト・フォームラベル・ボタン名・見出しを静的に確認します。ブラウザー監査の代替ではありません。
+提取 HTML 或 Markdown 的资源引用并去重，不下载、不验证版权或链接可用性|Extract and deduplicate HTML or Markdown references; no downloads, licensing or availability verification.|HTML・Markdown の参照を抽出・重複排除します。取得・著作権・リンク有効性は確認しません。
+根据主题生成逐页大纲与讲稿分配，不直接导出 PPT 文件|Create page-by-page outlines and speaker allocations, not PPT files.|ページごとの構成と発表内容を配分します。PPT ファイルは出力しません。
+本地规则清理套话和冗余，输出修改前后对比，不代替大模型改写|Remove stock phrases and redundancy using local rules, with a before/after comparison; not model-based rewriting.|ローカル規則で定型句・冗長表現を整理し前後を比較します。大規模モデルの書き直しではありません。
+解析粘贴的数值并生成 SVG 图表，不联网获取数据|Parse pasted numbers into SVG charts without fetching online data.|貼り付けた数値から SVG 図表を作成します。オンライン取得は行いません。
+按本地句子评分提取摘要，不进行事实核验|Extract summaries using local sentence scoring, without fact verification.|文のスコアで要約を抽出します。事実確認は行いません。
+从输入提取关键词和页面标题建议，不提供搜索量数据|Extract keywords and page title suggestions, without search-volume data.|入力からキーワード・ページタイトルを提案します。検索数は取得しません。
+CSV / TSV 表格分析|CSV / TSV analysis|CSV / TSV 分析
+解析粘贴的 CSV / TSV，统计数值列并导出 CSV，不读取 XLSX 文件|Analyze pasted CSV / TSV and export CSV; does not read XLSX files.|貼り付けた CSV / TSV の数値を集計し CSV を出力します。XLSX は読み込みません。
+Markdown 转 Word（.doc）|Markdown to Word (.doc)|Markdown から Word（.doc）
+把粘贴的 Markdown 转成 Word 可打开的 HTML .doc，不是原生 DOCX|Convert pasted Markdown to Word-compatible HTML .doc, not native DOCX.|Markdown を Word 対応の HTML .doc に変換します。ネイティブ DOCX ではありません。
+文本分页与目录|Text pagination and outline|テキストのページ分割と目次
+按段落和字数规划分页，导出 Markdown 目录，不解析或导出 PDF|Plan pages from text and export a Markdown outline; does not parse or export PDFs.|段落・文字数から分割を計画し Markdown 目次を出力します。PDF の解析・出力は行いません。
+HTML 转 Markdown|HTML to Markdown|HTML から Markdown
+将粘贴的 HTML 转为 Markdown，不读取 PDF、Word 或 PPT 文件|Convert pasted HTML to Markdown; does not read PDF, Word or PPT files.|HTML を Markdown に変換します。PDF・Word・PPT は読み込みません。
+交付文本与源码自检|Delivery text and source check|納品テキストとソースのチェック
+检查输入文本和 HTML 源码中的常见问题，不验证实际 Office 导出文件|Check common text and HTML issues; does not verify actual Office exports.|テキストと HTML の一般的な問題を確認します。実際の Office 出力は検証しません。
+方案假设与风险审查|Proposal assumptions and risks|提案の前提とリスク審査
+根据输入生成本地规则追问清单，不联网核验结论|Generate follow-up questions using local rules, without online verification.|ローカル規則で追加質問を作成します。オンライン検証は行いません。
+HTML 响应式规则检查|HTML responsive-rule check|HTML レスポンシブ規則チェック
+检查粘贴源码的固定宽度、视口等规则，不读取截图或自动改代码|Check source rules for fixed widths and viewports; no screenshot reading or automatic code changes.|固定幅・ビューポート等を確認します。画像の読み取りや自動修正は行いません。
+按输入内容量估算密度并给出版式方案，不测量真实渲染页面|Estimate density from input and suggest layouts; does not measure rendered pages.|入力の量から密度とレイアウトを提案します。実際の描画は計測しません。
+品牌色与设计令牌|Brand colors and design tokens|ブランドカラーとデザイントークン
+从输入色值推导色阶、字体和间距令牌，不自动提取品牌文件|Derive color, type and spacing tokens from input colors, not brand files.|入力の色値から色階・文字・余白のトークンを作成します。ブランドファイルの自動解析は行いません。
+按输入生成可下载的单文件 HTML 原型，不代替生产后端|Create a downloadable single-file HTML prototype, not a production backend.|取得可能な単一 HTML プロトタイプを作成します。本番バックエンドではありません。
+本地规则引擎|Local rule engine|ローカル規則エンジン
+暂无调用统计|Usage statistics unavailable|利用統計なし
+创作交付|Creative delivery|制作と納品
+标题目录|Heading outline|見出し一覧
+仍需人工验证|Manual checks still required|引き続き手動確認が必要
+资源引用|Resource references|リソース参照
+控件|Controls|コントロール
+待填项|Placeholders|未記入項目
+引用次数|Reference occurrences|参照回数
+去重引用|Unique references|重複排除後の参照
+层级|Level|階層
+路径|Path|パス
+范围|Scope|範囲
+{name}（旧版能力）|{name} (legacy capability)|{name}（旧版機能）
+已从推荐移除，保留旧安装记录；可能仅转发专家规则或输出方案，不执行名称暗示的外部操作。|Removed from recommendations; existing installs are retained. May only forward to expert rules or produce a plan, not perform external actions implied by the name.|おすすめから除外しました。既存の導入記録は保持します。専門家の規則や計画の出力のみで、名称が示す外部操作を実行しない場合があります。

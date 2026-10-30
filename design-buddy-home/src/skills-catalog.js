@@ -1,5 +1,6 @@
+import { CREATION_SKILL_OVERRIDES } from './creation-skill-policy.js'
 /* ============================================================
-   技能目录（写死种子数据，零后端 / 零外部素材）
+   技能目录（创作聚焦版；旧别名仅为已安装记录保留）
    - BUILTIN_SKILLS：由 12 位专家的技能清单生成的内置能力技能，
      每项标注所属专家（expertId/expertName），分类与专家页 9 类对齐
    - TOOL_SKILLS：保留与创作交付直接相关的本地工具技能
@@ -7,14 +8,14 @@
    - 注册表技能：SKILL_REGISTRY 的 9 条（安装/更新的唯一事实源，契约不变）
    - FEATURED_SKILLS：顶部「精选技能」横滑池，「换一批」轮换
    - 已删除：与创作交付无关的金融行情、音乐、创业、视频提示词等技能
-   - usage 为调用量、downloads 为安装量，展示经 formatCount 转换
+   - 历史种子统计仅保留兼容；当前技能页不展示虚构的调用量/安装量
    ============================================================ */
 
 import { EXPERT_CATALOG, EXPERT_FILTERS } from './experts-catalog.js'
 import { SKILL_REGISTRY } from './skill-registry.js'
 
 // 分类 chips：与专家页完全对齐（9 类）
-export const SKILL_FILTERS = [...EXPERT_FILTERS]
+export const SKILL_FILTERS = EXPERT_FILTERS.filter(category => category !== '总调度')
 
 // 精选池：每次展示 5 个，「换一批」在池中轮换
 export const FEATURED_SIZE = 5
@@ -228,26 +229,29 @@ export const SKILL_META = {
   },
 }
 
-// 网格事实源：注册表顺序不变（测试依赖该顺序的 data-install 排列）
-export const DISCOVERY_SKILLS = SKILL_REGISTRY.map((reg) => ({ ...reg, ...SKILL_META[reg.id] }))
-
-// 发现页总表：注册表在前（保持 data-install 顺序契约），内置能力与工具技能在后
-export const PAGE_SKILLS = [...DISCOVERY_SKILLS, ...BUILTIN_SKILLS, ...TOOL_SKILLS]
-
-// 精选池：跨分类挑旗舰能力（每项标注所属专家）
-const BY_NAME = Object.fromEntries(BUILTIN_SKILLS.map((s) => [s.name, s]))
-const featured = (name, usage, downloads) => ({ ...BY_NAME[name], usage, downloads })
-
-export const FEATURED_SKILLS = [
-  featured('大纲规划', 128400, 86200),
-  featured('故事线设计', 96700, 61300),
-  featured('文生图', 211300, 148900),
-  featured('背景移除', 87500, 59200),
-  featured('页面布局', 102800, 71400),
-  featured('语气调整', 93800, 64700),
-  featured('事实核验', 74600, 51200),
-  featured('原型搭建', 61300, 44800),
+// Legacy metadata and runtime aliases above remain available for already installed skills.
+// Only useful, distinct and accurately described capabilities appear in discovery.
+export const DISCOVERY_SKILLS = SKILL_REGISTRY.filter(s => !s.retired).map(reg => ({
+  ...reg, ...(SKILL_META[reg.id] || {}), ...CREATION_SKILL_OVERRIDES[reg.name],
+  tags: SKILL_META[reg.id]?.tags || ['创作交付'], source: SKILL_META[reg.id]?.source || 'recommend',
+  color: SKILL_META[reg.id]?.color || 'av-indigo', glyph: reg.glyph || SKILL_META[reg.id]?.glyph || 'S',
+  category: reg.category || SKILL_META[reg.id]?.category || '导入与交付',
+  usage: 0, downloads: 0, space: '本地', updatedAt: '2026-10-30',
+}))
+export const PAGE_SKILLS = [
+  ...DISCOVERY_SKILLS,
+  ...[...BUILTIN_SKILLS, ...TOOL_SKILLS].filter(s => CREATION_SKILL_OVERRIDES[s.name]).map(s => ({
+    ...s, ...CREATION_SKILL_OVERRIDES[s.name], usage: 0, downloads: 0,
+  })),
 ]
+const byName = new Map(PAGE_SKILLS.map(s => [s.name, s]))
+export const FEATURED_SKILLS = ['PPT 大纲生成', '文档结构检查', '页面可访问性检查', '素材引用清单', '原型搭建', '数据图表化', '页面布局', '品牌规范提取'].map(name => byName.get(name))
+export const creationSkill = name => byName.get(name) || null
+const legacyNames = new Set([...BUILTIN_SKILLS, ...TOOL_SKILLS, ...SKILL_REGISTRY].map(s => s.name))
+export const installedSkillPresentation = name => creationSkill(name) || (legacyNames.has(name) ? {
+  displayName: `${name}（旧版能力）`,
+  desc: '已从推荐移除，保留旧安装记录；可能仅转发专家规则或输出方案，不执行名称暗示的外部操作。',
+} : null)
 
 // >=1 万显示为「12.07w」，不足原值展示（8842、0）
 export function formatCount(n) {

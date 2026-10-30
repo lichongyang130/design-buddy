@@ -45,7 +45,7 @@ export function defaultState() {
       { id: 'sk-1', name: 'PPT 大纲生成', desc: '根据主题自动生成演示大纲', enabled: true, version: '1.0.0' },
       { id: 'sk-2', name: '文案润色', desc: '优化表达与语气', enabled: true, version: '1.0.0' },
       { id: 'sk-3', name: '数据图表化', desc: '把数字转成图表建议', enabled: false, version: '1.0.0' },
-      { id: 'sk-4', name: '中英互译', desc: '专业级双语翻译', enabled: true, version: '1.0.0' },
+      { id: 'sk-4', name: '文档结构检查', desc: '检查标题层级、重复标题、待填项和长段落，导出目录与问题清单', enabled: true, version: '1.0.0' },
     ],
     connectors: [
       { id: 'cn-1', name: 'Google Drive', desc: '搜索、上传与管理云端硬盘中的文件', color: '#1a8f4c', shape: 'cloud', connected: true },

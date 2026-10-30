@@ -1,3 +1,4 @@
+import { documentStructureEngine, accessibilityEngine, assetInventoryEngine } from './creation-skill-engines.js'
 /* ============================================================
    技能真实能力：技能名 → 工具引擎
    安装之后就能在技能页「运行」，产出可下载的真实结果。
@@ -18,6 +19,9 @@ import {
 const viaExpert = (expertId) => (ctx, input) => runExpert(expertId, input)
 
 const RUNNERS = {
+  '文档结构检查': documentStructureEngine,
+  '页面可访问性检查': accessibilityEngine,
+  '素材引用清单': assetInventoryEngine,
   'PPT 大纲生成': viaExpert('ec-ppt'),
   '文案润色': viaExpert('ec-content'),
   '数据图表化': viaExpert('ec-research'),
@@ -59,6 +63,10 @@ for (const s of BUILTIN_SKILLS) {
 
 /* 每个技能的示例输入：点一下就能跑出真实结果 */
 const SAMPLES = {
+  '文档结构检查': '# 产品方案\n\n### 用户目标\n\nTODO 补充访谈证据\n\n## 交付计划\n\n{{负责人}} 在下周提交验收清单。',
+  '页面可访问性检查': '<h1>产品介绍</h1><h3>功能</h3><img src="cover.jpg"><input placeholder="邮箱"><button></button>',
+  '素材引用清单': '<img src="images/cover.jpg" alt="封面"><img src="images/cover.jpg" alt="封面"><link rel="stylesheet" href="style.css"><a href="https://example.com/source">来源</a>',
+
   'PPT 大纲生成': '下周给制造业客户做数字化方案提案，30 分钟，客户决策层 5 人，重点是降本 20%',
   '文案润色': '众所周知，我们非常有效地利用了各种各样的先进工具，可以说在很大程度上充分提升了整体效率，毫无疑问这是十分值得注意的突破。',
   '数据图表化': '一月 32，二月 45，三月 38，四月 61，五月 74，六月 69',

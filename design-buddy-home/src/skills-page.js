@@ -1,3 +1,4 @@
+import { requiresSkillConfirmation } from './creation-skill-policy.js'
 /* ============================================================
    技能页：把截图式发现区做成真实页面（左侧沿用首页窄栏 rail）
    - 顶部 专家 / 技能 / 连接器：三者都是独立页面
@@ -14,7 +15,7 @@ import { store, toast, uid, confirmModal, downloadFile } from './core.js'
 import { initGlobalUI, openExperts } from './global-ui.js'
 import { SKILL_REGISTRY, hasUpdate, registryEntry, SEED_SKILL_VERSION } from './skill-registry.js'
 import {
-  FEATURED_SKILLS, FEATURED_SIZE, SKILL_FILTERS, PAGE_SKILLS, DISCOVERY_SKILLS, SKILL_META, formatCount,
+  FEATURED_SKILLS, FEATURED_SIZE, SKILL_FILTERS, PAGE_SKILLS, SKILL_META, creationSkill, installedSkillPresentation,
 } from './skills-catalog.js'
 import { resultHTML } from './expert-runtime.js'
 import { skillCap, runSkill } from './skill-runtime.js'
@@ -39,7 +40,7 @@ const applyUpdate = (sk) => {
 
 const installSkill = async (entry) => {
   if (installedNames().has(entry.name)) return false
-  const canAuto = store.state.settings.trustedSkills && entry.risk !== 'review'
+  const canAuto = !requiresSkillConfirmation(entry, store.state.settings.trustedSkills)
   if (!canAuto) {
     const ok = await confirmModal(
       entry.risk === 'review' ? '安装高风险技能' : '安装技能',
@@ -77,11 +78,8 @@ const popoverHtml = (name, category, space, updatedAt) => `
 
 /* ---------- 卡片 ---------- */
 
-const STATS = (usage, downloads) => `
-  <span class="sk-stats">
-    <span class="sk-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>${formatCount(usage)}</span>
-    <span class="sk-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>${formatCount(downloads)}</span>
-  </span>`
+// No fabricated marketplace usage/download totals.
+const STATS = () => '<span class="sk-stats"><span class="sk-stat">本地规则引擎</span><span class="sk-stat">暂无调用统计</span></span>'
 
 const plusButton = (name, attr, id, installed) => installed
   ? '<span class="sk-plus is-installed" title="已安装">✓</span>'
@@ -91,7 +89,7 @@ const headHtml = (s, { installed, attr }) => `
   <div class="sk-card-top">
     <span class="sk-logo ${s.color}">${s.glyph}</span>
     <span class="sk-card-text">
-      <span class="sk-card-title">${s.name}${s.risk === 'review' ? '<b class="ex-badge">高风险</b>' : ''}</span>
+      <span class="sk-card-title">${s.displayName || s.name}${s.risk === 'review' ? '<b class="ex-badge">高风险</b>' : ''}</span>
       <span class="sk-card-desc">${s.paid ? '<b class="sk-paid">付费</b>' : ''}${s.desc}</span>
       ${s.expertName ? `<span class="sk-expert">所属专家：${s.expertName}</span>` : ''}
     </span>
@@ -124,7 +122,7 @@ const installedCard = (sk) => {
   const fallback = { color: 'av-blue', glyph: sk.name[0] || '技', category: '自定义技能', usage: 0, downloads: 0, space: '本地', updatedAt: '—' }
   return {
     id: reg?.id || sk.id, name: sk.name, desc: sk.desc, risk: reg?.risk,
-    ...(meta || featured || fallback), installed: true, record: sk,
+    ...(meta || featured || fallback), ...(installedSkillPresentation(sk.name) || {}), installed: true, record: sk,
     updatable: hasUpdate(sk), regVersion: reg?.version,
   }
 }
@@ -233,7 +231,7 @@ let runName = ''
 let runArtifacts = []
 let runText = ''
 
-const capLine = (cap) => (cap
+const capLine = (cap) => installedSkillPresentation(runName)?.desc || (cap
   ? '本地引擎真实执行：解析输入、算数、生成文件，不联网也不编数据。'
   : '这个技能没有专属引擎，运行会按句做结构化整理并导出 Markdown。')
 
@@ -245,7 +243,7 @@ const renderPanel = (keep = '') => {
     <div class="sk-run-head">
       <span class="sk-run-logo">${runName.slice(0, 1)}</span>
       <div class="sk-run-ident">
-        <h4>${runName}<span class="sk-run-tag">${cap ? '本地引擎' : '结构化'}</span></h4>
+        <h4>${installedSkillPresentation(runName)?.displayName || runName}<span class="sk-run-tag">${cap ? '本地引擎' : '结构化'}</span></h4>
         <p>${capLine(cap)}</p>
       </div>
       <button class="sk-run-close" type="button" data-sk-run-close aria-label="收起运行面板">×</button>
@@ -428,7 +426,7 @@ $('#sk-grid').addEventListener('click', async (ev) => {
   if (el.dataset.install) {
     const reg = SKILL_REGISTRY.find((r) => r.id === el.dataset.install)
     const extra = PAGE_SKILLS.find((r) => r.id === el.dataset.install)
-    const entry = reg || extra
+    const entry = extra || reg
     if (entry && await installSkill(entry)) renderAll()
     return
   }
@@ -467,7 +465,7 @@ $('#sk-feature-track').addEventListener('click', async (ev) => {
     return
   }
   const f = FEATURED_SKILLS.find((x) => x.id === btn.dataset.featuredInstall)
-  if (f && await installSkill({ ...f, risk: 'trusted' })) renderAll()
+  if (f && await installSkill(f)) renderAll()
 })
 
 // 键盘：卡片上按 Enter / 空格直接开工（与鼠标点击等价）
