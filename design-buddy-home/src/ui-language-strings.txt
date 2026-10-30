@@ -1057,3 +1057,66 @@ HTML 内容|HTML content|HTML 内容
 等待输入|Awaiting input|入力待ち
 正在处理…|Processing…|処理中…
 仅处理你提交给插件的文字，不授予账号、网络或系统权限。|Only text you submit is available to the plugin. No account, network or system permissions are granted.|プラグインが扱えるのは送信した文字のみです。アカウント、ネットワーク、システム権限は付与されません。
+文员工作台|Office workbench|事務ワークベンチ
+文件库与智能搜索|File library and smart search|ファイルライブラリと検索
+Excel 批量汇总|Batch Excel consolidation|Excel 一括集計
+报告草稿|Report draft|レポート草案
+选择文件（可多选）|Select files (multiple)|ファイルを選択（複数可）
+选择整个文件夹（如浏览器支持）|Select a folder (if supported by this browser)|フォルダーを選択（ブラウザー対応時）
+所有分类|All categories|すべての分類
+已导入文件|Imported files|インポート済みファイル
+Excel 批量汇总|Batch Excel consolidation|Excel 一括集計
+重复行处理|Duplicate row handling|重複行の処理
+去重（默认）|Deduplicate (default)|重複を削除（既定）
+保留重复行|Keep duplicates|重複を保持
+预览合并与质量检查|Preview merge and data-quality checks|統合と品質チェックをプレビュー
+部门月度汇总|Department monthly summary|部門月次集計
+会议纪要|Meeting minutes|議事録
+工作通知|Work notice|業務通知
+工作总结|Work summary|業務報告
+工作计划|Work plan|業務計画
+报告类型|Report type|レポート種別
+标题|Title|タイトル
+你确认过的事实与结论|Facts and conclusions you verified|確認済みの事実と結論
+生成可编辑 DOCX 草稿|Generate editable DOCX draft|編集可能な DOCX 草案を生成
+重命名|Rename|名前を変更
+归档|Archive|アーカイブ
+恢复|Restore|復元
+删除|Delete|削除
+加入报告素材|Add to report sources|レポート資料に追加
+搜索|Search|検索
+搜索文件名或文件内容，例如：四月部门费用|Search filenames or file contents, e.g. April department expenses|ファイル名や内容を検索（例：4月の部門経費）
+导入的文件和搜索索引保存在当前浏览器的 IndexedDB。只会搜索你明确选择的文件；不会扫描电脑或部门共享盘。|Imported files and search indexes stay in this browser's IndexedDB. Only files you explicitly choose are searched; your computer and department shared drives are not scanned.|インポートしたファイルと検索インデックスはこのブラウザーの IndexedDB に保存されます。選択したファイルのみを検索し、PC や共有ドライブは走査しません。
+支持 PDF、DOCX、XLSX、CSV、TXT、MD|Supports PDF, DOCX, XLSX, CSV, TXT and MD|PDF、DOCX、XLSX、CSV、TXT、MD に対応
+请选择至少两个 Excel 文件|Select at least two Excel workbooks|Excel ファイルを 2 つ以上選択してください
+没有匹配资料。|No matching files.|一致する資料がありません。
+尚未导入文件。|No files imported yet.|ファイルはまだありません。
+选择至少两个 Excel 工作簿。以每个文件的第一张工作表、第一行表头为准；相同列名自动对齐，缺列留空，完全重复的数据行会标记并去重。原文件不会修改。|Select at least two workbooks. The first worksheet and first row are treated as headers; matching column names are aligned, missing fields left blank, exact duplicate rows flagged and deduplicated. Originals are unchanged.|2 つ以上のブックを選択します。各ファイルの最初のシートと最初の行を見出しとして扱い、同名列を揃え、欠損欄は空欄、完全重複行は検出して除外します。原本は変更しません。
+生成透明的汇总初稿：只使用你输入的正文和本地 Excel 合并结果，不会让模型补造事实。请在分享或提交前人工核对。|Generate a transparent summary draft using only your text and local Excel merge results. No facts are invented by a model. Review before sharing or submitting.|入力した本文とローカル Excel の統合結果のみで草案を作成します。モデルが事実を補うことはありません。共有・提出前に確認してください。
+部门数据汇总.xlsx|department-data-summary.xlsx|部門データ集計.xlsx
+资料来源（已导入文件）|Sources (imported files)|資料ソース（インポート済みファイル）
+Excel 汇总概览|Excel consolidation overview|Excel 集計の概要
+汇总明细|Consolidated data|集計データ
+审核提示|Review checklist|確認事項
+统计口径|calculation definitions|集計条件
+源文件保持不变|Original source files remain unchanged|元ファイルは変更されません
+请先检查字段对齐、空值和重复项，再确认导出。|Review column mapping, missing values and duplicates before exporting.|出力前に列の対応、欠損値、重複を確認してください。
+没有可用表头|No usable header found|利用できる見出しがありません
+列数超过 200，请缩小文件范围|More than 200 columns; reduce the selected files|200 列を超えています。対象ファイルを減らしてください
+未命名列|Unnamed column|無名の列
+该工作表|This worksheet|このシート
+与已有文件完全相同（SHA-256）|Exact duplicate of an existing file (SHA-256)|既存ファイルと完全一致（SHA-256）
+分类已保存|Category saved|分類を保存しました
+待分类|Uncategorized|未分類
+行政办公|Administration|総務
+财务报销|Finance and expenses|経理・経費
+人事考勤|HR and attendance|人事・勤怠
+会议纪要|Meeting minutes|議事録
+项目资料|Project files|プロジェクト資料
+合同采购|Contracts and purchasing|契約・購買
+销售数据|Sales data|販売データ
+其他|Other|その他
+文件库与内容搜索|File library and content search|ファイルライブラリと内容検索
+导出文件目录 XLSX|Export file inventory XLSX|ファイル一覧を XLSX 出力
+本地文件目录.xlsx|local-file-inventory.xlsx|ローカルファイル一覧.xlsx
+按关键词搜索文件名或已提取文字；非语义搜索|Search filenames or extracted text by keyword; not semantic search|ファイル名や抽出テキストをキーワード検索。意味検索ではありません

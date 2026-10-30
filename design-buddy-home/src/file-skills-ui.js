@@ -2,11 +2,11 @@ import {downloadFile,confirmModal,store} from './core.js'
 import {uiText} from './ui-language.js'
 import './file-skills.css'
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
-const KINDS={'Excel 表格处理':'xlsx','Word 文档处理':'docx','PDF 文档处理':'pdf','页面可访问性检查':'audit','插件包管理':'plugins'}
-const TITLES={xlsx:'Excel 文件编辑（.xlsx）',docx:'Markdown 转 Word（.docx）',pdf:'PDF 文本与页面解析',audit:'浏览器无障碍检查',plugins:'技能插件包'}
+const KINDS={'Excel 表格处理':'xlsx','Word 文档处理':'docx','PDF 文档处理':'pdf','页面可访问性检查':'audit','插件包管理':'plugins','文员工作台':'office'}
+const TITLES={xlsx:'Excel 文件编辑（.xlsx）',docx:'Markdown 转 Word（.docx）',pdf:'PDF 文本与页面解析',audit:'浏览器无障碍检查',plugins:'技能插件包',office:'文员工作台'}
 const active=new WeakMap()
 export function disposeFileSkill(host) { active.get(host)?.(); active.delete(host) }
-export function mountFileSkill(host,name){
+export async function mountFileSkill(host,name){
   active.get(host)?.()
   const kind=KINDS[name];if(!kind)return false
   let dead=false,busy=false,cleanup=()=>{},close=()=>{dead=true;cleanup();host.replaceChildren();host.hidden=true}
@@ -19,6 +19,7 @@ export function mountFileSkill(host,name){
   const guard=fn=>async()=>{if(busy||dead)return;busy=true;setStatus('正在处理…');try{await fn();if(!dead&&statusText==='正在处理…')setStatus('处理完成')}catch(e){setStatus('处理失败：'+e.message)}finally{busy=false}}
   const $=s=>body.querySelector(s),button=(s,fn)=>{$(s).onclick=guard(fn)}
   const download=(name,data,mime)=>downloadFile(name,data,mime)
+  if(kind==='office'){const {mountOfficeWorkbench}=await import('./office-workbench.js');await mountOfficeWorkbench(body,{download,setStatus,guard,confirmModal});cleanup=()=>host.replaceChildren();return true}
   if(kind==='docx'){
     body.innerHTML='<p>生成原生 Office Open XML 文档，支持标题、段落、加粗、斜体、列表、表格和链接。图片引用保留为文字，不自动下载或嵌入外链图片。</p><label>Markdown 文件<input id="fs-file" type="file" accept=".md,.markdown,.txt,text/plain"></label><label>Markdown 内容<textarea id="fs-text" rows="10"></textarea></label><button id="fs-export">导出 DOCX</button>'
     $('#fs-text').value='# 项目方案\n\n## 目标\n\n**可编辑的原生 Word 文档**。\n\n- 第一项\n- 第二项\n\n| 项目 | 负责人 |\n| --- | --- |\n| 设计 | 团队 |'

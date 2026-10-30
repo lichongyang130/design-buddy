@@ -6353,5 +6353,383 @@ export default [
     "en": "Only text you submit is available to the plugin. No account, network or system permissions are granted.",
     "ja": "プラグインが扱えるのは送信した文字のみです。アカウント、ネットワーク、システム権限は付与されません。",
     "zh-TW": "僅處理你提交給插件的文字，不授予賬號、網絡或系統權限。"
+  },
+  {
+    "zh": "文员工作台",
+    "en": "Office workbench",
+    "ja": "事務ワークベンチ",
+    "zh-TW": "文員工作臺"
+  },
+  {
+    "zh": "文件库与智能搜索",
+    "en": "File library and smart search",
+    "ja": "ファイルライブラリと検索",
+    "zh-TW": "文件庫與智能搜索"
+  },
+  {
+    "zh": "Excel 批量汇总",
+    "en": "Batch Excel consolidation",
+    "ja": "Excel 一括集計",
+    "zh-TW": "Excel 批量彙總"
+  },
+  {
+    "zh": "报告草稿",
+    "en": "Report draft",
+    "ja": "レポート草案",
+    "zh-TW": "報告草稿"
+  },
+  {
+    "zh": "选择文件（可多选）",
+    "en": "Select files (multiple)",
+    "ja": "ファイルを選択（複数可）",
+    "zh-TW": "選擇文件（可多選）"
+  },
+  {
+    "zh": "选择整个文件夹（如浏览器支持）",
+    "en": "Select a folder (if supported by this browser)",
+    "ja": "フォルダーを選択（ブラウザー対応時）",
+    "zh-TW": "選擇整個文件夾（如瀏覽器支持）"
+  },
+  {
+    "zh": "所有分类",
+    "en": "All categories",
+    "ja": "すべての分類",
+    "zh-TW": "所有分類"
+  },
+  {
+    "zh": "已导入文件",
+    "en": "Imported files",
+    "ja": "インポート済みファイル",
+    "zh-TW": "已導入文件"
+  },
+  {
+    "zh": "Excel 批量汇总",
+    "en": "Batch Excel consolidation",
+    "ja": "Excel 一括集計",
+    "zh-TW": "Excel 批量彙總"
+  },
+  {
+    "zh": "重复行处理",
+    "en": "Duplicate row handling",
+    "ja": "重複行の処理",
+    "zh-TW": "重複行處理"
+  },
+  {
+    "zh": "去重（默认）",
+    "en": "Deduplicate (default)",
+    "ja": "重複を削除（既定）",
+    "zh-TW": "去重（默認）"
+  },
+  {
+    "zh": "保留重复行",
+    "en": "Keep duplicates",
+    "ja": "重複を保持",
+    "zh-TW": "保留重複行"
+  },
+  {
+    "zh": "预览合并与质量检查",
+    "en": "Preview merge and data-quality checks",
+    "ja": "統合と品質チェックをプレビュー",
+    "zh-TW": "預覽合併與質量檢查"
+  },
+  {
+    "zh": "部门月度汇总",
+    "en": "Department monthly summary",
+    "ja": "部門月次集計",
+    "zh-TW": "部門月度彙總"
+  },
+  {
+    "zh": "会议纪要",
+    "en": "Meeting minutes",
+    "ja": "議事録",
+    "zh-TW": "會議紀要"
+  },
+  {
+    "zh": "工作通知",
+    "en": "Work notice",
+    "ja": "業務通知",
+    "zh-TW": "工作通知"
+  },
+  {
+    "zh": "工作总结",
+    "en": "Work summary",
+    "ja": "業務報告",
+    "zh-TW": "工作總結"
+  },
+  {
+    "zh": "工作计划",
+    "en": "Work plan",
+    "ja": "業務計画",
+    "zh-TW": "工作計劃"
+  },
+  {
+    "zh": "报告类型",
+    "en": "Report type",
+    "ja": "レポート種別",
+    "zh-TW": "報告類型"
+  },
+  {
+    "zh": "标题",
+    "en": "Title",
+    "ja": "タイトル",
+    "zh-TW": "標題"
+  },
+  {
+    "zh": "你确认过的事实与结论",
+    "en": "Facts and conclusions you verified",
+    "ja": "確認済みの事実と結論",
+    "zh-TW": "你確認過的事實與結論"
+  },
+  {
+    "zh": "生成可编辑 DOCX 草稿",
+    "en": "Generate editable DOCX draft",
+    "ja": "編集可能な DOCX 草案を生成",
+    "zh-TW": "生成可編輯 DOCX 草稿"
+  },
+  {
+    "zh": "重命名",
+    "en": "Rename",
+    "ja": "名前を変更",
+    "zh-TW": "重命名"
+  },
+  {
+    "zh": "归档",
+    "en": "Archive",
+    "ja": "アーカイブ",
+    "zh-TW": "歸檔"
+  },
+  {
+    "zh": "恢复",
+    "en": "Restore",
+    "ja": "復元",
+    "zh-TW": "恢復"
+  },
+  {
+    "zh": "删除",
+    "en": "Delete",
+    "ja": "削除",
+    "zh-TW": "刪除"
+  },
+  {
+    "zh": "加入报告素材",
+    "en": "Add to report sources",
+    "ja": "レポート資料に追加",
+    "zh-TW": "加入報告素材"
+  },
+  {
+    "zh": "搜索",
+    "en": "Search",
+    "ja": "検索",
+    "zh-TW": "搜索"
+  },
+  {
+    "zh": "搜索文件名或文件内容，例如：四月部门费用",
+    "en": "Search filenames or file contents, e.g. April department expenses",
+    "ja": "ファイル名や内容を検索（例：4月の部門経費）",
+    "zh-TW": "搜索文件名或文件內容，例如：四月部門費用"
+  },
+  {
+    "zh": "导入的文件和搜索索引保存在当前浏览器的 IndexedDB。只会搜索你明确选择的文件；不会扫描电脑或部门共享盘。",
+    "en": "Imported files and search indexes stay in this browser's IndexedDB. Only files you explicitly choose are searched; your computer and department shared drives are not scanned.",
+    "ja": "インポートしたファイルと検索インデックスはこのブラウザーの IndexedDB に保存されます。選択したファイルのみを検索し、PC や共有ドライブは走査しません。",
+    "zh-TW": "導入的文件和搜索索引保存在當前瀏覽器的 IndexedDB。只會搜索你明確選擇的文件；不會掃描電腦或部門共享盤。"
+  },
+  {
+    "zh": "支持 PDF、DOCX、XLSX、CSV、TXT、MD",
+    "en": "Supports PDF, DOCX, XLSX, CSV, TXT and MD",
+    "ja": "PDF、DOCX、XLSX、CSV、TXT、MD に対応",
+    "zh-TW": "支持 PDF、DOCX、XLSX、CSV、TXT、MD"
+  },
+  {
+    "zh": "请选择至少两个 Excel 文件",
+    "en": "Select at least two Excel workbooks",
+    "ja": "Excel ファイルを 2 つ以上選択してください",
+    "zh-TW": "請選擇至少兩個 Excel 文件"
+  },
+  {
+    "zh": "没有匹配资料。",
+    "en": "No matching files.",
+    "ja": "一致する資料がありません。",
+    "zh-TW": "沒有匹配資料。"
+  },
+  {
+    "zh": "尚未导入文件。",
+    "en": "No files imported yet.",
+    "ja": "ファイルはまだありません。",
+    "zh-TW": "尚未導入文件。"
+  },
+  {
+    "zh": "选择至少两个 Excel 工作簿。以每个文件的第一张工作表、第一行表头为准；相同列名自动对齐，缺列留空，完全重复的数据行会标记并去重。原文件不会修改。",
+    "en": "Select at least two workbooks. The first worksheet and first row are treated as headers; matching column names are aligned, missing fields left blank, exact duplicate rows flagged and deduplicated. Originals are unchanged.",
+    "ja": "2 つ以上のブックを選択します。各ファイルの最初のシートと最初の行を見出しとして扱い、同名列を揃え、欠損欄は空欄、完全重複行は検出して除外します。原本は変更しません。",
+    "zh-TW": "選擇至少兩個 Excel 工作簿。以每個文件的第一張工作表、第一行表頭為準；相同列名自動對齊，缺列留空，完全重複的數據行會標記並去重。原文件不會修改。"
+  },
+  {
+    "zh": "生成透明的汇总初稿：只使用你输入的正文和本地 Excel 合并结果，不会让模型补造事实。请在分享或提交前人工核对。",
+    "en": "Generate a transparent summary draft using only your text and local Excel merge results. No facts are invented by a model. Review before sharing or submitting.",
+    "ja": "入力した本文とローカル Excel の統合結果のみで草案を作成します。モデルが事実を補うことはありません。共有・提出前に確認してください。",
+    "zh-TW": "生成透明的彙總初稿：只使用你輸入的正文和本地 Excel 合併結果，不會讓模型補造事實。請在分享或提交前人工核對。"
+  },
+  {
+    "zh": "部门数据汇总.xlsx",
+    "en": "department-data-summary.xlsx",
+    "ja": "部門データ集計.xlsx",
+    "zh-TW": "部門數據彙總.xlsx"
+  },
+  {
+    "zh": "资料来源（已导入文件）",
+    "en": "Sources (imported files)",
+    "ja": "資料ソース（インポート済みファイル）",
+    "zh-TW": "資料來源（已導入文件）"
+  },
+  {
+    "zh": "Excel 汇总概览",
+    "en": "Excel consolidation overview",
+    "ja": "Excel 集計の概要",
+    "zh-TW": "Excel 彙總概覽"
+  },
+  {
+    "zh": "汇总明细",
+    "en": "Consolidated data",
+    "ja": "集計データ",
+    "zh-TW": "彙總明細"
+  },
+  {
+    "zh": "审核提示",
+    "en": "Review checklist",
+    "ja": "確認事項",
+    "zh-TW": "審核提示"
+  },
+  {
+    "zh": "统计口径",
+    "en": "calculation definitions",
+    "ja": "集計条件",
+    "zh-TW": "統計口徑"
+  },
+  {
+    "zh": "源文件保持不变",
+    "en": "Original source files remain unchanged",
+    "ja": "元ファイルは変更されません",
+    "zh-TW": "源文件保持不變"
+  },
+  {
+    "zh": "请先检查字段对齐、空值和重复项，再确认导出。",
+    "en": "Review column mapping, missing values and duplicates before exporting.",
+    "ja": "出力前に列の対応、欠損値、重複を確認してください。",
+    "zh-TW": "請先檢查字段對齊、空值和重複項，再確認導出。"
+  },
+  {
+    "zh": "没有可用表头",
+    "en": "No usable header found",
+    "ja": "利用できる見出しがありません",
+    "zh-TW": "沒有可用表頭"
+  },
+  {
+    "zh": "列数超过 200，请缩小文件范围",
+    "en": "More than 200 columns; reduce the selected files",
+    "ja": "200 列を超えています。対象ファイルを減らしてください",
+    "zh-TW": "列數超過 200，請縮小文件範圍"
+  },
+  {
+    "zh": "未命名列",
+    "en": "Unnamed column",
+    "ja": "無名の列",
+    "zh-TW": "未命名列"
+  },
+  {
+    "zh": "该工作表",
+    "en": "This worksheet",
+    "ja": "このシート",
+    "zh-TW": "該工作表"
+  },
+  {
+    "zh": "与已有文件完全相同（SHA-256）",
+    "en": "Exact duplicate of an existing file (SHA-256)",
+    "ja": "既存ファイルと完全一致（SHA-256）",
+    "zh-TW": "與已有文件完全相同（SHA-256）"
+  },
+  {
+    "zh": "分类已保存",
+    "en": "Category saved",
+    "ja": "分類を保存しました",
+    "zh-TW": "分類已保存"
+  },
+  {
+    "zh": "待分类",
+    "en": "Uncategorized",
+    "ja": "未分類",
+    "zh-TW": "待分類"
+  },
+  {
+    "zh": "行政办公",
+    "en": "Administration",
+    "ja": "総務",
+    "zh-TW": "行政辦公"
+  },
+  {
+    "zh": "财务报销",
+    "en": "Finance and expenses",
+    "ja": "経理・経費",
+    "zh-TW": "財務報銷"
+  },
+  {
+    "zh": "人事考勤",
+    "en": "HR and attendance",
+    "ja": "人事・勤怠",
+    "zh-TW": "人事考勤"
+  },
+  {
+    "zh": "会议纪要",
+    "en": "Meeting minutes",
+    "ja": "議事録",
+    "zh-TW": "會議紀要"
+  },
+  {
+    "zh": "项目资料",
+    "en": "Project files",
+    "ja": "プロジェクト資料",
+    "zh-TW": "項目資料"
+  },
+  {
+    "zh": "合同采购",
+    "en": "Contracts and purchasing",
+    "ja": "契約・購買",
+    "zh-TW": "合同採購"
+  },
+  {
+    "zh": "销售数据",
+    "en": "Sales data",
+    "ja": "販売データ",
+    "zh-TW": "銷售數據"
+  },
+  {
+    "zh": "其他",
+    "en": "Other",
+    "ja": "その他",
+    "zh-TW": "其他"
+  },
+  {
+    "zh": "文件库与内容搜索",
+    "en": "File library and content search",
+    "ja": "ファイルライブラリと内容検索",
+    "zh-TW": "文件庫與內容搜索"
+  },
+  {
+    "zh": "导出文件目录 XLSX",
+    "en": "Export file inventory XLSX",
+    "ja": "ファイル一覧を XLSX 出力",
+    "zh-TW": "導出文件目錄 XLSX"
+  },
+  {
+    "zh": "本地文件目录.xlsx",
+    "en": "local-file-inventory.xlsx",
+    "ja": "ローカルファイル一覧.xlsx",
+    "zh-TW": "本地文件目錄.xlsx"
+  },
+  {
+    "zh": "按关键词搜索文件名或已提取文字；非语义搜索",
+    "en": "Search filenames or extracted text by keyword; not semantic search",
+    "ja": "ファイル名や抽出テキストをキーワード検索。意味検索ではありません",
+    "zh-TW": "按關鍵詞搜索文件名或已提取文字；非語義搜索"
   }
 ]

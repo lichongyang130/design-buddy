@@ -284,3 +284,7 @@ The application uses self-hosted Inter and locale-specific Noto Sans SC / TC / J
 ### File processing and plugin packages
 
 Skills now provide actual XLSX cell editing/export, PDF.js text extraction and page previews, native DOCX generation, sandboxed browser accessibility checks with keyboard evidence, and separately installed declarative plugin packages. Built-in tools are labelled **Enable**; plugin packages require reviewed installation. See [File skills and plugin packages](docs/file-skills.md) for supported formats, security boundaries and limitations. Run `npm run test:file-skills` against the built site on port 5174.
+
+### Office-clerk workbench MVP
+
+The Skills page now includes **文员工作台**: browser-local document import/indexing and keyword search, SHA-256 duplicate detection, rule-based file categorization, rename/archive/delete controls, an exportable file inventory, multi-XLSX consolidation with missing/duplicate checks and source row provenance, and editable DOCX report drafts based only on selected citations/user-confirmed facts. It searches only files the user selects; this is not semantic AI retrieval or cross-department shared-drive search. See [workbench boundaries and roadmap](docs/file-skills.md#office-clerk-workbench-local-mvp).

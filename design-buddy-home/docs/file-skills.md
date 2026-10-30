@@ -59,3 +59,12 @@ Built-in capabilities continue to use the historical `skills` storage records bu
 - `npm audit --omit=dev`: production dependency advisory check. The ExcelJS UUID dependency is overridden to patched `11.1.1`; workbook IO is regression-tested with it.
 
 The browser tests use Chromium. They do not establish native Microsoft Excel/Word UI testing, Safari/physical-device coverage, OCR accuracy or a formal accessibility certification.
+
+
+## Office-clerk workbench (local MVP)
+
+The new **文员工作台** adds an explicit personal file library and local search. Users choose multiple files or a browser-supported folder; only those selected files are processed. Extracted text and original byte copies are retained in IndexedDB in that browser (500 files / 100 MB total / 20 MB each). Exact duplicates are detected by SHA-256. The library supports filename edits, rule-based category suggestions, manual category correction, archive/restore, deletion of the local copy, keyword full-text search with excerpts, and an exportable XLSX inventory. Search is literal/token matching, not embedding-based semantic AI search; the inventory does not include document bodies. It never scans the computer or a shared drive. There is no cross-device sync or department-wide search yet.
+
+The first Excel consolidation version reads the first worksheet of each selected workbook, uses row one as headings, aligns exact normalized heading names, keeps unmatched headings as separate columns, flags rows containing blanks and exact duplicate rows, and defaults to removing exact duplicate rows. It previews 30 output rows and source headers/row counts before a separate confirmation. The exported new workbook adds source-file, source-sheet and original source-row-number columns; originals are untouched. It does not infer semantically equivalent headings, merge conflicting business rules, automatically identify keys, or create calculated departmental totals/pivots. Review the mapping and numbers before adopting the output.
+
+The report area generates an editable DOCX draft from user-confirmed text, explicitly added local search citations and/or the last reviewed merge output. It reports row/missing/duplicate counts and includes at most 500 rows in the draft (full data stays in the XLSX). No AI-generated facts, OCR results or meeting diarization are fabricated. Calendar/email, audio transcription, OCR, autonomous background monitoring and live shared-drive indexing remain later phases requiring real connectors, permissions and additional verification.

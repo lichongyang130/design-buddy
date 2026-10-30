@@ -231,7 +231,7 @@ const panel = $('#sk-run-panel')
 const fileLaunchers = document.createElement('nav')
 fileLaunchers.className = 'fs-launchers'
 fileLaunchers.setAttribute('aria-label', '文件处理与插件')
-fileLaunchers.innerHTML = [['Excel 表格处理','Excel 文件编辑'],['PDF 文档处理','PDF 文件解析'],['Word 文档处理','导出 DOCX'],['页面可访问性检查','浏览器无障碍检查'],['插件包管理','技能插件包']].map(([name,label])=>`<button type="button" data-file-skill="${name}">${label}</button>`).join('')
+fileLaunchers.innerHTML = [['文员工作台','文员工作台'],['Excel 表格处理','Excel 文件编辑'],['PDF 文档处理','PDF 文件解析'],['Word 文档处理','导出 DOCX'],['页面可访问性检查','浏览器无障碍检查'],['插件包管理','技能插件包'],['文员工作台','文员工作台']].map(([name,label])=>`<button type="button" data-file-skill="${name}">${label}</button>`).join('')
 panel.before(fileLaunchers)
 fileLaunchers.onclick = event => { const button = event.target.closest('[data-file-skill]'); if (button) openRunPanel(button.dataset.fileSkill) }
 
@@ -274,9 +274,9 @@ const renderPanel = (keep = '') => {
   }
 }
 
-const openRunPanel = (name, keep = '') => {
+const openRunPanel = async (name, keep = '') => {
   runName = name
-  if (mountFileSkill(panel, name)) { panel.scrollIntoView?.({ behavior: 'smooth', block: 'nearest' }); return }
+  if (await mountFileSkill(panel, name)) { panel.scrollIntoView?.({ behavior: 'smooth', block: 'nearest' }); return }
   runArtifacts = []
   runText = ''
   renderPanel(keep)
@@ -496,4 +496,4 @@ renderAll()
 if (store.state.settings.skillAutoUpdate) checkUpdates(true)
 
 const requestedFileSkill = new URLSearchParams(location.search).get('tool')
-if (['Excel 表格处理','Word 文档处理','PDF 文档处理','页面可访问性检查','插件包管理'].includes(requestedFileSkill)) openRunPanel(requestedFileSkill)
+if (['Excel 表格处理','Word 文档处理','PDF 文档处理','页面可访问性检查','插件包管理','文员工作台'].includes(requestedFileSkill)) openRunPanel(requestedFileSkill)
