@@ -3,13 +3,13 @@
   "files": [
     {
       "path": "app.js",
-      "bytes": 10674,
-      "sha256": "a7f7156e5f4a2be14b1159cb3bbc21c9e23e80f97f0b7262e97a19129d3fcdad"
+      "bytes": 10871,
+      "sha256": "30a450d4b52fc2249cdd52beb32e007c7f20374be8b78f1cae3989e49310f928"
     },
     {
       "path": "style.css",
-      "bytes": 10393,
-      "sha256": "afaed979f466da05500b480f0bb9bf0c429841f87f2beb246c421197e9675d43"
+      "bytes": 11832,
+      "sha256": "16bd5164117ea3e0aae6f3c8fea7256eb6992d58ec8e6e1aac1bbcf287ad65f6"
     },
     {
       "path": "language.js",

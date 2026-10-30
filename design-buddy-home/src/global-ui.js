@@ -12,7 +12,7 @@ import { currentUser, logout } from './auth.js'
 /* ---------------- 外观设置全局生效 ---------------- */
 
 const FONT_STACKS = {
-  system: "-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei'",
+  system: "var(--db-default-font, sans-serif)",
   song: "'Songti SC', 'SimSun', serif",
   hei: "'Heiti SC', 'Microsoft YaHei', sans-serif",
   georgia: "Georgia, 'Times New Roman', serif",
@@ -49,9 +49,10 @@ export function applyAppearance() {
   root.style.setProperty('--app-font', FONT_STACKS[s.fontFamily] ?? FONT_STACKS.system)
   root.dataset.appFont = s.fontFamily
 
-  // 字号：现代浏览器用 zoom 整体缩放；同时写 CSS 变量供不支持 zoom 的环境回退
-  document.body.style.zoom = String(s.fontScale)
-  root.style.setProperty('--font-scale', String(s.fontScale))
+  // Only text scales. Layout dimensions and authored canvases must not zoom.
+  document.body.style.removeProperty('zoom')
+  const scale = Number(s.fontScale)
+  root.style.setProperty('--font-scale', String(Number.isFinite(scale) && scale >= .85 && scale <= 1.3 ? scale : 1))
 
   // 主题色
   const themeId = s.appearance.themeId || store.state.appliedTheme

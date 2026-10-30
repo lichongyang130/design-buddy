@@ -72,7 +72,8 @@
     "build:ui-language": "node scripts/build-ui-language.mjs",
     "test:ui-language": "node tests/verify-ui-language.mjs",
     "test:creation-skills": "node tests/verify-creation-skills.mjs",
-    "test:connector-focus": "node tests/verify-connector-focus.mjs"
+    "test:connector-focus": "node tests/verify-connector-focus.mjs",
+    "test:ui-typography": "node tests/verify-ui-typography.mjs"
   },
   "devDependencies": {
     "@sparticuz/chromium": "^153.0.0",

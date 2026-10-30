@@ -237,7 +237,7 @@ const pickOption = async (w, wrap, label) => {
   slider.dispatchEvent(new w.Event('input', { bubbles: true }))
   await tick()
   check('font: smallest level label shown', levelLabel.textContent === '很小')
-  check('font: zoom applied to body', doc.body.style.zoom === '0.85')
+  check('font: layout zoom stays disabled', !doc.body.style.zoom)
   check('font: css var set for fallback', doc.documentElement.style.getPropertyValue('--font-scale') === '0.85')
   check('font: persisted', readState(storage).settings.fontScale === 0.85)
   slider.value = '4'

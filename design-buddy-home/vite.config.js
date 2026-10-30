@@ -1,10 +1,13 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'node:path'
+import { uiTypographyHtml, uiTypographyPostcss } from './scripts/ui-typography.mjs'
 
 // Self-contained config: the app shares the repository-root Vite install
 // (node_modules symlink). VITE_ALLOWED_HOST gates the sandbox preview proxy
 // host; without it, Vite keeps its default host checking.
 export default defineConfig({
+  plugins: [uiTypographyHtml()],
+  css: { postcss: { plugins: [uiTypographyPostcss()] } },
   server: {
     host: '0.0.0.0',
     port: 5174,

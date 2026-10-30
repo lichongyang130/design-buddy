@@ -276,3 +276,7 @@ The skill discovery catalog is now curated to 18 distinct creation/delivery capa
 ### Focused connectors
 
 Connector discovery now has six creation-focused provider entries (Feishu, Notion, GitHub, Google Drive, Tencent Docs and Slack), plus advanced custom MCP and retained legacy settings. Provider cards require a user-supplied authorized MCP endpoint; they do not claim built-in official OAuth integration. Local demo flags no longer mean verified remote connections, including from home-page menus. Tools are denied by default; explicit tool allowlists and single-use, parameter-bound write confirmations are enforced by the backend. See [核心连接器与真实验证](docs/connectors-focus.md) for limits, deployment cautions and tests. Run `npm run test:connector-focus` for isolated real-protocol Mock tests.
+
+### Unified UI typography
+
+The application uses self-hosted Inter and locale-specific Noto Sans SC / TC / JP fonts, text-only size preferences and a 12px UI minimum. Original case canvases, theme previews and exports retain their authored typography. See [UI typography](docs/ui-typography.md) for scope, font licenses and regression checks. Run `npm run test:ui-typography` with the built site on port 5174.
