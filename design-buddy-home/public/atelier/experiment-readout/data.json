@@ -1,0 +1,396 @@
+{
+  "work": {
+    "id": "experiment-readout",
+    "title": "EXPERIMENT READOUT",
+    "subtitle": "实验读出报告",
+    "category": "报告",
+    "layout": "readout",
+    "color": "#236c87",
+    "wash": "#e2f0f5",
+    "framework": "假设与结果对照",
+    "scope": "Entirely synthetic report exercise: source records, statements and version events are invented. Illustrations are not empirical evidence. No actual study, operational result, market research or participant interview is supplied.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "report-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / EXPERIMENT READOUT",
+      "title": "Read a model, not a real trial.",
+      "lead": "This readout uses 24 invented task records to demonstrate reporting: 12 in condition A and 12 in condition B. The records do not represent actual participants, testing or product performance.",
+      "body": "A has eight completed records and B has nine. Those descriptive counts differ by one record. The report keeps the setup, measures, missing values and interpretation limits beside the result rather than treating the small numerical difference as a proven effect.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "What can the 24-record model show without implying that a real experiment occurred?",
+      "records": [
+        {
+          "label": "Readout question",
+          "prompt": "Record readout question and its source boundary."
+        },
+        {
+          "label": "Descriptive result",
+          "prompt": "Record descriptive result and its source boundary."
+        },
+        {
+          "label": "Claim boundary",
+          "prompt": "Record claim boundary and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPLETION MODEL",
+          "A: 8 / 12 · B: 9 / 12"
+        ],
+        [
+          "COMPLETED-ONLY MEAN",
+          "A: 11.5 · B: 11.0 teaching units"
+        ]
+      ],
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / EXPERIMENT READOUT",
+      "title": "State the hypothesis before the result.",
+      "lead": "The fictional question asks whether a different instruction card could be associated with a different completion pattern. A working hypothesis is not established by the condition labels or by the difference in counts.",
+      "body": "No random assignment, recruitment, real procedure or outcome observation is supplied. The source contains only stipulated task rows. A real test would require an appropriate design and context before any causal conclusion could be considered.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which missing design information prevents a causal interpretation?",
+      "records": [
+        {
+          "label": "Working hypothesis",
+          "prompt": "Record working hypothesis and its source boundary."
+        },
+        {
+          "label": "Alternative explanation",
+          "prompt": "Record alternative explanation and its source boundary."
+        },
+        {
+          "label": "Design not supplied",
+          "prompt": "Record design not supplied and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPLETION MODEL",
+          "A: 8 / 12 · B: 9 / 12"
+        ],
+        [
+          "COMPLETED-ONLY MEAN",
+          "A: 11.5 · B: 11.0 teaching units"
+        ]
+      ],
+      "image": 1,
+      "kind": "body"
+    },
+    {
+      "section": "03 / EXPERIMENT READOUT",
+      "title": "Describe what each row means.",
+      "lead": "Each row is one invented task record with a condition, a completion flag and an optional time value. Do not relabel the rows as unique people or independently observed sessions.",
+      "body": "Records T01–T12 belong to A and T13–T24 to B. Time is recorded only for completed rows in the model; incomplete rows have a null value. Null does not mean zero time or an unobserved success.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "What interpretation would become wrong if task records were called participants?",
+      "records": [
+        {
+          "label": "Record unit",
+          "prompt": "Record record unit and its source boundary."
+        },
+        {
+          "label": "Condition allocation",
+          "prompt": "Record condition allocation and its source boundary."
+        },
+        {
+          "label": "Missing-value rule",
+          "prompt": "Record missing-value rule and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPLETION MODEL",
+          "A: 8 / 12 · B: 9 / 12"
+        ],
+        [
+          "COMPLETED-ONLY MEAN",
+          "A: 11.5 · B: 11.0 teaching units"
+        ]
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / EXPERIMENT READOUT",
+      "title": "Define completion and time separately.",
+      "lead": "Completion is a binary field in the invented model. Time is a descriptive value supplied only for completed records. These measures answer different questions and use different denominators.",
+      "body": "The completion denominators are 12 and 12. Completed-time denominators are eight and nine. Keeping those denominators visible prevents a mean time among completions from being presented as a mean across every task record.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which denominator belongs beside each result before it is compared?",
+      "records": [
+        {
+          "label": "Measure",
+          "prompt": "Record measure and its source boundary."
+        },
+        {
+          "label": "Denominator",
+          "prompt": "Record denominator and its source boundary."
+        },
+        {
+          "label": "Permitted comparison",
+          "prompt": "Record permitted comparison and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPLETION MODEL",
+          "A: 8 / 12 · B: 9 / 12"
+        ],
+        [
+          "COMPLETED-ONLY MEAN",
+          "A: 11.5 · B: 11.0 teaching units"
+        ]
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / EXPERIMENT READOUT",
+      "title": "Inspect the model boundary.",
+      "lead": "The export is the entire 24-row teaching set, not a sample drawn from a real population. It supplies no participant attributes, context variation or allocation procedure.",
+      "body": "A balanced row count does not establish comparable real conditions. The report can audit the stipulated arithmetic but cannot infer generalisability, representativeness or absence of confounding from a symmetric table.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "What claim would remain unsupported even with equal group sizes?",
+      "records": [
+        {
+          "label": "Supplied material",
+          "prompt": "Record supplied material and its source boundary."
+        },
+        {
+          "label": "Missing context",
+          "prompt": "Record missing context and its source boundary."
+        },
+        {
+          "label": "Generalisation boundary",
+          "prompt": "Record generalisation boundary and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPLETION MODEL",
+          "A: 8 / 12 · B: 9 / 12"
+        ],
+        [
+          "COMPLETED-ONLY MEAN",
+          "A: 11.5 · B: 11.0 teaching units"
+        ]
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / EXPERIMENT READOUT",
+      "title": "Report the completion counts.",
+      "lead": "A contains eight completed and four incomplete rows. B contains nine completed and three incomplete rows. Both groups reconcile to 12, and the total is 17 completions across 24 invented records.",
+      "body": "The descriptive proportions are 8/12 and 9/12, about 66.7% and 75.0%. The difference is about 8.3 percentage points. It is not an 8.3% relative lift, statistical significance or evidence that a real instruction is better.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "How would you state the difference while retaining both denominators?",
+      "records": [
+        {
+          "label": "A completion",
+          "prompt": "Record a completion and its source boundary."
+        },
+        {
+          "label": "B completion",
+          "prompt": "Record b completion and its source boundary."
+        },
+        {
+          "label": "Difference wording",
+          "prompt": "Record difference wording and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPLETION MODEL",
+          "A: 8 / 12 · B: 9 / 12"
+        ],
+        [
+          "COMPLETED-ONLY MEAN",
+          "A: 11.5 · B: 11.0 teaching units"
+        ]
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / EXPERIMENT READOUT",
+      "title": "Keep the time comparison conditional.",
+      "lead": "Completed A rows have time values from 8 to 15 teaching units, with mean and median 11.5. Completed B rows run from 7 to 15, with mean and median 11.0.",
+      "body": "These summaries exclude the four and three incomplete rows respectively. They cannot establish faster overall task performance, and the arbitrary teaching units are not actual measured minutes. No time value should be filled in for an incomplete row.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Why would a shorter completed-only mean be insufficient to rank the conditions?",
+      "records": [
+        {
+          "label": "Completed-only mean",
+          "prompt": "Record completed-only mean and its source boundary."
+        },
+        {
+          "label": "Excluded rows",
+          "prompt": "Record excluded rows and its source boundary."
+        },
+        {
+          "label": "Time-unit boundary",
+          "prompt": "Record time-unit boundary and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPLETION MODEL",
+          "A: 8 / 12 · B: 9 / 12"
+        ],
+        [
+          "COMPLETED-ONLY MEAN",
+          "A: 11.5 · B: 11.0 teaching units"
+        ]
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / EXPERIMENT READOUT",
+      "title": "Consider alternative explanations.",
+      "lead": "List what could explain a pattern in a real test before interpreting a difference as an intervention effect. In this model, the numbers were authored rather than observed.",
+      "body": "Relevant real-test questions might concern allocation, instruction differences, task context and missing outcomes. Here there is no basis for estimating those influences. An explanation should therefore remain a design question, not a reconstructed story about fictional participants.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which alternative factor would you investigate first in a genuine study?",
+      "records": [
+        {
+          "label": "Alternative factor",
+          "prompt": "Record alternative factor and its source boundary."
+        },
+        {
+          "label": "Needed information",
+          "prompt": "Record needed information and its source boundary."
+        },
+        {
+          "label": "Interpretation change",
+          "prompt": "Record interpretation change and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPLETION MODEL",
+          "A: 8 / 12 · B: 9 / 12"
+        ],
+        [
+          "COMPLETED-ONLY MEAN",
+          "A: 11.5 · B: 11.0 teaching units"
+        ]
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / EXPERIMENT READOUT",
+      "title": "Separate result from recommendation.",
+      "lead": "A descriptive result can be accurate while a recommendation remains unjustified. Keep the arithmetic and the decision question in different sentences.",
+      "body": "Result: B has one more completed model row than A. Decision question: what appropriate study would be needed to evaluate an actual instruction change? Do not replace the second sentence with adopt B on the strength of this fabricated set.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which additional evidence would a real adoption decision require?",
+      "records": [
+        {
+          "label": "Result sentence",
+          "prompt": "Record result sentence and its source boundary."
+        },
+        {
+          "label": "Decision question",
+          "prompt": "Record decision question and its source boundary."
+        },
+        {
+          "label": "Unsupported recommendation",
+          "prompt": "Record unsupported recommendation and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPLETION MODEL",
+          "A: 8 / 12 · B: 9 / 12"
+        ],
+        [
+          "COMPLETED-ONLY MEAN",
+          "A: 11.5 · B: 11.0 teaching units"
+        ]
+      ],
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / EXPERIMENT READOUT",
+      "title": "Make replication requirements explicit.",
+      "lead": "Package the row definitions, complete source export, summaries and limitations together. A replication plan needs a real protocol rather than a request to reproduce invented numbers.",
+      "body": "The teaching result is fully reproducible arithmetic: 24 rows, 17 completion flags and 17 non-null time values. Real recruitment, consent, measurement and appropriate review are not supplied. Keep the synthetic label attached to every exported version.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "What would have to change before this readout could describe a real experiment?",
+      "records": [
+        {
+          "label": "Reproducible arithmetic",
+          "prompt": "Record reproducible arithmetic and its source boundary."
+        },
+        {
+          "label": "Real protocol gap",
+          "prompt": "Record real protocol gap and its source boundary."
+        },
+        {
+          "label": "Handoff package",
+          "prompt": "Record handoff package and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "COMPLETION MODEL",
+          "A: 8 / 12 · B: 9 / 12"
+        ],
+        [
+          "COMPLETED-ONLY MEAN",
+          "A: 11.5 · B: 11.0 teaching units"
+        ]
+      ],
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for experiment-readout"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: swatch/02.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: swatch/05.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: open-shelf/03.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: tideline/02.jpg"
+    }
+  ]
+}

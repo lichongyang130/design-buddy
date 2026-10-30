@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    "founder-narrative",
+    "traction-dialogue",
+    "technical-thesis",
+    "impact-thesis",
+    "roundtable-brief"
+  ],
+  "pagesPerCase": 10,
+  "distinctImagesPerCase": 5,
+  "newImages": 5,
+  "curatedExistingImages": 20,
+  "completedOf50": 23
+}

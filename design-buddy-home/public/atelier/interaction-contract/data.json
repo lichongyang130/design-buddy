@@ -1,0 +1,396 @@
+{
+  "work": {
+    "id": "interaction-contract",
+    "title": "INTERACTION CONTRACT",
+    "subtitle": "A state-machine and behavior-contract specification",
+    "category": "产品设计",
+    "layout": "states",
+    "color": "#694268",
+    "wash": "#eddfef",
+    "framework": "状态机与行为契约",
+    "scope": "An authored specification for a fictional local note editor. The transition model is testable as a contract, not a claim that a shipped or accessible product exists.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "product-expansion",
+    "newIllustrations": 0,
+    "curatedIllustrations": 5
+  },
+  "pages": [
+    {
+      "section": "01 / INTERACTION CONTRACT",
+      "title": "Define the interaction's observable promise.",
+      "lead": "This specification describes a fictional local note editor with draft, review, saved and error states. Its purpose is to make allowed transitions inspectable before implementation.",
+      "body": "The contract models six transitions for one note. It does not implement storage, authentication, collaboration or a live service. A model passing its own checks is not evidence that a product behaves correctly.",
+      "subheading": "Interaction goal",
+      "detail": "Review means a chance to inspect a note before a save attempt. Saved is a modeled outcome that an implementation must justify with a real storage result.",
+      "question": "What must a reader be able to predict?",
+      "records": [
+        {
+          "label": "Object",
+          "prompt": "One fictional note, with text and an immutable source reference."
+        },
+        {
+          "label": "Contract",
+          "prompt": "Four named states and six explicit event transitions."
+        },
+        {
+          "label": "Non-goal",
+          "prompt": "No live persistence or production capability is claimed."
+        }
+      ],
+      "image": 1,
+      "kind": "cover",
+      "evidenceRows": [
+        [
+          "CONTRACT ROW",
+          "draft + review → review"
+        ],
+        [
+          "MODEL BOUNDARY",
+          "4 states, 6 unique transitions; undefined pairs are rejected. Not implemented."
+        ]
+      ]
+    },
+    {
+      "section": "02 / INTERACTION CONTRACT",
+      "title": "Separate the actor from the authority.",
+      "lead": "The modeled actor can edit the note body, review it and request a local save. The source reference is not editable through this contract and does not imply rights to the source.",
+      "body": "There are no administrator, reviewer or shared-workspace roles. The state named review refers to the author's own inspection, not another person's approval or a permission workflow.",
+      "subheading": "Actor boundary",
+      "detail": "A disabled action is not an access-control boundary. Any future real service would need its own authorization and data-handling design.",
+      "question": "Which actions are within this actor's remit?",
+      "records": [
+        {
+          "label": "Actor",
+          "prompt": "A hypothetical single author in a local editing context."
+        },
+        {
+          "label": "Editable",
+          "prompt": "Note text, not source ownership or sharing permissions."
+        },
+        {
+          "label": "Excluded",
+          "prompt": "No reviewer assignment, access grant or account role exists."
+        }
+      ],
+      "image": 1,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CONTRACT ROW",
+          "review + edit → draft"
+        ],
+        [
+          "MODEL BOUNDARY",
+          "4 states, 6 unique transitions; undefined pairs are rejected. Not implemented."
+        ]
+      ]
+    },
+    {
+      "section": "03 / INTERACTION CONTRACT",
+      "title": "Give each object a stable meaning.",
+      "lead": "The note body is a string; its source reference identifies the invented exercise passage. The model's state is separate from the note text and must not be inferred from styling alone.",
+      "body": "The event vocabulary is review, edit, save-ok, save-fail and retry. These events have meaning only with their defined source state. An unspecified state-event pair is rejected by the contract.",
+      "subheading": "Object dictionary",
+      "detail": "A real implementation should distinguish the user's save request from the asynchronous result. Here save-ok and save-fail name result events, not clickable product controls.",
+      "question": "Can a label be mistaken for a stored result?",
+      "records": [
+        {
+          "label": "Text",
+          "prompt": "The authored note body being revised."
+        },
+        {
+          "label": "Source",
+          "prompt": "A stable reference outside the editable body."
+        },
+        {
+          "label": "Events",
+          "prompt": "Review, edit, save-ok, save-fail and retry are model tokens."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CONTRACT ROW",
+          "review + save-ok → saved"
+        ],
+        [
+          "MODEL BOUNDARY",
+          "4 states, 6 unique transitions; undefined pairs are rejected. Not implemented."
+        ]
+      ]
+    },
+    {
+      "section": "04 / INTERACTION CONTRACT",
+      "title": "Make the four states mutually exclusive.",
+      "lead": "Draft permits text editing. Review presents the current text for inspection. Saved represents a successful modeled save result. Error represents a failed modeled save result and preserves the text.",
+      "body": "Exactly one state is active for one modeled note. The specification has no background saving or concurrent session. Those omissions must be revisited rather than hidden behind an ambiguous loading indicator.",
+      "subheading": "State inventory",
+      "detail": "State labels should remain understandable without color. This is a design requirement to review, not a tested accessibility outcome.",
+      "question": "Can the current state be explained without the visual treatment?",
+      "records": [
+        {
+          "label": "Draft",
+          "prompt": "Editable text before a review decision."
+        },
+        {
+          "label": "Review",
+          "prompt": "Inspect the current text before a save result."
+        },
+        {
+          "label": "Saved / error",
+          "prompt": "Distinct result states; neither silently changes the note."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CONTRACT ROW",
+          "review + save-fail → error"
+        ],
+        [
+          "MODEL BOUNDARY",
+          "4 states, 6 unique transitions; undefined pairs are rejected. Not implemented."
+        ]
+      ]
+    },
+    {
+      "section": "05 / INTERACTION CONTRACT",
+      "title": "List transitions rather than implying them.",
+      "lead": "Draft plus review enters review. Review plus edit returns to draft. Review plus save-ok enters saved, while review plus save-fail enters error. Error plus retry returns to review; saved plus edit returns to draft.",
+      "body": "These six rows form the complete modeled transition relation. Each state-event pair is unique. All four states are reachable from draft, and every state has an outgoing path.",
+      "subheading": "Transition register",
+      "detail": "A missing pair is rejected, leaving state and text unchanged. Do not invent an implicit transition because a button happens to look available.",
+      "question": "What happens when an event has no defined transition?",
+      "records": [
+        {
+          "label": "Success path",
+          "prompt": "Draft → review → saved, using review then save-ok."
+        },
+        {
+          "label": "Recovery path",
+          "prompt": "Review → error → review, using save-fail then retry."
+        },
+        {
+          "label": "Invalid input",
+          "prompt": "Reject an unspecified pair without mutating text or state."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CONTRACT ROW",
+          "error + retry → review"
+        ],
+        [
+          "MODEL BOUNDARY",
+          "4 states, 6 unique transitions; undefined pairs are rejected. Not implemented."
+        ]
+      ]
+    },
+    {
+      "section": "06 / INTERACTION CONTRACT",
+      "title": "Treat input and a save result separately.",
+      "lead": "Editing a note changes text only in draft. Leaving saved through edit returns to draft before text changes. Review is an inspection state, not a second text editor.",
+      "body": "A real save request would require validation and a defined pending state or request boundary. This simplified model deliberately starts at result events and must not be wired directly to a server without extension.",
+      "subheading": "Input contract",
+      "detail": "No network request, live pending state or concurrency guarantee is supplied. Preserve that limitation when handing the model to implementation.",
+      "question": "Which event represents user intent and which represents a result?",
+      "records": [
+        {
+          "label": "Text rule",
+          "prompt": "Apply body edits only while the note is in draft."
+        },
+        {
+          "label": "Result rule",
+          "prompt": "Process save-ok or save-fail only while in review."
+        },
+        {
+          "label": "Extension",
+          "prompt": "Define request and pending behavior before a real asynchronous save."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CONTRACT ROW",
+          "saved + edit → draft"
+        ],
+        [
+          "MODEL BOUNDARY",
+          "4 states, 6 unique transitions; undefined pairs are rejected. Not implemented."
+        ]
+      ]
+    },
+    {
+      "section": "07 / INTERACTION CONTRACT",
+      "title": "Explain feedback without overstating persistence.",
+      "lead": "A saved message must follow the implementation's confirmed storage outcome, not merely a click. An error message should preserve the author's text and explain a bounded next action.",
+      "body": "The model can verify that error permits retry and that retry returns to review. It cannot establish data durability, storage quota, recovery after a crash or synchronization across devices.",
+      "subheading": "Feedback semantics",
+      "detail": "A future implementation must name what was actually saved and where. Avoid a universal success message when only a temporary local buffer exists.",
+      "question": "What evidence permits the word saved?",
+      "records": [
+        {
+          "label": "Saved",
+          "prompt": "Requires a confirmed implementation result outside this model."
+        },
+        {
+          "label": "Error",
+          "prompt": "Keep the body available and explain retry without data-loss promises."
+        },
+        {
+          "label": "Boundary",
+          "prompt": "No durability, cloud sync or cross-device behavior is verified."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CONTRACT ROW",
+          "draft + review → review"
+        ],
+        [
+          "MODEL BOUNDARY",
+          "4 states, 6 unique transitions; undefined pairs are rejected. Not implemented."
+        ]
+      ]
+    },
+    {
+      "section": "08 / INTERACTION CONTRACT",
+      "title": "Reject an invalid event predictably.",
+      "lead": "Sending retry in draft is not defined. The modeled reducer rejects that pair and keeps the original state. Likewise, save-ok in error cannot leap directly to saved.",
+      "body": "This keeps recovery visible: error must return to review through retry before a new result event is considered. An implementation still needs to decide how impossible or stale events are logged without exposing private text.",
+      "subheading": "Exception handling",
+      "detail": "A stale callback is not automatically valid because its result once belonged to a request. The simplified model has no request IDs; concurrency needs a larger contract.",
+      "question": "Could an out-of-order result overwrite a newer edit?",
+      "records": [
+        {
+          "label": "Example",
+          "prompt": "Draft plus retry is rejected with draft unchanged."
+        },
+        {
+          "label": "Example",
+          "prompt": "Error plus save-ok is rejected with error unchanged."
+        },
+        {
+          "label": "Open",
+          "prompt": "Request identity and stale-result handling are not yet specified."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CONTRACT ROW",
+          "review + edit → draft"
+        ],
+        [
+          "MODEL BOUNDARY",
+          "4 states, 6 unique transitions; undefined pairs are rejected. Not implemented."
+        ]
+      ]
+    },
+    {
+      "section": "09 / INTERACTION CONTRACT",
+      "title": "Review usability as an open question.",
+      "lead": "A model can be deterministic and still be hard to understand. Ask whether the review step is useful, whether state wording is clear and whether error recovery is discoverable.",
+      "body": "Any future evaluation needs a working artifact, task boundaries and an appropriate participation process. Do not describe graph reachability as proof of usability or accessibility.",
+      "subheading": "Evaluation questions",
+      "detail": "Keyboard, focus, announcements and error comprehension require implementation-specific testing. This document records requirements and questions, not a conformance result.",
+      "question": "What should a future task reveal about the state labels?",
+      "records": [
+        {
+          "label": "Comprehension",
+          "prompt": "Can a person distinguish review from a successful save?"
+        },
+        {
+          "label": "Recovery",
+          "prompt": "Can the person explain what retry preserves and changes?"
+        },
+        {
+          "label": "Access",
+          "prompt": "Keyboard and assistive-technology behavior remain unverified."
+        }
+      ],
+      "image": 5,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CONTRACT ROW",
+          "review + save-ok → saved"
+        ],
+        [
+          "MODEL BOUNDARY",
+          "4 states, 6 unique transitions; undefined pairs are rejected. Not implemented."
+        ]
+      ]
+    },
+    {
+      "section": "10 / INTERACTION CONTRACT",
+      "title": "Check the contract before handing it over.",
+      "lead": "The source register must contain exactly six unique state-event pairs, valid endpoints and four reachable states. The reducer rejects every pair outside that relation without mutation.",
+      "body": "A walkthrough trace reaches saved through review and returns through edit. A second trace enters error, retries and then reaches saved. These are model checks, not executed product journeys.",
+      "subheading": "Specification review",
+      "detail": "Keep the register, reducer assumptions and exclusions together. Adding a pending state requires revised tests and prose, not just a new badge.",
+      "question": "What would invalidate the current specification?",
+      "records": [
+        {
+          "label": "Checks",
+          "prompt": "Unique pairs, known states, reachability and rejection behavior."
+        },
+        {
+          "label": "Trace",
+          "prompt": "Draft, review, error, review, saved is a valid modeled sequence."
+        },
+        {
+          "label": "Handoff",
+          "prompt": "No shipped editor, live save or usability validation is claimed."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix",
+      "evidenceRows": [
+        [
+          "CONTRACT ROW",
+          "review + save-fail → error"
+        ],
+        [
+          "MODEL BOUNDARY",
+          "4 states, 6 unique transitions; undefined pairs are rejected. Not implemented."
+        ]
+      ]
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "Curated existing AI-generated illustration: form-study/01.jpg"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: process-rehearsal/01.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: project-studio/01.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: service-blueprint/01.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: brand-voice/01.jpg"
+    }
+  ]
+}

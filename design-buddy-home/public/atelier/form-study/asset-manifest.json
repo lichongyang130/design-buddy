@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "work": "form-study",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 9388,
+      "sha256": "8a5ed2e39f01cd1a73472b8771736763b068df6593d01f8756ffefbb9dd17468"
+    },
+    {
+      "path": "content.js",
+      "bytes": 8051,
+      "sha256": "54c48a6b8c0a82636ace8015e5625078cf0236c1cc751f73abccb1bf8c5d10ce"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 494,
+      "sha256": "867b294c28eedbec74138726c9e24549ff0510d5894511a38f5cc95e638eaa20"
+    },
+    {
+      "path": "form-study.docx",
+      "bytes": 658645,
+      "sha256": "c8c7645849dfb9a223c8ac660e9d5519720613f9085264c30ef868236232385d"
+    },
+    {
+      "path": "form-study.pdf",
+      "bytes": 727082,
+      "sha256": "6904b9b27f6c89245d7c24579e98651fdac47afe6bbc8110652c27dc783031d6"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 105762,
+      "sha256": "0ada2c21a7dc0c69b8134323048db15686f444f3b88457938ecca509de80fdee"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 120598,
+      "sha256": "3d5ab0827a736e68a07f1acf190862334e969044cc10aabab88672ecb4b2174b"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 153103,
+      "sha256": "8ffe9606ac357d4971fefb4651aff4349b8499bfb18cb67991080b6b29b6c1eb"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 138542,
+      "sha256": "83139a06077529e4c1e1d5e2543e963b1dcb59d00961e1a8d3bf93eabdcd99ad"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 133814,
+      "sha256": "a883a79f956724f4abbc39182f9edc40770c3de137fe17c9299a4ff05bccce2a"
+    }
+  ]
+}

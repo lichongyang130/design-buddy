@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "component-system",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 16861,
+      "sha256": "765b4c0ead38da84283d76bbce0c4d2d7f137fa52a84fd48e8ac37cbaa236bbb"
+    },
+    {
+      "path": "content.js",
+      "bytes": 13408,
+      "sha256": "9d7271323e04a6880ce2c771d3446396611876b518dfe98c0949e42d3ed77716"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 534,
+      "sha256": "3d9576f05ec6d509c764404384bcfea753ee8b0a8680ba666795dad65f5b5ef9"
+    },
+    {
+      "path": "component-system.docx",
+      "bytes": 924439,
+      "sha256": "c2ade09eb330720ee7ce5fc250dc0308b83b671c2ce780eca6bd61a8bdb74411"
+    },
+    {
+      "path": "component-system.pdf",
+      "bytes": 993022,
+      "sha256": "504c763f8a80da1c9092fb58fddaea0118a3473f21615ba912169626e011a334"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 204,
+      "sha256": "d3939605731ef8876f1e8af38bd10c1716c96a80acd83576d96607bc895dbaec"
+    },
+    {
+      "path": "source.json",
+      "bytes": 1095,
+      "sha256": "651d74673c35dbe78cbf7f42dab9b5356366e2d456b6e0b5e629e82d6913cc80"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 113232,
+      "sha256": "c0b779cc6a901e2db8bef9cc18c2f81bf322bf058cdf97b4a83004909a340b2a"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 138952,
+      "sha256": "4dca2e4a5b8b308b3975ff5cbf93bce3123723cd4137cd97899661e82701be61"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 199785,
+      "sha256": "19d3859291f14dcf257e620abbc709d1a8a82239cc46ba08239189d208f9f213"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 204036,
+      "sha256": "9f11d785aafe00ad67aa4fd6321b7cffc2d89cb2eddcd92934c0b84eede18915"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 259237,
+      "sha256": "7b27411866588998984b352cb406b0249324042957cf48e59de6b8465530163c"
+    }
+  ]
+}

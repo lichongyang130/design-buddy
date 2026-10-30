@@ -1,0 +1,10 @@
+unit_id,unit_title,feedback_field,status,actual_feedback,contact_opt_in
+D01,Context Card,clarity,uncollected,,
+D01,Context Card,open-question,uncollected,,
+D01,Context Card,next-artifact,uncollected,,
+D02,Folded Route,clarity,uncollected,,
+D02,Folded Route,open-question,uncollected,,
+D02,Folded Route,next-artifact,uncollected,,
+D03,Revision Window,clarity,uncollected,,
+D03,Revision Window,open-question,uncollected,,
+D03,Revision Window,next-artifact,uncollected,,

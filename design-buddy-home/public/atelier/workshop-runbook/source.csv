@@ -1,0 +1,7 @@
+block,planned_minutes,station,input_artifact,output_artifact,status,actual_duration
+opening,5,,invented passage,shared task,planned,
+station-one,12,S01,shared task,tentative connection,planned,
+transfer,3,,tentative connection,tentative connection,planned,
+station-two,15,S02,tentative connection,draft context card,planned,
+sharing,15,,draft context card,review question,planned,
+closing,10,,review question,question retained,planned,

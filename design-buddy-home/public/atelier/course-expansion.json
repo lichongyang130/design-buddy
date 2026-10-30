@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    "question-lab",
+    "story-workshop",
+    "visual-literacy",
+    "project-studio",
+    "debate-room",
+    "self-paced-route"
+  ],
+  "pagesPerCase": 10,
+  "distinctImagesPerCase": 5,
+  "newImages": 6,
+  "curatedExistingImages": 24,
+  "completedOf50": 18
+}

@@ -1,0 +1,165 @@
+{
+  "work": {
+    "id": "self-paced-route",
+    "title": "SELF-PACED ROUTE",
+    "subtitle": "自主学习路线",
+    "category": "课程",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "framework": "分支学习路径",
+    "scope": "Fictional adult learning exercises. Illustrations are not records of real participants or research evidence. No accredited qualification or actual learner outcomes are supplied.",
+    "layout": "pathway",
+    "color": "#65448d",
+    "wash": "#ece5f6",
+    "expansion": "documents-50",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / SELF-PACED ROUTE",
+      "title": "Choose a useful starting point.",
+      "lead": "This self-paced course helps an adult learner practise reading and summarising a short fictional passage. Start by identifying which part of that task feels least clear.",
+      "body": "You may want practice locating a main idea, distinguishing an example from a claim or writing a concise summary. This self-check is a personal choice, not a diagnostic assessment.",
+      "subheading": "Current comfort / difficult step / chosen focus",
+      "detail": "Working record: Select one focus and describe it in observable terms. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Select one focus and describe it in observable terms.",
+      "image": 1,
+      "kind": "cover",
+      "module": "起点自查"
+    },
+    {
+      "section": "02 / SELF-PACED ROUTE",
+      "title": "Set a small learning goal.",
+      "lead": "A useful goal describes an action you can review in your own work. Avoid a broad promise such as become an excellent reader by the end of the document.",
+      "body": "Example: write a two-sentence summary that keeps the main claim and one qualification. The goal concerns a written artifact rather than a certificate or score.",
+      "subheading": "Action / artifact / review question",
+      "detail": "Working record: Write a goal you can check against a short piece of your own writing. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Write a goal you can check against a short piece of your own writing.",
+      "image": 1,
+      "kind": "body",
+      "module": "目标选择"
+    },
+    {
+      "section": "03 / SELF-PACED ROUTE",
+      "title": "Pick a route through the practice.",
+      "lead": "Choose a route based on your focus while retaining the same final reflection. Route A starts with the main claim; route B starts with examples; route C starts with uncertainty.",
+      "body": "Suggested route A: pages 4, 5, 6, 9, 10. Route B: pages 5, 4, 7, 9, 10. Route C: pages 6, 7, 8, 9, 10. You can revisit any page.",
+      "subheading": "Route A / route B / route C / return point",
+      "detail": "Working record: Choose a route and name the reason it fits your present question. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Choose a route and name the reason it fits your present question.",
+      "image": 2,
+      "kind": "body",
+      "module": "路径分支"
+    },
+    {
+      "section": "04 / SELF-PACED ROUTE",
+      "title": "Take a note that separates roles.",
+      "lead": "Label the main claim, supporting example and qualification in an invented passage. Notes are easier to reuse when they preserve these distinctions.",
+      "body": "Passage: A shared sketch may focus a conversation; for example, a speaker can point to a shape. This depends on the discussion task. The final sentence qualifies the first.",
+      "subheading": "Claim / example / qualification",
+      "detail": "Working record: Make a three-part note without turning may into will. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Make a three-part note without turning may into will.",
+      "image": 2,
+      "kind": "body",
+      "module": "阅读笔记"
+    },
+    {
+      "section": "05 / SELF-PACED ROUTE",
+      "title": "Try a summary station.",
+      "lead": "Write a short summary of the passage using fewer words while preserving its uncertainty. Concision should not erase the condition that makes the claim accurate.",
+      "body": "Possible draft: A shared sketch can provide a common reference, but its usefulness depends on the task. This is a summary of an invented passage, not a research finding.",
+      "subheading": "Original idea / shorter wording / retained condition",
+      "detail": "Working record: Write your own two-sentence summary and underline its qualification. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Write your own two-sentence summary and underline its qualification.",
+      "image": 3,
+      "kind": "body",
+      "module": "练习站点"
+    },
+    {
+      "section": "06 / SELF-PACED ROUTE",
+      "title": "Review with a feedback key.",
+      "lead": "Compare the meaning of your summary with the source passage. The key checks whether a claim, example or condition disappeared; it does not assign a grade.",
+      "body": "If your draft says shared sketches improve all discussions, it has expanded the original claim. If it merely lists a shape, it may have retained the example but lost the main idea.",
+      "subheading": "Claim retained / example handled / condition retained",
+      "detail": "Working record: Identify one expansion or omission in your draft and explain its effect. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Identify one expansion or omission in your draft and explain its effect.",
+      "image": 3,
+      "kind": "body",
+      "module": "自检反馈"
+    },
+    {
+      "section": "07 / SELF-PACED ROUTE",
+      "title": "Use a targeted support page.",
+      "lead": "Return to the step that caused difficulty rather than restarting the whole course. A support exercise should address a specific confusion.",
+      "body": "If examples dominate your notes, highlight only the sentence that makes the general claim. If uncertainty disappears, copy the conditional phrase before writing a new summary.",
+      "subheading": "Difficulty / support move / new attempt",
+      "detail": "Working record: Choose one support move and use it on the same passage. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Choose one support move and use it on the same passage.",
+      "image": 4,
+      "kind": "body",
+      "module": "补充学习"
+    },
+    {
+      "section": "08 / SELF-PACED ROUTE",
+      "title": "Apply the method to a new passage.",
+      "lead": "Transfer the reading routine to another invented statement. Keep the main claim and its boundary visible instead of borrowing the conclusion from the earlier example.",
+      "body": "New passage: offering several texts might invite different interests; however, a discussion needs a way to share references. Identify the claim and the condition before summarising.",
+      "subheading": "New claim / condition / concise version",
+      "detail": "Working record: Write a fresh summary and note one difference from the shared-sketch passage. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Write a fresh summary and note one difference from the shared-sketch passage.",
+      "image": 4,
+      "kind": "body",
+      "module": "应用挑战"
+    },
+    {
+      "section": "09 / SELF-PACED ROUTE",
+      "title": "Collect the learning artifacts.",
+      "lead": "Bring your first note, first summary, feedback note and revised summary together. A small portfolio makes the route visible even when you took the pages out of order.",
+      "body": "Label each artifact by version, not an invented completion date. Include one line explaining why the revised version better matches the source.",
+      "subheading": "Artifact / version / change / reason",
+      "detail": "Working record: Select four artifacts and arrange them so another reader can follow the revision. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Select four artifacts and arrange them so another reader can follow the revision.",
+      "image": 5,
+      "kind": "body",
+      "module": "成果整理"
+    },
+    {
+      "section": "10 / SELF-PACED ROUTE",
+      "title": "Choose the next route.",
+      "lead": "Reflect on the step that became clearer and the difficulty that remains. The next route should follow from that observation rather than a generic instruction to practise more.",
+      "body": "You might continue with conditional claims, compare two passages or practise separating examples from explanations. No result about real learner performance is supplied by this template.",
+      "subheading": "Clearer step / remaining difficulty / next practice",
+      "detail": "Working record: Name one next practice task and the artifact you will use to review it. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Name one next practice task and the artifact you will use to review it.",
+      "image": 5,
+      "kind": "appendix",
+      "module": "后续路线"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated illustration for self-paced-route"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: tideline/16.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: afterglow/11.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: common-ground/05.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: swatch/04.jpg"
+    }
+  ]
+}

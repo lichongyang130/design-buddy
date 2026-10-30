@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "design-critique",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 16645,
+      "sha256": "701fd89ed0f9f690401893f56f79b132635877841b4bb21d99c25663c80c356e"
+    },
+    {
+      "path": "content.js",
+      "bytes": 13184,
+      "sha256": "477840b778e86a8c759dbe2ea5b2e142a427c5f9755d31ffdaf62276229ed4f4"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 542,
+      "sha256": "cedddfe46542b75c59f95c44457e8ccdc5e7a8a4739245605ba1eb43da7bbfa9"
+    },
+    {
+      "path": "design-critique.docx",
+      "bytes": 944908,
+      "sha256": "d3610e00916630fb98dde19fd931029591794dfe03ff2cfe92a0fa7d192cf556"
+    },
+    {
+      "path": "design-critique.pdf",
+      "bytes": 1013341,
+      "sha256": "d7a1d200ae7e6022c24ce9817a777c2d4eb5b15e586704363caf9b8c9d0f5c01"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 284,
+      "sha256": "6b9c3eb908d30bfa9cd6f28d0f0b623447f901fd2c3517586a6df1cb9149c73a"
+    },
+    {
+      "path": "source.json",
+      "bytes": 1572,
+      "sha256": "34effc657812ae254eaf6ac63ebee9ff8c2de34c49b1499c168257af8c1e6ae6"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 201821,
+      "sha256": "1b61d651c9fe2ba5e910c63e8868537ec03529cd3ba3c7c64e46516fa0708593"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 205264,
+      "sha256": "7d7c7d0f6a0cb664f45124754474fbb45c0b2154c8b90abeb5e9c5aeda541dfe"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 138952,
+      "sha256": "4dca2e4a5b8b308b3975ff5cbf93bce3123723cd4137cd97899661e82701be61"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 185065,
+      "sha256": "811f8ec6341fa07c5dc8b99ada1e8250922351ae65ff833d571dece1ff320b5d"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 204036,
+      "sha256": "9f11d785aafe00ad67aa4fd6321b7cffc2d89cb2eddcd92934c0b84eede18915"
+    }
+  ]
+}

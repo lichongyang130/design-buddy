@@ -1,0 +1,776 @@
+[
+  {
+    "id": "pilot-charter",
+    "title": "PILOT CHARTER",
+    "subtitle": "试点章程提案",
+    "category": "提案",
+    "layout": "stagegate",
+    "color": "#253b62",
+    "wash": "#e6ecf8",
+    "framework": "阶段门试点章程",
+    "scope": "Fictional shared-reading pilot proposal. No venue, staffing, permissions, funding or real participant results are confirmed.",
+    "sources": [
+      "open-shelf/06",
+      "tideline/15",
+      "common-ground/04",
+      "swatch/04"
+    ],
+    "chapters": [
+      {
+        "title": "A small pilot, a clear decision.",
+        "lead": "Propose a limited exploration of a shared reading session before making a larger commitment. The decision sought is whether to develop a properly reviewed pilot plan, not whether to open a service immediately.",
+        "body": "The fictional sponsor wants to understand how a common text might support discussion. This charter names the question, the conditions for proceeding and the evidence that would inform a later decision. It supplies no real venue or participant commitments.",
+        "labels": [
+          "Decision sought",
+          "Sponsor to confirm",
+          "Review boundary"
+        ],
+        "question": "What exact decision should a reader be able to make after reviewing this charter?"
+      },
+      {
+        "title": "Name the problem to investigate.",
+        "lead": "Separate the proposed learning problem from a claim about demand. The premise is that a reading group might benefit from a more focused conversation; no local need has been measured.",
+        "body": "Write the current uncertainty as a question: under what conditions would a shared extract help participants refer to the same material? A real proposal would attach the relevant contextual source rather than treat an attractive room image as evidence.",
+        "labels": [
+          "Problem question",
+          "Existing context",
+          "Missing evidence"
+        ],
+        "question": "Which source would establish whether this problem matters in the intended setting?"
+      },
+      {
+        "title": "Make the pilot hypothesis testable.",
+        "lead": "A pilot hypothesis links a proposed activity with an observable signal. Keep the signal narrow enough to distinguish the question being explored from a broad promise of success.",
+        "body": "Example hypothesis: a common extract may make references easier to locate. A possible signal is whether an agreed observation record can identify the passages being discussed. This would not by itself establish learning, satisfaction or a causal effect.",
+        "labels": [
+          "Working hypothesis",
+          "Observable signal",
+          "Alternative explanation"
+        ],
+        "question": "What observation could weaken, rather than merely confirm, the working hypothesis?"
+      },
+      {
+        "title": "Draw the scope boundary.",
+        "lead": "Define what the pilot includes, excludes and leaves for later review. Scope is most useful when the excluded work is as visible as the preferred activity.",
+        "body": "The fictional scope includes developing a discussion prompt and a proposed observation form. It excludes venue operation, recruitment, data collection and purchase commitments. Any real pilot would need its own appropriate approvals and participant arrangements.",
+        "labels": [
+          "Included work",
+          "Explicit exclusions",
+          "New-scope trigger"
+        ],
+        "question": "Which request would turn this limited exploration into a different project?"
+      },
+      {
+        "title": "Describe a reversible trial.",
+        "lead": "Outline how the idea could be explored without implying that a real event has been scheduled. A reversible trial should leave room to stop, change the question or choose a less demanding alternative.",
+        "body": "Start with a paper walkthrough of an invented discussion. Review the prompt and observation fields before considering an actual session. A real session is a separate decision and cannot be authorised by this example charter.",
+        "labels": [
+          "Proposed walkthrough",
+          "Review input",
+          "Reversible next step"
+        ],
+        "question": "What can be learned from the paper walkthrough before any real activity is considered?"
+      },
+      {
+        "title": "Put a reviewer at each gate.",
+        "lead": "A stage gate combines a question, a review artifact and a role that would need to confirm responsibility. Naming a role in a template does not appoint a person.",
+        "body": "Gate one checks whether the question is clear. Gate two checks whether the proposed method and context are suitable. Gate three asks whether the available evidence supports continuing, changing or stopping. Record actual appointments outside the fictional example.",
+        "labels": [
+          "Gate question",
+          "Review artifact",
+          "Responsible role to confirm"
+        ],
+        "question": "Who would need to accept each review responsibility before a real pilot could proceed?"
+      },
+      {
+        "title": "Expose resource assumptions.",
+        "lead": "List resource categories without turning unknowns into invented prices. A short pilot can still depend on preparation, facilitation, suitable materials, a setting and appropriate review.",
+        "body": "For each category, distinguish an available resource from an assumption and an unresolved requirement. A borrowed room shown in an illustration is not an available venue. Keep missing categories visible instead of using a single unsupported total.",
+        "labels": [
+          "Resource category",
+          "Availability status",
+          "Confirmation needed"
+        ],
+        "question": "Which unconfirmed resource could invalidate the proposed scope?"
+      },
+      {
+        "title": "Agree when to pause.",
+        "lead": "Stopping conditions protect the usefulness of the pilot. Identify conditions that should trigger a pause before interpreting a disappointing signal as a reason to expand the work.",
+        "body": "Examples include an unclear question, an unsuitable observation method or an unresolved permission. These are review conditions, not a safety checklist or a substitute for specialist assessment. Record who can decide to resume the work.",
+        "labels": [
+          "Pause condition",
+          "Review needed",
+          "Resume decision role"
+        ],
+        "question": "Which condition should stop progress even if the idea remains appealing?"
+      },
+      {
+        "title": "Plan the evidence handoff.",
+        "lead": "Describe the artifact that a later reviewer would receive and what it could support. The evaluation plan should keep observations, interpretations and unresolved questions separate.",
+        "body": "A useful handoff might include the question, versioned prompt, method limitations and an anonymised summary if real collection were separately authorised. This proposal itself provides no real records, participant information or evaluation results.",
+        "labels": [
+          "Handoff artifact",
+          "Interpretation limit",
+          "Open question"
+        ],
+        "question": "What would the reviewer need in order to distinguish a useful signal from an unsupported conclusion?"
+      },
+      {
+        "title": "Ask for a bounded response.",
+        "lead": "Close with a response form that distinguishes agreement to investigate from approval to operate. A clear request makes it possible to revise the charter without treating a polite discussion as a commitment.",
+        "body": "Offer the options develop the plan, revise the question or park the idea. Record the reasoning and any prerequisite source. Keep the scope note, version and unresolved responsibilities attached when this document is shared.",
+        "labels": [
+          "Response option",
+          "Reason or condition",
+          "Next review artifact"
+        ],
+        "question": "What response would improve this proposal without implying a commitment that has not been made?"
+      }
+    ]
+  },
+  {
+    "id": "service-blueprint",
+    "title": "SERVICE BLUEPRINT",
+    "subtitle": "服务改进提案",
+    "category": "提案",
+    "layout": "blueprint",
+    "color": "#156b75",
+    "wash": "#e0f3f1",
+    "framework": "前后台服务蓝图",
+    "scope": "Fictional library welcome-service concept. No actual service research, staffing agreement, system integration or operational approval is supplied.",
+    "sources": [
+      "open-shelf/03",
+      "common-ground/02",
+      "tideline/09",
+      "swatch/05"
+    ],
+    "chapters": [
+      {
+        "title": "Connect the visible service to its support.",
+        "lead": "This proposal explores an imagined library welcome interaction. The blueprint links a visitor action, a visible response and the behind-the-scenes support that might make that response possible.",
+        "body": "The decision is whether this service concept deserves contextual research and responsible review. The illustrated desk is a visual reference only; it supplies no site dimensions, staffing capacity or evidence about real visitors.",
+        "labels": [
+          "Visitor intention",
+          "Visible response",
+          "Supporting activity"
+        ],
+        "question": "Which service question should the blueprint make easier to discuss?"
+      },
+      {
+        "title": "Begin with a situation, not a persona claim.",
+        "lead": "Describe the task a fictional visitor is trying to accomplish and the information they may lack. Avoid presenting a made-up profile as research about an actual population.",
+        "body": "Example situation: a first-time reader wants to understand where a group discussion might happen. Their familiarity, access needs and preferences remain unknown. A real service proposal would investigate those conditions through appropriate methods.",
+        "labels": [
+          "Situation",
+          "Visitor question",
+          "Unknown context"
+        ],
+        "question": "What contextual information would change how the welcome interaction is designed?"
+      },
+      {
+        "title": "Map the frontstage contact.",
+        "lead": "Frontstage actions are the visible words, objects and responses a visitor encounters. State what the interaction is intended to clarify rather than promising that it works.",
+        "body": "A proposed welcome card might explain the purpose of a session and where to ask a question. It should not imply guaranteed availability, accessibility or eligibility. The wording needs review against the real service context before use.",
+        "labels": [
+          "Visible touchpoint",
+          "Intended clarification",
+          "Review question"
+        ],
+        "question": "What should the visitor understand after this touchpoint, and what remains unconfirmed?"
+      },
+      {
+        "title": "Reveal the backstage work.",
+        "lead": "A simple visible response can depend on preparation that visitors do not see. Put those backstage activities on the same page so the proposal does not hide its implementation burden.",
+        "body": "A welcome card could require a current session description, an agreed point of contact and a way to update the copy. These are proposed activities; no role or organisation has accepted them through this document.",
+        "labels": [
+          "Backstage preparation",
+          "Update responsibility",
+          "Dependency"
+        ],
+        "question": "Which backstage task must exist before the proposed frontstage response is credible?"
+      },
+      {
+        "title": "Identify the supporting systems.",
+        "lead": "Distinguish a service idea from the information and coordination systems it would need. The blueprint should make gaps visible rather than imply that a real technical integration already exists.",
+        "body": "A current information source, a version record and a route for questions might support the welcome interaction. Do not invent a booking system, identity check or confirmed database connection to make the diagram appear complete.",
+        "labels": [
+          "Information source",
+          "Coordination mechanism",
+          "Unresolved interface"
+        ],
+        "question": "Where would the service obtain a reliable answer when information changes?"
+      },
+      {
+        "title": "Mark the points of uncertainty.",
+        "lead": "A breakpoint is a place where the proposed flow could fail to answer the visitor’s question or depend on missing support. Name the uncertainty before selecting a solution.",
+        "body": "For example, an outdated card could direct a visitor to a session that is not confirmed. The issue might concern information ownership rather than the visual design of the card. These are hypothetical failure modes, not observed incidents.",
+        "labels": [
+          "Potential breakpoint",
+          "Underlying dependency",
+          "Clarification needed"
+        ],
+        "question": "Which breakpoint could not be fixed by rewriting the visible message alone?"
+      },
+      {
+        "title": "Compare a lighter alternative.",
+        "lead": "Test the concept against an option with fewer dependencies. An alternative is useful when it pursues the same visitor intention rather than simply offering a different-looking desk.",
+        "body": "Compare a maintained welcome card with a clearly identified route for asking a question. The latter may reduce copy maintenance but depend more on an available contact. Neither option is confirmed as suitable for a real service.",
+        "labels": [
+          "Option A",
+          "Option B",
+          "Dependency trade-off"
+        ],
+        "question": "What evidence would make the lighter option preferable?"
+      },
+      {
+        "title": "Turn assumptions into research questions.",
+        "lead": "Translate the most important uncertainties into questions a suitable inquiry could address. Keep proposed research separate from actual findings.",
+        "body": "Questions might concern what first-time readers need to know, who maintains information and how changes reach the visible touchpoint. An illustration cannot answer any of these questions, and this template contains no participant study.",
+        "labels": [
+          "Assumption",
+          "Research question",
+          "Appropriate source to seek"
+        ],
+        "question": "Which question should be investigated before the service concept is developed further?"
+      },
+      {
+        "title": "Define the service handoff.",
+        "lead": "A handoff should identify the current concept version, the unresolved dependencies and the role that would need to accept further work. Passing a file is not the same as transferring responsibility.",
+        "body": "The proposed package includes a blueprint, copy draft and question list. A real owner would need to confirm which artifacts are useful and which operating conditions apply. Do not label a concept reviewed or approved without that confirmation.",
+        "labels": [
+          "Handoff artifact",
+          "Receiving role to confirm",
+          "Acceptance condition"
+        ],
+        "question": "What confirmation would distinguish a useful handoff from an unsupported assignment?"
+      },
+      {
+        "title": "Record the concept decision.",
+        "lead": "Invite a reader to keep, revise or pause the service concept, with a reason tied to its dependencies. A decision record should preserve the uncertainty rather than make the diagram look final.",
+        "body": "A bounded response might request contextual research before choosing between the card and contact-route options. Keep the distinction between a concept discussion and an operating service visible in every exported copy.",
+        "labels": [
+          "Decision option",
+          "Dependency to resolve",
+          "Next version change"
+        ],
+        "question": "What needs to change in the blueprint before another review would be useful?"
+      }
+    ]
+  },
+  {
+    "id": "partnership-canvas",
+    "title": "PARTNERSHIP CANVAS",
+    "subtitle": "合作提案",
+    "category": "提案",
+    "layout": "bilateral",
+    "color": "#783e6b",
+    "wash": "#f5e5ef",
+    "framework": "双边价值与责任画布",
+    "scope": "Fictional collaboration between two reading organisations. No partner endorsement, signed agreement, resource commitment or legal terms are supplied.",
+    "sources": [
+      "common-ground/04",
+      "afterglow/05",
+      "open-shelf/06",
+      "tideline/15"
+    ],
+    "chapters": [
+      {
+        "title": "Propose a shared purpose.",
+        "lead": "This canvas explores a possible collaboration between two fictional reading organisations. Begin with a purpose that both sides could question, rather than a list of benefits asserted on their behalf.",
+        "body": "The imagined purpose is to develop a discussion resource that each organisation could adapt. The proposal requests a conversation about fit and boundaries; it does not establish a partnership or authorise use of either party’s name.",
+        "labels": [
+          "Shared intention",
+          "Partner A question",
+          "Partner B question"
+        ],
+        "question": "What common purpose is worth discussing without assuming either organisation has agreed?"
+      },
+      {
+        "title": "Make each side’s context visible.",
+        "lead": "Record the context each prospective partner would need to confirm. Balanced treatment means allowing different constraints, not inventing equal capacity or identical priorities.",
+        "body": "Partner A might contribute editorial experience; partner B might understand a particular discussion setting. These are placeholders for conversation, not descriptions of real organisations or commitments they have made.",
+        "labels": [
+          "Partner A context",
+          "Partner B context",
+          "Information to confirm"
+        ],
+        "question": "Which assumption about either partner would most change the proposed collaboration?"
+      },
+      {
+        "title": "Frame a genuinely shared problem.",
+        "lead": "A collaboration needs a problem for which working together could be relevant. Separate a shared concern from two unrelated tasks placed in the same document.",
+        "body": "The fictional issue is that a discussion resource may need both clear writing and contextual adaptation. Whether those needs are real, and whether these partners are suitable, remains to be established through independent information.",
+        "labels": [
+          "Common problem",
+          "A-specific concern",
+          "B-specific concern"
+        ],
+        "question": "What part of the problem would remain difficult if either partner worked alone?"
+      },
+      {
+        "title": "Describe contributions without assigning them.",
+        "lead": "List the kind of contribution each side might offer and the conditions that would need confirmation. Avoid using the canvas to allocate real work to people who have not accepted it.",
+        "body": "A possible editorial contribution is a draft prompt set. A possible contextual contribution is feedback on where that set needs adaptation. Actual availability, expertise, ownership and review responsibility are not supplied by the template.",
+        "labels": [
+          "Possible A contribution",
+          "Possible B contribution",
+          "Confirmation condition"
+        ],
+        "question": "What would each side need to know before accepting a contribution?"
+      },
+      {
+        "title": "Show value in both directions.",
+        "lead": "Explain what each partner could learn or gain, while leaving room for a response that the proposed exchange is not worthwhile. Reciprocal value need not be identical.",
+        "body": "Partner A might learn about contextual limitations in its writing. Partner B might gain a reusable discussion format. Neither benefit is a measured result, a testimonial or a promise about a real organisation.",
+        "labels": [
+          "Value for A",
+          "Value for B",
+          "Benefit assumption"
+        ],
+        "question": "How would you check whether the proposed value matters to each side?"
+      },
+      {
+        "title": "Set responsibility and ownership boundaries.",
+        "lead": "Distinguish producing a draft, reviewing a draft and making a decision about its use. Ownership, permissions and legal terms require their own appropriate agreement outside this fictional canvas.",
+        "body": "A working discussion can ask who would maintain the text and who could authorise a real publication. It should not mark an asset shared, licensed or approved merely because both parties appear on a page.",
+        "labels": [
+          "Drafting responsibility",
+          "Review responsibility",
+          "Permission question"
+        ],
+        "question": "Which responsibility or permission must be resolved before any shared material is used?"
+      },
+      {
+        "title": "Agree how conversations would work.",
+        "lead": "A communication proposal should clarify the purpose of each exchange and the artifact to bring. Do not invent a calendar or imply that contacts have been appointed.",
+        "body": "An initial conversation could review the shared problem; a later exchange could discuss a draft and its unresolved questions. The useful unit is a reviewable artifact, not a schedule presented as an agreed commitment.",
+        "labels": [
+          "Conversation purpose",
+          "Artifact to bring",
+          "Contact to confirm"
+        ],
+        "question": "What would make a first conversation useful for both sides?"
+      },
+      {
+        "title": "Plan for a difference of view.",
+        "lead": "Keep a route for disagreement alongside the preferred collaboration story. A difference can concern scope, wording or timing without implying bad faith.",
+        "body": "For example, one side may want a broad resource while the other needs a narrow exercise. Record both concerns and ask whether a smaller shared component would preserve useful collaboration. This is a discussion method, not dispute-resolution advice.",
+        "labels": [
+          "A concern",
+          "B concern",
+          "Smaller common option"
+        ],
+        "question": "What disagreement would require revisiting the shared purpose rather than simply editing a sentence?"
+      },
+      {
+        "title": "Keep an exit or pause option.",
+        "lead": "A responsible collaboration proposal allows either side to decide that the fit is not yet right. Clarify what would need to be preserved or withdrawn if the discussion stops.",
+        "body": "A pause might leave each side with its own notes while avoiding any public partnership claim. Real confidentiality, retention and intellectual-property arrangements require appropriate independent agreement; none is established here.",
+        "labels": [
+          "Pause condition",
+          "Material question",
+          "Follow-up boundary"
+        ],
+        "question": "How can the discussion end without implying an obligation that was never accepted?"
+      },
+      {
+        "title": "Invite two independent responses.",
+        "lead": "Close with space for each partner’s response and a shared next question. A single signature-like box would hide the fact that the parties may have different conditions.",
+        "body": "Ask each side to identify interest, concerns and a prerequisite source. A future agreement would need its own authorised process. Keep this canvas labelled as a fictional proposal until actual context and consent are established.",
+        "labels": [
+          "Partner A response",
+          "Partner B response",
+          "Shared next question"
+        ],
+        "question": "Which next question is genuinely shared after both responses are considered?"
+      }
+    ]
+  },
+  {
+    "id": "research-commission",
+    "title": "RESEARCH COMMISSION",
+    "subtitle": "研究委托提案",
+    "category": "提案",
+    "layout": "commission",
+    "color": "#3f6274",
+    "wash": "#e6eef1",
+    "framework": "研究问题与方法矩阵",
+    "scope": "Fictional research scoping proposal. No actual recruitment, personal data, research approval, commissioned contract or empirical findings are supplied.",
+    "sources": [
+      "tideline/11",
+      "tideline/12",
+      "common-ground/02",
+      "open-shelf/06"
+    ],
+    "chapters": [
+      {
+        "title": "Commission a question, not a conclusion.",
+        "lead": "This proposal scopes a fictional inquiry into how readers interpret a discussion prompt. The requested decision is whether the research question and proposed approach are suitable for further review.",
+        "body": "The proposal does not promise that the prompt works. It defines the uncertainty, possible sources, intended analysis and limits so a prospective commissioner can challenge the approach before any real study is considered.",
+        "labels": [
+          "Commission question",
+          "Decision sought",
+          "Intended use"
+        ],
+        "question": "What decision could the proposed inquiry inform without promising a particular result?"
+      },
+      {
+        "title": "Describe the knowledge gap.",
+        "lead": "A useful background section explains what is unknown and why it matters to the intended decision. Distinguish available context from a claim that a full literature review has been completed.",
+        "body": "In this example, the wording of a prompt is available but its interpretation in a real setting is unknown. The proposal includes no literature search or empirical source, so those gaps must remain explicit.",
+        "labels": [
+          "Known material",
+          "Knowledge gap",
+          "Source still needed"
+        ],
+        "question": "Which missing source would most affect the proposed research scope?"
+      },
+      {
+        "title": "Arrange the research questions.",
+        "lead": "Separate the main question from supporting questions about language, context and possible misunderstanding. Each question should have a clear relationship to the proposed decision.",
+        "body": "Main question: what interpretations might the prompt invite? Supporting questions could examine ambiguous terms and missing context. These are questions to investigate, not findings about what any participant actually thinks.",
+        "labels": [
+          "Main question",
+          "Supporting question",
+          "Decision link"
+        ],
+        "question": "Which supporting question can be removed without weakening the main inquiry?"
+      },
+      {
+        "title": "Choose a method for the question.",
+        "lead": "Match the kind of uncertainty to the kind of material a method could produce. A method label alone does not establish suitability or permission to carry it out.",
+        "body": "A desk review could inspect wording; an appropriately reviewed interview study could explore interpretation in context. The first would not supply participant views, while the second would require real arrangements not provided by this document.",
+        "labels": [
+          "Question",
+          "Candidate method",
+          "Method limitation"
+        ],
+        "question": "What would the candidate method be unable to tell the commissioner?"
+      },
+      {
+        "title": "Define the material boundary.",
+        "lead": "State which documents or proposed sources are within scope and which are excluded. Keep source availability separate from the right to access, retain or reuse material.",
+        "body": "The fictional desk scope could include the draft prompt and version notes. It excludes personal records and actual interview data. Any real research involving people or their information would need appropriate consent, review and safeguards outside this template.",
+        "labels": [
+          "Included material",
+          "Excluded material",
+          "Access question"
+        ],
+        "question": "What material boundary should remain attached to every research artifact?"
+      },
+      {
+        "title": "Explain the analysis plan.",
+        "lead": "Describe how material would be organised before deciding what it means. A transparent analysis plan makes it easier to notice when an interpretation outruns the source.",
+        "body": "For a desk review, passages could be grouped by ambiguous term, missing instruction and implied assumption. The categories are proposed analytic tools, not validated codes or a summary of real collected data.",
+        "labels": [
+          "Analysis unit",
+          "Proposed category",
+          "Interpretation boundary"
+        ],
+        "question": "How would a reviewer trace an interpretation back to the material that prompted it?"
+      },
+      {
+        "title": "Expose the limitations early.",
+        "lead": "List limitations in terms of their effect on the decision, not as a generic disclaimer added after a conclusion. A narrow study can still be useful if its boundary is understood.",
+        "body": "A wording review could identify candidate ambiguities but could not establish prevalence, preference or learning outcomes. A later study would need its own suitable design if the commissioner requires a different kind of answer.",
+        "labels": [
+          "Limitation",
+          "Consequence",
+          "Possible follow-up"
+        ],
+        "question": "Which desired conclusion would be unjustified even if the proposed analysis were completed?"
+      },
+      {
+        "title": "Identify resources and dependencies.",
+        "lead": "State what would need to be available before the work could be responsibly commissioned. Resource categories should include review and context, not only analyst time.",
+        "body": "The proposal leaves actual staffing, fee, schedule, permissions and source access unconfirmed. A real commission would need those conditions to be agreed independently rather than inferred from a complete-looking methods page.",
+        "labels": [
+          "Dependency",
+          "Confirmation needed",
+          "Effect on scope"
+        ],
+        "question": "Which dependency could require changing the research question or method?"
+      },
+      {
+        "title": "Define a useful delivery.",
+        "lead": "Describe the deliverable and the quality questions a commissioner could use to review it. A useful research handoff preserves the distinction between source material, interpretation and recommendation.",
+        "body": "A proposed desk-review package might contain a question map, annotated prompt and limitations note. It should not be described as an empirical report or validated recommendation. No actual study output is supplied by this proposal.",
+        "labels": [
+          "Deliverable",
+          "Review criterion",
+          "Required source trace"
+        ],
+        "question": "What should the receiving reviewer be able to inspect rather than merely trust?"
+      },
+      {
+        "title": "Request a scope decision.",
+        "lead": "Offer a bounded choice: refine the question, review the proposed method or defer the commission. A positive response to the proposal is not approval to recruit participants or collect data.",
+        "body": "Record the question accepted for further discussion, the conditions still open and the role authorised to make a real commissioning decision. Appropriate contracts and review processes remain outside this fictional template.",
+        "labels": [
+          "Scope response",
+          "Open condition",
+          "Authorised role to confirm"
+        ],
+        "question": "What must be resolved before this becomes a real research commission?"
+      }
+    ]
+  },
+  {
+    "id": "change-case",
+    "title": "CHANGE CASE",
+    "subtitle": "变更提案",
+    "category": "提案",
+    "layout": "delta",
+    "color": "#3d6651",
+    "wash": "#e6f0e4",
+    "framework": "现状到目标差异分析",
+    "scope": "Fictional change from an unstructured prompt folder to a versioned prompt index. No real migration, system access, staff appointment or operational approval is supplied.",
+    "sources": [
+      "swatch/03",
+      "open-shelf/03",
+      "afterglow/11",
+      "tideline/04"
+    ],
+    "chapters": [
+      {
+        "title": "Explain why a change deserves review.",
+        "lead": "This proposal compares an imagined unstructured folder of discussion prompts with a versioned index. The decision sought is whether to investigate a change, not whether to replace a working system immediately.",
+        "body": "The fictional concern is that a reader may not know which prompt version to use. No real incident, measured error rate or user complaint is supplied. The case for change therefore begins as a question requiring contextual evidence.",
+        "labels": [
+          "Current concern",
+          "Proposed direction",
+          "Decision sought"
+        ],
+        "question": "Which source would show whether the proposed change addresses a real problem?"
+      },
+      {
+        "title": "Describe the current state fairly.",
+        "lead": "A current-state description should capture useful features as well as difficulties. Avoid making the existing approach look artificially poor to justify the preferred solution.",
+        "body": "A simple folder can be easy to browse and require little maintenance. Its limitations might concern version visibility or ownership, but those are hypotheses until the actual context is examined. No real system audit has been performed.",
+        "labels": [
+          "Current strength",
+          "Possible limitation",
+          "Evidence gap"
+        ],
+        "question": "What should the proposed change preserve from the current approach?"
+      },
+      {
+        "title": "Define the target condition.",
+        "lead": "Describe the capability the change is intended to create rather than jumping straight to a product or tool. A target should be inspectable and remain open to more than one implementation.",
+        "body": "The proposed condition is that a reader can identify a prompt version and a contact for questions. This does not require a particular platform, and it does not establish that a real contact or maintenance process exists.",
+        "labels": [
+          "Target capability",
+          "Intended reader benefit",
+          "Boundary"
+        ],
+        "question": "How could a reviewer recognise the target condition without assuming a particular tool?"
+      },
+      {
+        "title": "Map the differences.",
+        "lead": "Compare current and target conditions using consistent dimensions. A difference map should show where a change creates new work as well as where it could reduce uncertainty.",
+        "body": "Dimensions might include version labels, ownership information and update effort. A versioned index could clarify the current copy while creating an ongoing maintenance dependency. Both sides belong in the proposal.",
+        "labels": [
+          "Current condition",
+          "Target condition",
+          "New dependency"
+        ],
+        "question": "Which difference produces the largest new responsibility?"
+      },
+      {
+        "title": "Consider affected roles.",
+        "lead": "Identify categories of people who could be affected and the questions each would need answered. Listing a role does not prove that a person has been consulted or has accepted the change.",
+        "body": "A prompt author might need a revision route; a facilitator might need a stable reference; a maintainer might need update authority. These are discussion roles, not actual appointments or research findings about a workforce.",
+        "labels": [
+          "Role affected",
+          "Possible effect",
+          "Consultation question"
+        ],
+        "question": "Whose perspective could reveal a cost missing from the preferred change story?"
+      },
+      {
+        "title": "Keep more than one option.",
+        "lead": "Compare a full index, a lighter version label and retaining the current folder while clarifying its limits. An option set should include a credible no-change or smaller-change alternative.",
+        "body": "The lighter option may require less maintenance but offer less discoverability. The full index may improve structure while increasing update work. No option is established as feasible or superior in a real environment.",
+        "labels": [
+          "Full option",
+          "Lighter option",
+          "Retain-current option"
+        ],
+        "question": "What criterion would distinguish a useful change from unnecessary complexity?"
+      },
+      {
+        "title": "Propose a staged transition.",
+        "lead": "A transition plan should make dependencies and reversibility visible. Do not present a fictional sequence as an agreed migration schedule or permission to change actual records.",
+        "body": "A paper prototype could be reviewed before any real material is moved. A later trial, if independently authorised, could preserve the existing reference while examining the new structure. Actual access, retention and ownership conditions remain unresolved.",
+        "labels": [
+          "Review stage",
+          "Reversible step",
+          "Commitment boundary"
+        ],
+        "question": "Which step should remain reversible until the ownership questions are answered?"
+      },
+      {
+        "title": "Name the change risks.",
+        "lead": "Describe a risk as an uncertain event, a possible consequence and a question for responsible review. Avoid treating a short risk table as a complete assurance process.",
+        "body": "A stale index could create false confidence about which copy is current. A missing maintainer could leave the new structure unsupported. These hypothetical risks point to governance questions, not evidence that a real failure has occurred.",
+        "labels": [
+          "Uncertain event",
+          "Possible consequence",
+          "Review question"
+        ],
+        "question": "Which risk would undermine the reason for making the change at all?"
+      },
+      {
+        "title": "Define what would count as useful evidence.",
+        "lead": "Before recommending adoption, identify what a review would need to establish. Keep usability, maintenance and responsibility questions separate rather than reducing them to one success label.",
+        "body": "A future review might examine whether the version is identifiable and whether update ownership is accepted. It could not infer a broader productivity improvement without suitable evidence. This document contains no trial results or real measurements.",
+        "labels": [
+          "Review question",
+          "Suitable evidence",
+          "Unsupported inference"
+        ],
+        "question": "What evidence would justify revising or abandoning the preferred option?"
+      },
+      {
+        "title": "Record a conditional decision.",
+        "lead": "Invite a decision about the next review, with explicit prerequisites and unresolved questions. A conditional decision should not be written as completed implementation.",
+        "body": "Possible response: develop a paper index after confirming the intended use and source material. Keep the alternative options and the current-state strengths attached, so a later reviewer can reconsider the direction rather than inherit a foregone conclusion.",
+        "labels": [
+          "Response",
+          "Prerequisite",
+          "Next review artifact"
+        ],
+        "question": "What exactly is authorised for discussion, and what remains outside this proposal?"
+      }
+    ]
+  },
+  {
+    "id": "creative-treatment",
+    "title": "CREATIVE TREATMENT",
+    "subtitle": "创意执行提案",
+    "category": "提案",
+    "layout": "treatment",
+    "color": "#a64535",
+    "wash": "#f7e8dc",
+    "framework": "创意方向与呈现脚本",
+    "scope": "Fictional community-reading campaign treatment. No brand endorsement, tested audience response, production quote, permissions or approved media placement is supplied.",
+    "sources": [
+      "afterglow/03",
+      "swatch/02",
+      "common-ground/04",
+      "tideline/02"
+    ],
+    "chapters": [
+      {
+        "title": "Give the concept a creative task.",
+        "lead": "This treatment proposes a visual and verbal direction for an imaginary community-reading invitation. Begin with what the communication should help a reader understand, not a promise of campaign performance.",
+        "body": "The working task is to invite a curious reader into a conversation about a short text. The decision sought is whether this direction is worth developing, not whether a real campaign should be published or funded.",
+        "labels": [
+          "Communication task",
+          "Desired understanding",
+          "Direction decision"
+        ],
+        "question": "What should a reader understand after encountering the proposed invitation?"
+      },
+      {
+        "title": "State the audience assumption.",
+        "lead": "Describe the imagined communication situation and what remains unknown about a real audience. A fictional audience sketch is a design prompt, not evidence of demand or a tested preference.",
+        "body": "The concept imagines an adult who is interested in reading but unsure what a discussion involves. Actual motivations, language needs, access conditions and participation choices would need contextual research before a real campaign.",
+        "labels": [
+          "Imagined situation",
+          "Audience uncertainty",
+          "Research question"
+        ],
+        "question": "Which audience assumption should be challenged before developing the creative direction?"
+      },
+      {
+        "title": "Name the central idea.",
+        "lead": "A useful concept can be stated simply enough to guide both words and images. The idea should explain the connection between the invitation and the intended conversation.",
+        "body": "Working concept: a shared page can open more than one perspective. The line is a creative proposition, not a claim that reading produces a measured social outcome. Alternative wording should retain that distinction.",
+        "labels": [
+          "Concept sentence",
+          "Visual implication",
+          "Claim boundary"
+        ],
+        "question": "What makes this one coherent direction rather than a collection of attractive references?"
+      },
+      {
+        "title": "Build a short narrative sequence.",
+        "lead": "Describe how the message unfolds across a beginning, a turn and an invitation. Narrative order helps a reviewer understand the intended experience without assuming a confirmed channel or running time.",
+        "body": "Begin with a person noticing a passage, turn to two different readings of it, and close with a question about what the reader sees. The sequence is a proposed script, not a record of a real event.",
+        "labels": [
+          "Opening beat",
+          "Perspective turn",
+          "Closing invitation"
+        ],
+        "question": "Which beat carries the main idea, and what could be removed without losing it?"
+      },
+      {
+        "title": "Set the visual language.",
+        "lead": "Explain the role of colour, composition and image treatment in the concept. A visual vocabulary should support the task rather than stand in for evidence about audience response.",
+        "body": "Cobalt and vermilion can create contrast; close views of paper can keep the text central; two readings can be suggested through different annotations. The supplied watercolor images are illustrative references, not approved campaign assets.",
+        "labels": [
+          "Colour relationship",
+          "Composition principle",
+          "Asset question"
+        ],
+        "question": "Which visual choice supports the idea, and which is only a stylistic preference?"
+      },
+      {
+        "title": "Write a sample scene.",
+        "lead": "Provide enough script detail to make the treatment discussable. Separate proposed copy from production instructions and from claims that would require substantiation.",
+        "body": "Example scene: a hand rests beside a blank page; a voice asks What did you notice first? A second note offers another reading. This is an invented scene with no actual performer, consent, recording or production arrangement.",
+        "labels": [
+          "Proposed scene",
+          "Draft line",
+          "Meaning to preserve"
+        ],
+        "question": "What should the sample scene communicate without inventing an endorsement or result?"
+      },
+      {
+        "title": "Adapt the idea by medium.",
+        "lead": "Show how the same concept could change across a poster, a short sequence or a discussion card. Adaptation should preserve the idea while acknowledging the limits of each format.",
+        "body": "A poster might centre one question; a sequence could reveal two interpretations; a card could leave space for a response. No media slot, dimensions or real distribution arrangement is confirmed by these examples.",
+        "labels": [
+          "Poster adaptation",
+          "Sequence adaptation",
+          "Card adaptation"
+        ],
+        "question": "Which part of the idea must stay consistent when the format changes?"
+      },
+      {
+        "title": "Expose production dependencies.",
+        "lead": "Name the decisions and permissions that would need resolution before real execution. A compelling treatment is not a production quote, license or approval.",
+        "body": "Dependencies could include final copy, asset rights, accessibility review, responsible production roles and actual distribution specifications. Costs, dates and appointments are deliberately unconfirmed rather than represented by invented totals.",
+        "labels": [
+          "Dependency",
+          "Review needed",
+          "Responsible role to confirm"
+        ],
+        "question": "Which unresolved dependency could change the creative direction itself?"
+      },
+      {
+        "title": "Ask reviewers useful questions.",
+        "lead": "Give reviewers a small set of questions linked to the creative task. This makes feedback more actionable than asking whether they like the artwork.",
+        "body": "Questions might ask whether the central idea is clear, which line overstates the invitation and which visual cue is unnecessary. A reviewer’s reaction is not a representative audience result or permission to publish.",
+        "labels": [
+          "Idea clarity question",
+          "Copy boundary question",
+          "Visual question"
+        ],
+        "question": "What feedback would help choose between this direction and a credible alternative?"
+      },
+      {
+        "title": "Choose a direction with conditions.",
+        "lead": "Close with a record of what to develop, what to revise and what to leave unresolved. Choosing a direction for exploration is different from approving final production.",
+        "body": "A bounded response could request a simpler opening scene and an alternative headline before another discussion. Keep the audience assumptions, image provenance and production dependencies attached when the treatment is shared.",
+        "labels": [
+          "Develop further",
+          "Revision requested",
+          "Remaining condition"
+        ],
+        "question": "What should the next creative draft demonstrate before a production decision is considered?"
+      }
+    ]
+  }
+]

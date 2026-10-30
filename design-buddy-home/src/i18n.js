@@ -12,7 +12,7 @@ export const LANG_HTML = {
   日本語: 'ja',
 }
 
-const DICT = {
+export const DICT = {
   /* ---------- 五页共享导航 rail ---------- */
   'rail.home': { zh: '首页', 'zh-TW': '首頁', en: 'Home', ja: 'ホーム' },
   'rail.media': { zh: '媒体', 'zh-TW': '媒體', en: 'Media', ja: 'メディア' },
@@ -82,12 +82,12 @@ const DICT = {
     en: 'Switch connection mode when the network is unstable. Changes apply instantly.',
     ja: 'ネットワーク異常時に接続方法を切り替えられます。変更は即時反映されます。',
   },
-  'set.trustedSkills': { zh: '自动安装可信技能', 'zh-TW': '自動安裝可信技能', en: 'Auto-install trusted skills', ja: '信頼スキルの自動インストール' },
+  'set.trustedSkills': { zh: '自动启用内置技能', 'zh-TW': '自動啟用內建技能', en: 'Auto-enable built-in skills', ja: '内蔵スキルの自動有効化' },
   'set.trustedSkillsDesc': {
-    zh: '安全检测通过后自动安装，高风险项始终要求手动确认。',
-    'zh-TW': '安全檢測通過後自動安裝，高風險項目一律要求手動確認。',
-    en: 'Trusted skills install automatically; high-risk items always require manual confirmation.',
-    ja: '安全チェック通過後は自動インストール。高リスク項目は常に手動確認が必要です。',
+    zh: '自动启用可信内置工具；插件包始终单独审核安装。',
+    'zh-TW': '自動啟用可信內建工具；外掛套件一律單獨審核安裝。',
+    en: 'Enable trusted built-in tools automatically; plugin packages always require separate installation consent.',
+    ja: '信頼済み内蔵ツールを自動で有効化。プラグインのインストールは個別承認が必要です。',
   },
   'set.skillAutoUpdate': { zh: '技能自动更新', 'zh-TW': '技能自動更新', en: 'Skill auto-update', ja: 'スキルの自動更新' },
   'set.skillAutoUpdateDesc': {
@@ -124,7 +124,7 @@ const DICT = {
   'experts.sort.new': { zh: '最新', 'zh-TW': '最新', en: 'Newest', ja: '新着順' },
   'page.skills': { zh: '技能 — Design Buddy', 'zh-TW': '技能 — Design Buddy', en: 'Skills — Design Buddy', ja: 'スキル — Design Buddy' },
   'skills.search': { zh: '搜索技能', 'zh-TW': '搜尋技能', en: 'Search skills', ja: 'スキルを検索' },
-  'skills.installedShort': { zh: '已安装', 'zh-TW': '已安裝', en: 'Installed', ja: 'インストール済み' },
+  'skills.installedShort': { zh: '已启用', 'zh-TW': '已啟用', en: 'Enabled', ja: '有効' },
   'skills.add': { zh: '添加技能', 'zh-TW': '新增技能', en: 'Add skill', ja: 'スキルを追加' },
   'skills.source.recommend': { zh: '推荐', 'zh-TW': '推薦', en: 'Recommended', ja: 'おすすめ' },
   'skills.source.skillhub': { zh: 'SkillHub', 'zh-TW': 'SkillHub', en: 'SkillHub', ja: 'SkillHub' },
@@ -285,14 +285,22 @@ const DICT = {
 
   /* ---------- 模型：白名单由 discover-models 脚本实测后写死 ---------- */
   'dy.mdl.availableDesc': {
-    zh: '连通性实测通过，可用于创作', 'zh-TW': '連通性實測通過，可用於創作',
-    en: 'Passed live connectivity test, ready for creation', ja: '接続テスト合格、創作に使用できます',
+    zh: '探测时对话请求成功；不代表应用问答服务已接通', 'zh-TW': '探測時對話請求成功；不代表應用問答服務已接通',
+    en: 'Chat probe passed; this does not connect the app chat service.', ja: '会話テスト合格。アプリのチャット接続は別途必要です。',
+  },
+  'dy.mdl.configuredDesc': {
+    zh: '预置模型标识 · 尚未验证账号权限或连通性', 'zh-TW': '預設模型識別碼 · 尚未驗證帳號權限或連線',
+    en: 'Preset identifier · account access and connectivity not verified', ja: 'プリセット識別子・アカウント権限と接続は未検証',
+  },
+  'dy.mdl.setup': {
+    zh: '选择模型后，请测试连接。API Key 不写入前端源码或本地存储；测试成功后仅在服务器内存保留 30 分钟。也可在服务器配置 DEEPSEEK_API_KEY / OPENAI_API_KEY。普通问答将调用所选模型。',
+    'zh-TW': '選擇模型後請測試連線。API Key 不寫入前端原始碼或本機儲存；測試成功後僅在伺服器記憶體保留 30 分鐘。亦可設定伺服器環境變數。一般問答將呼叫選定模型。',
+    en: 'Selection alone is not an AI connection; test access first. API Key is never stored locally. Successful tests retain it in server memory for 30 minutes. Server environment credentials are also supported. Chat uses the selected model.',
+    ja: 'モデルを選択して接続をテストしてください。API Key はローカルに保存せず、テスト成功後サーバーメモリに30分のみ保持します。サーバー環境変数も使用できます。チャットは選択モデルを呼び出します。',
   },
   'dy.mdl.empty': {
-    zh: '尚未发现可用模型。请在有网络的环境运行 npm run discover-models，系统会自动探测并写死可用模型列表。',
-    'zh-TW': '尚未發現可用模型。請在有網路的環境執行 npm run discover-models，系統會自動探測並寫死可用模型列表。',
-    en: 'No available models yet. Run npm run discover-models in a networked environment to probe and hardcode the model list automatically.',
-    ja: '利用可能なモデルがまだありません。ネットワーク接続のある環境で npm run discover-models を実行すると、自動で検出して固定リストに書き出します。',
+    zh: '尚未配置模型标识。请检查模型配置与服务端探测结果。', 'zh-TW': '尚未設定模型識別碼，請檢查模型設定與伺服器探測結果。',
+    en: 'No model identifiers configured. Check the configuration and server-side discovery results.', ja: 'モデル識別子が未設定です。設定とサーバー側の検証結果を確認してください。',
   },
   'dy.mdl.switched': { zh: '已切换到{model}', 'zh-TW': '已切換到{model}', en: 'Switched to {model}', ja: '{model} に切り替えました' },
 

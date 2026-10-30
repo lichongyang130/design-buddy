@@ -1,0 +1,296 @@
+{
+  "work": {
+    "id": "pilot-charter",
+    "title": "PILOT CHARTER",
+    "subtitle": "试点章程提案",
+    "category": "提案",
+    "layout": "stagegate",
+    "color": "#253b62",
+    "wash": "#e6ecf8",
+    "framework": "阶段门试点章程",
+    "scope": "Fictional shared-reading pilot proposal. No venue, staffing, permissions, funding or real participant results are confirmed.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "proposal-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / PILOT CHARTER",
+      "title": "A small pilot, a clear decision.",
+      "lead": "Propose a limited exploration of a shared reading session before making a larger commitment. The decision sought is whether to develop a properly reviewed pilot plan, not whether to open a service immediately.",
+      "body": "The fictional sponsor wants to understand how a common text might support discussion. This charter names the question, the conditions for proceeding and the evidence that would inform a later decision. It supplies no real venue or participant commitments.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What exact decision should a reader be able to make after reviewing this charter?",
+      "records": [
+        {
+          "label": "Decision sought",
+          "prompt": "Draft decision sought: not yet confirmed."
+        },
+        {
+          "label": "Sponsor to confirm",
+          "prompt": "Draft sponsor to confirm: not yet confirmed."
+        },
+        {
+          "label": "Review boundary",
+          "prompt": "Draft review boundary: not yet confirmed."
+        }
+      ],
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / PILOT CHARTER",
+      "title": "Name the problem to investigate.",
+      "lead": "Separate the proposed learning problem from a claim about demand. The premise is that a reading group might benefit from a more focused conversation; no local need has been measured.",
+      "body": "Write the current uncertainty as a question: under what conditions would a shared extract help participants refer to the same material? A real proposal would attach the relevant contextual source rather than treat an attractive room image as evidence.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which source would establish whether this problem matters in the intended setting?",
+      "records": [
+        {
+          "label": "Problem question",
+          "prompt": "Draft problem question: not yet confirmed."
+        },
+        {
+          "label": "Existing context",
+          "prompt": "Draft existing context: not yet confirmed."
+        },
+        {
+          "label": "Missing evidence",
+          "prompt": "Draft missing evidence: not yet confirmed."
+        }
+      ],
+      "image": 1,
+      "kind": "body"
+    },
+    {
+      "section": "03 / PILOT CHARTER",
+      "title": "Make the pilot hypothesis testable.",
+      "lead": "A pilot hypothesis links a proposed activity with an observable signal. Keep the signal narrow enough to distinguish the question being explored from a broad promise of success.",
+      "body": "Example hypothesis: a common extract may make references easier to locate. A possible signal is whether an agreed observation record can identify the passages being discussed. This would not by itself establish learning, satisfaction or a causal effect.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What observation could weaken, rather than merely confirm, the working hypothesis?",
+      "records": [
+        {
+          "label": "Working hypothesis",
+          "prompt": "Draft working hypothesis: not yet confirmed."
+        },
+        {
+          "label": "Observable signal",
+          "prompt": "Draft observable signal: not yet confirmed."
+        },
+        {
+          "label": "Alternative explanation",
+          "prompt": "Draft alternative explanation: not yet confirmed."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / PILOT CHARTER",
+      "title": "Draw the scope boundary.",
+      "lead": "Define what the pilot includes, excludes and leaves for later review. Scope is most useful when the excluded work is as visible as the preferred activity.",
+      "body": "The fictional scope includes developing a discussion prompt and a proposed observation form. It excludes venue operation, recruitment, data collection and purchase commitments. Any real pilot would need its own appropriate approvals and participant arrangements.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which request would turn this limited exploration into a different project?",
+      "records": [
+        {
+          "label": "Included work",
+          "prompt": "Draft included work: not yet confirmed."
+        },
+        {
+          "label": "Explicit exclusions",
+          "prompt": "Draft explicit exclusions: not yet confirmed."
+        },
+        {
+          "label": "New-scope trigger",
+          "prompt": "Draft new-scope trigger: not yet confirmed."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / PILOT CHARTER",
+      "title": "Describe a reversible trial.",
+      "lead": "Outline how the idea could be explored without implying that a real event has been scheduled. A reversible trial should leave room to stop, change the question or choose a less demanding alternative.",
+      "body": "Start with a paper walkthrough of an invented discussion. Review the prompt and observation fields before considering an actual session. A real session is a separate decision and cannot be authorised by this example charter.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What can be learned from the paper walkthrough before any real activity is considered?",
+      "records": [
+        {
+          "label": "Proposed walkthrough",
+          "prompt": "Draft proposed walkthrough: not yet confirmed."
+        },
+        {
+          "label": "Review input",
+          "prompt": "Draft review input: not yet confirmed."
+        },
+        {
+          "label": "Reversible next step",
+          "prompt": "Draft reversible next step: not yet confirmed."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / PILOT CHARTER",
+      "title": "Put a reviewer at each gate.",
+      "lead": "A stage gate combines a question, a review artifact and a role that would need to confirm responsibility. Naming a role in a template does not appoint a person.",
+      "body": "Gate one checks whether the question is clear. Gate two checks whether the proposed method and context are suitable. Gate three asks whether the available evidence supports continuing, changing or stopping. Record actual appointments outside the fictional example.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Who would need to accept each review responsibility before a real pilot could proceed?",
+      "records": [
+        {
+          "label": "Gate question",
+          "prompt": "Draft gate question: not yet confirmed."
+        },
+        {
+          "label": "Review artifact",
+          "prompt": "Draft review artifact: not yet confirmed."
+        },
+        {
+          "label": "Responsible role to confirm",
+          "prompt": "Draft responsible role to confirm: not yet confirmed."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / PILOT CHARTER",
+      "title": "Expose resource assumptions.",
+      "lead": "List resource categories without turning unknowns into invented prices. A short pilot can still depend on preparation, facilitation, suitable materials, a setting and appropriate review.",
+      "body": "For each category, distinguish an available resource from an assumption and an unresolved requirement. A borrowed room shown in an illustration is not an available venue. Keep missing categories visible instead of using a single unsupported total.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which unconfirmed resource could invalidate the proposed scope?",
+      "records": [
+        {
+          "label": "Resource category",
+          "prompt": "Draft resource category: not yet confirmed."
+        },
+        {
+          "label": "Availability status",
+          "prompt": "Draft availability status: not yet confirmed."
+        },
+        {
+          "label": "Confirmation needed",
+          "prompt": "Draft confirmation needed: not yet confirmed."
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / PILOT CHARTER",
+      "title": "Agree when to pause.",
+      "lead": "Stopping conditions protect the usefulness of the pilot. Identify conditions that should trigger a pause before interpreting a disappointing signal as a reason to expand the work.",
+      "body": "Examples include an unclear question, an unsuitable observation method or an unresolved permission. These are review conditions, not a safety checklist or a substitute for specialist assessment. Record who can decide to resume the work.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which condition should stop progress even if the idea remains appealing?",
+      "records": [
+        {
+          "label": "Pause condition",
+          "prompt": "Draft pause condition: not yet confirmed."
+        },
+        {
+          "label": "Review needed",
+          "prompt": "Draft review needed: not yet confirmed."
+        },
+        {
+          "label": "Resume decision role",
+          "prompt": "Draft resume decision role: not yet confirmed."
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / PILOT CHARTER",
+      "title": "Plan the evidence handoff.",
+      "lead": "Describe the artifact that a later reviewer would receive and what it could support. The evaluation plan should keep observations, interpretations and unresolved questions separate.",
+      "body": "A useful handoff might include the question, versioned prompt, method limitations and an anonymised summary if real collection were separately authorised. This proposal itself provides no real records, participant information or evaluation results.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What would the reviewer need in order to distinguish a useful signal from an unsupported conclusion?",
+      "records": [
+        {
+          "label": "Handoff artifact",
+          "prompt": "Draft handoff artifact: not yet confirmed."
+        },
+        {
+          "label": "Interpretation limit",
+          "prompt": "Draft interpretation limit: not yet confirmed."
+        },
+        {
+          "label": "Open question",
+          "prompt": "Draft open question: not yet confirmed."
+        }
+      ],
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / PILOT CHARTER",
+      "title": "Ask for a bounded response.",
+      "lead": "Close with a response form that distinguishes agreement to investigate from approval to operate. A clear request makes it possible to revise the charter without treating a polite discussion as a commitment.",
+      "body": "Offer the options develop the plan, revise the question or park the idea. Record the reasoning and any prerequisite source. Keep the scope note, version and unresolved responsibilities attached when this document is shared.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What response would improve this proposal without implying a commitment that has not been made?",
+      "records": [
+        {
+          "label": "Response option",
+          "prompt": "Draft response option: not yet confirmed."
+        },
+        {
+          "label": "Reason or condition",
+          "prompt": "Draft reason or condition: not yet confirmed."
+        },
+        {
+          "label": "Next review artifact",
+          "prompt": "Draft next review artifact: not yet confirmed."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for pilot-charter"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: open-shelf/06.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: tideline/15.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: common-ground/04.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: swatch/04.jpg"
+    }
+  ]
+}

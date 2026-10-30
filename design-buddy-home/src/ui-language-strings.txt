@@ -1,0 +1,1122 @@
+创建|Create|作成
+最近的对话记录|Recent conversations|最近の会話
+最近的 Design Buddy|Recent Design Buddy items|最近の Design Buddy
+搜索|Search|検索
+全部|All|すべて
+与您共享|Shared with you|共有された項目
+网站|Website|ウェブサイト
+文件夹|Folders|フォルダー
+将相关的 Design Buddy 分组，并一次性全部分享。|Group related Design Buddy items and share them together.|関連する Design Buddy をまとめて共有できます。
+创建文件夹|Create folder|フォルダーを作成
+垃圾箱|Trash|ごみ箱
+设置|Settings|設定
+邀请团队成员|Invite team members|メンバーを招待
+方案和价格|Plans and pricing|プランと料金
+＋ 新建工作区|＋ New workspace|＋ ワークスペースを作成
+返回|Back|戻る
+升级获得更多 AI 功能|Upgrade for more AI features|アップグレードして AI 機能を追加
+DesignBuddy 让您提前下班|Finish work earlier with Design Buddy|Design Buddy で仕事を効率化
+引用文件|Reference files|ファイルを参照
+继续输入可筛选 · ↑↓ 选择 · Esc 关闭|Type to filter · ↑↓ select · Esc close|入力で絞り込み · ↑↓ 選択 · Esc 閉じる
+调用技能|Run a skill|スキルを実行
+选中的技能会在这次创作里真实运行|Selected skills run during this creation.|選択したスキルは今回の作成で実行されます。
+添加文件|Add files|ファイルを追加
+模式|Mode|モード
+PPT 专家|Presentation expert|プレゼン専門家
+网页原型工程师|Web prototype engineer|ウェブプロトタイプエンジニア
+行政办公专家|Office operations expert|事務業務専門家
+自动化流程专家|Workflow automation expert|業務自動化専門家
+研究分析专家|Research analyst|調査分析専門家
+文档专家|Document expert|文書専門家
+内容优化专家|Content editor|コンテンツ編集専門家
+视觉设计专家|Visual designer|ビジュアルデザイナー
+AI 图片专家|AI image expert|AI 画像専門家
+模板与品牌专家|Template and brand expert|テンプレート・ブランド専門家
+质量审核专家|Quality reviewer|品質レビュー専門家
+召唤更多专家|Explore more experts|ほかの専門家を探す
+技能|Skills|スキル
+管理全部技能|Manage all skills|すべてのスキルを管理
+连接器|Connectors|コネクター
+管理全部连接器|Manage all connectors|すべてのコネクターを管理
+计划|Plan|計画
+任务|Tasks|タスク
+清除已完成|Clear completed|完了済みを消去
+计划来自每次提交的提示词，任务记录真实生成进度。|Plans follow your prompts; tasks show actual generation progress.|送信した指示から計画を作成し、タスクに実際の生成状況を記録します。
+选择本地文件|Choose local files|ローカルファイルを選択
+支持 PDF / Excel / Word / 图片 / 文本，多个文件会依次附到提示词。|Supports PDF, Excel, Word, images and text. Files are attached to your prompt in order.|PDF・Excel・Word・画像・テキストに対応。ファイルは順番に指示へ追加されます。
+引用对话中的文件|Reference conversation files|会話内のファイルを参照
+从媒体库选择…|Choose from media library…|メディアライブラリから選択…
+类型|Type|種類
+演示文稿|Presentation|プレゼンテーション
+文档|Document|ドキュメント
+轮播图|Carousel|カルーセル
+图片|Image|画像
+美化|Restyle|デザインを整える
+导入|Import|インポート
+方图|Square|正方形
+横版|Landscape|横向き
+竖版|Portrait|縦向き
+经典|Classic|クラシック
+参考图|Reference image|参照画像
+上传图片|Upload image|画像をアップロード
+风格参考|Style reference|スタイル参照
+使用图片的风格|Use the image style|画像のスタイルを使用
+角色参考|Character reference|キャラクター参照
+使用某个角色的形象|Use a character's appearance|キャラクターの外観を使用
+内容参考|Content reference|内容の参照
+使用图像中的元素|Use elements from the image|画像内の要素を使用
+标准|Standard|標準
+努力|Intensive|高精度
+适用于简单任务的基础模式|Basic mode for simple tasks|簡単な作業向けの基本モード
+适合日常工作的均衡效能|Balanced performance for everyday work|日常業務向けのバランスの取れた性能
+对重要工作全力以赴|Full effort for important work|重要な作業に全力で対応
+越多的需求将消耗更多的使用额度|More demanding tasks use more credits.|複雑な作業ほど多くの利用枠を消費します。
+示例指令|Example prompts|指示の例
+设计与产品|Design and product|デザインと製品
+市场与增长|Marketing and growth|マーケティングと成長
+教育与培训|Education and training|教育と研修
+商业与融资|Business and fundraising|事業と資金調達
+产品设计师的演示讲故事技巧|Presentation storytelling for product designers|製品デザイナー向けのプレゼン構成
+设计冲刺议程|Design sprint agenda|デザインスプリントの議題
+客户反馈主题|Customer feedback themes|顧客フィードバックのテーマ
+数据驱动的设计最佳实践|Data-driven design practices|データに基づくデザインの実践
+美化方式|Restyling method|デザイン調整方法
+更换视觉风格|Change visual style|ビジュアルスタイルを変更
+全新的主题、字体和配色|New themes, fonts and colors|新しいテーマ・フォント・配色
+重新设计布局|Redesign layout|レイアウトを再設計
+用更强大的布局重构卡片|Rebuild cards with stronger layouts|より効果的なレイアウトでカードを再構成
+精简文字|Simplify text|文章を簡潔にする
+标题更清晰，文案更简洁|Clearer headings and concise copy|見出しを明確に、文章を簡潔に
+更多选择|More options|その他の選択肢
+导入模板|Import template|テンプレートをインポート
+创建可复用的工作区模板|Create reusable workspace templates|再利用可能なワークスペース用テンプレートを作成
+提示：使用连接器从您喜爱的工具中导入。|Tip: import from your tools using connectors.|ヒント：コネクターを使って各種ツールから取り込めます。
+您还可以制作|You can also create|こんなものも作成できます
+信息图|Infographic|インフォグラフィック
+流程、时间线、对比|Processes, timelines and comparisons|手順・タイムライン・比較
+海报|Poster|ポスター
+活动、促销、公告|Events, promotions and announcements|イベント・販促・お知らせ
+社交媒体帖子|Social media post|SNS 投稿
+公告、促销活动、语录卡片|Announcements, campaigns and quote cards|お知らせ・キャンペーン・引用カード
+图表|Charts|図表
+流程图、循环图、思维导图|Flowcharts, cycles and mind maps|フローチャート・循環図・マインドマップ
+浏览模板|Browse templates|テンプレートを見る
+上传模板|Upload template|テンプレートをアップロード
+工作区还没有内容。在输入框写一句话发送，创作会出现在这里。|Your workspace is empty. Send a prompt to create your first item.|ワークスペースは空です。指示を送信すると作成した項目がここに表示されます。
+关闭筛选 ×|Close filters ×|絞り込みを閉じる ×
+工作区|Workspace|ワークスペース
+工作区模板|Workspace templates|ワークスペースのテンプレート
+最近|Recent|最近
+由您创建|Created by you|自分が作成
+已归档|Archived|アーカイブ済み
+探索|Explore|探索
+探索模板|Explore templates|テンプレートを探す
+筛选器|Filters|フィルター
+格式|Format|形式
+所有格式|All formats|すべての形式
+社交轮播卡片|Social carousel|SNS カルーセル
+网站复刻|Website recreation|ウェブサイトの再現
+实时产物|Live output|ライブ成果物
+类别|Category|カテゴリー
+课程|Course|講座
+提案|Proposal|提案
+报告|Report|レポート
+融资演讲稿|Fundraising speech|資金調達スピーチ
+营销材料|Marketing materials|マーケティング資料
+培训|Training|研修
+商业规划|Business planning|事業計画
+活动|Event|イベント
+产品设计|Product design|製品デザイン
+精心设计的模板，助您快速上手|Thoughtfully designed templates to get you started|すぐに使える、丁寧にデザインされたテンプレート
+筛选与工作区|Filters and workspace|絞り込みとワークスペース
+创建日期|Date created|作成日
+名称 A–Z|Name A–Z|名前順 A–Z
+没有匹配的模板|No matching templates|一致するテンプレートはありません
+清除全部筛选|Clear all filters|すべての絞り込みを解除
+正式完成|Published|公開済み
+查看制作说明|Production notes|制作に関する説明
+演示案例 28–35 页、15–20 张独立主图；文档至少 10 页、5 张不同插画。制作中案例不计完成。这是新制作的案例，不是此前四例原文件的恢复；旧源码和个人作品存储保留。|Presentations contain 28–35 pages and 15–20 main illustrations; documents have at least 10 pages and 5 distinct images. Drafts are not counted as complete. These are newly authored cases, not recovered historical originals. Existing sources and personal work are preserved.|プレゼンは28〜35ページ・15〜20枚の主画像、文書は10ページ以上・5枚以上の異なる画像を含みます。下書きは完成に含みません。過去の原本の復元ではなく、新たに制作した事例です。既存ソースと個人作品は保持されます。
+自定义|Customize|カスタマイズ
+自定义字体|Custom fonts|カスタムフォント
+自定义指令|Custom instructions|カスタム指示
+测试版|Beta|ベータ版
+主题可控制 Design Buddy 的颜色、字体、徽标和设计。创建自己的主题、导入 PPT 或自定义标准主题。|Themes control colors, fonts, logos and design. Create a theme, import a PPT or customize a standard theme.|テーマで色・フォント・ロゴ・デザインを管理できます。テーマ作成、PPT の取り込み、標準テーマの調整が可能です。
+新建主题|New theme|テーマを作成
+标题|Heading|見出し
+正文和|Body and|本文と
+链接|Links|リンク
+应用主题|Apply theme|テーマを適用
+设为默认|Set as default|既定に設定
+复制主题|Duplicate theme|テーマを複製
+这里还没有内容|Nothing here yet|まだ項目がありません
+媒体库|Media library|メディアライブラリ
+图形|Graphics|グラフィック
+在此处查找所有已上传或创建的媒体。|Find all your uploaded and created media here.|アップロードまたは作成したメディアをここで確認できます。
+新建|New|新規
+AI 生成图片|Generate AI image|AI 画像を生成
+AI 生成图形|Generate AI graphic|AI グラフィックを生成
+AI 智能修图|AI image editing|AI 画像編集
+上传|Upload|アップロード
+使用 Design Buddy 智能助手搜索您的媒体内容|Search your media with the Design Buddy assistant|Design Buddy アシスタントでメディアを検索
+升级到 Plus，在创作时查找并复用您保存的图片。|Upgrade to Plus to find and reuse saved images while creating.|Plus にアップグレードすると保存画像を検索・再利用できます。
+升级至 Plus|Upgrade to Plus|Plus にアップグレード
+所有媒体|All media|すべてのメディア
+收藏夹|Favorites|お気に入り
+所有来源|All sources|すべてのソース
+本地上传|Local uploads|ローカルアップロード
+AI 生成|AI generated|AI 生成
+所有媒体类型|All media types|すべてのメディア種類
+所有生成类型|All generation types|すべての生成種類
+卡片设计|Card design|カードデザイン
+摄影素材|Photography|写真素材
+插画|Illustration|イラスト
+选择媒体|Select media|メディアを選択
+精选技能|Featured skills|おすすめスキル
+换一批|Refresh selection|別の候補を表示
+本地电脑|Local computer|ローカルコンピューター
+高风险|High risk|高リスク
+点任意技能卡片直接运行 · 本地算法真实执行，结果与产物可下载|Select a skill to run its local algorithm and download the results.|スキルを選ぶとローカル処理を実行し、結果をダウンロードできます。
+接入 MCP 服务|Connect MCP service|MCP サービスに接続
+调用记录|Call history|呼び出し履歴
+点卡片打开连接测试（实测耗时 / 返回字段 / 响应 / 错误码）· 点右上角 + 连接或断开|Open a card to test its connection (latency, fields, response and errors); use + to connect or disconnect.|カードで接続テスト（応答時間・項目・応答・エラー）を開き、右上の＋で接続を切り替えます。
+模板设置|Template settings|テンプレート設定
+预览|Preview|プレビュー
+您正在查看现有模板。正文支持本地编辑，原始下载文件保持不变。|You are viewing an existing template. Edit locally; original downloads remain unchanged.|既存のテンプレートを表示しています。本文はローカルで編集でき、元の配布ファイルは変更されません。
+✧ 说明|✧ Description|✧ 説明
+▧ 图片|▧ Images|▧ 画像
+⚙ 设置|⚙ Settings|⚙ 設定
+此模板可添加到您的工作区|Add this template to your workspace|このテンプレートをワークスペースに追加できます
+＋ 添加到我的工作区|＋ Add to my workspace|＋ ワークスペースに追加
+✓ 已加入我的工作区|✓ Added to my workspace|✓ ワークスペースに追加済み
+使用模板|Use template|テンプレートを使用
+编辑与导出|Edit and export|編集と書き出し
+返回模板库|Back to templates|テンプレート一覧に戻る
+页面与编辑|Pages and editing|ページと編集
+本案例现有配图 · 点击查看原图，不更换素材。|Existing case images. Select to view originals; images are not replaced.|既存の配図です。選択すると原画像を表示します。素材は変更しません。
+视觉风格|Visual character|ビジュアルの特徴
+模板使用说明|How the template works|テンプレートの使い方
+编辑与原文件|Editing & originals|編集と原本
+正文和私人备注保存在此浏览器中。当前导出会保留编辑，原始下载文件不变。分享前请检查私人备注。|Text and private notes save locally in this browser. Current exports retain edits; original downloads stay unchanged. Review private notes before sharing.|本文と個人メモはこのブラウザーに保存されます。現在の書き出しには編集が反映され、元のファイルは変わりません。共有前にメモを確認してください。
+文档目录|Document contents|文書の目次
+打印当前页面|Print current pages|現在のページを印刷
+图片来源|Image sources|画像の出典
+导出当前 DOCX|Export current DOCX|現在の DOCX を書き出す
+导出当前 HTML|Export current HTML|現在の HTML を書き出す
+导出编辑 JSON|Export edits JSON|編集内容を JSON に書き出す
+原始 PDF|Original PDF|元の PDF
+原始 Word DOCX|Original Word DOCX|元の Word DOCX
+离线源文件 ZIP|Offline source ZIP|オフラインソース ZIP
+示例数据 CSV|Illustrative source CSV|例示データ CSV
+示例数据 JSON|Illustrative source JSON|例示データ JSON
+重置此文档|Reset this document|この文書をリセット
+← 上一页|← Previous page|← 前のページ
+下一页 →|Next page →|次のページ →
+← 上一个|← Previous|← 前へ
+下一个 →|Next →|次へ →
+▶ 演示|▶ Present|▶ プレゼン
+制作中|Draft|下書き
+草稿|Draft|下書き
+收起|Show less|折りたたむ
+提案与演示|Proposals and presentations|提案とプレゼン
+品牌与视觉|Brand and visuals|ブランドとビジュアル
+文档与报告|Documents and reports|文書とレポート
+网站与原型|Websites and prototypes|サイトとプロトタイプ
+导入与交付|Import and delivery|取り込みと納品
+办公与协同|Office and collaboration|事務と共同作業
+研究与情报|Research and insights|調査と情報
+总调度|Coordination|全体調整
+提案演示|Presentations|プレゼン
+品牌视觉|Brand visuals|ブランドビジュアル
+文档报告|Documents and reports|文書とレポート
+网站原型|Web prototypes|ウェブプロトタイプ
+办公协同|Office collaboration|業務連携
+研究分析|Research and analysis|調査分析
+拆解任务、调度专家、跟踪进度、验收交付|Break down tasks, coordinate experts, track progress and review delivery.|タスクを分解し、専門家の手配、進捗追跡、納品確認を行います。
+任务拆分|Task breakdown|タスクの分解
+专家调度|Expert coordination|専門家の手配
+交付验收|Delivery review|納品確認
+进度跟踪|Progress tracking|進捗追跡
+任务复杂，不知道该找哪个专家|Not sure which expert to choose for a complex task?|複雑な作業で、どの専門家に依頼するか迷っていますか？
+收文件、汇总表格、写纪要与通知，行政琐事一次办完|Collect files, consolidate sheets and draft minutes and notices in one place.|ファイル収集、表の集計、議事録や通知の作成をまとめて処理します。
+文件收集|File collection|ファイル収集
+表格汇总|Spreadsheet consolidation|表の集計
+会议纪要|Meeting minutes|議事録
+Excel 合并|Merge Excel files|Excel の結合
+数据去重|Remove duplicates|重複データの除去
+文件分类|File organization|ファイル分類
+通知生成|Draft notices|通知の作成
+日程整理|Schedule organization|予定の整理
+各部门文件催收靠群消息，漏一个就要重发|Tired of chasing department files through group messages?|部署ごとのファイルをグループメッセージで何度も催促していませんか？
+批量处理文件、定时汇总、自动交付，把重复劳动交给机器|Batch-process files, schedule summaries and automate delivery.|ファイルの一括処理、定期集計、自動納品で繰り返し作業を減らします。
+批量处理|Batch processing|一括処理
+定时任务|Scheduled tasks|定期タスク
+自动交付|Automatic delivery|自動納品
+批量文件读取|Batch file reading|ファイルの一括読み取り
+文件夹监听|Folder monitoring|フォルダー監視
+表格自动汇总|Automatic spreadsheet consolidation|表の自動集計
+API/MCP 集成|API/MCP integration|API/MCP 連携
+同样的报表每周都要手工做一遍|Manually rebuilding the same report every week?|同じレポートを毎週手作業で作り直していませんか？
+检索资料、对比多文件、统计数据、核查来源|Find resources, compare files, analyze data and check sources.|資料検索、複数ファイルの比較、データ集計、出典確認を行います。
+资料检索|Resource search|資料検索
+多文件对比|Multi-file comparison|複数ファイルの比較
+数据核查|Data verification|データ検証
+网页检索|Web search|ウェブ検索
+PDF 阅读|PDF reading|PDF の読み取り
+竞品分析|Competitor analysis|競合分析
+数据统计|Data statistics|データ集計
+来源引用|Source citations|出典の引用
+资料散落在 Word、PDF 和网页里，找不全|Sources scattered across Word files, PDFs and web pages?|Word・PDF・ウェブに散らばった資料を探しきれませんか？
+大纲规划、故事线、页面布局、图表与演讲备注|Plan outlines, narratives, layouts, charts and speaker notes.|構成、ストーリー、レイアウト、図表、発表者ノートを作成します。
+大纲规划|Outline planning|構成の計画
+故事线|Storyline|ストーリー
+页面布局|Page layout|ページレイアウト
+故事线设计|Storyline design|ストーリーの設計
+页数控制|Page count planning|ページ数の調整
+图表制作|Chart creation|図表の作成
+演讲备注|Speaker notes|発表者ノート
+PPT 导出|PPT export|PPT の書き出し
+打开空白页不知道第一页写什么|Staring at a blank first slide?|最初のスライドに何を書くか迷っていませんか？
+方案撰写、报告生成、公文格式、合同要点提取|Draft proposals, generate reports, format official documents and extract contract terms.|提案・レポートの作成、公文書の書式設定、契約要点の抽出を行います。
+方案撰写|Proposal writing|提案の執筆
+报告生成|Report generation|レポート生成
+公文格式|Official document formatting|公文書の書式設定
+合同要点提取|Contract highlights|契約の要点抽出
+摘要|Summary|要約
+Word/PDF 转换|Word/PDF conversion|Word/PDF 変換
+面对一堆资料不知道如何组织成报告|Not sure how to turn a pile of sources into a report?|大量の資料をレポートにまとめる方法で困っていませんか？
+润色、改写、翻译、摘要、受众适配|Polish, rewrite, translate, summarize and adapt to your audience.|推敲、書き直し、翻訳、要約、読者に合わせた調整を行います。
+专业润色|Professional editing|専門的な推敲
+压缩扩写|Shorten or expand|短縮・加筆
+多语言|Multilingual|多言語
+语气调整|Tone adjustment|文体の調整
+多语言翻译|Multilingual translation|多言語翻訳
+受众适配|Audience adaptation|読者に合わせた調整
+文案校对|Copy proofreading|文章の校正
+写出来的内容像 AI，一眼看出来|Does your writing sound obviously AI-generated?|文章がいかにも AI らしく見えてしまいますか？
+栅格布局、字体层级、色彩系统、响应式设计|Grid layouts, type hierarchy, color systems and responsive design.|グリッド、文字の階層、配色システム、レスポンシブ設計を行います。
+栅格布局|Grid layout|グリッドレイアウト
+字体层级|Type hierarchy|文字の階層
+视觉一致性|Visual consistency|ビジュアルの統一
+色彩系统|Color system|配色システム
+留白|Whitespace|余白
+图文比例|Text-to-image balance|文章と画像の比率
+响应式设计|Responsive design|レスポンシブデザイン
+内容全塞在一页，挤成一团|Too much content squeezed onto one page?|1ページに情報を詰め込みすぎていませんか？
+文生图、参考图生成、背景移除、图表插画|Text-to-image, reference images, background removal and chart illustrations.|テキストからの画像生成、参照画像生成、背景除去、図表用イラストを扱います。
+文生图|Text to image|テキストから画像生成
+图片编辑|Image editing|画像編集
+风格统一|Style consistency|スタイルの統一
+参考图生成|Reference-based generation|参照画像からの生成
+背景移除|Background removal|背景除去
+图像裁切|Image cropping|画像の切り抜き
+图表插画|Chart illustrations|図表用イラスト
+页面只有文字，看起来干巴巴|Pages full of text and lacking visual interest?|文字ばかりでページが単調になっていませんか？
+模板检索、主题切换、品牌规范、设计系统管理|Find templates, change themes and manage brand guidelines and design systems.|テンプレート検索、テーマ切り替え、ブランド規定、デザインシステムを管理します。
+模板检索|Template search|テンプレート検索
+品牌规范|Brand guidelines|ブランド規定
+设计系统|Design system|デザインシステム
+主题切换|Theme switching|テーマ切り替え
+品牌规范提取|Extract brand guidelines|ブランド規定の抽出
+组件复用|Component reuse|コンポーネントの再利用
+企业设计系统管理|Enterprise design systems|企業デザインシステム管理
+每份产出看起来像不同公司做的|Does every deliverable look like it came from a different company?|成果物ごとに別の会社のものに見えていませんか？
+事实核验、数字校验、缺项检查、导出验收|Check facts, figures, missing items and exported files.|事実・数値・不足項目・書き出したファイルを検証します。
+事实核验|Fact checking|事実確認
+数字校验|Number validation|数値の検証
+导出验收|Export review|書き出し結果の確認
+缺项检查|Completeness check|不足項目の確認
+错别字检查|Typo check|誤字の確認
+页面溢出检测|Overflow detection|ページのはみ出し検出
+导出结果验收|Export result review|書き出し結果の検収
+汇报前没人检查，数据错了当场翻车|Worried about discovering data errors during a presentation?|発表中にデータの誤りが見つかるのが心配ですか？
+描述需求就产出可运行的 HTML 原型，能直接点、直接改|Describe your needs to create an interactive, editable HTML prototype.|要件を説明すると、操作・編集できる HTML プロトタイプを作成します。
+可运行 HTML|Runnable HTML|動作する HTML
+响应式|Responsive|レスポンシブ
+落地页|Landing page|ランディングページ
+原型搭建|Prototype building|プロトタイプ作成
+响应式布局|Responsive layout|レスポンシブレイアウト
+交互验证|Interaction validation|操作の検証
+想做落地页，但排期排不到开发|Need a landing page but cannot get development time?|開発の予定が取れず、ページ制作が進みませんか？
+PPT 大纲生成|PPT outline generation|PPT 構成の生成
+文案润色|Copy editing|文章の推敲
+数据图表化|Data visualization|データの可視化
+中英互译|Chinese–English translation|中国語・英語の相互翻訳
+SEO 关键词规划|SEO keyword planning|SEO キーワード計画
+邮件撰写助手|Email writing assistant|メール作成アシスタント
+长文摘要|Long-form summary|長文の要約
+深度联网调研|In-depth web research|詳細なウェブ調査
+自动化工作流执行|Automated workflow execution|自動ワークフロー実行
+Excel 表格处理|Excel spreadsheet tools|Excel 表計算ツール
+PDF 文档处理|PDF document tools|PDF 文書ツール
+Word 文档处理|Word document tools|Word 文書ツール
+AI交付前全自动自检|Automated AI delivery checks|AI 納品前の自動チェック
+检查代码并按照截图调整界面|Review code and match the reference UI|コード確認と参照画面への調整
+数据即查|Instant data query|データの即時検索
+生成演示大纲并分配页数|Generate a presentation outline and allocate pages.|プレゼン構成を作成し、ページ数を配分します。
+设计贯穿全篇的叙事线|Design a narrative that runs throughout the work.|全体を通したストーリーを設計します。
+按描述生成图片|Generate images from descriptions.|説明から画像を生成します。
+去掉图片背景|Remove image backgrounds.|画像の背景を除去します。
+规划每页的版式与内容|Plan each page's layout and content.|各ページのレイアウトと内容を計画します。
+根据主题自动生成演示大纲|Generate a presentation outline from a topic.|テーマからプレゼン構成を生成します。
+优化表达与语气|Improve wording and tone.|表現と文体を改善します。
+把数字转成图表建议|Turn figures into chart recommendations.|数値から図表の提案を作成します。
+专业级双语翻译|Professional bilingual translation.|専門的な二言語翻訳を行います。
+生成搜索关键词与落地页标题|Generate search keywords and landing-page titles.|検索キーワードとページタイトルを生成します。
+按场景生成商务邮件草稿|Draft business emails for your scenario.|場面に応じたビジネスメールを下書きします。
+把长文档压缩为结构化摘要|Condense long documents into structured summaries.|長い文書を構造化された要約にまとめます。
+自动浏览多个来源并汇总，涉及外部数据访问|Browse and summarize multiple sources; accesses external data.|外部データにアクセスして複数の出典を調査・要約します。
+代表你执行多步操作与外部写入|Perform multi-step actions and external writes on your behalf.|複数手順の操作や外部への書き込みを代行します。
+把大目标拆成可执行的小任务并排优先级|Break goals into actionable tasks and prioritize them.|大きな目標を実行可能なタスクに分解して優先順位を付けます。
+按任务匹配最合适的专家来承接|Match each task with a suitable expert.|タスクに適した専門家を割り当てます。
+记录各任务进度并提醒关键节点|Track task progress and flag milestones.|タスクの進捗を記録し、重要な節目を知らせます。
+对照需求清单逐项验收交付物|Review deliverables against the requirements checklist.|要件一覧に沿って成果物を確認します。
+找出重复记录并清理|Find and remove duplicate records.|重複するレコードを検出・削除します。
+按规则把文件归入对应文件夹|Sort files into folders using rules.|規則に従ってファイルを分類します。
+把会议记录整理成结构化纪要|Turn meeting records into structured minutes.|会議の記録を整理して議事録にします。
+起草群通知与邮件通知|Draft group announcements and email notices.|グループ向け通知やメールを下書きします。
+汇总多来源日程成一张表|Consolidate schedules into one table.|複数の予定を1つの表にまとめます。
+批量读取文件夹中的文件内容|Read folder contents in batches.|フォルダー内のファイルを一括で読み取ります。
+盯文件夹变化并触发处理|Monitor folder changes and trigger actions.|フォルダーの変更を監視して処理を実行します。
+定时把多张表汇总成一张|Combine sheets on a schedule.|複数の表を定期的に集計します。
+按设定时间自动执行步骤|Run steps automatically at scheduled times.|指定した時刻に手順を自動実行します。
+完成后自动打包并交付|Package and deliver results automatically.|完了後に自動でまとめて納品します。
+检索资料并汇总要点|Find information and summarize key points.|資料を検索して要点をまとめます。
+对比多个版本的差异|Compare differences across versions.|複数の版の差分を比較します。
+整理竞品信息与差异点|Organize competitor information and differences.|競合の情報と相違点を整理します。
+对数据做统计与汇总|Compute statistics and summarize data.|データの統計と集計を行います。
+标注引用来源并核对链接|Cite sources and verify links.|出典を明記し、リンクを確認します。
+按演讲时长压缩或扩充页数|Adjust page counts to presentation length.|発表時間に応じてページ数を調整します。
+把数据做成图表|Turn data into charts.|データを図表にします。
+为每页撰写演讲备注|Write speaker notes for each page.|各ページの発表者ノートを作成します。
+起草方案正文|Draft proposal content.|提案の本文を下書きします。
+生成结构化报告|Generate structured reports.|構造化されたレポートを生成します。
+按公文格式规范排版|Apply official document formatting.|公文書の書式に沿って組版します。
+提取合同关键条款|Extract key contract clauses.|契約の重要条項を抽出します。
+把长文档压缩成摘要|Summarize long documents.|長い文書を要約します。
+调整文案的语气与口吻|Adjust the tone of your copy.|文章の文体や口調を調整します。
+润色成专业表达|Polish writing for a professional tone.|専門的な表現に整えます。
+按目标长度压缩或扩写|Shorten or expand to a target length.|指定した長さに短縮・加筆します。
+多语言互译|Translate between languages.|複数の言語間で翻訳します。
+按受众改写表达|Rewrite for the target audience.|読者に合わせて表現を書き直します。
+校对错别字与语病|Correct typos and grammar.|誤字や文法を校正します。
+用栅格系统规划版面|Plan layouts with a grid system.|グリッドでレイアウトを設計します。
+设定标题与正文的字体层级|Define heading and body type hierarchy.|見出しと本文の文字階層を設定します。
+建立统一的色彩系统|Build a consistent color system.|統一された配色システムを構築します。
+规划版面留白与呼吸感|Plan whitespace and visual breathing room.|余白を設計して読みやすさを整えます。
+控制图文比例|Balance text and images.|文章と画像の比率を調整します。
+处理多尺寸适配|Adapt designs to different sizes.|さまざまなサイズに対応させます。
+检查全篇视觉一致性|Check visual consistency throughout.|全体のビジュアルの統一感を確認します。
+参照风格生成图片|Generate images from a reference style.|参照スタイルに基づいて画像を生成します。
+编辑已有图片|Edit existing images.|既存の画像を編集します。
+按尺寸裁切图片|Crop images to size.|指定サイズに画像を切り抜きます。
+统一多张图的风格|Unify styles across images.|複数画像のスタイルを統一します。
+为图表配插画|Add illustrations to charts.|図表にイラストを付けます。
+检索可用的模板|Find available templates.|利用可能なテンプレートを検索します。
+切换模板主题|Switch template themes.|テンプレートのテーマを切り替えます。
+从素材提取品牌规范|Extract brand guidelines from assets.|素材からブランド規定を抽出します。
+复用已有组件|Reuse existing components.|既存のコンポーネントを再利用します。
+管理企业设计系统|Manage enterprise design systems.|企業のデザインシステムを管理します。
+核对事实与数据|Verify facts and data.|事実とデータを確認します。
+校验数字一致性|Check numerical consistency.|数値の整合性を確認します。
+检查必填项是否齐全|Check all required items are present.|必須項目の不足を確認します。
+检查错别字|Check for typos.|誤字を確認します。
+检测页面内容溢出|Detect content overflowing pages.|ページからのはみ出しを検出します。
+验收导出文件|Review exported files.|書き出したファイルを検収します。
+搭建可运行的原型|Build runnable prototypes.|動作するプロトタイプを作成します。
+处理响应式布局|Create responsive layouts.|レスポンシブレイアウトを作成します。
+验证交互逻辑|Verify interaction logic.|操作のロジックを検証します。
+创建、编辑、分析 Excel 表格与公式|Create, edit and analyze Excel sheets and formulas.|Excel の表と数式を作成・編集・分析します。
+PDF 文档处理工具，支持文本抽取与页面操作|PDF tools for text extraction and page operations.|テキスト抽出やページ操作に対応する PDF ツールです。
+创建、读取、编辑、排版、审阅 Word 文档|Create, read, edit, format and review Word documents.|Word 文書を作成・読み取り・編集・組版・レビューします。
+文档转 Markdown（PDF/Word/PPT 全覆盖）|Convert PDF, Word and PPT documents to Markdown.|PDF・Word・PPT を Markdown に変換します。
+AI交付前全自动自检技能，逐项核对质量门槛|Automatically check each quality requirement before AI delivery.|AI の納品前に品質要件を項目ごとに自動確認します。
+深度追问式方案审查：逐层拆解假设与风险|Probe a proposal's assumptions and risks in depth.|提案の前提とリスクを段階的に掘り下げて審査します。
+对照截图逐项核对界面还原度并给出改动建议|Compare the interface with reference screenshots and suggest changes.|参照スクリーンショットと画面を比較し、変更案を提示します。
+用 SQL 直接查 CSV/JSON/Parquet 等数据文件|Query CSV, JSON and Parquet files directly with SQL.|SQL で CSV・JSON・Parquet などを直接検索します。
+通达信|Tongdaxin|Tongdaxin
+通过通达信 MCP 查询全球股票行情与财报数据|Query global stock prices and financial reports through Tongdaxin MCP.|Tongdaxin MCP で世界の株価と財務報告を検索します。
+腾讯自选股|Tencent Stock Watchlist|Tencent 株価ウォッチ
+直连腾讯自选股，实时掌握持仓与自选行情|Access Tencent watchlists, holdings and live prices.|Tencent の保有銘柄とウォッチリストの株価を確認します。
+QQ邮箱|QQ Mail|QQ メール
+收发、搜索和整理 QQ 邮件，支持附件与日程|Send, receive, search and organize QQ Mail, attachments and schedules.|QQ メールの送受信・検索・整理、添付と予定に対応します。
+腾讯AI知识管家，连接后支持笔记与知识库问答|Tencent AI knowledge assistant for notes and knowledge-base Q&A.|ノートとナレッジベースの質問に対応する Tencent AI アシスタントです。
+乐享知识库|Lexiang Knowledge Base|Lexiang ナレッジベース
+搜索、创建和管理乐享知识库内容|Search, create and manage Lexiang knowledge-base content.|Lexiang のコンテンツを検索・作成・管理します。
+腾讯文档|Tencent Docs|Tencent Docs
+创建、编辑和协作腾讯文档，支持导出与权限|Create and collaborate on Tencent Docs, with exports and permissions.|Tencent Docs の作成・編集・共同作業、書き出しと権限管理を行います。
+腾讯会议|Tencent Meeting|Tencent Meeting
+通过命令行创建、查询和管理会议与录制|Create and manage meetings and recordings through the CLI.|CLI で会議と録画を作成・検索・管理します。
+企业微信|WeCom|WeCom
+企业微信官方 CLI 套件，覆盖客户群与日程|Official WeCom CLI for customer groups and schedules.|顧客グループと予定に対応する公式 WeCom CLI です。
+飞书|Lark|Lark
+通过命令行管理飞书/Lark 全量开放能力|Manage Lark's open-platform features through its CLI.|CLI で Lark のオープンプラットフォーム機能を管理します。
+钉钉|DingTalk|DingTalk
+通过命令行管理钉钉全产品能力|Manage DingTalk capabilities through its CLI.|CLI で DingTalk の機能を管理します。
+腾讯问卷|Tencent Survey|Tencent Survey
+创建、管理和分析腾讯问卷，支持结果导出|Create, manage and analyze Tencent surveys and export results.|Tencent のアンケートを作成・管理・分析し、結果を書き出します。
+管理需求、缺陷、任务和迭代，联动项目看板|Manage requirements, bugs, tasks and iterations with project boards.|要件・不具合・タスク・反復開発をプロジェクトボードと連携して管理します。
+腾讯金融科技NeoData|Tencent FinTech NeoData|Tencent FinTech NeoData
+由腾讯金融科技链接各大权威金融数据源|Access authoritative financial data sources through Tencent FinTech.|Tencent FinTech を通じて金融データソースに接続します。
+通过自然语言管理 CNB 平台的代码与流水线|Manage CNB code and pipelines using natural language.|自然言語で CNB のコードとパイプラインを管理します。
+微云|Weiyun|Weiyun
+查看、下载、删除微云文件，支持批量整理|View, download, delete and batch-organize Weiyun files.|Weiyun のファイルを表示・取得・削除・一括整理します。
+福帮手|Fu Assistant|Fu Assistant
+福帮手连接器：保留身份、场景与成稿上下文|Fu Assistant connector with identity, scenario and draft context.|利用者・場面・原稿の文脈を保持する Fu Assistant コネクターです。
+金山文档WPS云文档|WPS Cloud Docs|WPS クラウド文書
+金山文档官方 Skill，对话即操作云文档|Official WPS skill for conversational cloud document operations.|会話でクラウド文書を操作する公式 WPS スキルです。
+北大法宝·法律智能检索|PKULaw Legal Search|PKULaw 法律検索
+检索 + 核验一体：语义检索法律法规与案例|Semantic search and verification of laws, regulations and cases.|法令と判例を意味検索し、確認します。
+企查查|Qichacha|Qichacha
+一次连接，查询企业工商与股东等全量信息|Query company registration and shareholder information.|企業登記や株主などの情報を検索します。
+天眼查|Tianyancha|Tianyancha
+通过天眼查 MCP 查询多维度企业与风险信息|Query company and risk information through Tianyancha MCP.|Tianyancha MCP で企業とリスクの情報を検索します。
+百度网盘|Baidu Netdisk|Baidu Netdisk
+连接百度网盘，支持文件上传、下载与分享|Upload, download and share files on Baidu Netdisk.|Baidu Netdisk でファイルのアップロード・取得・共有を行います。
+Tushare 金融数据服务，支持行情与财务数据|Tushare financial data services for prices and financial statements.|相場と財務データに対応する Tushare 金融データサービスです。
+OpenBoost 跨境数据|OpenBoost Cross-border Data|OpenBoost 越境データ
+OpenBoost 跨境数据连接器：全球电商与广告数据|OpenBoost connector for global e-commerce and advertising data.|世界の電子商取引と広告データに対応する OpenBoost コネクターです。
+邓白氏查全球|Dun & Bradstreet Global Search|Dun & Bradstreet グローバル検索
+通过自然语言查询邓白氏全球企业与信用信息|Query global company and credit information using natural language.|自然言語で世界の企業・信用情報を検索します。
+新华财经资讯MCP|Xinhua Finance MCP|Xinhua Finance MCP
+公告、新闻、政策数据，包含结构化字段|Announcements, news and policy data with structured fields.|構造化された項目を持つ公告・ニュース・政策データです。
+在 GitHub 上克隆、推送代码与管理 Issue|Clone and push code and manage GitHub issues.|GitHub でコードの複製・プッシュと Issue 管理を行います。
+创建、搜索和管理 Notion 工作区页面|Create, search and manage Notion workspace pages.|Notion のワークスペースページを作成・検索・管理します。
+腾讯企点客服|Tencent Qidian Service|Tencent Qidian サポート
+腾讯企点客服连接器：用自然语言处理会话|Handle Tencent Qidian customer conversations using natural language.|自然言語で Tencent Qidian の顧客対応を行います。
+将项目部署到 EdgeOne Makers 并管理域名|Deploy projects to EdgeOne Makers and manage domains.|EdgeOne Makers にデプロイし、ドメインを管理します。
+腾讯云 CloudBase|Tencent CloudBase|Tencent CloudBase
+腾讯云开发 CloudBase 全栈能力与数据库|Tencent CloudBase full-stack tools and databases.|Tencent CloudBase のフルスタック機能とデータベースです。
+Bugly 质量概览|Bugly Quality Overview|Bugly 品質概要
+查看产品的质量概览，包括崩溃与卡顿率|Review product quality, including crash and freeze rates.|クラッシュ率やフリーズ率を含む製品品質を確認します。
+销售易CRM|Neocrm|Neocrm
+用自然语言查客户、推商机、跟进销售流程|Find customers, advance opportunities and follow sales using natural language.|自然言語で顧客検索、商談推進、営業の追跡を行います。
+小鹅通|Xiaoe-Tech|Xiaoe-Tech
+用自然语言管理小鹅通店铺：课程与订单|Manage Xiaoe-Tech courses and orders using natural language.|自然言語で Xiaoe-Tech の講座と注文を管理します。
+华宇元典法律数据|Huayu Yuandian Legal Data|Huayu Yuandian 法律データ
+华宇元典法律数据为智能体提供法规与判例|Huayu Yuandian provides laws and case precedents for agents.|エージェント向けに法令と判例を提供します。
+微盛企微管家SCRM|Weisheng WeCom SCRM|Weisheng WeCom SCRM
+查询或管理企业微信中的客户与标签|Query and manage WeCom customers and tags.|WeCom の顧客とタグを検索・管理します。
+中兴新云AI智报|ZTE New Cloud AI Reports|ZTE New Cloud AI レポート
+财务云 AI 报错助手：用自然语言定位问题|Financial cloud AI assistant for locating errors using natural language.|自然言語で問題を特定する財務クラウド AI アシスタントです。
+腾讯营销投放|Tencent Marketing|Tencent マーケティング
+腾讯营销投放 Skill，为大模型提供投放入口|Tencent marketing skill providing campaign access for AI models.|AI モデルに広告配信機能を提供する Tencent スキルです。
+恒生聚源 MCP|Hundsun Gildata MCP|Hundsun Gildata MCP
+连接恒生聚源 MCP，查询金融数据与指标|Query financial data and indicators through Hundsun Gildata MCP.|Hundsun Gildata MCP で金融データと指標を検索します。
+腾讯地图|Tencent Maps|Tencent Maps
+接入腾讯地图各类位置服务，支持路线规划|Access Tencent Maps location services and route planning.|Tencent Maps の位置情報と経路計画を利用します。
+启信慧眼|Qixin Huiyan|Qixin Huiyan
+通过启信慧眼 MCP 接入企业风险与关系图谱|Access company risk and relationship graphs through Qixin Huiyan MCP.|Qixin Huiyan MCP で企業リスクと関係図に接続します。
+搜索、上传与管理云端硬盘中的文件|Search, upload and manage cloud-drive files.|クラウドドライブのファイルを検索・アップロード・管理します。
+自定义模型|Custom models|カスタムモデル
+模型添加后会自动保存在当前浏览器，可导出|Models are saved in this browser. Export|モデルはこのブラウザーに保存されます。書き出し：
+文件。|for a local copy.|ローカルコピーを保存できます。
+添加模型|Add model|モデルを追加
+编辑模型|Edit model|モデルを編集
+当前模型|Selected|選択中
+预置|Preset|プリセット
+预置 · 未验证|Preset · not verified|プリセット・未検証
+编辑|Edit|編集
+连接设置|Connection settings|接続設定
+删除|Delete|削除
+还没有模型，点击右上角添加你的第一项配置。|No models yet. Add your first configuration above.|モデルがありません。上部から設定を追加してください。
+供应商（仅支持 OpenAI 兼容协议 API）|Provider (OpenAI-compatible APIs only)|プロバイダー（OpenAI 互換 API のみ）
+接口地址|Endpoint URL|エンドポイント URL
+输入你的 API Key|Enter your API Key|API キーを入力
+显示 API Key|Show API Key|API キーを表示
+测试连接|Test connection|接続テスト
+模型名称|Model name|モデル名
+输入模型参数值，例如 gpt-4o 或 openai/gpt-4o|Enter model ID, e.g. gpt-4o or openai/gpt-4o|モデル ID を入力（例：gpt-4o、openai/gpt-4o）
+高级配置|Advanced settings|詳細設定
+输入|Input|入力
+输出|Output|出力
+使用提供商默认值|Use provider defaults|プロバイダーの既定値を使用
+API Key 不写入本地；测试成功后仅在服务器内存保留 30 分钟。|API Key is never stored locally. Successful tests keep it in server memory for 30 minutes.|API キーはローカルに保存しません。テスト成功後、サーバーメモリに30分間だけ保持します。
+取消|Cancel|キャンセル
+保存|Save|保存
+正在请求模型，请稍候…|Requesting model…|モデルに接続しています…
+模型连接设置|Model connection settings|モデルの接続設定
+模型 ID|Model ID|モデル ID
+API 地址|API base URL|API ベース URL
+服务端环境变量|Server environment variable|サーバー環境変数
+使用已测试的临时密钥或服务器环境变量。若提示缺少密钥，请编辑模型，填写 API Key 后测试连接。|Uses a temporary tested credential or server environment variable. Edit the model to enter a key if needed.|テスト済みの一時キーまたはサーバー環境変数を使用します。キーがない場合は、モデル編集で API キーを入力し接続テストを行ってください。
+尚未进行联网测试，连接是否可用需在后端验证。|No live connection test has been run. Verify access on the backend.|接続テストはまだ実行されていません。バックエンドで確認してください。
+关闭|Close|閉じる
+删除模型|Delete model|モデルを削除
+模型已删除|Model deleted|モデルを削除しました
+请填写 1–150 字的模型名称|Enter a model name of 1–150 characters.|モデル名を1〜150文字で入力してください。
+请填写有效的模型 ID，不能包含空格或尖括号|Enter a valid model ID without spaces or angle brackets.|空白や山括弧を含まない有効なモデル ID を入力してください。
+模型 ID 不能填写 API 密钥|Do not enter an API key as the model ID.|モデル ID に API キーを入力しないでください。
+请填写密钥环境变量名，例如 DEEPSEEK_API_KEY，不要填写真实密钥|Enter an environment variable name, such as DEEPSEEK_API_KEY, not an actual secret.|実際のキーではなく、DEEPSEEK_API_KEY などの環境変数名を入力してください。
+请填写完整 API 地址，例如 https://api.deepseek.com/v1|Enter a full API URL, such as https://api.deepseek.com/v1.|完全な API URL を入力してください（例：https://api.deepseek.com/v1）。
+API 地址不能包含密钥、账号密码、查询参数或片段|The API URL must not contain credentials, query parameters or fragments.|API URL に認証情報、クエリ、フラグメントを含めないでください。
+API 地址须使用 HTTPS；本机服务可以使用 HTTP|Use HTTPS for the API URL; local services may use HTTP.|API URL は HTTPS を使用してください。ローカルサービスのみ HTTP が使えます。
+该模型 ID 已存在，请编辑现有配置|This model ID already exists. Edit its existing configuration.|このモデル ID は登録済みです。既存の設定を編集してください。
+输入和输出上限必须是正整数，或留空使用提供商默认值|Input and output limits must be positive integers, or blank for provider defaults.|入出力上限は正の整数にするか、空欄で既定値を使用してください。
+安装|Install|インストール
+已安装|Installed|インストール済み
+连接|Connect|接続
+断开|Disconnect|切断
+通过|Passed|合格
+失败|Failed|失敗
+付费|Paid|有料
+移出收藏|Remove from collection|コレクションから削除
+加入工作区|Add to workspace|ワークスペースに追加
+归档|Archive|アーカイブ
+恢复|Restore|復元
+更多模板操作|More template actions|テンプレートのその他の操作
+关闭模板设置|Close template settings|テンプレート設定を閉じる
+模板信息|Template information|テンプレート情報
+案例制作状态|Case production status|事例の制作状況
+Design Buddy 制作|Made with Design Buddy|Design Buddy で作成
+Free · {count} 名成员|Free · {count} members|Free · メンバー {count} 人
+{count} 张|{count} images|{count} 枚
+显示更多 {count}|Show {count} more|さらに {count} 件表示
+当前显示 {count} 例 · 已验收 {published} / 制作中 {draft}（制作中不计完成）|Showing {count} cases · {published} accepted / {draft} drafts (drafts not counted as complete)|{count} 件表示・検収済み {published} / 下書き {draft}（下書きは完成に含みません）
+· 制作中 {draft} 例 · 新增文档 {count} / 50|· {draft} drafts · Added documents {count} / 50|・下書き {draft} 件・追加文書 {count} / 50
+{year}年{month}月|{year}-{month}|{year}年{month}月
+已安装({count})|Installed ({count})|インストール済み（{count}）
+所属空间：{name}|Space: {name}|スペース：{name}
+更新于 {date}|Updated {date}|更新日時：{date}
+所属专家：{name}|Expert: {name}|担当専門家：{name}
+{name}的核心能力|Core capability of {name}|{name} の主な機能
+已更新 {count} 个技能：{names}|Updated {count} skills: {names}|{count} 個のスキルを更新：{names}
+查看「{name}」详情|View {name} details|{name} の詳細を表示
+打开完整案例 {name}|Open complete case {name}|完成事例 {name} を開く
+打开制作中预览 {name}|Open draft preview {name}|下書き {name} を開く
+{name} 现有案例封面|{name} case cover|{name} の表紙
+图片 {count}|Image {count}|画像 {count}
+更多模板操作|More template actions|テンプレートのその他の操作
+制作中：配图尚未齐全，不计为已完成案例。|Draft: illustrations are incomplete; not counted as published.|下書き：配図が未完成のため、完成事例に含みません。
+当前筛选没有匹配案例。|No cases match the current filters.|現在の絞り込みに一致する事例がありません。
+重建库尚无个人自建案例。原个人作品仍保留，可从首页访问。|No personal cases in this library yet. Your existing work is preserved on the home page.|このライブラリに個人作成の事例はまだありません。既存の作品はホームから利用できます。
+浏览器存储不可用；本次会话的收藏有效，但刷新后可能丢失。|Browser storage is unavailable. Collections may be lost after refresh.|ブラウザー保存が利用できません。再読み込みでコレクションが失われる場合があります。
+隐藏 API Key|Hide API Key|API キーを非表示
+工具调用|Tool calling|ツール呼び出し
+图片输入|Image input|画像入力
+深度思考|Reasoning|推論
+自定义协议|Custom protocol|カスタムプロトコル
+模型配置已保存，API Key 不写入本地|Model configuration saved; API Key was not saved|モデル設定を保存しました。API キーはローカルに保存しません。
+最多保存 100 个模型配置|A maximum of 100 model configurations is supported.|モデル設定は100件まで保存できます。
+此模型已被删除，请重新添加|This model was deleted. Add it again.|このモデルは削除されました。追加し直してください。
+运行|Run|実行
+检查更新|Check for updates|更新を確認
+更新|Update|更新
+未信任|Not trusted|未承認
+自定义技能|Custom skill|カスタムスキル
+本地|Local|ローカル
+点卡片即可运行真实算法，结果与产物都能下载。|Select a card to run its algorithm and download results.|カードを選ぶと処理を実行し、結果をダウンロードできます。
+技能自动更新已暂停，可在设置中恢复，或使用「检查更新」手动升级。|Automatic skill updates are paused. Resume in settings or check for updates manually.|スキルの自動更新は停止中です。設定で再開するか、手動で更新を確認してください。
+启用 {name}|Enable {name}|{name} を有効にする
+加入工作区 {name}|Add {name} to workspace|{name} をワークスペースに追加
+移出收藏 {name}|Remove {name} from collection|{name} をコレクションから削除
+归档 {name}|Archive {name}|{name} をアーカイブ
+恢复 {name}|Restore {name}|{name} を復元
+思考模式|Thinking|思考モード
+稍后再说|Maybe later|後で
+当前工作区：|Current workspace:|現在のワークスペース：
+，套餐|, plan|、プラン
+，剩余积分|, credits remaining|、残りクレジット
+基础创作能力|Basic creation features|基本の作成機能
+236 起步积分|236 starting credits|初回236クレジット
+标准 / Lite 模式|Standard / Lite modes|標準 / Lite モード
+单个工作区|One workspace|ワークスペース1つ
+当前套餐|Current plan|現在のプラン
+推荐|Recommended|おすすめ
+解锁 Max 与智能媒体搜索|Unlock Max and intelligent media search|Max とスマートメディア検索を利用
+每月 2000 积分|2,000 credits per month|毎月2,000クレジット
+Lite / 标准 / Max 全模式|Lite / Standard / Max modes|Lite / 標準 / Max の全モード
+Design Buddy 智能助手搜索|Design Buddy assistant search|Design Buddy アシスタント検索
+已开通|Active|利用中
+升级 Pro|Upgrade to Pro|Pro にアップグレード
+积分加油包|Credit packs|クレジット追加パック
+积分|Credits|クレジット
+已升级到 Pro，Max 模式已解锁|Upgraded to Pro. Max mode is unlocked.|Pro にアップグレードし、Max モードが利用可能になりました。
+当前已是 Free 套餐|You are already on the Free plan.|現在 Free プランを利用しています。
+已充值 {count} 积分，当前余额 {balance}|Added {count} credits. Balance: {balance}|{count} クレジット追加。残高：{balance}
+帮助与快捷键|Help and shortcuts|ヘルプとショートカット
+全局搜索与快捷命令|Global search and quick commands|全体検索とクイックコマンド
+发送提示词|Send prompt|指示を送信
+从空白新建|Create from blank|空白から作成
+关闭弹窗 / 菜单|Close dialog / menu|ダイアログ / メニューを閉じる
+所有数据保存在本浏览器本地（localStorage 与 IndexedDB），可在「设置 → 数据管理」中导出或清空。|All data is saved in this browser (localStorage and IndexedDB). Export or clear it in Settings → Data management.|すべてのデータはこのブラウザーに保存されます（localStorage・IndexedDB）。設定 → データ管理で書き出し・消去できます。
+邀请成员加入工作区|Invite workspace members|ワークスペースにメンバーを招待
+复制邀请链接|Copy invitation link|招待リンクをコピー
+发送下面的链接邀请同事协作，加入后可查看工作区内共享的 Design Buddy。|Share the link below to invite colleagues to view shared workspace items.|以下のリンクを共有して同僚を招待すると、共有された項目を閲覧できます。
+消息|Messages|メッセージ
+朗读|Read aloud|読み上げ
+给 {name} 发消息…|Message {name}…|{name} にメッセージ…
+发送|Send|送信
+搜索页面、Design Buddy、主题或操作…|Search pages, Design Buddy items, themes or actions…|ページ・Design Buddy・テーマ・操作を検索…
+升级套餐|Upgrade plan|プランをアップグレード
+操作|Action|操作
+没有匹配的结果|No matching results|一致する結果がありません
+邮箱账号|Email account|メールアカウント
+Google · 本地演示身份|Google · Local demo identity|Google・ローカルデモ用 ID
+GitHub · 本地演示身份|GitHub · Local demo identity|GitHub・ローカルデモ用 ID
+游客模式 · 本地演示|Guest mode · Local demo|ゲストモード・ローカルデモ
+账号|Account|アカウント
+退出登录|Sign out|ログアウト
+账号信息保存在本浏览器（localStorage），不会上传到任何服务器。|Account information is stored in this browser and is not uploaded to a server.|アカウント情報はこのブラウザーに保存され、サーバーには送信されません。
+退出后需要重新登录才能继续使用，确定退出吗？|You will need to sign in again. Sign out now?|続けて利用するには再ログインが必要です。ログアウトしますか？
+复制成功|Copied|コピーしました
+页面|Page|ページ
+{year}年{month}月{day}日 {time}|{year}-{month}-{day} {time}|{year}年{month}月{day}日 {time}
+还没有对话记录|No conversations yet|会話はまだありません
+发送一条提示词开始第一次对话。|Send a prompt to start your first conversation.|指示を送信して最初の会話を始めましょう。
+创作类型：{name}|Creation type: {name}|作成の種類：{name}
+清除创作类型|Clear creation type|作成の種類を解除
+创作类型|Creation type|作成の種類
+把灵感变成演示、文档与主题|Turn ideas into decks, docs and themes|アイデアをプレゼン・文書・テーマに
+950 套原创模板、本地优先的创作工作台。登录后同步你的工作区、模板编辑与媒体库。|950 original templates in a local-first creative workspace. Sign in to keep your workspace, template edits and media library in sync on this device.|950種のオリジナルテンプレートを備えたローカル優先の制作環境です。ログインすると、この端末でワークスペース・編集・メディアを管理できます。
+账号与作品仅保存在本浏览器，零后端、零追踪|Accounts and work stay in this browser — no backend, no tracking|アカウントと作品はこのブラウザー内だけに保存。バックエンド・追跡なし
+离线可用，登录状态本地保持 30 天|Works offline; the local session lasts 30 days|オフライン対応。ログインはローカルで30日間保持
+支持 Google、GitHub 与邮箱三种方式|Google, GitHub and email sign-in supported|Google・GitHub・メールのログインに対応
+登录|Sign in|ログイン
+注册|Sign up|登録
+使用 Google 继续|Continue with Google|Google で続ける
+使用 GitHub 继续|Continue with GitHub|GitHub で続ける
+或使用邮箱|or with email|またはメールで
+昵称|Display name|表示名
+邮箱|Email|メールアドレス
+密码|Password|パスワード
+确认密码|Confirm password|パスワード確認
+30 天内自动登录|Keep me signed in for 30 days|30日間ログインを保持
+忘记密码？|Forgot password?|パスワードをお忘れですか？
+继续即代表同意本地演示条款：数据仅存储在当前浏览器，清除浏览器数据将同时清除账号。|By continuing you accept the local demo terms: data lives only in this browser, and clearing browser data removes the account too.|続行するとローカルデモの条件に同意したことになります。データはこのブラウザーにのみ保存され、ブラウザーデータを消去するとアカウントも削除されます。
+暂不登录，直接进入 →|Continue as guest →|ゲストとして続ける →
+例如：林小满|e.g. Maya Lin|例：山田はな
+请输入密码|Enter your password|パスワードを入力
+至少 8 位，含字母|At least 8 characters with a letter|英字を含む8文字以上
+再次输入密码|Re-enter your password|パスワードを再入力
+正在创建账号…|Creating your account…|アカウントを作成中…
+正在登录…|Signing you in…|ログイン中…
+注册成功，正在进入工作台…|Account created — entering workspace…|登録しました。ワークスペースを開いています…
+登录成功，正在进入工作台…|Signed in — entering workspace…|ログインしました。ワークスペースを開いています…
+忘记密码|Forgot password|パスワードの再設定について
+Google 登录（本地演示）|Google sign-in (local demo)|Google ログイン（ローカルデモ）
+GitHub 登录（本地演示）|GitHub sign-in (local demo)|GitHub ログイン（ローカルデモ）
+Google 登录|Google sign-in|Google ログイン
+显示昵称|Display name|表示名
+继续本地演示登录|Continue with local demo sign-in|ローカルデモでログイン
+显示|Show|表示
+隐藏|Hide|非表示
+显示密码|Show password|パスワードを表示
+该邮箱尚未注册|This email is not registered.|このメールアドレスは未登録です。
+邮箱或密码不正确|Incorrect email or password.|メールアドレスまたはパスワードが違います。
+未知的登录提供商|Unknown sign-in provider.|不明なログインプロバイダーです。
+Design Buddy 是零后端本地应用，密码以加盐散列保存在本浏览器中，无法通过邮件找回。|Design Buddy is a local app with no backend. Passwords are salted and hashed in this browser and cannot be recovered by email.|Design Buddy はバックエンドのないローカルアプリです。パスワードはこのブラウザーにソルト付きハッシュで保存され、メールでは復旧できません。
+你可以：|Options:|対応方法：
+1. 仔细回忆后重新输入；|1. Try entering your password again carefully;|1. パスワードを確認して再入力してください。
+2. 使用另一个邮箱注册新账号；|2. Register a new account with another email;|2. 別のメールで新規登録してください。
+3. 若确认放弃旧账号，可在「设置 → 数据管理 → 重置应用」清空本地全部数据后重新开始（该操作会同时删除本地作品）。|3. To abandon the old account, use Settings → Data management → Reset app. This also deletes local work.|3. 旧アカウントを放棄する場合は、設定 → データ管理 → アプリをリセットで初期化できます。ローカルの作品も削除されます。
+本应用为|This is a|このアプリは
+零后端、零密钥|zero-backend, zero-secret|バックエンド・秘密キーなし
+的本地演示环境，未配置 OAuth 客户端 ID，无法跳转真实 Google/GitHub 授权页。|local demo without an OAuth client ID. It cannot open the real Google/GitHub consent page.|のローカルデモです。OAuth クライアント ID がないため、実際の Google/GitHub 認証画面は開きません。
+点击「继续本地演示登录」将在本机创建一个带|Continuing creates a real local account and session tagged with|続行すると、この端末に次のタグ付きローカルアカウントとセッションを作成します：
+提供商标记的真实本地账号与登录会话，功能与邮箱账号完全一致；部署到生产环境时接入 OAuth Client ID 即可无缝替换为真实授权。|as its provider. Features match an email account. Production deployments can replace this with real OAuth authentication.|メールアカウントと同じ機能です。本番環境では OAuth の接続によって実際の認証に置き換えられます。
+{subtitle} · {category} / {format} · {pages} 页 · {images}/{expected} 张主插画 · {status}|{subtitle} · {category} / {format} · {pages} pages · {images}/{expected} main illustrations · {status}|{subtitle}・{category} / {format}・{pages} ページ・主画像 {images}/{expected} 枚・{status}
+已完整验收|Fully reviewed|検収済み
+制作中，未计完成|Draft, not counted as complete|制作中・完成に含みません
+昵称至少 2 个字符|Display names need at least 2 characters.|表示名は2文字以上にしてください。
+请输入邮箱地址|Enter your email address.|メールアドレスを入力してください。
+邮箱格式不正确|Enter a valid email address.|有効なメールアドレスを入力してください。
+密码至少 8 位|Passwords need at least 8 characters.|パスワードは8文字以上にしてください。
+密码需至少包含一个字母|Passwords must contain at least one letter.|パスワードに英字を1文字以上含めてください。
+两次输入的密码不一致|Passwords do not match.|パスワードが一致しません。
+该邮箱已注册，请直接登录|This email is registered. Sign in instead.|このメールは登録済みです。ログインしてください。
+{plan} 计划|{plan} plan|{plan} プラン
+归入文件夹|Move to folder|フォルダーに分類
+未分组|Ungrouped|未分類
+取消共享|Stop sharing|共有を解除
+共享给协作成员|Share with collaborators|メンバーと共有
+（空白 Design Buddy，暂无提示词）|(Blank Design Buddy item; no prompt yet)|（空白の Design Buddy・指示はまだありません）
+召唤|Summon|呼び出す
+直接开工|Start working|作業を開始
+拆解并调度|Break down and coordinate|分解して手配
+真实运行，结果可下载|Runs locally; results can be downloaded|実際に処理し、結果を取得できます
+版本|Version|バージョン
+使用量|Usage|利用数
+它能解决|Problems it solves|解決できる課題
+专家帮你做|Let the expert help|専門家に依頼
+技能清单|Skill list|スキル一覧
+多个专家各做一段，拼起来风格不统一|Work from different experts lacks a consistent style.|複数の専門家の成果物でスタイルが揃いません。
+做完之后没人整体验收|No one reviews the complete delivery.|全体を確認する担当者がいません。
+下载产物|Download output|成果物を取得
+复制结果|Copy results|結果をコピー
+更多|More|その他
+正在召唤专家|Summoning expert|専門家を呼び出し中
+正在运行…|Running…|実行中…
+没有匹配的专家，换个关键词或筛选条件试试。|No matching experts. Try another keyword or filter.|一致する専門家がいません。検索や絞り込みを変更してください。
+这位专家的能力还在路上。|This expert's capabilities are coming soon.|この専門家の機能は準備中です。
+未连接|Not connected|未接続
+能力|Capabilities|機能
+看行情与风险指标|View prices and risk indicators|相場とリスク指標を表示
+认证方式|Authentication|認証方法
+传输|Transport|通信方式
+凭据指纹|Credential fingerprint|認証情報の指紋
+连接时间|Connected at|接続日時
+最近握手|Last handshake|最終ハンドシェイク
+填写凭据|Enter credentials|認証情報を入力
+重新握手|Repeat handshake|再ハンドシェイク
+本地引擎真实执行 · 远端服务未接入 · 凭据只做格式校验|Local execution · Remote service not connected · Credentials checked for format only|ローカル実行・外部サービス未接続・認証情報は形式のみ検証
+运行连接测试|Run connection test|接続テストを実行
+填入示例|Fill example|サンプルを入力
+真实执行 · 计时 · 可下载|Actual execution · Timed · Downloadable|実処理・時間計測・取得可能
+本地引擎|Local engine|ローカルエンジン
+本地引擎真实执行：解析输入、算数、生成文件，不联网也不编数据。|Local execution parses input, calculates and creates files without network access or invented data.|ローカルで入力解析・計算・ファイル作成を実行します。通信やデータの捏造は行いません。
+运行不需要安装；安装后可在首页调用|Run without installing; install to access it from home.|インストールせず実行可能です。導入するとホームから呼び出せます。
+安装技能|Install skill|スキルをインストール
+真实运行 · 产物可下载|Actual execution · Downloadable output|実処理・成果物を取得可能
+先输入要处理的内容，再运行。|Enter content before running.|処理する内容を入力してから実行してください。
+没有匹配的技能，换个关键词或筛选条件试试。|No matching skills. Try another keyword or filter.|一致するスキルがありません。検索や絞り込みを変更してください。
+还没有安装技能，回到「推荐」挑一个试试。|No skills installed. Choose one from Recommended.|スキルが未導入です。おすすめから選んでください。
+Header 名称|Header name|ヘッダー名
+MCP 地址|MCP URL|MCP URL
+产物|Output|成果物
+信任内网地址（本地部署 / VPN / 127.0.0.1）|Trust private addresses (local deployment / VPN / 127.0.0.1)|プライベートアドレスを許可（ローカル / VPN / 127.0.0.1）
+先写一句要处理的内容（或点「填入示例」）。|Enter your task or choose Fill example.|処理する内容を入力するか、サンプルを入力してください。
+凭据内容|Credential value|認証情報の値
+凭据只用于本地校验：通过后只保存|Credentials are checked locally. Only the following are saved:|認証情報はローカルで検証し、次の項目のみ保存します：
+创建并连接|Create and connect|作成して接続
+动作|Action|操作
+协议版本|Protocol version|プロトコルのバージョン
+名称|Name|名前
+含义|Meaning|意味
+复制响应|Copy response|応答をコピー
+导出 JSON|Export JSON|JSON を書き出す
+已连接|Connected|接続済み
+平均耗时|Average latency|平均応答時間
+引擎真实返回|Actual engine response|エンジンの実際の応答
+成功|Success|成功
+接入尚未收录的服务：创建后会立即用本地引擎跑一次握手，握手成功才算连接。|Add a service using the local engine. A successful local handshake is required.|ローカルエンジンでサービスを追加します。ローカルのハンドシェイク成功が必要です。
+接入真实的 MCP 协议服务（远端工具服务器）。会立即握手验证，成功后才保存。|Connect a remote MCP tool server. Its handshake must succeed before saving.|外部 MCP ツールサーバーに接続します。ハンドシェイク成功後に保存します。
+掩码与指纹|Mask and fingerprint|マスクと指紋
+收起结果|Collapse results|結果を折りたたむ
+无需认证|No authentication|認証不要
+时间|Time|時刻
+服务信息|Service information|サービス情報
+本次|This run|今回
+校验并保存|Validate and save|検証して保存
+检查项|Check|確認項目
+正在握手并执行…|Handshaking and running…|接続確認・実行中…
+没有匹配的连接器，换个关键词试试，或点右上角「自定义连接器」接入。|No matching connectors. Try another keyword or add a custom connector.|一致するコネクターがありません。検索を変更するか、カスタム接続を追加してください。
+测试并保存|Test and save|テストして保存
+清空记录|Clear history|履歴を消去
+码|Code|コード
+确定删除|Confirm deletion|削除を確認
+示例响应（本次实测）|Response from this test|今回のテストの応答
+结果|Result|結果
+耗时|Duration|所要時間
+自定义 Header|Custom header|カスタムヘッダー
+触发条件|Trigger condition|発生条件
+详情 / 产物|Details / output|詳細 / 成果物
+说明|Description|説明
+调用|Call|呼び出し
+调用中…|Calling…|呼び出し中…
+返回字段|Response fields|応答の項目
+还没有调用记录。点任意连接器的 + 连接，或打开卡片跑一次连接测试，这里就会出现真实记录。|No calls yet. Connect a service or run a connection test to record actual calls.|履歴はありません。接続やテストを実行すると実際の記録が表示されます。
+远端 MCP|Remote MCP|外部 MCP
+错误|Error|エラー
+错误码|Error code|エラーコード
+，原文不落库、不上传。|. Raw credentials are neither stored nor uploaded.|。認証情報の原文は保存・アップロードしません。
+💡 试试这样用|💡 Try this|💡 こんな使い方
+免费试一次|Try once for free|無料で試す
+我们的产品很好用|Our product is easy to use|使いやすい製品です
+按钮|Button|ボタン
+改前|Before|変更前
+改后|After|変更後
+来自真实使用统计，口径按月更新。|Based on actual usage statistics, updated monthly.|実際の利用統計に基づき、毎月更新します。
+生成第一份|Create your first item|最初の項目を作成
+看看能力|Explore capabilities|機能を見る
+取消收藏|Remove favorite|お気に入りを解除
+描述你想要的作品|Describe what you want to create|作りたい作品を説明
+收藏|Favorite|お気に入り
+本地演示环境：将根据描述生成一幅 SVG 作品并保存到媒体库。|Local demo: creates an SVG from your description and saves it to the media library.|ローカルデモ：説明に基づいて SVG を作成し、メディアに保存します。
+生成|Generate|生成
+还没有图形，点击「新建 → AI 生成图形」创作。|No graphics yet. Choose New → Generate AI graphic.|グラフィックはありません。新規 → AI グラフィックを生成から作成できます。
+主按钮|Primary button|主ボタン
+主要强调色|Primary accent|主アクセント色
+主题感知|Theme awareness|テーマの効果
+主题调色板|Theme palette|テーマの配色
+主题预览|Theme preview|テーマのプレビュー
+人 Design Buddy 正在使用此主题。|Design Buddy items use this theme.|件の Design Buddy がこのテーマを使用しています。
+保存主题|Save theme|テーマを保存
+保存指令|Save instructions|指示を保存
+删除主题|Delete theme|テーマを削除
+卡片圆角：|Card corners:|カードの角丸：
+可编辑|Editable|編集可能
+告诉 Buddy 你的固定偏好（每次创作都会遵循）|Tell Buddy your recurring preferences for each creation|毎回の作成に適用する好みを Buddy に伝えてください
+品牌名称|Brand name|ブランド名
+图片圆角：|Image corners:|画像の角丸：
+图表配色|Chart colors|図表の配色
+字体|Fonts|フォント
+字体选择会实时反映到右侧预览，并在应用主题后作用于全站。|Font changes appear in the preview and apply across the app when the theme is applied.|フォント変更はプレビューに反映され、テーマ適用後に全体に反映されます。
+完成|Done|完了
+已应用|Applied|適用済み
+归档主题|Archive theme|テーマをアーカイブ
+当您自定义主题时，可实时观察字体排版、颜色、版块、卡片设计和数据的同步更新效果。|Preview typography, colors, sections, cards and data as you customize your theme.|テーマ調整中に文字・色・セクション・カード・データの変化を確認できます。
+恢复主题|Restore theme|テーマを復元
+排版|Typography|文字組み
+接下来的卡片将逐一介绍每项主题设置，并通过可编辑的画布内容展示其实际效果。|The following cards introduce each setting using an editable preview.|以下のカードで各設定を紹介し、編集可能なプレビューで効果を示します。
+控制主题下所有图片与截图的默认圆角。|Set the default corner radius for images and screenshots.|画像とスクリーンショットの既定の角丸を設定します。
+文本|Text|テキスト
+标志|Logo|ロゴ
+标志信息随主题保存，应用主题的 Design Buddy 会在页眉处展示。|The logo is saved with the theme and displayed in the header of items using it.|ロゴはテーマに保存され、適用する項目のヘッダーに表示されます。
+标题字体|Heading font|見出しフォント
+次按钮|Secondary button|副ボタン
+正文字体|Body font|本文フォント
+版面密度|Layout density|レイアウト密度
+看看您的主题如何塑造演示文稿的每个部分|See how your theme shapes every part of a presentation|テーマがプレゼンの各部分をどう変えるか確認しましょう
+缩写标志（两字符以内）|Logo initials (up to two characters)|ロゴの略称（2文字まで）
+自定义 CSS|Custom CSS|カスタム CSS
+让每个想法都清晰表达|Make every idea clear|すべてのアイデアを明確に
+设计|Design|デザイン
+辅助点缀色（可选）|Secondary accent (optional)|補助アクセント色（任意）
+追加到主题的样式（高级）|Additional theme styles (advanced)|テーマに追加するスタイル（詳細）
+选择标题字体和正文字体，然后调整每种文字样式的大小和颜色。Design Buddy 会在您的幻灯片中统一应用该层级结构。|Choose heading and body fonts, then adjust their sizes and colors. Design Buddy applies the hierarchy throughout your slides.|見出しと本文のフォント・サイズ・色を調整すると、全スライドに階層が適用されます。
+颜色|Colors|色
+（默认）|(Default)|（既定）
+＋ 添加颜色|＋ Add color|＋ 色を追加
+文档结构检查|Document structure check|文書構造チェック
+页面可访问性检查|Page accessibility check|ページのアクセシビリティチェック
+素材引用清单|Asset reference inventory|素材参照一覧
+检查标题层级、重复标题、待填项和长段落，导出目录与问题清单|Check heading hierarchy, duplicate headings, placeholders and long paragraphs; export an outline and findings.|見出し階層・重複・未記入項目・長い段落を確認し、目次と指摘を出力します。
+静态检查 HTML 的图片替代文本、表单标签、按钮名称和标题层级，不替代浏览器无障碍审计|Statically check HTML image alternatives, form labels, button names and headings; not a browser accessibility audit.|HTML の代替テキスト・フォームラベル・ボタン名・見出しを静的に確認します。ブラウザー監査の代替ではありません。
+提取 HTML 或 Markdown 的资源引用并去重，不下载、不验证版权或链接可用性|Extract and deduplicate HTML or Markdown references; no downloads, licensing or availability verification.|HTML・Markdown の参照を抽出・重複排除します。取得・著作権・リンク有効性は確認しません。
+根据主题生成逐页大纲与讲稿分配，不直接导出 PPT 文件|Create page-by-page outlines and speaker allocations, not PPT files.|ページごとの構成と発表内容を配分します。PPT ファイルは出力しません。
+本地规则清理套话和冗余，输出修改前后对比，不代替大模型改写|Remove stock phrases and redundancy using local rules, with a before/after comparison; not model-based rewriting.|ローカル規則で定型句・冗長表現を整理し前後を比較します。大規模モデルの書き直しではありません。
+解析粘贴的数值并生成 SVG 图表，不联网获取数据|Parse pasted numbers into SVG charts without fetching online data.|貼り付けた数値から SVG 図表を作成します。オンライン取得は行いません。
+按本地句子评分提取摘要，不进行事实核验|Extract summaries using local sentence scoring, without fact verification.|文のスコアで要約を抽出します。事実確認は行いません。
+从输入提取关键词和页面标题建议，不提供搜索量数据|Extract keywords and page title suggestions, without search-volume data.|入力からキーワード・ページタイトルを提案します。検索数は取得しません。
+CSV / TSV 表格分析|CSV / TSV analysis|CSV / TSV 分析
+解析粘贴的 CSV / TSV，统计数值列并导出 CSV，不读取 XLSX 文件|Analyze pasted CSV / TSV and export CSV; does not read XLSX files.|貼り付けた CSV / TSV の数値を集計し CSV を出力します。XLSX は読み込みません。
+Markdown 转 Word（.doc）|Markdown to Word (.doc)|Markdown から Word（.doc）
+把粘贴的 Markdown 转成 Word 可打开的 HTML .doc，不是原生 DOCX|Convert pasted Markdown to Word-compatible HTML .doc, not native DOCX.|Markdown を Word 対応の HTML .doc に変換します。ネイティブ DOCX ではありません。
+文本分页与目录|Text pagination and outline|テキストのページ分割と目次
+按段落和字数规划分页，导出 Markdown 目录，不解析或导出 PDF|Plan pages from text and export a Markdown outline; does not parse or export PDFs.|段落・文字数から分割を計画し Markdown 目次を出力します。PDF の解析・出力は行いません。
+HTML 转 Markdown|HTML to Markdown|HTML から Markdown
+将粘贴的 HTML 转为 Markdown，不读取 PDF、Word 或 PPT 文件|Convert pasted HTML to Markdown; does not read PDF, Word or PPT files.|HTML を Markdown に変換します。PDF・Word・PPT は読み込みません。
+交付文本与源码自检|Delivery text and source check|納品テキストとソースのチェック
+检查输入文本和 HTML 源码中的常见问题，不验证实际 Office 导出文件|Check common text and HTML issues; does not verify actual Office exports.|テキストと HTML の一般的な問題を確認します。実際の Office 出力は検証しません。
+方案假设与风险审查|Proposal assumptions and risks|提案の前提とリスク審査
+根据输入生成本地规则追问清单，不联网核验结论|Generate follow-up questions using local rules, without online verification.|ローカル規則で追加質問を作成します。オンライン検証は行いません。
+HTML 响应式规则检查|HTML responsive-rule check|HTML レスポンシブ規則チェック
+检查粘贴源码的固定宽度、视口等规则，不读取截图或自动改代码|Check source rules for fixed widths and viewports; no screenshot reading or automatic code changes.|固定幅・ビューポート等を確認します。画像の読み取りや自動修正は行いません。
+按输入内容量估算密度并给出版式方案，不测量真实渲染页面|Estimate density from input and suggest layouts; does not measure rendered pages.|入力の量から密度とレイアウトを提案します。実際の描画は計測しません。
+品牌色与设计令牌|Brand colors and design tokens|ブランドカラーとデザイントークン
+从输入色值推导色阶、字体和间距令牌，不自动提取品牌文件|Derive color, type and spacing tokens from input colors, not brand files.|入力の色値から色階・文字・余白のトークンを作成します。ブランドファイルの自動解析は行いません。
+按输入生成可下载的单文件 HTML 原型，不代替生产后端|Create a downloadable single-file HTML prototype, not a production backend.|取得可能な単一 HTML プロトタイプを作成します。本番バックエンドではありません。
+本地规则引擎|Local rule engine|ローカル規則エンジン
+暂无调用统计|Usage statistics unavailable|利用統計なし
+创作交付|Creative delivery|制作と納品
+标题目录|Heading outline|見出し一覧
+仍需人工验证|Manual checks still required|引き続き手動確認が必要
+资源引用|Resource references|リソース参照
+控件|Controls|コントロール
+待填项|Placeholders|未記入項目
+引用次数|Reference occurrences|参照回数
+去重引用|Unique references|重複排除後の参照
+层级|Level|階層
+路径|Path|パス
+范围|Scope|範囲
+{name}（旧版能力）|{name} (legacy capability)|{name}（旧版機能）
+已从推荐移除，保留旧安装记录；可能仅转发专家规则或输出方案，不执行名称暗示的外部操作。|Removed from recommendations; existing installs are retained. May only forward to expert rules or produce a plan, not perform external actions implied by the name.|おすすめから除外しました。既存の導入記録は保持します。専門家の規則や計画の出力のみで、名称が示す外部操作を実行しない場合があります。
+选定团队文档作为创作资料，按需回传成果|Use selected team documents as source material and return results as needed.|選択したチーム文書を資料に使い、必要に応じて成果を返します。
+导入选定知识库页面，保存创作结果|Import selected knowledge pages and save creative output.|選択したナレッジページを取り込み、成果を保存します。
+读取指定仓库资料，确认后提交原型源码|Read selected repository resources and submit prototype source after confirmation.|指定リポジトリを参照し、確認後にプロトタイプのソースを送信します。
+选择云端文件作为素材，保存导出成果|Use selected cloud files as source material and save exports.|選択したクラウドファイルを素材に使い、成果を保存します。
+导入协作文档资料，按需回传交付文档|Import collaborative documents and return deliverables as needed.|共同文書を取り込み、必要に応じて成果文書を返します。
+确认后将成果链接发送到指定频道|Send result links to a selected channel after confirmation.|確認後に指定チャンネルへ成果のリンクを送信します。
+网关暂不可用；历史配置保留，不能据此判断远端已连接。|Gateway unavailable. Saved configurations are retained, but remote connectivity cannot be verified.|ゲートウェイを利用できません。保存済み設定は保持しますが、外部接続は確認できません。
+连接器服务暂不可用|Connector service unavailable|コネクターサービスを利用できません
+已验证（MCP 端点）|Verified (MCP endpoint)|検証済み（MCP エンドポイント）
+已配置，未验证|Configured, not verified|設定済み・未検証
+连接异常|Connection error|接続エラー
+本地演示|Local demo|ローカルデモ
+未配置|Not configured|未設定
+管理连接|Manage connection|接続を管理
+配置连接|Configure connection|接続を設定
+尚无已验证的远端连接|No verified remote connections yet|検証済みの外部接続はありません
+围绕资料导入、创作和交付，只保留六个核心连接入口。配置真实端点后才能验证，不提供模拟授权。|Six core connections for importing, creating and delivering. Verification requires a real endpoint; simulated authorization is not provided.|取り込み・制作・納品に必要な6つの接続に絞りました。実際のエンドポイントで検証し、模擬認証は行いません。
+仅展示有远端握手记录的 MCP 服务；验证范围与时间可在管理面板查看。|Shows MCP services with remote handshake records. Check scope and verification time in their management panel.|外部ハンドシェイクの記録がある MCP サービスを表示します。管理パネルで検証範囲と日時を確認できます。
+推荐连接|Recommended connections|おすすめの接続
+已验证的远端服务|Verified remote services|検証済みの外部サービス
+高级设置|Advanced settings|詳細設定
+自定义 MCP 服务、历史配置和调用记录不再混入推荐列表。|Custom MCP services, legacy settings and call history are separate from recommendations.|カスタム MCP・過去の設定・呼び出し履歴はおすすめと分けて管理します。
+历史配置（保留兼容）|Legacy settings (retained)|過去の設定（互換性のため保持）
+查看旧配置|View legacy settings|過去の設定を見る
+没有历史配置|No legacy settings|過去の設定はありません
+验证仅针对你配置的 MCP 端点，不代表厂商官方授权或所有业务操作均可用。|Verification covers only your configured MCP endpoint, not official provider authorization or all business operations.|検証対象は設定した MCP エンドポイントのみで、公式認証や全業務機能の利用を保証しません。
+默认不授权任何工具。请核对工具的真实行为，将需要的工具加入只读或写入白名单；名称和远端标注不能证明它只读。资源访问范围还必须在服务商侧限制到选定内容。|No tools are authorized by default. Verify behavior before adding tools to read or write allowlists. Names and annotations do not prove read-only behavior. Restrict accessible resources with your provider too.|既定では全ツール未許可です。動作を確認して読み取り・書き込み許可リストに追加してください。名称や注釈は安全性の証明ではありません。サービス側でも参照範囲を限定してください。
+管理权限|Manage permissions|権限を管理
+确认写入后运行|Run after write confirmation|書き込み確認後に実行
+运行只读工具|Run read-only tool|読み取りツールを実行
+未授权|Not authorized|未許可
+尚未接通厂商服务。请配置你有权访问的 MCP 端点；本应用不会伪造 OAuth 授权或厂商连接。|Provider service is not connected. Configure an authorized MCP endpoint; this app does not simulate OAuth or provider connectivity.|サービスは未接続です。権限のある MCP エンドポイントを設定してください。OAuth や公式接続を模擬することはありません。
+由你提供的 MCP 服务决定|Determined by your MCP service|設定する MCP サービスに依存します
+只连接你信任且有权访问的 MCP 服务。不会自动接入厂商账号；授权范围请在服务商侧限制。|Connect only trusted MCP services you are authorized to access. Provider accounts are not connected automatically; limit permissions with the provider.|信頼できるアクセス権のある MCP のみ接続してください。サービス側アカウントは自動接続せず、権限範囲はサービス側で制限してください。
+请输入 Token|Enter a token|トークンを入力してください
+默认禁止所有工具。请逐项核对真实行为；不能仅根据工具名称将它标为只读。写入工具每次运行前仍需确认。|All tools are denied by default. Verify behavior before classifying tools as read-only. Write tools require confirmation on every run.|既定では全ツール禁止です。名称だけで読み取り専用と判断せず動作を確認してください。書き込みは毎回確認が必要です。
+只读|Read-only|読み取り専用
+写入（每次确认）|Write (confirm each time)|書き込み（毎回確認）
+请只传入用户选定内容所需的资源 ID 或路径，不要请求全量资料。|Pass only resource IDs or paths for selected content; do not request all data.|選択された内容に必要なリソース ID・パスのみ渡し、全データを要求しないでください。
+JSON 参数|JSON arguments|JSON 引数
+JSON 参数必须是对象|JSON arguments must be an object|JSON 引数はオブジェクトにしてください
+确认外部写入|Confirm external write|外部書き込みを確認
+确认执行|Confirm execution|実行を確認
+请先测试连接|Test the connection first|先に接続テストを実行してください
+将删除此远端服务配置与服务端保存的凭据，旧本地演示记录不受影响。|Deletes this remote service configuration and its server-side credentials. Legacy local demo records are unchanged.|この接続設定とサーバー上の認証情報を削除します。過去のローカルデモ記録は変更しません。
+旧记录仅作兼容保留，不代表真实厂商授权。不会在这里执行本地模拟连接。|Legacy records are retained for compatibility, not proof of provider authorization. No simulated connections run here.|過去の記録は互換性のため保持し、公式認証の証明ではありません。ここでは模擬接続を実行しません。
+六个核心连接入口，前往连接器页验证|Six core connections. Verify them on the Connectors page.|6つの基本接続。コネクターページで検証してください。
+{name} · 管理连接|{name} · Manage connection|{name}・接続を管理
+重新验证后工具白名单会清空，请重新核对权限。|Reverification clears tool allowlists. Review permissions again.|再検証でツール許可リストを解除します。権限を再確認してください。
+请先重新验证远端连接|Reverify the remote connection first|先に外部接続を再検証してください
+MCP 地址不能包含账号密码、查询参数或片段；请使用认证字段|MCP URLs cannot contain credentials, query parameters or fragments. Use authentication fields.|MCP URL に認証情報・クエリ・フラグメントを含めないでください。認証欄を使用してください。
+MCP 地址格式不正确|Invalid MCP URL|MCP URL が正しくありません
+端点验证有效期为 30 分钟，过期需重新验证；这不是持续在线监测。|Endpoint verification lasts 30 minutes and must then be repeated. This is not continuous availability monitoring.|検証は30分間有効です。期限後は再検証が必要です。常時の稼働監視ではありません。
+Excel 文件编辑（.xlsx）|Excel file editor (.xlsx)|Excel ファイル編集（.xlsx）
+Markdown 转 Word（.docx）|Markdown to Word (.docx)|Markdown から Word（.docx）
+PDF 文本与页面解析|PDF text and page extraction|PDF テキストとページ解析
+浏览器无障碍检查|Browser accessibility audit|ブラウザーのアクセシビリティ検査
+技能插件包|Skill plugin packages|スキルプラグインパッケージ
+文件处理与插件|Files and plugins|ファイル処理とプラグイン
+Excel 文件编辑|Excel file editor|Excel ファイル編集
+PDF 文件解析|Parse a PDF file|PDF ファイル解析
+导出 DOCX|Export DOCX|DOCX を出力
+导入插件包|Import plugin package|プラグインパッケージをインポート
+启用内置技能|Enable built-in skill|内蔵スキルを有効化
+确认启用|Confirm enable|有効化を確認
+已启用({count})|Enabled ({count})|有効（{count}）
+已启用技能（{count}）|Enabled skills ({count})|有効なスキル（{count}）
+还没有启用技能，回到「推荐」挑一个试试。|No skills enabled. Choose one from Recommended.|有効なスキルはありません。おすすめから選択してください。
+已启用，可在首页直接调用|Enabled; available from the home page|有効です。ホームから呼び出せます
+运行不需要启用；启用后可在首页调用|Try without enabling; enable to call from home|有効化せず試せます。有効化するとホームから呼び出せます
+自动启用可信技能未开启，确认手动启用「{name}」吗？|Automatic enabling is off. Enable “{name}” manually?|自動有効化はオフです。「{name}」を手動で有効にしますか？
+技能「{name}」已启用|Skill “{name}” enabled|スキル「{name}」を有効にしました
+可信技能「{name}」已自动启用|Trusted skill “{name}” automatically enabled|信頼済みスキル「{name}」を自動で有効にしました
+技能「{name}」已启用，现在可以在首页直接调用|Skill “{name}” enabled and available from home|スキル「{name}」を有効にしました。ホームから呼び出せます
+上传 XLSX、切换工作表、编辑单元格并导出原生 XLSX；不执行宏或外部公式|Upload XLSX, switch sheets, edit cells and export native XLSX; no macros or external formulas|XLSX の読込、シート切替、セル編集、出力に対応。マクロや外部数式は実行しません
+将 Markdown 标题、段落、列表和表格生成原生 DOCX，不自动下载外链图片|Create native DOCX headings, paragraphs, lists and tables from Markdown; linked images are not downloaded|Markdown の見出し、段落、リスト、表からネイティブ DOCX を作成。外部画像は取得しません
+上传 PDF，提取真实文字层、目录和页码并预览页面；扫描件提示需要 OCR|Upload PDF, extract its text layer, outline and page numbers, and preview pages; scans are marked as needing OCR|PDF の文字層、目次、ページ番号を抽出しプレビュー。スキャンには OCR が必要と表示します
+隔离浏览器中运行 axe-core，记录真实 Tab 操作并导出报告；不等于完整认证|Run axe-core in an isolated browser, record real Tab events and export a report; not a certification|隔離ブラウザーで axe-core を実行し実際の Tab 操作を記録。完全な認証ではありません
+文件只在当前浏览器处理，不上传服务器。插件单独保存在此浏览器。|Files are processed in this browser, not uploaded. Plugins are stored separately in this browser.|ファイルはブラウザー内で処理され、送信されません。プラグインはこのブラウザーに別途保存されます。
+生成原生 Office Open XML 文档，支持标题、段落、加粗、斜体、列表、表格和链接。图片引用保留为文字，不自动下载或嵌入外链图片。|Generate native Office Open XML with headings, paragraphs, bold, italics, lists, tables and links. Image references remain text; linked images are not downloaded or embedded.|見出し、段落、太字、斜体、リスト、表、リンクに対応したネイティブ Office Open XML を生成。画像参照は文字として保持し、外部画像は取得しません。
+支持 .xlsx 单元格和工作表编辑。公式不在浏览器计算，导出后由 Excel 重算。不支持宏、外部链接、图表编辑；复杂工作簿可能丢失部分特性，请保留原件。|Edit .xlsx cells across worksheets. Formulas are recalculated by Excel, not this browser. Macros, external workbook links and chart editing are unsupported; complex features may not survive export. Keep the original.|.xlsx のセルをシートごとに編集できます。数式は Excel で再計算します。マクロ、外部ブックリンク、グラフ編集は非対応です。複雑な機能が失われる場合があるため原本を保存してください。
+解析真实 PDF 的文字层、页码和目录，可预览页面。扫描件不会伪造文字：没有文字层的页面会提示需要 OCR。暂不支持 OCR、PDF 内容编辑或签名。|Extract actual PDF text, page numbers and outlines, and preview pages. Pages without a text layer are marked as needing OCR. OCR, PDF content editing and signatures are not supported.|PDF の文字層、ページ番号、目次を抽出しプレビューします。文字層のないページには OCR が必要と表示します。OCR、PDF 本文編集、署名は非対応です。
+在隔离浏览器预览中运行 axe-core，检查 WCAG 2.1 A/AA 相关自动规则。脚本、外部资源、表单提交被禁用；结果仅覆盖此受限预览，不等于完整 WCAG 认证。|Run axe-core against WCAG 2.1 A/AA automated rules in an isolated preview. Scripts, external resources and form submissions are blocked. Results cover only this restricted preview, not full WCAG certification.|隔離プレビューで axe-core の WCAG 2.1 A/AA 自動ルールを実行。スクリプト、外部リソース、フォーム送信は無効です。この制限されたプレビューのみを検査し、完全な WCAG 認証ではありません。
+导入受限声明式插件包，安装实际程序、版本、依赖和权限凭证。只支持 db-text-v1 引擎，不支持任意 JavaScript、npm、网络或系统文件访问。SHA-256 用于完整性检查，不证明作者可信。|Install a restricted declarative plugin program with version, dependency and permission records. Only db-text-v1 is supported; no arbitrary JavaScript, npm, network or system file access. SHA-256 checks integrity, not publisher trust.|制限付き宣言型プログラムをバージョン、依存関係、権限記録とともにインストール。db-text-v1 のみ対応し、任意の JavaScript、npm、ネットワーク、システムファイルにはアクセスできません。SHA-256 は完全性の確認であり作者の信頼性を保証しません。
+Markdown 文件|Markdown file|Markdown ファイル
+Markdown 内容|Markdown content|Markdown 内容
+Excel 文件|Excel file|Excel ファイル
+工作表|Worksheet|ワークシート
+上一页|Previous page|前のページ
+下一页|Next page|次のページ
+单元格|Cell|セル
+类型|Type|種類
+文本|Text|テキスト
+数值|Number|数値
+公式|Formula|数式
+新值|New value|新しい値
+保存单元格|Save cell|セルを保存
+导出 XLSX|Export XLSX|XLSX を出力
+PDF 文件|PDF file|PDF ファイル
+PDF 密码（可选）|PDF password (optional)|PDF パスワード（任意）
+解析 PDF|Parse PDF|PDF を解析
+页码|Page number|ページ番号
+预览页面|Preview page|ページをプレビュー
+提取结果|Extracted text|抽出結果
+导出解析报告|Export extraction report|解析レポートを出力
+HTML 内容|HTML content|HTML 内容
+运行浏览器检查|Run browser audit|ブラウザー検査を実行
+开始键盘测试|Start keyboard testing|キーボードテストを開始
+人工键盘结论|Manual keyboard verdict|手動キーボード判定
+未测试|Not tested|未テスト
+通过（人工确认）|Pass (manually confirmed)|合格（手動確認）
+存在问题|Issues found|問題あり
+导出检查报告|Export audit report|検査レポートを出力
+下载示例插件包|Download sample plugin package|サンプルプラグインをダウンロード
+插件包|Plugin package|プラグインパッケージ
+审核并安装插件|Review and install plugin|プラグインを確認してインストール
+运行插件|Run plugin|プラグインを実行
+卸载插件|Uninstall plugin|プラグインをアンインストール
+插件输入|Plugin input|プラグイン入力
+运行结果|Execution output|実行結果
+下载运行结果|Download execution output|実行結果をダウンロード
+尚未安装插件包|No plugin packages installed|インストール済みのプラグインはありません
+插件安装权限确认|Review plugin installation permissions|プラグインの権限を確認
+已取消安装|Installation cancelled|インストールをキャンセルしました
+删除此插件包及安装记录？|Delete this plugin package and its installation record?|このプラグインとインストール記録を削除しますか？
+确认卸载|Confirm uninstall|アンインストールを確認
+处理完成|Processing complete|処理が完了しました
+处理失败：{message}|Processing failed: {message}|処理失敗: {message}
+请在预览中实际按 Tab / Shift+Tab，检查焦点和顺序；Esc 退出。|Press Tab / Shift+Tab in the preview to inspect focus and order; Esc exits.|プレビュー内で Tab / Shift+Tab を押してフォーカスと順序を確認してください。Esc で終了します。
+打开文件工作台|Open file workbench|ファイルワークベンチを開く
+此技能需要在文件工作台中选择文件或输入内容；本次尚未执行文件处理。|Select a file or enter content in the file workbench; no file processing has run yet.|ファイルワークベンチでファイルまたは内容を入力してください。ファイル処理はまだ実行されていません。
+本地文件引擎|Local file engine|ローカルファイルエンジン
+浏览器检查|Browser audit|ブラウザー検査
+等待输入|Awaiting input|入力待ち
+正在处理…|Processing…|処理中…
+仅处理你提交给插件的文字，不授予账号、网络或系统权限。|Only text you submit is available to the plugin. No account, network or system permissions are granted.|プラグインが扱えるのは送信した文字のみです。アカウント、ネットワーク、システム権限は付与されません。
+文员工作台|Office workbench|事務ワークベンチ
+文件库与智能搜索|File library and smart search|ファイルライブラリと検索
+Excel 批量汇总|Batch Excel consolidation|Excel 一括集計
+报告草稿|Report draft|レポート草案
+选择文件（可多选）|Select files (multiple)|ファイルを選択（複数可）
+选择整个文件夹（如浏览器支持）|Select a folder (if supported by this browser)|フォルダーを選択（ブラウザー対応時）
+所有分类|All categories|すべての分類
+已导入文件|Imported files|インポート済みファイル
+Excel 批量汇总|Batch Excel consolidation|Excel 一括集計
+重复行处理|Duplicate row handling|重複行の処理
+去重（默认）|Deduplicate (default)|重複を削除（既定）
+保留重复行|Keep duplicates|重複を保持
+预览合并与质量检查|Preview merge and data-quality checks|統合と品質チェックをプレビュー
+部门月度汇总|Department monthly summary|部門月次集計
+会议纪要|Meeting minutes|議事録
+工作通知|Work notice|業務通知
+工作总结|Work summary|業務報告
+工作计划|Work plan|業務計画
+报告类型|Report type|レポート種別
+标题|Title|タイトル
+你确认过的事实与结论|Facts and conclusions you verified|確認済みの事実と結論
+生成可编辑 DOCX 草稿|Generate editable DOCX draft|編集可能な DOCX 草案を生成
+重命名|Rename|名前を変更
+归档|Archive|アーカイブ
+恢复|Restore|復元
+删除|Delete|削除
+加入报告素材|Add to report sources|レポート資料に追加
+搜索|Search|検索
+搜索文件名或文件内容，例如：四月部门费用|Search filenames or file contents, e.g. April department expenses|ファイル名や内容を検索（例：4月の部門経費）
+导入的文件和搜索索引保存在当前浏览器的 IndexedDB。只会搜索你明确选择的文件；不会扫描电脑或部门共享盘。|Imported files and search indexes stay in this browser's IndexedDB. Only files you explicitly choose are searched; your computer and department shared drives are not scanned.|インポートしたファイルと検索インデックスはこのブラウザーの IndexedDB に保存されます。選択したファイルのみを検索し、PC や共有ドライブは走査しません。
+支持 PDF、DOCX、XLSX、CSV、TXT、MD|Supports PDF, DOCX, XLSX, CSV, TXT and MD|PDF、DOCX、XLSX、CSV、TXT、MD に対応
+请选择至少两个 Excel 文件|Select at least two Excel workbooks|Excel ファイルを 2 つ以上選択してください
+没有匹配资料。|No matching files.|一致する資料がありません。
+尚未导入文件。|No files imported yet.|ファイルはまだありません。
+选择至少两个 Excel 工作簿。以每个文件的第一张工作表、第一行表头为准；相同列名自动对齐，缺列留空，完全重复的数据行会标记并去重。原文件不会修改。|Select at least two workbooks. The first worksheet and first row are treated as headers; matching column names are aligned, missing fields left blank, exact duplicate rows flagged and deduplicated. Originals are unchanged.|2 つ以上のブックを選択します。各ファイルの最初のシートと最初の行を見出しとして扱い、同名列を揃え、欠損欄は空欄、完全重複行は検出して除外します。原本は変更しません。
+生成透明的汇总初稿：只使用你输入的正文和本地 Excel 合并结果，不会让模型补造事实。请在分享或提交前人工核对。|Generate a transparent summary draft using only your text and local Excel merge results. No facts are invented by a model. Review before sharing or submitting.|入力した本文とローカル Excel の統合結果のみで草案を作成します。モデルが事実を補うことはありません。共有・提出前に確認してください。
+部门数据汇总.xlsx|department-data-summary.xlsx|部門データ集計.xlsx
+资料来源（已导入文件）|Sources (imported files)|資料ソース（インポート済みファイル）
+Excel 汇总概览|Excel consolidation overview|Excel 集計の概要
+汇总明细|Consolidated data|集計データ
+审核提示|Review checklist|確認事項
+统计口径|calculation definitions|集計条件
+源文件保持不变|Original source files remain unchanged|元ファイルは変更されません
+请先检查字段对齐、空值和重复项，再确认导出。|Review column mapping, missing values and duplicates before exporting.|出力前に列の対応、欠損値、重複を確認してください。
+没有可用表头|No usable header found|利用できる見出しがありません
+列数超过 200，请缩小文件范围|More than 200 columns; reduce the selected files|200 列を超えています。対象ファイルを減らしてください
+未命名列|Unnamed column|無名の列
+该工作表|This worksheet|このシート
+与已有文件完全相同（SHA-256）|Exact duplicate of an existing file (SHA-256)|既存ファイルと完全一致（SHA-256）
+分类已保存|Category saved|分類を保存しました
+待分类|Uncategorized|未分類
+行政办公|Administration|総務
+财务报销|Finance and expenses|経理・経費
+人事考勤|HR and attendance|人事・勤怠
+会议纪要|Meeting minutes|議事録
+项目资料|Project files|プロジェクト資料
+合同采购|Contracts and purchasing|契約・購買
+销售数据|Sales data|販売データ
+其他|Other|その他
+文件库与内容搜索|File library and content search|ファイルライブラリと内容検索
+导出文件目录 XLSX|Export file inventory XLSX|ファイル一覧を XLSX 出力
+本地文件目录.xlsx|local-file-inventory.xlsx|ローカルファイル一覧.xlsx
+按关键词搜索文件名或已提取文字；非语义搜索|Search filenames or extracted text by keyword; not semantic search|ファイル名や抽出テキストをキーワード検索。意味検索ではありません

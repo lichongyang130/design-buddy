@@ -1,0 +1,69 @@
+{
+  "source": "authored-fictional-event-register",
+  "synthetic": true,
+  "notActualEvent": true,
+  "summary": {
+    "blocks": 6,
+    "taskStations": 2,
+    "plannedMinutes": 60,
+    "actualAttendance": null,
+    "actualDuration": null,
+    "measuredLearningGain": null
+  },
+  "records": [
+    {
+      "block": "opening",
+      "planned_minutes": 5,
+      "station": null,
+      "input_artifact": "invented passage",
+      "output_artifact": "shared task",
+      "status": "planned",
+      "actual_duration": null
+    },
+    {
+      "block": "station-one",
+      "planned_minutes": 12,
+      "station": "S01",
+      "input_artifact": "shared task",
+      "output_artifact": "tentative connection",
+      "status": "planned",
+      "actual_duration": null
+    },
+    {
+      "block": "transfer",
+      "planned_minutes": 3,
+      "station": null,
+      "input_artifact": "tentative connection",
+      "output_artifact": "tentative connection",
+      "status": "planned",
+      "actual_duration": null
+    },
+    {
+      "block": "station-two",
+      "planned_minutes": 15,
+      "station": "S02",
+      "input_artifact": "tentative connection",
+      "output_artifact": "draft context card",
+      "status": "planned",
+      "actual_duration": null
+    },
+    {
+      "block": "sharing",
+      "planned_minutes": 15,
+      "station": null,
+      "input_artifact": "draft context card",
+      "output_artifact": "review question",
+      "status": "planned",
+      "actual_duration": null
+    },
+    {
+      "block": "closing",
+      "planned_minutes": 10,
+      "station": null,
+      "input_artifact": "review question",
+      "output_artifact": "question retained",
+      "status": "planned",
+      "actual_duration": null
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+kind,case,demand,capacity,delivered,unmet,unused,benefit_points,resource_points,net_points
+scenario,conservative,8,12,8,0,4,32,28,4
+scenario,baseline,12,12,12,0,0,48,36,12
+scenario,exploratory,16,12,12,4,0,48,36,12
+sensitivity,capacity-10,12,10,10,2,0,40,32,8
+sensitivity,capacity-12,12,12,12,0,0,48,36,12
+sensitivity,capacity-14,12,14,12,0,2,48,36,12

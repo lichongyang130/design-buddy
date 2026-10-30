@@ -1,0 +1,396 @@
+{
+  "work": {
+    "id": "campaign-playbook",
+    "title": "CAMPAIGN PLAYBOOK",
+    "subtitle": "A coordinated touchpoint journey",
+    "category": "营销材料",
+    "layout": "campaign",
+    "color": "#18614d",
+    "wash": "#def0e5",
+    "framework": "触点旅程与传播协同",
+    "scope": "Fictional campaign planning for Open Table Studio. Journey order is conceptual, not actual user behaviour, scheduled activity, consent, reach or campaign results.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "marketing-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / CAMPAIGN PLAYBOOK",
+      "title": "State the campaign’s purpose plainly.",
+      "lead": "Open Table Studio is a fictional creative-workshop concept. The campaign purpose is to help an interested person understand the proposed experience before deciding whether to ask a question.",
+      "body": "No actual event, registration service or public programme is established. Plan the communication around informed choice rather than urgency, scarcity or an unsupported promise of personal transformation.",
+      "subheading": "Purpose and audience action",
+      "detail": "The proposed primary action is to read the workshop outline. A real campaign must verify the outline, destination and operational information before publishing.",
+      "question": "What must a reader understand before taking the next step?",
+      "records": [
+        {
+          "label": "Purpose",
+          "prompt": "Explain a proposed shared creative-workshop experience."
+        },
+        {
+          "label": "Reader action",
+          "prompt": "Review the outline before considering an enquiry."
+        },
+        {
+          "label": "Operational boundary",
+          "prompt": "No actual event, booking or availability supplied."
+        }
+      ],
+      "image": 1,
+      "kind": "cover",
+      "evidenceRows": [
+        [
+          "TOUCHPOINT REGISTER",
+          "1 / poster / discover"
+        ],
+        [
+          "JOURNEY BOUNDARY",
+          "6 planned touchpoints; sequence is not measured behaviour."
+        ]
+      ]
+    },
+    {
+      "section": "02 / CAMPAIGN PLAYBOOK",
+      "title": "Treat the journey as a hypothesis.",
+      "lead": "A person may discover the idea, inspect the outline and ask a practical question. Another may begin with a recommendation or leave without taking any next step.",
+      "body": "The six-touchpoint plan is a conceptual sequence, not a funnel observed in analytics. Do not assume every person follows the same path or that one contact caused a later decision.",
+      "subheading": "A map, not measured behaviour",
+      "detail": "Use the journey to identify information needs. Revisit it after appropriate observation rather than presenting the planning sequence as a conversion model.",
+      "question": "Where might a real reader enter, skip or leave this sequence?",
+      "records": [
+        {
+          "label": "Discover",
+          "prompt": "Encounter a concise description of the idea."
+        },
+        {
+          "label": "Consider",
+          "prompt": "Inspect the proposed experience and relevant limits."
+        },
+        {
+          "label": "Ask",
+          "prompt": "Seek information that the outline does not resolve."
+        }
+      ],
+      "image": 1,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "TOUCHPOINT REGISTER",
+          "2 / social-post / discover"
+        ],
+        [
+          "JOURNEY BOUNDARY",
+          "6 planned touchpoints; sequence is not measured behaviour."
+        ]
+      ]
+    },
+    {
+      "section": "03 / CAMPAIGN PLAYBOOK",
+      "title": "Give each touchpoint one job.",
+      "lead": "A poster introduces the idea. A social post points to the outline. The outline explains the concept. An email, enquiry reply and follow-up answer progressively more specific questions.",
+      "body": "All six touchpoints remain planned. Their order numbers express the model only; no dates, delivery, audience exposure or actual contacts are recorded.",
+      "subheading": "Touchpoints with an information role",
+      "detail": "Avoid repeating the same promotional sentence at every stage. Keep the core meaning stable while adding the detail appropriate to the reader’s question.",
+      "question": "What question does this touchpoint answer that the previous one did not?",
+      "records": [
+        {
+          "label": "Awareness assets",
+          "prompt": "Poster and social post introduce the concept."
+        },
+        {
+          "label": "Explanation assets",
+          "prompt": "Outline and email clarify the proposed experience."
+        },
+        {
+          "label": "Conversation assets",
+          "prompt": "Enquiry reply and follow-up address open questions."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "TOUCHPOINT REGISTER",
+          "3 / concept-outline / consider"
+        ],
+        [
+          "JOURNEY BOUNDARY",
+          "6 planned touchpoints; sequence is not measured behaviour."
+        ]
+      ]
+    },
+    {
+      "section": "04 / CAMPAIGN PLAYBOOK",
+      "title": "Let the message develop honestly.",
+      "lead": "First say what the concept is. Then explain what a participant might do. Finally clarify the conditions that would matter before any real commitment.",
+      "body": "The message should gain specificity without gaining unsupported certainty. A journey map cannot justify changing proposed to available or may to will merely because a reader moves to a later touchpoint.",
+      "subheading": "Information progression",
+      "detail": "Keep the concept status visible throughout the sequence. No later-stage copy should imply a real booking, confirmed timetable or promised outcome.",
+      "question": "Does the next message add useful detail rather than pressure?",
+      "records": [
+        {
+          "label": "Opening message",
+          "prompt": "Explore a proposed shared creative-workshop format."
+        },
+        {
+          "label": "Explanation",
+          "prompt": "Read the outline and the questions still unresolved."
+        },
+        {
+          "label": "Later conversation",
+          "prompt": "Check actual arrangements before any commitment."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "TOUCHPOINT REGISTER",
+          "4 / email / consider"
+        ],
+        [
+          "JOURNEY BOUNDARY",
+          "6 planned touchpoints; sequence is not measured behaviour."
+        ]
+      ]
+    },
+    {
+      "section": "05 / CAMPAIGN PLAYBOOK",
+      "title": "Build assets around the reader’s task.",
+      "lead": "The campaign needs a concise introduction, an accessible concept outline and a practical response guide. Each asset should support a distinct information need.",
+      "body": "The illustrations in this template are fictional scenes, not photographs of a real programme or participants. Confirm actual image permissions, source rights and accessible alternatives when adapting the assets.",
+      "subheading": "An asset is more than a format",
+      "detail": "Keep a source and qualification with any claim repeated across assets. A visually polished poster does not make an unsupported statement safer to distribute.",
+      "question": "Which asset is necessary for a useful next step?",
+      "records": [
+        {
+          "label": "Introduction",
+          "prompt": "A short concept description with an honest action."
+        },
+        {
+          "label": "Outline",
+          "prompt": "Proposed experience, limits and unresolved arrangements."
+        },
+        {
+          "label": "Response guide",
+          "prompt": "Specific questions and verified operational answers."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "TOUCHPOINT REGISTER",
+          "5 / enquiry-reply / ask"
+        ],
+        [
+          "JOURNEY BOUNDARY",
+          "6 planned touchpoints; sequence is not measured behaviour."
+        ]
+      ]
+    },
+    {
+      "section": "06 / CAMPAIGN PLAYBOOK",
+      "title": "Coordinate channels without inventing a schedule.",
+      "lead": "Use one source of truth for the concept description and operational status. Channel adaptations should link back to the same current explanation.",
+      "body": "No publication times or assigned people are supplied. A real coordination plan needs responsibilities, review gates, destination checks and a correction method before distribution begins.",
+      "subheading": "Relative sequence, not release dates",
+      "detail": "The touchpoint register contains six distinct roles, all planned. Neither the order numbers nor channel names establish actual delivery or permission to contact anyone.",
+      "question": "Who would be responsible for keeping each adaptation accurate?",
+      "records": [
+        {
+          "label": "Shared reference",
+          "prompt": "One current outline with visible version status."
+        },
+        {
+          "label": "Channel owner",
+          "prompt": "Not assigned; confirm responsibility before release."
+        },
+        {
+          "label": "Correction route",
+          "prompt": "Update the source and every affected adaptation."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "TOUCHPOINT REGISTER",
+          "6 / follow-up / ask"
+        ],
+        [
+          "JOURNEY BOUNDARY",
+          "6 planned touchpoints; sequence is not measured behaviour."
+        ]
+      ]
+    },
+    {
+      "section": "07 / CAMPAIGN PLAYBOOK",
+      "title": "Write replies that respect the question.",
+      "lead": "If asked whether the workshop is available, say that this is a concept example and no actual booking information is supplied. Do not substitute enthusiasm for an answer.",
+      "body": "If asked about accessibility, price or requirements, identify the missing information and the appropriate person or source that would need to confirm it. Do not promise a reply time without a real service arrangement.",
+      "subheading": "A bounded response script",
+      "detail": "Thank the reader for the specific question, state what is known and distinguish what remains unconfirmed. Collect no personal information without an appropriate purpose and permission.",
+      "question": "Does the reply answer the question without inventing an arrangement?",
+      "records": [
+        {
+          "label": "Availability reply",
+          "prompt": "No actual event or booking is established here."
+        },
+        {
+          "label": "Practical enquiry",
+          "prompt": "Price, access and requirements need real confirmation."
+        },
+        {
+          "label": "Response boundary",
+          "prompt": "No contact service or reply-time promise supplied."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "TOUCHPOINT REGISTER",
+          "1 / poster / discover"
+        ],
+        [
+          "JOURNEY BOUNDARY",
+          "6 planned touchpoints; sequence is not measured behaviour."
+        ]
+      ]
+    },
+    {
+      "section": "08 / CAMPAIGN PLAYBOOK",
+      "title": "Define a measure before collecting it.",
+      "lead": "A real campaign review might examine delivered messages, visits to the outline or practical questions received. Each has a different denominator and interpretation.",
+      "body": "The six planned touchpoints are not six interactions. No reach, clicks, enquiries or conversions are supplied. Establish a legitimate collection purpose, relevant definitions and appropriate privacy safeguards before measuring.",
+      "subheading": "Do not turn the map into a funnel report",
+      "detail": "A later enquiry does not by itself establish which touchpoint caused it. Keep attribution assumptions separate from observed counts.",
+      "question": "Which observation would tell us whether the explanation was useful?",
+      "records": [
+        {
+          "label": "Planning count",
+          "prompt": "6 touchpoints, all planned, none delivered."
+        },
+        {
+          "label": "Missing outcome",
+          "prompt": "No observed audience or response data supplied."
+        },
+        {
+          "label": "Attribution boundary",
+          "prompt": "Sequence does not establish causation or conversion."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "TOUCHPOINT REGISTER",
+          "2 / social-post / discover"
+        ],
+        [
+          "JOURNEY BOUNDARY",
+          "6 planned touchpoints; sequence is not measured behaviour."
+        ]
+      ]
+    },
+    {
+      "section": "09 / CAMPAIGN PLAYBOOK",
+      "title": "Check the points where trust can break.",
+      "lead": "A misleading availability claim, inaccessible explanation or unverified image can undermine the campaign before any response is measured. Review the whole path, not only the first asset.",
+      "body": "Scarcity language and social proof need an actual basis. The template supplies no limited places, endorsements, partner approvals or participant results. Do not add them as decorative persuasion.",
+      "subheading": "Release checks with stop conditions",
+      "detail": "Pause if an essential destination does not work, if the operational status is unclear or if the relevant permission is missing. A checklist is not a certification.",
+      "question": "Which unresolved issue should stop this campaign from being shared?",
+      "records": [
+        {
+          "label": "Truth check",
+          "prompt": "Concept status remains visible at every touchpoint."
+        },
+        {
+          "label": "Access check",
+          "prompt": "The actual explanation and action are accessible."
+        },
+        {
+          "label": "Rights check",
+          "prompt": "Distribution and participant permissions are verified."
+        }
+      ],
+      "image": 5,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "TOUCHPOINT REGISTER",
+          "3 / concept-outline / consider"
+        ],
+        [
+          "JOURNEY BOUNDARY",
+          "6 planned touchpoints; sequence is not measured behaviour."
+        ]
+      ]
+    },
+    {
+      "section": "10 / CAMPAIGN PLAYBOOK",
+      "title": "Close the loop with a useful question.",
+      "lead": "After an actual campaign, ask which explanation helped people make an informed decision and which practical question kept returning. Keep the review tied to the original purpose.",
+      "body": "This example contains no delivered activity or results. Its final page is a review method, not a success report. Preserve source versions and distinguish observations from the team’s interpretation.",
+      "subheading": "A learning loop, not a victory slide",
+      "detail": "Choose a revision that improves the next explanation. Do not claim that the campaign worked simply because the planned assets were produced.",
+      "question": "What should change before the next real communication?",
+      "records": [
+        {
+          "label": "Observe",
+          "prompt": "Record actual delivery and appropriately collected questions."
+        },
+        {
+          "label": "Interpret",
+          "prompt": "Separate information gaps from assumptions about demand."
+        },
+        {
+          "label": "Revise",
+          "prompt": "Improve the source outline and affected touchpoints."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix",
+      "evidenceRows": [
+        [
+          "TOUCHPOINT REGISTER",
+          "4 / email / consider"
+        ],
+        [
+          "JOURNEY BOUNDARY",
+          "6 planned touchpoints; sequence is not measured behaviour."
+        ]
+      ]
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for campaign-playbook"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: open-saturday/01.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: launch-kit/01.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: bright-edit/04.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: impact-thesis/01.jpg"
+    }
+  ]
+}

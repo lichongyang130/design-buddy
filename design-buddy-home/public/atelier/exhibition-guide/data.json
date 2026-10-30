@@ -1,0 +1,428 @@
+{
+  "work": {
+    "id": "exhibition-guide",
+    "title": "EXHIBITION GUIDE",
+    "subtitle": "A curatorial narrative and optional visitor route",
+    "category": "活动",
+    "layout": "gallery",
+    "color": "#674375",
+    "wash": "#eee3f3",
+    "framework": "展区叙事与观众路线",
+    "scope": "A fictional Ways of Noticing exhibition. Six work cards and three conceptual zones are authored examples, not installed works, an actual venue, a measured route, permissions or an accessibility/safety plan.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "event-expansion",
+    "newIllustrations": 0,
+    "curatedIllustrations": 5
+  },
+  "pages": [
+    {
+      "section": "01 / EXHIBITION GUIDE",
+      "title": "Offer a curatorial question.",
+      "lead": "Ways of Noticing is a fictional exhibition about how an object changes when its context changes. The guide invites visitors to notice, connect and revisit rather than follow one authorised interpretation.",
+      "body": "The three zones are conceptual groupings, not rooms in a real building. The illustrations are sourced fictional scenes, not photographs of installed works or proof that an exhibition exists.",
+      "subheading": "Curatorial intention",
+      "detail": "Six authored work cards support the narrative. They do not establish ownership, artist permission, availability or any right to display real material.",
+      "question": "What question should remain open as the visitor moves between the zones?",
+      "records": [
+        {
+          "label": "Invitation",
+          "prompt": "Notice how context changes what an object seems to mean."
+        },
+        {
+          "label": "Structure",
+          "prompt": "Three conceptual zones with two authored work cards each."
+        },
+        {
+          "label": "Boundary",
+          "prompt": "No actual exhibition, installed work or venue established."
+        }
+      ],
+      "image": 1,
+      "kind": "cover",
+      "evidenceRows": [
+        [
+          "WORK-CARD INDEX",
+          "W01 / Window Note / Z01"
+        ],
+        [
+          "VENUE BOUNDARY",
+          "3 conceptual zones, 6 fictional work cards; no installed works."
+        ]
+      ]
+    },
+    {
+      "section": "02 / EXHIBITION GUIDE",
+      "title": "Read the exhibition as an invitation.",
+      "lead": "A familiar object may become strange when a label is removed. Two ordinary things may acquire a relationship when placed beside each other. Returning to an earlier display may change the first interpretation.",
+      "body": "This introductory text offers a way to look, not a claim about how every visitor responds. A real guide should distinguish curatorial interpretation, artist statements and factual object information with appropriate sources.",
+      "subheading": "Theme introduction",
+      "detail": "Begin anywhere that suits the actual setting. The guide provides no physical access route, capacity rule or guarantee that a proposed sequence is suitable for a real visitor.",
+      "question": "Which detail would you look at again after reading a different label?",
+      "records": [
+        {
+          "label": "Notice",
+          "prompt": "Describe what is visible before explaining it."
+        },
+        {
+          "label": "Connect",
+          "prompt": "Consider what a neighbouring object or label changes."
+        },
+        {
+          "label": "Revisit",
+          "prompt": "Return to an earlier interpretation with a new question."
+        }
+      ],
+      "image": 1,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "WORK-CARD INDEX",
+          "W02 / Unnamed Shelf / Z01"
+        ],
+        [
+          "VENUE BOUNDARY",
+          "3 conceptual zones, 6 fictional work cards; no installed works."
+        ]
+      ]
+    },
+    {
+      "section": "03 / EXHIBITION GUIDE",
+      "title": "Use the route map as a choice.",
+      "lead": "Zone One asks what is visible. Zone Two asks what a relationship adds. Zone Three asks how a later view changes an earlier one. Use the zone links to explore the guide in any order.",
+      "body": "The links are document navigation, not directions through an actual venue. A real exhibition needs appropriate location, access and operational information supplied by its organisers. Do not infer exits or safe walking routes from this conceptual map.",
+      "subheading": "Three-zone index",
+      "detail": "Pages 4, 5 and 6 describe the zones; each returns here. Moving through all three is optional and does not constitute a completed learning or access assessment.",
+      "question": "Which zone offers the most useful starting question for you?",
+      "records": [
+        {
+          "label": "Zone One / page 4",
+          "prompt": "Notice: describe the object before its explanation."
+        },
+        {
+          "label": "Zone Two / page 5",
+          "prompt": "Connect: examine an object-label relationship."
+        },
+        {
+          "label": "Zone Three / page 6",
+          "prompt": "Revisit: reconsider a first interpretation."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "WORK-CARD INDEX",
+          "W03 / Label Exchange / Z02"
+        ],
+        [
+          "VENUE BOUNDARY",
+          "3 conceptual zones, 6 fictional work cards; no installed works."
+        ]
+      ],
+      "navigation": [
+        {
+          "page": 4,
+          "label": "Z01 / Notice"
+        },
+        {
+          "page": 5,
+          "label": "Z02 / Connect"
+        },
+        {
+          "page": 6,
+          "label": "Z03 / Revisit"
+        }
+      ]
+    },
+    {
+      "section": "04 / EXHIBITION GUIDE",
+      "title": "Zone One: look before interpreting.",
+      "lead": "The first authored pair is Window Note and Unnamed Shelf. One card suggests a framed fragment; the other suggests an ordinary object presented without a settled label. Neither is an actual exhibited artwork.",
+      "body": "Ask what can be described from the imagined arrangement and what would be an inference. A visitor may notice a different detail or decline the prompt. The guide should not turn that difference into a judgement about attention or taste.",
+      "subheading": "Notice / W01 and W02",
+      "detail": "Return to the zone index to change the sequence. The cards are narrative devices, not evidence of artist intent or object provenance.",
+      "question": "What can you describe without deciding what it means?",
+      "records": [
+        {
+          "label": "W01 / Window Note",
+          "prompt": "An authored prompt about a framed fragment."
+        },
+        {
+          "label": "W02 / Unnamed Shelf",
+          "prompt": "An authored prompt about an object without a settled label."
+        },
+        {
+          "label": "Viewing question",
+          "prompt": "Which visible detail precedes your interpretation?"
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "WORK-CARD INDEX",
+          "W04 / Paired Traces / Z02"
+        ],
+        [
+          "VENUE BOUNDARY",
+          "3 conceptual zones, 6 fictional work cards; no installed works."
+        ]
+      ],
+      "navigation": [
+        {
+          "page": 3,
+          "label": "Return to the zone index"
+        }
+      ]
+    },
+    {
+      "section": "05 / EXHIBITION GUIDE",
+      "title": "Zone Two: let a relationship become visible.",
+      "lead": "Label Exchange and Paired Traces ask what happens when an object is placed beside a different explanation or another object. The imagined relationship is the work of the prompt, not a documented installation.",
+      "body": "Compare the two cards without deciding that one reading is correct. In a real exhibition, changes to an artist’s description or display context would require appropriate agreement and care.",
+      "subheading": "Connect / W03 and W04",
+      "detail": "A label can supply context and can also constrain interpretation. Distinguish a curatorial proposition from a factual claim that needs verification.",
+      "question": "What does the relationship add that neither element carries alone?",
+      "records": [
+        {
+          "label": "W03 / Label Exchange",
+          "prompt": "An imagined object with two alternative descriptions."
+        },
+        {
+          "label": "W04 / Paired Traces",
+          "prompt": "Two authored objects considered in relation."
+        },
+        {
+          "label": "Viewing question",
+          "prompt": "Which part of the meaning comes from the pairing?"
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "WORK-CARD INDEX",
+          "W05 / Return Card / Z03"
+        ],
+        [
+          "VENUE BOUNDARY",
+          "3 conceptual zones, 6 fictional work cards; no installed works."
+        ]
+      ],
+      "navigation": [
+        {
+          "page": 3,
+          "label": "Return to the zone index"
+        }
+      ]
+    },
+    {
+      "section": "06 / EXHIBITION GUIDE",
+      "title": "Zone Three: return with another question.",
+      "lead": "Return Card and Changed Margin invite a second look at an earlier note. The object need not change for the visitor’s question to change. These are authored work-card ideas, not observed visitor responses.",
+      "body": "Compare what you first described with what now seems worth asking. Do not require a visitor to report a personal memory or a transformed experience. Revisiting can leave an interpretation unresolved.",
+      "subheading": "Revisit / W05 and W06",
+      "detail": "Return to the index or stop here. The guide does not define an ideal duration, a correct path or a guaranteed emotional effect.",
+      "question": "Which earlier assumption would you now hold more tentatively?",
+      "records": [
+        {
+          "label": "W05 / Return Card",
+          "prompt": "A prompt to re-read an earlier description."
+        },
+        {
+          "label": "W06 / Changed Margin",
+          "prompt": "A prompt about an added contextual note."
+        },
+        {
+          "label": "Viewing question",
+          "prompt": "What changed in your question rather than in the object?"
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "WORK-CARD INDEX",
+          "W06 / Changed Margin / Z03"
+        ],
+        [
+          "VENUE BOUNDARY",
+          "3 conceptual zones, 6 fictional work cards; no installed works."
+        ]
+      ],
+      "navigation": [
+        {
+          "page": 3,
+          "label": "Return to the zone index"
+        }
+      ]
+    },
+    {
+      "section": "07 / EXHIBITION GUIDE",
+      "title": "Write a work description with clear source classes.",
+      "lead": "A useful description identifies the work, distinguishes factual information from interpretation and offers a question without prescribing the visitor’s response. Do not invent an artist quotation to make a label sound authoritative.",
+      "body": "The six work titles in this guide are authored examples. No actual medium, date, collection, artist agreement or provenance record is supplied. The illustrative scenes must not be described as documentation of these imagined works.",
+      "subheading": "Work-card method",
+      "detail": "For a real object, verify the relevant facts and permitted wording. Keep any interpretation attributable to the person or organisation responsible for it.",
+      "question": "Would a visitor know which part is information and which part is a proposition?",
+      "records": [
+        {
+          "label": "Identify",
+          "prompt": "Use the authored work ID and its fictional status."
+        },
+        {
+          "label": "Distinguish",
+          "prompt": "Separate a description from an interpretive question."
+        },
+        {
+          "label": "Rights boundary",
+          "prompt": "No actual artist, object or display permission supplied."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "WORK-CARD INDEX",
+          "W01 / Window Note / Z01"
+        ],
+        [
+          "VENUE BOUNDARY",
+          "3 conceptual zones, 6 fictional work cards; no installed works."
+        ]
+      ]
+    },
+    {
+      "section": "08 / EXHIBITION GUIDE",
+      "title": "Create a discussion point without a compulsory answer.",
+      "lead": "A discussion point might ask visitors to compare two labels or describe an overlooked detail. It should offer a way to participate without requiring public speech or personal disclosure.",
+      "body": "This guide supplies no actual station, staff arrangement or access service. Real organisers should confirm the relevant space, materials and response options before promising them in public information.",
+      "subheading": "Optional conversation",
+      "detail": "Use an open question and make any recording purpose explicit. A written response should not silently become permission to quote or publish a visitor’s words.",
+      "question": "What would make this invitation genuinely optional and understandable?",
+      "records": [
+        {
+          "label": "Prompt",
+          "prompt": "Which label changed the question you asked?"
+        },
+        {
+          "label": "Choice",
+          "prompt": "Consider the question privately or respond through an actual agreed route."
+        },
+        {
+          "label": "Recording boundary",
+          "prompt": "No visitor permission or response collection established."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "WORK-CARD INDEX",
+          "W02 / Unnamed Shelf / Z01"
+        ],
+        [
+          "VENUE BOUNDARY",
+          "3 conceptual zones, 6 fictional work cards; no installed works."
+        ]
+      ]
+    },
+    {
+      "section": "09 / EXHIBITION GUIDE",
+      "title": "Ask for feedback on the guide, not a desired reaction.",
+      "lead": "A useful feedback question asks which explanation was clear or what information was missing. It does not require the visitor to say that the exhibition was inspiring or transformative.",
+      "body": "No visitor data, satisfaction score or attendance figure exists in this example. If feedback is collected in a real setting, explain its purpose and appropriate record use, and retain the limits of any interpretation.",
+      "subheading": "Visitor feedback prompt",
+      "detail": "Separate comments about navigation, wording, context and the works themselves. A positive comment about one part does not validate the whole experience.",
+      "question": "What information would help someone understand the actual exhibition better?",
+      "records": [
+        {
+          "label": "Clarity question",
+          "prompt": "Which description was easiest to interpret?"
+        },
+        {
+          "label": "Missing information",
+          "prompt": "What context would have helped?"
+        },
+        {
+          "label": "Evidence boundary",
+          "prompt": "No actual visitor response or measured impact supplied."
+        }
+      ],
+      "image": 5,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "WORK-CARD INDEX",
+          "W03 / Label Exchange / Z02"
+        ],
+        [
+          "VENUE BOUNDARY",
+          "3 conceptual zones, 6 fictional work cards; no installed works."
+        ]
+      ]
+    },
+    {
+      "section": "10 / EXHIBITION GUIDE",
+      "title": "Review the curatorial argument.",
+      "lead": "Ask whether the three zones make the exhibition question inspectable and whether the guide keeps room for alternative readings. A coherent narrative can still omit relevant facts or perspectives.",
+      "body": "This version reports no actual exhibition or audience result. Retain earlier wording when revising a work card, and distinguish a change in interpretation from a correction to a verified fact.",
+      "subheading": "Curatorial reflection",
+      "detail": "Carry forward one narrative revision, one source question and one actual operational detail to check before adapting the proposal. A cleaner map is not proof of a better visitor experience.",
+      "question": "What should be revised before this proposal could support a real exhibition?",
+      "records": [
+        {
+          "label": "Narrative review",
+          "prompt": "Does the sequence invite notice, connection and reconsideration?"
+        },
+        {
+          "label": "Source review",
+          "prompt": "Which actual object facts and rights would need verification?"
+        },
+        {
+          "label": "Operational review",
+          "prompt": "Venue and access information need real organiser input."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix",
+      "evidenceRows": [
+        [
+          "WORK-CARD INDEX",
+          "W04 / Paired Traces / Z02"
+        ],
+        [
+          "VENUE BOUNDARY",
+          "3 conceptual zones, 6 fictional work cards; no installed works."
+        ]
+      ]
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "Curated existing AI-generated illustration: visual-literacy/01.jpg"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: comparison-guide/01.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: form-study/01.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: creative-treatment/01.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: visual-literacy/02.jpg"
+    }
+  ]
+}

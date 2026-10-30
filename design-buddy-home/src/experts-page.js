@@ -95,6 +95,11 @@ const renderGrid = () => {
         </span>
       </span>
       <span class="ex-card-tags">${e.tags.map((t) => `<span class="ex-tag">${t}</span>`).join('')}</span>
+      ${e.skills?.length ? `
+      <span class="ex-card-skills">
+        <span class="ex-card-skills-label">技能</span>
+        ${e.skills.map((s) => `<span class="ex-skill-tag">${s}</span>`).join('')}
+      </span>` : ''}
       <span class="ex-card-solves" title="${e.solves?.[0] ?? ''}">
         ${SOLVES_ICON}<span>${e.solves?.[0] ?? ''}</span>
       </span>
@@ -207,6 +212,7 @@ const DRAWER_ICON = {
   target: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.6"/></svg>',
   check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
   bubble: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8 8 0 0 1-8.4 7.9 8.6 8.6 0 0 1-3.4-.7L4 20.5l1.5-4.3a8 8 0 0 1 6.6-12.1 8 8 0 0 1 8.4 7.5Z"/><circle cx="9" cy="11.5" r=".9" fill="currentColor" stroke="none"/><circle cx="12.5" cy="11.5" r=".9" fill="currentColor" stroke="none"/><circle cx="16" cy="11.5" r=".9" fill="currentColor" stroke="none"/></svg>',
+  skill: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.6"/></svg>',
 }
 
 let drawerMask = null
@@ -333,6 +339,10 @@ const openExpertDrawer = (entry) => {
             <span class="ex-prompt-text">「${text}」</span>
             <span class="ex-prompt-ic">${DRAWER_ICON.bubble}</span>
           </button>`).join('')}</div>
+      </section>
+      <section class="ex-drawer-sec">
+        <h3 class="ex-drawer-sec-title">${DRAWER_ICON.skill}<span>技能清单</span></h3>
+        <div class="ex-skill-list">${(entry.skills ?? []).map((s) => `<span class="ex-skill-chip">${s}</span>`).join('')}</div>
       </section>
       <section class="ex-drawer-sec">
         <h3 class="ex-drawer-sec-title">${DRAWER_ICON.more}<span>更多</span></h3>

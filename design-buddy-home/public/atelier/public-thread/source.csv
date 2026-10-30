@@ -1,0 +1,241 @@
+event_id,day,segment,unit,source
+MODEL-0001,Mon,Quay,entry-event,synthetic-teaching-model
+MODEL-0002,Mon,Overlook,entry-event,synthetic-teaching-model
+MODEL-0003,Mon,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0004,Mon,Quay,entry-event,synthetic-teaching-model
+MODEL-0005,Mon,Overlook,entry-event,synthetic-teaching-model
+MODEL-0006,Mon,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0007,Mon,Quay,entry-event,synthetic-teaching-model
+MODEL-0008,Mon,Overlook,entry-event,synthetic-teaching-model
+MODEL-0009,Mon,Overlook,entry-event,synthetic-teaching-model
+MODEL-0010,Mon,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0011,Mon,Quay,entry-event,synthetic-teaching-model
+MODEL-0012,Mon,Overlook,entry-event,synthetic-teaching-model
+MODEL-0013,Mon,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0014,Mon,Quay,entry-event,synthetic-teaching-model
+MODEL-0015,Mon,Overlook,entry-event,synthetic-teaching-model
+MODEL-0016,Mon,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0017,Mon,Quay,entry-event,synthetic-teaching-model
+MODEL-0018,Mon,Overlook,entry-event,synthetic-teaching-model
+MODEL-0019,Mon,Overlook,entry-event,synthetic-teaching-model
+MODEL-0020,Mon,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0021,Mon,Quay,entry-event,synthetic-teaching-model
+MODEL-0022,Mon,Overlook,entry-event,synthetic-teaching-model
+MODEL-0023,Mon,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0024,Mon,Quay,entry-event,synthetic-teaching-model
+MODEL-0025,Mon,Overlook,entry-event,synthetic-teaching-model
+MODEL-0026,Mon,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0027,Mon,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0028,Mon,Quay,entry-event,synthetic-teaching-model
+MODEL-0029,Mon,Overlook,entry-event,synthetic-teaching-model
+MODEL-0030,Mon,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0031,Mon,Quay,entry-event,synthetic-teaching-model
+MODEL-0032,Mon,Overlook,entry-event,synthetic-teaching-model
+MODEL-0033,Mon,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0034,Mon,Quay,entry-event,synthetic-teaching-model
+MODEL-0035,Mon,Overlook,entry-event,synthetic-teaching-model
+MODEL-0036,Mon,Overlook,entry-event,synthetic-teaching-model
+MODEL-0037,Mon,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0038,Mon,Quay,entry-event,synthetic-teaching-model
+MODEL-0039,Mon,Overlook,entry-event,synthetic-teaching-model
+MODEL-0040,Mon,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0041,Mon,Quay,entry-event,synthetic-teaching-model
+MODEL-0042,Mon,Overlook,entry-event,synthetic-teaching-model
+MODEL-0043,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0044,Tue,Quay,entry-event,synthetic-teaching-model
+MODEL-0045,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0046,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0047,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0048,Tue,Quay,entry-event,synthetic-teaching-model
+MODEL-0049,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0050,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0051,Tue,Quay,entry-event,synthetic-teaching-model
+MODEL-0052,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0053,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0054,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0055,Tue,Quay,entry-event,synthetic-teaching-model
+MODEL-0056,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0057,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0058,Tue,Quay,entry-event,synthetic-teaching-model
+MODEL-0059,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0060,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0061,Tue,Quay,entry-event,synthetic-teaching-model
+MODEL-0062,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0063,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0064,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0065,Tue,Quay,entry-event,synthetic-teaching-model
+MODEL-0066,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0067,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0068,Tue,Quay,entry-event,synthetic-teaching-model
+MODEL-0069,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0070,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0071,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0072,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0073,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0074,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0075,Tue,Quay,entry-event,synthetic-teaching-model
+MODEL-0076,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0077,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0078,Tue,Quay,entry-event,synthetic-teaching-model
+MODEL-0079,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0080,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0081,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0082,Tue,Quay,entry-event,synthetic-teaching-model
+MODEL-0083,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0084,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0085,Tue,Quay,entry-event,synthetic-teaching-model
+MODEL-0086,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0087,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0088,Tue,Quay,entry-event,synthetic-teaching-model
+MODEL-0089,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0090,Tue,Overlook,entry-event,synthetic-teaching-model
+MODEL-0091,Tue,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0092,Tue,Quay,entry-event,synthetic-teaching-model
+MODEL-0093,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0094,Wed,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0095,Wed,Quay,entry-event,synthetic-teaching-model
+MODEL-0096,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0097,Wed,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0098,Wed,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0099,Wed,Quay,entry-event,synthetic-teaching-model
+MODEL-0100,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0101,Wed,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0102,Wed,Quay,entry-event,synthetic-teaching-model
+MODEL-0103,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0104,Wed,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0105,Wed,Quay,entry-event,synthetic-teaching-model
+MODEL-0106,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0107,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0108,Wed,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0109,Wed,Quay,entry-event,synthetic-teaching-model
+MODEL-0110,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0111,Wed,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0112,Wed,Quay,entry-event,synthetic-teaching-model
+MODEL-0113,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0114,Wed,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0115,Wed,Quay,entry-event,synthetic-teaching-model
+MODEL-0116,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0117,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0118,Wed,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0119,Wed,Quay,entry-event,synthetic-teaching-model
+MODEL-0120,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0121,Wed,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0122,Wed,Quay,entry-event,synthetic-teaching-model
+MODEL-0123,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0124,Wed,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0125,Wed,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0126,Wed,Quay,entry-event,synthetic-teaching-model
+MODEL-0127,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0128,Wed,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0129,Wed,Quay,entry-event,synthetic-teaching-model
+MODEL-0130,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0131,Wed,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0132,Wed,Quay,entry-event,synthetic-teaching-model
+MODEL-0133,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0134,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0135,Wed,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0136,Wed,Quay,entry-event,synthetic-teaching-model
+MODEL-0137,Wed,Overlook,entry-event,synthetic-teaching-model
+MODEL-0138,Wed,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0139,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0140,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0141,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0142,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0143,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0144,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0145,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0146,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0147,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0148,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0149,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0150,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0151,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0152,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0153,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0154,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0155,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0156,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0157,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0158,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0159,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0160,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0161,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0162,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0163,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0164,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0165,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0166,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0167,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0168,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0169,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0170,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0171,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0172,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0173,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0174,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0175,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0176,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0177,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0178,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0179,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0180,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0181,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0182,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0183,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0184,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0185,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0186,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0187,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0188,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0189,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0190,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0191,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0192,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0193,Thu,Quay,entry-event,synthetic-teaching-model
+MODEL-0194,Thu,Overlook,entry-event,synthetic-teaching-model
+MODEL-0195,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0196,Thu,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0197,Fri,Quay,entry-event,synthetic-teaching-model
+MODEL-0198,Fri,Overlook,entry-event,synthetic-teaching-model
+MODEL-0199,Fri,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0200,Fri,Quay,entry-event,synthetic-teaching-model
+MODEL-0201,Fri,Overlook,entry-event,synthetic-teaching-model
+MODEL-0202,Fri,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0203,Fri,Quay,entry-event,synthetic-teaching-model
+MODEL-0204,Fri,Overlook,entry-event,synthetic-teaching-model
+MODEL-0205,Fri,Overlook,entry-event,synthetic-teaching-model
+MODEL-0206,Fri,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0207,Fri,Quay,entry-event,synthetic-teaching-model
+MODEL-0208,Fri,Overlook,entry-event,synthetic-teaching-model
+MODEL-0209,Fri,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0210,Fri,Quay,entry-event,synthetic-teaching-model
+MODEL-0211,Fri,Overlook,entry-event,synthetic-teaching-model
+MODEL-0212,Fri,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0213,Fri,Quay,entry-event,synthetic-teaching-model
+MODEL-0214,Fri,Overlook,entry-event,synthetic-teaching-model
+MODEL-0215,Fri,Overlook,entry-event,synthetic-teaching-model
+MODEL-0216,Fri,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0217,Fri,Quay,entry-event,synthetic-teaching-model
+MODEL-0218,Fri,Overlook,entry-event,synthetic-teaching-model
+MODEL-0219,Fri,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0220,Fri,Quay,entry-event,synthetic-teaching-model
+MODEL-0221,Fri,Overlook,entry-event,synthetic-teaching-model
+MODEL-0222,Fri,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0223,Fri,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0224,Fri,Quay,entry-event,synthetic-teaching-model
+MODEL-0225,Fri,Overlook,entry-event,synthetic-teaching-model
+MODEL-0226,Fri,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0227,Fri,Quay,entry-event,synthetic-teaching-model
+MODEL-0228,Fri,Overlook,entry-event,synthetic-teaching-model
+MODEL-0229,Fri,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0230,Fri,Quay,entry-event,synthetic-teaching-model
+MODEL-0231,Fri,Overlook,entry-event,synthetic-teaching-model
+MODEL-0232,Fri,Overlook,entry-event,synthetic-teaching-model
+MODEL-0233,Fri,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0234,Fri,Quay,entry-event,synthetic-teaching-model
+MODEL-0235,Fri,Overlook,entry-event,synthetic-teaching-model
+MODEL-0236,Fri,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0237,Fri,Quay,entry-event,synthetic-teaching-model
+MODEL-0238,Fri,Overlook,entry-event,synthetic-teaching-model
+MODEL-0239,Fri,Garden Bend,entry-event,synthetic-teaching-model
+MODEL-0240,Fri,Garden Bend,entry-event,synthetic-teaching-model

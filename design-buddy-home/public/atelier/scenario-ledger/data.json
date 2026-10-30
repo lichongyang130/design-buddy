@@ -1,0 +1,396 @@
+{
+  "work": {
+    "id": "scenario-ledger",
+    "title": "SCENARIO LEDGER",
+    "subtitle": "A three-case driver and constraint ledger",
+    "category": "商业规划",
+    "layout": "ledger",
+    "color": "#28556e",
+    "wash": "#dfedf6",
+    "framework": "三情景驱动台账",
+    "scope": "A fictional Edition Table planning model using arbitrary teaching points. Three demand cases share capacity 12; points are not currency, revenue, profit, cash flow or a real forecast.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "business-expansion",
+    "newIllustrations": 0,
+    "curatedIllustrations": 5
+  },
+  "pages": [
+    {
+      "section": "01 / SCENARIO LEDGER",
+      "title": "Define the planning window and its limits.",
+      "lead": "Edition Table is a fictional review-support concept. This ledger compares three demand assumptions within one unspecified teaching window, holding the model’s delivery capacity at twelve tasks.",
+      "body": "The cases are not probabilities or forecasts. They illustrate how demand, a capacity ceiling and a simple point model interact. No actual period, customer pipeline, operating budget or financial statement is supplied.",
+      "subheading": "Model scope",
+      "detail": "All teaching points are arbitrary and non-monetary. Keep the source register with the discussion so a reader can distinguish model arithmetic from business evidence.",
+      "question": "What can this model answer, and what remains outside its scope?",
+      "records": [
+        {
+          "label": "Window",
+          "prompt": "One unspecified teaching window, not a calendar forecast."
+        },
+        {
+          "label": "Cases",
+          "prompt": "Demand 8, 12 and 16; capacity fixed at 12."
+        },
+        {
+          "label": "Unit boundary",
+          "prompt": "Teaching points are not currency or actual profit."
+        }
+      ],
+      "image": 1,
+      "kind": "cover",
+      "evidenceRows": [
+        [
+          "DRIVER ROW",
+          "conservative / demand 8 / capacity 12"
+        ],
+        [
+          "TEACHING MODEL",
+          "Delivered 8 / net 4 points, not money or a forecast."
+        ]
+      ]
+    },
+    {
+      "section": "02 / SCENARIO LEDGER",
+      "title": "Name the drivers before comparing totals.",
+      "lead": "Delivered tasks equal the smaller of demand and capacity. Unmet tasks equal demand minus delivery when positive. Unused capacity equals capacity minus delivery.",
+      "body": "The point model assigns four benefit points per delivered task and resource points of twelve fixed plus two per delivered task. Net points subtract resources from benefits; they are not an accounting or valuation measure.",
+      "subheading": "Driver definitions",
+      "detail": "Holding a driver fixed is a modelling choice, not evidence that it is stable in real work. The model excludes timing, quality variation, payment and many other operating conditions.",
+      "question": "Which assumption has the greatest effect on interpreting the case comparison?",
+      "records": [
+        {
+          "label": "Delivery rule",
+          "prompt": "Delivered = min(demand, capacity)."
+        },
+        {
+          "label": "Resource rule",
+          "prompt": "12 fixed + 2 points per delivered task."
+        },
+        {
+          "label": "Net rule",
+          "prompt": "4 × delivered − resource points; not monetary profit."
+        }
+      ],
+      "image": 1,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "DRIVER ROW",
+          "baseline / demand 12 / capacity 12"
+        ],
+        [
+          "TEACHING MODEL",
+          "Delivered 12 / net 12 points, not money or a forecast."
+        ]
+      ]
+    },
+    {
+      "section": "03 / SCENARIO LEDGER",
+      "title": "Read the baseline as an assumption.",
+      "lead": "In the baseline, demand is twelve and capacity is twelve. Delivery is twelve, with no unmet demand and no unused model capacity.",
+      "body": "Benefits total forty-eight teaching points; resources total thirty-six; net points are twelve. A positive net figure only describes the authored rules. It does not demonstrate a viable business or a margin available to spend.",
+      "subheading": "Baseline case",
+      "detail": "No actual demand or delivery is recorded. A fully used model capacity may conceal the absence of a reserve or the need for quality checks in a real operation.",
+      "question": "What would make full utilisation unsuitable in an actual setting?",
+      "records": [
+        {
+          "label": "Demand / delivery",
+          "prompt": "12 requested, 12 delivered in the model."
+        },
+        {
+          "label": "Resource points",
+          "prompt": "12 fixed + 24 variable = 36."
+        },
+        {
+          "label": "Net points",
+          "prompt": "48 − 36 = 12; not cash or profit."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "DRIVER ROW",
+          "exploratory / demand 16 / capacity 12"
+        ],
+        [
+          "TEACHING MODEL",
+          "Delivered 12 / net 12 points, not money or a forecast."
+        ]
+      ]
+    },
+    {
+      "section": "04 / SCENARIO LEDGER",
+      "title": "Examine the conservative demand case.",
+      "lead": "With demand of eight and capacity of twelve, delivery is eight. Four units of capacity remain unused in the model, and unmet demand is zero.",
+      "body": "Benefits are thirty-two teaching points and resources are twenty-eight, leaving four net points. Lower demand does not automatically reduce the model’s fixed resource requirement. No probability or actual shortfall is attached to this case.",
+      "subheading": "Conservative case",
+      "detail": "The case tests one lower demand assumption. It does not cover every adverse condition, such as a missing input, a longer task or an unplanned interruption.",
+      "question": "Which fixed commitment would remain if the model demand fell?",
+      "records": [
+        {
+          "label": "Demand / delivery",
+          "prompt": "8 requested, 8 delivered."
+        },
+        {
+          "label": "Capacity balance",
+          "prompt": "4 unused, 0 unmet."
+        },
+        {
+          "label": "Point arithmetic",
+          "prompt": "32 benefit − 28 resource = 4 net points."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "DRIVER ROW",
+          "capacity-10 / demand 12 / capacity 10"
+        ],
+        [
+          "TEACHING MODEL",
+          "Delivered 10 / net 8 points, not money or a forecast."
+        ]
+      ]
+    },
+    {
+      "section": "05 / SCENARIO LEDGER",
+      "title": "Inspect demand above the capacity ceiling.",
+      "lead": "In the exploratory case, demand is sixteen but capacity remains twelve. Delivery is capped at twelve and four requested tasks remain unmet.",
+      "body": "Benefits, resources and net points match the baseline because delivery has not increased: forty-eight, thirty-six and twelve. Higher assumed demand is not higher actual revenue, and it does not remove the delivery constraint.",
+      "subheading": "Exploratory case",
+      "detail": "Unmet demand here is arithmetic, not an observed backlog or an invitation to accept work that cannot be responsibly delivered. Actual response options need appropriate review.",
+      "question": "What would have to change before additional demand could become suitable delivery?",
+      "records": [
+        {
+          "label": "Demand / delivery",
+          "prompt": "16 requested, delivery capped at 12."
+        },
+        {
+          "label": "Unmet tasks",
+          "prompt": "16 − 12 = 4; no actual backlog."
+        },
+        {
+          "label": "Constraint effect",
+          "prompt": "Net remains 12 teaching points, as in baseline."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "DRIVER ROW",
+          "capacity-12 / demand 12 / capacity 12"
+        ],
+        [
+          "TEACHING MODEL",
+          "Delivered 12 / net 12 points, not money or a forecast."
+        ]
+      ]
+    },
+    {
+      "section": "06 / SCENARIO LEDGER",
+      "title": "Change one driver to inspect sensitivity.",
+      "lead": "At demand twelve, capacities of ten, twelve and fourteen produce deliveries of ten, twelve and twelve. Extra capacity above demand remains unused rather than generating extra benefit points.",
+      "body": "Under the same point rules, net points are eight, twelve and twelve. This comparison excludes any cost of changing capacity, so it cannot justify adding resources or choosing an investment.",
+      "subheading": "One-variable comparison",
+      "detail": "The source sensitivity register keeps the demand and point rules fixed. A real capacity change could alter many conditions at once.",
+      "question": "Which omitted cost would matter before acting on this sensitivity result?",
+      "records": [
+        {
+          "label": "Capacity 10",
+          "prompt": "Deliver 10; net 8 points; unmet 2."
+        },
+        {
+          "label": "Capacity 12",
+          "prompt": "Deliver 12; net 12 points; no unused units."
+        },
+        {
+          "label": "Capacity 14",
+          "prompt": "Deliver 12; net 12 points; unused 2."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "DRIVER ROW",
+          "capacity-14 / demand 12 / capacity 14"
+        ],
+        [
+          "TEACHING MODEL",
+          "Delivered 12 / net 12 points, not money or a forecast."
+        ]
+      ]
+    },
+    {
+      "section": "07 / SCENARIO LEDGER",
+      "title": "Keep the constraint visible in the plan.",
+      "lead": "A capacity number summarises an assumption. It does not explain staffing, task complexity, access needs, rework or the availability of source material.",
+      "body": "The ledger holds capacity at twelve to expose its effect. Before applying a similar model, inspect what actually limits the work and which reserve or review conditions should be preserved. Do not infer that every unused unit is waste.",
+      "subheading": "Resource constraint",
+      "detail": "No real staffing allocation or service commitment is supplied. The model cannot approve a workload or determine a safe or appropriate pace of work.",
+      "question": "What does the capacity assumption leave unexplained?",
+      "records": [
+        {
+          "label": "Known model limit",
+          "prompt": "Delivery cannot exceed 12 tasks."
+        },
+        {
+          "label": "Missing operating detail",
+          "prompt": "Roles, task mix, reserve and source availability."
+        },
+        {
+          "label": "Planning boundary",
+          "prompt": "No actual workload or staffing decision authorised."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "DRIVER ROW",
+          "conservative / demand 8 / capacity 12"
+        ],
+        [
+          "TEACHING MODEL",
+          "Delivered 8 / net 4 points, not money or a forecast."
+        ]
+      ]
+    },
+    {
+      "section": "08 / SCENARIO LEDGER",
+      "title": "Define triggers as review questions.",
+      "lead": "A proposed trigger might be to review the plan when the model shows unmet demand or when actual task conditions differ from the assumptions. A trigger starts inquiry; it does not select a response automatically.",
+      "body": "No real observation threshold or monitoring system is supplied. In practice, define the source, window and responsibility before treating a count as a reason for consequential action.",
+      "subheading": "Trigger / observation / review",
+      "detail": "A modelled unmet count of four is not an actual alert. Keep the calculation separate from any eventual operational signal.",
+      "question": "What evidence would make the trigger relevant to a real decision?",
+      "records": [
+        {
+          "label": "Proposed trigger",
+          "prompt": "A delivery constraint becomes relevant to the task."
+        },
+        {
+          "label": "Observation needed",
+          "prompt": "Appropriate actual demand and task information."
+        },
+        {
+          "label": "Review route",
+          "prompt": "Responsibility and response need real agreement."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "DRIVER ROW",
+          "baseline / demand 12 / capacity 12"
+        ],
+        [
+          "TEACHING MODEL",
+          "Delivered 12 / net 12 points, not money or a forecast."
+        ]
+      ]
+    },
+    {
+      "section": "09 / SCENARIO LEDGER",
+      "title": "Compare responses without declaring a winner.",
+      "lead": "Possible responses include narrowing the accepted scope, changing the timing or investigating additional capacity. Each alters conditions that the simple ledger does not evaluate.",
+      "body": "Do not choose a response solely because it raises net teaching points. Quality, permissions, accessibility, commercial terms and the effect on existing work may matter more than a model total.",
+      "subheading": "Response options",
+      "detail": "The ledger is a conversation aid. It provides neither procurement approval nor a business recommendation about real money or people.",
+      "question": "Which response would require the most important missing information?",
+      "records": [
+        {
+          "label": "Scope option",
+          "prompt": "Clarify what work can be considered."
+        },
+        {
+          "label": "Timing option",
+          "prompt": "Review whether the window assumption is appropriate."
+        },
+        {
+          "label": "Capacity option",
+          "prompt": "Investigate actual constraints and change costs first."
+        }
+      ],
+      "image": 5,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "DRIVER ROW",
+          "exploratory / demand 16 / capacity 12"
+        ],
+        [
+          "TEACHING MODEL",
+          "Delivered 12 / net 12 points, not money or a forecast."
+        ]
+      ]
+    },
+    {
+      "section": "10 / SCENARIO LEDGER",
+      "title": "Record the version and the reason for change.",
+      "lead": "A version record should retain the demand cases, capacity rule, point definitions and the question the comparison was meant to support. Preserve previous assumptions when changing a driver.",
+      "body": "This version contains three authored cases and three sensitivity rows. It reports no actual operating or financial result. A revised model should identify what changed in the evidence rather than only displaying a new total.",
+      "subheading": "Model revision record",
+      "detail": "If the unit, window or delivery definition changes, reconsider comparisons with earlier versions. Similar-looking figures may no longer mean the same thing.",
+      "question": "Can another reviewer reproduce the calculation and understand its limits?",
+      "records": [
+        {
+          "label": "Retain",
+          "prompt": "Driver definitions, source rows and prior version."
+        },
+        {
+          "label": "Explain",
+          "prompt": "Which assumption changed and why."
+        },
+        {
+          "label": "Boundary",
+          "prompt": "Teaching arithmetic, not an actual financial forecast."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix",
+      "evidenceRows": [
+        [
+          "DRIVER ROW",
+          "capacity-10 / demand 12 / capacity 10"
+        ],
+        [
+          "TEACHING MODEL",
+          "Delivered 10 / net 8 points, not money or a forecast."
+        ]
+      ]
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "Curated existing AI-generated illustration: scenario-practice/01.jpg"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: decision-audit/01.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: operations-review/01.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: landscape-scan/01.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: technical-thesis/01.jpg"
+    }
+  ]
+}

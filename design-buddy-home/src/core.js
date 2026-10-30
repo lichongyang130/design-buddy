@@ -28,23 +28,32 @@ export function defaultState() {
     defaultTheme: null,
     media: seedMedia(),
     experts: [
-      { id: 'ex-1', name: '提案叙事专家', color: 'av-teal', desc: '先出大纲，再逐页成稿', pinned: true },
-      { id: 'ex-2', name: '版式设计师', color: 'av-amber', desc: '信息密度与视觉层级', pinned: false },
-      { id: 'ex-3', name: '设计系统管家', color: 'av-navy', desc: '品牌色与字体统一', pinned: false },
-      { id: 'ex-4', name: '网页原型工程师', color: 'av-green', desc: '可运行的 HTML 原型', pinned: false },
-      { id: 'ex-5', name: '改稿与精简编辑', color: 'av-purple', desc: '去 AI 腔、压篇幅', pinned: false },
+      { id: 'ex-ppt', name: 'PPT 专家', color: 'av-purple', desc: '大纲规划、故事线、页面布局、图表与演讲备注', pinned: false },
+      { id: 'ex-web-prototype', name: '网页原型工程师', color: 'av-green', desc: '可运行的 HTML 原型', pinned: false },
+      { id: 'ex-manager', name: 'Manager Agent', color: 'av-navy', desc: '拆解任务、调度专家、验收交付', pinned: false },
+      { id: 'ex-office-admin', name: '行政办公专家', color: 'av-green', desc: '收文件、汇总表格、写纪要与通知', pinned: false },
+      { id: 'ex-automation', name: '自动化流程专家', color: 'av-slate', desc: '批量处理、定时汇总、自动交付', pinned: false },
+      { id: 'ex-research', name: '研究分析专家', color: 'av-indigo', desc: '检索资料、对比多文件、核查来源', pinned: false },
+      { id: 'ex-doc', name: '文档专家', color: 'av-navy', desc: '方案撰写、报告生成、公文格式', pinned: false },
+      { id: 'ex-content', name: '内容优化专家', color: 'av-teal', desc: '润色、改写、翻译、摘要、受众适配', pinned: false },
+      { id: 'ex-visual', name: '视觉设计专家', color: 'av-amber', desc: '栅格布局、字体层级、视觉一致性', pinned: false },
+      { id: 'ex-ai-image', name: 'AI 图片专家', color: 'av-rose', desc: '文生图、图片编辑、风格统一', pinned: false },
+      { id: 'ex-brand', name: '模板与品牌专家', color: 'av-orange', desc: '模板检索、品牌规范、设计系统', pinned: false },
+      { id: 'ex-qa', name: '质量审核专家', color: 'av-blue', desc: '事实核验、数字校验、导出验收', pinned: false },
     ],
     skills: [
       { id: 'sk-1', name: 'PPT 大纲生成', desc: '根据主题自动生成演示大纲', enabled: true, version: '1.0.0' },
       { id: 'sk-2', name: '文案润色', desc: '优化表达与语气', enabled: true, version: '1.0.0' },
       { id: 'sk-3', name: '数据图表化', desc: '把数字转成图表建议', enabled: false, version: '1.0.0' },
-      { id: 'sk-4', name: '中英互译', desc: '专业级双语翻译', enabled: true, version: '1.0.0' },
+      { id: 'sk-4', name: '文档结构检查', desc: '检查标题层级、重复标题、待填项和长段落，导出目录与问题清单', enabled: true, version: '1.0.0' },
     ],
     connectors: [
-      { id: 'cn-1', name: 'Google Drive', desc: '搜索、上传与管理云端硬盘中的文件', color: '#1a8f4c', shape: 'cloud', connected: true },
-      { id: 'cn-2', name: 'Slack', desc: '读取频道消息并发送通知', color: '#611f69', shape: 'chat', connected: false },
-      { id: 'cn-3', name: 'Notion', desc: '创建、搜索和管理 Notion 工作区页面', color: '#111827', shape: 'doc', connected: false },
-      { id: 'cn-4', name: 'GitHub', desc: '在 GitHub 上克隆、推送代码与管理 Issue', color: '#24292f', shape: 'code', connected: true },
+      { id: 'cn-1', name: '飞书', desc: '选定团队文档作为创作资料，按需回传成果', color: '#3370ff', shape: 'send', connected: false },
+      { id: 'cn-2', name: 'Notion', desc: '导入选定知识库页面，保存创作结果', color: '#111827', shape: 'doc', connected: false },
+      { id: 'cn-3', name: 'GitHub', desc: '读取指定仓库资料，确认后提交原型源码', color: '#24292f', shape: 'code', connected: false },
+      { id: 'cn-4', name: 'Google Drive', desc: '选择云端文件作为素材，保存导出成果', color: '#1a8f4c', shape: 'cloud', connected: false },
+      { id: 'cn-5', name: '腾讯文档', desc: '导入协作文档资料，按需回传交付文档', color: '#2b6cf6', shape: 'doc', connected: false },
+      { id: 'cn-6', name: 'Slack', desc: '确认后将成果链接发送到指定频道', color: '#611f69', shape: 'chat', connected: false },
     ],
     settings: defaultSettings(),
     instructions: '',
@@ -246,7 +255,7 @@ export function toast(message) {
 
 /* ---------------- 通用弹窗 ---------------- */
 
-export function openModal({ title, body, footer, wide = false }) {
+export function openModal({ title, body, footer, wide = false, onClose }) {
   const mask = document.createElement('div')
   mask.className = 'modal-mask'
   mask.innerHTML = `
@@ -268,23 +277,27 @@ export function openModal({ title, body, footer, wide = false }) {
     if (typeof footer === 'string') footEl.innerHTML = footer
     else if (footer instanceof Node) footEl.append(footer)
   }
-  const close = () => mask.remove()
+  let closed = false
+  const close = () => { if (closed) return; closed = true; mask.remove(); document.removeEventListener('keydown', onEsc); onClose?.() }
   mask.addEventListener('click', (e) => {
     if (e.target === mask || e.target.closest('.modal-close')) close()
   })
-  document.addEventListener('keydown', function onEsc(e) {
+  function onEsc(e) {
     if (e.key === 'Escape' && document.body.contains(mask)) {
       close()
       document.removeEventListener('keydown', onEsc)
     }
-  })
+  }
+  document.addEventListener('keydown', onEsc)
   document.body.append(mask)
   return { mask, close, bodyEl, footEl: mask.querySelector('.modal-foot') }
 }
 
 export function confirmModal(title, message, dangerText = '确认') {
   return new Promise((resolve) => {
+    let confirmed = false
     const { close, footEl } = openModal({
+      onClose: () => resolve(confirmed),
       title,
       body: `<p class="modal-copy">${message}</p>`,
       footer: `
@@ -294,8 +307,8 @@ export function confirmModal(title, message, dangerText = '确认') {
     footEl.addEventListener('click', (e) => {
       const act = e.target.dataset.act
       if (!act) return
+      confirmed = act === 'ok'
       close()
-      resolve(act === 'ok')
     })
   })
 }

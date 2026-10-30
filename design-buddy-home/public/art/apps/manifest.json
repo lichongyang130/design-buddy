@@ -1,0 +1,2903 @@
+{
+  "version": 1,
+  "date": "2026-10-27",
+  "caseCount": 50,
+  "registeredRouteCount": 1100,
+  "aiThemeCount": 10,
+  "caseSpecificAIPhotoCount": 0,
+  "coverCount": 50,
+  "themes": [
+    {
+      "domain": "travel",
+      "file": "/art/apps/travel.webp",
+      "origin": "AI-generated thematic scene; not documentary photography",
+      "sharedBy": [
+        "qiye",
+        "ridge",
+        "islet",
+        "laneway",
+        "campday"
+      ],
+      "bytes": 240966,
+      "sha256": "b612f94018802b7d85049f0e00c46e2568d741e46784001e88262d01d1256f0b"
+    },
+    {
+      "domain": "food",
+      "file": "/art/apps/food.webp",
+      "origin": "AI-generated thematic scene; not documentary photography",
+      "sharedBy": [
+        "lightplate",
+        "breadnote",
+        "seasonal",
+        "bentobox",
+        "brewlog"
+      ],
+      "bytes": 341048,
+      "sha256": "3cec681aff83855cd958aaf514a105bbb86c9e31c87d27fd4125f3064b48d0e7"
+    },
+    {
+      "domain": "fitness",
+      "file": "/art/apps/fitness.webp",
+      "origin": "AI-generated thematic scene; not documentary photography",
+      "sharedBy": [
+        "stride",
+        "stretch",
+        "pedal",
+        "breathe",
+        "strength"
+      ],
+      "bytes": 154458,
+      "sha256": "62c76f144de108d13f59d9f219ce8398ef5905f5797ce09835f28baeeb6e448d"
+    },
+    {
+      "domain": "books",
+      "file": "/art/apps/books.webp",
+      "origin": "AI-generated thematic scene; not documentary photography",
+      "sharedBy": [
+        "paperroom",
+        "margin",
+        "nightread",
+        "booktrail",
+        "smallpress"
+      ],
+      "bytes": 149670,
+      "sha256": "c0a147491f01658c9192874af1b0212589673ebecf3f912997c141a7a0ca42f5"
+    },
+    {
+      "domain": "plants",
+      "file": "/art/apps/plants.webp",
+      "origin": "AI-generated thematic scene; not documentary photography",
+      "sharedBy": [
+        "sprout",
+        "balcony",
+        "moss",
+        "floraday",
+        "leaflog"
+      ],
+      "bytes": 169892,
+      "sha256": "9494ed4d7c199b14f0beb4715665fca9c72552f73b2b030f06ca4188b149d518"
+    },
+    {
+      "domain": "pets",
+      "file": "/art/apps/pets.webp",
+      "origin": "AI-generated thematic scene; not documentary photography",
+      "sharedBy": [
+        "pawpal",
+        "catnest",
+        "dogwalk",
+        "petmemo",
+        "softcare"
+      ],
+      "bytes": 180400,
+      "sha256": "821841707c0aad4ab11b1847932d7c437b61f23e85883ee65ef60382cad90713"
+    },
+    {
+      "domain": "culture",
+      "file": "/art/apps/culture.webp",
+      "origin": "AI-generated thematic scene; not documentary photography",
+      "sharedBy": [
+        "galleryday",
+        "claytime",
+        "frameline",
+        "handmade",
+        "museumwalk"
+      ],
+      "bytes": 80512,
+      "sha256": "5e4239ab9bd960ffbe762c4f1267d3d656c97e4bc89b520cd6f073b9dc59fc31"
+    },
+    {
+      "domain": "work",
+      "file": "/art/apps/work.webp",
+      "origin": "AI-generated thematic scene; not documentary photography",
+      "sharedBy": [
+        "focusroom",
+        "boardly",
+        "solodesk",
+        "makerlog",
+        "teamnote"
+      ],
+      "bytes": 136466,
+      "sha256": "e6b8dad2678597ff29f1f62986993f642f2175ae15e4ae00a0d4c65daace3902"
+    },
+    {
+      "domain": "learning",
+      "file": "/art/apps/learning.webp",
+      "origin": "AI-generated thematic scene; not documentary photography",
+      "sharedBy": [
+        "lingua",
+        "practice",
+        "chord",
+        "codenote",
+        "curiosity"
+      ],
+      "bytes": 171802,
+      "sha256": "fb50fd0f12093933f0f3e4e7d1d50fbe2aab3433c622615ca1671902ace1a8e2"
+    },
+    {
+      "domain": "home",
+      "file": "/art/apps/home.webp",
+      "origin": "AI-generated thematic scene; not documentary photography",
+      "sharedBy": [
+        "roomtone",
+        "wardrobe",
+        "ritual",
+        "tidyhome",
+        "tablelife"
+      ],
+      "bytes": 183158,
+      "sha256": "6d25109c8b7c6692620583a871c3bfd0da248a745f36d4f4eb86e838239db457"
+    }
+  ],
+  "cases": [
+    {
+      "id": "qiye",
+      "name": "栖野",
+      "pages": [
+        "home",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings"
+      ],
+      "framework": {
+        "id": "app-fw-1",
+        "family": "editorial",
+        "homeOrder": [
+          "feature",
+          "shelf",
+          "quick",
+          "agenda",
+          "insight"
+        ],
+        "feature": "immersive",
+        "cards": "rail",
+        "navigation": "tabs",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/qiye.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 58718,
+        "sha256": "98c1e9c9353329866a7fd2208fa84b60372b27c4079b6ed31fa46c32dd2a5776"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "travel"
+    },
+    {
+      "id": "ridge",
+      "name": "山径",
+      "pages": [
+        "home",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection"
+      ],
+      "framework": {
+        "id": "app-fw-2",
+        "family": "utility",
+        "homeOrder": [
+          "shelf",
+          "agenda",
+          "feature",
+          "insight",
+          "quick"
+        ],
+        "feature": "split",
+        "cards": "rail",
+        "navigation": "dock",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/ridge.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 40054,
+        "sha256": "2f6cfdcf9b7a235a03cc4134aa530033b0bc7c8c114f82590c200b3034a68daa"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "travel"
+    },
+    {
+      "id": "islet",
+      "name": "岛屿来信",
+      "pages": [
+        "home",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note"
+      ],
+      "framework": {
+        "id": "app-fw-3",
+        "family": "organic",
+        "homeOrder": [
+          "agenda",
+          "feature",
+          "quick",
+          "shelf",
+          "insight"
+        ],
+        "feature": "poster",
+        "cards": "rail",
+        "navigation": "labels",
+        "header": "stack"
+      },
+      "cover": {
+        "file": "/art/apps/covers/islet.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 51970,
+        "sha256": "ccccc547e38be252fd4ad3c0a5722cd091a79e8d5d1a6489e70e8b0e91daf959"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "travel"
+    },
+    {
+      "id": "laneway",
+      "name": "巷游",
+      "pages": [
+        "home",
+        "guide",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer"
+      ],
+      "framework": {
+        "id": "app-fw-4",
+        "family": "athletic",
+        "homeOrder": [
+          "insight",
+          "quick",
+          "shelf",
+          "agenda",
+          "feature"
+        ],
+        "feature": "banner",
+        "cards": "rail",
+        "navigation": "center",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/laneway.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 38918,
+        "sha256": "319a7c073e3814237ae30c7e68ad3fb5f3dfd4fff24fba54f79b8d0ac54694ea"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "travel"
+    },
+    {
+      "id": "campday",
+      "name": "营日",
+      "pages": [
+        "home",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "guide",
+        "review",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved"
+      ],
+      "framework": {
+        "id": "app-fw-5",
+        "family": "studio",
+        "homeOrder": [
+          "shelf",
+          "feature",
+          "insight",
+          "quick",
+          "agenda"
+        ],
+        "feature": "collage",
+        "cards": "rail",
+        "navigation": "pills",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/campday.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 50252,
+        "sha256": "fbbca274f59bda04a78f8eb6e9478cf023117e43ce709fccf9e67af4cbfc1da4"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "travel"
+    },
+    {
+      "id": "lightplate",
+      "name": "轻厨",
+      "pages": [
+        "home",
+        "search",
+        "profile",
+        "settings",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message"
+      ],
+      "framework": {
+        "id": "app-fw-6",
+        "family": "studio",
+        "homeOrder": [
+          "quick",
+          "agenda",
+          "insight",
+          "shelf",
+          "feature"
+        ],
+        "feature": "immersive",
+        "cards": "tiles",
+        "navigation": "tabs",
+        "header": "stack"
+      },
+      "cover": {
+        "file": "/art/apps/covers/lightplate.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 64704,
+        "sha256": "d617577f5cf05208c72714b435216814c06f716d6a997f7b133a4bb56aa14352"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "food"
+    },
+    {
+      "id": "breadnote",
+      "name": "面包日记",
+      "pages": [
+        "home",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "discover",
+        "categories"
+      ],
+      "framework": {
+        "id": "app-fw-7",
+        "family": "playful",
+        "homeOrder": [
+          "insight",
+          "shelf",
+          "feature",
+          "quick",
+          "agenda"
+        ],
+        "feature": "split",
+        "cards": "tiles",
+        "navigation": "dock",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/breadnote.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 47304,
+        "sha256": "8b71710deb2b857bad309f5b444d28324beaf85a7a1f638b7e178ec4a81d19bc"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "food"
+    },
+    {
+      "id": "seasonal",
+      "name": "食时",
+      "pages": [
+        "home",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection"
+      ],
+      "framework": {
+        "id": "app-fw-8",
+        "family": "minimal",
+        "homeOrder": [
+          "feature",
+          "insight",
+          "shelf",
+          "agenda",
+          "quick"
+        ],
+        "feature": "poster",
+        "cards": "tiles",
+        "navigation": "labels",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/seasonal.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 59838,
+        "sha256": "32819f88b54dc0c03aa8fd7949783788ba6262351b02be50b87c89eda009737d"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "food"
+    },
+    {
+      "id": "bentobox",
+      "name": "便当盒",
+      "pages": [
+        "home",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "guide",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity"
+      ],
+      "framework": {
+        "id": "app-fw-9",
+        "family": "zen",
+        "homeOrder": [
+          "quick",
+          "shelf",
+          "agenda",
+          "feature",
+          "insight"
+        ],
+        "feature": "banner",
+        "cards": "tiles",
+        "navigation": "center",
+        "header": "stack"
+      },
+      "cover": {
+        "file": "/art/apps/covers/bentobox.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 46270,
+        "sha256": "b351b41604002a47eafd0d79898b6b806348c52f7fe0800f2893ba98316f3c1e"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "food"
+    },
+    {
+      "id": "brewlog",
+      "name": "煮意",
+      "pages": [
+        "home",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "guide",
+        "review",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search"
+      ],
+      "framework": {
+        "id": "app-fw-10",
+        "family": "gallery",
+        "homeOrder": [
+          "agenda",
+          "insight",
+          "shelf",
+          "quick",
+          "feature"
+        ],
+        "feature": "collage",
+        "cards": "tiles",
+        "navigation": "pills",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/brewlog.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 41684,
+        "sha256": "c4764ebeeb63a8c5b05c2c90c1b864bf05d24ae9fe5d90fb7d3ae533896aa35e"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "food"
+    },
+    {
+      "id": "stride",
+      "name": "跑迹",
+      "pages": [
+        "home",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes"
+      ],
+      "framework": {
+        "id": "app-fw-11",
+        "family": "gallery",
+        "homeOrder": [
+          "feature",
+          "quick",
+          "insight",
+          "shelf",
+          "agenda"
+        ],
+        "feature": "immersive",
+        "cards": "list",
+        "navigation": "tabs",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/stride.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 52668,
+        "sha256": "e443f91e690e4ce4d0ee21a5e4296c8e5678b69aab3854cbc3d26368bd3a9710"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "fitness"
+    },
+    {
+      "id": "stretch",
+      "name": "舒展",
+      "pages": [
+        "home",
+        "profile",
+        "settings",
+        "progress",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search"
+      ],
+      "framework": {
+        "id": "app-fw-12",
+        "family": "paper",
+        "homeOrder": [
+          "shelf",
+          "insight",
+          "agenda",
+          "quick",
+          "feature"
+        ],
+        "feature": "split",
+        "cards": "list",
+        "navigation": "dock",
+        "header": "stack"
+      },
+      "cover": {
+        "file": "/art/apps/covers/stretch.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 40196,
+        "sha256": "02db3a8084b81d8bb27a4a8105866d8c16a8fad9ad4fb8f421274f95e4002aaa"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "fitness"
+    },
+    {
+      "id": "pedal",
+      "name": "踏频",
+      "pages": [
+        "home",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer"
+      ],
+      "framework": {
+        "id": "app-fw-13",
+        "family": "editorial",
+        "homeOrder": [
+          "agenda",
+          "quick",
+          "feature",
+          "shelf",
+          "insight"
+        ],
+        "feature": "poster",
+        "cards": "list",
+        "navigation": "labels",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/pedal.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 46332,
+        "sha256": "8850370222998c771e1b4c30f2357a8062666eb752933f3072dcfceddc931060"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "fitness"
+    },
+    {
+      "id": "breathe",
+      "name": "息间",
+      "pages": [
+        "home",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "guide",
+        "discover",
+        "categories",
+        "detail"
+      ],
+      "framework": {
+        "id": "app-fw-14",
+        "family": "utility",
+        "homeOrder": [
+          "feature",
+          "shelf",
+          "quick",
+          "insight",
+          "agenda"
+        ],
+        "feature": "banner",
+        "cards": "list",
+        "navigation": "center",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/breathe.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 43962,
+        "sha256": "7938f95c002c1b1a6e23714517bd216e1433725eeab668af88ae5d92d805c230"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "fitness"
+    },
+    {
+      "id": "strength",
+      "name": "力序",
+      "pages": [
+        "home",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "guide",
+        "review",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections"
+      ],
+      "framework": {
+        "id": "app-fw-15",
+        "family": "organic",
+        "homeOrder": [
+          "shelf",
+          "agenda",
+          "quick",
+          "feature",
+          "insight"
+        ],
+        "feature": "collage",
+        "cards": "list",
+        "navigation": "pills",
+        "header": "stack"
+      },
+      "cover": {
+        "file": "/art/apps/covers/strength.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 38744,
+        "sha256": "efc9ce75d682be5fb19f5ec89c37531dd95f81d7dc65aec249b615a515432667"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "fitness"
+    },
+    {
+      "id": "paperroom",
+      "name": "纸间",
+      "pages": [
+        "home",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create"
+      ],
+      "framework": {
+        "id": "app-fw-16",
+        "family": "organic",
+        "homeOrder": [
+          "agenda",
+          "feature",
+          "quick",
+          "insight",
+          "shelf"
+        ],
+        "feature": "immersive",
+        "cards": "index",
+        "navigation": "tabs",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/paperroom.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 53768,
+        "sha256": "8c9ad82dc2f321b9e5a3da0d85920e7967408817e0f267b207103dd5328160e3"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "books"
+    },
+    {
+      "id": "margin",
+      "name": "页边",
+      "pages": [
+        "home",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity"
+      ],
+      "framework": {
+        "id": "app-fw-17",
+        "family": "athletic",
+        "homeOrder": [
+          "insight",
+          "quick",
+          "agenda",
+          "feature",
+          "shelf"
+        ],
+        "feature": "split",
+        "cards": "index",
+        "navigation": "dock",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/margin.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 41752,
+        "sha256": "80af3463d6ce0a5334dcc5d470cce561d490a871761feb971362e9948e18fb6d"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "books"
+    },
+    {
+      "id": "nightread",
+      "name": "夜读",
+      "pages": [
+        "home",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note"
+      ],
+      "framework": {
+        "id": "app-fw-18",
+        "family": "studio",
+        "homeOrder": [
+          "shelf",
+          "feature",
+          "insight",
+          "agenda",
+          "quick"
+        ],
+        "feature": "poster",
+        "cards": "index",
+        "navigation": "labels",
+        "header": "stack"
+      },
+      "cover": {
+        "file": "/art/apps/covers/nightread.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 44730,
+        "sha256": "42c46ed2bfb12f519efc5cf1f327e3a9ce2f84dca14d6591ea3ef7039c037a0f"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "books"
+    },
+    {
+      "id": "booktrail",
+      "name": "书径",
+      "pages": [
+        "home",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "guide",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message"
+      ],
+      "framework": {
+        "id": "app-fw-19",
+        "family": "playful",
+        "homeOrder": [
+          "quick",
+          "insight",
+          "feature",
+          "shelf",
+          "agenda"
+        ],
+        "feature": "banner",
+        "cards": "index",
+        "navigation": "center",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/booktrail.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 48990,
+        "sha256": "b6326bdb53edf8f7f42edcdc51aaebbeb6273d8bf60c067585ccfb490fdabc9c"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "books"
+    },
+    {
+      "id": "smallpress",
+      "name": "小刊",
+      "pages": [
+        "home",
+        "settings",
+        "progress",
+        "timer",
+        "guide",
+        "review",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile"
+      ],
+      "framework": {
+        "id": "app-fw-20",
+        "family": "minimal",
+        "homeOrder": [
+          "insight",
+          "shelf",
+          "feature",
+          "agenda",
+          "quick"
+        ],
+        "feature": "collage",
+        "cards": "index",
+        "navigation": "pills",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/smallpress.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 38532,
+        "sha256": "8224ac1daaf88f9135b8b4d369db671323f8a30c04f5512de072659575b661b7"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "books"
+    },
+    {
+      "id": "sprout",
+      "name": "芽生",
+      "pages": [
+        "home",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection"
+      ],
+      "framework": {
+        "id": "app-fw-21",
+        "family": "minimal",
+        "homeOrder": [
+          "feature",
+          "insight",
+          "quick",
+          "shelf",
+          "agenda"
+        ],
+        "feature": "immersive",
+        "cards": "stack",
+        "navigation": "tabs",
+        "header": "stack"
+      },
+      "cover": {
+        "file": "/art/apps/covers/sprout.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 55230,
+        "sha256": "6fb550c743a6b18a796e349bce1a2801c0a53c821b3b0c77310c796511efc2cb"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "plants"
+    },
+    {
+      "id": "balcony",
+      "name": "阳台农场",
+      "pages": [
+        "home",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection"
+      ],
+      "framework": {
+        "id": "app-fw-22",
+        "family": "zen",
+        "homeOrder": [
+          "quick",
+          "shelf",
+          "agenda",
+          "insight",
+          "feature"
+        ],
+        "feature": "split",
+        "cards": "stack",
+        "navigation": "dock",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/balcony.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 40514,
+        "sha256": "4f091d0d1b6d07195d3bbd8527d8061f295ebd48158588c37b05f68d7f749064"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "plants"
+    },
+    {
+      "id": "moss",
+      "name": "苔间",
+      "pages": [
+        "home",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection"
+      ],
+      "framework": {
+        "id": "app-fw-23",
+        "family": "gallery",
+        "homeOrder": [
+          "agenda",
+          "insight",
+          "quick",
+          "feature",
+          "shelf"
+        ],
+        "feature": "poster",
+        "cards": "stack",
+        "navigation": "labels",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/moss.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 41070,
+        "sha256": "d16e36b97ad66e4797c1ca67c2d410c8eabd269937ca6a9b6ee7420c0b645597"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "plants"
+    },
+    {
+      "id": "floraday",
+      "name": "花期",
+      "pages": [
+        "home",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "guide",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection"
+      ],
+      "framework": {
+        "id": "app-fw-24",
+        "family": "paper",
+        "homeOrder": [
+          "feature",
+          "quick",
+          "insight",
+          "agenda",
+          "shelf"
+        ],
+        "feature": "banner",
+        "cards": "stack",
+        "navigation": "center",
+        "header": "stack"
+      },
+      "cover": {
+        "file": "/art/apps/covers/floraday.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 48610,
+        "sha256": "8a0825cbcc067739c6b078c83a66321487ab3537e88b21a1b99e850f9ff5b0da"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "plants"
+    },
+    {
+      "id": "leaflog",
+      "name": "叶记",
+      "pages": [
+        "home",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "guide",
+        "review",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection"
+      ],
+      "framework": {
+        "id": "app-fw-25",
+        "family": "editorial",
+        "homeOrder": [
+          "quick",
+          "feature",
+          "shelf",
+          "agenda",
+          "insight"
+        ],
+        "feature": "collage",
+        "cards": "stack",
+        "navigation": "pills",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/leaflog.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 46168,
+        "sha256": "d8d61e3974ca5051aafe136c0de3ea5b9259360c911393c46fe2a18f1ca64617"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "plants"
+    },
+    {
+      "id": "pawpal",
+      "name": "宠邻",
+      "pages": [
+        "home",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "discover",
+        "categories",
+        "detail",
+        "gallery"
+      ],
+      "framework": {
+        "id": "app-fw-26",
+        "family": "editorial",
+        "homeOrder": [
+          "agenda",
+          "quick",
+          "feature",
+          "insight",
+          "shelf"
+        ],
+        "feature": "immersive",
+        "cards": "rail",
+        "navigation": "tabs",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/pawpal.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 59910,
+        "sha256": "152956f271e8197b2562440bdec9b64db4f086c4b8d38969863a4cf619ed1fab"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "pets"
+    },
+    {
+      "id": "catnest",
+      "name": "猫窝",
+      "pages": [
+        "home",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "discover",
+        "categories"
+      ],
+      "framework": {
+        "id": "app-fw-27",
+        "family": "utility",
+        "homeOrder": [
+          "feature",
+          "shelf",
+          "agenda",
+          "quick",
+          "insight"
+        ],
+        "feature": "split",
+        "cards": "rail",
+        "navigation": "dock",
+        "header": "stack"
+      },
+      "cover": {
+        "file": "/art/apps/covers/catnest.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 48568,
+        "sha256": "0657f6c299307951101f08efc393721404c6d467020dcf52d92c0d3e0ca94a46"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "pets"
+    },
+    {
+      "id": "dogwalk",
+      "name": "遛弯",
+      "pages": [
+        "home",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer"
+      ],
+      "framework": {
+        "id": "app-fw-28",
+        "family": "organic",
+        "homeOrder": [
+          "shelf",
+          "agenda",
+          "quick",
+          "insight",
+          "feature"
+        ],
+        "feature": "poster",
+        "cards": "rail",
+        "navigation": "labels",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/dogwalk.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 40900,
+        "sha256": "158d88fc55ec31685e2794ab2fbcb156003926ccaf6a4b89e31b109f750339ab"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "pets"
+    },
+    {
+      "id": "petmemo",
+      "name": "爪印",
+      "pages": [
+        "home",
+        "timer",
+        "guide",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress"
+      ],
+      "framework": {
+        "id": "app-fw-29",
+        "family": "athletic",
+        "homeOrder": [
+          "agenda",
+          "feature",
+          "insight",
+          "shelf",
+          "quick"
+        ],
+        "feature": "banner",
+        "cards": "rail",
+        "navigation": "center",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/petmemo.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 41714,
+        "sha256": "81b5fd9b7b2606bdb4f142a0594dfddf50dcf6ffa4d1f50a35bc543385fcb79f"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "pets"
+    },
+    {
+      "id": "softcare",
+      "name": "柔伴",
+      "pages": [
+        "home",
+        "progress",
+        "timer",
+        "guide",
+        "review",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings"
+      ],
+      "framework": {
+        "id": "app-fw-30",
+        "family": "studio",
+        "homeOrder": [
+          "insight",
+          "quick",
+          "agenda",
+          "shelf",
+          "feature"
+        ],
+        "feature": "collage",
+        "cards": "rail",
+        "navigation": "pills",
+        "header": "stack"
+      },
+      "cover": {
+        "file": "/art/apps/covers/softcare.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 49222,
+        "sha256": "567bfe5b5aaecc8404e2411d0e993efea53c6b39d2f9ac3014f609e8c8282c03"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "pets"
+    },
+    {
+      "id": "galleryday",
+      "name": "展间",
+      "pages": [
+        "home",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "discover"
+      ],
+      "framework": {
+        "id": "app-fw-31",
+        "family": "studio",
+        "homeOrder": [
+          "shelf",
+          "quick",
+          "feature",
+          "agenda",
+          "insight"
+        ],
+        "feature": "immersive",
+        "cards": "tiles",
+        "navigation": "tabs",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/galleryday.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 47350,
+        "sha256": "8160a9e41f1bd7425e84fcaffeb7b5e20d738438519c3fc70b9d55172184e096"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "culture"
+    },
+    {
+      "id": "claytime",
+      "name": "陶时",
+      "pages": [
+        "home",
+        "profile",
+        "settings",
+        "progress",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search"
+      ],
+      "framework": {
+        "id": "app-fw-32",
+        "family": "playful",
+        "homeOrder": [
+          "quick",
+          "insight",
+          "feature",
+          "agenda",
+          "shelf"
+        ],
+        "feature": "split",
+        "cards": "tiles",
+        "navigation": "dock",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/claytime.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 43484,
+        "sha256": "e84b1d589cadc0d931f9366bac6bf8df319e1edd4f2e32914fe2438164a88864"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "culture"
+    },
+    {
+      "id": "frameline",
+      "name": "取景",
+      "pages": [
+        "home",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note"
+      ],
+      "framework": {
+        "id": "app-fw-33",
+        "family": "minimal",
+        "homeOrder": [
+          "insight",
+          "shelf",
+          "quick",
+          "feature",
+          "agenda"
+        ],
+        "feature": "poster",
+        "cards": "tiles",
+        "navigation": "labels",
+        "header": "stack"
+      },
+      "cover": {
+        "file": "/art/apps/covers/frameline.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 30652,
+        "sha256": "a7173a1a23817c58e7396f007373d24c19644155fa49d797c3d01b72168d1e76"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "culture"
+    },
+    {
+      "id": "handmade",
+      "name": "手物",
+      "pages": [
+        "home",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "guide",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist"
+      ],
+      "framework": {
+        "id": "app-fw-34",
+        "family": "zen",
+        "homeOrder": [
+          "feature",
+          "insight",
+          "quick",
+          "agenda",
+          "shelf"
+        ],
+        "feature": "banner",
+        "cards": "tiles",
+        "navigation": "center",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/handmade.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 39850,
+        "sha256": "d7605c78fd0f84dbf43753de50a4a55494937eba946f7457bbee6b825d52173e"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "culture"
+    },
+    {
+      "id": "museumwalk",
+      "name": "馆游",
+      "pages": [
+        "home",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "guide",
+        "review",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner"
+      ],
+      "framework": {
+        "id": "app-fw-35",
+        "family": "gallery",
+        "homeOrder": [
+          "quick",
+          "shelf",
+          "insight",
+          "feature",
+          "agenda"
+        ],
+        "feature": "collage",
+        "cards": "tiles",
+        "navigation": "pills",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/museumwalk.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 35124,
+        "sha256": "3c0026dfb9d2cd8c721d927802ed9726a4a765b8ed337050e75e8fa2d345a25f"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "culture"
+    },
+    {
+      "id": "focusroom",
+      "name": "专注室",
+      "pages": [
+        "home",
+        "profile",
+        "settings",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search"
+      ],
+      "framework": {
+        "id": "app-fw-36",
+        "family": "gallery",
+        "homeOrder": [
+          "agenda",
+          "insight",
+          "quick",
+          "shelf",
+          "feature"
+        ],
+        "feature": "immersive",
+        "cards": "list",
+        "navigation": "tabs",
+        "header": "stack"
+      },
+      "cover": {
+        "file": "/art/apps/covers/focusroom.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 44996,
+        "sha256": "de21fb70c9cb775f38a52b416767e759bea85d54bc107c5c99c00a93d1de57ac"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "work"
+    },
+    {
+      "id": "boardly",
+      "name": "板间",
+      "pages": [
+        "home",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity"
+      ],
+      "framework": {
+        "id": "app-fw-37",
+        "family": "paper",
+        "homeOrder": [
+          "feature",
+          "agenda",
+          "shelf",
+          "quick",
+          "insight"
+        ],
+        "feature": "split",
+        "cards": "list",
+        "navigation": "dock",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/boardly.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 44594,
+        "sha256": "6ab1688091bb22527db3077aa2104959eb038b7684ad157c695ec45152d072a2"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "work"
+    },
+    {
+      "id": "solodesk",
+      "name": "一人桌",
+      "pages": [
+        "home",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection"
+      ],
+      "framework": {
+        "id": "app-fw-38",
+        "family": "editorial",
+        "homeOrder": [
+          "quick",
+          "feature",
+          "shelf",
+          "insight",
+          "agenda"
+        ],
+        "feature": "poster",
+        "cards": "list",
+        "navigation": "labels",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/solodesk.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 42572,
+        "sha256": "3101b69540c5c48f63d5123ef966c3c62b54629c53fc6f81d75653c7066765eb"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "work"
+    },
+    {
+      "id": "makerlog",
+      "name": "造作",
+      "pages": [
+        "home",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "guide",
+        "discover",
+        "categories"
+      ],
+      "framework": {
+        "id": "app-fw-39",
+        "family": "utility",
+        "homeOrder": [
+          "agenda",
+          "quick",
+          "shelf",
+          "feature",
+          "insight"
+        ],
+        "feature": "banner",
+        "cards": "list",
+        "navigation": "center",
+        "header": "stack"
+      },
+      "cover": {
+        "file": "/art/apps/covers/makerlog.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 36488,
+        "sha256": "260780f5ca3fec61b1b07c169f63a17c6fbfe3480402e9f72b3e077fa9478ea0"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "work"
+    },
+    {
+      "id": "teamnote",
+      "name": "共页",
+      "pages": [
+        "home",
+        "timer",
+        "guide",
+        "review",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress"
+      ],
+      "framework": {
+        "id": "app-fw-40",
+        "family": "organic",
+        "homeOrder": [
+          "feature",
+          "shelf",
+          "agenda",
+          "insight",
+          "quick"
+        ],
+        "feature": "collage",
+        "cards": "list",
+        "navigation": "pills",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/teamnote.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 42258,
+        "sha256": "59a8a5f985aa39a6c78758b8f5fe74938a2a1d435e9e7da829c728ead8ef9b47"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "work"
+    },
+    {
+      "id": "lingua",
+      "name": "词屿",
+      "pages": [
+        "home",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note"
+      ],
+      "framework": {
+        "id": "app-fw-41",
+        "family": "organic",
+        "homeOrder": [
+          "shelf",
+          "agenda",
+          "insight",
+          "feature",
+          "quick"
+        ],
+        "feature": "immersive",
+        "cards": "index",
+        "navigation": "tabs",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/lingua.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 45874,
+        "sha256": "747cbf8792f11d4e6dc32316d0976264085ed5da660afe898ba1d97bd45b2642"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "learning"
+    },
+    {
+      "id": "practice",
+      "name": "练习册",
+      "pages": [
+        "home",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection"
+      ],
+      "framework": {
+        "id": "app-fw-42",
+        "family": "athletic",
+        "homeOrder": [
+          "agenda",
+          "feature",
+          "insight",
+          "quick",
+          "shelf"
+        ],
+        "feature": "split",
+        "cards": "index",
+        "navigation": "dock",
+        "header": "stack"
+      },
+      "cover": {
+        "file": "/art/apps/covers/practice.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 50206,
+        "sha256": "71914ef0b2aed9bb1acb4941698314b77889653b886add24b41516497931eb8c"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "learning"
+    },
+    {
+      "id": "chord",
+      "name": "弦外",
+      "pages": [
+        "home",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer"
+      ],
+      "framework": {
+        "id": "app-fw-43",
+        "family": "studio",
+        "homeOrder": [
+          "insight",
+          "agenda",
+          "feature",
+          "shelf",
+          "quick"
+        ],
+        "feature": "poster",
+        "cards": "index",
+        "navigation": "labels",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/chord.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 54674,
+        "sha256": "d45e6e6eb19d3ff70c83ab017816bda6743f5485afa09bfc3e1f4cee4917fb3e"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "learning"
+    },
+    {
+      "id": "codenote",
+      "name": "码间",
+      "pages": [
+        "home",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "guide",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox"
+      ],
+      "framework": {
+        "id": "app-fw-44",
+        "family": "playful",
+        "homeOrder": [
+          "shelf",
+          "quick",
+          "feature",
+          "insight",
+          "agenda"
+        ],
+        "feature": "banner",
+        "cards": "index",
+        "navigation": "center",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/codenote.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 44078,
+        "sha256": "35b3d68fc01ce49e43cd5f7eee5b2b512a85ea0905a99c1f0f1108169ba39e37"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "learning"
+    },
+    {
+      "id": "curiosity",
+      "name": "知趣",
+      "pages": [
+        "home",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "guide",
+        "review",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan"
+      ],
+      "framework": {
+        "id": "app-fw-45",
+        "family": "minimal",
+        "homeOrder": [
+          "quick",
+          "insight",
+          "shelf",
+          "feature",
+          "agenda"
+        ],
+        "feature": "collage",
+        "cards": "index",
+        "navigation": "pills",
+        "header": "stack"
+      },
+      "cover": {
+        "file": "/art/apps/covers/curiosity.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 41186,
+        "sha256": "4e8135fa7d2e5474075b8a137b845856c71946d6c2611cd1560a836eb00ed586"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "learning"
+    },
+    {
+      "id": "roomtone",
+      "name": "屋调",
+      "pages": [
+        "home",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist"
+      ],
+      "framework": {
+        "id": "app-fw-46",
+        "family": "minimal",
+        "homeOrder": [
+          "insight",
+          "shelf",
+          "quick",
+          "agenda",
+          "feature"
+        ],
+        "feature": "immersive",
+        "cards": "stack",
+        "navigation": "tabs",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/roomtone.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 53870,
+        "sha256": "4f01f528714e8db49d1a103aa85511efc85997c99a1186bc6bcad28987793eb7"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "home"
+    },
+    {
+      "id": "wardrobe",
+      "name": "衣序",
+      "pages": [
+        "home",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "discover",
+        "categories"
+      ],
+      "framework": {
+        "id": "app-fw-47",
+        "family": "zen",
+        "homeOrder": [
+          "feature",
+          "insight",
+          "agenda",
+          "shelf",
+          "quick"
+        ],
+        "feature": "split",
+        "cards": "stack",
+        "navigation": "dock",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/wardrobe.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 44306,
+        "sha256": "516349dd7cbcee40dd345325d74e50c4a7ad3ff0dde3767e798d80818f998d45"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "home"
+    },
+    {
+      "id": "ritual",
+      "name": "小仪式",
+      "pages": [
+        "home",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note"
+      ],
+      "framework": {
+        "id": "app-fw-48",
+        "family": "gallery",
+        "homeOrder": [
+          "quick",
+          "shelf",
+          "insight",
+          "agenda",
+          "feature"
+        ],
+        "feature": "poster",
+        "cards": "stack",
+        "navigation": "labels",
+        "header": "stack"
+      },
+      "cover": {
+        "file": "/art/apps/covers/ritual.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 41434,
+        "sha256": "0656574e05400146a29b525776a029e653d0e074bdd59912ceda565a1482bddb"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "home"
+    },
+    {
+      "id": "tidyhome",
+      "name": "归处",
+      "pages": [
+        "home",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer",
+        "guide",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections"
+      ],
+      "framework": {
+        "id": "app-fw-49",
+        "family": "paper",
+        "homeOrder": [
+          "insight",
+          "feature",
+          "shelf",
+          "quick",
+          "agenda"
+        ],
+        "feature": "banner",
+        "cards": "stack",
+        "navigation": "center",
+        "header": "brand"
+      },
+      "cover": {
+        "file": "/art/apps/covers/tidyhome.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 48254,
+        "sha256": "1f7d4be10e8162b843a4326b25ed775e7294a8e2314c4d12542daa0e4faf3144"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "home"
+    },
+    {
+      "id": "tablelife",
+      "name": "桌上生活",
+      "pages": [
+        "home",
+        "guide",
+        "review",
+        "discover",
+        "categories",
+        "detail",
+        "gallery",
+        "saved",
+        "collections",
+        "collection",
+        "planner",
+        "plan",
+        "create",
+        "checklist",
+        "activity",
+        "notes",
+        "note",
+        "inbox",
+        "message",
+        "search",
+        "profile",
+        "settings",
+        "progress",
+        "timer"
+      ],
+      "framework": {
+        "id": "app-fw-50",
+        "family": "editorial",
+        "homeOrder": [
+          "feature",
+          "agenda",
+          "shelf",
+          "insight",
+          "quick"
+        ],
+        "feature": "collage",
+        "cards": "stack",
+        "navigation": "pills",
+        "header": "center"
+      },
+      "cover": {
+        "file": "/art/apps/covers/tablelife.webp",
+        "origin": "Composition from the actual clean App home screenshot; scripts/make-app-case-covers.mjs",
+        "bytes": 49484,
+        "sha256": "369ee2329eb7ec38e90e51f450086a8b2eb7f13658374a7b8993667b814c27ba"
+      },
+      "contentArt": {
+        "origin": "Parameterized inline SVG content illustrations, not AI-generated photographs",
+        "compositions": 5,
+        "renderer": "src/app-case-art.js"
+      },
+      "sharedTheme": "home"
+    }
+  ]
+}

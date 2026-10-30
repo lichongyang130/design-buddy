@@ -1,0 +1,396 @@
+{
+  "work": {
+    "id": "brand-voice",
+    "title": "BRAND VOICE",
+    "subtitle": "A voice scale and rewrite field guide",
+    "category": "营销材料",
+    "layout": "voice",
+    "color": "#8a345c",
+    "wash": "#f5dfeb",
+    "framework": "语气标尺与改写对照",
+    "scope": "A fictional voice guide for Plain Thread. Preferred phrases are editorial choices, not legal clearance, evidence of product capabilities or tested persuasion results.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "marketing-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / BRAND VOICE",
+      "title": "Give the voice a practical intention.",
+      "lead": "Plain Thread speaks with clarity, care and room for questions. The voice should help a reader understand a task without making the brand sound more certain than its evidence.",
+      "body": "This guide is an editorial direction for a fictional organisation. It does not establish product features, legal approval or tested communication performance. Use it to make choices visible rather than turn style into a claim.",
+      "subheading": "A useful voice promise",
+      "detail": "We explain what we mean, say what remains uncertain and invite a relevant next step. That is a writing principle, not a guaranteed customer experience.",
+      "question": "Does this sentence make the task clearer without overstating certainty?",
+      "records": [
+        {
+          "label": "Clarity",
+          "prompt": "Use concrete verbs and explain unfamiliar terms."
+        },
+        {
+          "label": "Care",
+          "prompt": "Respect the reader’s context and ability to choose."
+        },
+        {
+          "label": "Honesty",
+          "prompt": "State meaningful limits near the relevant claim."
+        }
+      ],
+      "image": 1,
+      "kind": "cover",
+      "evidenceRows": [
+        [
+          "VOICE REGISTER",
+          "V01 / unsupported outcome"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "8 editorial rewrites; no tested winners or legal clearance."
+        ]
+      ]
+    },
+    {
+      "section": "02 / BRAND VOICE",
+      "title": "Change tone when the situation changes.",
+      "lead": "A welcome can feel open. An instruction should be direct. A correction should be accountable. The underlying voice remains recognisable while the tone responds to the reader’s situation.",
+      "body": "Do not assume that every audience wants informality, humour or reassurance. A difficult issue may require a plain acknowledgement and a practical action rather than an upbeat brand flourish.",
+      "subheading": "Context before personality",
+      "detail": "Review the reader’s task, risk and likely information need. Avoid using a style rule to conceal an unresolved service or product problem.",
+      "question": "What does the reader need from this message right now?",
+      "records": [
+        {
+          "label": "Welcome",
+          "prompt": "Offer orientation without assuming enthusiasm."
+        },
+        {
+          "label": "Instruction",
+          "prompt": "Name the action and its relevant condition."
+        },
+        {
+          "label": "Correction",
+          "prompt": "Acknowledge the issue and state a verified next step."
+        }
+      ],
+      "image": 1,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "VOICE REGISTER",
+          "V02 / universal claim"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "8 editorial rewrites; no tested winners or legal clearance."
+        ]
+      ]
+    },
+    {
+      "section": "03 / BRAND VOICE",
+      "title": "Make the principles observable.",
+      "lead": "Prefer a specific action to a vague benefit. Keep a qualification beside its claim. Use a question when the next step genuinely depends on information the reader has.",
+      "body": "These principles help an editor explain a revision. They do not make every short sentence good or every technical term wrong. Keep the detail that the task requires.",
+      "subheading": "Three reviewable principles",
+      "detail": "Ask what the sentence lets a reader do or understand. If it only makes the brand sound impressive, look for the missing practical meaning.",
+      "question": "Which editing principle explains the change you propose?",
+      "records": [
+        {
+          "label": "Specific",
+          "prompt": "Say what the reader can inspect or do."
+        },
+        {
+          "label": "Qualified",
+          "prompt": "Retain conditions that affect the meaning."
+        },
+        {
+          "label": "Open",
+          "prompt": "Leave room for a question when facts are incomplete."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "VOICE REGISTER",
+          "V03 / erased conditions"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "8 editorial rewrites; no tested winners or legal clearance."
+        ]
+      ]
+    },
+    {
+      "section": "04 / BRAND VOICE",
+      "title": "Use a tone scale, not a personality score.",
+      "lead": "The working scale runs from reserved to expressive, formal to conversational and directive to exploratory. It is a discussion tool, not an audience measurement.",
+      "body": "For a concept explanation, use moderately conversational and exploratory language. For a procedural instruction, move toward directness while preserving care. The scale has no optimal numerical setting or conversion promise.",
+      "subheading": "Tone changes with the task",
+      "detail": "Explain the reason for each adjustment. A team should be able to disagree about a tone choice without pretending the scale has measured a person’s preference.",
+      "question": "Which dimension should change for this specific message?",
+      "records": [
+        {
+          "label": "Reserved to expressive",
+          "prompt": "Use emphasis only when it serves understanding."
+        },
+        {
+          "label": "Formal to conversational",
+          "prompt": "Match the setting without artificial familiarity."
+        },
+        {
+          "label": "Directive to exploratory",
+          "prompt": "Be direct about actions, open about unknowns."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "VOICE REGISTER",
+          "V04 / unverified commitment"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "8 editorial rewrites; no tested winners or legal clearance."
+        ]
+      ]
+    },
+    {
+      "section": "05 / BRAND VOICE",
+      "title": "Choose words with a clear job.",
+      "lead": "Explore describes an invitation to inspect. Review describes a deliberate check. May preserves uncertainty when an outcome has not been established. None should be used mechanically.",
+      "body": "The phrase register offers eight authored alternatives to overstatement or vague instruction. A preferred phrase is not automatically appropriate; check whether it accurately describes the actual product and destination.",
+      "subheading": "Vocabulary as a decision aid",
+      "detail": "Avoid replacing every strong word with a weak one. The goal is accurate meaning, not blandness or a universal ban on confident language.",
+      "question": "What exactly does this word imply in the current sentence?",
+      "records": [
+        {
+          "label": "Explore",
+          "prompt": "Use when the reader can inspect a real explanation."
+        },
+        {
+          "label": "Review",
+          "prompt": "Use when a specific check is appropriate."
+        },
+        {
+          "label": "May",
+          "prompt": "Use only when uncertainty genuinely matters to the claim."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "VOICE REGISTER",
+          "V05 / unsupported ranking"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "8 editorial rewrites; no tested winners or legal clearance."
+        ]
+      ]
+    },
+    {
+      "section": "06 / BRAND VOICE",
+      "title": "Do not let familiar slogans hide claims.",
+      "lead": "Effortless, guaranteed and everyone can each imply more than a writer may intend. They can erase conditions, evidence requirements or differences between readers.",
+      "body": "The guide recommends checking or replacing these expressions in this fictional context. It does not declare them unlawful in every setting or provide legal clearance for a preferred alternative.",
+      "subheading": "Restricted phrases need a reason",
+      "detail": "Record the implied claim before rewriting. A calmer adjective is not enough if the underlying statement still promises an unsupported outcome.",
+      "question": "Which implied claim needs evidence or a more accurate description?",
+      "records": [
+        {
+          "label": "Effortless",
+          "prompt": "Can imply no meaningful work or conditions."
+        },
+        {
+          "label": "Guaranteed",
+          "prompt": "Can imply a commitment that must actually exist."
+        },
+        {
+          "label": "Everyone can",
+          "prompt": "Can hide access barriers or unsupported universality."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "VOICE REGISTER",
+          "V06 / unclear action"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "8 editorial rewrites; no tested winners or legal clearance."
+        ]
+      ]
+    },
+    {
+      "section": "07 / BRAND VOICE",
+      "title": "Show the change in meaning.",
+      "lead": "Before: Transform your workflow instantly. After: Review one step of your workflow and identify what needs context. The rewrite exchanges an unsupported promise for an inspectable activity.",
+      "body": "Before: Our solution works for everyone. After: Check whether this approach fits your task and access needs. A useful rewrite changes the claim, not only the mood of the sentence.",
+      "subheading": "Before and after, with a rationale",
+      "detail": "Neither example establishes a functioning service or verified capability. Use the comparison to discuss meaning before adapting it to actual copy.",
+      "question": "Does the revised sentence remove the unsupported implication?",
+      "records": [
+        {
+          "label": "Before",
+          "prompt": "Transform your workflow instantly."
+        },
+        {
+          "label": "After",
+          "prompt": "Review one step and identify what needs context."
+        },
+        {
+          "label": "Rationale",
+          "prompt": "An activity replaces an unverified universal benefit."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "VOICE REGISTER",
+          "V07 / unsupported urgency"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "8 editorial rewrites; no tested winners or legal clearance."
+        ]
+      ]
+    },
+    {
+      "section": "08 / BRAND VOICE",
+      "title": "Apply the voice in real message shapes.",
+      "lead": "Welcome: Start with the question you want to explore. Instruction: Add the source beside the passage before sharing it. Correction: The earlier note omitted a condition; please review the updated explanation.",
+      "body": "These are authored copy examples, not actual customer communications. A correction should describe the real issue and a verified next step; do not copy the example as though an event occurred.",
+      "subheading": "Three context-sensitive examples",
+      "detail": "A consistent voice can carry different tones. Keep essential instructions and uncertainty visible even when a short channel leaves little space.",
+      "question": "What would make this example accurate in the actual setting?",
+      "records": [
+        {
+          "label": "Welcome",
+          "prompt": "Start with the question you want to explore."
+        },
+        {
+          "label": "Instruction",
+          "prompt": "Add the source beside the passage before sharing."
+        },
+        {
+          "label": "Correction",
+          "prompt": "Name the verified issue and the available next step."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "VOICE REGISTER",
+          "V08 / unbounded capability"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "8 editorial rewrites; no tested winners or legal clearance."
+        ]
+      ]
+    },
+    {
+      "section": "09 / BRAND VOICE",
+      "title": "Review meaning before polishing rhythm.",
+      "lead": "First check whether the statement is true and appropriately qualified. Then review whether the reader can understand the action. Only then refine tone, rhythm and repetition.",
+      "body": "An editorial checklist does not replace product, legal, accessibility or specialist review. Keep responsibility for those decisions explicit rather than assigning every concern to a voice editor.",
+      "subheading": "A review sequence",
+      "detail": "Read the copy beside its destination or supporting artifact. A beautifully consistent phrase can still mislead if the underlying action cannot be fulfilled.",
+      "question": "Which unresolved meaning issue should stop stylistic approval?",
+      "records": [
+        {
+          "label": "Meaning check",
+          "prompt": "Claims and conditions match appropriate evidence."
+        },
+        {
+          "label": "Task check",
+          "prompt": "The reader can identify the next action."
+        },
+        {
+          "label": "Voice check",
+          "prompt": "The tone supports the context without hiding limits."
+        }
+      ],
+      "image": 5,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "VOICE REGISTER",
+          "V01 / unsupported outcome"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "8 editorial rewrites; no tested winners or legal clearance."
+        ]
+      ]
+    },
+    {
+      "section": "10 / BRAND VOICE",
+      "title": "Keep a change record that explains why.",
+      "lead": "A living voice guide records the phrase, the reason for a revision and the context in which the change applies. A new preference should not silently rewrite past evidence.",
+      "body": "The supplied register is an authored version-one guide, not a history of approved organisational decisions. Test revisions against appropriate tasks and retain earlier wording when a review needs to understand the change.",
+      "subheading": "Versioning with a useful boundary",
+      "detail": "Do not report a rewrite as proven to improve engagement unless a suitable evaluation supports that claim. Editorial preference and measured effect are different kinds of evidence.",
+      "question": "What reason would help another editor understand this revision?",
+      "records": [
+        {
+          "label": "Version",
+          "prompt": "Authored guide v1; no organisational approval implied."
+        },
+        {
+          "label": "Reason",
+          "prompt": "Replace vague or unsupported meaning with a specific task."
+        },
+        {
+          "label": "Outcome boundary",
+          "prompt": "No measured persuasion or engagement effect supplied."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix",
+      "evidenceRows": [
+        [
+          "VOICE REGISTER",
+          "V02 / universal claim"
+        ],
+        [
+          "EVIDENCE BOUNDARY",
+          "8 editorial rewrites; no tested winners or legal clearance."
+        ]
+      ]
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for brand-voice"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: story-workshop/03.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: creative-treatment/02.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: case-story/01.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: visual-literacy/02.jpg"
+    }
+  ]
+}

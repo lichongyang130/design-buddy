@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "founder-narrative",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 15924,
+      "sha256": "f8597d9c3c83a3c6674601b02499b2bd0eba327b2cc7bcbf146dba24a1f37ea1"
+    },
+    {
+      "path": "content.js",
+      "bytes": 13387,
+      "sha256": "74dc44f6896defb5930017b87c0ba0a8ecdebe53ca99d41cf77b174ab5354fac"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 518,
+      "sha256": "c789c42d565f9e0a6bf35d99763f9ddca6b7f979d42ede2cc89e34f2353826c8"
+    },
+    {
+      "path": "founder-narrative.docx",
+      "bytes": 879346,
+      "sha256": "86760d755f46f54076c56b8b8366cf2e1335cf1b825a000448cd8308fa2014e3"
+    },
+    {
+      "path": "founder-narrative.pdf",
+      "bytes": 949982,
+      "sha256": "282650a4d48a8ae28cdd51363ff0f6c2f43771ebfb31215249410ba83e9c7ada"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 101,
+      "sha256": "237782e80d3093928a289acc75f5555447e5cfbc5682ed2949ed7bcbfe47259f"
+    },
+    {
+      "path": "source.json",
+      "bytes": 526,
+      "sha256": "6663dd147ed7a037791a79f0616f8c4e2ae3dcebbba5b40d733b963ca4c492c8"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 171126,
+      "sha256": "b45e5e9b30c9d48cefba3ff763efa9b5f9e92446f604a9174aa6da85b8b26412"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 166028,
+      "sha256": "5479a0d50adcd7e7b6f336e1861adf8c32ae6c4d068eed65cd8740cfdb415f78"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 154716,
+      "sha256": "38a7594a88872a2d91eacc3bcfd138b36d0251c9e8af2a9c61a2616f68b3319c"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 192830,
+      "sha256": "addf8505d609290be084c33451bd37b950915b2be0edd24d7ee68e3386257f3a"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 186008,
+      "sha256": "42c53962faa377b40fa2aa6355e43e5564c09f785ec4d3d2a79a55804104cbaf"
+    }
+  ]
+}

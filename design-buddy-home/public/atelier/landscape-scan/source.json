@@ -1,0 +1,66 @@
+{
+  "source": "deterministic-invented-teaching-records",
+  "synthetic": true,
+  "summary": {
+    "options": 6,
+    "dimensions": 4,
+    "cells": 24,
+    "trueFlags": 15,
+    "columnTotals": {
+      "version": 4,
+      "index": 4,
+      "offline": 4,
+      "review": 3
+    }
+  },
+  "records": [
+    {
+      "option": "North",
+      "version": true,
+      "index": true,
+      "offline": false,
+      "review": false,
+      "invented": true
+    },
+    {
+      "option": "Bridge",
+      "version": true,
+      "index": false,
+      "offline": true,
+      "review": true,
+      "invented": true
+    },
+    {
+      "option": "Grove",
+      "version": false,
+      "index": true,
+      "offline": true,
+      "review": false,
+      "invented": true
+    },
+    {
+      "option": "Beacon",
+      "version": true,
+      "index": true,
+      "offline": false,
+      "review": true,
+      "invented": true
+    },
+    {
+      "option": "Harbor",
+      "version": false,
+      "index": false,
+      "offline": true,
+      "review": true,
+      "invented": true
+    },
+    {
+      "option": "Thread",
+      "version": true,
+      "index": true,
+      "offline": true,
+      "review": false,
+      "invented": true
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "source": "deterministic-invented-teaching-records",
+  "synthetic": true,
+  "summary": {
+    "events": 5,
+    "choiceVersion": "V3",
+    "preOrAtChoice": [
+      "V1",
+      "V2",
+      "V3"
+    ],
+    "laterVersions": [
+      "V4",
+      "V5"
+    ],
+    "actualOutcomes": 0
+  },
+  "records": [
+    {
+      "version": "V1",
+      "event": "question",
+      "information": "Version visibility and ownership are unclear.",
+      "choice": null
+    },
+    {
+      "version": "V2",
+      "event": "options",
+      "information": "Retain folder; add labels; develop full index.",
+      "choice": null
+    },
+    {
+      "version": "V3",
+      "event": "choice",
+      "information": "Narrow identification goal; maintenance unconfirmed.",
+      "choice": "Explore visible version labels"
+    },
+    {
+      "version": "V4",
+      "event": "follow-up",
+      "information": "Ownership remains unresolved.",
+      "choice": null
+    },
+    {
+      "version": "V5",
+      "event": "follow-up",
+      "information": "Request a paper walkthrough; no outcome supplied.",
+      "choice": null
+    }
+  ]
+}

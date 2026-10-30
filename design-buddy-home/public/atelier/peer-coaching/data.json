@@ -1,0 +1,396 @@
+{
+  "work": {
+    "id": "peer-coaching",
+    "title": "PEER COACHING",
+    "subtitle": "A question, listening and action accord",
+    "category": "培训",
+    "layout": "coach",
+    "color": "#66538a",
+    "wash": "#ece4f5",
+    "framework": "提问倾听与行动契约",
+    "scope": "A bounded fictional peer-learning conversation. Not therapy, medical advice, employment assessment, a confidentiality guarantee or an actual coaching agreement.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "training-expansion",
+    "newIllustrations": 0,
+    "curatedIllustrations": 5
+  },
+  "pages": [
+    {
+      "section": "01 / PEER COACHING",
+      "title": "Agree what peer coaching is not.",
+      "lead": "This practice conversation helps a peer describe a task, examine options and choose a bounded next action. The listener does not diagnose, prescribe or assess the other person.",
+      "body": "Use an invented work example if that is more appropriate. Participants can pause, decline a question or end the exercise. The template supplies no actual professional relationship or guarantee of confidentiality.",
+      "subheading": "Boundary before technique",
+      "detail": "If a conversation needs specialist support or an organisational response, refer to an appropriate real route. Do not use a peer exercise to handle issues outside the participants’ remit.",
+      "question": "Which concern would make this conversation unsuitable for peer practice?",
+      "records": [
+        {
+          "label": "Purpose",
+          "prompt": "Explore one bounded learning or work-task question."
+        },
+        {
+          "label": "Non-purpose",
+          "prompt": "No diagnosis, therapy or employment judgement."
+        },
+        {
+          "label": "Choice",
+          "prompt": "Either participant may pause, decline or end."
+        }
+      ],
+      "image": 1,
+      "kind": "cover",
+      "evidenceRows": [
+        [
+          "CONVERSATION STAGE",
+          "agreement / planned"
+        ],
+        [
+          "AGREEMENT BOUNDARY",
+          "6 stages; no actual commitment or confidentiality guarantee."
+        ]
+      ]
+    },
+    {
+      "section": "02 / PEER COACHING",
+      "title": "Make the conversation agreement explicit.",
+      "lead": "Agree the topic, what may be written down and whether any record may be shared. Discuss practical limits before someone is encouraged to disclose more than they intended.",
+      "body": "This workbook provides a fictional agreement structure, not an enforceable confidentiality promise. Actual organisational rules and relevant responsibilities may limit what participants can agree. Keep the scope narrow and understood by both people.",
+      "subheading": "Working accord",
+      "detail": "Use the agreement to choose a manageable task question. If the scope changes, pause and check whether both people still want to continue.",
+      "question": "Do both participants understand what is and is not being agreed?",
+      "records": [
+        {
+          "label": "Topic",
+          "prompt": "One task question selected by the speaker."
+        },
+        {
+          "label": "Record",
+          "prompt": "Only an agreed, minimal note if appropriate."
+        },
+        {
+          "label": "Sharing",
+          "prompt": "No sharing permission established by this template."
+        }
+      ],
+      "image": 1,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CONVERSATION STAGE",
+          "clarify / planned"
+        ],
+        [
+          "AGREEMENT BOUNDARY",
+          "6 stages; no actual commitment or confidentiality guarantee."
+        ]
+      ]
+    },
+    {
+      "section": "03 / PEER COACHING",
+      "title": "Let the speaker describe the situation.",
+      "lead": "Start with: what are you trying to do, and where does the task become unclear? Give the speaker room to describe the context before proposing a solution.",
+      "body": "A useful statement separates the task, the current difficulty and the desired next understanding. It need not contain personal history or a judgement about another colleague. Reflect uncertainty without filling gaps with your own interpretation.",
+      "subheading": "Situation statement",
+      "detail": "Example: I can summarise a passage but struggle to explain why it belongs in this draft. This is an invented task, not an actual participant disclosure.",
+      "question": "What would the speaker like to understand better by the end?",
+      "records": [
+        {
+          "label": "Task",
+          "prompt": "Explain why a passage belongs in a draft."
+        },
+        {
+          "label": "Difficulty",
+          "prompt": "The connection to the working question is unclear."
+        },
+        {
+          "label": "Desired understanding",
+          "prompt": "Identify what context the explanation needs."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CONVERSATION STAGE",
+          "listen / planned"
+        ],
+        [
+          "AGREEMENT BOUNDARY",
+          "6 stages; no actual commitment or confidentiality guarantee."
+        ]
+      ]
+    },
+    {
+      "section": "04 / PEER COACHING",
+      "title": "Ask questions that open the task.",
+      "lead": "Try: what makes the connection difficult to explain? What have you already tried? What would a useful next attempt look like? Ask one question and listen before adding another.",
+      "body": "Avoid disguised advice such as do you not think you should use my method? The point is to understand the speaker’s reasoning, not to lead them toward a preferred answer.",
+      "subheading": "Clarifying question practice",
+      "detail": "Questions can be declined or rephrased. If the answer moves beyond the agreed scope, pause and check the boundary rather than probing automatically.",
+      "question": "Does the question invite explanation or pressure the speaker toward your answer?",
+      "records": [
+        {
+          "label": "Open question",
+          "prompt": "What part of the task needs more context?"
+        },
+        {
+          "label": "Experience question",
+          "prompt": "What have you tried, and what did you notice?"
+        },
+        {
+          "label": "Next-attempt question",
+          "prompt": "What would make one small attempt useful?"
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CONVERSATION STAGE",
+          "explore / planned"
+        ],
+        [
+          "AGREEMENT BOUNDARY",
+          "6 stages; no actual commitment or confidentiality guarantee."
+        ]
+      ]
+    },
+    {
+      "section": "05 / PEER COACHING",
+      "title": "Reflect the meaning and check it.",
+      "lead": "Say: I heard that the passage is relevant, but the reason for using it is hard to make visible. Have I understood that correctly?",
+      "body": "A reflection is a tentative check, not a declaration about what the person really means. Keep observation, the speaker’s account and your interpretation separate. Do not turn the listening note into a judgement or an undisclosed assessment record.",
+      "subheading": "Listening record",
+      "detail": "The supplied conversation stages are planned, not completed. No actual participant account, observation or evidence of improved performance is supplied.",
+      "question": "What would let the speaker correct your understanding?",
+      "records": [
+        {
+          "label": "Heard",
+          "prompt": "A difficulty explaining the passage-question connection."
+        },
+        {
+          "label": "Interpretation",
+          "prompt": "The reason may need to be made more explicit."
+        },
+        {
+          "label": "Check",
+          "prompt": "Invite correction; do not treat the reflection as fact."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CONVERSATION STAGE",
+          "action / planned"
+        ],
+        [
+          "AGREEMENT BOUNDARY",
+          "6 stages; no actual commitment or confidentiality guarantee."
+        ]
+      ]
+    },
+    {
+      "section": "06 / PEER COACHING",
+      "title": "Explore more than one option.",
+      "lead": "Possible next actions include writing the question beside the passage, explaining the connection aloud or asking a reviewer which part is unclear. The speaker chooses which option to examine.",
+      "body": "Compare the options against the task and the available support. Do not imply that every option is feasible or that the peer listener can approve an actual change to work arrangements.",
+      "subheading": "Options without prescription",
+      "detail": "Ask what makes an option manageable and what uncertainty remains. A useful conversation can end with more information needed rather than an immediate commitment.",
+      "question": "Which option fits the speaker’s task and present capacity?",
+      "records": [
+        {
+          "label": "Option one",
+          "prompt": "Write the working question beside the passage."
+        },
+        {
+          "label": "Option two",
+          "prompt": "Explain the connection using a short invented example."
+        },
+        {
+          "label": "Option three",
+          "prompt": "Ask an appropriate reviewer what remains unclear."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CONVERSATION STAGE",
+          "review / planned"
+        ],
+        [
+          "AGREEMENT BOUNDARY",
+          "6 stages; no actual commitment or confidentiality guarantee."
+        ]
+      ]
+    },
+    {
+      "section": "07 / PEER COACHING",
+      "title": "Create a bounded action accord.",
+      "lead": "The speaker may choose to draft one context sentence, review it against the working question and decide whether another source is needed. Keep the action small enough to inspect.",
+      "body": "Agree only what the participant actually chooses. This template contains no real commitment, deadline or named reviewer. A next action should include a review question, not an implied promise of improvement.",
+      "subheading": "Action / evidence / review",
+      "detail": "Example accord: try one context sentence; retain the draft; ask whether the reason is understandable. The record is a learning aid, not a contract of employment or service.",
+      "question": "What evidence would help the speaker review the attempt?",
+      "records": [
+        {
+          "label": "Action",
+          "prompt": "Draft one sentence explaining the connection."
+        },
+        {
+          "label": "Artifact",
+          "prompt": "Retain the sentence and its working question."
+        },
+        {
+          "label": "Review question",
+          "prompt": "Can another suitable reader understand the reason?"
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CONVERSATION STAGE",
+          "agreement / planned"
+        ],
+        [
+          "AGREEMENT BOUNDARY",
+          "6 stages; no actual commitment or confidentiality guarantee."
+        ]
+      ]
+    },
+    {
+      "section": "08 / PEER COACHING",
+      "title": "Follow up on the attempt, not compliance.",
+      "lead": "At a later agreed conversation, ask what was tried, what was noticed and what the speaker now wants to understand. An action may have changed or become inappropriate.",
+      "body": "This workbook sets no actual follow-up date or response obligation. Avoid treating an incomplete attempt as a character judgement. Revisit scope and permission before discussing or retaining any new information.",
+      "subheading": "Follow-up invitation",
+      "detail": "If no attempt happened, explore the task conditions without pressure. The next useful move may be to reduce the scope, seek suitable support or end the practice.",
+      "question": "What changed in the situation that matters to the next choice?",
+      "records": [
+        {
+          "label": "Tried",
+          "prompt": "No actual attempt is recorded in this example."
+        },
+        {
+          "label": "Noticed",
+          "prompt": "Separate observations from interpretations."
+        },
+        {
+          "label": "Next choice",
+          "prompt": "Revise, seek appropriate support or stop by agreement."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CONVERSATION STAGE",
+          "clarify / planned"
+        ],
+        [
+          "AGREEMENT BOUNDARY",
+          "6 stages; no actual commitment or confidentiality guarantee."
+        ]
+      ]
+    },
+    {
+      "section": "09 / PEER COACHING",
+      "title": "Review the working relationship.",
+      "lead": "Ask whether the questions were useful, whether either person felt pushed toward an answer and whether the agreed boundary still makes sense. The listener can receive feedback too.",
+      "body": "Discuss the conversation process without requiring further disclosure about the original topic. A positive impression does not establish coaching effectiveness or a lasting performance change.",
+      "subheading": "Relationship reflection",
+      "detail": "Keep any record minimal and appropriately agreed. This template supplies no satisfaction result, professional accreditation or evidence that a particular coaching method is effective.",
+      "question": "What should change about how the next conversation is conducted?",
+      "records": [
+        {
+          "label": "Usefulness",
+          "prompt": "Ask about the questions, not an assumed personal benefit."
+        },
+        {
+          "label": "Pressure check",
+          "prompt": "Could either person decline or change direction?"
+        },
+        {
+          "label": "Adjustment",
+          "prompt": "Agree one change to the conversation process."
+        }
+      ],
+      "image": 5,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CONVERSATION STAGE",
+          "listen / planned"
+        ],
+        [
+          "AGREEMENT BOUNDARY",
+          "6 stages; no actual commitment or confidentiality guarantee."
+        ]
+      ]
+    },
+    {
+      "section": "10 / PEER COACHING",
+      "title": "End deliberately and handle the record.",
+      "lead": "A peer-learning conversation can end because the task is complete, the scope no longer fits or either person prefers to stop. A respectful ending does not require an invented success story.",
+      "body": "Review any agreed record and how it will be handled under the actual setting’s requirements. No deletion policy, confidentiality arrangement or future contact is established by this fictional guide.",
+      "subheading": "Exit and referral boundary",
+      "detail": "If another support route is appropriate, identify the real route and its scope rather than promising a service that has not been arranged.",
+      "question": "What needs to be clarified so both people understand the ending?",
+      "records": [
+        {
+          "label": "End condition",
+          "prompt": "Either person can decide the exercise no longer fits."
+        },
+        {
+          "label": "Record handling",
+          "prompt": "Check the actual agreement and applicable requirements."
+        },
+        {
+          "label": "Support route",
+          "prompt": "No named service or referral promise supplied here."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix",
+      "evidenceRows": [
+        [
+          "CONVERSATION STAGE",
+          "explore / planned"
+        ],
+        [
+          "AGREEMENT BOUNDARY",
+          "6 stages; no actual commitment or confidentiality guarantee."
+        ]
+      ]
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "Curated existing AI-generated illustration: founder-narrative/01.jpg"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: partnership-canvas/01.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: roundtable-brief/02.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: interview-synthesis/02.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: story-workshop/03.jpg"
+    }
+  ]
+}

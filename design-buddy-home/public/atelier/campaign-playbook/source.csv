@@ -1,0 +1,7 @@
+order,touchpoint,journey_stage,status,actual_date,actual_contacts
+1,poster,discover,planned,,
+2,social-post,discover,planned,,
+3,concept-outline,consider,planned,,
+4,email,consider,planned,,
+5,enquiry-reply,ask,planned,,
+6,follow-up,ask,planned,,

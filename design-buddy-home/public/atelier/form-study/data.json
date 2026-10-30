@@ -1,0 +1,152 @@
+{
+  "work": {
+    "id": "form-study",
+    "title": "FORM STUDY",
+    "subtitle": "桌面灯具概念设计说明书",
+    "category": "产品设计",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "framework": "product: Design hypothesis / distinct native A4 document layout",
+    "scope": "Fictional unpowered desk-lamp concept. No electrical design, safety certification, manufacturing specification, tested performance or production approval.",
+    "layout": "product",
+    "color": "#206687",
+    "wash": "#dfeff4"
+  },
+  "pages": [
+    {
+      "section": "01 / FORM STUDY",
+      "title": "Explain a form, not an electrical product.",
+      "lead": "FORM STUDY explores the visual character of an imagined unpowered desk-lamp object. It is a concept document, not a working lamp design or engineering instruction.",
+      "body": "The purpose is to make a design intention, alternative and evidence gap understandable. No wiring, power system, dimensions, test result or supplier is supplied.",
+      "subheading": "Design hypothesis",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What can this concept document legitimately describe?",
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / FORM STUDY",
+      "title": "Read the design argument.",
+      "lead": "The document moves from intention to context question, form, material appearance, alternatives, requirements and handoff. Keep the distinction between a sketch and a specification.",
+      "body": "The artwork shows a studio atmosphere. It cannot establish physical stability, lighting performance, electrical safety, manufacturing feasibility or actual user preference.",
+      "subheading": "Design hypothesis",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which claim would need a separate specialist source?",
+      "image": 1,
+      "kind": "contents"
+    },
+    {
+      "section": "03 / FORM STUDY",
+      "title": "Define the intended interaction.",
+      "lead": "Imagine an object that is easy to recognise as a focused desk companion. This is a visual intention, not a tested usability result or a claim about actual users.",
+      "body": "A real design brief would need a clear use context and appropriately obtained evidence. The template does not invent participant needs or research findings.",
+      "subheading": "Design hypothesis",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What context would shape a real interaction question?",
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / FORM STUDY",
+      "title": "Describe the form in ordinary language.",
+      "lead": "Discuss the relationship of base, stem and shade as a visual composition. Avoid supplying dimensions or implying that the depicted proportions have been engineered.",
+      "body": "A form can appear balanced without being physically stable. The distinction should remain visible in any caption or shared excerpt.",
+      "subheading": "Design hypothesis",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which visual adjective could be mistaken for a tested property?",
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / FORM STUDY",
+      "title": "Treat materials as unverified appearances.",
+      "lead": "A surface may look metallic, matte or translucent in the illustration. Those appearances do not identify composition, durability or a safe application.",
+      "body": "No material sample, supplier declaration or test is supplied. Use appearance language and record the real source that would be needed before selection.",
+      "subheading": "Design hypothesis",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What source would identify an actual material?",
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / FORM STUDY",
+      "title": "Keep an alternative concept visible.",
+      "lead": "Compare a more compact visual form with a more open one as two imagined directions. Neither is a tested solution or a production-ready design.",
+      "body": "An alternative helps clarify the intended character. It does not prove superiority, cost advantage or suitability for a real setting.",
+      "subheading": "Design hypothesis",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which intention does the alternative test?",
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / FORM STUDY",
+      "title": "Turn requirements into questions.",
+      "lead": "A concept matrix can record an intention, the missing evidence and the type of responsible reviewer needed. It should not show unperformed tests as passed.",
+      "body": "Example: intended clarity; evidence unknown; source to seek a suitable real evaluation. This is a question record, not a compliance or engineering checklist.",
+      "subheading": "Design hypothesis",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which requirement cannot be verified here?",
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / FORM STUDY",
+      "title": "Separate the concept from validation.",
+      "lead": "The document supplies no prototype test, photometric result, electrical review or manufacturing analysis. A realistic illustration does not replace those activities.",
+      "body": "Do not operate equipment, build an electrical device or infer safe instructions from this template. Appropriate specialist work would be separate from the visual concept.",
+      "subheading": "Design hypothesis",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What must a qualified real process evaluate?",
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / FORM STUDY",
+      "title": "Prepare a source-aware handoff.",
+      "lead": "Share the intended visual direction, retained alternative and unresolved evidence together. The next reader should not have to guess which claims remain assumptions.",
+      "body": "A concept handoff is not permission to manufacture, procure or operate a product. No approval, certification or supplier commitment is supplied.",
+      "subheading": "Design hypothesis",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which phrase prevents a premature production claim?",
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / FORM STUDY",
+      "title": "Keep the next design question open.",
+      "lead": "Close with the question that would most improve the design brief if appropriately investigated. Do not imply that the object is ready for sale or use.",
+      "body": "All five illustrations are visual references; repeated placements do not increase their count. The native document remains editable without turning its assumptions into evidence.",
+      "subheading": "Design hypothesis",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What should the next responsible reviewer clarify first?",
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for this case"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: swatch/03.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: swatch/05.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: swatch/01.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: swatch/06.jpg"
+    }
+  ]
+}

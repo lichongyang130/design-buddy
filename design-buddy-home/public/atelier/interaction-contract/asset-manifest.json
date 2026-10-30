@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "interaction-contract",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 16686,
+      "sha256": "700ae0184770408c59ebe3cdb3d979d3b5a05c1d6c624e83fbd5f5eece45db51"
+    },
+    {
+      "path": "content.js",
+      "bytes": 13230,
+      "sha256": "b60ecc98920b989e798daee9acd7336db1482c3a903dddc9c5f3e4491c0c5bc4"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 537,
+      "sha256": "be1a52308c1703993f6521f907c4c21f2ed6e5257bb87eb020bcb01218c9fe25"
+    },
+    {
+      "path": "interaction-contract.docx",
+      "bytes": 911178,
+      "sha256": "6cc0e84cb98a08c6a4f837eae0e54b12d524bdb35f081b1608624efc10ce43f1"
+    },
+    {
+      "path": "interaction-contract.pdf",
+      "bytes": 979040,
+      "sha256": "1e7ef47b47407b5ce0fc08577d6225611e732704c7891db157716fe1428ef77b"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 312,
+      "sha256": "8973988e1879d5c795171776a98fe668c9c77f87123711ae9f0a55515b33b202"
+    },
+    {
+      "path": "source.json",
+      "bytes": 1415,
+      "sha256": "dc06bd72d460819d2cf606abe91b8e1a48a55252615e53b8c9657f6bc19410d0"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 113232,
+      "sha256": "c0b779cc6a901e2db8bef9cc18c2f81bf322bf058cdf97b4a83004909a340b2a"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 199785,
+      "sha256": "19d3859291f14dcf257e620abbc709d1a8a82239cc46ba08239189d208f9f213"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 204036,
+      "sha256": "9f11d785aafe00ad67aa4fd6321b7cffc2d89cb2eddcd92934c0b84eede18915"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 199913,
+      "sha256": "d457d33595662c4c9f35acefbcefa3f8f86bca2ae2dcb85cd61d3ac2084900b8"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 185065,
+      "sha256": "811f8ec6341fa07c5dc8b99ada1e8250922351ae65ff833d571dece1ff320b5d"
+    }
+  ]
+}

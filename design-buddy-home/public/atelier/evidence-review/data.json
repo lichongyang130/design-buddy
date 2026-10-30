@@ -1,0 +1,396 @@
+{
+  "work": {
+    "id": "evidence-review",
+    "title": "EVIDENCE REVIEW",
+    "subtitle": "证据综述报告",
+    "category": "报告",
+    "layout": "review",
+    "color": "#344a6f",
+    "wash": "#e7ecf5",
+    "framework": "来源证据分级",
+    "scope": "Entirely synthetic report exercise: source records, statements and version events are invented. Illustrations are not empirical evidence. No actual study, operational result, market research or participant interview is supplied.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "report-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / EVIDENCE REVIEW",
+      "title": "Review the sources before the claim.",
+      "lead": "This report demonstrates a transparent review using eight invented source cards. Five cards meet the exercise scope; three are excluded. It is a worked template, not a literature review of real publications.",
+      "body": "The question is how a discussion prompt might make its intended use clearer. Included material comprises two method notes, two example sheets and one reflection. Their contents illustrate a review process without supplying empirical evidence of effectiveness.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "What can this review organise without claiming that a real intervention works?",
+      "records": [
+        {
+          "label": "Review question",
+          "prompt": "Record review question and its source boundary."
+        },
+        {
+          "label": "Intended use",
+          "prompt": "Record intended use and its source boundary."
+        },
+        {
+          "label": "Main limitation",
+          "prompt": "Record main limitation and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "SOURCE CARDS",
+          "8 invented / 5 included / 3 excluded"
+        ],
+        [
+          "INCLUDED ROLES",
+          "2 method / 2 example / 1 reflection"
+        ]
+      ],
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / EVIDENCE REVIEW",
+      "title": "Make the search boundary visible.",
+      "lead": "Describe which material was considered and where the boundary sits. This exercise uses a closed set of eight cards rather than claiming an exhaustive database search.",
+      "body": "A real review would record its search locations, terms, dates and access limitations. Here the complete invented set is exported as source JSON and CSV, so readers can inspect every inclusion and exclusion instead of trusting a hidden selection.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "What would need to be recorded before this could be described as an actual literature search?",
+      "records": [
+        {
+          "label": "Material boundary",
+          "prompt": "Record material boundary and its source boundary."
+        },
+        {
+          "label": "Search not performed",
+          "prompt": "Record search not performed and its source boundary."
+        },
+        {
+          "label": "Source artifact",
+          "prompt": "Record source artifact and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "SOURCE CARDS",
+          "8 invented / 5 included / 3 excluded"
+        ],
+        [
+          "INCLUDED ROLES",
+          "2 method / 2 example / 1 reflection"
+        ]
+      ],
+      "image": 1,
+      "kind": "body"
+    },
+    {
+      "section": "03 / EVIDENCE REVIEW",
+      "title": "Keep a source register.",
+      "lead": "Assign each card an identifier and preserve its type, scope status and reason for inclusion or exclusion. An identifier is a traceability tool, not a citation to a real author.",
+      "body": "S01–S05 are in scope. S06 is an unsupported opinion, S07 a duplicate exercise card and S08 outside the prompt-clarity question. These decisions are stipulated teaching examples, not independent assessments of real scholarship.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Can another reader reconstruct the five-card set without inferring a missing publication?",
+      "records": [
+        {
+          "label": "Source identifier",
+          "prompt": "Record source identifier and its source boundary."
+        },
+        {
+          "label": "Type",
+          "prompt": "Record type and its source boundary."
+        },
+        {
+          "label": "Review note",
+          "prompt": "Record review note and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "SOURCE CARDS",
+          "8 invented / 5 included / 3 excluded"
+        ],
+        [
+          "INCLUDED ROLES",
+          "2 method / 2 example / 1 reflection"
+        ]
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / EVIDENCE REVIEW",
+      "title": "Apply the inclusion rule consistently.",
+      "lead": "The inclusion rule accepts a distinct card that addresses the prompt-clarity question and supplies interpretable exercise material. Apply the rule before choosing a preferred conclusion.",
+      "body": "Five of eight cards remain. The three exclusions have different reasons, so they should not be grouped as low-quality studies. A duplicate, an irrelevant item and an unsupported opinion represent different limits on use.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which change to the scope rule would change the reviewed set?",
+      "records": [
+        {
+          "label": "Rule",
+          "prompt": "Record rule and its source boundary."
+        },
+        {
+          "label": "Borderline item",
+          "prompt": "Record borderline item and its source boundary."
+        },
+        {
+          "label": "Exclusion reason",
+          "prompt": "Record exclusion reason and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "SOURCE CARDS",
+          "8 invented / 5 included / 3 excluded"
+        ],
+        [
+          "INCLUDED ROLES",
+          "2 method / 2 example / 1 reflection"
+        ]
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / EVIDENCE REVIEW",
+      "title": "Group by source role.",
+      "lead": "A source role describes what a card can contribute. A method note can explain an approach; an example sheet can show wording; a reflection can raise a question. These roles are not evidence grades.",
+      "body": "Within the five included cards, method notes account for two, example sheets for two and reflections for one. The counts reconcile to five but do not measure reliability, effect size or confidence in a real-world claim.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which question would require a source type absent from this set?",
+      "records": [
+        {
+          "label": "Method notes",
+          "prompt": "Record method notes and its source boundary."
+        },
+        {
+          "label": "Example sheets",
+          "prompt": "Record example sheets and its source boundary."
+        },
+        {
+          "label": "Reflections",
+          "prompt": "Record reflections and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "SOURCE CARDS",
+          "8 invented / 5 included / 3 excluded"
+        ],
+        [
+          "INCLUDED ROLES",
+          "2 method / 2 example / 1 reflection"
+        ]
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / EVIDENCE REVIEW",
+      "title": "Trace a recurring theme.",
+      "lead": "The exercise assigns a clarity theme to S01, S02 and S04. Report the source identifiers alongside the theme so the reader can inspect the grouping.",
+      "body": "Three cards mentioning clarity do not constitute three independent empirical replications. They are invented materials with different roles. The useful result is a visible path from the theme label back to each card, not a vote count for effectiveness.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "What wording would prevent the three-card theme from being mistaken for proven effectiveness?",
+      "records": [
+        {
+          "label": "Theme",
+          "prompt": "Record theme and its source boundary."
+        },
+        {
+          "label": "Supporting cards",
+          "prompt": "Record supporting cards and its source boundary."
+        },
+        {
+          "label": "Interpretation boundary",
+          "prompt": "Record interpretation boundary and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "SOURCE CARDS",
+          "8 invented / 5 included / 3 excluded"
+        ],
+        [
+          "INCLUDED ROLES",
+          "2 method / 2 example / 1 reflection"
+        ]
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / EVIDENCE REVIEW",
+      "title": "Preserve differences in emphasis.",
+      "lead": "S03 and S05 are grouped under context. Their emphasis differs from the clarity group and should remain visible rather than being forced into a single recommendation.",
+      "body": "The two context cards can prompt questions about intended use and missing setting information. The exercise does not establish a contradiction between findings because no real study results exist. A reviewer should distinguish different emphases from conflicting empirical results.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which distinction would be lost by collapsing all five cards into one conclusion?",
+      "records": [
+        {
+          "label": "Context cards",
+          "prompt": "Record context cards and its source boundary."
+        },
+        {
+          "label": "Different emphasis",
+          "prompt": "Record different emphasis and its source boundary."
+        },
+        {
+          "label": "Open question",
+          "prompt": "Record open question and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "SOURCE CARDS",
+          "8 invented / 5 included / 3 excluded"
+        ],
+        [
+          "INCLUDED ROLES",
+          "2 method / 2 example / 1 reflection"
+        ]
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / EVIDENCE REVIEW",
+      "title": "Explain quality limits in use.",
+      "lead": "Assess a source against the claim for which it is being used. A source can be suitable as an illustration while unsuitable as evidence about prevalence or learning outcomes.",
+      "body": "All eight cards are invented. The five included cards help demonstrate registration, grouping and traceability only. They cannot establish demand, user preference, causal effects or the quality of a real programme, regardless of how polished the report appears.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Which attractive conclusion reaches furthest beyond this source set?",
+      "records": [
+        {
+          "label": "Proposed claim",
+          "prompt": "Record proposed claim and its source boundary."
+        },
+        {
+          "label": "Suitable use",
+          "prompt": "Record suitable use and its source boundary."
+        },
+        {
+          "label": "Unsupported use",
+          "prompt": "Record unsupported use and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "SOURCE CARDS",
+          "8 invented / 5 included / 3 excluded"
+        ],
+        [
+          "INCLUDED ROLES",
+          "2 method / 2 example / 1 reflection"
+        ]
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / EVIDENCE REVIEW",
+      "title": "Write a bounded synthesis.",
+      "lead": "Bring the source roles and themes together without turning descriptive grouping into a recommendation backed by research. Keep the reviewed set and its limitations in the summary.",
+      "body": "A bounded synthesis says that the five exercise cards illustrate two areas to examine: wording clarity and contextual fit. It does not say that either improvement has been demonstrated to cause a beneficial outcome. Real recommendations need their own relevant evidence.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "Can every substantive phrase in the synthesis be traced to the invented register?",
+      "records": [
+        {
+          "label": "Synthesis sentence",
+          "prompt": "Record synthesis sentence and its source boundary."
+        },
+        {
+          "label": "Traceable support",
+          "prompt": "Record traceable support and its source boundary."
+        },
+        {
+          "label": "Qualification",
+          "prompt": "Record qualification and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "SOURCE CARDS",
+          "8 invented / 5 included / 3 excluded"
+        ],
+        [
+          "INCLUDED ROLES",
+          "2 method / 2 example / 1 reflection"
+        ]
+      ],
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / EVIDENCE REVIEW",
+      "title": "Leave an auditable next question.",
+      "lead": "Close with the question that remains and the kind of real source that would be needed. Preserve the source export and inclusion decisions with the report.",
+      "body": "The next inquiry could seek appropriate empirical material about interpretation of prompts in a defined context. This template has performed no search, study or quality appraisal of actual publications. Its complete result is a reproducible worked review structure.",
+      "subheading": "Analyst record / trace the source",
+      "detail": "Separate the supplied synthetic result from your interpretation and any real-world evidence still needed.",
+      "question": "What evidence would change this from a review exercise into a real evidence review?",
+      "records": [
+        {
+          "label": "Next question",
+          "prompt": "Record next question and its source boundary."
+        },
+        {
+          "label": "Needed source",
+          "prompt": "Record needed source and its source boundary."
+        },
+        {
+          "label": "Handoff artifact",
+          "prompt": "Record handoff artifact and its source boundary."
+        }
+      ],
+      "evidenceRows": [
+        [
+          "SOURCE CARDS",
+          "8 invented / 5 included / 3 excluded"
+        ],
+        [
+          "INCLUDED ROLES",
+          "2 method / 2 example / 1 reflection"
+        ]
+      ],
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for evidence-review"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: tideline/11.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: open-shelf/06.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: common-ground/02.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: afterglow/11.jpg"
+    }
+  ]
+}

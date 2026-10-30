@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "common-ground",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "content.js",
+      "bytes": 10912,
+      "sha256": "b1c6c24e92ffad38d0ec71dbad6c722ed6b5e130663ae8c63e4c1464a2c74f0e"
+    },
+    {
+      "path": "app.js",
+      "bytes": 6049,
+      "sha256": "0cf14ce1b2e19e22d72e371dc839bd1142703e8678e2602504d88da53938087f"
+    },
+    {
+      "path": "docx.js",
+      "bytes": 6023,
+      "sha256": "3758ec8bd189a671c55c4d39a8c65b2f03530c3c112f40cc7dd027fd057ef6fb"
+    },
+    {
+      "path": "viewer.js",
+      "bytes": 30736,
+      "sha256": "6ffeb0faf04e1b80a7dbec55022a9eb608ddf70812f60c4e3aaf408cd6d90320"
+    },
+    {
+      "path": "style.css",
+      "bytes": 4844,
+      "sha256": "999fe1def0c4ccbb1623e8d7b0a3b4474726e5bb648114692d7f49ea26a5a894"
+    },
+    {
+      "path": "common-ground.docx",
+      "bytes": 971412,
+      "sha256": "0e804a59aa7c8d9606ccdfaf1a58fc758171951583e640be4030174c5d3a83c5"
+    },
+    {
+      "path": "common-ground.pdf",
+      "bytes": 1032041,
+      "sha256": "a091f97ea09e475ccf95f44d5639ea4e1171e80b4809feb954f6fc2994df912e"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 211919,
+      "sha256": "5144536f01c2c5e4bcafcba1604f883a23ecce5b2bdf5918510a69a57192a78e"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 210768,
+      "sha256": "cd34974a4f6615f449685ff6864ae4b6e2f87f1e6c3bb326087e3a8cedb82bc7"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 190436,
+      "sha256": "e2024ccd90b2a4a13fed972ec475d32255428ba5cc0300a83e34c511eef65f95"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 147039,
+      "sha256": "1bbe09689ded82ee51965b310d28845139b51230dd96149a7c599d54f568a14a"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 203425,
+      "sha256": "4959f44c0b61bc1d44587c2a19377f3c3c41254ed1c5993c011bab1953a1a85d"
+    }
+  ]
+}

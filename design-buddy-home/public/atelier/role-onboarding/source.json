@@ -1,0 +1,48 @@
+{
+  "source": "authored-fictional-training-register",
+  "synthetic": true,
+  "notCertification": true,
+  "summary": {
+    "proposedGates": 5,
+    "assessedGates": 0,
+    "employmentRequirement": null,
+    "certification": null
+  },
+  "records": [
+    {
+      "gate": "G01",
+      "focus": "role-boundary",
+      "artifact": "role explanation",
+      "status": "not-assessed",
+      "actual_observation": null
+    },
+    {
+      "gate": "G02",
+      "focus": "task-language",
+      "artifact": "annotated sample",
+      "status": "not-assessed",
+      "actual_observation": null
+    },
+    {
+      "gate": "G03",
+      "focus": "handoff",
+      "artifact": "review note",
+      "status": "not-assessed",
+      "actual_observation": null
+    },
+    {
+      "gate": "G04",
+      "focus": "feedback-revision",
+      "artifact": "revised question",
+      "status": "not-assessed",
+      "actual_observation": null
+    },
+    {
+      "gate": "G05",
+      "focus": "help-route",
+      "artifact": "bounded request",
+      "status": "not-assessed",
+      "actual_observation": null
+    }
+  ]
+}

@@ -1,0 +1,1442 @@
+[
+  {
+    "id": "role-onboarding",
+    "title": "ROLE ONBOARDING",
+    "subtitle": "A role-to-task learning passport",
+    "category": "培训",
+    "layout": "passport",
+    "color": "#77502b",
+    "wash": "#f1e5cd",
+    "framework": "角色任务与学习关卡",
+    "sources": [
+      "project-studio/01",
+      "field-school/02",
+      "operations-review/01",
+      "founder-narrative/01",
+      "public-thread/03"
+    ],
+    "scope": "Fictional onboarding for a documentation coordinator. Practice gates are not employment requirements, permission to publish, competence ratings or certification.",
+    "chapters": [
+      {
+        "title": "Understand the role before the checklist.",
+        "lead": "The documentation coordinator helps a team keep a draft, its source and its next review question connected. This learning passport introduces that task without granting authority to approve or publish.",
+        "body": "Begin by distinguishing coordination from subject-matter judgement. A coordinator can identify a missing source and request clarification; the person responsible for the claim must still confirm its meaning and evidence.",
+        "subheading": "Gate G01 / role boundary",
+        "detail": "Practice outcome: explain what the role handles, what it refers and where responsibility remains unconfirmed. No actual job description or named appointment is supplied.",
+        "question": "Which decision must remain with an authorised reviewer?",
+        "records": [
+          {
+            "label": "Role task",
+            "prompt": "Keep draft, source and open question connected."
+          },
+          {
+            "label": "Referral boundary",
+            "prompt": "Do not approve claims outside an agreed remit."
+          },
+          {
+            "label": "First evidence",
+            "prompt": "A short explanation of the role boundary."
+          }
+        ]
+      },
+      {
+        "title": "Map the people around the task.",
+        "lead": "A writer explains the intended meaning. A source owner can clarify the origin of material. A reviewer checks the claim within an agreed responsibility. The coordinator makes the handoff visible.",
+        "body": "These are functional roles, not named staff or a real reporting hierarchy. One person may hold several roles, but the relevant responsibility should still be explicit before a draft is released.",
+        "subheading": "Collaboration map",
+        "detail": "Draw the route for a source question: coordinator to writer, writer to the appropriate source owner, then back to the reviewer with a clear record.",
+        "question": "Where would a question become stuck if responsibility were unnamed?",
+        "records": [
+          {
+            "label": "Writer",
+            "prompt": "Clarifies intended meaning and requested change."
+          },
+          {
+            "label": "Source owner",
+            "prompt": "Explains the relevant source and its permitted use."
+          },
+          {
+            "label": "Reviewer",
+            "prompt": "Checks the claim within an agreed remit."
+          }
+        ]
+      },
+      {
+        "title": "Use a shared working vocabulary.",
+        "lead": "A draft is material still under review. A source is the attributable material supporting an assertion. A handoff records what another person needs to inspect next.",
+        "body": "A gate is a learning review point, not an automatic pass. Ready means ready for a specified next review, not approved for every use. Check local terminology before adapting this example to actual work.",
+        "subheading": "Gate G02 / interpret the task",
+        "detail": "Explain each term using the same sample passage. A definition is useful when the learner can recognise its effect on the next action.",
+        "question": "Which word could be misread as permission to publish?",
+        "records": [
+          {
+            "label": "Draft",
+            "prompt": "Material whose meaning or evidence may still change."
+          },
+          {
+            "label": "Ready for review",
+            "prompt": "A bounded status, not publication approval."
+          },
+          {
+            "label": "Gate",
+            "prompt": "A learning check with evidence still to discuss."
+          }
+        ]
+      },
+      {
+        "title": "Observe the task without inventing performance.",
+        "lead": "Watch how a sample passage is checked against its source. Notice which question is asked, which artifact is used and how uncertainty is carried forward.",
+        "body": "This document contains no actual observation or staff evaluation. In a real exercise, agree what may be observed, avoid unnecessary personal information and let the learner distinguish description from interpretation.",
+        "subheading": "Observation prompt",
+        "detail": "Use three notes: what was visible, what you inferred and what needs clarification. Do not convert a confident explanation into evidence that the underlying claim is correct.",
+        "question": "What did you actually see, rather than assume?",
+        "records": [
+          {
+            "label": "Visible action",
+            "prompt": "The reviewer places a source beside a passage."
+          },
+          {
+            "label": "Interpretation to check",
+            "prompt": "The connection appears relevant but is not yet verified."
+          },
+          {
+            "label": "Question",
+            "prompt": "What condition limits reuse of the source?"
+          }
+        ]
+      },
+      {
+        "title": "Follow one handoff from start to finish.",
+        "lead": "The coordinator receives a draft with an unexplained quotation. The useful next move is to identify the passage, ask for its origin and record who needs the answer.",
+        "body": "Follow the sample through request, clarification and review. Do not silently fill an evidence gap with a plausible source. A complete-looking record can be more misleading than an explicit unresolved question.",
+        "subheading": "Gate G03 / shadow a handoff",
+        "detail": "Practice with invented material only. If adapting a real example, remove unnecessary personal information and confirm whether the material may be shared for training.",
+        "question": "Can another person tell exactly what remains unresolved?",
+        "records": [
+          {
+            "label": "Request",
+            "prompt": "Identify the quotation and ask for its source."
+          },
+          {
+            "label": "Clarification",
+            "prompt": "Record the answer without changing its meaning."
+          },
+          {
+            "label": "Handoff",
+            "prompt": "Name the next review question and intended recipient."
+          }
+        ]
+      },
+      {
+        "title": "Rehearse the bounded task.",
+        "lead": "Prepare a sample review note for this passage: The new format helps everyone work faster. No evidence for that statement is supplied.",
+        "body": "Rewrite the note to make the gap inspectable. Ask what outcome is meant, whose task is involved and what source would support the assertion. Do not replace the claim with a different unsupported promise.",
+        "subheading": "Simulation, not a real approval",
+        "detail": "Expected artifact: a passage reference, a clear evidence question and an unresolved status. The practice does not establish that the learner is competent in a real organisation.",
+        "question": "What would make the review note useful to its recipient?",
+        "records": [
+          {
+            "label": "Passage reference",
+            "prompt": "The unqualified everyone works faster claim."
+          },
+          {
+            "label": "Evidence question",
+            "prompt": "Which outcome, task and source support this assertion?"
+          },
+          {
+            "label": "Status",
+            "prompt": "Unresolved; no publication approval supplied."
+          }
+        ]
+      },
+      {
+        "title": "Use feedback as a gate conversation.",
+        "lead": "Review the sample note against clarity, source traceability and the visibility of unresolved conditions. Discuss the artifact, not an assumed personality trait or level of confidence.",
+        "body": "Ask the learner to explain the choice and revise one part. A gate can end with another practice task. It should not be recorded as passed simply because the worksheet has been completed.",
+        "subheading": "Gate G04 / revise with feedback",
+        "detail": "The source register lists five proposed gates, all not assessed. There are no ratings, actual observations or certificates in this passport.",
+        "question": "Which specific change would make the next handoff clearer?",
+        "records": [
+          {
+            "label": "Clarity check",
+            "prompt": "The recipient can locate the relevant passage."
+          },
+          {
+            "label": "Traceability check",
+            "prompt": "The source or missing source is explicit."
+          },
+          {
+            "label": "Revision",
+            "prompt": "Change one ambiguous part and explain the reason."
+          }
+        ]
+      },
+      {
+        "title": "Answer common questions without expanding authority.",
+        "lead": "What if the source is missing? Keep the gap visible and request it. What if two versions differ? Identify the version being reviewed before comparing their claims.",
+        "body": "What if someone asks for immediate release? Refer to the actual responsible person and agreed process. This practice guide supplies neither release authority nor an operational escalation deadline.",
+        "subheading": "Useful answers with limits",
+        "detail": "A coordinator can organise a question without deciding its specialist answer. Separate a missing piece of information from a disagreement about meaning.",
+        "question": "When should the coordinator stop and ask for help?",
+        "records": [
+          {
+            "label": "Missing source",
+            "prompt": "Record the gap; do not invent a substitute."
+          },
+          {
+            "label": "Version conflict",
+            "prompt": "Identify the version and relevant difference."
+          },
+          {
+            "label": "Release request",
+            "prompt": "Refer to the actual authority; none is appointed here."
+          }
+        ]
+      },
+      {
+        "title": "Make the help route usable.",
+        "lead": "A useful request tells another person what you are reviewing, what is unclear and what kind of response would help. Send only the material needed for that purpose.",
+        "body": "Agree the appropriate route in the real setting. No named mentor, response time, contact service or escalation authority is supplied by this template. Do not promise help arrangements that have not been made.",
+        "subheading": "Gate G05 / ask a bounded question",
+        "detail": "Example: I can locate the quotation but not its source. Who can confirm its origin and any reuse condition before the next review?",
+        "question": "Does this request make the uncertainty easy to act on?",
+        "records": [
+          {
+            "label": "Context",
+            "prompt": "Identify the draft and passage under review."
+          },
+          {
+            "label": "Question",
+            "prompt": "Ask who can confirm origin and reuse conditions."
+          },
+          {
+            "label": "Help boundary",
+            "prompt": "Actual recipient and response arrangement need agreement."
+          }
+        ]
+      },
+      {
+        "title": "Look back at evidence, not completion ticks.",
+        "lead": "At the end of this introduction, collect the role explanation, a sample handoff and one revision made after feedback. Use them to discuss what to practise next.",
+        "body": "The passport does not calculate readiness or certify competence. A real organisation must define any relevant requirements and appropriate assessment. Keep the learner’s self-reflection distinct from an authorised decision.",
+        "subheading": "Next learning cycle",
+        "detail": "Choose one task that still needs support and agree how a suitable reviewer could inspect a later attempt. Retain the limits of this fictional training example.",
+        "question": "What artifact would show a more useful next attempt?",
+        "records": [
+          {
+            "label": "Evidence gathered",
+            "prompt": "Role explanation, handoff note and revised question."
+          },
+          {
+            "label": "Open learning need",
+            "prompt": "A task still requiring clarification or support."
+          },
+          {
+            "label": "Next review",
+            "prompt": "Agree an appropriate artifact and reviewer, not a certificate."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "scenario-practice",
+    "title": "SCENARIO PRACTICE",
+    "subtitle": "A branching rehearsal and debrief",
+    "category": "培训",
+    "layout": "branch",
+    "color": "#873d35",
+    "wash": "#f5e3dc",
+    "framework": "分支情境与复盘",
+    "sources": [
+      "debate-room/01",
+      "partnership-canvas/02",
+      "interview-synthesis/01",
+      "roundtable-brief/01",
+      "decision-audit/02"
+    ],
+    "scope": "A fictional ambiguous-source rehearsal with three conceptual choices. Branches are discussion routes, not predictions, actual incidents, approved procedures or scored answers.",
+    "chapters": [
+      {
+        "title": "Practise judgement under an information gap.",
+        "lead": "A colleague wants to share a short explanation whose key claim has no identifiable source. Your task is to make the uncertainty visible before deciding what to do next.",
+        "body": "The exercise offers three discussion routes: seek clarification, proceed on an assumption or pause the handoff. None predicts an actual outcome. The aim is to explain a choice and examine its consequences.",
+        "subheading": "Rehearsal objective",
+        "detail": "Participants may pass on a role or pause the exercise. No real colleague, confidential draft or operational incident is involved.",
+        "question": "What information would change your first response?",
+        "records": [
+          {
+            "label": "Task",
+            "prompt": "Recognise the missing source and its significance."
+          },
+          {
+            "label": "Practice focus",
+            "prompt": "Explain a choice without pretending certainty."
+          },
+          {
+            "label": "Boundary",
+            "prompt": "No real incident, assessment score or approved procedure."
+          }
+        ]
+      },
+      {
+        "title": "Read the scenario as written.",
+        "lead": "The draft says the new note format reduces review effort. A colleague asks you to pass it to another team. The original source and the intended meaning of effort are absent.",
+        "body": "You do not know whether the claim is true, who could verify it or whether sharing has been authorised. Keep those unknowns intact rather than giving the scenario an invented backstory.",
+        "subheading": "Starting conditions",
+        "detail": "The exercise begins before any handoff. Its uncertainty is deliberate; it is not evidence that a real team failed to follow a process.",
+        "question": "Which missing fact matters to the immediate decision?",
+        "records": [
+          {
+            "label": "Known",
+            "prompt": "A draft contains a benefit claim without a source."
+          },
+          {
+            "label": "Unknown",
+            "prompt": "Meaning, supporting evidence and sharing authority."
+          },
+          {
+            "label": "Decision point",
+            "prompt": "Choose how to handle the gap before the handoff."
+          }
+        ]
+      },
+      {
+        "title": "Separate the roles in the conversation.",
+        "lead": "The requester wants the draft to move. The reviewer wants the claim to be interpretable. The observer records the questions and assumptions that become visible.",
+        "body": "Rotate roles only by agreement. An observer should describe the exercise, not evaluate a participant’s character. Avoid bringing in personal or confidential workplace examples that others have not agreed to discuss.",
+        "subheading": "Role cards",
+        "detail": "Requester: explain the intended handoff. Reviewer: name what is missing. Observer: distinguish stated facts from assumptions introduced during the conversation.",
+        "question": "What does each role need to understand before continuing?",
+        "records": [
+          {
+            "label": "Requester",
+            "prompt": "Explain the intended purpose without inventing evidence."
+          },
+          {
+            "label": "Reviewer",
+            "prompt": "Identify the unresolved source and meaning questions."
+          },
+          {
+            "label": "Observer",
+            "prompt": "Record visible choices and untested assumptions."
+          }
+        ]
+      },
+      {
+        "title": "Keep the starting facts in view.",
+        "lead": "The only supplied facts are the wording of the claim, the request to share and the absence of source and definition information. There is no actual deadline or manager instruction.",
+        "body": "A participant may ask a question whose answer is unavailable. Mark it as unresolved. The facilitator should not reward a confident guess by turning it into a new fact halfway through the exercise.",
+        "subheading": "Information discipline",
+        "detail": "Use a separate note for any hypothetical variation. Say explicitly when a variation changes the scenario rather than silently rewriting the starting conditions.",
+        "question": "Which statement in the discussion is an assumption, not a supplied fact?",
+        "records": [
+          {
+            "label": "Supplied fact",
+            "prompt": "The review-effort claim lacks a traceable source."
+          },
+          {
+            "label": "Unavailable answer",
+            "prompt": "No timeframe or verification route is supplied."
+          },
+          {
+            "label": "Variation rule",
+            "prompt": "Mark any added condition as hypothetical."
+          }
+        ]
+      },
+      {
+        "title": "Choose a route and explain why.",
+        "lead": "Route A asks the requester to clarify the claim. Route B passes the draft forward while assuming it is acceptable. Route C pauses the handoff and identifies the unresolved condition.",
+        "body": "Use the route links to inspect a possible consequence or discussion prompt. You can return here and compare the other routes. The branches are not a scored test or a prediction of what a real colleague will do.",
+        "subheading": "Branch decision / return here to compare",
+        "detail": "A goes to consequence discussion on page 6; B to assumption observation on page 7; C to pause-and-review debrief on page 8.",
+        "question": "What makes your choice reasonable given the information actually supplied?",
+        "records": [
+          {
+            "label": "Route A",
+            "prompt": "Ask for meaning and source before the handoff."
+          },
+          {
+            "label": "Route B",
+            "prompt": "Proceed while the source remains an assumption."
+          },
+          {
+            "label": "Route C",
+            "prompt": "Pause and name the condition needed to continue."
+          }
+        ]
+      },
+      {
+        "title": "Route A: examine clarification.",
+        "lead": "Asking for the source can reveal whether the claim has a reviewable basis. It may also show that the requester cannot answer yet. The exercise supplies no actual reply.",
+        "body": "Rehearse a concise question: what does review effort mean here, and what material supports that statement? Then discuss what to record if the answer remains unavailable.",
+        "subheading": "Consequence discussion",
+        "detail": "Clarification can make uncertainty more inspectable; it does not guarantee agreement, a correct claim or a successful handoff. Return to page 5 to compare another route.",
+        "question": "How would you preserve the gap if the question receives no answer?",
+        "records": [
+          {
+            "label": "Question asked",
+            "prompt": "Define review effort and identify the source."
+          },
+          {
+            "label": "Possible limit",
+            "prompt": "The requester may not have the needed information."
+          },
+          {
+            "label": "Record",
+            "prompt": "Keep the unanswered condition visible."
+          }
+        ]
+      },
+      {
+        "title": "Route B: observe the assumption.",
+        "lead": "Passing the draft on can make the claim appear settled even when its source remains unknown. That is a possible interpretation, not an observed consequence in this fictional exercise.",
+        "body": "Ask the observer to identify exactly when an assumption becomes part of the handoff. Discuss how a receiving person could distinguish reviewed meaning from an unconfirmed statement.",
+        "subheading": "Observation record",
+        "detail": "Record the wording and the missing qualification, not a judgement about the participant. Return to page 5 to inspect the other choices.",
+        "question": "What might the next reader reasonably believe has been checked?",
+        "records": [
+          {
+            "label": "Visible choice",
+            "prompt": "The draft moves without source clarification."
+          },
+          {
+            "label": "Assumption",
+            "prompt": "Acceptability is inferred, not established."
+          },
+          {
+            "label": "Repair question",
+            "prompt": "What qualification should accompany the handoff?"
+          }
+        ]
+      },
+      {
+        "title": "Route C: debrief a pause.",
+        "lead": "Pausing can preserve a review boundary, but a pause without a reason may leave another person unable to act. Explain both the unresolved condition and the information that would permit reconsideration.",
+        "body": "Rehearse a bounded message: the claim needs a defined outcome and a traceable source before this review can continue. No actual release rule or escalation authority is established by this exercise.",
+        "subheading": "Pause-and-review discussion",
+        "detail": "Discuss whether the pause is proportionate to the hypothetical task. Return to page 5 to compare how clarification or an unqualified handoff changes the conversation.",
+        "question": "What would make the pause informative rather than merely obstructive?",
+        "records": [
+          {
+            "label": "Reason",
+            "prompt": "The claim’s meaning and source are unresolved."
+          },
+          {
+            "label": "Reconsideration condition",
+            "prompt": "An appropriate source and definition become available."
+          },
+          {
+            "label": "Limit",
+            "prompt": "This is a rehearsal, not an actual operational instruction."
+          }
+        ]
+      },
+      {
+        "title": "Replay one changed condition.",
+        "lead": "Choose one variation: the requester provides a source, the claim is rephrased as an intention or the destination is limited to a private review. Change only one condition at a time.",
+        "body": "State how the variation differs from the original scenario. Rehearse the conversation again, then compare the information used in each choice. A more fluent second attempt is not automatically a better decision.",
+        "subheading": "Replay plan",
+        "detail": "Keep observations about questions, qualifications and handoffs. Do not convert the exercise into an undisclosed performance assessment.",
+        "question": "Which changed fact genuinely changes the reason for your choice?",
+        "records": [
+          {
+            "label": "Variation",
+            "prompt": "One explicitly hypothetical condition, agreed before replay."
+          },
+          {
+            "label": "Observation",
+            "prompt": "How the stated reason changes with the new information."
+          },
+          {
+            "label": "Comparison",
+            "prompt": "Inspect reasoning, not confidence or speed."
+          }
+        ]
+      },
+      {
+        "title": "Transfer the question, not the fictional outcome.",
+        "lead": "A useful transfer question is: what remains unverified, and how will the next person know? Apply it only within the real task, authority and review process that actually exist.",
+        "body": "The three routes do not establish a universal response. Record a learning question and an appropriate next practice opportunity. Keep the fictional scenario separate from any confidential or actual incident account.",
+        "subheading": "Transfer record",
+        "detail": "If a real situation raises specialist or organisational concerns, use the relevant agreed support route rather than treating this workbook as operational authority.",
+        "question": "Where could this question help without replacing the actual procedure?",
+        "records": [
+          {
+            "label": "Learning question",
+            "prompt": "How can an unresolved condition travel with a draft?"
+          },
+          {
+            "label": "Practice opportunity",
+            "prompt": "A suitable invented handoff or agreed sample."
+          },
+          {
+            "label": "Transfer boundary",
+            "prompt": "Actual responsibilities and procedures must be checked."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "facilitator-guide",
+    "title": "FACILITATOR GUIDE",
+    "subtitle": "A cue-script and timebox fieldbook",
+    "category": "培训",
+    "layout": "facilitate",
+    "color": "#ab572b",
+    "wash": "#f9ead3",
+    "framework": "主持脚本与时间盒",
+    "sources": [
+      "field-school/01",
+      "question-lab/02",
+      "story-workshop/01",
+      "editorial-calendar/01",
+      "creative-treatment/03"
+    ],
+    "scope": "Illustrative 45-minute context-note workshop. Timeboxes are planning units, not tested durations, staffing commitments, accessibility guarantees or actual session records.",
+    "chapters": [
+      {
+        "title": "Define what the session is for.",
+        "lead": "This practice session helps participants connect a saved passage with the question that gives it purpose. The intended artifact is one context note and one revision after discussion.",
+        "body": "The facilitator supports inquiry rather than certifying skill. Explain the fictional example, invite participants to pause or pass and avoid requesting confidential workplace material. No actual session or named facilitator is established.",
+        "subheading": "Session intention",
+        "detail": "The proposed five blocks total 45 teaching minutes. Adjust any real session to appropriate access needs, consent, group context and available support.",
+        "question": "What should participants be able to inspect at the end?",
+        "records": [
+          {
+            "label": "Artifact",
+            "prompt": "A passage, its question and a revised context note."
+          },
+          {
+            "label": "Learning focus",
+            "prompt": "Explain the relationship and its limits."
+          },
+          {
+            "label": "Scope",
+            "prompt": "Practice only; no certification or actual attendance record."
+          }
+        ]
+      },
+      {
+        "title": "Prepare materials and access routes.",
+        "lead": "Prepare an invented passage, a visible question and a blank space for a context note. Provide a text description for any illustration used as a prompt.",
+        "body": "Check how participants can receive instructions, ask questions or decline sharing. Do not assume that one format, speaking pace or group arrangement suits everyone. Real access arrangements need discussion with the relevant people.",
+        "subheading": "Before the group arrives",
+        "detail": "Use no personal or confidential material without an appropriate basis. A preparation checklist records intended checks, not verified readiness or legal compliance.",
+        "question": "Which missing arrangement would make participation unnecessarily difficult?",
+        "records": [
+          {
+            "label": "Materials",
+            "prompt": "Invented passage, question card and note surface."
+          },
+          {
+            "label": "Access check",
+            "prompt": "Offer appropriate ways to receive and respond."
+          },
+          {
+            "label": "Sharing check",
+            "prompt": "Explain that sharing a personal example is optional."
+          }
+        ]
+      },
+      {
+        "title": "Open with a clear invitation.",
+        "lead": "Say: We will try keeping a question beside a saved passage. You can work with the invented sample, ask for clarification or pass on sharing your note.",
+        "body": "Explain that the workshop examines an idea, not whether someone is a good writer. State the task and the review point before introducing additional examples. The opening block is a proposed five minutes, not a proven duration.",
+        "subheading": "Opening cue / 5 teaching minutes",
+        "detail": "Ask participants to describe what they understand the task to be. If instructions are unclear, revise them instead of treating confusion as lack of attention.",
+        "question": "Can participants explain what is optional and what the task involves?",
+        "records": [
+          {
+            "label": "Say",
+            "prompt": "We are examining a note-and-question connection."
+          },
+          {
+            "label": "Ask",
+            "prompt": "What do you need to understand before trying it?"
+          },
+          {
+            "label": "Watch",
+            "prompt": "Instructions may need clarification or another format."
+          }
+        ]
+      },
+      {
+        "title": "Demonstrate the reasoning, not a perfect answer.",
+        "lead": "Show the invented passage, name the question that made it relevant and write a short note explaining the connection. Make one uncertainty explicit rather than hiding it.",
+        "body": "Think aloud about why the note includes that detail. The demonstration block is proposed as eight minutes. Participants do not need to imitate the exact wording to engage with the task.",
+        "subheading": "Demonstration cue / 8 teaching minutes",
+        "detail": "Example: I saved this passage to examine how context changes a later explanation. I still need to check whether this example fits that question.",
+        "question": "Which reasoning step should a participant be able to see?",
+        "records": [
+          {
+            "label": "Show",
+            "prompt": "Passage, working question and context note together."
+          },
+          {
+            "label": "Explain",
+            "prompt": "Why this detail matters to the question."
+          },
+          {
+            "label": "Qualify",
+            "prompt": "Name an unresolved condition rather than implying certainty."
+          }
+        ]
+      },
+      {
+        "title": "Give one bounded practice instruction.",
+        "lead": "Ask participants to choose the supplied passage and write a question beside it. Then add one sentence explaining why the passage might matter to that question.",
+        "body": "Allow private drafting or another suitable response mode. The practice block is proposed as twelve minutes, not a performance target. Offer clarification without taking over the participant’s wording.",
+        "subheading": "Practice cue / 12 teaching minutes",
+        "detail": "Expected artifact: one passage reference, one question and one context sentence. Do not require personal disclosure to complete the activity.",
+        "question": "What would make the instruction small enough to try?",
+        "records": [
+          {
+            "label": "Instruction",
+            "prompt": "Write the question beside the supplied passage."
+          },
+          {
+            "label": "Output",
+            "prompt": "One sentence explaining a possible connection."
+          },
+          {
+            "label": "Choice",
+            "prompt": "Draft privately or use an agreed response mode."
+          }
+        ]
+      },
+      {
+        "title": "Discuss the artifact before the person.",
+        "lead": "Invite participants to share only what they choose. Ask what the note makes visible, what still needs explanation and how another reader might interpret the connection.",
+        "body": "Keep the conversation descriptive. Avoid inferring motivation, intelligence or confidence from a short exercise. The discussion block is a proposed twelve minutes and may need adjustment in a real setting.",
+        "subheading": "Discussion cue / 12 teaching minutes",
+        "detail": "A useful prompt is: what can you understand from the note alone? Distinguish the writer’s intention from what the reader can actually see.",
+        "question": "Which question helps inspect the note without judging its author?",
+        "records": [
+          {
+            "label": "Prompt",
+            "prompt": "What does this note make visible?"
+          },
+          {
+            "label": "Follow-up",
+            "prompt": "Which condition or explanation is still missing?"
+          },
+          {
+            "label": "Boundary",
+            "prompt": "Discuss the artifact, not a presumed personal trait."
+          }
+        ]
+      },
+      {
+        "title": "Offer feedback that can be used.",
+        "lead": "Describe one visible feature, ask one clarifying question and offer one optional revision. For example: the question is clear; which part of the passage speaks to it?",
+        "body": "Let the writer decide how to respond. Feedback is a proposal for examining the artifact, not an instruction to accept the facilitator’s phrasing. Keep any evaluation separate and explicitly agreed if a real programme requires it.",
+        "subheading": "Feedback pattern",
+        "detail": "During the closing block, allow time for a small revision or a note about what remains unresolved. Not every participant needs to share the result.",
+        "question": "Can the writer identify a concrete next revision?",
+        "records": [
+          {
+            "label": "Notice",
+            "prompt": "Name one visible feature of the note."
+          },
+          {
+            "label": "Ask",
+            "prompt": "Request clarification about the passage-question link."
+          },
+          {
+            "label": "Offer",
+            "prompt": "Suggest one bounded revision, with room to decline."
+          }
+        ]
+      },
+      {
+        "title": "Adjust support without changing the purpose silently.",
+        "lead": "Participants may need more preparation time, a different format or a less public way to respond. Discuss suitable adjustments rather than assuming a single route demonstrates engagement.",
+        "body": "Keep the learning purpose visible while adapting the activity. No access arrangement is guaranteed by this fictional guide; the actual setting, resources and participant preferences need appropriate attention.",
+        "subheading": "Support options",
+        "detail": "Possible options include reading the sample aloud by agreement, providing the text in advance or discussing an invented note privately. Confirm suitability rather than prescribing a universal accommodation.",
+        "question": "What adjustment preserves the purpose while reducing an avoidable barrier?",
+        "records": [
+          {
+            "label": "Format",
+            "prompt": "Offer an appropriate way to receive the sample."
+          },
+          {
+            "label": "Pace",
+            "prompt": "Allow clarification or additional preparation where feasible."
+          },
+          {
+            "label": "Participation",
+            "prompt": "Permit a private response or a pass on sharing."
+          }
+        ]
+      },
+      {
+        "title": "Close with a question to carry forward.",
+        "lead": "Say: Keep the note with its question, and add one thing you would want to check before reusing the passage. You may keep the work private.",
+        "body": "Summarise the difference between an intention, an inspectable connection and a verified claim. The closing block is proposed as eight minutes; feedback and revision can sit within it rather than adding hidden time to the plan.",
+        "subheading": "Closing cue / 8 teaching minutes",
+        "detail": "The five blocks are opening 5, demonstration 8, practice 12, discussion 12 and closing 8. Their total is 45, not a record of elapsed time.",
+        "question": "What remains worth checking after the session ends?",
+        "records": [
+          {
+            "label": "Summary",
+            "prompt": "A note can preserve a question without proving a claim."
+          },
+          {
+            "label": "Carry forward",
+            "prompt": "One unresolved source or interpretation question."
+          },
+          {
+            "label": "Time boundary",
+            "prompt": "45 planned teaching minutes; no actual session data."
+          }
+        ]
+      },
+      {
+        "title": "Review the facilitation, not an imagined result.",
+        "lead": "After a real session, distinguish the planned activity from what actually happened. Review which instructions needed clarification and whether participants had suitable ways to take part.",
+        "body": "This guide contains no attendance, satisfaction or learning-gain data. Record only appropriately collected observations and retain the limits of any interpretation. A completed activity does not by itself demonstrate lasting capability.",
+        "subheading": "Facilitator reflection",
+        "detail": "Choose one instruction to revise and one practical support question to investigate. Review the proposed timeboxes against actual circumstances rather than treating 45 minutes as validated.",
+        "question": "What should change before another appropriately planned session?",
+        "records": [
+          {
+            "label": "Keep",
+            "prompt": "Instructions that made the task understandable."
+          },
+          {
+            "label": "Revise",
+            "prompt": "One unclear cue or unnecessarily demanding step."
+          },
+          {
+            "label": "Investigate",
+            "prompt": "Actual participation needs and feasible support arrangements."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "peer-coaching",
+    "title": "PEER COACHING",
+    "subtitle": "A question, listening and action accord",
+    "category": "培训",
+    "layout": "coach",
+    "color": "#66538a",
+    "wash": "#ece4f5",
+    "framework": "提问倾听与行动契约",
+    "sources": [
+      "founder-narrative/01",
+      "partnership-canvas/01",
+      "roundtable-brief/02",
+      "interview-synthesis/02",
+      "story-workshop/03"
+    ],
+    "scope": "A bounded fictional peer-learning conversation. Not therapy, medical advice, employment assessment, a confidentiality guarantee or an actual coaching agreement.",
+    "chapters": [
+      {
+        "title": "Agree what peer coaching is not.",
+        "lead": "This practice conversation helps a peer describe a task, examine options and choose a bounded next action. The listener does not diagnose, prescribe or assess the other person.",
+        "body": "Use an invented work example if that is more appropriate. Participants can pause, decline a question or end the exercise. The template supplies no actual professional relationship or guarantee of confidentiality.",
+        "subheading": "Boundary before technique",
+        "detail": "If a conversation needs specialist support or an organisational response, refer to an appropriate real route. Do not use a peer exercise to handle issues outside the participants’ remit.",
+        "question": "Which concern would make this conversation unsuitable for peer practice?",
+        "records": [
+          {
+            "label": "Purpose",
+            "prompt": "Explore one bounded learning or work-task question."
+          },
+          {
+            "label": "Non-purpose",
+            "prompt": "No diagnosis, therapy or employment judgement."
+          },
+          {
+            "label": "Choice",
+            "prompt": "Either participant may pause, decline or end."
+          }
+        ]
+      },
+      {
+        "title": "Make the conversation agreement explicit.",
+        "lead": "Agree the topic, what may be written down and whether any record may be shared. Discuss practical limits before someone is encouraged to disclose more than they intended.",
+        "body": "This workbook provides a fictional agreement structure, not an enforceable confidentiality promise. Actual organisational rules and relevant responsibilities may limit what participants can agree. Keep the scope narrow and understood by both people.",
+        "subheading": "Working accord",
+        "detail": "Use the agreement to choose a manageable task question. If the scope changes, pause and check whether both people still want to continue.",
+        "question": "Do both participants understand what is and is not being agreed?",
+        "records": [
+          {
+            "label": "Topic",
+            "prompt": "One task question selected by the speaker."
+          },
+          {
+            "label": "Record",
+            "prompt": "Only an agreed, minimal note if appropriate."
+          },
+          {
+            "label": "Sharing",
+            "prompt": "No sharing permission established by this template."
+          }
+        ]
+      },
+      {
+        "title": "Let the speaker describe the situation.",
+        "lead": "Start with: what are you trying to do, and where does the task become unclear? Give the speaker room to describe the context before proposing a solution.",
+        "body": "A useful statement separates the task, the current difficulty and the desired next understanding. It need not contain personal history or a judgement about another colleague. Reflect uncertainty without filling gaps with your own interpretation.",
+        "subheading": "Situation statement",
+        "detail": "Example: I can summarise a passage but struggle to explain why it belongs in this draft. This is an invented task, not an actual participant disclosure.",
+        "question": "What would the speaker like to understand better by the end?",
+        "records": [
+          {
+            "label": "Task",
+            "prompt": "Explain why a passage belongs in a draft."
+          },
+          {
+            "label": "Difficulty",
+            "prompt": "The connection to the working question is unclear."
+          },
+          {
+            "label": "Desired understanding",
+            "prompt": "Identify what context the explanation needs."
+          }
+        ]
+      },
+      {
+        "title": "Ask questions that open the task.",
+        "lead": "Try: what makes the connection difficult to explain? What have you already tried? What would a useful next attempt look like? Ask one question and listen before adding another.",
+        "body": "Avoid disguised advice such as do you not think you should use my method? The point is to understand the speaker’s reasoning, not to lead them toward a preferred answer.",
+        "subheading": "Clarifying question practice",
+        "detail": "Questions can be declined or rephrased. If the answer moves beyond the agreed scope, pause and check the boundary rather than probing automatically.",
+        "question": "Does the question invite explanation or pressure the speaker toward your answer?",
+        "records": [
+          {
+            "label": "Open question",
+            "prompt": "What part of the task needs more context?"
+          },
+          {
+            "label": "Experience question",
+            "prompt": "What have you tried, and what did you notice?"
+          },
+          {
+            "label": "Next-attempt question",
+            "prompt": "What would make one small attempt useful?"
+          }
+        ]
+      },
+      {
+        "title": "Reflect the meaning and check it.",
+        "lead": "Say: I heard that the passage is relevant, but the reason for using it is hard to make visible. Have I understood that correctly?",
+        "body": "A reflection is a tentative check, not a declaration about what the person really means. Keep observation, the speaker’s account and your interpretation separate. Do not turn the listening note into a judgement or an undisclosed assessment record.",
+        "subheading": "Listening record",
+        "detail": "The supplied conversation stages are planned, not completed. No actual participant account, observation or evidence of improved performance is supplied.",
+        "question": "What would let the speaker correct your understanding?",
+        "records": [
+          {
+            "label": "Heard",
+            "prompt": "A difficulty explaining the passage-question connection."
+          },
+          {
+            "label": "Interpretation",
+            "prompt": "The reason may need to be made more explicit."
+          },
+          {
+            "label": "Check",
+            "prompt": "Invite correction; do not treat the reflection as fact."
+          }
+        ]
+      },
+      {
+        "title": "Explore more than one option.",
+        "lead": "Possible next actions include writing the question beside the passage, explaining the connection aloud or asking a reviewer which part is unclear. The speaker chooses which option to examine.",
+        "body": "Compare the options against the task and the available support. Do not imply that every option is feasible or that the peer listener can approve an actual change to work arrangements.",
+        "subheading": "Options without prescription",
+        "detail": "Ask what makes an option manageable and what uncertainty remains. A useful conversation can end with more information needed rather than an immediate commitment.",
+        "question": "Which option fits the speaker’s task and present capacity?",
+        "records": [
+          {
+            "label": "Option one",
+            "prompt": "Write the working question beside the passage."
+          },
+          {
+            "label": "Option two",
+            "prompt": "Explain the connection using a short invented example."
+          },
+          {
+            "label": "Option three",
+            "prompt": "Ask an appropriate reviewer what remains unclear."
+          }
+        ]
+      },
+      {
+        "title": "Create a bounded action accord.",
+        "lead": "The speaker may choose to draft one context sentence, review it against the working question and decide whether another source is needed. Keep the action small enough to inspect.",
+        "body": "Agree only what the participant actually chooses. This template contains no real commitment, deadline or named reviewer. A next action should include a review question, not an implied promise of improvement.",
+        "subheading": "Action / evidence / review",
+        "detail": "Example accord: try one context sentence; retain the draft; ask whether the reason is understandable. The record is a learning aid, not a contract of employment or service.",
+        "question": "What evidence would help the speaker review the attempt?",
+        "records": [
+          {
+            "label": "Action",
+            "prompt": "Draft one sentence explaining the connection."
+          },
+          {
+            "label": "Artifact",
+            "prompt": "Retain the sentence and its working question."
+          },
+          {
+            "label": "Review question",
+            "prompt": "Can another suitable reader understand the reason?"
+          }
+        ]
+      },
+      {
+        "title": "Follow up on the attempt, not compliance.",
+        "lead": "At a later agreed conversation, ask what was tried, what was noticed and what the speaker now wants to understand. An action may have changed or become inappropriate.",
+        "body": "This workbook sets no actual follow-up date or response obligation. Avoid treating an incomplete attempt as a character judgement. Revisit scope and permission before discussing or retaining any new information.",
+        "subheading": "Follow-up invitation",
+        "detail": "If no attempt happened, explore the task conditions without pressure. The next useful move may be to reduce the scope, seek suitable support or end the practice.",
+        "question": "What changed in the situation that matters to the next choice?",
+        "records": [
+          {
+            "label": "Tried",
+            "prompt": "No actual attempt is recorded in this example."
+          },
+          {
+            "label": "Noticed",
+            "prompt": "Separate observations from interpretations."
+          },
+          {
+            "label": "Next choice",
+            "prompt": "Revise, seek appropriate support or stop by agreement."
+          }
+        ]
+      },
+      {
+        "title": "Review the working relationship.",
+        "lead": "Ask whether the questions were useful, whether either person felt pushed toward an answer and whether the agreed boundary still makes sense. The listener can receive feedback too.",
+        "body": "Discuss the conversation process without requiring further disclosure about the original topic. A positive impression does not establish coaching effectiveness or a lasting performance change.",
+        "subheading": "Relationship reflection",
+        "detail": "Keep any record minimal and appropriately agreed. This template supplies no satisfaction result, professional accreditation or evidence that a particular coaching method is effective.",
+        "question": "What should change about how the next conversation is conducted?",
+        "records": [
+          {
+            "label": "Usefulness",
+            "prompt": "Ask about the questions, not an assumed personal benefit."
+          },
+          {
+            "label": "Pressure check",
+            "prompt": "Could either person decline or change direction?"
+          },
+          {
+            "label": "Adjustment",
+            "prompt": "Agree one change to the conversation process."
+          }
+        ]
+      },
+      {
+        "title": "End deliberately and handle the record.",
+        "lead": "A peer-learning conversation can end because the task is complete, the scope no longer fits or either person prefers to stop. A respectful ending does not require an invented success story.",
+        "body": "Review any agreed record and how it will be handled under the actual setting’s requirements. No deletion policy, confidentiality arrangement or future contact is established by this fictional guide.",
+        "subheading": "Exit and referral boundary",
+        "detail": "If another support route is appropriate, identify the real route and its scope rather than promising a service that has not been arranged.",
+        "question": "What needs to be clarified so both people understand the ending?",
+        "records": [
+          {
+            "label": "End condition",
+            "prompt": "Either person can decide the exercise no longer fits."
+          },
+          {
+            "label": "Record handling",
+            "prompt": "Check the actual agreement and applicable requirements."
+          },
+          {
+            "label": "Support route",
+            "prompt": "No named service or referral promise supplied here."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "process-rehearsal",
+    "title": "PROCESS REHEARSAL",
+    "subtitle": "A swimlane handoff and exception ledger",
+    "category": "培训",
+    "layout": "lanes",
+    "color": "#274e68",
+    "wash": "#deebf4",
+    "framework": "泳道交接与异常记录",
+    "sources": [
+      "service-blueprint/01",
+      "operations-review/02",
+      "project-studio/02",
+      "technical-thesis/01",
+      "decision-audit/01"
+    ],
+    "scope": "A fictional document-review handoff simulation. Not an authorised operating procedure, incident investigation, staffing assignment or measured process improvement.",
+    "chapters": [
+      {
+        "title": "Practise the handoff, not a production target.",
+        "lead": "This rehearsal follows a draft from writer to coordinator to reviewer. Its purpose is to make the input, next question and unresolved condition visible at each handoff.",
+        "body": "The model has four steps and three functional roles. It records no actual turnaround, error rate or operational outcome. Use invented material and check any real responsibilities before adapting the exercise.",
+        "subheading": "Process purpose",
+        "detail": "A useful rehearsal can reveal a missing interface without demonstrating that the process is ready for live use. Keep proposed changes separate from authorised procedures.",
+        "question": "What must remain understandable when work moves to another role?",
+        "records": [
+          {
+            "label": "Input",
+            "prompt": "A draft and the source relevant to its claim."
+          },
+          {
+            "label": "Practice focus",
+            "prompt": "Visible questions and explicit receiving conditions."
+          },
+          {
+            "label": "Boundary",
+            "prompt": "No live process authority or improvement result supplied."
+          }
+        ]
+      },
+      {
+        "title": "Assign functions without inventing staff.",
+        "lead": "The writer identifies the intended claim. The coordinator checks whether the handoff contains enough context. The reviewer inspects the claim within an agreed scope.",
+        "body": "The roles are conceptual, not actual appointments or a management hierarchy. Participants can rotate by agreement during rehearsal. A role card does not give someone authority to approve a real document.",
+        "subheading": "Swimlane roles",
+        "detail": "Keep the task of the lane distinct from the person practising it. Record uncertainty about responsibility rather than silently giving an unassigned task to the next person.",
+        "question": "Which responsibility must be clarified before a real handoff?",
+        "records": [
+          {
+            "label": "Writer lane",
+            "prompt": "Explain intended meaning and provide a source reference."
+          },
+          {
+            "label": "Coordinator lane",
+            "prompt": "Identify missing context and the next question."
+          },
+          {
+            "label": "Reviewer lane",
+            "prompt": "Inspect within the actual agreed review responsibility."
+          }
+        ]
+      },
+      {
+        "title": "Check the input before moving it.",
+        "lead": "The writer provides a sample passage, its source reference and the question for review. The coordinator identifies any missing element before passing the draft onward.",
+        "body": "Input checking is not verification that the claim is true. The exercise separates completeness of a handoff from specialist judgement about the content. A complete packet can still contain an unsupported interpretation.",
+        "subheading": "Input inspection",
+        "detail": "Use the invented review-effort claim and its explicitly missing source. Record the gap; do not invent a source merely to keep the rehearsal moving.",
+        "question": "Is the next role receiving an inspectable task or an unexplained bundle?",
+        "records": [
+          {
+            "label": "Passage",
+            "prompt": "A benefit claim in a clearly identified draft."
+          },
+          {
+            "label": "Source status",
+            "prompt": "Missing in the sample; keep that condition visible."
+          },
+          {
+            "label": "Review question",
+            "prompt": "What evidence and definition support the claim?"
+          }
+        ]
+      },
+      {
+        "title": "Trace the four proposed steps.",
+        "lead": "Prepare the sample in the writer lane. Check its context in the coordinator lane. Inspect the source question in the reviewer lane. Return unresolved questions to the writer.",
+        "body": "These four steps form an illustrative loop, not a measured workflow or an approved release path. The final return is intentional: review can produce another question rather than a completed approval.",
+        "subheading": "Lane sequence",
+        "detail": "The source register records prepare, check, inspect and return. Each has a proposed input and output, with status not rehearsed.",
+        "question": "Where does the model require a response rather than a silent transfer?",
+        "records": [
+          {
+            "label": "Prepare and check",
+            "prompt": "Writer supplies context; coordinator flags gaps."
+          },
+          {
+            "label": "Inspect",
+            "prompt": "Reviewer examines the stated source question."
+          },
+          {
+            "label": "Return",
+            "prompt": "Unresolved meaning goes back to the writer."
+          }
+        ]
+      },
+      {
+        "title": "Define the receiving condition.",
+        "lead": "At a handoff, name the artifact version, the question for the receiving role and the condition that remains unresolved. Ask whether the recipient can identify the requested action.",
+        "body": "A receipt confirms that material was received, not that its claims were approved. In a real setting, agree the meaning of each status before treating a handoff record as evidence of review.",
+        "subheading": "Interface record",
+        "detail": "Example: draft version A, source for the review-effort claim missing, clarification requested. No actual recipient or response deadline is supplied.",
+        "question": "What might the recipient mistakenly assume has already been checked?",
+        "records": [
+          {
+            "label": "Version",
+            "prompt": "Identify the specific sample draft."
+          },
+          {
+            "label": "Question",
+            "prompt": "Ask for the missing source and outcome definition."
+          },
+          {
+            "label": "Receipt boundary",
+            "prompt": "Received does not mean verified or approved."
+          }
+        ]
+      },
+      {
+        "title": "Use an exception card for a missing condition.",
+        "lead": "An exception card preserves what cannot proceed under the current assumptions. For this rehearsal, the exception is a claim whose source cannot be identified.",
+        "body": "Describe the condition, the affected handoff and the information needed for reconsideration. Do not convert the card into a blame statement or a real incident record. The model supplies no operational escalation authority.",
+        "subheading": "Exception / effect / next information",
+        "detail": "Keep the normal lane sequence available while the unresolved condition is discussed. A rehearsal pause does not establish a universal rule for real work.",
+        "question": "What information would let an appropriate person reconsider the handoff?",
+        "records": [
+          {
+            "label": "Exception",
+            "prompt": "The sample claim has no traceable source."
+          },
+          {
+            "label": "Affected interface",
+            "prompt": "Coordinator cannot explain what supports the claim."
+          },
+          {
+            "label": "Needed information",
+            "prompt": "Appropriate source, definition and actual review responsibility."
+          }
+        ]
+      },
+      {
+        "title": "Record what happens during the exercise.",
+        "lead": "Use separate notes for the intended step, the visible action and the unresolved question. If participants add a hypothetical condition, mark when the scenario changed.",
+        "body": "This template contains no completed rehearsal or actual observation. A facilitator should agree what can be recorded and avoid unnecessary personal information. Describe the task interaction rather than rating participants.",
+        "subheading": "Rehearsal log",
+        "detail": "Example prompt: did the receiving role understand what was being asked? The answer belongs to an actual agreed exercise, not to the fictional model.",
+        "question": "Which observation would help improve the interface?",
+        "records": [
+          {
+            "label": "Planned step",
+            "prompt": "The handoff described in the source register."
+          },
+          {
+            "label": "Observed action",
+            "prompt": "Not supplied; record only what actually occurs."
+          },
+          {
+            "label": "Open question",
+            "prompt": "Could the receiving role identify its next task?"
+          }
+        ]
+      },
+      {
+        "title": "Discuss a gap without assigning blame.",
+        "lead": "If a source question disappears between lanes, inspect how the handoff was described and what the receiving person could see. Do not assume carelessness or a personal failure.",
+        "body": "Different explanations may fit the same visible gap: unclear status language, missing context or an unagreed responsibility. Discuss alternatives and identify what evidence would distinguish them.",
+        "subheading": "Gap discussion",
+        "detail": "The exercise does not establish a root cause, error rate or actual incident. A plausible explanation remains a hypothesis until appropriately supported.",
+        "question": "Which alternative explanation deserves checking before a change is proposed?",
+        "records": [
+          {
+            "label": "Visible gap",
+            "prompt": "The next role cannot find the source question."
+          },
+          {
+            "label": "Possible explanation",
+            "prompt": "Status or responsibility was not clear."
+          },
+          {
+            "label": "Evidence need",
+            "prompt": "Inspect the actual handoff wording and agreed task."
+          }
+        ]
+      },
+      {
+        "title": "Propose a revision with a reason.",
+        "lead": "A useful revision might add a source-status field or a clearer receiving question. Explain which observed gap it addresses and what new burden it could introduce.",
+        "body": "No observation is supplied here, so the example revision remains a proposal. Do not report it as implemented or effective. A real change needs appropriate agreement, review and attention to the actual setting.",
+        "subheading": "Revision proposal",
+        "detail": "Preserve the previous version so reviewers can understand what changed. A more detailed form is not automatically a better handoff.",
+        "question": "What would show that the revision helps rather than adds noise?",
+        "records": [
+          {
+            "label": "Proposal",
+            "prompt": "Add a visible unresolved-source field to the handoff."
+          },
+          {
+            "label": "Reason to test",
+            "prompt": "The receiving role should recognise the open question."
+          },
+          {
+            "label": "Limit",
+            "prompt": "No implemented change or measured effect supplied."
+          }
+        ]
+      },
+      {
+        "title": "Rehearse again before generalising.",
+        "lead": "Choose one proposed change and repeat the same invented task. Compare whether the next role can identify the question more clearly, using appropriately agreed observations.",
+        "body": "A second rehearsal is not proof of production readiness. Keep the task conditions, source version and unresolved responsibilities visible when considering transfer to a real process.",
+        "subheading": "Repeat-run checklist",
+        "detail": "The source register still has no actual rehearsal outcomes. Use the comparison to identify the next question, not to claim that the workflow has been optimised.",
+        "question": "What remains uncertain after the second attempt?",
+        "records": [
+          {
+            "label": "Keep comparable",
+            "prompt": "Use the same sample and stated task condition."
+          },
+          {
+            "label": "Inspect",
+            "prompt": "Whether the receiving question is understandable."
+          },
+          {
+            "label": "Transfer limit",
+            "prompt": "Actual authorisation and process suitability need review."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "skills-portfolio",
+    "title": "SKILLS PORTFOLIO",
+    "subtitle": "An evidence-and-revision learning folio",
+    "category": "培训",
+    "layout": "portfolio",
+    "color": "#3f6651",
+    "wash": "#e1eddb",
+    "framework": "能力证据与成长记录",
+    "sources": [
+      "self-paced-route/01",
+      "visual-literacy/01",
+      "research-commission/02",
+      "story-workshop/02",
+      "project-studio/03"
+    ],
+    "scope": "A fictional clear-explanation practice portfolio. Evidence cells are not assessed; no grades, learner records, competence ratings, certification or validated growth results are supplied.",
+    "chapters": [
+      {
+        "title": "Choose a capability that can be examined.",
+        "lead": "The practice focus is explaining why a passage belongs in a draft. A useful goal names an inspectable task rather than promising to become confident or excellent.",
+        "body": "This portfolio uses three proposed attempts and four review dimensions. All evidence cells are not assessed. It provides a way to organise learning artifacts, not a score or an assessment of a real learner.",
+        "subheading": "Learning goal",
+        "detail": "Proposed goal: connect a passage to a working question while preserving its source and a relevant limitation. Define any actual programme requirements separately.",
+        "question": "What artifact would make progress discussable without reducing it to a label?",
+        "records": [
+          {
+            "label": "Task",
+            "prompt": "Explain the passage-question connection."
+          },
+          {
+            "label": "Artifact",
+            "prompt": "A short explanation with source context."
+          },
+          {
+            "label": "Assessment boundary",
+            "prompt": "No learner rating or competence decision supplied."
+          }
+        ]
+      },
+      {
+        "title": "Break the task into review dimensions.",
+        "lead": "Clarity asks whether the intended connection is understandable. Source context asks whether the material can be traced. Qualification asks whether limits are visible. Revision rationale asks why a change was made.",
+        "body": "These four dimensions guide conversation about an artifact. They are not validated criteria or weighted scores. A real assessment would need an appropriate design, responsibilities and evidence beyond this template.",
+        "subheading": "Four dimensions, no automatic grade",
+        "detail": "Use the same dimensions across proposed attempts so changes can be discussed. Do not infer improvement from a completed row or a longer explanation.",
+        "question": "Which dimension needs the most explicit evidence in this task?",
+        "records": [
+          {
+            "label": "Clarity and context",
+            "prompt": "Explain the connection and retain the source."
+          },
+          {
+            "label": "Qualification",
+            "prompt": "Show a condition that affects interpretation."
+          },
+          {
+            "label": "Revision rationale",
+            "prompt": "Explain why a change was made."
+          }
+        ]
+      },
+      {
+        "title": "Plan three attempts with a purpose.",
+        "lead": "Attempt one makes an initial explanation visible. Attempt two revises after suitable feedback. Attempt three applies the idea to another invented passage or context.",
+        "body": "The attempts are proposed, not completed work. Agree a feasible scope and appropriate reviewer before using real materials. A repeated task does not guarantee learning, and a changed task may require different support.",
+        "subheading": "Practice sequence",
+        "detail": "Keep the source, working question and artifact version with each attempt. Those details make later comparison more meaningful than a sequence of dates alone.",
+        "question": "What should remain comparable, and what should change?",
+        "records": [
+          {
+            "label": "Attempt one",
+            "prompt": "An initial explanation of one invented passage."
+          },
+          {
+            "label": "Attempt two",
+            "prompt": "A revision with a stated reason."
+          },
+          {
+            "label": "Attempt three",
+            "prompt": "A suitable transfer example with visible limits."
+          }
+        ]
+      },
+      {
+        "title": "Observe an example without copying its authority.",
+        "lead": "Example explanation: I saved this passage to explore how a note carries its original question. It may help this draft, but the source context still needs checking.",
+        "body": "The example shows a connection and a qualification. It does not prove that the passage is relevant or that its interpretation is correct. Ask what makes the explanation inspectable before borrowing its sentence pattern.",
+        "subheading": "Example annotation",
+        "detail": "Mark where the working question appears, where source context is named and where uncertainty remains. The annotation is a reading aid, not evidence of the learner’s own capability.",
+        "question": "Which part of the example should be questioned rather than imitated?",
+        "records": [
+          {
+            "label": "Connection",
+            "prompt": "The passage is linked to a working question."
+          },
+          {
+            "label": "Limit",
+            "prompt": "Relevance and source context remain to be checked."
+          },
+          {
+            "label": "Learning use",
+            "prompt": "Annotate the reasoning before trying your own wording."
+          }
+        ]
+      },
+      {
+        "title": "Keep the first attempt as evidence of a starting point.",
+        "lead": "Write a short explanation for an invented passage and attach the working question. Keep the original wording so a later revision can be understood.",
+        "body": "This portfolio supplies no actual learner attempt. If adapting it, agree what may be retained and shared. Do not populate evidence cells with ratings merely because a file has been uploaded or a page completed.",
+        "subheading": "Attempt A01 / proposed",
+        "detail": "Ask a suitable reviewer to identify what can be understood from the artifact and what remains unclear. The first attempt need not be polished to support a useful conversation.",
+        "question": "What does the actual artifact show, and what can it not show?",
+        "records": [
+          {
+            "label": "Artifact status",
+            "prompt": "No learner artifact supplied in this example."
+          },
+          {
+            "label": "Review focus",
+            "prompt": "Inspect the passage-question connection."
+          },
+          {
+            "label": "Record boundary",
+            "prompt": "A saved file is not an assessed capability."
+          }
+        ]
+      },
+      {
+        "title": "Make feedback attributable and specific.",
+        "lead": "A useful feedback note identifies the artifact version, describes a visible feature and asks a question that can inform revision. It should be possible to distinguish the reviewer’s words from the learner’s interpretation.",
+        "body": "No actual reviewer, feedback event or consent arrangement exists in this template. Avoid retaining unnecessary personal information, and agree the permitted use of any real feedback record.",
+        "subheading": "Feedback record",
+        "detail": "Example question: which part of the passage supports this connection? It prompts inspection without declaring the explanation good or bad.",
+        "question": "Can the learner identify a concrete revision from this feedback?",
+        "records": [
+          {
+            "label": "Version",
+            "prompt": "Identify the exact artifact being discussed."
+          },
+          {
+            "label": "Visible feature",
+            "prompt": "Name what the explanation makes understandable."
+          },
+          {
+            "label": "Question",
+            "prompt": "Which part of the passage supports the connection?"
+          }
+        ]
+      },
+      {
+        "title": "Show the revision and its reason.",
+        "lead": "A second attempt should make the changed wording and the reason for the change visible. The learner may disagree with feedback while still explaining the decision.",
+        "body": "Do not label the revision improved simply because it is newer. Inspect the same dimensions and note any new uncertainty introduced. The source matrix keeps A02 not assessed until appropriate real evidence exists.",
+        "subheading": "Attempt A02 / proposed",
+        "detail": "Retain the first version beside the revision. A useful rationale explains how the change addresses a task condition rather than merely making the language sound more confident.",
+        "question": "What changed in the reasoning, not only the phrasing?",
+        "records": [
+          {
+            "label": "Revision",
+            "prompt": "No actual revised artifact supplied."
+          },
+          {
+            "label": "Rationale",
+            "prompt": "Explain how the change addresses the task."
+          },
+          {
+            "label": "Review boundary",
+            "prompt": "Newer does not automatically mean better."
+          }
+        ]
+      },
+      {
+        "title": "Organise evidence so a reviewer can inspect it.",
+        "lead": "For each proposed attempt, retain the artifact, its question, source context, any agreed feedback and the learner’s revision rationale. Keep missing material explicitly absent.",
+        "body": "The illustrative matrix has twelve cells: three attempts across four dimensions, all not assessed. It contains no scores, grades or evidence of a real person’s growth. Do not convert not assessed into zero ability.",
+        "subheading": "Portfolio evidence index",
+        "detail": "A well-organised folder helps review; it does not itself prove capability. Check the permitted retention and sharing arrangements before collecting actual learner material.",
+        "question": "Can another suitable reviewer find the evidence without assuming what it proves?",
+        "records": [
+          {
+            "label": "Matrix",
+            "prompt": "3 proposed attempts × 4 review dimensions."
+          },
+          {
+            "label": "Cell status",
+            "prompt": "All 12 are not assessed, not failing scores."
+          },
+          {
+            "label": "Sharing boundary",
+            "prompt": "No actual learner records or permissions supplied."
+          }
+        ]
+      },
+      {
+        "title": "Reflect with evidence and uncertainty.",
+        "lead": "Ask what the artifact helped you understand, what changed after review and what remains difficult to explain. Refer to the wording rather than relying only on a general feeling of confidence.",
+        "body": "Self-reflection is valuable but is not the same as an independent assessment. Keep the learner’s account, the artifact and a reviewer’s interpretation distinct. This example includes none of those actual records.",
+        "subheading": "Evidence-aware reflection",
+        "detail": "A useful statement can acknowledge an unresolved condition. Avoid turning the portfolio into a required success story or treating uncertainty as a personal deficit.",
+        "question": "Which reflection can be connected to an inspectable part of the artifact?",
+        "records": [
+          {
+            "label": "Notice",
+            "prompt": "Identify a specific feature of the explanation."
+          },
+          {
+            "label": "Question",
+            "prompt": "Name what still needs source or context review."
+          },
+          {
+            "label": "Distinguish",
+            "prompt": "Self-reflection is not an authorised competence judgement."
+          }
+        ]
+      },
+      {
+        "title": "Choose the next learning cycle.",
+        "lead": "For a third attempt, select another invented passage and explain what transfers from the earlier task and what requires fresh judgement. Carry the source and qualification checks forward.",
+        "body": "The portfolio does not award a completion badge or claim lasting capability. Agree the next task, suitable support and how its evidence may be reviewed under any actual programme requirements.",
+        "subheading": "Attempt A03 / next cycle",
+        "detail": "A sensible next step may be more practice, different support or a narrower task. No fixed progression threshold or certification is established by this template.",
+        "question": "What new artifact would answer the most important remaining question?",
+        "records": [
+          {
+            "label": "Next task",
+            "prompt": "Apply the explanation method to a suitable new sample."
+          },
+          {
+            "label": "Support",
+            "prompt": "Agree an appropriate reviewer and permitted record."
+          },
+          {
+            "label": "Outcome boundary",
+            "prompt": "No certificate, grade or validated growth supplied."
+          }
+        ]
+      }
+    ]
+  }
+]

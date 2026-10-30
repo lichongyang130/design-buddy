@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "community-forum",
+    "title": "COMMUNITY FORUM",
+    "subtitle": "A topic-circle and synthesis fieldbook",
+    "category": "活动",
+    "layout": "forum",
+    "color": "#315f4b",
+    "wash": "#e1eee3",
+    "framework": "议题分会与记录汇总",
+    "sources": [
+      "partnership-canvas/01",
+      "open-saturday/01",
+      "public-thread/01",
+      "impact-thesis/01",
+      "roundtable-brief/01"
+    ],
+    "scope": "A fictional forum about a shared reading space. Topics and example notes are authored prompts, not actual community views, consultation, votes, permissions, attendance or consensus.",
+    "chapters": [
+      {
+        "title": "Open a shared question, not a mandate.",
+        "lead": "This fictional forum asks what a shared reading space might need to make its purpose understandable. The aim is to surface questions and differences, not to announce a decision on behalf of a community.",
+        "body": "Use three topic circles: finding information, using shared resources and choosing how to contribute. The proposed structure establishes no actual venue, public consultation, organising authority or participant representation.",
+        "subheading": "Forum intention",
+        "detail": "A useful record distinguishes a suggestion, a question and a matter requiring a real decision elsewhere. None of those becomes a mandate merely because it appears in a summary.",
+        "question": "What would make the conversation useful without pretending that everyone agrees?",
+        "records": [
+          {
+            "label": "Purpose",
+            "prompt": "Surface questions about a proposed shared reading space."
+          },
+          {
+            "label": "Non-purpose",
+            "prompt": "No vote, public mandate or operational approval."
+          },
+          {
+            "label": "Output",
+            "prompt": "A traceable account of proposals, questions and differences."
+          }
+        ]
+      },
+      {
+        "title": "Explain who can participate and what is optional.",
+        "lead": "Participants should understand the topic, what may be recorded and whether they may choose not to speak or be quoted. A contribution should not require disclosure of private circumstances.",
+        "body": "This template supplies no actual invitations, access arrangements or consent. Real organisers must establish the relevant setting, responsibilities and participation routes rather than assume that an open invitation represents every affected person.",
+        "subheading": "Participation boundary",
+        "detail": "Offer an appropriate way to ask a question or pass on public sharing. Do not promise confidentiality, access or a response service that has not actually been arranged.",
+        "question": "Whose perspective might remain absent even if the conversation feels active?",
+        "records": [
+          {
+            "label": "Choice",
+            "prompt": "Speaking, being named and sharing a personal example are distinct choices."
+          },
+          {
+            "label": "Record use",
+            "prompt": "Explain the actual purpose and permitted sharing before collecting notes."
+          },
+          {
+            "label": "Representation",
+            "prompt": "No actual participant group or representative claim established."
+          }
+        ]
+      },
+      {
+        "title": "Collect topics without inventing submissions.",
+        "lead": "Ask what information a new reader would need, how shared material might stay understandable and what a voluntary contribution could involve. These are authored starter questions, not submitted community requests.",
+        "body": "Keep the original wording of any real contribution only under an appropriate recording arrangement. Separate a topic someone raised from a topic the organiser introduced. Avoid treating the number of mentions as a measure of importance without a defined basis.",
+        "subheading": "Topic collection",
+        "detail": "The example register contains three topic IDs and six authored note examples. It records no actual submissions or preferences.",
+        "question": "Can the summary show where a topic came from?",
+        "records": [
+          {
+            "label": "T01 / information",
+            "prompt": "How could a new reader understand the space?"
+          },
+          {
+            "label": "T02 / resources",
+            "prompt": "How might shared material remain understandable and current?"
+          },
+          {
+            "label": "T03 / contribution",
+            "prompt": "What could an optional contribution involve?"
+          }
+        ]
+      },
+      {
+        "title": "Give each circle a clear inquiry.",
+        "lead": "The information circle examines orientation. The resources circle examines finding and maintaining material. The contribution circle examines voluntary participation and responsibility. Each should leave room for a question outside its initial framing.",
+        "body": "The circles are conceptual, not rooms, capacity assignments or a scheduled public event. A real arrangement must address the actual venue, access needs and organising responsibilities. Do not use this diagram as a physical route or safety plan.",
+        "subheading": "Three-circle structure",
+        "detail": "Each circle can return one proposal, one unresolved question and one difference in interpretation. That format supports comparison without forcing a common answer.",
+        "question": "What belongs in the circle, and what should be referred elsewhere?",
+        "records": [
+          {
+            "label": "Information circle",
+            "prompt": "Orientation and understandable explanations."
+          },
+          {
+            "label": "Resources circle",
+            "prompt": "Finding material and keeping context current."
+          },
+          {
+            "label": "Contribution circle",
+            "prompt": "Voluntary involvement and clearly agreed responsibility."
+          }
+        ]
+      },
+      {
+        "title": "Host the discussion without manufacturing agreement.",
+        "lead": "Say: we are collecting ways of understanding this question. You can add a proposal, challenge an assumption or choose not to share. Ask what the suggestion would require in practice.",
+        "body": "Invite clarification without requiring a participant to defend a personal experience. If a conversation needs an actual organisational decision, identify that boundary. The host role in this document is functional, not a named appointment or delegated power.",
+        "subheading": "Host prompts",
+        "detail": "A useful question is: what does this proposal make easier to understand, and what condition could make it unsuitable? It keeps the focus on the idea and its limits.",
+        "question": "What prompt would help a quieter or differently framed concern remain visible?",
+        "records": [
+          {
+            "label": "Invite",
+            "prompt": "What would you want a first-time reader to understand?"
+          },
+          {
+            "label": "Clarify",
+            "prompt": "What condition does this suggestion depend on?"
+          },
+          {
+            "label": "Preserve",
+            "prompt": "Record an unresolved difference rather than declaring consensus."
+          }
+        ]
+      },
+      {
+        "title": "Record the note and its status together.",
+        "lead": "An example proposal is to keep a short orientation note near a shared catalogue. An example question is who would check whether that note remains current. Both are authored discussion prompts.",
+        "body": "For a real record, distinguish a direct contribution, an organiser paraphrase and an interpretation. Agree the relevant use of names or quotations. A polished summary is not evidence that a participant endorsed its wording.",
+        "subheading": "Discussion record",
+        "detail": "The six examples in the source register are not observations, minutes or testimonials. Keep their fictional status visible when using them for practice.",
+        "question": "Would another reader know whether this is a proposal, question or agreed action?",
+        "records": [
+          {
+            "label": "Proposal example",
+            "prompt": "A short orientation note beside the catalogue."
+          },
+          {
+            "label": "Question example",
+            "prompt": "Who checks whether the explanation remains current?"
+          },
+          {
+            "label": "Status",
+            "prompt": "Authored prompt; no participant endorsement or decision."
+          }
+        ]
+      },
+      {
+        "title": "Synthesize themes without counting people twice.",
+        "lead": "Bring related questions together while preserving their topic IDs and meanings. A theme can contain both support for an idea and concern about what it would require.",
+        "body": "Do not convert repeated notes into a vote or a count of unique people. This example contains no actual participants, so it cannot report attendance, prevalence or majority views. Summarising is an editorial act that needs an inspectable source trail.",
+        "subheading": "Theme synthesis",
+        "detail": "Use the source note ID beside a theme. If a paraphrase changes emphasis, retain the original note and state the interpretation rather than silently replacing it.",
+        "question": "What important condition might disappear when these notes are grouped?",
+        "records": [
+          {
+            "label": "Theme",
+            "prompt": "Understandable access to shared information."
+          },
+          {
+            "label": "Source trail",
+            "prompt": "Keep the relevant topic and note IDs."
+          },
+          {
+            "label": "Counting boundary",
+            "prompt": "No unique-person count, vote or prevalence measure supplied."
+          }
+        ]
+      },
+      {
+        "title": "Keep a disagreement readable.",
+        "lead": "One proposal may favour a visible central catalogue while another question asks who can maintain it. Those statements can sit together without resolving the resource or responsibility question.",
+        "body": "A disagreement is not necessarily a conflict between people. Describe the different conditions or interpretations without assigning motives. No real community dispute or consensus finding is established by these authored examples.",
+        "subheading": "Difference / condition / question",
+        "detail": "Keep the open issue near the proposal it qualifies. Avoid labelling a concern as resolved merely because it did not fit the summary headline.",
+        "question": "Which difference should remain explicit in the final account?",
+        "records": [
+          {
+            "label": "Proposal",
+            "prompt": "Make the resource catalogue easy to locate."
+          },
+          {
+            "label": "Condition",
+            "prompt": "Maintaining current context requires an appropriate responsibility."
+          },
+          {
+            "label": "Open question",
+            "prompt": "Who could agree and carry that responsibility in a real setting?"
+          }
+        ]
+      },
+      {
+        "title": "Separate a follow-up question from a commitment.",
+        "lead": "A follow-up record should state what remains to be clarified, which actual role could consider it and whether anyone has agreed to act. A useful conversation can end without a promised outcome.",
+        "body": "This template appoints no owner, deadline or response service. Obtain appropriate agreement before sharing contact information or assigning another person an action. Participation in a forum does not itself establish permission for later contact.",
+        "subheading": "Follow-up boundary",
+        "detail": "Example next question: what existing arrangement could support keeping the catalogue understandable? It is an inquiry, not a funded task or an operational instruction.",
+        "question": "What would turn this follow-up note into a legitimate actual agreement?",
+        "records": [
+          {
+            "label": "Question",
+            "prompt": "Which existing arrangement could support the shared catalogue?"
+          },
+          {
+            "label": "Responsibility",
+            "prompt": "To be agreed in the actual setting; none assigned here."
+          },
+          {
+            "label": "Contact boundary",
+            "prompt": "No opt-in or permission for later contact supplied."
+          }
+        ]
+      },
+      {
+        "title": "Review the forum against its purpose.",
+        "lead": "After an actual forum, examine which questions became clearer, which perspectives remained absent and which differences were preserved. Do not treat the production of a summary as evidence of inclusion or consensus.",
+        "body": "This document has no attendance, satisfaction or consultation results. Its review page is a method, not a success report. Keep the record proportionate and distinguish organiser interpretation from appropriately recorded contributions.",
+        "subheading": "Forum reflection",
+        "detail": "Carry forward one change to the invitation or inquiry structure and one unresolved responsibility question. Use actual relevant evidence before making claims about community value.",
+        "question": "What would make a future conversation more understandable and appropriately inclusive?",
+        "records": [
+          {
+            "label": "Review",
+            "prompt": "Were proposals, conditions and questions distinguishable?"
+          },
+          {
+            "label": "Revise",
+            "prompt": "Improve one invitation or recording practice."
+          },
+          {
+            "label": "Evidence boundary",
+            "prompt": "No real participation, consensus or community outcome reported."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "exhibition-guide",
+    "title": "EXHIBITION GUIDE",
+    "subtitle": "A curatorial narrative and optional visitor route",
+    "category": "活动",
+    "layout": "gallery",
+    "color": "#674375",
+    "wash": "#eee3f3",
+    "framework": "展区叙事与观众路线",
+    "sources": [
+      "visual-literacy/01",
+      "comparison-guide/01",
+      "form-study/01",
+      "creative-treatment/01",
+      "visual-literacy/02"
+    ],
+    "scope": "A fictional Ways of Noticing exhibition. Six work cards and three conceptual zones are authored examples, not installed works, an actual venue, a measured route, permissions or an accessibility/safety plan.",
+    "chapters": [
+      {
+        "title": "Offer a curatorial question.",
+        "lead": "Ways of Noticing is a fictional exhibition about how an object changes when its context changes. The guide invites visitors to notice, connect and revisit rather than follow one authorised interpretation.",
+        "body": "The three zones are conceptual groupings, not rooms in a real building. The illustrations are sourced fictional scenes, not photographs of installed works or proof that an exhibition exists.",
+        "subheading": "Curatorial intention",
+        "detail": "Six authored work cards support the narrative. They do not establish ownership, artist permission, availability or any right to display real material.",
+        "question": "What question should remain open as the visitor moves between the zones?",
+        "records": [
+          {
+            "label": "Invitation",
+            "prompt": "Notice how context changes what an object seems to mean."
+          },
+          {
+            "label": "Structure",
+            "prompt": "Three conceptual zones with two authored work cards each."
+          },
+          {
+            "label": "Boundary",
+            "prompt": "No actual exhibition, installed work or venue established."
+          }
+        ]
+      },
+      {
+        "title": "Read the exhibition as an invitation.",
+        "lead": "A familiar object may become strange when a label is removed. Two ordinary things may acquire a relationship when placed beside each other. Returning to an earlier display may change the first interpretation.",
+        "body": "This introductory text offers a way to look, not a claim about how every visitor responds. A real guide should distinguish curatorial interpretation, artist statements and factual object information with appropriate sources.",
+        "subheading": "Theme introduction",
+        "detail": "Begin anywhere that suits the actual setting. The guide provides no physical access route, capacity rule or guarantee that a proposed sequence is suitable for a real visitor.",
+        "question": "Which detail would you look at again after reading a different label?",
+        "records": [
+          {
+            "label": "Notice",
+            "prompt": "Describe what is visible before explaining it."
+          },
+          {
+            "label": "Connect",
+            "prompt": "Consider what a neighbouring object or label changes."
+          },
+          {
+            "label": "Revisit",
+            "prompt": "Return to an earlier interpretation with a new question."
+          }
+        ]
+      },
+      {
+        "title": "Use the route map as a choice.",
+        "lead": "Zone One asks what is visible. Zone Two asks what a relationship adds. Zone Three asks how a later view changes an earlier one. Use the zone links to explore the guide in any order.",
+        "body": "The links are document navigation, not directions through an actual venue. A real exhibition needs appropriate location, access and operational information supplied by its organisers. Do not infer exits or safe walking routes from this conceptual map.",
+        "subheading": "Three-zone index",
+        "detail": "Pages 4, 5 and 6 describe the zones; each returns here. Moving through all three is optional and does not constitute a completed learning or access assessment.",
+        "question": "Which zone offers the most useful starting question for you?",
+        "records": [
+          {
+            "label": "Zone One / page 4",
+            "prompt": "Notice: describe the object before its explanation."
+          },
+          {
+            "label": "Zone Two / page 5",
+            "prompt": "Connect: examine an object-label relationship."
+          },
+          {
+            "label": "Zone Three / page 6",
+            "prompt": "Revisit: reconsider a first interpretation."
+          }
+        ]
+      },
+      {
+        "title": "Zone One: look before interpreting.",
+        "lead": "The first authored pair is Window Note and Unnamed Shelf. One card suggests a framed fragment; the other suggests an ordinary object presented without a settled label. Neither is an actual exhibited artwork.",
+        "body": "Ask what can be described from the imagined arrangement and what would be an inference. A visitor may notice a different detail or decline the prompt. The guide should not turn that difference into a judgement about attention or taste.",
+        "subheading": "Notice / W01 and W02",
+        "detail": "Return to the zone index to change the sequence. The cards are narrative devices, not evidence of artist intent or object provenance.",
+        "question": "What can you describe without deciding what it means?",
+        "records": [
+          {
+            "label": "W01 / Window Note",
+            "prompt": "An authored prompt about a framed fragment."
+          },
+          {
+            "label": "W02 / Unnamed Shelf",
+            "prompt": "An authored prompt about an object without a settled label."
+          },
+          {
+            "label": "Viewing question",
+            "prompt": "Which visible detail precedes your interpretation?"
+          }
+        ]
+      },
+      {
+        "title": "Zone Two: let a relationship become visible.",
+        "lead": "Label Exchange and Paired Traces ask what happens when an object is placed beside a different explanation or another object. The imagined relationship is the work of the prompt, not a documented installation.",
+        "body": "Compare the two cards without deciding that one reading is correct. In a real exhibition, changes to an artist’s description or display context would require appropriate agreement and care.",
+        "subheading": "Connect / W03 and W04",
+        "detail": "A label can supply context and can also constrain interpretation. Distinguish a curatorial proposition from a factual claim that needs verification.",
+        "question": "What does the relationship add that neither element carries alone?",
+        "records": [
+          {
+            "label": "W03 / Label Exchange",
+            "prompt": "An imagined object with two alternative descriptions."
+          },
+          {
+            "label": "W04 / Paired Traces",
+            "prompt": "Two authored objects considered in relation."
+          },
+          {
+            "label": "Viewing question",
+            "prompt": "Which part of the meaning comes from the pairing?"
+          }
+        ]
+      },
+      {
+        "title": "Zone Three: return with another question.",
+        "lead": "Return Card and Changed Margin invite a second look at an earlier note. The object need not change for the visitor’s question to change. These are authored work-card ideas, not observed visitor responses.",
+        "body": "Compare what you first described with what now seems worth asking. Do not require a visitor to report a personal memory or a transformed experience. Revisiting can leave an interpretation unresolved.",
+        "subheading": "Revisit / W05 and W06",
+        "detail": "Return to the index or stop here. The guide does not define an ideal duration, a correct path or a guaranteed emotional effect.",
+        "question": "Which earlier assumption would you now hold more tentatively?",
+        "records": [
+          {
+            "label": "W05 / Return Card",
+            "prompt": "A prompt to re-read an earlier description."
+          },
+          {
+            "label": "W06 / Changed Margin",
+            "prompt": "A prompt about an added contextual note."
+          },
+          {
+            "label": "Viewing question",
+            "prompt": "What changed in your question rather than in the object?"
+          }
+        ]
+      },
+      {
+        "title": "Write a work description with clear source classes.",
+        "lead": "A useful description identifies the work, distinguishes factual information from interpretation and offers a question without prescribing the visitor’s response. Do not invent an artist quotation to make a label sound authoritative.",
+        "body": "The six work titles in this guide are authored examples. No actual medium, date, collection, artist agreement or provenance record is supplied. The illustrative scenes must not be described as documentation of these imagined works.",
+        "subheading": "Work-card method",
+        "detail": "For a real object, verify the relevant facts and permitted wording. Keep any interpretation attributable to the person or organisation responsible for it.",
+        "question": "Would a visitor know which part is information and which part is a proposition?",
+        "records": [
+          {
+            "label": "Identify",
+            "prompt": "Use the authored work ID and its fictional status."
+          },
+          {
+            "label": "Distinguish",
+            "prompt": "Separate a description from an interpretive question."
+          },
+          {
+            "label": "Rights boundary",
+            "prompt": "No actual artist, object or display permission supplied."
+          }
+        ]
+      },
+      {
+        "title": "Create a discussion point without a compulsory answer.",
+        "lead": "A discussion point might ask visitors to compare two labels or describe an overlooked detail. It should offer a way to participate without requiring public speech or personal disclosure.",
+        "body": "This guide supplies no actual station, staff arrangement or access service. Real organisers should confirm the relevant space, materials and response options before promising them in public information.",
+        "subheading": "Optional conversation",
+        "detail": "Use an open question and make any recording purpose explicit. A written response should not silently become permission to quote or publish a visitor’s words.",
+        "question": "What would make this invitation genuinely optional and understandable?",
+        "records": [
+          {
+            "label": "Prompt",
+            "prompt": "Which label changed the question you asked?"
+          },
+          {
+            "label": "Choice",
+            "prompt": "Consider the question privately or respond through an actual agreed route."
+          },
+          {
+            "label": "Recording boundary",
+            "prompt": "No visitor permission or response collection established."
+          }
+        ]
+      },
+      {
+        "title": "Ask for feedback on the guide, not a desired reaction.",
+        "lead": "A useful feedback question asks which explanation was clear or what information was missing. It does not require the visitor to say that the exhibition was inspiring or transformative.",
+        "body": "No visitor data, satisfaction score or attendance figure exists in this example. If feedback is collected in a real setting, explain its purpose and appropriate record use, and retain the limits of any interpretation.",
+        "subheading": "Visitor feedback prompt",
+        "detail": "Separate comments about navigation, wording, context and the works themselves. A positive comment about one part does not validate the whole experience.",
+        "question": "What information would help someone understand the actual exhibition better?",
+        "records": [
+          {
+            "label": "Clarity question",
+            "prompt": "Which description was easiest to interpret?"
+          },
+          {
+            "label": "Missing information",
+            "prompt": "What context would have helped?"
+          },
+          {
+            "label": "Evidence boundary",
+            "prompt": "No actual visitor response or measured impact supplied."
+          }
+        ]
+      },
+      {
+        "title": "Review the curatorial argument.",
+        "lead": "Ask whether the three zones make the exhibition question inspectable and whether the guide keeps room for alternative readings. A coherent narrative can still omit relevant facts or perspectives.",
+        "body": "This version reports no actual exhibition or audience result. Retain earlier wording when revising a work card, and distinguish a change in interpretation from a correction to a verified fact.",
+        "subheading": "Curatorial reflection",
+        "detail": "Carry forward one narrative revision, one source question and one actual operational detail to check before adapting the proposal. A cleaner map is not proof of a better visitor experience.",
+        "question": "What should be revised before this proposal could support a real exhibition?",
+        "records": [
+          {
+            "label": "Narrative review",
+            "prompt": "Does the sequence invite notice, connection and reconsideration?"
+          },
+          {
+            "label": "Source review",
+            "prompt": "Which actual object facts and rights would need verification?"
+          },
+          {
+            "label": "Operational review",
+            "prompt": "Venue and access information need real organiser input."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "workshop-runbook",
+    "title": "WORKSHOP RUNBOOK",
+    "subtitle": "A task-station and host running sheet",
+    "category": "活动",
+    "layout": "stations",
+    "color": "#ae5d35",
+    "wash": "#fae7d6",
+    "framework": "任务站点与主持运行表",
+    "sources": [
+      "project-studio/01",
+      "form-study/01",
+      "launch-kit/01",
+      "brand-voice/01",
+      "campaign-playbook/01"
+    ],
+    "scope": "A fictional two-station Make a Context Card workshop. The 60-minute run sheet is illustrative, not a tested schedule, staffing assignment, actual event or venue/access/safety plan.",
+    "chapters": [
+      {
+        "title": "Give the workshop a visible artifact.",
+        "lead": "Make a Context Card is a fictional workshop in which a participant links a supplied passage to a question and then builds a short card that makes the connection inspectable.",
+        "body": "The event output is a draft artifact and a review question, not a score, certificate or promise of improved performance. Two task stations support the activity; no actual booking, venue or attendee group is established.",
+        "subheading": "Workshop objective",
+        "detail": "Use invented material unless a real organiser has an appropriate basis for using another source. Participation in the activity should not require sharing private work.",
+        "question": "What can a participant inspect at the end without pretending it proves a skill?",
+        "records": [
+          {
+            "label": "Artifact",
+            "prompt": "A supplied passage, a working question and a context card."
+          },
+          {
+            "label": "Task stations",
+            "prompt": "S01 inspect the connection; S02 assemble the card."
+          },
+          {
+            "label": "Boundary",
+            "prompt": "No actual event, assessment or certified outcome."
+          }
+        ]
+      },
+      {
+        "title": "Prepare the station inputs and response choices.",
+        "lead": "Prepare a short invented passage, question cards and a way to draft or describe a context card. Check what each station needs to receive before considering the activity ready.",
+        "body": "No actual materials, access support or venue arrangement is supplied. Real organisers must verify the relevant conditions and responsibilities. Do not treat this preparation list as an operational safety assessment or a guarantee that one format suits everyone.",
+        "subheading": "Preparation check",
+        "detail": "Offer an appropriate alternative response mode where feasible, and make public sharing optional. Do not ask participants to supply confidential material to compensate for missing preparation.",
+        "question": "Which missing input would prevent the task from being understandable?",
+        "records": [
+          {
+            "label": "Source material",
+            "prompt": "An invented passage with its fictional status visible."
+          },
+          {
+            "label": "Making materials",
+            "prompt": "A suitable way to write, arrange or describe a card."
+          },
+          {
+            "label": "Real-setting check",
+            "prompt": "Venue, access arrangements and responsibilities need verification."
+          }
+        ]
+      },
+      {
+        "title": "Assign functional roles without inventing appointments.",
+        "lead": "The host explains the shared purpose. A station guide clarifies the task at an actual station. A recorder retains only appropriately agreed notes about the activity.",
+        "body": "These are proposed functions, not named people or delegated responsibilities. Participants may work privately, and a recorder should not infer capability or motivation from a draft card. Real organisers must establish the actual roles needed for their setting.",
+        "subheading": "Role handoffs",
+        "detail": "Before moving between tasks, identify what artifact travels and what question should remain visible. A person’s title should not substitute for an agreed responsibility.",
+        "question": "Who would clarify a task question without taking over the participant’s work?",
+        "records": [
+          {
+            "label": "Host",
+            "prompt": "Explain the event purpose and actual participation arrangements."
+          },
+          {
+            "label": "Station guide",
+            "prompt": "Clarify the bounded task and its inputs."
+          },
+          {
+            "label": "Recorder",
+            "prompt": "Keep only appropriate, agreed activity notes."
+          }
+        ]
+      },
+      {
+        "title": "Open with the task and its limits.",
+        "lead": "Say: we will connect a passage with a question and make a small card for someone else to inspect. You can use the invented sample and choose whether to share your draft.",
+        "body": "Explain the two stations and the review question before beginning. The proposed opening block is five minutes. The run sheet is a planning aid, not a tested duration or instruction to rush a participant.",
+        "subheading": "Opening / 5 planned minutes",
+        "detail": "Check whether the task is understandable. If it is not, clarify the instruction rather than assuming that a participant needs to try harder.",
+        "question": "Can a participant explain what the stations ask them to do?",
+        "records": [
+          {
+            "label": "Say",
+            "prompt": "Make the reason for a saved passage visible."
+          },
+          {
+            "label": "Explain",
+            "prompt": "Two stations, one draft card and an optional share."
+          },
+          {
+            "label": "Check",
+            "prompt": "Which part of the instruction needs clarification?"
+          }
+        ]
+      },
+      {
+        "title": "Station S01: inspect the passage-question link.",
+        "lead": "At the first station, read the supplied passage and choose a working question. Write or describe why the passage might matter to that question, leaving an uncertainty visible.",
+        "body": "The proposed task block is twelve minutes, followed by a three-minute transfer in the illustrative run sheet. A participant can ask for clarification or pause. No actual movement route, room capacity or suitable pace is established here.",
+        "subheading": "First task / 12 planned minutes",
+        "detail": "Expected output: a passage reference, a question and one tentative connection. Carry that artifact to the next task under the actual organiser’s arrangements.",
+        "question": "Which part of the passage supports the proposed connection?",
+        "records": [
+          {
+            "label": "Input",
+            "prompt": "An invented passage and a possible working question."
+          },
+          {
+            "label": "Output",
+            "prompt": "One tentative connection with an unresolved condition."
+          },
+          {
+            "label": "Transfer",
+            "prompt": "3 illustrative minutes; not physical wayfinding or a safety route."
+          }
+        ]
+      },
+      {
+        "title": "Station S02: assemble a card another reader can inspect.",
+        "lead": "Use the first station’s note to make a card with the passage reference, working question and reason for the connection. Keep the source status near the statement it qualifies.",
+        "body": "The proposed second task block is fifteen minutes. A clearer-looking card is not necessarily a better supported interpretation. Ask what another reader can understand from the artifact alone, without explaining every choice verbally.",
+        "subheading": "Second task / 15 planned minutes",
+        "detail": "This station takes the first note as its input and returns a draft card plus a review question. No working product or actual service is implied by the exercise.",
+        "question": "What would a reader still need to check before reusing this passage?",
+        "records": [
+          {
+            "label": "Input",
+            "prompt": "The tentative connection from S01."
+          },
+          {
+            "label": "Output",
+            "prompt": "A draft card with passage, question and source status."
+          },
+          {
+            "label": "Review point",
+            "prompt": "What remains unclear to another suitable reader?"
+          }
+        ]
+      },
+      {
+        "title": "Share the artifact without making sharing compulsory.",
+        "lead": "Invite participants to show a card or discuss an invented example instead. Ask what the card makes visible and what information a reader would still need.",
+        "body": "The sharing block is proposed as fifteen minutes. Do not turn a public share into an undisclosed assessment or infer that a quiet participant did not engage. Recording, naming and later reuse need separate appropriate arrangements.",
+        "subheading": "Sharing / 15 planned minutes",
+        "detail": "Feedback can describe one visible feature and ask one clarifying question. The participant decides how to use it within the task.",
+        "question": "Which question helps inspect the card without judging its maker?",
+        "records": [
+          {
+            "label": "Notice",
+            "prompt": "Name a visible relationship in the artifact."
+          },
+          {
+            "label": "Ask",
+            "prompt": "Which source or condition still needs context?"
+          },
+          {
+            "label": "Choice",
+            "prompt": "A participant may decline public sharing or use the invented example."
+          }
+        ]
+      },
+      {
+        "title": "Close by preserving the open question.",
+        "lead": "Ask participants to keep one question beside the card: what should be checked before this passage is reused? Summarise that a visible connection is not the same as a verified claim.",
+        "body": "The proposed closing block is ten minutes. The full illustrative run sheet totals sixty: opening 5, S01 12, transfer 3, S02 15, sharing 15 and closing 10. None is an actual elapsed-time record.",
+        "subheading": "Closing / 10 planned minutes",
+        "detail": "Explain any actual record-handling arrangement rather than promising a policy that has not been agreed. Participants may retain their own draft where appropriate.",
+        "question": "What should remain visible after the workshop ends?",
+        "records": [
+          {
+            "label": "Takeaway",
+            "prompt": "A question can travel with a passage and its source status."
+          },
+          {
+            "label": "Time model",
+            "prompt": "5 + 12 + 3 + 15 + 15 + 10 = 60 planned minutes."
+          },
+          {
+            "label": "Evidence boundary",
+            "prompt": "No attendance, learning gain or completed event reported."
+          }
+        ]
+      },
+      {
+        "title": "Discuss a disruption within the actual remit.",
+        "lead": "If a sample or making material is unavailable, pause the relevant task and clarify what can reasonably be offered. Do not silently replace the agreed activity with a request for private participant material.",
+        "body": "This page is a discussion aid, not an emergency procedure. Any real concern about the venue, access or people requires the actual organiser’s appropriate arrangements and responsibilities, which the template does not supply.",
+        "subheading": "Exception / affected task / decision needed",
+        "detail": "A change to the input may change the learning task. Make that change explicit, and distinguish a proposed adaptation from an available option.",
+        "question": "Which condition needs clarification before the affected task continues?",
+        "records": [
+          {
+            "label": "Exception example",
+            "prompt": "The supplied passage is unavailable."
+          },
+          {
+            "label": "Affected task",
+            "prompt": "S01 lacks its agreed input."
+          },
+          {
+            "label": "Decision boundary",
+            "prompt": "Actual organiser responsibilities and suitable alternatives must be checked."
+          }
+        ]
+      },
+      {
+        "title": "Review the station interfaces.",
+        "lead": "After an actual workshop, examine whether S01 produced the input S02 needed and whether the review question stayed visible through sharing. Describe what occurred rather than invent a smooth run.",
+        "body": "This runbook supplies no actual observations, timing, attendance or satisfaction data. A completed card is not evidence of lasting learning. Keep feedback about the activity distinct from a judgement about an individual participant.",
+        "subheading": "Event review",
+        "detail": "Choose one instruction to revise, one station input to improve and one real-setting arrangement to verify before another event. Retain the earlier run sheet when changing the plan.",
+        "question": "What would make the next task handoff clearer?",
+        "records": [
+          {
+            "label": "Interface check",
+            "prompt": "Did the first artifact support the second task?"
+          },
+          {
+            "label": "Instruction check",
+            "prompt": "Which cue needed clarification?"
+          },
+          {
+            "label": "Revision boundary",
+            "prompt": "No actual delivery result or tested schedule supplied."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "reading-salon",
+    "title": "READING SALON",
+    "subtitle": "A passage-led, multi-round discussion folio",
+    "category": "活动",
+    "layout": "salon",
+    "color": "#354c77",
+    "wash": "#e2e9f6",
+    "framework": "文本摘录与多轮讨论",
+    "sources": [
+      "story-workshop/01",
+      "debate-room/01",
+      "research-commission/01",
+      "founder-narrative/01",
+      "brand-voice/01"
+    ],
+    "scope": "A fictional salon using three original passages authored for this exercise. Not excerpts from published works, real reader responses, attendance, attributed quotations or an actual event.",
+    "chapters": [
+      {
+        "title": "Let the text hold the conversation open.",
+        "lead": "This fictional salon explores how a short passage can support more than one reading. Its purpose is to make attention and interpretation discussable, not to arrive at an authorised emotional response.",
+        "body": "Three original passages support three rounds: first response, closer reading and comparison. No published work, external author statement or actual group of readers is represented. Participation can include a private response or a pass on sharing.",
+        "subheading": "Reading intention",
+        "detail": "Keep the wording available while discussing it. A confident interpretation should remain open to a different reading grounded in the same passage.",
+        "question": "What can the text support, and what are you adding to it?",
+        "records": [
+          {
+            "label": "Material",
+            "prompt": "Three original passages written for this fictional exercise."
+          },
+          {
+            "label": "Rounds",
+            "prompt": "First response, closer reading and comparison."
+          },
+          {
+            "label": "Boundary",
+            "prompt": "No published-text attribution or real reader response."
+          }
+        ]
+      },
+      {
+        "title": "Read passage A as an authored miniature.",
+        "lead": "Passage A, The Place at the Table, offers an ordinary room and a small change in expectation. Read the wording before deciding what happened outside it.",
+        "body": "The light moved across the table. Mira left a cup beside a folded letter. When she returned, the room looked unchanged, but the place she intended to sit no longer felt like hers.",
+        "subheading": "Material note / passage A",
+        "detail": "This is original exercise text, not a quotation from an actual publication. The passage supplies no explanation of the letter, another person or the reason for Mira’s feeling.",
+        "question": "Which word or image shapes your first impression?",
+        "records": [
+          {
+            "label": "Visible detail",
+            "prompt": "Light, cup, letter and an intended place."
+          },
+          {
+            "label": "Interpretive gap",
+            "prompt": "The reason for the changed feeling is unstated."
+          },
+          {
+            "label": "Source status",
+            "prompt": "Original authored exercise passage, not an external citation."
+          }
+        ]
+      },
+      {
+        "title": "Agree how to discuss uncertainty.",
+        "lead": "Distinguish the words on the page from the story you imagine around them. A reader can offer a tentative interpretation without presenting it as the author’s intention.",
+        "body": "Ask permission before turning another person’s response into a named note or later quotation. A participant can decline a personal association. This template establishes no actual recording agreement or confidentiality guarantee.",
+        "subheading": "Reading agreement / passage B",
+        "detail": "At the fork, the sign named two places but pointed to neither. I stayed beside it until the footsteps behind me faded. Then the silence seemed less like an answer than another direction. This is original exercise text.",
+        "question": "How can another reader disagree without being asked to defend a private experience?",
+        "records": [
+          {
+            "label": "Text evidence",
+            "prompt": "Point to the wording before explaining an inference."
+          },
+          {
+            "label": "Interpretation",
+            "prompt": "Use tentative language and leave room for alternatives."
+          },
+          {
+            "label": "Choice",
+            "prompt": "Personal disclosure, naming and quotation are not required."
+          }
+        ]
+      },
+      {
+        "title": "Round one: notice before explaining.",
+        "lead": "Invite a first response to a sound, object or contrast in the passage. A useful opening can be a detail rather than a complete interpretation.",
+        "body": "The box held a key, a ribbon and a label from an empty drawer. I kept them together, not because they were valuable, but because each changed what the others seemed to mean. This is passage C, an original exercise text.",
+        "subheading": "First-response round",
+        "detail": "Ask which detail stayed with the reader. Do not turn several mentions of an image into a measure of the group’s opinion or an indication of the correct reading.",
+        "question": "Which detail can you name before deciding what it represents?",
+        "records": [
+          {
+            "label": "Notice",
+            "prompt": "Choose a word, object or contrast."
+          },
+          {
+            "label": "Hold open",
+            "prompt": "Do not require a full explanation at this stage."
+          },
+          {
+            "label": "Recording boundary",
+            "prompt": "No actual responses or group preferences supplied."
+          }
+        ]
+      },
+      {
+        "title": "Round two: inspect the wording.",
+        "lead": "Return to passage A and compare looked unchanged with no longer felt like hers. The two phrases distinguish an outward description from an experienced change.",
+        "body": "Ask what that contrast permits a reader to infer and what it leaves unresolved. The passage does not establish a lost relationship, a conflict or a biographical fact. A possible reading is not a fact about an external author.",
+        "subheading": "Closer-reading round",
+        "detail": "Use the exact relevant wording in an appropriately agreed note. Keep the explanation beside the phrase so another reader can inspect the connection.",
+        "question": "What can this contrast support without an invented backstory?",
+        "records": [
+          {
+            "label": "Phrase one",
+            "prompt": "The room looked unchanged."
+          },
+          {
+            "label": "Phrase two",
+            "prompt": "The place no longer felt like hers."
+          },
+          {
+            "label": "Question",
+            "prompt": "Which part of the meaning is supplied by the contrast?"
+          }
+        ]
+      },
+      {
+        "title": "Round three: compare plausible readings.",
+        "lead": "One reading of passage B might emphasise indecision; another might emphasise a chosen pause. Both need to explain how they use the sign, the fading footsteps and the final silence.",
+        "body": "Comparison is not a vote on which reader is correct. Ask what each reading notices and what it has to assume. The exercise provides no actual discussion or recorded disagreement.",
+        "subheading": "Comparison round",
+        "detail": "Keep more than one interpretation when the wording permits it. Do not attach a claim about the author’s life or intention without an appropriate real source.",
+        "question": "Which reading requires an assumption the passage does not supply?",
+        "records": [
+          {
+            "label": "Reading route",
+            "prompt": "A pause may be indecision, attention or another possibility."
+          },
+          {
+            "label": "Text anchor",
+            "prompt": "Sign, footsteps and silence remain inspectable details."
+          },
+          {
+            "label": "Boundary",
+            "prompt": "No actual group consensus or author-intent evidence."
+          }
+        ]
+      },
+      {
+        "title": "Use associations without requiring disclosure.",
+        "lead": "A passage may suggest another object, situation or imagined scene. A participant can discuss that association as a reading move without explaining a personal experience.",
+        "body": "Keep the return path to the text visible. An association can open a question but does not prove what the passage means. If someone chooses not to share, the discussion can continue with the supplied fictional material.",
+        "subheading": "Context and association",
+        "detail": "The salon guide supplies no counselling or specialist support role. Do not use the exercise to elicit private material beyond the agreed reading purpose.",
+        "question": "How does this association change what you notice in the wording?",
+        "records": [
+          {
+            "label": "Association",
+            "prompt": "An optional imagined context or comparison."
+          },
+          {
+            "label": "Return to text",
+            "prompt": "Identify which detail prompted the association."
+          },
+          {
+            "label": "Participation boundary",
+            "prompt": "No personal history or emotional disclosure required."
+          }
+        ]
+      },
+      {
+        "title": "Build a shared record that preserves alternatives.",
+        "lead": "A useful record names the passage, the round, the relevant phrase and a tentative reading. Retain an open question or contrasting interpretation beside it.",
+        "body": "The source register contains nine unrecorded discussion cells: three passages across three rounds. Empty cells do not mean that no one engaged. No actual reader words, permissions or attendance are supplied.",
+        "subheading": "Shared reading record",
+        "detail": "Distinguish a reader’s exact words from an organiser’s paraphrase. Agree any actual use of names and later sharing before retaining the record.",
+        "question": "Can another reader see the wording that supports each interpretation?",
+        "records": [
+          {
+            "label": "Index",
+            "prompt": "Passage ID and discussion round."
+          },
+          {
+            "label": "Content",
+            "prompt": "A phrase, tentative interpretation and open question."
+          },
+          {
+            "label": "Evidence status",
+            "prompt": "9 unrecorded cells; not 9 observed responses."
+          }
+        ]
+      },
+      {
+        "title": "Extend the reading without inventing a bibliography.",
+        "lead": "An extension can return to a sentence with a different question, place two of the authored passages together or write a new miniature that changes one contextual detail.",
+        "body": "This guide supplies no external reading list, publication details or claims that a real writer influenced the passages. If actual works are added, verify attribution, permitted use and relevant source information.",
+        "subheading": "Further reading as a task",
+        "detail": "Compare the table in passage A with the box in passage C: both organise a relationship among ordinary things. That comparison is an editorial prompt, not an established interpretation.",
+        "question": "What new question becomes visible when two passages are read together?",
+        "records": [
+          {
+            "label": "Return",
+            "prompt": "Re-read one sentence with a different question."
+          },
+          {
+            "label": "Compare",
+            "prompt": "Consider an object or contrast across two supplied passages."
+          },
+          {
+            "label": "Source check",
+            "prompt": "Verify any actual external work before adding it."
+          }
+        ]
+      },
+      {
+        "title": "Review how the conversation used the text.",
+        "lead": "After an actual salon, ask whether readers could point to wording, whether alternative interpretations remained visible and whether people understood that sharing was optional.",
+        "body": "The current guide records no attendance, satisfaction, discussion result or change in reading ability. Its closing page is a review method, not a report of a completed event. Retain source and permission boundaries when adapting it.",
+        "subheading": "Salon reflection",
+        "detail": "Carry forward one question that deserves another reading and one change to the discussion format. A shared record need not end with agreement.",
+        "question": "Which uncertainty would make a worthwhile starting point next time?",
+        "records": [
+          {
+            "label": "Text review",
+            "prompt": "Could interpretations be connected to visible wording?"
+          },
+          {
+            "label": "Format review",
+            "prompt": "Was there room for a pause, pass or alternative reading?"
+          },
+          {
+            "label": "Outcome boundary",
+            "prompt": "No actual event or measured reader outcome supplied."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "demo-day",
+    "title": "DEMO DAY",
+    "subtitle": "A showcase-unit and feedback-loop handbook",
+    "category": "活动",
+    "layout": "showcase",
+    "color": "#2d568f",
+    "wash": "#e1ebfa",
+    "framework": "展示单元与反馈回路",
+    "sources": [
+      "creative-treatment/01",
+      "form-study/01",
+      "project-studio/01",
+      "campaign-playbook/01",
+      "bright-edit/01"
+    ],
+    "scope": "A fictional concept showcase with three authored demo units and nine uncollected feedback cells. Not working-product evidence, scheduled presentations, actual audiences, endorsements or contact consent.",
+    "chapters": [
+      {
+        "title": "Make the showcase’s purpose inspectable.",
+        "lead": "This fictional demo day lets an audience examine a concept, ask a question and identify the next artifact that would clarify it. It is not a competition to prove readiness or a public endorsement.",
+        "body": "Three authored units provide examples: Context Card, Folded Route and Revision Window. None is an operating product, booked presentation or verified capability. A polished illustration should not stand in for evidence of what a concept can do.",
+        "subheading": "Showcase purpose",
+        "detail": "Keep the demonstration status visible and distinguish a question from a commitment. No real event, presenter appointment or audience is established.",
+        "question": "What should a viewer be able to question rather than merely applaud?",
+        "records": [
+          {
+            "label": "Purpose",
+            "prompt": "Inspect a concept and its unresolved conditions."
+          },
+          {
+            "label": "Units",
+            "prompt": "3 authored concepts, not functioning-product claims."
+          },
+          {
+            "label": "Output",
+            "prompt": "A question and an appropriate next-artifact request."
+          }
+        ]
+      },
+      {
+        "title": "Use the unit directory as a discussion index.",
+        "lead": "D01 Context Card explores keeping a passage beside its question. D02 Folded Route explores an optional paper guide. D03 Revision Window explores showing why an explanation changed.",
+        "body": "The directory organises the fictional guide, not a schedule or a ranking. There are no confirmed presenters, venues, start times or commitments to build. Select a unit according to the question worth examining.",
+        "subheading": "Unit directory",
+        "detail": "The source register has one cell per unit for clarity, open question and next artifact: nine uncollected cells in total, not nine audience responses.",
+        "question": "Which unit raises the most useful question for the audience?",
+        "records": [
+          {
+            "label": "D01",
+            "prompt": "Context Card: passage and purpose together."
+          },
+          {
+            "label": "D02",
+            "prompt": "Folded Route: an optional guide with a visible boundary."
+          },
+          {
+            "label": "D03",
+            "prompt": "Revision Window: an explanation and its reason for change."
+          }
+        ]
+      },
+      {
+        "title": "Write a brief that does not outrun the artifact.",
+        "lead": "A unit brief should state the task, what the proposed artifact makes visible and what has not been demonstrated. Keep those distinctions in the introduction rather than hiding them in a closing disclaimer.",
+        "body": "For Context Card, the task is to inspect the reason for saving a passage. The proposed artifact is a card linking passage and question. No usability result, customer adoption or automated verification is established.",
+        "subheading": "Demonstration brief",
+        "detail": "A credible brief can say that a prototype is absent or incomplete. The directory is not evidence that a concept has been implemented.",
+        "question": "Which sentence could make a viewer think an unverified capability is already working?",
+        "records": [
+          {
+            "label": "Task",
+            "prompt": "Inspect why a passage was saved."
+          },
+          {
+            "label": "Proposed artifact",
+            "prompt": "A card carrying passage, question and source status."
+          },
+          {
+            "label": "Not shown",
+            "prompt": "No working system, user result or customer evidence."
+          }
+        ]
+      },
+      {
+        "title": "Tell the unit story in three moves.",
+        "lead": "Start with the task, show the proposed interaction and close with the unresolved question. The audience should be able to distinguish an intended use from something the artifact has actually demonstrated.",
+        "body": "For an unbuilt concept, describe rather than simulate a successful user outcome. Do not invent a testimonial, a release date or a performance number to make the story feel complete.",
+        "subheading": "Task / artifact / question",
+        "detail": "A useful closing question is: what would you need to inspect before believing this interaction helps the task? It invites scrutiny rather than a purchase or investment commitment.",
+        "question": "Does each move preserve the same capability boundary?",
+        "records": [
+          {
+            "label": "Task",
+            "prompt": "Name the problem the concept is intended to address."
+          },
+          {
+            "label": "Artifact",
+            "prompt": "Show or describe only what is actually available."
+          },
+          {
+            "label": "Question",
+            "prompt": "Ask what evidence or clarification should come next."
+          }
+        ]
+      },
+      {
+        "title": "D01 example: a card with an unresolved source.",
+        "lead": "The imagined Context Card contains a passage, the question that prompted it and a source-status note. Its usefulness would depend on whether another reader can understand the relationship.",
+        "body": "This is an authored example, not a working software feature or a reported user test. A missing source remains missing even when the card’s layout is attractive. Demonstration should make that gap inspectable rather than erase it.",
+        "subheading": "Example unit / not a product claim",
+        "detail": "A relevant next artifact could be a bounded, inspectable prototype with clear limitations. No prototype, evaluation or participant response is supplied by this template.",
+        "question": "What does the example reveal, and what still needs to be established?",
+        "records": [
+          {
+            "label": "Visible concept",
+            "prompt": "Passage, working question and source status together."
+          },
+          {
+            "label": "Unresolved condition",
+            "prompt": "The relationship and source still need review."
+          },
+          {
+            "label": "Next artifact",
+            "prompt": "An appropriately bounded concept prototype, if developed."
+          }
+        ]
+      },
+      {
+        "title": "Ask questions that distinguish clarification from endorsement.",
+        "lead": "A viewer might ask what the concept is intended to do, what is actually available and which assumption could make it unsuitable. A question is not permission to quote the viewer as a supporter.",
+        "body": "The host should keep capability, interpretation and actual evidence distinct. No audience member, question, feedback event or endorsement is represented in the source register.",
+        "subheading": "Audience-question prompts",
+        "detail": "For Folded Route, ask whether the guide explains an optional sequence without implying real venue access or safe wayfinding. The concept has no actual location data.",
+        "question": "What information is missing that a viewer needs before forming a judgement?",
+        "records": [
+          {
+            "label": "Clarify",
+            "prompt": "What task and artifact are being proposed?"
+          },
+          {
+            "label": "Challenge",
+            "prompt": "Which condition could make this approach unsuitable?"
+          },
+          {
+            "label": "Bound",
+            "prompt": "No actual audience question or endorsement supplied."
+          }
+        ]
+      },
+      {
+        "title": "Use a feedback card without a score.",
+        "lead": "The card has three fields: what was understandable, what remains open and what next artifact would help. Keep the feedback tied to the presented concept and its stated limits.",
+        "body": "The nine unit-by-field cells in the source register are uncollected. They contain no votes, ratings or participant statements. Agree any real recording, naming and reuse arrangement before collecting feedback.",
+        "subheading": "Clarity / open question / next artifact",
+        "detail": "For Revision Window, a useful question is how the reason for a change could be inspected beside the earlier wording. That is an authored prompt, not received feedback.",
+        "question": "Can the presenter act on the question without treating it as a promised result?",
+        "records": [
+          {
+            "label": "Clarity",
+            "prompt": "What was understandable about the task and artifact?"
+          },
+          {
+            "label": "Open question",
+            "prompt": "What assumption or capability remains unresolved?"
+          },
+          {
+            "label": "Next artifact",
+            "prompt": "What would help a suitable reviewer inspect the concept?"
+          }
+        ]
+      },
+      {
+        "title": "Let discussion return to the relevant unit.",
+        "lead": "A discussion round can move from clarification to challenge and then to a next-artifact question. Return to the unit brief if the conversation begins to assume capabilities not actually shown.",
+        "body": "This is a proposed discussion structure, not a timed schedule or a record of actual participation. Avoid turning the conversation into a popularity ranking or assuming that silence means approval.",
+        "subheading": "Feedback loop",
+        "detail": "A presenter may identify an unanswered question without promising a reply or a product change. Record any real commitment only when appropriately agreed.",
+        "question": "Which question belongs with this unit rather than with a general showcase claim?",
+        "records": [
+          {
+            "label": "Clarification round",
+            "prompt": "Check the audience’s understanding of the proposal."
+          },
+          {
+            "label": "Challenge round",
+            "prompt": "Inspect an assumption or limitation."
+          },
+          {
+            "label": "Return loop",
+            "prompt": "Link the next question back to the unit and available artifact."
+          }
+        ]
+      },
+      {
+        "title": "Keep follow-up contact separate from event participation.",
+        "lead": "Someone may want to see a later artifact or continue a concept conversation. That interest should not automatically create a mailing-list entry, a public supporter label or permission for unrelated contact.",
+        "body": "No contact details, opt-in, data-retention arrangement or response service is supplied. A real organiser must establish an appropriate purpose and permission before collecting or sharing personal information.",
+        "subheading": "Follow-up boundary",
+        "detail": "A useful note can record a question without a person’s identity when that is sufficient. Do not promise availability or a reply time that has not been arranged.",
+        "question": "What exactly has the person agreed to receive or share?",
+        "records": [
+          {
+            "label": "Purpose",
+            "prompt": "A clearly defined, appropriately agreed follow-up."
+          },
+          {
+            "label": "Permission",
+            "prompt": "No actual opt-in or contact authority established here."
+          },
+          {
+            "label": "Record",
+            "prompt": "Retain only information appropriate to the actual purpose."
+          }
+        ]
+      },
+      {
+        "title": "Review what became clearer, not how impressive it looked.",
+        "lead": "After a real showcase, compare the unit’s stated question with the appropriately recorded feedback. Ask which capability remained unclear and what artifact could address that uncertainty.",
+        "body": "This example reports no actual presentations, audience reactions, leads, adoption or investment interest. Its review is a method rather than a success report. Preserve the original brief when changing the concept story.",
+        "subheading": "Showcase reflection",
+        "detail": "Carry forward a clarification to the brief, an unresolved assumption and a bounded next-artifact question. A successful-looking event image does not validate the concepts.",
+        "question": "What should change before the next appropriate demonstration?",
+        "records": [
+          {
+            "label": "Brief revision",
+            "prompt": "Make one task or limitation easier to understand."
+          },
+          {
+            "label": "Evidence question",
+            "prompt": "Identify the unverified assumption that matters most."
+          },
+          {
+            "label": "Outcome boundary",
+            "prompt": "No real audience, endorsement or business result supplied."
+          }
+        ]
+      }
+    ]
+  }
+]

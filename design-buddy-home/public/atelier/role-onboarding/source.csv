@@ -1,0 +1,6 @@
+gate,focus,artifact,status,actual_observation
+G01,role-boundary,role explanation,not-assessed,
+G02,task-language,annotated sample,not-assessed,
+G03,handoff,review note,not-assessed,
+G04,feedback-revision,revised question,not-assessed,
+G05,help-route,bounded request,not-assessed,

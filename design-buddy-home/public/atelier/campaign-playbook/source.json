@@ -1,0 +1,67 @@
+{
+  "source": "authored-illustrative-marketing-register",
+  "synthetic": true,
+  "notActualCampaign": true,
+  "summary": {
+    "touchpoints": 6,
+    "stageCounts": {
+      "discover": 2,
+      "consider": 2,
+      "ask": 2
+    },
+    "deliveredTouchpoints": 0,
+    "actualReach": null,
+    "actualConversions": null,
+    "sequenceNotCausation": true
+  },
+  "records": [
+    {
+      "order": 1,
+      "touchpoint": "poster",
+      "journey_stage": "discover",
+      "status": "planned",
+      "actual_date": null,
+      "actual_contacts": null
+    },
+    {
+      "order": 2,
+      "touchpoint": "social-post",
+      "journey_stage": "discover",
+      "status": "planned",
+      "actual_date": null,
+      "actual_contacts": null
+    },
+    {
+      "order": 3,
+      "touchpoint": "concept-outline",
+      "journey_stage": "consider",
+      "status": "planned",
+      "actual_date": null,
+      "actual_contacts": null
+    },
+    {
+      "order": 4,
+      "touchpoint": "email",
+      "journey_stage": "consider",
+      "status": "planned",
+      "actual_date": null,
+      "actual_contacts": null
+    },
+    {
+      "order": 5,
+      "touchpoint": "enquiry-reply",
+      "journey_stage": "ask",
+      "status": "planned",
+      "actual_date": null,
+      "actual_contacts": null
+    },
+    {
+      "order": 6,
+      "touchpoint": "follow-up",
+      "journey_stage": "ask",
+      "status": "planned",
+      "actual_date": null,
+      "actual_contacts": null
+    }
+  ]
+}

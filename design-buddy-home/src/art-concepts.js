@@ -209,6 +209,7 @@ export const CONCEPT_POOLS = {
   餐饮: ['food.chef', 'food.plate', 'food.coffee', 'food.table', 'food.ingredients', 'food.dessert'],
   零售: ['retail.storefront', 'retail.cart', 'retail.gift', 'retail.tag', 'retail.boutique', 'retail.parcel'],
   建筑: ['arch.building', 'arch.blueprint', 'arch.crane', 'arch.skyline', 'arch.interior', 'arch.bridge'],
+  技术文档: ['tech.robot', 'tech.circuit', 'tech.chip', 'tech.cloud', 'tech.code', 'tech.phone', 'tech.satellite', 'tech.vr'],
 }
 
 const PORTRAIT_KEYS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16']

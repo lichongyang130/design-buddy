@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "campaign-playbook",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 16660,
+      "sha256": "de2d09b8592bd25af9b310872cee1a741879b485de2bb096115c607804dbe441"
+    },
+    {
+      "path": "content.js",
+      "bytes": 13216,
+      "sha256": "b97de2e360dd901cf788118918f381282861ee26d84c1090be10d936a8e6846c"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 525,
+      "sha256": "603ea565f69a99a22af10821dde51d30f82183747069a9e4282ae9e5b431cc37"
+    },
+    {
+      "path": "campaign-playbook.docx",
+      "bytes": 999143,
+      "sha256": "4ca05a8e168978fba0e40a6316c1bbfed9b406aaca2907ba9f53aaa2a1c96d50"
+    },
+    {
+      "path": "campaign-playbook.pdf",
+      "bytes": 1068474,
+      "sha256": "0599f0d21baaa3f0d3c918ad2f0e3e6960e5ce53030cceb2c335d4be97d6dff4"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 247,
+      "sha256": "931661abd8f2bb46af32bf7b0efe5f7b321193d98102ff15f9c3d13430478d22"
+    },
+    {
+      "path": "source.json",
+      "bytes": 1468,
+      "sha256": "0d628dbe42af858cf9e349cc857811bc171887c86e458ca89624accfd0966cc1"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 209609,
+      "sha256": "3aad6b0c1cb3c8b3adacd37cb3165d88b87f7a382a4b10c142b704ac6230e25e"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 138211,
+      "sha256": "d6da30d33e6907a1694a0873af29a7c001bc11a9dff6f9c8928c1b45c54ce64f"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 259237,
+      "sha256": "7b27411866588998984b352cb406b0249324042957cf48e59de6b8465530163c"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 150139,
+      "sha256": "469958bec1b374329fcc9f5b64cff9ff0dc3f159148baaeb685096c115234e68"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 232550,
+      "sha256": "6a328a3d9e0b24ff2afed99f92e12537ec6d44bf32913db5ced7b23ad9285bcb"
+    }
+  ]
+}

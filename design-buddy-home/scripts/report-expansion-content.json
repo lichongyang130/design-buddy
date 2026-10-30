@@ -1,0 +1,776 @@
+[
+  {
+    "id": "evidence-review",
+    "title": "EVIDENCE REVIEW",
+    "subtitle": "证据综述报告",
+    "category": "报告",
+    "layout": "review",
+    "color": "#344a6f",
+    "wash": "#e7ecf5",
+    "framework": "来源证据分级",
+    "scope": "Entirely synthetic report exercise: source records, statements and version events are invented. Illustrations are not empirical evidence. No actual study, operational result, market research or participant interview is supplied.",
+    "sources": [
+      "tideline/11",
+      "open-shelf/06",
+      "common-ground/02",
+      "afterglow/11"
+    ],
+    "chapters": [
+      {
+        "title": "Review the sources before the claim.",
+        "lead": "This report demonstrates a transparent review using eight invented source cards. Five cards meet the exercise scope; three are excluded. It is a worked template, not a literature review of real publications.",
+        "body": "The question is how a discussion prompt might make its intended use clearer. Included material comprises two method notes, two example sheets and one reflection. Their contents illustrate a review process without supplying empirical evidence of effectiveness.",
+        "labels": [
+          "Review question",
+          "Intended use",
+          "Main limitation"
+        ],
+        "question": "What can this review organise without claiming that a real intervention works?"
+      },
+      {
+        "title": "Make the search boundary visible.",
+        "lead": "Describe which material was considered and where the boundary sits. This exercise uses a closed set of eight cards rather than claiming an exhaustive database search.",
+        "body": "A real review would record its search locations, terms, dates and access limitations. Here the complete invented set is exported as source JSON and CSV, so readers can inspect every inclusion and exclusion instead of trusting a hidden selection.",
+        "labels": [
+          "Material boundary",
+          "Search not performed",
+          "Source artifact"
+        ],
+        "question": "What would need to be recorded before this could be described as an actual literature search?"
+      },
+      {
+        "title": "Keep a source register.",
+        "lead": "Assign each card an identifier and preserve its type, scope status and reason for inclusion or exclusion. An identifier is a traceability tool, not a citation to a real author.",
+        "body": "S01–S05 are in scope. S06 is an unsupported opinion, S07 a duplicate exercise card and S08 outside the prompt-clarity question. These decisions are stipulated teaching examples, not independent assessments of real scholarship.",
+        "labels": [
+          "Source identifier",
+          "Type",
+          "Review note"
+        ],
+        "question": "Can another reader reconstruct the five-card set without inferring a missing publication?"
+      },
+      {
+        "title": "Apply the inclusion rule consistently.",
+        "lead": "The inclusion rule accepts a distinct card that addresses the prompt-clarity question and supplies interpretable exercise material. Apply the rule before choosing a preferred conclusion.",
+        "body": "Five of eight cards remain. The three exclusions have different reasons, so they should not be grouped as low-quality studies. A duplicate, an irrelevant item and an unsupported opinion represent different limits on use.",
+        "labels": [
+          "Rule",
+          "Borderline item",
+          "Exclusion reason"
+        ],
+        "question": "Which change to the scope rule would change the reviewed set?"
+      },
+      {
+        "title": "Group by source role.",
+        "lead": "A source role describes what a card can contribute. A method note can explain an approach; an example sheet can show wording; a reflection can raise a question. These roles are not evidence grades.",
+        "body": "Within the five included cards, method notes account for two, example sheets for two and reflections for one. The counts reconcile to five but do not measure reliability, effect size or confidence in a real-world claim.",
+        "labels": [
+          "Method notes",
+          "Example sheets",
+          "Reflections"
+        ],
+        "question": "Which question would require a source type absent from this set?"
+      },
+      {
+        "title": "Trace a recurring theme.",
+        "lead": "The exercise assigns a clarity theme to S01, S02 and S04. Report the source identifiers alongside the theme so the reader can inspect the grouping.",
+        "body": "Three cards mentioning clarity do not constitute three independent empirical replications. They are invented materials with different roles. The useful result is a visible path from the theme label back to each card, not a vote count for effectiveness.",
+        "labels": [
+          "Theme",
+          "Supporting cards",
+          "Interpretation boundary"
+        ],
+        "question": "What wording would prevent the three-card theme from being mistaken for proven effectiveness?"
+      },
+      {
+        "title": "Preserve differences in emphasis.",
+        "lead": "S03 and S05 are grouped under context. Their emphasis differs from the clarity group and should remain visible rather than being forced into a single recommendation.",
+        "body": "The two context cards can prompt questions about intended use and missing setting information. The exercise does not establish a contradiction between findings because no real study results exist. A reviewer should distinguish different emphases from conflicting empirical results.",
+        "labels": [
+          "Context cards",
+          "Different emphasis",
+          "Open question"
+        ],
+        "question": "Which distinction would be lost by collapsing all five cards into one conclusion?"
+      },
+      {
+        "title": "Explain quality limits in use.",
+        "lead": "Assess a source against the claim for which it is being used. A source can be suitable as an illustration while unsuitable as evidence about prevalence or learning outcomes.",
+        "body": "All eight cards are invented. The five included cards help demonstrate registration, grouping and traceability only. They cannot establish demand, user preference, causal effects or the quality of a real programme, regardless of how polished the report appears.",
+        "labels": [
+          "Proposed claim",
+          "Suitable use",
+          "Unsupported use"
+        ],
+        "question": "Which attractive conclusion reaches furthest beyond this source set?"
+      },
+      {
+        "title": "Write a bounded synthesis.",
+        "lead": "Bring the source roles and themes together without turning descriptive grouping into a recommendation backed by research. Keep the reviewed set and its limitations in the summary.",
+        "body": "A bounded synthesis says that the five exercise cards illustrate two areas to examine: wording clarity and contextual fit. It does not say that either improvement has been demonstrated to cause a beneficial outcome. Real recommendations need their own relevant evidence.",
+        "labels": [
+          "Synthesis sentence",
+          "Traceable support",
+          "Qualification"
+        ],
+        "question": "Can every substantive phrase in the synthesis be traced to the invented register?"
+      },
+      {
+        "title": "Leave an auditable next question.",
+        "lead": "Close with the question that remains and the kind of real source that would be needed. Preserve the source export and inclusion decisions with the report.",
+        "body": "The next inquiry could seek appropriate empirical material about interpretation of prompts in a defined context. This template has performed no search, study or quality appraisal of actual publications. Its complete result is a reproducible worked review structure.",
+        "labels": [
+          "Next question",
+          "Needed source",
+          "Handoff artifact"
+        ],
+        "question": "What evidence would change this from a review exercise into a real evidence review?"
+      }
+    ]
+  },
+  {
+    "id": "experiment-readout",
+    "title": "EXPERIMENT READOUT",
+    "subtitle": "实验读出报告",
+    "category": "报告",
+    "layout": "readout",
+    "color": "#236c87",
+    "wash": "#e2f0f5",
+    "framework": "假设与结果对照",
+    "scope": "Entirely synthetic report exercise: source records, statements and version events are invented. Illustrations are not empirical evidence. No actual study, operational result, market research or participant interview is supplied.",
+    "sources": [
+      "swatch/02",
+      "swatch/05",
+      "open-shelf/03",
+      "tideline/02"
+    ],
+    "chapters": [
+      {
+        "title": "Read a model, not a real trial.",
+        "lead": "This readout uses 24 invented task records to demonstrate reporting: 12 in condition A and 12 in condition B. The records do not represent actual participants, testing or product performance.",
+        "body": "A has eight completed records and B has nine. Those descriptive counts differ by one record. The report keeps the setup, measures, missing values and interpretation limits beside the result rather than treating the small numerical difference as a proven effect.",
+        "labels": [
+          "Readout question",
+          "Descriptive result",
+          "Claim boundary"
+        ],
+        "question": "What can the 24-record model show without implying that a real experiment occurred?"
+      },
+      {
+        "title": "State the hypothesis before the result.",
+        "lead": "The fictional question asks whether a different instruction card could be associated with a different completion pattern. A working hypothesis is not established by the condition labels or by the difference in counts.",
+        "body": "No random assignment, recruitment, real procedure or outcome observation is supplied. The source contains only stipulated task rows. A real test would require an appropriate design and context before any causal conclusion could be considered.",
+        "labels": [
+          "Working hypothesis",
+          "Alternative explanation",
+          "Design not supplied"
+        ],
+        "question": "Which missing design information prevents a causal interpretation?"
+      },
+      {
+        "title": "Describe what each row means.",
+        "lead": "Each row is one invented task record with a condition, a completion flag and an optional time value. Do not relabel the rows as unique people or independently observed sessions.",
+        "body": "Records T01–T12 belong to A and T13–T24 to B. Time is recorded only for completed rows in the model; incomplete rows have a null value. Null does not mean zero time or an unobserved success.",
+        "labels": [
+          "Record unit",
+          "Condition allocation",
+          "Missing-value rule"
+        ],
+        "question": "What interpretation would become wrong if task records were called participants?"
+      },
+      {
+        "title": "Define completion and time separately.",
+        "lead": "Completion is a binary field in the invented model. Time is a descriptive value supplied only for completed records. These measures answer different questions and use different denominators.",
+        "body": "The completion denominators are 12 and 12. Completed-time denominators are eight and nine. Keeping those denominators visible prevents a mean time among completions from being presented as a mean across every task record.",
+        "labels": [
+          "Measure",
+          "Denominator",
+          "Permitted comparison"
+        ],
+        "question": "Which denominator belongs beside each result before it is compared?"
+      },
+      {
+        "title": "Inspect the model boundary.",
+        "lead": "The export is the entire 24-row teaching set, not a sample drawn from a real population. It supplies no participant attributes, context variation or allocation procedure.",
+        "body": "A balanced row count does not establish comparable real conditions. The report can audit the stipulated arithmetic but cannot infer generalisability, representativeness or absence of confounding from a symmetric table.",
+        "labels": [
+          "Supplied material",
+          "Missing context",
+          "Generalisation boundary"
+        ],
+        "question": "What claim would remain unsupported even with equal group sizes?"
+      },
+      {
+        "title": "Report the completion counts.",
+        "lead": "A contains eight completed and four incomplete rows. B contains nine completed and three incomplete rows. Both groups reconcile to 12, and the total is 17 completions across 24 invented records.",
+        "body": "The descriptive proportions are 8/12 and 9/12, about 66.7% and 75.0%. The difference is about 8.3 percentage points. It is not an 8.3% relative lift, statistical significance or evidence that a real instruction is better.",
+        "labels": [
+          "A completion",
+          "B completion",
+          "Difference wording"
+        ],
+        "question": "How would you state the difference while retaining both denominators?"
+      },
+      {
+        "title": "Keep the time comparison conditional.",
+        "lead": "Completed A rows have time values from 8 to 15 teaching units, with mean and median 11.5. Completed B rows run from 7 to 15, with mean and median 11.0.",
+        "body": "These summaries exclude the four and three incomplete rows respectively. They cannot establish faster overall task performance, and the arbitrary teaching units are not actual measured minutes. No time value should be filled in for an incomplete row.",
+        "labels": [
+          "Completed-only mean",
+          "Excluded rows",
+          "Time-unit boundary"
+        ],
+        "question": "Why would a shorter completed-only mean be insufficient to rank the conditions?"
+      },
+      {
+        "title": "Consider alternative explanations.",
+        "lead": "List what could explain a pattern in a real test before interpreting a difference as an intervention effect. In this model, the numbers were authored rather than observed.",
+        "body": "Relevant real-test questions might concern allocation, instruction differences, task context and missing outcomes. Here there is no basis for estimating those influences. An explanation should therefore remain a design question, not a reconstructed story about fictional participants.",
+        "labels": [
+          "Alternative factor",
+          "Needed information",
+          "Interpretation change"
+        ],
+        "question": "Which alternative factor would you investigate first in a genuine study?"
+      },
+      {
+        "title": "Separate result from recommendation.",
+        "lead": "A descriptive result can be accurate while a recommendation remains unjustified. Keep the arithmetic and the decision question in different sentences.",
+        "body": "Result: B has one more completed model row than A. Decision question: what appropriate study would be needed to evaluate an actual instruction change? Do not replace the second sentence with adopt B on the strength of this fabricated set.",
+        "labels": [
+          "Result sentence",
+          "Decision question",
+          "Unsupported recommendation"
+        ],
+        "question": "Which additional evidence would a real adoption decision require?"
+      },
+      {
+        "title": "Make replication requirements explicit.",
+        "lead": "Package the row definitions, complete source export, summaries and limitations together. A replication plan needs a real protocol rather than a request to reproduce invented numbers.",
+        "body": "The teaching result is fully reproducible arithmetic: 24 rows, 17 completion flags and 17 non-null time values. Real recruitment, consent, measurement and appropriate review are not supplied. Keep the synthetic label attached to every exported version.",
+        "labels": [
+          "Reproducible arithmetic",
+          "Real protocol gap",
+          "Handoff package"
+        ],
+        "question": "What would have to change before this readout could describe a real experiment?"
+      }
+    ]
+  },
+  {
+    "id": "operations-review",
+    "title": "OPERATIONS REVIEW",
+    "subtitle": "运营复盘报告",
+    "category": "报告",
+    "layout": "operations",
+    "color": "#3e6553",
+    "wash": "#e6efe6",
+    "framework": "指标异常与行动台账",
+    "scope": "Entirely synthetic report exercise: source records, statements and version events are invented. Illustrations are not empirical evidence. No actual study, operational result, market research or participant interview is supplied.",
+    "sources": [
+      "tideline/04",
+      "open-shelf/09",
+      "swatch/03",
+      "common-ground/05"
+    ],
+    "chapters": [
+      {
+        "title": "Reconcile the work before explaining it.",
+        "lead": "This operations review uses six invented periods of request counts. Received work totals 268, closed work totals 259 and the opening balance is 10. The resulting ending balance is 19.",
+        "body": "The model demonstrates reconciliation, trend reading and action review. It is not actual operational performance, customer demand or staff productivity. P1–P6 are sequence labels, not real calendar periods, and the rows contain no people or customer records.",
+        "labels": [
+          "Review scope",
+          "Main reconciliation",
+          "Operational boundary"
+        ],
+        "question": "Which totals should reconcile before any operational explanation is proposed?"
+      },
+      {
+        "title": "Keep a metric dictionary.",
+        "lead": "Define received, closed and balance as different quantities. A period’s closed work can include requests carried from earlier periods, so it is not a subset of that period’s receipts.",
+        "body": "Balance follows opening plus received minus closed. In the source, each period records all four components and its ending balance. A real review would also need consistent case definitions and recording practices; the teaching model stipulates those quantities.",
+        "labels": [
+          "Received definition",
+          "Closed definition",
+          "Balance rule"
+        ],
+        "question": "Why is closed divided by received not automatically a cohort completion rate?"
+      },
+      {
+        "title": "Read the six-period overview.",
+        "lead": "Received counts are 40, 44, 39, 48, 46 and 51. Closed counts are 36, 42, 40, 44, 48 and 49. The totals are 268 and 259 respectively.",
+        "body": "The opening 10 plus the net increase of nine produces 19 at the end. Received work averages about 44.7 per period, but an average does not reveal the path of the balance or explain why the model changes.",
+        "labels": [
+          "Received series",
+          "Closed series",
+          "Ending balance"
+        ],
+        "question": "What important information disappears if the six periods are replaced by one average?"
+      },
+      {
+        "title": "Trace the balance, not only the volume.",
+        "lead": "Ending balances progress through 14, 16, 15, 19, 17 and 19. The balance can fall even when a period receives new work, because closures may include prior-period requests.",
+        "body": "P3 receives 39 and closes 40, reducing the previous balance from 16 to 15. P5 receives 46 and closes 48, reducing 19 to 17. These are arithmetic changes in a fictional ledger, not evidence of a particular team action.",
+        "labels": [
+          "Prior balance",
+          "Net change",
+          "New balance"
+        ],
+        "question": "Which period best illustrates the difference between workload flow and remaining balance?"
+      },
+      {
+        "title": "Flag an exception with a rule.",
+        "lead": "An exception should be defined against a stated rule rather than chosen because a chart looks dramatic. For this exercise, flag any period with a net balance increase of at least four.",
+        "body": "P1 and P4 each meet that stipulated threshold. The rule is a discussion device, not a validated service target. It identifies periods to inspect but does not establish that a failure, staffing shortage or unusual real event occurred.",
+        "labels": [
+          "Flag rule",
+          "Flagged periods",
+          "Meaning of the flag"
+        ],
+        "question": "What would be needed before this threshold could become a real operational target?"
+      },
+      {
+        "title": "Distinguish a factor from a cause.",
+        "lead": "Received volume, closure counts and carryover can be described directly. Explanations about staffing, process changes or seasonality are absent from the source and must remain hypotheses.",
+        "body": "P4 increases the balance by four because 48 are received and 44 closed. That identity does not explain the underlying reasons. The report should request context rather than invent a narrative about the people who supposedly performed the work.",
+        "labels": [
+          "Arithmetic explanation",
+          "Causal hypothesis",
+          "Context needed"
+        ],
+        "question": "Which proposed explanation cannot be checked against the available ledger?"
+      },
+      {
+        "title": "Review actions without fabricating impact.",
+        "lead": "An action review should link a proposed action, its intended mechanism and a suitable observation. This source contains no action log, so no improvement can be attributed to an intervention.",
+        "body": "A future review might examine whether clearer request definitions affect recording consistency. The current template can organise that question, but it cannot say a process change reduced the balance or improved service based on these six authored rows.",
+        "labels": [
+          "Action to examine",
+          "Intended mechanism",
+          "Missing action evidence"
+        ],
+        "question": "How would you avoid crediting a hypothetical action for a model change?"
+      },
+      {
+        "title": "Keep unresolved issues in the ledger.",
+        "lead": "Separate a data-quality question from a performance question. An unresolved definition may need attention before a target or resource discussion is useful.",
+        "body": "Examples include whether all received requests use the same unit and whether closure dates are recorded consistently. Those issues are not observed defects in a real system; they illustrate the kinds of questions a genuine review should preserve.",
+        "labels": [
+          "Definition issue",
+          "Performance question",
+          "Source to seek"
+        ],
+        "question": "Which unresolved issue could change the meaning of every period total?"
+      },
+      {
+        "title": "Make responsibility a confirmation.",
+        "lead": "A next-step table should identify the role that needs to confirm responsibility and the evidence to bring back. A template must not appoint actual staff or authorise operational changes.",
+        "body": "A data steward could review metric definitions; an authorised service owner could discuss decision needs. These are role categories only. The proposed review is not a staffing plan, schedule or accepted task assignment.",
+        "labels": [
+          "Review task",
+          "Role to confirm",
+          "Return artifact"
+        ],
+        "question": "What confirmation would be needed before a proposed action becomes an agreed responsibility?"
+      },
+      {
+        "title": "Close with a reconciled handoff.",
+        "lead": "Share the complete period ledger, metric definitions, flags and unanswered context questions. The report’s reliable result is a transparent model reconciliation, not a performance verdict.",
+        "body": "Opening 10 plus received 268 minus closed 259 equals ending 19. This equality should remain visible alongside any proposed next question. Keep the synthetic label and period-unit boundary attached when the report is reused or edited.",
+        "labels": [
+          "Reconciliation",
+          "Remaining question",
+          "Next review focus"
+        ],
+        "question": "Which question should the next review answer rather than merely repeat?"
+      }
+    ]
+  },
+  {
+    "id": "interview-synthesis",
+    "title": "INTERVIEW SYNTHESIS",
+    "subtitle": "访谈综合报告",
+    "category": "报告",
+    "layout": "synthesis",
+    "color": "#784460",
+    "wash": "#f1e6ee",
+    "framework": "主题编码与引文索引",
+    "scope": "Entirely synthetic report exercise: source records, statements and version events are invented. Illustrations are not empirical evidence. No actual study, operational result, market research or participant interview is supplied.",
+    "sources": [
+      "afterglow/05",
+      "common-ground/04",
+      "tideline/15",
+      "open-shelf/06"
+    ],
+    "chapters": [
+      {
+        "title": "Synthesize invented extracts transparently.",
+        "lead": "This report demonstrates qualitative synthesis using six authored example extracts. No interviews were conducted, and the text contains no actual participants, consent records or personal data.",
+        "body": "The extracts concern finding and interpreting a fictional prompt card. Nine tag assignments cover four themes because an extract can receive more than one tag. Six extracts and nine tags must not be presented as nine people or as a representative study.",
+        "labels": [
+          "Synthesis question",
+          "Material unit",
+          "Research boundary"
+        ],
+        "question": "What should a reader know before interpreting any theme in this report?"
+      },
+      {
+        "title": "Describe the inquiry guide.",
+        "lead": "A guide states what a real conversation might explore without implying that those questions have already been asked. Here the guide is a proposed scaffold for interpreting the invented examples.",
+        "body": "Possible questions concern locating a current card, recognising a revision and asking for clarification. A genuine interview study would require appropriate context, recruitment, consent and review. None of those activities is supplied by the example text.",
+        "labels": [
+          "Inquiry focus",
+          "Possible prompt",
+          "Research not performed"
+        ],
+        "question": "Which guide question would need revision for a different real context?"
+      },
+      {
+        "title": "Keep the material unit honest.",
+        "lead": "E1–E6 identify six invented extracts, not six interviewees. The source intentionally contains no demographic attributes or participant identifiers.",
+        "body": "A real synthesis would explain how material was produced and selected. Here the full set is authored for the template, so it can illustrate coding mechanics but cannot support claims about prevalence, saturation, needs or experiences of actual people.",
+        "labels": [
+          "Extract unit",
+          "Selection boundary",
+          "Unsupported inference"
+        ],
+        "question": "What would become misleading if the extract identifiers were labelled participant IDs?"
+      },
+      {
+        "title": "Preserve an inspectable extract index.",
+        "lead": "Keep the wording beside its identifier so another reader can trace a theme back to the actual example. Quotations should remain visibly labelled as invented.",
+        "body": "E1 says a current card can be found when its version is visible. E2 describes asking another reader when two cards look similar. These short examples are not testimonials or findings collected from a real service.",
+        "labels": [
+          "Extract identifier",
+          "Exact wording",
+          "Context limitation"
+        ],
+        "question": "Which contextual detail would you need before interpreting a genuine quotation?"
+      },
+      {
+        "title": "Make coding choices visible.",
+        "lead": "A code links a passage to an analytic label. It is a decision by the analyst, not a fact automatically contained in the words. The exported source records every stipulated tag.",
+        "body": "The codebook uses findability, clarification, version and example. E1 receives findability and version; E2 receives findability and clarification. Multiple coding explains why theme assignments outnumber extracts. No independent coder agreement is supplied.",
+        "labels": [
+          "Code label",
+          "Relevant passage",
+          "Coding reason"
+        ],
+        "question": "Where could a reasonable second reader choose a different code?"
+      },
+      {
+        "title": "Cluster without ranking needs.",
+        "lead": "Findability appears in E1, E2 and E6; clarification in E2, E3 and E5; version in E1 and E4; example in E3. The counts are 3, 3, 2 and 1.",
+        "body": "Those nine assignments describe this authored coding table only. They do not rank real user needs or estimate how common a view is. Preserve the source identifiers with each theme rather than treating the largest count as a validated priority.",
+        "labels": [
+          "Theme",
+          "Supporting extracts",
+          "Interpretation limit"
+        ],
+        "question": "Why would the theme counts be insufficient to choose a real product priority?"
+      },
+      {
+        "title": "Keep contrasting situations visible.",
+        "lead": "An extract about identifying a version differs from one about asking another person for clarification. Both may concern interpretation, but collapsing them can hide the different situations described.",
+        "body": "E4 refers to keeping an earlier version for comparison. E5 asks whom to approach about an unfamiliar term. The contrast suggests questions about change visibility and help routes, not findings about actual behaviours or preferences.",
+        "labels": [
+          "Contrasting extract A",
+          "Contrasting extract B",
+          "Analytic question"
+        ],
+        "question": "What distinction would disappear if every extract became a generic request for clarity?"
+      },
+      {
+        "title": "Record the analyst’s influence.",
+        "lead": "A reflexive note identifies how the question and codebook shape the synthesis. In this teaching set, the same author created the extracts and the tags, so the grouping cannot be treated as independent evidence.",
+        "body": "The decision to use findability as a code makes certain phrases more visible. A different question could lead to a different grouping. State that influence directly rather than presenting the theme map as the only possible reading.",
+        "labels": [
+          "Analyst choice",
+          "Possible alternative",
+          "Effect on synthesis"
+        ],
+        "question": "Which coding choice most strongly shapes the report’s story?"
+      },
+      {
+        "title": "State the finding boundary.",
+        "lead": "A useful exercise synthesis describes an interpretation of the examples and the question it raises. It should not claim actual research insights, validated needs or a tested service improvement.",
+        "body": "A bounded statement is that the six invented extracts illustrate several ways to discuss card interpretation: finding, clarifying, recognising versions and using examples. The statement remains about the teaching material, not about real readers.",
+        "labels": [
+          "Bounded synthesis",
+          "Source trace",
+          "Claim not supported"
+        ],
+        "question": "Which phrase would accidentally turn an illustrative theme into an empirical finding?"
+      },
+      {
+        "title": "Turn themes into questions to verify.",
+        "lead": "Finish with questions that could be investigated through appropriate real methods. Keep the invented extract export and analytic limitations with the report.",
+        "body": "A future inquiry might examine when a version label matters and which help route fits a defined context. That inquiry would require its own suitable design and permissions. This template has not recruited, interviewed or studied anyone.",
+        "labels": [
+          "Verification question",
+          "Appropriate next source",
+          "Handoff artifact"
+        ],
+        "question": "What evidence would be needed before acting on this theme map?"
+      }
+    ]
+  },
+  {
+    "id": "landscape-scan",
+    "title": "LANDSCAPE SCAN",
+    "subtitle": "领域扫描报告",
+    "category": "报告",
+    "layout": "landscape",
+    "color": "#2a6b73",
+    "wash": "#e2f0ec",
+    "framework": "比较地图与机会空白",
+    "scope": "Entirely synthetic report exercise: source records, statements and version events are invented. Illustrations are not empirical evidence. No actual study, operational result, market research or participant interview is supplied.",
+    "sources": [
+      "tideline/02",
+      "swatch/02",
+      "open-shelf/09",
+      "common-ground/05"
+    ],
+    "chapters": [
+      {
+        "title": "Scan a fictional option space.",
+        "lead": "This report compares six invented prompt-management concepts across four binary feature dimensions. The exercise is a comparison model, not a market survey, competitor benchmark or description of real products.",
+        "body": "North, Bridge, Grove, Beacon, Harbor and Thread are placeholders. Fifteen of the 24 feature flags are true. A feature count can describe the model but cannot establish quality, value, usability or a winning product.",
+        "labels": [
+          "Scan question",
+          "Option boundary",
+          "Ranking not supplied"
+        ],
+        "question": "What decision could this comparison help frame without pretending to be real market research?"
+      },
+      {
+        "title": "Declare the scan boundary.",
+        "lead": "A landscape is shaped by what it includes and excludes. Here the closed set contains six authored concepts, with no external product search or verification.",
+        "body": "A real scan would need source locations, observation dates, inclusion logic and a plan to revisit changing information. The exported six-row source makes this small fictional boundary inspectable rather than suggesting exhaustive market coverage.",
+        "labels": [
+          "Included concepts",
+          "Search not performed",
+          "External source needed"
+        ],
+        "question": "What would need to change before the report could claim actual landscape coverage?"
+      },
+      {
+        "title": "Choose consistent dimensions.",
+        "lead": "The four dimensions are visible version labels, a shared index, an offline copy and a review note. A binary flag means only that the capability is stipulated in the fictional row.",
+        "body": "True does not mean tested, well implemented or appropriate for a particular user. False means absent in this model, not a verified weakness of a real product. Keep definition questions separate from capability counts.",
+        "labels": [
+          "Dimension",
+          "Meaning of true",
+          "Meaning of false"
+        ],
+        "question": "Which dimension would require a more precise definition before comparing actual products?"
+      },
+      {
+        "title": "Keep the option index inspectable.",
+        "lead": "Each concept has an identifier and all four flags in the source. Do not hide inconvenient attributes behind a single summary score.",
+        "body": "North has version and index flags; Bridge has version, offline and review; Grove has index and offline. Beacon has version, index and review; Harbor has offline and review; Thread has version, index and offline. These are invented configurations.",
+        "labels": [
+          "Option identifier",
+          "Stipulated features",
+          "Source trace"
+        ],
+        "question": "Can a reader reconstruct every concept without relying on an unqualified score?"
+      },
+      {
+        "title": "Read the capability matrix.",
+        "lead": "Version, index and offline flags each appear in four of the six rows. Review-note flags appear in three. The column counts sum to 15 true flags across 24 cells.",
+        "body": "That total does not mean that 62.5% of an actual market supports these features. It is a property of six authored examples. Keep the denominator and fictional source label beside any summary of the matrix.",
+        "labels": [
+          "Column totals",
+          "Total flags",
+          "Denominator boundary"
+        ],
+        "question": "Which phrasing would incorrectly turn a model count into a market statistic?"
+      },
+      {
+        "title": "Map a pair of dimensions.",
+        "lead": "A two-dimension map is a projection, not the full landscape. Use version visibility and offline copy to show how different configurations can occupy the same region.",
+        "body": "Bridge and Thread both have version and offline flags. North and Beacon have version without offline; Grove and Harbor have offline without version. No concept occupies neither cell in this particular model. The omitted dimensions still matter.",
+        "labels": [
+          "Map axes",
+          "Overlapping options",
+          "Omitted dimensions"
+        ],
+        "question": "What important difference is hidden when two concepts share one map cell?"
+      },
+      {
+        "title": "Treat a signal as a hypothesis.",
+        "lead": "A pattern in the comparison can suggest a question to investigate, but it is not a verified trend. This source has no time series, adoption data or external observations.",
+        "body": "The combination of offline access and review notes could prompt a design discussion. It cannot be called emerging demand, a growth segment or an underserved market on the basis of these six invented configurations.",
+        "labels": [
+          "Pattern noticed",
+          "Hypothesis",
+          "Evidence not supplied"
+        ],
+        "question": "Which independent source would be needed before calling the pattern a real trend?"
+      },
+      {
+        "title": "Mark information gaps honestly.",
+        "lead": "A binary feature matrix leaves out usability, maintenance, cost, rights and context. Unknown information should stay unknown rather than being filled with assumed ratings.",
+        "body": "The model supplies no prices, quality tests, product maturity or actual service commitments. A richer real comparison would need relevant sources for each dimension and could reveal that the initial four-feature framing is insufficient.",
+        "labels": [
+          "Missing dimension",
+          "Needed source",
+          "Effect on comparison"
+        ],
+        "question": "Which missing dimension could reverse a choice based only on feature presence?"
+      },
+      {
+        "title": "Frame an opportunity without claiming demand.",
+        "lead": "An apparent empty combination can be a prompt for exploration, not evidence of a valuable opportunity. A concept still needs a coherent purpose and appropriate validation.",
+        "body": "The model has no row with all four flags, but adding every capability is not automatically a useful design. Context, maintenance and user intent could make a narrower option preferable. No market size or commercial result is supplied.",
+        "labels": [
+          "Potential combination",
+          "Intended purpose",
+          "Validation question"
+        ],
+        "question": "What would show that filling a matrix gap is useful rather than merely possible?"
+      },
+      {
+        "title": "Leave a monitoring plan.",
+        "lead": "Close with the sources and comparison rules a real scan would need to maintain. Distinguish a proposed monitoring activity from a task accepted by an actual owner.",
+        "body": "A future scan could record verified product versions, source dates and unresolved feature definitions. The present report remains a six-concept teaching matrix. Preserve the complete source and the fictional labels when sharing a modified version.",
+        "labels": [
+          "Future source",
+          "Revisit rule",
+          "Role to confirm"
+        ],
+        "question": "What should a later reviewer check before reusing this comparison?"
+      }
+    ]
+  },
+  {
+    "id": "decision-audit",
+    "title": "DECISION AUDIT",
+    "subtitle": "决策回看报告",
+    "category": "报告",
+    "layout": "audit",
+    "color": "#71483e",
+    "wash": "#f0e7df",
+    "framework": "决策时间线与假设追踪",
+    "scope": "Entirely synthetic report exercise: source records, statements and version events are invented. Illustrations are not empirical evidence. No actual study, operational result, market research or participant interview is supplied.",
+    "sources": [
+      "afterglow/09",
+      "tideline/15",
+      "common-ground/03",
+      "open-shelf/06"
+    ],
+    "chapters": [
+      {
+        "title": "Review the decision in its own context.",
+        "lead": "This report follows five invented version events around a prompt-index decision. The choice is recorded at V3; V4 and V5 are later review entries, not information available at the decision point.",
+        "body": "The exercise practises separating contemporary information from hindsight. It contains no real governance record, organisational performance or actual approval. Version labels indicate the fictional sequence and must not be presented as real calendar dates.",
+        "labels": [
+          "Review question",
+          "Decision point",
+          "Historical boundary"
+        ],
+        "question": "What information was available when the fictional choice was made?"
+      },
+      {
+        "title": "Recover the original question.",
+        "lead": "The initial question concerns how a reader could identify the current prompt copy. An audit should recover that question before judging a decision against a different goal introduced later.",
+        "body": "V1 records uncertainty about version visibility and ownership. It does not establish demand for a new platform or a failure of the existing folder. The original problem is narrower than a general claim that the service needs transformation.",
+        "labels": [
+          "Original question",
+          "Initial uncertainty",
+          "Goal not supplied"
+        ],
+        "question": "Which later goal would unfairly change the standard used to judge the original decision?"
+      },
+      {
+        "title": "Separate knowns and unknowns.",
+        "lead": "At the decision point, the record distinguishes an available prompt folder from an unconfirmed maintenance role. It supplies no measured user behaviour, cost estimate or implementation agreement.",
+        "body": "A good audit preserves unknowns rather than filling them with an explanation that seems obvious afterwards. V4 still notes that ownership is unresolved, but that later note must not be misrepresented as a newly discovered fact that was confirmed at V3.",
+        "labels": [
+          "Known at V3",
+          "Unknown at V3",
+          "Later information"
+        ],
+        "question": "What should remain uncertain even when the later sequence is visible?"
+      },
+      {
+        "title": "Keep the considered options.",
+        "lead": "V2 lists retaining the folder, adding visible version labels or developing a full index. Record alternatives as they were framed rather than replacing them with a more sophisticated option invented later.",
+        "body": "The lighter-label option aims at the narrow identification question with less proposed structure. The full index has broader ambitions and more maintenance questions. No actual resource availability, usability comparison or feasibility study is supplied for any option.",
+        "labels": [
+          "Retain folder",
+          "Add labels",
+          "Develop index"
+        ],
+        "question": "Which trade-off was part of the original option set?"
+      },
+      {
+        "title": "Trace the sequence without hindsight.",
+        "lead": "V1 frames the question, V2 records options, V3 selects labels for further exploration, V4 preserves the ownership gap and V5 requests a paper walkthrough. The export contains all five entries.",
+        "body": "Only V1–V3 belong to the recorded decision-time set. The sequence shows how the discussion develops, not that the choice succeeded. It contains one choice event and two follow-up review events after that point.",
+        "labels": [
+          "Before choice",
+          "Choice event",
+          "Follow-up entries"
+        ],
+        "question": "Which later entry must not be used as if it had justified the V3 choice?"
+      },
+      {
+        "title": "Track an assumption as an assumption.",
+        "lead": "The V3 reasoning is that a lighter structure may fit the narrow question while maintenance remains unresolved. This is an authored rationale, not evidence that a real team lacked capacity or that labels would work.",
+        "body": "V4 retains the ownership gap rather than declaring it solved. A traceable audit keeps the assumption, its status and any requested review together. It does not silently upgrade a plausible rationale into an established condition.",
+        "labels": [
+          "Working assumption",
+          "Status at choice",
+          "Status at review"
+        ],
+        "question": "Where could the report accidentally turn an assumption into a confirmed fact?"
+      },
+      {
+        "title": "Distinguish follow-up from outcome.",
+        "lead": "V5 asks for a paper walkthrough. A request to inspect an option is not an implementation result, user outcome or completion of the proposed work.",
+        "body": "The dataset supplies no actual walkthrough, publication, adoption or service change. A responsible audit cannot call the decision successful or unsuccessful on an outcome basis. It can only inspect the quality and limits of the recorded reasoning.",
+        "labels": [
+          "Follow-up requested",
+          "Outcome not supplied",
+          "Permitted judgement"
+        ],
+        "question": "What evidence would be needed to evaluate the actual outcome of a real decision?"
+      },
+      {
+        "title": "Check for hindsight bias.",
+        "lead": "A later reviewer knows that ownership remains unresolved, but should still ask whether that uncertainty was visible and addressed appropriately at the time. Avoid judging an earlier choice as inevitable simply because the full sequence is now available.",
+        "body": "The audit can compare the stated goal, available information and explicit conditions. It cannot reconstruct private intentions or blame real people from an invented record. Alternative explanations for a reasoning gap should remain questions.",
+        "labels": [
+          "Later knowledge",
+          "Earlier information",
+          "Fair review question"
+        ],
+        "question": "How would you phrase a critique without relying on information unavailable at the choice point?"
+      },
+      {
+        "title": "Extract a reusable lesson.",
+        "lead": "A lesson should identify a reasoning practice that could help a future decision, not claim that one fictional option is generally best. Keep the lesson connected to a visible part of the record.",
+        "body": "For example, preserve the ownership question beside the option choice, and distinguish permission to explore from permission to implement. The lesson concerns documentation discipline; it does not establish a rule that labels are better than indexes.",
+        "labels": [
+          "Traceable lesson",
+          "Relevant entry",
+          "Generalisation limit"
+        ],
+        "question": "What practice could transfer to a different decision without copying the fictional choice?"
+      },
+      {
+        "title": "Close the audit with open questions.",
+        "lead": "Package the original question, option set, decision-time information and later review entries together. Record what remains unknown and what further evidence would support a real outcome review.",
+        "body": "The five-event source is complete for this exercise. It contains no real dates, appointments, approvals or results. Retain those boundaries when using the report structure for a genuine record, which would require verified context and appropriate access.",
+        "labels": [
+          "Audit boundary",
+          "Missing outcome source",
+          "Next review question"
+        ],
+        "question": "What should a later reviewer verify before treating this as an account of a real decision?"
+      }
+    ]
+  }
+]

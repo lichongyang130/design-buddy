@@ -1,0 +1,43 @@
+{
+  "source": "authored-fictional-training-register",
+  "synthetic": true,
+  "notCertification": true,
+  "summary": {
+    "proposedBlocks": 5,
+    "totalTeachingMinutes": 45,
+    "actualAttendance": null,
+    "measuredLearningGain": null
+  },
+  "records": [
+    {
+      "block": "opening",
+      "teaching_minutes": 5,
+      "status": "proposed",
+      "actual_duration": null
+    },
+    {
+      "block": "demonstration",
+      "teaching_minutes": 8,
+      "status": "proposed",
+      "actual_duration": null
+    },
+    {
+      "block": "practice",
+      "teaching_minutes": 12,
+      "status": "proposed",
+      "actual_duration": null
+    },
+    {
+      "block": "discussion",
+      "teaching_minutes": 12,
+      "status": "proposed",
+      "actual_duration": null
+    },
+    {
+      "block": "closing",
+      "teaching_minutes": 8,
+      "status": "proposed",
+      "actual_duration": null
+    }
+  ]
+}

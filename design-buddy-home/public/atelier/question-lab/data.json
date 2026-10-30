@@ -1,0 +1,165 @@
+{
+  "work": {
+    "id": "question-lab",
+    "title": "QUESTION LAB",
+    "subtitle": "问题实验室",
+    "category": "课程",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "framework": "探究式学习循环",
+    "scope": "Fictional adult learning exercises. Illustrations are not records of real participants or research evidence. No accredited qualification or actual learner outcomes are supplied.",
+    "layout": "inquiry",
+    "color": "#25375f",
+    "wash": "#e4e9f7",
+    "expansion": "documents-50",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / QUESTION LAB",
+      "title": "Start with a noticed difference.",
+      "lead": "This inquiry course practises moving from a visible detail to a question that can be investigated. Use the fictional library scene as a prompt, not as research evidence.",
+      "body": "An adult learner notices two differently coloured notebooks. The colour is visible; who uses them and why are unknown. The first task is to keep those statements separate.",
+      "subheading": "Observation → question → assumption → evidence → revision",
+      "detail": "Working record: Record two visible details and one thing the picture cannot tell you. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Record two visible details and one thing the picture cannot tell you.",
+      "image": 1,
+      "kind": "cover",
+      "module": "现象记录"
+    },
+    {
+      "section": "02 / QUESTION LAB",
+      "title": "Build a question tree.",
+      "lead": "Put one broad curiosity at the root and divide it into smaller questions. Each branch should ask for a different kind of information rather than repeat the same judgement.",
+      "body": "Root: how might a study corner support discussion? Branches might concern the purpose of the session, the material people use and how they choose a place to sit. None is established by a picture.",
+      "subheading": "Root question / three branches / one selected leaf",
+      "detail": "Working record: Write a root question, three branches and the narrowest question worth pursuing first. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Write a root question, three branches and the narrowest question worth pursuing first.",
+      "image": 1,
+      "kind": "body",
+      "module": "问题树"
+    },
+    {
+      "section": "03 / QUESTION LAB",
+      "title": "Make an assumption card.",
+      "lead": "An assumption is a provisional explanation, not a finding. Give it a short name and record what you expect to observe if it were useful.",
+      "body": "Assumption A: a shared sketch might help a discussion stay focused. A possible observation is whether speakers refer to the same sketch. Other explanations, such as a facilitator prompt, must remain visible.",
+      "subheading": "Assumption / expected observation / alternative explanation",
+      "detail": "Working record: Complete one card without using the words proven or always. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Complete one card without using the words proven or always.",
+      "image": 2,
+      "kind": "body",
+      "module": "假设卡"
+    },
+    {
+      "section": "04 / QUESTION LAB",
+      "title": "Request the evidence you need.",
+      "lead": "A useful evidence request names the question, the kind of material required and the limit of what that material could support. Do not collect personal data for this exercise.",
+      "body": "For the shared-sketch question, an invented transcript with references to objects would be more relevant than a photograph of an attractive room. A transcript still would not establish a causal effect.",
+      "subheading": "Question / source type / relevance / limitation",
+      "detail": "Working record: Write an evidence request that another learner could understand without seeing your notes. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Write an evidence request that another learner could understand without seeing your notes.",
+      "image": 2,
+      "kind": "body",
+      "module": "证据请求"
+    },
+    {
+      "section": "05 / QUESTION LAB",
+      "title": "Try a paper experiment.",
+      "lead": "Use two short invented dialogue extracts to practise applying the same rule. This is a desk exercise in consistent reading, not an experiment involving real participants.",
+      "body": "Extract A: I mean the left-hand shape. Extract B: I prefer this version. Code whether each sentence explicitly refers to a shared object. Keep the original wording beside your code.",
+      "subheading": "Extract / coding rule / code / uncertainty",
+      "detail": "Working record: Apply one coding rule to both extracts and flag any ambiguous phrase. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Apply one coding rule to both extracts and flag any ambiguous phrase.",
+      "image": 3,
+      "kind": "body",
+      "module": "练习实验"
+    },
+    {
+      "section": "06 / QUESTION LAB",
+      "title": "Compare without inventing a winner.",
+      "lead": "A comparison should show the criterion before the judgement. If the material is too thin, an unresolved result is more useful than a confident ranking.",
+      "body": "Sentence A names a shape; sentence B names a preference. That difference supports a description of the sentences, not a conclusion about which group learned more.",
+      "subheading": "Criterion / example A / example B / bounded conclusion",
+      "detail": "Working record: Write a comparison that stays within what the two extracts actually contain. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Write a comparison that stays within what the two extracts actually contain.",
+      "image": 3,
+      "kind": "body",
+      "module": "比较记录"
+    },
+    {
+      "section": "07 / QUESTION LAB",
+      "title": "Invite a challenge.",
+      "lead": "Peer feedback should identify a claim, ask which material supports it and offer one alternative reading. The aim is to improve the inquiry rather than evaluate a person.",
+      "body": "A peer might ask whether left-hand refers to a shared diagram or only the speaker’s page. That question exposes a missing context which the coding rule should acknowledge.",
+      "subheading": "Claim under review / challenge / missing context",
+      "detail": "Working record: Write one generous challenge and the exact passage it addresses. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Write one generous challenge and the exact passage it addresses.",
+      "image": 4,
+      "kind": "body",
+      "module": "同伴反馈"
+    },
+    {
+      "section": "08 / QUESTION LAB",
+      "title": "Show your revision.",
+      "lead": "Keep the earlier wording visible beside the revision so a reader can see which assumption changed. Revision is a traceable decision rather than a replacement of the record.",
+      "body": "Earlier: the shared sketch improved discussion. Revised: one invented sentence explicitly names a shape, while the setting and effect on discussion remain unknown.",
+      "subheading": "Before / reason for change / after",
+      "detail": "Working record: Revise one claim and name the evidence boundary that prompted the change. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Revise one claim and name the evidence boundary that prompted the change.",
+      "image": 4,
+      "kind": "body",
+      "module": "修订页"
+    },
+    {
+      "section": "09 / QUESTION LAB",
+      "title": "Transfer the method.",
+      "lead": "Apply the inquiry sequence to a different fictional scene. Transfer means retaining the reasoning steps while changing the subject, not copying the previous conclusion.",
+      "body": "In a courtyard illustration, a learner notices an empty chair. Start with a question about what context is missing; do not infer low attendance, exclusion or preference from the empty seat.",
+      "subheading": "New detail / new question / source request",
+      "detail": "Working record: Draft a fresh question tree for an object outside the library example. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Draft a fresh question tree for an object outside the library example.",
+      "image": 5,
+      "kind": "body",
+      "module": "迁移任务"
+    },
+    {
+      "section": "10 / QUESTION LAB",
+      "title": "Keep an inquiry record.",
+      "lead": "Finish with a compact account of the route you took: noticed detail, selected question, assumption, source request and revised claim. A useful record includes an unresolved question.",
+      "body": "This course provides no grade or accredited qualification. Its outcome is a more inspectable piece of reasoning and a clear account of which evidence you still do not have.",
+      "subheading": "Detail / question / assumption / revision / next source",
+      "detail": "Working record: Choose the strongest revision in your record and explain why it is more careful. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Choose the strongest revision in your record and explain why it is more careful.",
+      "image": 5,
+      "kind": "appendix",
+      "module": "学习反思"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated illustration for question-lab"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: tideline/04.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: swatch/03.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: common-ground/02.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: afterglow/11.jpg"
+    }
+  ]
+}

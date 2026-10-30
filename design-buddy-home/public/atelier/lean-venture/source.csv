@@ -1,0 +1,7 @@
+hypothesis,domain,question,status,actual_evidence
+H01,customer,"Who uses, chooses and authorises the offering?",untested,
+H02,problem,Does the task warrant a separate offering?,untested,
+H03,value,Does the mechanism make a useful difference to the task?,untested,
+H04,channel,Can an appropriate reader understand the concept?,untested,
+H05,revenue,Who would pay for which defined engagement?,untested,
+H06,cost,What work and resources would delivery require?,untested,

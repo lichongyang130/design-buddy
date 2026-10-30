@@ -1,3 +1,4 @@
+import { NEW_CREATION_SKILLS, RETIRED_REGISTRY_NAMES } from './creation-skill-policy.js'
 /* ============================================================
    本地技能注册表（零后端、零密钥）
    - 已安装技能在 store.state.skills，注册表是「可安装 / 可更新」的唯一事实源
@@ -6,7 +7,7 @@
    - 版本号语义化比较，驱动「技能自动更新」
    ============================================================ */
 
-export const SKILL_REGISTRY = [
+const LEGACY_SKILL_REGISTRY = [
   { id: 'reg-outline', name: 'PPT 大纲生成', desc: '根据主题自动生成演示大纲', version: '1.3.0', risk: 'trusted' },
   { id: 'reg-copy', name: '文案润色', desc: '优化表达与语气', version: '1.2.0', risk: 'trusted' },
   { id: 'reg-chart', name: '数据图表化', desc: '把数字转成图表建议', version: '2.0.0', risk: 'trusted' },
@@ -16,6 +17,11 @@ export const SKILL_REGISTRY = [
   { id: 'reg-summary', name: '长文摘要', desc: '把长文档压缩为结构化摘要', version: '1.0.0', risk: 'trusted' },
   { id: 'reg-research', name: '深度联网调研', desc: '自动浏览多个来源并汇总，涉及外部数据访问', version: '1.0.0', risk: 'review' },
   { id: 'reg-automation', name: '自动化工作流执行', desc: '代表你执行多步操作与外部写入', version: '1.0.0', risk: 'review' },
+]
+
+export const SKILL_REGISTRY = [
+  ...LEGACY_SKILL_REGISTRY.map(s => ({ ...s, retired: RETIRED_REGISTRY_NAMES.has(s.name) })),
+  ...NEW_CREATION_SKILLS.map(s => ({ ...s, version: '1.0.0', risk: 'trusted' })),
 ]
 
 // 预置技能（core.js seed）→ 注册表条目的名称映射，用于升级检测
@@ -42,5 +48,5 @@ export function hasUpdate(skill) {
 
 export function availableToInstall(installed) {
   const names = new Set(installed.map((s) => s.name))
-  return SKILL_REGISTRY.filter((r) => !names.has(r.name))
+  return SKILL_REGISTRY.filter((r) => !r.retired && !names.has(r.name))
 }

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "skills-portfolio",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 16864,
+      "sha256": "21fe876659a9da28379cdde5877b62d981c24ecd14ae6f457d62e56f9ae45737"
+    },
+    {
+      "path": "content.js",
+      "bytes": 13399,
+      "sha256": "cc772c513f7fb184f635300148cd70b66a2359a0f77c71ec89d3f4612e8e1a55"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 546,
+      "sha256": "3b4047d41dc74bd9215cd55f1548bfb174141598a044f55150930b17510ac6e0"
+    },
+    {
+      "path": "skills-portfolio.docx",
+      "bytes": 679093,
+      "sha256": "e80b9e8bde6c5ebdac10d0f97c017f4e02fcf3a99eff7394585e17c947437c4d"
+    },
+    {
+      "path": "skills-portfolio.pdf",
+      "bytes": 749843,
+      "sha256": "c39625875872a19780d7e6605ddab031f0e58b2d41edaf12fbabab93e3eda2f3"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 443,
+      "sha256": "309d6753a8a749fd365eb74e2e733b60266717ab52458af5f954d1b6d4b0683f"
+    },
+    {
+      "path": "source.json",
+      "bytes": 2164,
+      "sha256": "44864a55fc4483fb3920736e6afa984debc7e710da590bcf815e62eb749cf5a0"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 175174,
+      "sha256": "c433dd1fccd8ed92a829a5f096405a78c4ef2281881d93d93b5be2716e0b95b5"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 138952,
+      "sha256": "4dca2e4a5b8b308b3975ff5cbf93bce3123723cd4137cd97899661e82701be61"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 130799,
+      "sha256": "21f3456a5a869e9d9cd01048708d0e64baef9184b91b5ddec62f0ee3f44bfc10"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 134781,
+      "sha256": "5c93822f2e4b38a8130161e3b2a84c874af0c9517ef90e22316b90d7a27545f5"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 90714,
+      "sha256": "641ac56cd7bf8f9ddb2b96af00a367abaca2e90c26397dc72ff56d6fba94c55e"
+    }
+  ]
+}

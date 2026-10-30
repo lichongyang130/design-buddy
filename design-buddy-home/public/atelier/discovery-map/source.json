@@ -1,0 +1,72 @@
+{
+  "source": "authored-fictional-product-specification",
+  "synthetic": true,
+  "notActualProductEvidence": true,
+  "summary": {
+    "nodes": 7,
+    "opportunities": 2,
+    "hypotheses": 4,
+    "root": "O00",
+    "actualUsers": null,
+    "validatedNeeds": null,
+    "actualFindings": null
+  },
+  "records": [
+    {
+      "node": "O00",
+      "parent": null,
+      "kind": "outcome",
+      "statement": "Make the passage-note relationship inspectable",
+      "status": "intended",
+      "actual_evidence": null
+    },
+    {
+      "node": "O01",
+      "parent": "O00",
+      "kind": "opportunity",
+      "statement": "Recover relevant source context",
+      "status": "unvalidated",
+      "actual_evidence": null
+    },
+    {
+      "node": "O02",
+      "parent": "O00",
+      "kind": "opportunity",
+      "statement": "Understand revision status",
+      "status": "unvalidated",
+      "actual_evidence": null
+    },
+    {
+      "node": "H11",
+      "parent": "O01",
+      "kind": "hypothesis",
+      "statement": "An adjacent excerpt may support context recovery",
+      "status": "untested",
+      "actual_evidence": null
+    },
+    {
+      "node": "H12",
+      "parent": "O01",
+      "kind": "hypothesis",
+      "statement": "A source link may support context recovery",
+      "status": "untested",
+      "actual_evidence": null
+    },
+    {
+      "node": "H21",
+      "parent": "O02",
+      "kind": "hypothesis",
+      "statement": "A visible status label may explain revision state",
+      "status": "untested",
+      "actual_evidence": null
+    },
+    {
+      "node": "H22",
+      "parent": "O02",
+      "kind": "hypothesis",
+      "statement": "A change note may explain revision meaning",
+      "status": "untested",
+      "actual_evidence": null
+    }
+  ]
+}

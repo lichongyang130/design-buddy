@@ -1,0 +1,152 @@
+{
+  "work": {
+    "id": "stillwater-proposal",
+    "title": "STILLWATER",
+    "subtitle": "共享阅读角概念提案书",
+    "category": "提案",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "framework": "proposal: Condition for discussion / distinct native A4 document layout",
+    "scope": "Fictional shared-reading concept. No venue permission, dimensions, procurement quote, construction specification or accessibility approval.",
+    "layout": "proposal",
+    "color": "#285c86",
+    "wash": "#e9f0f8"
+  },
+  "pages": [
+    {
+      "section": "01 / STILLWATER",
+      "title": "Propose a conversation, not a finished room.",
+      "lead": "STILLWATER explores an imagined shared reading corner as a proposal for discussion. Its scenes establish visual tone, not a real site or approved design.",
+      "body": "The proposal asks whether a small reading-focused setting is worth investigating. It does not claim that a venue, budget, operator or responsible reviewer has been appointed.",
+      "subheading": "Condition for discussion",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "State the decision this discussion could responsibly inform.",
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / STILLWATER",
+      "title": "Use the proposal in three passes.",
+      "lead": "First read the intention, then the unresolved conditions, then the proposed handoff. A persuasive image should not hide a missing source.",
+      "body": "Pages 3–5 explain the idea and alternatives. Pages 6–8 distinguish responsibilities, resources and review questions. Pages 9–10 identify the response sought and the limits of the proposal.",
+      "subheading": "Condition for discussion",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Choose a question for each reading pass.",
+      "image": 1,
+      "kind": "contents"
+    },
+    {
+      "section": "03 / STILLWATER",
+      "title": "Define the problem without inventing demand.",
+      "lead": "The imagined issue is a desire for a quieter place to read together. That desire is a premise for the exercise, not a measured community need.",
+      "body": "A real problem statement would identify its source and scope. Until such evidence exists, use language such as intention to explore rather than unmet demand has been proven.",
+      "subheading": "Condition for discussion",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which source would establish a real need?",
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / STILLWATER",
+      "title": "Describe the proposed experience.",
+      "lead": "Imagine arriving, finding a place to pause and choosing whether to read alone or join a conversation. This narrative is not a tested user journey.",
+      "body": "The sequence helps a reader discuss atmosphere and purpose. It does not supply an approved route, furniture arrangement, capacity or rule for operating a real space.",
+      "subheading": "Condition for discussion",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which part of the experience remains an assumption?",
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / STILLWATER",
+      "title": "Keep an alternative beside the favourite.",
+      "lead": "Compare a dedicated reading corner with a temporary reading session in an existing room. Both are fictional options rather than confirmed plans.",
+      "body": "An alternative is useful when it tests the same intention under different conditions. Do not turn a preferred image into evidence that the preferred option is feasible.",
+      "subheading": "Condition for discussion",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What would make the alternative worth investigating?",
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / STILLWATER",
+      "title": "Separate responsibilities from appointments.",
+      "lead": "The concept writer can state the idea, a source reviewer can check evidence and an authorised decision-maker can address a real commitment. These are role categories only.",
+      "body": "No person has accepted a task through this template. Confirm actual responsibility outside the document before presenting a named owner or a reviewed decision.",
+      "subheading": "Condition for discussion",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Who would need to review a real proposal?",
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / STILLWATER",
+      "title": "Name the missing resource categories.",
+      "lead": "This example supplies no prices. Venue arrangements, staffing, furniture, maintenance and appropriate reviews remain separate questions.",
+      "body": "A short list of attractive objects is not a budget. Record unknown categories explicitly rather than inserting invented totals to make the document look finished.",
+      "subheading": "Condition for discussion",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which omitted cost category could change the discussion?",
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / STILLWATER",
+      "title": "Record the conditions for a next step.",
+      "lead": "A next conversation could clarify source quality, responsibility and the range of options. It is not permission to purchase, install or operate anything.",
+      "body": "Use a condition such as obtain relevant site information rather than a promise such as open next month. A condition makes the dependency visible without inventing a schedule.",
+      "subheading": "Condition for discussion",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What must be clarified before commitment?",
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / STILLWATER",
+      "title": "Ask for a bounded response.",
+      "lead": "Invite a reader to identify a missing source, challenge an assumption or suggest a relevant alternative. Do not ask the document to stand in for formal approval.",
+      "body": "A useful response identifies the passage being discussed and the kind of evidence needed. Agreeing with an image is not the same as accepting a real project responsibility.",
+      "subheading": "Condition for discussion",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What exact response would improve the next draft?",
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / STILLWATER",
+      "title": "Retain the proposal boundary.",
+      "lead": "Attach the fictional-source note, current version and unresolved conditions whenever the proposal is shared. The pictures remain illustrations even after the text is edited.",
+      "body": "A real proposal requires its own verified context and appropriate decision process. This template organises a conversation; it does not certify feasibility, funding or compliance.",
+      "subheading": "Condition for discussion",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which boundary must travel with the exported document?",
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for this case"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: open-shelf/06.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: tideline/15.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: common-ground/04.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: swatch/04.jpg"
+    }
+  ]
+}

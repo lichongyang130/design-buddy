@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "work": "pilot-charter",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 14338,
+      "sha256": "8c432673eb4447d13d8d33f753fcae8a79aa55bae6d8d5a98f9a2dad7a872387"
+    },
+    {
+      "path": "content.js",
+      "bytes": 11808,
+      "sha256": "ef079765fe7c0854cb4c285d8a462de26e45a52ad57ec6d10241a4db63744e58"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 511,
+      "sha256": "4ae0bc97481b5d5a960a9a2ebf4180e06ab39340e3682ce1011a22daa0a2608f"
+    },
+    {
+      "path": "pilot-charter.docx",
+      "bytes": 1028184,
+      "sha256": "5b4cd550639efea06d0530c48d22b92143f0de3e3296e47e3d74b973932f0b31"
+    },
+    {
+      "path": "pilot-charter.pdf",
+      "bytes": 1109258,
+      "sha256": "24a3513d76caa9b8dd25ddb45a8fc9e576e7aee37c8e3c8644bcbaf08055574e"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 189362,
+      "sha256": "0d929010150a151cbe5afb5e00ac86c4075f334381914fce3b417c51f3d7d132"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 226155,
+      "sha256": "d09444844d5f295c6239e1ffbbaffd21c744e539ad822095e53b142403f70b53"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 223197,
+      "sha256": "0f89ebee5e4901898fe7885b03222633cf28f411687d8d28e2dc8bd954aee385"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 156965,
+      "sha256": "e1935a3497cfb04adc93327b94572e5334bca034d6bcbd72c19ff2b4726df7be"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 224584,
+      "sha256": "a73a17c9ef1e0b531d56fb612461db17f50a5b2ae725661839181b5fd7ff1281"
+    }
+  ]
+}

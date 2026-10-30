@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    "role-onboarding",
+    "scenario-practice",
+    "facilitator-guide",
+    "peer-coaching",
+    "process-rehearsal",
+    "skills-portfolio"
+  ],
+  "pagesPerCase": 10,
+  "distinctImagesPerCase": 5,
+  "newImages": 0,
+  "curatedExistingImages": 30,
+  "completedOf50": 35
+}

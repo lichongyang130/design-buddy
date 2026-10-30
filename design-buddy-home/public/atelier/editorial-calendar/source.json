@@ -1,0 +1,119 @@
+{
+  "source": "authored-illustrative-marketing-register",
+  "synthetic": true,
+  "notActualCampaign": true,
+  "summary": {
+    "proposedSlots": 12,
+    "pillars": {
+      "explain": 4,
+      "practice": 4,
+      "reflect": 4
+    },
+    "channels": {
+      "article": 3,
+      "email": 3,
+      "social": 3,
+      "handout": 3
+    },
+    "publishedSlots": 0,
+    "actualAudience": null
+  },
+  "records": [
+    {
+      "slot": "S01",
+      "pillar": "explain",
+      "channel": "article",
+      "topic": "Why save a question?",
+      "status": "proposed",
+      "actual_date": null
+    },
+    {
+      "slot": "S02",
+      "pillar": "practice",
+      "channel": "email",
+      "topic": "Annotate one passage",
+      "status": "proposed",
+      "actual_date": null
+    },
+    {
+      "slot": "S03",
+      "pillar": "reflect",
+      "channel": "social",
+      "topic": "Revisit a changed note",
+      "status": "proposed",
+      "actual_date": null
+    },
+    {
+      "slot": "S04",
+      "pillar": "explain",
+      "channel": "handout",
+      "topic": "Explain a handover",
+      "status": "proposed",
+      "actual_date": null
+    },
+    {
+      "slot": "S05",
+      "pillar": "practice",
+      "channel": "article",
+      "topic": "Write a context card",
+      "status": "proposed",
+      "actual_date": null
+    },
+    {
+      "slot": "S06",
+      "pillar": "reflect",
+      "channel": "email",
+      "topic": "Question an instruction",
+      "status": "proposed",
+      "actual_date": null
+    },
+    {
+      "slot": "S07",
+      "pillar": "explain",
+      "channel": "social",
+      "topic": "Keep source context",
+      "status": "proposed",
+      "actual_date": null
+    },
+    {
+      "slot": "S08",
+      "pillar": "practice",
+      "channel": "handout",
+      "topic": "Check an intended reader",
+      "status": "proposed",
+      "actual_date": null
+    },
+    {
+      "slot": "S09",
+      "pillar": "reflect",
+      "channel": "article",
+      "topic": "Reflect on an exception",
+      "status": "proposed",
+      "actual_date": null
+    },
+    {
+      "slot": "S10",
+      "pillar": "explain",
+      "channel": "email",
+      "topic": "Explain a revision",
+      "status": "proposed",
+      "actual_date": null
+    },
+    {
+      "slot": "S11",
+      "pillar": "practice",
+      "channel": "social",
+      "topic": "Practice a source check",
+      "status": "proposed",
+      "actual_date": null
+    },
+    {
+      "slot": "S12",
+      "pillar": "reflect",
+      "channel": "handout",
+      "topic": "Review an open question",
+      "status": "proposed",
+      "actual_date": null
+    }
+  ]
+}

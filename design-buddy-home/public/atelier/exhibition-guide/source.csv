@@ -1,0 +1,7 @@
+work_id,title,zone_id,guide_page,source_type,actual_object,display_permission
+W01,Window Note,Z01,4,authored-work-card,,
+W02,Unnamed Shelf,Z01,4,authored-work-card,,
+W03,Label Exchange,Z02,5,authored-work-card,,
+W04,Paired Traces,Z02,5,authored-work-card,,
+W05,Return Card,Z03,6,authored-work-card,,
+W06,Changed Margin,Z03,6,authored-work-card,,

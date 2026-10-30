@@ -1,3 +1,4 @@
+import { CORE_CONNECTORS } from './connector-policy.js'
 /* ============================================================
    连接器目录（写死种子数据，零后端 / 零外部素材）
    - 每项 = 稳定 id + 名称 + 一句话说明 + 品牌色 + 图标形状
@@ -26,7 +27,7 @@ export const CONNECTOR_ICONS = {
 }
 
 // shape 决定图形，color 是品牌主色（logo 底色取同色 10% 淡染）
-export const CONNECTOR_CATALOG = [
+export const LEGACY_CONNECTOR_CATALOG = [
   { id: 'cn-tdx', name: '通达信', desc: '通过通达信 MCP 查询全球股票行情与财报数据', color: '#e0362f', shape: 'trend', category: '投资理财' },
   { id: 'cn-zxg', name: '腾讯自选股', desc: '直连腾讯自选股，实时掌握持仓与自选行情', color: '#e1483c', shape: 'trend', category: '投资理财' },
   { id: 'cn-qqmail', name: 'QQ邮箱', desc: '收发、搜索和整理 QQ 邮件，支持附件与日程', color: '#d27a06', shape: 'mail', category: '办公协同' },
@@ -68,3 +69,5 @@ export const CONNECTOR_CATALOG = [
   { id: 'cn-map', name: '腾讯地图', desc: '接入腾讯地图各类位置服务，支持路线规划', color: '#2f7bf6', shape: 'map', category: '生活服务' },
   { id: 'cn-qixin', name: '启信慧眼', desc: '通过启信慧眼 MCP 接入企业风险与关系图谱', color: '#2f7bf6', shape: 'search', category: '商业运营' },
 ]
+
+export const CONNECTOR_CATALOG = CORE_CONNECTORS

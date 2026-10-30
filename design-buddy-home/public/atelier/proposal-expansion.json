@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    "pilot-charter",
+    "service-blueprint",
+    "partnership-canvas",
+    "research-commission",
+    "change-case",
+    "creative-treatment"
+  ],
+  "pagesPerCase": 10,
+  "distinctImagesPerCase": 5,
+  "newImages": 6,
+  "curatedExistingImages": 24,
+  "completedOf50": 18
+}

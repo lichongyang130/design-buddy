@@ -1,0 +1,36 @@
+{
+  "source": "authored-illustrative-marketing-register",
+  "synthetic": true,
+  "notActualCampaign": true,
+  "summary": {
+    "options": 3,
+    "dimensions": 4,
+    "trueFlags": 8,
+    "assumedNotTested": true,
+    "prices": null,
+    "verifiedProducts": 0
+  },
+  "records": [
+    {
+      "option": "sequence-folio",
+      "sequence": true,
+      "context_note": false,
+      "portable_set": true,
+      "review_trail": true
+    },
+    {
+      "option": "context-card-box",
+      "sequence": false,
+      "context_note": true,
+      "portable_set": true,
+      "review_trail": false
+    },
+    {
+      "option": "review-binder",
+      "sequence": true,
+      "context_note": true,
+      "portable_set": false,
+      "review_trail": true
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "work": {
+    "id": "open-saturday",
+    "title": "OPEN SATURDAY",
+    "subtitle": "社区图书交换活动策划案",
+    "category": "活动",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "framework": "event: Planning question / distinct native A4 document layout",
+    "scope": "Fictional book-exchange concept. No actual Saturday, date, venue, attendance commitment, safety plan, accessibility approval or operating permission.",
+    "layout": "event",
+    "color": "#7b4858",
+    "wash": "#f0e3e8"
+  },
+  "pages": [
+    {
+      "section": "01 / OPEN SATURDAY",
+      "title": "An invitation to discuss an event idea.",
+      "lead": "OPEN SATURDAY imagines a community book-exchange conversation. The title is a fictional name, not a real date, opening announcement or invitation to attend.",
+      "body": "The document organises purpose, imagined experience, roles and open questions. It does not establish that any real event can proceed.",
+      "subheading": "Planning question",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What is being proposed rather than announced?",
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / OPEN SATURDAY",
+      "title": "Read the event concept in order.",
+      "lead": "Begin with purpose and audience question, then the imagined exchange, responsibilities, communication and handoff. Separate the concept from a real operational plan.",
+      "body": "The reading order is not a timed running sheet. No times, duration, venue capacity, staffing requirement or turnout estimate is supplied.",
+      "subheading": "Planning question",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which section requires separate responsible review?",
+      "image": 1,
+      "kind": "contents"
+    },
+    {
+      "section": "03 / OPEN SATURDAY",
+      "title": "Name the purpose without claiming demand.",
+      "lead": "The fictional purpose is to create a setting in which people could exchange books and conversation. That is an intention, not a measured community need.",
+      "body": "No participant research or commitment exists. A real organiser would need context-specific evidence and an appropriate review process before making public promises.",
+      "subheading": "Planning question",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What would establish a meaningful real purpose?",
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / OPEN SATURDAY",
+      "title": "Describe an imagined arrival.",
+      "lead": "Imagine a reader encountering a clear explanation of the concept and choosing whether to join a conversation. This is not a route or access instruction for a real venue.",
+      "body": "The illustration supplies atmosphere only. It cannot establish usable entrances, capacities, emergency arrangements or accessibility.",
+      "subheading": "Planning question",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which arrival question cannot be answered from the scene?",
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / OPEN SATURDAY",
+      "title": "Keep the exchange rules provisional.",
+      "lead": "A concept discussion might ask how books would be described, what choices participants would have and what information would need to be available. No operating rules are approved.",
+      "body": "Do not turn the example into instructions for handling real property or participant records. Appropriate responsibilities and conditions would need separate clarification.",
+      "subheading": "Planning question",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which rule would require real contextual review?",
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / OPEN SATURDAY",
+      "title": "Use role categories honestly.",
+      "lead": "Possible categories include concept writer, source reviewer, venue contact and communication reviewer. These labels do not appoint people or confirm that they consented to a task.",
+      "body": "A real event would require agreed responsibilities outside this template. Do not fill gaps with invented names or imply an approval through a tidy table.",
+      "subheading": "Planning question",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Who could verify a real responsibility?",
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / OPEN SATURDAY",
+      "title": "Sequence the discussion without a clock.",
+      "lead": "The concept sequence is introduce, explore, exchange questions and close. These are discussion headings, not times or technical cues.",
+      "body": "A real programme would require appropriate planning and review. This document gives no schedule, operational procedure or promise about what happens on an actual day.",
+      "subheading": "Planning question",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What dependency must be clarified before scheduling?",
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / OPEN SATURDAY",
+      "title": "Communicate only what exists.",
+      "lead": "A draft message should label the idea as under discussion and state the response being sought. It should not announce a confirmed venue, booking or attendance opportunity.",
+      "body": "The example contains no real registration, ticket or checkout. A call to action must match something that actually exists in the intended context.",
+      "subheading": "Planning question",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which phrase could accidentally announce a real event?",
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / OPEN SATURDAY",
+      "title": "Collect questions, not invented outcomes.",
+      "lead": "After a fictional concept discussion, record what remains unclear and what type of source is needed. Do not report a turnout, satisfaction score or completed event.",
+      "body": "Any real evaluation would need its own method and responsible data handling. No participant identifiers are needed in this document.",
+      "subheading": "Planning question",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What would a responsible real evaluation require?",
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / OPEN SATURDAY",
+      "title": "Leave the concept ready for review.",
+      "lead": "The handoff states purpose, fictional status, unresolved conditions and the response requested. It does not declare the event ready to run.",
+      "body": "No date, venue, permissions, safety process or access approval is supplied. Keep those boundaries visible wherever the concept is shared.",
+      "subheading": "Planning question",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What remains outside the scope of this planning document?",
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for this case"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: afterglow/04.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: afterglow/06.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: open-shelf/02.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: common-ground/01.jpg"
+    }
+  ]
+}

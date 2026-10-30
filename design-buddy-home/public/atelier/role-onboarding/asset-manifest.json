@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "role-onboarding",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 16307,
+      "sha256": "1586c886141d65140c006966fd6a5b3c03e45665d8c4364f4b2f8f59a1332a2c"
+    },
+    {
+      "path": "content.js",
+      "bytes": 12847,
+      "sha256": "03f4855826c995a8fd2ed62d36cb82d766188adcf10c7b013f2285f3a4b84bf0"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 541,
+      "sha256": "1087e57e25f7641dd99bada50416e82811b48f861c896853ae9baa3633b88294"
+    },
+    {
+      "path": "role-onboarding.docx",
+      "bytes": 876537,
+      "sha256": "54299281671d34deeda56b351ef97ed78493cffdf0d79913e1eba1a77c021371"
+    },
+    {
+      "path": "role-onboarding.pdf",
+      "bytes": 947500,
+      "sha256": "86a1c0b4c50faa903e1d19fa5ee284a197748f863061d178dc836396164cee6d"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 280,
+      "sha256": "d2cfeaacc9f46d48aa7e176bb59613dd71a0d74e5ca032549608b132f037466d"
+    },
+    {
+      "path": "source.json",
+      "bytes": 1086,
+      "sha256": "05947a292ea6c52d28790dc4fd5ce4ebe5277ffc99edd56354d148d49a8b0235"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 204036,
+      "sha256": "9f11d785aafe00ad67aa4fd6321b7cffc2d89cb2eddcd92934c0b84eede18915"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 173430,
+      "sha256": "e3bb1ebc3946474eb7be1dbc969341820af7a6c198cc93ffab0e6618cb8d653f"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 184590,
+      "sha256": "8625eb041bb2c0eabfd41c3c96a7ff4ce306eb99f9943531eef59ec8f23f04e8"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 171076,
+      "sha256": "ef1c2bfdfc90971a4c9d4b6cfd2bc53fae3d451bf2a7c12d5ea74f26af2cff75"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 134027,
+      "sha256": "2a3d7fecc718db310ce678510b4cb6f068cfa3174feb5a5fe78843e72d7695f6"
+    }
+  ]
+}

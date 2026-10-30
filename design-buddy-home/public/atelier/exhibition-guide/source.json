@@ -1,0 +1,69 @@
+{
+  "source": "authored-fictional-event-register",
+  "synthetic": true,
+  "notActualEvent": true,
+  "summary": {
+    "zones": 3,
+    "workCards": 6,
+    "indexPage": 3,
+    "actualVenue": null,
+    "actualInstalledWorks": null,
+    "actualVisitorResponses": null
+  },
+  "records": [
+    {
+      "work_id": "W01",
+      "title": "Window Note",
+      "zone_id": "Z01",
+      "guide_page": 4,
+      "source_type": "authored-work-card",
+      "actual_object": null,
+      "display_permission": null
+    },
+    {
+      "work_id": "W02",
+      "title": "Unnamed Shelf",
+      "zone_id": "Z01",
+      "guide_page": 4,
+      "source_type": "authored-work-card",
+      "actual_object": null,
+      "display_permission": null
+    },
+    {
+      "work_id": "W03",
+      "title": "Label Exchange",
+      "zone_id": "Z02",
+      "guide_page": 5,
+      "source_type": "authored-work-card",
+      "actual_object": null,
+      "display_permission": null
+    },
+    {
+      "work_id": "W04",
+      "title": "Paired Traces",
+      "zone_id": "Z02",
+      "guide_page": 5,
+      "source_type": "authored-work-card",
+      "actual_object": null,
+      "display_permission": null
+    },
+    {
+      "work_id": "W05",
+      "title": "Return Card",
+      "zone_id": "Z03",
+      "guide_page": 6,
+      "source_type": "authored-work-card",
+      "actual_object": null,
+      "display_permission": null
+    },
+    {
+      "work_id": "W06",
+      "title": "Changed Margin",
+      "zone_id": "Z03",
+      "guide_page": 6,
+      "source_type": "authored-work-card",
+      "actual_object": null,
+      "display_permission": null
+    }
+  ]
+}

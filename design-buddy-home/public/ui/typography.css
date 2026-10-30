@@ -1,0 +1,88 @@
+@import url('./fonts/inter.css');
+@import url('./fonts/noto-sans-sc.css');
+@import url('./fonts/noto-sans-tc.css');
+@import url('./fonts/noto-sans-jp.css');
+
+/* Shared chrome tokens; deliberately no root/body rules for original case viewers. */
+:root {
+  --db-cjk-font: 'Noto Sans SC Variable';
+  --db-default-font: 'Inter Variable', var(--db-cjk-font), 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --db-ui-font: var(--db-default-font);
+  --db-text: max(12px, calc(14px * var(--font-scale, 1)));
+  --db-small: max(12px, calc(12px * var(--font-scale, 1)));
+  --db-help: max(12px, calc(13px * var(--font-scale, 1)));
+  --db-card: max(12px, calc(16px * var(--font-scale, 1)));
+  --db-section: max(12px, calc(18px * var(--font-scale, 1)));
+  --db-title: max(12px, calc(24px * var(--font-scale, 1)));
+}
+:root:lang(zh-TW), :root:lang(zh-Hant) { --db-cjk-font: 'Noto Sans TC Variable' }
+:root:lang(ja) { --db-cjk-font: 'Noto Sans JP Variable' }
+
+@media screen {
+  body[data-db-ui], [data-db-chrome] { font-family: var(--db-ui-font) !important; font-size: var(--db-text); line-height: 1.65; -webkit-font-smoothing: antialiased }
+  /* Font overrides stop at artwork boundaries, including theme preview controls. */
+  :is(body[data-db-ui], [data-db-chrome]) :where(*):not(:where(svg,svg *,.theme-preview,.theme-preview *,.te-preview,.te-preview *,#td-deck,#td-deck *,.td-style-slide,.td-style-slide *,[data-db-artwork],[data-db-artwork] *)) { font-family: var(--db-ui-font) !important }
+  body[data-db-ui] :is(input,textarea,select):not([type=checkbox],[type=radio],[type=range],[type=color],.te-preview *,.theme-preview *,#td-deck *),
+  [data-db-chrome] :is(input,textarea,select):not([type=checkbox],[type=radio],[type=range],[type=color],.te-preview *,.theme-preview *,#td-deck *) { font-size: var(--db-text); line-height: 1.6 }
+  :is(body[data-db-ui], [data-db-chrome]) :is(pre,code,kbd,#cn-arguments,#cn-result,.cn-log-detail) { font-family: ui-monospace, 'SF Mono', Consolas, var(--db-cjk-font), monospace !important }
+  body[data-db-ui] :is(.hero-title,.auth-hero h1) { font-size: max(28px, calc(40px * var(--font-scale, 1))); font-weight: 600; line-height: 1.3 }
+  body[data-db-ui] :is(.tpl-title,.media-title,.th-heading) { font-size: var(--db-title); font-weight: 600; line-height: 1.4 }
+  body[data-db-ui] :is(.cn-section-title,.side-title) { font-size: var(--db-section); font-weight: 600 }
+  body[data-db-ui] :is(.rail-item span,.draft-label,.draft-badge) { font-size: var(--db-small); line-height: 1.4 }
+  body[data-db-ui] :is(.nav-item,.sort-btn,.filter-head,.filter-option,.settings-tab) { font-size: var(--db-text); line-height: 1.5 }
+  body[data-db-ui] .card-caption { height: auto; min-height: 22px; align-items: start }
+  body[data-db-ui] .card-caption h3 { font-size: var(--db-text); font-weight: 500; line-height: 1.5 }
+  body[data-db-ui] :is(.tpl-search input,.sort-btn) { height: auto; min-height: 36px }
+  body[data-db-ui] :is(.apps-card-heading h3,.cn-card h3) { font-size: var(--db-card); font-weight: 600 }
+  body[data-db-ui] :is(.apps-card>p,.apps-lede,.apps-about p) { font-size: var(--db-text); line-height: 1.75 }
+  body[data-db-ui] :is(.apps-card-tags,.apps-result-line,.apps-footer) { font-size: var(--db-small); line-height: 1.6 }
+  body[data-db-ui] :is(.theme-preview,.te-preview,#td-deck) { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 14px }
+  body[data-db-ui] #question-chat { font-family: var(--db-ui-font) }
+  body[data-db-ui] :is(.qa-user-bubble,.qa-notice p) { font-size: max(14px, calc(15px * var(--font-scale, 1))); line-height: 1.7 }
+  [data-db-chrome] :is(p,label,small,span,.detail-title,.detail-image-note,.detail-image-grid span,.scope,.notice,#save-state,#position) { font-size: var(--db-help); line-height: 1.65 }
+  [data-db-chrome] :is(button,a,select,textarea) { font-size: var(--db-help); line-height: 1.5 }
+  [data-db-chrome] :is(.detail-description h2,.detail-native-controls>h2,.detail-panel-heading strong) { font-size: var(--db-card); font-weight: 600; line-height: 1.5 }
+  [data-db-chrome] .detail-avatar { font-size: var(--db-small) }
+  [data-db-chrome] :is(.detail-present-button,#present.detail-present-button) { height: auto; min-height: 30px }
+  [data-db-chrome] :is(h2,h3) { font-size: var(--db-card); font-weight: 600 }
+  .detail-description p,.detail-native-controls button,.detail-native-controls a { overflow-wrap: anywhere }
+  body[data-db-ui] :is(.th-tabs,.ex-topbar,.ex-top-actions,.ex-sort) { flex-wrap: wrap; max-width: 100%; row-gap: 10px }
+  body[data-db-ui] .ex-top-tabs { flex-wrap: wrap; row-gap: 10px; min-width: 0 }
+  body[data-db-ui] .apps-card-heading { flex-wrap: wrap }
+  body[data-db-ui] :is(.apps-header nav,.apps-footer) { flex-wrap: wrap }
+  body[data-db-ui] :is(.lab-spec,.lab-catalog-link,.lab-load) { font-size: var(--db-help); line-height: 1.65 }
+  body[data-db-ui] .apps-intro h1 { font-size: calc(clamp(36px, 4.5vw, 68px) * var(--font-scale, 1)); line-height: 1.3 }
+  body[data-db-ui] .apps-search input { min-width: 0 }
+}
+@media screen and (max-width: 750px) {
+  :is(body[data-db-ui], [data-db-chrome]) :is(input,textarea,select):not([type=checkbox],[type=radio],[type=range],[type=color],.te-preview *,.theme-preview *,#td-deck *) { font-size: max(16px, calc(14px * var(--font-scale, 1))) !important }
+  .detail-sharebar .detail-share-center { flex: 1; min-width: 0 }
+  .detail-share-center #detail-collect { max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis }
+  .detail-sharebar #detail-use { flex-shrink: 0 }
+  body[data-db-ui] .apps-filters>button { min-height: 40px }
+  body[data-db-ui] .tpl-title { font-size: max(20px, calc(22px * var(--font-scale, 1))) }
+}
+
+/* Compact type for the expert / skill / connector management surfaces only. */
+@media screen {
+  body[data-db-ui] :is(.experts-page,.skills-page,.connectors-page) {
+    --db-section: max(12px, calc(16px * var(--font-scale, 1)));
+    --db-card: max(12px, calc(14px * var(--font-scale, 1)));
+  }
+  body[data-db-ui] :is(.experts-page,.skills-page,.connectors-page) .ex-top-tab {
+    font-size: max(12px, calc(14px * var(--font-scale, 1)));
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  body[data-db-ui] :is(.experts-page,.skills-page,.connectors-page) .ex-top-tab.is-active { font-weight: 600 }
+  body[data-db-ui] :is(.experts-page,.skills-page,.connectors-page) .ex-top-tab svg { width: 16px; height: 16px }
+  body[data-db-ui] :is(.experts-page,.skills-page,.connectors-page) :is(.ex-card-name,.ex-card-name-text,.sk-card-title,.cn-name) {
+    font-size: var(--db-card); font-weight: 600; line-height: 1.5;
+  }
+  body[data-db-ui] :is(.experts-page,.skills-page,.connectors-page) :is(.sk-section-title,.cn-section-title) {
+    font-size: var(--db-section); font-weight: 600; line-height: 1.5;
+  }
+  body[data-db-ui] :is(.experts-page,.skills-page,.connectors-page) :is(.ex-card-desc,.sk-card-desc,.cn-desc) {
+    font-size: max(12px, calc(12px * var(--font-scale, 1))); line-height: 1.65;
+  }
+}

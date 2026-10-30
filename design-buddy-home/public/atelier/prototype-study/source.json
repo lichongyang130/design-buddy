@@ -1,0 +1,89 @@
+{
+  "source": "authored-fictional-product-specification",
+  "synthetic": true,
+  "notActualProductEvidence": true,
+  "summary": {
+    "tasks": 3,
+    "checkpoints": 3,
+    "observationCells": 9,
+    "actualParticipants": null,
+    "actualSessions": null,
+    "completionRate": null,
+    "taskTime": null,
+    "actualFindings": null
+  },
+  "records": [
+    {
+      "task_id": "T01",
+      "goal": "Explain which passage the note concerns",
+      "checkpoint": "first-interpretation",
+      "status": "unrecorded",
+      "observation": null,
+      "actual_session": null
+    },
+    {
+      "task_id": "T01",
+      "goal": "Explain which passage the note concerns",
+      "checkpoint": "attempted-action",
+      "status": "unrecorded",
+      "observation": null,
+      "actual_session": null
+    },
+    {
+      "task_id": "T01",
+      "goal": "Explain which passage the note concerns",
+      "checkpoint": "unresolved-question",
+      "status": "unrecorded",
+      "observation": null,
+      "actual_session": null
+    },
+    {
+      "task_id": "T02",
+      "goal": "Describe how to reveal more context",
+      "checkpoint": "first-interpretation",
+      "status": "unrecorded",
+      "observation": null,
+      "actual_session": null
+    },
+    {
+      "task_id": "T02",
+      "goal": "Describe how to reveal more context",
+      "checkpoint": "attempted-action",
+      "status": "unrecorded",
+      "observation": null,
+      "actual_session": null
+    },
+    {
+      "task_id": "T02",
+      "goal": "Describe how to reveal more context",
+      "checkpoint": "unresolved-question",
+      "status": "unrecorded",
+      "observation": null,
+      "actual_session": null
+    },
+    {
+      "task_id": "T03",
+      "goal": "Explain the next step when context is unavailable",
+      "checkpoint": "first-interpretation",
+      "status": "unrecorded",
+      "observation": null,
+      "actual_session": null
+    },
+    {
+      "task_id": "T03",
+      "goal": "Explain the next step when context is unavailable",
+      "checkpoint": "attempted-action",
+      "status": "unrecorded",
+      "observation": null,
+      "actual_session": null
+    },
+    {
+      "task_id": "T03",
+      "goal": "Explain the next step when context is unavailable",
+      "checkpoint": "unresolved-question",
+      "status": "unrecorded",
+      "observation": null,
+      "actual_session": null
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+source_id,kind,included,reason,theme
+S01,method-note,True,in-scope,clarity
+S02,example-sheet,True,in-scope,clarity
+S03,reflection,True,in-scope,context
+S04,method-note,True,in-scope,clarity
+S05,example-sheet,True,in-scope,context
+S06,opinion,False,unsupported-opinion,excluded
+S07,duplicate,False,duplicate-card,excluded
+S08,out-of-scope,False,outside-question,excluded

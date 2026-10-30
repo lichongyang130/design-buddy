@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "case": "qiye-travel-app",
+  "generatedAt": "2026-10-27",
+  "disclosure": "All scenes and destination details are illustrative, not documentary location or accommodation photography.",
+  "files": [
+    {
+      "id": "mountain",
+      "src": "/art/qiye/mountain.webp",
+      "source": "AI-generated fictional travel scene",
+      "brief": "Fictional misty mountain camping clearing at dawn, cream tent under trees, layered green ridges and peach sky. Premium travel editorial photograph-style AI scene, muted greens and ivory, landscape. No location-documentary claim.",
+      "sha256": "6ea8f6cb1ad8815c3fc79a2b2b375e4f71ce8dc1c462020b71db63b08d944aa9"
+    },
+    {
+      "id": "coast",
+      "src": "/art/qiye/coast.webp",
+      "source": "AI-generated fictional travel scene",
+      "brief": "Fictional winding coastal path on grassy cliff over turquoise sea, late-afternoon light and tiny distant walker, muted sage and faded blue. AI travel editorial mood scene, not a real named location.",
+      "sha256": "c0cfcb671406c2ccb25315d999081aaa1f55dc4c57c00e6db41352da2ab1976c"
+    },
+    {
+      "id": "town",
+      "src": "/art/qiye/town.webp",
+      "source": "AI-generated fictional travel scene",
+      "brief": "Fictional Jiangnan canal town, pale plaster walls, dark tile roofs, stone lane, small bridge and vines in morning light. AI travel editorial mood scene, no readable signage.",
+      "sha256": "03896958b17d0e001be84765a16bbb6615a76f848466e6a7672990cf4477b9c1"
+    },
+    {
+      "id": "forest",
+      "src": "/art/qiye/forest.webp",
+      "source": "AI-generated fictional travel scene",
+      "brief": "Fictional timber cabin among bamboo, warm amber window, wooden terrace and two chairs under filtered forest light. AI accommodation mood scene, not a real hotel.",
+      "sha256": "2471621818d22a4f05f4de2baff0feef33b3dc83c2002d71235a4a74c5f3aa3a"
+    },
+    {
+      "id": "lake",
+      "src": "/art/qiye/lake.webp",
+      "source": "AI-generated fictional travel scene",
+      "brief": "Fictional serene lake at sunrise, curved jetty, empty linen camping chair, reeds and misty mountain reflections. Sage and warm cream travel editorial AI scene.",
+      "sha256": "b0e1ecc3eabe078394cf36666ae7f4532573718539a55c44eb6b9728488dc6b6"
+    }
+  ]
+}

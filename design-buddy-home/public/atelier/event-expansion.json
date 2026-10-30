@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    "community-forum",
+    "exhibition-guide",
+    "workshop-runbook",
+    "reading-salon",
+    "demo-day"
+  ],
+  "pagesPerCase": 10,
+  "distinctImagesPerCase": 5,
+  "newImages": 0,
+  "curatedExistingImages": 25,
+  "completedOf50": 45
+}

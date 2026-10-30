@@ -1,3 +1,5 @@
+import { sourceText } from './ui-language.js'
+import { initQuestionChat, isStandaloneQuestion, escapeQuestionText } from './question-chat.js'
 /* ============================================================
    Design Buddy 首页：真实创作流 + localStorage 持久化
    - gamma / 对话 / 文件夹 / 垃圾箱 / 工作区 全部落库
@@ -9,7 +11,7 @@ import './rail-flyout.js'
 import { requireAuth } from './auth.js'
 requireAuth()
 import { store, toast, openModal, confirmModal, uid, fmtDate, downloadFile } from './core.js'
-import { AVAILABLE_MODELS } from './model-config.js'
+import { SELECTABLE_MODELS as AVAILABLE_MODELS } from './model-config.js'
 import {
   initGlobalUI,
   openPalette,
@@ -42,6 +44,7 @@ ui.ratio ??= '1:1'
 ui.count ??= 3
 ui.beautifyStyle ??= null
 const homeMode = () => !!ui.type
+const questionChat = initQuestionChat({store,toast})
 
 /* 由后面的参考图菜单赋值，避免早期调用踩到暂时性死区 */
 let closeImgPopoverQuiet = () => {}
@@ -61,17 +64,11 @@ const TYPE_COPY = {
   美化: { placeholder: '描述您希望更改或改进的内容', hero: '/covers/hero-beautify.jpg' },
   导入: { placeholder: '添加要导入的文件，或从下方选择任务', hero: '/covers/hero-beautify.jpg' },
 }
-const greetingTitle = () => {
-  const fullName = store.state.profile?.name || store.state.workspaces?.[0]?.name || 'ruoxuan'
-  const firstName = String(fullName).replace(/'s\s+Workspace$/i, '').trim().split(/\s+/)[0] || 'ruoxuan'
-  return `很高兴见到您，${firstName}`
-}
+const greetingTitle = () => 'DesignBuddy 让您提前下班'
 
 function applySmartSuggest() {
   const mode = homeMode()
   const smart = store.state.settings.personalize.smartSuggest
-  const row = $('.template-row')
-  const isWork = row?.dataset.workView === 'workspace'
 
   document.body.classList.toggle('is-type-mode', mode)
 
@@ -81,8 +78,6 @@ function applySmartSuggest() {
   if (pillWrap) pillWrap.hidden = !mode
   const quick = $('#quick-types')
   if (quick) quick.hidden = mode
-  const rec = $('#rec-templates')
-  if (rec) rec.hidden = mode
 
   const isImage = ui.type === '图片'
   const isBeautify = ui.type === '美化'
@@ -125,13 +120,12 @@ function applySmartSuggest() {
 
   // 设置 → 个性化：关掉「智能推荐」时，工作台里的示例与探索区一并隐藏
   const bare = isBeautify || isImport
-  ;['.examples', '.work-tabs'].forEach((sel) => {
+  ;['.examples'].forEach((sel) => {
     const el = $(sel)
     if (el) el.hidden = !mode || !smart || bare
   })
-  if (row) row.hidden = !mode || !smart || isWork || bare
   const work = $('#work-grid')
-  if (work) work.hidden = !mode || !isWork || bare
+  if (work) work.hidden = !mode || bare
   const ctaEl = $('.template-cta')
   if (ctaEl) ctaEl.hidden = !mode || bare
 }
@@ -402,29 +396,7 @@ function renderChips() {
 }
 
 /* 把一张模板卡片设为「引用」：进入它的格式工作台，并把卡片挂到输入框里 */
-/* 首页这批示例模板的格式（自定义模板以 store 里存的 format 为准） */
-const TEMPLATE_FORMATS = {
-  Graha: '文档',
-  'Jelly Canvas': '文档',
-  Olympus: '文档',
-  'Terrace Set': '演示文稿',
-  Reliquary: '文档',
-  Altitude: '演示文稿',
-  Scintilla: '演示文稿',
-}
-
-function referenceTemplate(name, cover = '') {
-  const tpl = (store.state.customTemplates ?? []).find((t) => t.name === name)
-  const format = tpl?.format || TEMPLATE_FORMATS[name] || null
-  activeTemplate = { name, cover: cover || (typeof tpl?.cover === 'string' && tpl.cover.startsWith('data:') ? tpl.cover : '') }
-  const typeMap = { 演示文稿: '演示文稿', 文档: '文档', 社交轮播卡片: '轮播图' }
-  const nextType = format ? typeMap[format] ?? ui.type : ui.type
-  if (!ui.type && nextType) setType(nextType, { quiet: true })
-  else if (!ui.type) setType('演示文稿', { quiet: true })
-  renderChips()
-  input.focus()
-  toast(`已引用模板「${name}」，写一句你想做的东西就能开始`)
-}
+/* 示例模板引用入口已全部清空（保留自定义模板在模板页的添加流程） */
 
 function addAttachment(name, meta = {}) {
   if (attachments.some((a) => a.name === name)) return
@@ -467,6 +439,17 @@ function referenceFiles() {
   })
 }
 
+/* 调用技能：输入框「/」触发与「＋」菜单技能行共用同一入口 */
+const pickSkill = (skill) => {
+  if (!skill.enabled) {
+    toast(`「${skill.name}」还没启用，先去技能页开启`)
+    return
+  }
+  activeSkill = { id: skill.id, name: skill.name }
+  renderChips()
+  toast(`已调用技能「${skill.name}」，发送后真实运行`)
+}
+
 const promptTriggers = initPromptTriggers({
   input,
   listFiles: referenceFiles,
@@ -479,19 +462,22 @@ const promptTriggers = initPromptTriggers({
     toast(`已引用「${file.name}」，随提示词一起提交`)
   },
   listSkills: () => store.state.skills ?? [],
-  onPickSkill: (skill) => {
-    if (!skill.enabled) {
-      toast(`「${skill.name}」还没启用，先去技能页开启`)
-      return
-    }
-    activeSkill = { id: skill.id, name: skill.name }
-    renderChips()
-    toast(`已调用技能「${skill.name}」，发送后真实运行`)
-  },
+  onPickSkill: pickSkill,
 })
 
 function submitPrompt() {
   promptTriggers.close()
+  if (['Excel 表格处理','Word 文档处理','PDF 文档处理','页面可访问性检查','文员工作台'].includes(activeSkill?.name)) {
+    const selected = activeSkill.name, draft = input.value
+    import('./file-skills-ui.js').then(async api => {
+      const host = document.createElement('div')
+      openModal({ title: '文件处理与插件', body: host, wide: true, onClose: () => api.disposeFileSkill(host) })
+      await api.mountFileSkill(host, selected)
+      const field = host.querySelector('#fs-text')
+      if (field && draft.trim() && ['Word 文档处理','页面可访问性检查'].includes(selected)) field.value = draft
+    }).catch(error => toast('处理失败：' + error.message))
+    return
+  }
   if (ui.type === '导入' && !attachments.length) {
     toast('先在上方添加要导入的文件（PPTX / DOCX / PDF）')
     return
@@ -500,6 +486,16 @@ function submitPrompt() {
   if (!text) {
     input.focus()
     toast(homeMode() ? '先用一句话描述你想做的内容' : '先描述你想做的内容，或从推荐模板开始')
+    return
+  }
+  if (isStandaloneQuestion({text,type:ui.type,skill:activeSkill,expert:ui.expert})) {
+    questionChat.start(text, {template:activeTemplate,files:attachments.map(a=>a.name),context:attachmentContext()})
+    input.value = ''
+    input.style.height = 'auto'
+    attachments.length = 0
+    activeTemplate = null
+    renderChips()
+    syncSendState()
     return
   }
   if (ui.mode === 'Max') {
@@ -626,7 +622,7 @@ function finishTask(gamma, artifact = null) {
 }
 
 function runGeneration(gamma) {
-  // 设置 → 模型：真实模型 id 来自 model-config.js 写死的可用白名单
+  // 设置 → 模型：记录已验证或预置的模型偏好，不代表本地生成器已调用该模型
   const model = store.state.settings.model || AVAILABLE_MODELS[0]?.id || '本地演示模型'
   const task = taskOf(gamma)
   if (task) {
@@ -662,11 +658,21 @@ function runGeneration(gamma) {
   })
 }
 
-function showResult(gamma, bodyEl, footEl) {
+async function showResult(gamma, bodyEl, footEl) {
   // 用「/」调用了技能：真实跑一遍技能引擎，结果与产物都来自本地实现
   if (gamma.skill) {
+    if (['Excel 表格处理','Word 文档处理','PDF 文档处理','页面可访问性检查','文员工作台'].includes(gamma.skill)) {
+      bodyEl.replaceChildren()
+      const info = document.createElement('p'); info.textContent = '此技能需要在文件工作台中选择文件或输入内容；本次尚未执行文件处理。'
+      const link = document.createElement('a'); link.textContent = '打开文件工作台'; link.href = '/skills.html?tool=' + encodeURIComponent(gamma.skill); link.className = 'btn btn-primary'
+      bodyEl.append(info, link)
+      footEl.innerHTML = '<button class="btn btn-ghost" data-done>关闭</button>'
+      footEl.querySelector('[data-done]').onclick = () => footEl.closest('.modal-mask').remove()
+      const task = taskOf(gamma); if (task) { task.status = '等待输入'; task.finishedAt = null; task.artifact = null }
+      store.save(); addSub.refresh(); return
+    }
     const skillPrompt = [gamma.prompt, gamma.attachContext].filter(Boolean).join('\n\n')
-    const result = runSkill(gamma.skill, skillPrompt)
+    const result = await runSkill(gamma.skill, skillPrompt)
     if (result) {
       finishTask(gamma, result.artifacts?.[0]?.name ?? null)
       const files = (gamma.attachments ?? []).map((a) => a.name)
@@ -744,7 +750,7 @@ function showResult(gamma, bodyEl, footEl) {
     const checks = [
       ['文件读取', `${files.length} 个文件已加入本次工作区${files.length ? '' : '（还没有文件）'}`],
       ['格式识别', files.length ? [...new Set(files.map((f) => kindOf(f.name)))].join('、') : '—'],
-      ['来源', source ? `${source}${store.state.connectors.find((c) => c.name === source)?.connected ? ' · 已连接' : ''}` : '本地文件'],
+      ['来源', source ? source : '本地文件'],
       ['下一步', '选择「导入模板」把内容固化成模板，或直接开始创作'],
     ]
     finishTask(gamma, `${files.length} 个文件`)
@@ -908,7 +914,7 @@ const typePillIcon = $('#type-pill-icon')
 
 function syncTypeUI() {
   typeChips().forEach((chip) => {
-    chip.classList.toggle('chip-active', chip.textContent.trim() === ui.type)
+    chip.classList.toggle('chip-active', sourceText(chip.textContent.trim()) === ui.type)
   })
   if (typePillLabel) typePillLabel.textContent = ui.type || '类型'
   if (typePillIcon) typePillIcon.innerHTML = TYPE_PILL_ICONS[ui.type] ?? TYPE_PILL_ICONS.演示文稿
@@ -947,7 +953,7 @@ typePillX?.addEventListener('click', (event) => {
 typeChips().forEach((chip) => {
   chip.addEventListener('click', (event) => {
     event.stopPropagation()
-    setType(chip.textContent.trim(), { quiet: true })
+    setType(sourceText(chip.textContent.trim()), { quiet: true })
     toast(`创作类型：${ui.type}`)
   })
 })
@@ -1086,20 +1092,10 @@ exampleGrid?.addEventListener('click', (event) => {
 /* ---------------- 工作区 / 探索 ---------------- */
 
 const workGrid = $('#work-grid')
-const templateRow = $('#template-row')
-let workTab = 'explore'
 
 function renderWork() {
-  if (!workGrid || !templateRow) return
-  const isWork = workTab === 'workspace'
-  templateRow.dataset.workView = workTab
+  if (!workGrid) return
   applySmartSuggest()
-  $$('[data-work-tab]').forEach((tab) => {
-    const on = tab.dataset.workTab === workTab
-    tab.classList.toggle('is-active', on)
-    tab.setAttribute('aria-selected', String(on))
-  })
-  if (!isWork) return
   const list = (store.state.gammas ?? []).filter((g) => !g.deleted).slice(0, 8)
   workGrid.innerHTML = list.length ? list.map((g, i) => `
     <button class="work-item" type="button" data-work-gamma="${g.id}">
@@ -1111,12 +1107,6 @@ function renderWork() {
     : `<div class="work-empty">工作区还没有内容。在输入框写一句话发送，创作会出现在这里。</div>`
 }
 
-$$('[data-work-tab]').forEach((tab) => {
-  tab.addEventListener('click', () => {
-    workTab = tab.dataset.workTab
-    renderWork()
-  })
-})
 
 store.subscribe(() => renderWork())
 
@@ -1397,6 +1387,8 @@ const addSub = initAddSubPanels({
   openRefPicker: () => openReferencePicker(),
   onAttachmentsChange: () => renderChips(),
   closeMenu: () => closePopover(),
+  onPickSkill: pickSkill,
+  currentSkill: () => activeSkill,
   fillPrompt: (text, files = []) => {
     input.value = text
     input.style.height = 'auto'
@@ -1923,20 +1915,7 @@ $('[data-import-template]')?.addEventListener('click', openImportTemplateModal)
 ui.importSource ??= null
 
 function importSourceList() {
-  const list = (store.state.connectors ?? []).map((c) => ({
-    name: c.name, color: c.color || '#5b6ef5', shape: c.shape || 'cloud', connected: !!c.connected,
-  }))
-  // 优先补办公/知识类工具，避免把行情类连接器塞进「从您喜爱的工具导入」提示里
-  const PREFERRED = ['腾讯文档', '飞书', 'QQ邮箱', '腾讯会议', '乐享知识库']
-  const extras = [
-    ...PREFERRED.map((name) => CONNECTOR_CATALOG.find((c) => c.name === name)).filter(Boolean),
-    ...CONNECTOR_CATALOG,
-  ]
-  for (const c of extras) {
-    if (list.length >= IMPORT_SOURCES) break
-    if (!list.some((x) => x.name === c.name)) list.push({ name: c.name, color: c.color, shape: c.shape, connected: false })
-  }
-  return list.slice(0, IMPORT_SOURCES)
+  return CONNECTOR_CATALOG.slice(0, 6).map(c => ({ ...c, connected: false }))
 }
 
 function renderImportSources() {
@@ -1945,7 +1924,7 @@ function renderImportSources() {
   box.innerHTML = importSourceList().map((c) => `
     <button class="is-logo${ui.importSource === c.name ? ' is-active' : ''}" type="button"
       data-import-connector="${c.name}" style="--c:${c.color}"
-      title="${c.name}${c.connected ? ' · 已连接' : ' · 未连接'}">
+      title="${c.name} · 管理连接">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${CONNECTOR_ICONS[c.shape] ?? CONNECTOR_ICONS.cloud}</svg>
     </button>`).join('')
 }
@@ -1954,25 +1933,8 @@ renderImportSources()
 $('#import-sources')?.addEventListener('click', (event) => {
   const btn = event.target.closest('[data-import-connector]')
   if (!btn) return
-  const name = btn.dataset.importConnector
-  let entry = store.state.connectors.find((c) => c.name === name)
-  let newly = false
-  if (!entry) {
-    const cat = CONNECTOR_CATALOG.find((c) => c.name === name)
-    entry = {
-      id: `cn-${Date.now().toString(36)}`, name, connected: true,
-      desc: cat?.desc, color: cat?.color, shape: cat?.shape, category: cat?.category,
-    }
-    store.state.connectors.push(entry)
-    newly = true
-  } else if (!entry.connected) {
-    entry.connected = true
-    newly = true
-  }
-  ui.importSource = name
-  store.save()
-  renderImportSources()
-  toast(`${newly ? `已连接「${name}」，` : ''}导入来源：${name}`)
+  const provider = CONNECTOR_CATALOG.find(c => c.name === btn.dataset.importConnector)
+  location.href = 'connectors.html?provider=' + encodeURIComponent(provider?.id || '')
 })
 
 /* ---------------- 努力模式上弹菜单 ---------------- */
@@ -2096,7 +2058,7 @@ function bindGammaList(bodyEl, { trash = false } = {}) {
         title: g.title,
         wide: true,
         body: `
-          <p class="modal-copy">${g.prompt || '（空白 Design Buddy，暂无提示词）'}</p>
+          <p class="modal-copy" translate="no">${g.prompt || '（空白 Design Buddy，暂无提示词）'}</p>
           <p class="hint" style="margin-top:10px">
             ${TYPE_ICONS[g.type] ?? ''} ${g.type} · ${g.mode} 模式 · 图片：${g.imgMode}
             ${g.expert ? ` · 专家：${g.expert}` : ''}${g.template ? ` · 模板：${g.template}` : ''}
@@ -2107,13 +2069,14 @@ function bindGammaList(bodyEl, { trash = false } = {}) {
             <label>归入文件夹</label>
             <select id="detail-folder">
               <option value="">未分组</option>
-              ${store.state.folders.map((f) => `<option value="${f.id}" ${g.folderId === f.id ? 'selected' : ''}>${f.name}</option>`).join('')}
+              ${store.state.folders.map((f) => `<option translate="no" value="${f.id}" ${g.folderId === f.id ? 'selected' : ''}>${f.name}</option>`).join('')}
             </select>
           </div>`,
         footer: `
           <button class="btn btn-ghost" id="detail-share">${g.shared ? '取消共享' : '共享给协作成员'}</button>
           <button class="btn btn-primary" data-close>完成</button>`,
       })
+      b2.closest('.modal-box')?.querySelector('.modal-head h3')?.setAttribute('translate', 'no')
       b2.querySelector('#detail-folder').addEventListener('change', (ev) => {
         g.folderId = ev.target.value || null
         g.updatedAt = Date.now()
@@ -2147,7 +2110,7 @@ function openGammaList(title, list, opts = {}) {
 $$('[data-nav]').forEach((item) => {
   item.addEventListener('click', (event) => {
     event.preventDefault()
-    const label = item.textContent.trim()
+    const label = sourceText(item.textContent.trim())
     if (item.id === 'nav-search') return openPalette()
     $$('[data-nav]').forEach((nav) => nav.classList.remove('nav-item-active'))
     item.classList.add('nav-item-active')
@@ -2163,13 +2126,18 @@ $$('[data-nav]').forEach((item) => {
           body: store.state.conversations.length
             ? `<div class="modal-list">${store.state.conversations.map((c) => `
                 <button class="modal-list-item" data-conv="${c.id}">
-                  <span class="grow"><span class="primary">${c.title}</span>
+                  <span class="grow"><span class="primary">${escapeQuestionText(c.title)}</span>
                   <span class="secondary">${fmtDate(c.at)}</span></span>
                 </button>`).join('')}</div>`
             : '<div class="empty-hint">还没有对话记录<br />发送一条提示词开始第一次对话。</div>',
         }).bodyEl.querySelectorAll('[data-conv]').forEach((b) =>
           b.addEventListener('click', () => {
             const c = store.state.conversations.find((x) => x.id === b.dataset.conv)
+            if (c.kind === 'question') {
+              b.closest('.modal-mask').remove()
+              questionChat.open(c.id)
+              return
+            }
             const g = store.state.gammas.find((x) => x.id === c.gammaId)
             if (g) input.value = g.prompt
             syncSendState()
@@ -2211,7 +2179,7 @@ function renderFolders() {
       return `
         <button class="folder-row" data-folder="${f.id}">
           <svg class="icon folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-          <span>${f.name}</span>
+          <span translate="no">${f.name}</span>
           <span class="count-pill">${count}</span>
         </button>`
     }).join('')}
@@ -2277,18 +2245,6 @@ function renderFolders() {
 
 /* ---------------- 模板 / 顶部按钮 / 帮助 ---------------- */
 
-/* 点模板：不再直接生成，而是把它作为「引用」卡片放进输入框（截图效果） */
-function coverOfCard(card) {
-  const styleAttr = card.querySelector('.cover, .rec-cover')?.getAttribute('style') ?? ''
-  const fromCss = /url\(['"]?([^'")]+)['"]?\)/.exec(styleAttr)?.[1]
-  if (fromCss) return fromCss
-  const tpl = (store.state.customTemplates ?? []).find((t) => t.name === card.dataset.template)
-  return typeof tpl?.cover === 'string' && tpl.cover.startsWith('data:') ? tpl.cover : ''
-}
-
-$$('[data-template]').forEach((card) => {
-  card.addEventListener('click', () => referenceTemplate(card.dataset.template, coverOfCard(card)))
-})
 
 const NEW_GAMMA_TYPES = [
   { id: 'presentation', label: '演示文稿', icon: '📊', formats: [
@@ -2431,12 +2387,11 @@ function createBlankGamma() {
 }
 
 $('.pill-outline').addEventListener('click', () => { location.href = 'templates.html' })
-$('#view-all-templates')?.addEventListener('click', () => { location.href = 'templates.html' })
 $('.pill-upgrade').addEventListener('click', openUpgrade)
 $('.help-fab').addEventListener('click', openHelp)
 $$('.rail-footer .footer-icon').forEach((btn) => {
   btn.addEventListener('click', () => {
-    const label = btn.getAttribute('aria-label')
+    const label = sourceText(btn.getAttribute('aria-label'))
     if (label === '邀请成员') openInvite()
     else if (label === '消息') openMessages()
   })
@@ -2461,3 +2416,5 @@ placeToolbarItems()
 applySmartSuggest()
 // 连接器状态变化时刷新「导入」提示里的品牌小标（写在这里，避免早期订阅踩到 TDZ）
 store.subscribe(() => renderImportSources())
+
+questionChat.restore()

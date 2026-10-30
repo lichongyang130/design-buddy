@@ -1,0 +1,4 @@
+stage,design_intention,evidence_status
+capture,Keep a reference with its source context.,not-tested
+link,Associate the reference with an intended passage.,not-tested
+review,Expose unresolved context to a human reviewer.,not-tested

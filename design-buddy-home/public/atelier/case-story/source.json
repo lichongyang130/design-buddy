@@ -1,0 +1,44 @@
+{
+  "source": "authored-illustrative-marketing-register",
+  "synthetic": true,
+  "notActualCampaign": true,
+  "summary": {
+    "sourceElements": 5,
+    "actualInterviews": 0,
+    "actualTestimonials": 0,
+    "measuredChange": null,
+    "participantApproval": null
+  },
+  "records": [
+    {
+      "element": "setting",
+      "source_type": "authored-fiction",
+      "permission": "not-obtained",
+      "verified_outcome": false
+    },
+    {
+      "element": "challenge",
+      "source_type": "authored-fiction",
+      "permission": "not-obtained",
+      "verified_outcome": false
+    },
+    {
+      "element": "action",
+      "source_type": "authored-fiction",
+      "permission": "not-obtained",
+      "verified_outcome": false
+    },
+    {
+      "element": "outcome",
+      "source_type": "authored-fiction",
+      "permission": "not-obtained",
+      "verified_outcome": false
+    },
+    {
+      "element": "quotation",
+      "source_type": "authored-fiction",
+      "permission": "not-obtained",
+      "verified_outcome": false
+    }
+  ]
+}

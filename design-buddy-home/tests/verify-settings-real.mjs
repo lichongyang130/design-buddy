@@ -7,7 +7,7 @@
 import { loadPage, click, input, tick, readState } from './helpers.mjs'
 import { resolveLinkTarget } from '../src/settings-effects.js'
 import { SKILL_REGISTRY } from '../src/skill-registry.js'
-import { AVAILABLE_MODELS } from '../src/model-config.js'
+import { SELECTABLE_MODELS as AVAILABLE_MODELS } from '../src/model-config.js'
 
 let passed = 0
 const fails = []
@@ -126,8 +126,10 @@ const pickOption = async (w, wrap, label) => {
   vp = await openSection('models')
   if (AVAILABLE_MODELS.length) {
     const modelIds = AVAILABLE_MODELS.map((m) => m.id)
-    check('i18n: model rows match hardcoded available list',
+    check('i18n: model rows match verified-or-preset choices',
       [...vp.querySelectorAll('[data-model]')].map((b) => b.dataset.model).join('|') === modelIds.join('|'))
+    if (AVAILABLE_MODELS.some(m => !m.verified)) check('model presets explicitly labeled unverified', vp.textContent.includes('not verified'))
+    check('model setup explains preference is not an AI connection', vp.querySelector('[data-model-setup]')?.textContent.includes('not an AI connection'))
     const firstId = modelIds[0]
     click(w, [...vp.querySelectorAll('[data-model]')].find((b) => b.dataset.model === firstId))
     await tick()
@@ -235,7 +237,7 @@ const pickOption = async (w, wrap, label) => {
   slider.dispatchEvent(new w.Event('input', { bubbles: true }))
   await tick()
   check('font: smallest level label shown', levelLabel.textContent === '很小')
-  check('font: zoom applied to body', doc.body.style.zoom === '0.85')
+  check('font: layout zoom stays disabled', !doc.body.style.zoom)
   check('font: css var set for fallback', doc.documentElement.style.getPropertyValue('--font-scale') === '0.85')
   check('font: persisted', readState(storage).settings.fontScale === 0.85)
   slider.value = '4'
@@ -302,22 +304,22 @@ const pickOption = async (w, wrap, label) => {
   const sk1 = await loadPage('/skills.html', { storage, freshCopy: true })
   const skModal = (page) => page.doc.querySelector('.skills-page')
   check('skills: page renders installed and catalog sections',
-    !!skModal(sk1) && sk1.doc.body.textContent.includes('已安装') && sk1.doc.body.textContent.includes('精选技能'))
+    !!skModal(sk1) && sk1.doc.body.textContent.includes('已启用') && sk1.doc.body.textContent.includes('精选技能'))
   const catalogCount = sk1.doc.querySelectorAll('#sk-grid [data-install]').length
   check('skills: registry offers uninstalled entries', catalogCount > 0)
   const regInstallCount = [...sk1.doc.querySelectorAll('#sk-grid [data-install]')]
     .filter((b) => b.dataset.install.startsWith('reg-')).length
-  check('skills: every uninstalled registry entry is offered', regInstallCount === SKILL_REGISTRY.length - 4)
+  check('skills: every uninstalled registry entry is offered', regInstallCount === SKILL_REGISTRY.filter(r => !r.retired && !readState(storage).skills.some(s => s.name === r.name)).length)
   // 默认自动更新已在进页面时消费：预置技能版本被抬高
   const seeded = readState(storage).skills
   check('skills: auto-update applied on open (idle moment)',
-    seeded.every((sk) => sk.version !== '1.0.0') && seeded.some((sk) => sk.version === '2.0.0'))
+    seeded.every((sk) => sk.version === SKILL_REGISTRY.find(r => r.name === sk.name)?.version) && seeded.some((sk) => sk.version === '2.0.0'))
   // 未信任时点安装可信技能 → 必须弹手动确认
   const trustedReg = [...sk1.doc.querySelectorAll('#sk-grid [data-install]')]
     .find((b) => b.dataset.install.startsWith('reg-'))
   click(sk1.w, trustedReg)
   await tick()
-  let confirmBox = [...sk1.doc.querySelectorAll('.modal-box')].find((m) => m.textContent.includes('手动安装'))
+  let confirmBox = [...sk1.doc.querySelectorAll('.modal-box')].find((m) => m.textContent.includes('手动启用'))
   check('skills: untrusted install requires confirmation', !!confirmBox)
   click(sk1.w, confirmBox.querySelector('[data-act="cancel"]'))
   await tick()
@@ -336,21 +338,20 @@ const pickOption = async (w, wrap, label) => {
   check('skills: trusted skill auto-installed without confirm',
     readState(storage).skills.some((sk) => sk.name === installingName))
   check('skills: auto install toast shown',
-    [...sk2.doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('自动安装')))
-  // 高风险技能即使开启自动安装，也必须手动确认
-  const reviewBtn = [...sk2.doc.querySelectorAll('#sk-grid [data-install]')].find((b) =>
-    SKILL_REGISTRY.find((r) => r.id === b.dataset.install)?.risk === 'review')
-  check('skills: review-risk entry exists in catalog', !!reviewBtn)
-  click(sk2.w, reviewBtn)
+    [...sk2.doc.querySelectorAll('.toast')].some((t) => t.textContent.includes('自动启用')))
+  // Unsafe/misleading external-action entries are retired from discovery; existing installs survive.
+  const retired = SKILL_REGISTRY.find(r => r.retired && r.risk === 'review')
+  check('skills: external-action legacy entry is explicitly retired', !!retired)
+  check('skills: retired entry is not offered for installation',
+    !sk2.doc.querySelector(`[data-install="${retired.id}"]`))
+  const retained = readState(storage)
+  retained.skills.push({ id: 'legacy-retained-fixture', name: retired.name, desc: retired.desc, enabled: false, version: retired.version })
+  storage.setItem('design-buddy-state-v1', JSON.stringify(retained))
+  const legacyPage = await loadPage('/skills.html', { storage, freshCopy: true })
+  click(legacyPage.w, legacyPage.doc.querySelector('[data-installed-toggle]'))
   await tick()
-  confirmBox = [...sk2.doc.querySelectorAll('.modal-box')].find((m) => m.querySelector('[data-act="ok"]')
-    && m.textContent.includes('高风险'))
-  check('skills: high-risk always requires manual confirm', !!confirmBox)
-  click(sk2.w, confirmBox.querySelector('[data-act="ok"]'))
-  await tick()
-  const reviewName = SKILL_REGISTRY.find((r) => r.id === reviewBtn.dataset.install).name
-  check('skills: confirmed high-risk skill installed',
-    readState(storage).skills.some((sk) => sk.name === reviewName))
+  check('skills: existing legacy install is retained and clearly labelled',
+    legacyPage.doc.body.textContent.includes('旧版能力') && readState(storage).skills.some(s => s.id === 'legacy-retained-fixture' && s.enabled === false))
   // 关闭自动更新 → 用全新模块图模拟刷新：旧版本技能应出现更新徽标与手动按钮。
   // 技能页写入过 store，设置页的旧实例已过期，必须重新加载，否则旧内存状态会把新装技能覆盖掉。
   const settingsFresh = await loadPage('/settings.html', { storage, freshCopy: true })

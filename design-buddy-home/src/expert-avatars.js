@@ -1,6 +1,6 @@
 /* ============================================================
    专家头像（西方动画电影式 3D 角色肖像，本地 webp，无外链）
-   - 文件在 public/avatars/<专家 id>.webp，256×256，单张 < 10KB
+   - 文件在 public/avatars/<专家 id>.webp，256×256，单张约 10KB 级
    - 目录里还没有头像的专家返回空字符串，界面回退到「首字 + 渐变底」
    - 名字索引用于首页「+」菜单里的专家子列表（那里的数据按名字存）
    ============================================================ */
@@ -8,26 +8,18 @@
 import { EXPERT_CATALOG } from './experts-catalog.js'
 
 export const EXPERT_AVATARS = {
-  'ec-deck-writer': '/avatars/ec-deck-writer.webp',
-  'ec-slide-designer': '/avatars/ec-slide-designer.webp',
-  'ec-brand-guardian': '/avatars/ec-brand-guardian.webp',
-  'ec-data-viz': '/avatars/ec-data-viz.webp',
-  'ec-illustrator': '/avatars/ec-illustrator.webp',
-  'ec-doc-writer': '/avatars/ec-doc-writer.webp',
-  'ec-social-carousel': '/avatars/ec-social-carousel.webp',
-  'ec-content-repurpose': '/avatars/ec-content-repurpose.webp',
+  'ec-manager': '/avatars/ec-manager.webp',
+  'ec-office-admin': '/avatars/ec-office-admin.webp',
+  'ec-automation': '/avatars/ec-automation.webp',
+  'ec-research': '/avatars/ec-research.webp',
+  'ec-ppt': '/avatars/ec-ppt.webp',
+  'ec-doc': '/avatars/ec-doc.webp',
+  'ec-content': '/avatars/ec-content.webp',
+  'ec-visual': '/avatars/ec-visual.webp',
+  'ec-ai-image': '/avatars/ec-ai-image.webp',
+  'ec-brand': '/avatars/ec-brand.webp',
+  'ec-qa': '/avatars/ec-qa.webp',
   'ec-web-prototype': '/avatars/ec-web-prototype.webp',
-  'ec-web-copy': '/avatars/ec-web-copy.webp',
-  'ec-editor-in-chief': '/avatars/ec-editor-in-chief.webp',
-  'ec-speaker-coach': '/avatars/ec-speaker-coach.webp',
-  'ec-prompt-architect': '/avatars/ec-prompt-architect.webp',
-  'ec-import-fixer': '/avatars/ec-import-fixer.webp',
-  'ec-team-proposal': '/avatars/ec-team-proposal.webp',
-  'ec-team-launch': '/avatars/ec-team-launch.webp',
-  'ec-team-rebrand': '/avatars/ec-team-rebrand.webp',
-  'ec-responsive-audit': '/avatars/ec-responsive-audit.webp',
-  'ec-delivery-checker': '/avatars/ec-delivery-checker.webp',
-  'ec-team-handover': '/avatars/ec-team-handover.webp',
 }
 
 const BY_NAME = Object.fromEntries(

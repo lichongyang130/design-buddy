@@ -1,0 +1,87 @@
+{
+  "source": "authored-fictional-business-model",
+  "synthetic": true,
+  "notActualForecast": true,
+  "summary": {
+    "scenarioRows": 3,
+    "sensitivityRows": 3,
+    "pointsNotCurrency": true,
+    "window": null,
+    "actualForecast": null,
+    "actualProfit": null
+  },
+  "records": [
+    {
+      "kind": "scenario",
+      "case": "conservative",
+      "demand": 8,
+      "capacity": 12,
+      "delivered": 8,
+      "unmet": 0,
+      "unused": 4,
+      "benefit_points": 32,
+      "resource_points": 28,
+      "net_points": 4
+    },
+    {
+      "kind": "scenario",
+      "case": "baseline",
+      "demand": 12,
+      "capacity": 12,
+      "delivered": 12,
+      "unmet": 0,
+      "unused": 0,
+      "benefit_points": 48,
+      "resource_points": 36,
+      "net_points": 12
+    },
+    {
+      "kind": "scenario",
+      "case": "exploratory",
+      "demand": 16,
+      "capacity": 12,
+      "delivered": 12,
+      "unmet": 4,
+      "unused": 0,
+      "benefit_points": 48,
+      "resource_points": 36,
+      "net_points": 12
+    },
+    {
+      "kind": "sensitivity",
+      "case": "capacity-10",
+      "demand": 12,
+      "capacity": 10,
+      "delivered": 10,
+      "unmet": 2,
+      "unused": 0,
+      "benefit_points": 40,
+      "resource_points": 32,
+      "net_points": 8
+    },
+    {
+      "kind": "sensitivity",
+      "case": "capacity-12",
+      "demand": 12,
+      "capacity": 12,
+      "delivered": 12,
+      "unmet": 0,
+      "unused": 0,
+      "benefit_points": 48,
+      "resource_points": 36,
+      "net_points": 12
+    },
+    {
+      "kind": "sensitivity",
+      "case": "capacity-14",
+      "demand": 12,
+      "capacity": 14,
+      "delivered": 12,
+      "unmet": 0,
+      "unused": 2,
+      "benefit_points": 48,
+      "resource_points": 36,
+      "net_points": 12
+    }
+  ]
+}

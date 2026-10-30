@@ -1,0 +1,396 @@
+{
+  "work": {
+    "id": "growth-options",
+    "title": "GROWTH OPTIONS",
+    "subtitle": "An option portfolio and experiment sequence",
+    "category": "商业规划",
+    "layout": "options",
+    "color": "#3e6750",
+    "wash": "#e2efdf",
+    "framework": "增长组合与实验序列",
+    "scope": "A fictional Field Editions option portfolio. Resource tokens are non-monetary teaching units; options, dependencies and learning rules are unvalidated, not growth forecasts or investment recommendations.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "business-expansion",
+    "newIllustrations": 0,
+    "curatedIllustrations": 5
+  },
+  "pages": [
+    {
+      "section": "01 / GROWTH OPTIONS",
+      "title": "Define growth as a question about value.",
+      "lead": "Field Editions is a fictional publishing-support concept. Its planning question is which adjacent task might be worth exploring without losing sight of the core explanation work.",
+      "body": "Growth is not assumed to be desirable at any cost. The option portfolio organises learning choices and dependencies; it reports no current market, customer base or expansion result. A smaller or unchanged scope may remain appropriate.",
+      "subheading": "Growth intent",
+      "detail": "The five options use teaching tokens to illustrate resource constraints. Tokens are not money, approved budgets or expected returns.",
+      "question": "What would make an expansion useful rather than merely larger?",
+      "records": [
+        {
+          "label": "Intent",
+          "prompt": "Explore a task that adds appropriate reader value."
+        },
+        {
+          "label": "Boundary",
+          "prompt": "No actual market, customers or growth established."
+        },
+        {
+          "label": "Decision lens",
+          "prompt": "Learn before expanding commitments."
+        }
+      ],
+      "image": 1,
+      "kind": "cover",
+      "evidenceRows": [
+        [
+          "OPTION REGISTER",
+          "O01 / core-task / 2 tokens"
+        ],
+        [
+          "RESOURCE BOUNDARY",
+          "20 requested / 8 illustrative allowance; no approved budget or return."
+        ]
+      ]
+    },
+    {
+      "section": "02 / GROWTH OPTIONS",
+      "title": "State the boundary that must be preserved.",
+      "lead": "The core concept helps explain a passage with its source context. Any adjacent offering should preserve a reviewable scope and avoid implying specialist verification it cannot provide.",
+      "body": "An expansion could introduce new source, access or delivery requirements. Record those conditions before treating adjacency as low risk. The current scope is fictional and provides no evidence that the core offering itself is validated.",
+      "subheading": "Current-boundary map",
+      "detail": "Core work, audience and delivery assumptions remain open questions. The option list is not a licence to promise capabilities beyond the stated concept.",
+      "question": "Which boundary would be hardest to preserve in a new task?",
+      "records": [
+        {
+          "label": "Core task",
+          "prompt": "Explain a passage with relevant source context."
+        },
+        {
+          "label": "Protected condition",
+          "prompt": "Keep scope and unresolved claims visible."
+        },
+        {
+          "label": "Validation gap",
+          "prompt": "Even the core concept remains unvalidated."
+        }
+      ],
+      "image": 1,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "OPTION REGISTER",
+          "O02 / companion-worksheet / 3 tokens"
+        ],
+        [
+          "RESOURCE BOUNDARY",
+          "20 requested / 8 illustrative allowance; no approved budget or return."
+        ]
+      ]
+    },
+    {
+      "section": "03 / GROWTH OPTIONS",
+      "title": "Map five options without ranking a winner.",
+      "lead": "O01 clarifies the core task. O02 explores a companion worksheet. O03 explores a team-use format. O04 examines an editorial-channel route. O05 considers a partner-led introduction.",
+      "body": "The options have different learning questions and dependencies. Their teaching-token counts describe assumed effort, not strategic attractiveness or commercial return. A higher token count is neither a better opportunity nor proof of greater risk.",
+      "subheading": "Option map",
+      "detail": "Token needs are 2, 3, 5, 4 and 6, totalling 20 if all were explored. No approved resources are supplied.",
+      "question": "Which option answers a question that matters before another option can be considered?",
+      "records": [
+        {
+          "label": "Core / adjacent",
+          "prompt": "O01 core task; O02 companion worksheet."
+        },
+        {
+          "label": "New format / route",
+          "prompt": "O03 team use; O04 editorial channel."
+        },
+        {
+          "label": "Partner option",
+          "prompt": "O05 partner-led introduction, with permission unresolved."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "OPTION REGISTER",
+          "O03 / team-use-format / 5 tokens"
+        ],
+        [
+          "RESOURCE BOUNDARY",
+          "20 requested / 8 illustrative allowance; no approved budget or return."
+        ]
+      ]
+    },
+    {
+      "section": "04 / GROWTH OPTIONS",
+      "title": "Inspect an adjacent task before packaging it.",
+      "lead": "A companion worksheet might help a reader connect a passage with a working question. It depends on understanding the core task, not simply reformatting existing copy.",
+      "body": "O02 depends on O01 and uses three teaching tokens. A suitable exploration would examine the worksheet’s purpose and whether an existing practice already handles it. No reader test, product release or added value is established.",
+      "subheading": "Option O02 / adjacent offering",
+      "detail": "Use an appropriate concept review before proposing a package or commercial arrangement. The worksheet remains a hypothesis about a task.",
+      "question": "What would show that the worksheet does something worth keeping?",
+      "records": [
+        {
+          "label": "Dependency",
+          "prompt": "O02 follows a suitable exploration of O01."
+        },
+        {
+          "label": "Learning question",
+          "prompt": "Does the companion format clarify the task?"
+        },
+        {
+          "label": "Resource assumption",
+          "prompt": "3 teaching tokens; not actual cost."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "OPTION REGISTER",
+          "O04 / editorial-channel / 4 tokens"
+        ],
+        [
+          "RESOURCE BOUNDARY",
+          "20 requested / 8 illustrative allowance; no approved budget or return."
+        ]
+      ]
+    },
+    {
+      "section": "05 / GROWTH OPTIONS",
+      "title": "Treat a new group as an evidence gap.",
+      "lead": "A team-use format may introduce coordination and review responsibilities absent from an individual task. Similar content does not establish a similar buying or use context.",
+      "body": "O03 depends on O01 and O02 and uses five teaching tokens. Explore who would use, choose and review such a format before calling it a new customer segment or a revenue opportunity.",
+      "subheading": "Option O03 / team-use hypothesis",
+      "detail": "There are no team interviews, adoption figures, shared-work permissions or commercial agreements in this example.",
+      "question": "Which assumption changes most when the task moves from one person to a team?",
+      "records": [
+        {
+          "label": "User question",
+          "prompt": "Who needs to explain and review the material?"
+        },
+        {
+          "label": "Dependency",
+          "prompt": "O01 and O02 must be considered first."
+        },
+        {
+          "label": "Evidence gap",
+          "prompt": "No team demand or actual adoption supplied."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "OPTION REGISTER",
+          "O05 / partner-introduction / 6 tokens"
+        ],
+        [
+          "RESOURCE BOUNDARY",
+          "20 requested / 8 illustrative allowance; no approved budget or return."
+        ]
+      ]
+    },
+    {
+      "section": "06 / GROWTH OPTIONS",
+      "title": "Design a channel experiment around understanding.",
+      "lead": "An editorial-channel route could introduce the core concept through an explanation of a reader task. Its first question is whether the message reaches an appropriate context and is understood.",
+      "body": "O04 depends on O01 and uses four teaching tokens. It does not establish a live channel, publication permission, traffic or conversion. Define a bounded observation before considering distribution at scale.",
+      "subheading": "Option O04 / channel exploration",
+      "detail": "Separate message delivery, comprehension and a commercial conversation. They are different observations with different limits.",
+      "question": "What observation would justify continuing the channel inquiry?",
+      "records": [
+        {
+          "label": "Experiment question",
+          "prompt": "Can an appropriate reader understand the core task?"
+        },
+        {
+          "label": "Dependency",
+          "prompt": "Clarify the core task through O01 first."
+        },
+        {
+          "label": "Boundary",
+          "prompt": "No live distribution or acquisition result supplied."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "OPTION REGISTER",
+          "O01 / core-task / 2 tokens"
+        ],
+        [
+          "RESOURCE BOUNDARY",
+          "20 requested / 8 illustrative allowance; no approved budget or return."
+        ]
+      ]
+    },
+    {
+      "section": "07 / GROWTH OPTIONS",
+      "title": "Compare resource combinations under a constraint.",
+      "lead": "A teaching allowance of eight tokens cannot cover the twenty-token total. O01 plus O02 uses five, leaving three; that is not enough for O03, which requires another five.",
+      "body": "O01 plus O04 uses six, leaving two, so O05 cannot follow within the same allowance because it needs six more. These examples illustrate constraints, not an approved portfolio or a recommendation about real resources.",
+      "subheading": "Portfolio arithmetic",
+      "detail": "Do not choose the cheapest option merely because it fits. Relevant learning, dependency and actual responsibility still matter.",
+      "question": "Which learning question is lost when the constraint rules out another option?",
+      "records": [
+        {
+          "label": "Route one",
+          "prompt": "O01 + O02 = 5 tokens; 3 remain."
+        },
+        {
+          "label": "Route two",
+          "prompt": "O01 + O04 = 6 tokens; 2 remain."
+        },
+        {
+          "label": "Constraint",
+          "prompt": "8 illustrative tokens cannot fund all 20."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "OPTION REGISTER",
+          "O02 / companion-worksheet / 3 tokens"
+        ],
+        [
+          "RESOURCE BOUNDARY",
+          "20 requested / 8 illustrative allowance; no approved budget or return."
+        ]
+      ]
+    },
+    {
+      "section": "08 / GROWTH OPTIONS",
+      "title": "Respect dependencies and permission questions.",
+      "lead": "O02 and O04 depend on O01. O03 depends on O01 and O02. O05 depends on O04. These arrows express planning assumptions, not evidence that the sequence will cause growth.",
+      "body": "The partner-led option also needs an appropriate relationship, permission and shared understanding of the offering. No partner commitment, endorsement or distribution authority is supplied.",
+      "subheading": "Dependency graph",
+      "detail": "The source register is acyclic and inspectable. Revisit an edge when new information changes what must be learned first.",
+      "question": "Which dependency is a learning need, and which requires an actual agreement?",
+      "records": [
+        {
+          "label": "Learning dependency",
+          "prompt": "Clarify the core task before adapting the format."
+        },
+        {
+          "label": "Channel dependency",
+          "prompt": "Understand O04 before considering O05."
+        },
+        {
+          "label": "Permission gap",
+          "prompt": "No actual partner agreement or endorsement."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "OPTION REGISTER",
+          "O03 / team-use-format / 5 tokens"
+        ],
+        [
+          "RESOURCE BOUNDARY",
+          "20 requested / 8 illustrative allowance; no approved budget or return."
+        ]
+      ]
+    },
+    {
+      "section": "09 / GROWTH OPTIONS",
+      "title": "Set stop and revision rules in advance.",
+      "lead": "A possible stop rule is that an option cannot explain a distinct task value after an appropriate review. Another is that a required permission or responsibility remains unavailable.",
+      "body": "The rules are proposed learning conditions, not tested thresholds or automatic business decisions. Record inconclusive evidence separately from evidence against the option. Avoid continuing only because resources have already been used.",
+      "subheading": "Continue / revise / stop",
+      "detail": "No experiment has been completed and no option is a proven winner. A decision needs relevant evidence and the actual authority to interpret it.",
+      "question": "What would make you stop rather than search for a more favourable story?",
+      "records": [
+        {
+          "label": "Continue question",
+          "prompt": "Is the task value still credible and inspectable?"
+        },
+        {
+          "label": "Revise condition",
+          "prompt": "The current explanation misses the intended task."
+        },
+        {
+          "label": "Stop condition",
+          "prompt": "An essential requirement cannot be responsibly satisfied."
+        }
+      ],
+      "image": 5,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "OPTION REGISTER",
+          "O04 / editorial-channel / 4 tokens"
+        ],
+        [
+          "RESOURCE BOUNDARY",
+          "20 requested / 8 illustrative allowance; no approved budget or return."
+        ]
+      ]
+    },
+    {
+      "section": "10 / GROWTH OPTIONS",
+      "title": "Review the portfolio as a set of questions.",
+      "lead": "After appropriate exploration, compare what each option taught and what remains unknown. An option may be useful because it invalidates a premise rather than because it produces an expansion.",
+      "body": "The current register contains five untested options and no actual growth, return or experiment result. Preserve the original question and dependency when revising the portfolio so another reviewer can understand the change.",
+      "subheading": "Portfolio review record",
+      "detail": "A changed resource total does not establish a better strategy. Keep learning evidence, commercial assumptions and actual commitments distinct.",
+      "question": "Which question should be retired, reframed or explored next?",
+      "records": [
+        {
+          "label": "Retain",
+          "prompt": "The learning question and prior dependency assumptions."
+        },
+        {
+          "label": "Review",
+          "prompt": "What appropriate evidence changes the option’s meaning?"
+        },
+        {
+          "label": "Boundary",
+          "prompt": "No measured growth, return or approved investment."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix",
+      "evidenceRows": [
+        [
+          "OPTION REGISTER",
+          "O05 / partner-introduction / 6 tokens"
+        ],
+        [
+          "RESOURCE BOUNDARY",
+          "20 requested / 8 illustrative allowance; no approved budget or return."
+        ]
+      ]
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "Curated existing AI-generated illustration: bright-edit/01.jpg"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: campaign-playbook/01.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: comparison-guide/01.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: creative-treatment/01.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: launch-kit/01.jpg"
+    }
+  ]
+}

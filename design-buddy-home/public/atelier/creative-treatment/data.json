@@ -1,0 +1,296 @@
+{
+  "work": {
+    "id": "creative-treatment",
+    "title": "CREATIVE TREATMENT",
+    "subtitle": "创意执行提案",
+    "category": "提案",
+    "layout": "treatment",
+    "color": "#a64535",
+    "wash": "#f7e8dc",
+    "framework": "创意方向与呈现脚本",
+    "scope": "Fictional community-reading campaign treatment. No brand endorsement, tested audience response, production quote, permissions or approved media placement is supplied.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "proposal-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / CREATIVE TREATMENT",
+      "title": "Give the concept a creative task.",
+      "lead": "This treatment proposes a visual and verbal direction for an imaginary community-reading invitation. Begin with what the communication should help a reader understand, not a promise of campaign performance.",
+      "body": "The working task is to invite a curious reader into a conversation about a short text. The decision sought is whether this direction is worth developing, not whether a real campaign should be published or funded.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What should a reader understand after encountering the proposed invitation?",
+      "records": [
+        {
+          "label": "Communication task",
+          "prompt": "Draft communication task: not yet confirmed."
+        },
+        {
+          "label": "Desired understanding",
+          "prompt": "Draft desired understanding: not yet confirmed."
+        },
+        {
+          "label": "Direction decision",
+          "prompt": "Draft direction decision: not yet confirmed."
+        }
+      ],
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / CREATIVE TREATMENT",
+      "title": "State the audience assumption.",
+      "lead": "Describe the imagined communication situation and what remains unknown about a real audience. A fictional audience sketch is a design prompt, not evidence of demand or a tested preference.",
+      "body": "The concept imagines an adult who is interested in reading but unsure what a discussion involves. Actual motivations, language needs, access conditions and participation choices would need contextual research before a real campaign.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which audience assumption should be challenged before developing the creative direction?",
+      "records": [
+        {
+          "label": "Imagined situation",
+          "prompt": "Draft imagined situation: not yet confirmed."
+        },
+        {
+          "label": "Audience uncertainty",
+          "prompt": "Draft audience uncertainty: not yet confirmed."
+        },
+        {
+          "label": "Research question",
+          "prompt": "Draft research question: not yet confirmed."
+        }
+      ],
+      "image": 1,
+      "kind": "body"
+    },
+    {
+      "section": "03 / CREATIVE TREATMENT",
+      "title": "Name the central idea.",
+      "lead": "A useful concept can be stated simply enough to guide both words and images. The idea should explain the connection between the invitation and the intended conversation.",
+      "body": "Working concept: a shared page can open more than one perspective. The line is a creative proposition, not a claim that reading produces a measured social outcome. Alternative wording should retain that distinction.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What makes this one coherent direction rather than a collection of attractive references?",
+      "records": [
+        {
+          "label": "Concept sentence",
+          "prompt": "Draft concept sentence: not yet confirmed."
+        },
+        {
+          "label": "Visual implication",
+          "prompt": "Draft visual implication: not yet confirmed."
+        },
+        {
+          "label": "Claim boundary",
+          "prompt": "Draft claim boundary: not yet confirmed."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / CREATIVE TREATMENT",
+      "title": "Build a short narrative sequence.",
+      "lead": "Describe how the message unfolds across a beginning, a turn and an invitation. Narrative order helps a reviewer understand the intended experience without assuming a confirmed channel or running time.",
+      "body": "Begin with a person noticing a passage, turn to two different readings of it, and close with a question about what the reader sees. The sequence is a proposed script, not a record of a real event.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which beat carries the main idea, and what could be removed without losing it?",
+      "records": [
+        {
+          "label": "Opening beat",
+          "prompt": "Draft opening beat: not yet confirmed."
+        },
+        {
+          "label": "Perspective turn",
+          "prompt": "Draft perspective turn: not yet confirmed."
+        },
+        {
+          "label": "Closing invitation",
+          "prompt": "Draft closing invitation: not yet confirmed."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / CREATIVE TREATMENT",
+      "title": "Set the visual language.",
+      "lead": "Explain the role of colour, composition and image treatment in the concept. A visual vocabulary should support the task rather than stand in for evidence about audience response.",
+      "body": "Cobalt and vermilion can create contrast; close views of paper can keep the text central; two readings can be suggested through different annotations. The supplied watercolor images are illustrative references, not approved campaign assets.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which visual choice supports the idea, and which is only a stylistic preference?",
+      "records": [
+        {
+          "label": "Colour relationship",
+          "prompt": "Draft colour relationship: not yet confirmed."
+        },
+        {
+          "label": "Composition principle",
+          "prompt": "Draft composition principle: not yet confirmed."
+        },
+        {
+          "label": "Asset question",
+          "prompt": "Draft asset question: not yet confirmed."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / CREATIVE TREATMENT",
+      "title": "Write a sample scene.",
+      "lead": "Provide enough script detail to make the treatment discussable. Separate proposed copy from production instructions and from claims that would require substantiation.",
+      "body": "Example scene: a hand rests beside a blank page; a voice asks What did you notice first? A second note offers another reading. This is an invented scene with no actual performer, consent, recording or production arrangement.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What should the sample scene communicate without inventing an endorsement or result?",
+      "records": [
+        {
+          "label": "Proposed scene",
+          "prompt": "Draft proposed scene: not yet confirmed."
+        },
+        {
+          "label": "Draft line",
+          "prompt": "Draft draft line: not yet confirmed."
+        },
+        {
+          "label": "Meaning to preserve",
+          "prompt": "Draft meaning to preserve: not yet confirmed."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / CREATIVE TREATMENT",
+      "title": "Adapt the idea by medium.",
+      "lead": "Show how the same concept could change across a poster, a short sequence or a discussion card. Adaptation should preserve the idea while acknowledging the limits of each format.",
+      "body": "A poster might centre one question; a sequence could reveal two interpretations; a card could leave space for a response. No media slot, dimensions or real distribution arrangement is confirmed by these examples.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which part of the idea must stay consistent when the format changes?",
+      "records": [
+        {
+          "label": "Poster adaptation",
+          "prompt": "Draft poster adaptation: not yet confirmed."
+        },
+        {
+          "label": "Sequence adaptation",
+          "prompt": "Draft sequence adaptation: not yet confirmed."
+        },
+        {
+          "label": "Card adaptation",
+          "prompt": "Draft card adaptation: not yet confirmed."
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / CREATIVE TREATMENT",
+      "title": "Expose production dependencies.",
+      "lead": "Name the decisions and permissions that would need resolution before real execution. A compelling treatment is not a production quote, license or approval.",
+      "body": "Dependencies could include final copy, asset rights, accessibility review, responsible production roles and actual distribution specifications. Costs, dates and appointments are deliberately unconfirmed rather than represented by invented totals.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which unresolved dependency could change the creative direction itself?",
+      "records": [
+        {
+          "label": "Dependency",
+          "prompt": "Draft dependency: not yet confirmed."
+        },
+        {
+          "label": "Review needed",
+          "prompt": "Draft review needed: not yet confirmed."
+        },
+        {
+          "label": "Responsible role to confirm",
+          "prompt": "Draft responsible role to confirm: not yet confirmed."
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / CREATIVE TREATMENT",
+      "title": "Ask reviewers useful questions.",
+      "lead": "Give reviewers a small set of questions linked to the creative task. This makes feedback more actionable than asking whether they like the artwork.",
+      "body": "Questions might ask whether the central idea is clear, which line overstates the invitation and which visual cue is unnecessary. A reviewer’s reaction is not a representative audience result or permission to publish.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What feedback would help choose between this direction and a credible alternative?",
+      "records": [
+        {
+          "label": "Idea clarity question",
+          "prompt": "Draft idea clarity question: not yet confirmed."
+        },
+        {
+          "label": "Copy boundary question",
+          "prompt": "Draft copy boundary question: not yet confirmed."
+        },
+        {
+          "label": "Visual question",
+          "prompt": "Draft visual question: not yet confirmed."
+        }
+      ],
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / CREATIVE TREATMENT",
+      "title": "Choose a direction with conditions.",
+      "lead": "Close with a record of what to develop, what to revise and what to leave unresolved. Choosing a direction for exploration is different from approving final production.",
+      "body": "A bounded response could request a simpler opening scene and an alternative headline before another discussion. Keep the audience assumptions, image provenance and production dependencies attached when the treatment is shared.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What should the next creative draft demonstrate before a production decision is considered?",
+      "records": [
+        {
+          "label": "Develop further",
+          "prompt": "Draft develop further: not yet confirmed."
+        },
+        {
+          "label": "Revision requested",
+          "prompt": "Draft revision requested: not yet confirmed."
+        },
+        {
+          "label": "Remaining condition",
+          "prompt": "Draft remaining condition: not yet confirmed."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for creative-treatment"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: afterglow/03.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: swatch/02.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: common-ground/04.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: tideline/02.jpg"
+    }
+  ]
+}

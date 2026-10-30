@@ -1,0 +1,10 @@
+task_id,goal,checkpoint,status,observation,actual_session
+T01,Explain which passage the note concerns,first-interpretation,unrecorded,,
+T01,Explain which passage the note concerns,attempted-action,unrecorded,,
+T01,Explain which passage the note concerns,unresolved-question,unrecorded,,
+T02,Describe how to reveal more context,first-interpretation,unrecorded,,
+T02,Describe how to reveal more context,attempted-action,unrecorded,,
+T02,Describe how to reveal more context,unresolved-question,unrecorded,,
+T03,Explain the next step when context is unavailable,first-interpretation,unrecorded,,
+T03,Explain the next step when context is unavailable,attempted-action,unrecorded,,
+T03,Explain the next step when context is unavailable,unresolved-question,unrecorded,,

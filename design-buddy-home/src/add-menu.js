@@ -53,9 +53,11 @@ const STATUS_CLASS = { 排队中: 'is-queued', 进行中: 'is-running', 已完�
  * @param {()=>void} opts.pickFiles 调起系统文件选择器
  * @param {()=>void} opts.openRefPicker 打开完整媒体库弹窗
  * @param {(text:string, files?:Array)=>void} opts.fillPrompt 把计划/任务写回输入框
+ * @param {(skill:object)=>void} opts.onPickSkill 点击技能行调用技能
+ * @param {()=>{name:string}|null} opts.currentSkill 当前已调用的技能
  * @returns {{ show:(name:string)=>void, hide:()=>void, current:()=>string, refresh:()=>void }}
  */
-export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRefPicker, fillPrompt, onAttachmentsChange, closeMenu }) {
+export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRefPicker, fillPrompt, onAttachmentsChange, closeMenu, onPickSkill, currentSkill }) {
   const popover = $('#add-popover')
   const wrap = $('#add-sub')
   if (!popover || !wrap) return { show() {}, hide() {}, current: () => '', refresh() {} }
@@ -73,14 +75,16 @@ export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRe
     const skills = store.state.skills ?? []
     const on = skills.filter((s) => s.enabled).length
     if (count) count.textContent = `${on} 个已启用 / 共 ${skills.length} 个`
+    const active = currentSkill?.() ?? null
     list.innerHTML = skills.length ? skills.map((s) => `
-      <button class="add-item${s.enabled ? ' is-on' : ''}" type="button" role="menuitemcheckbox"
-        aria-checked="${!!s.enabled}" data-toggle-skill="${esc(s.id)}" title="${s.enabled ? '点击停用' : '点击启用'}">
+      <button class="add-item${s.enabled ? ' is-on' : ''}${s.name === active?.name ? ' is-called' : ''}" type="button" role="menuitemcheckbox"
+        aria-checked="${!!s.enabled}" data-toggle-skill="${esc(s.id)}" title="${s.enabled ? '点击调用' : '未启用'}">
         <span class="add-item-ic">${esc((s.name || '技')[0])}</span>
         <span class="add-item-main">
           <span class="add-item-name">${esc(s.name)}</span>
-          <span class="add-item-meta">v${esc(s.version || '1.0.0')} · ${s.enabled ? '已启用，创作时自动调用' : '已停用'}</span>
+          <span class="add-item-meta">v${esc(s.version || '1.0.0')} · ${s.name === active?.name ? '本次已调用' : (s.enabled ? '已启用' : '已停用')}</span>
         </span>
+        ${s.name === active?.name ? '<span class="add-item-pill is-on">已调用</span>' : ''}
         <span class="mini-switch ${s.enabled ? 'is-on' : ''}" aria-hidden="true"></span>
       </button>`).join('')
       : '<p class="add-sub-empty">还没有安装技能，去技能页挑一个。</p>'
@@ -88,38 +92,13 @@ export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRe
 
   /* ---------------- 连接器 ---------------- */
 
-  const cnState = (name) => store.state.connectors.find((c) => c.name === name)
-
   const renderConnectors = () => {
-    const list = $('#add-cn-list')
-    const count = $('#add-cn-count')
+    const list = $('#add-cn-list'), count = $('#add-cn-count')
     if (!list) return
     const search = ($('#add-cn-search')?.value ?? '').trim().toLowerCase()
-    const connected = store.state.connectors.filter((c) => c.connected)
-    if (count) count.textContent = `${connected.length} 个已连接 / 共 ${store.state.connectors.length} 个`
-    // 已连接的排在前面；目录里的其它连接器作为可一键连接的建议
-    const cards = [
-      ...store.state.connectors.map((c) => ({
-        name: c.name, desc: c.desc || '已连接的服务', color: c.color || '#5b6ef5', connected: !!c.connected,
-      })),
-      ...CONNECTOR_CATALOG
-        .filter((c) => !store.state.connectors.some((k) => k.name === c.name))
-        .map((c) => ({ name: c.name, desc: c.desc, color: c.color, connected: false })),
-    ]
-      .filter((c) => !search || `${c.name} ${c.desc}`.toLowerCase().includes(search))
-      .sort((a, b) => Number(b.connected) - Number(a.connected))
-      .slice(0, 14)
-    list.innerHTML = cards.length ? cards.map((c) => `
-      <button class="add-item${c.connected ? ' is-on' : ''}" type="button" role="menuitemcheckbox"
-        aria-checked="${c.connected}" data-toggle-connector="${esc(c.name)}" title="${c.connected ? '点击断开' : '点击连接'}">
-        <span class="add-dot" style="--c:${esc(c.color)}"></span>
-        <span class="add-item-main">
-          <span class="add-item-name">${esc(c.name)}</span>
-          <span class="add-item-meta">${c.connected ? '已连接' : esc(c.desc)}</span>
-        </span>
-        <span class="add-item-pill${c.connected ? ' is-on' : ''}">${c.connected ? '已连' : '连接'}</span>
-      </button>`).join('')
-      : '<p class="add-sub-empty">没有匹配的连接器。</p>'
+    if (count) count.textContent = '六个核心连接入口，前往连接器页验证'
+    const cards = CONNECTOR_CATALOG.filter(c => !search || `${c.name} ${c.desc}`.toLowerCase().includes(search))
+    list.innerHTML = cards.map(c => `<button class="add-item" type="button" data-toggle-connector="${esc(c.name)}"><span class="add-dot" style="--c:${esc(c.color)}"></span><span class="add-item-main"><span class="add-item-name">${esc(c.name)}</span><span class="add-item-meta">${esc(c.desc)}</span></span><span class="add-item-pill">管理连接</span></button>`).join('') || '<p class="add-sub-empty">没有匹配的连接器。</p>'
   }
 
   /* ---------------- 模式：计划 + 任务 ---------------- */
@@ -302,34 +281,28 @@ export function initAddSubPanels({ attachments, addAttachment, pickFiles, openRe
     if (skill) {
       const sk = store.state.skills.find((s) => s.id === skill.dataset.toggleSkill)
       if (!sk) return
-      if (!sk.enabled && !store.state.settings.trustedSkills) {
-        toast('请先在「设置 → 通用」中开启信任技能，再启用技能')
+      // 开关：切换启用 / 停用
+      if (el.closest('.mini-switch')) {
+        if (!sk.enabled && !store.state.settings.trustedSkills) {
+          toast('请先在「设置 → 通用」中开启信任技能，再启用技能')
+          return
+        }
+        sk.enabled = !sk.enabled
+        store.save()
+        renderSkills()
+        toast(`${sk.name} 已${sk.enabled ? '启用' : '停用'}`)
         return
       }
-      sk.enabled = !sk.enabled
-      store.save()
+      // 行点击：调用技能（与输入框里输入 / 的效果一致）
+      onPickSkill?.(sk)
       renderSkills()
-      toast(`${sk.name} 已${sk.enabled ? '启用' : '停用'}`)
       return
     }
 
     const cn = el.closest('[data-toggle-connector]')
     if (cn) {
-      const name = cn.dataset.toggleConnector
-      const entry = store.state.connectors.find((c) => c.name === name)
-      if (entry) {
-        entry.connected = !entry.connected
-      } else {
-        const cat = CONNECTOR_CATALOG.find((c) => c.name === name)
-        store.state.connectors.push({
-          id: `cn-${Date.now().toString(36)}`, name, connected: true,
-          desc: cat?.desc, color: cat?.color, shape: cat?.shape, category: cat?.category,
-        })
-      }
-      store.save()
-      renderConnectors()
-      const now = store.state.connectors.find((c) => c.name === name)?.connected
-      toast(`${name} 已${now ? '连接' : '断开'}`)
+      const provider = CONNECTOR_CATALOG.find(c => c.name === cn.dataset.toggleConnector)
+      location.href = 'connectors.html?provider=' + encodeURIComponent(provider?.id || '')
       return
     }
 

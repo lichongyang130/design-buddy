@@ -1,0 +1,165 @@
+{
+  "work": {
+    "id": "project-studio",
+    "title": "PROJECT STUDIO",
+    "subtitle": "项目工作室",
+    "category": "课程",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "framework": "挑战任务与阶段评审",
+    "scope": "Fictional adult learning exercises. Illustrations are not records of real participants or research evidence. No accredited qualification or actual learner outcomes are supplied.",
+    "layout": "studio",
+    "color": "#176b6a",
+    "wash": "#e0f2ef",
+    "expansion": "documents-50",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / PROJECT STUDIO",
+      "title": "Define a learning challenge.",
+      "lead": "This studio course uses a fictional tabletop display project to practise planning, critique and iteration. The result is a learning artifact, not an approved product or installation.",
+      "body": "Challenge: communicate three ideas using a small paper model. The audience and setting are invented so learners can focus on how choices connect to an intention.",
+      "subheading": "Challenge / audience assumption / learning goal",
+      "detail": "Working record: Write the challenge in one sentence and name the skill you want to practise. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Write the challenge in one sentence and name the skill you want to practise.",
+      "image": 1,
+      "kind": "cover",
+      "module": "挑战简报"
+    },
+    {
+      "section": "02 / PROJECT STUDIO",
+      "title": "Agree a learning contract.",
+      "lead": "A learning contract describes how the exercise will be approached and what kind of feedback will help. It does not assign real employment duties or grant formal certification.",
+      "body": "A learner might commit to keeping two alternatives, recording one reason for each choice and asking for feedback about clarity rather than taste.",
+      "subheading": "Practice commitment / feedback request / boundary",
+      "detail": "Working record: Write three commitments that you can actually observe in your own process. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Write three commitments that you can actually observe in your own process.",
+      "image": 1,
+      "kind": "body",
+      "module": "学习契约"
+    },
+    {
+      "section": "03 / PROJECT STUDIO",
+      "title": "Split the challenge into questions.",
+      "lead": "Break the broad task into questions about message, form and interpretation. Keep tasks distinct from questions so activity does not become a substitute for learning.",
+      "body": "Make three cards: What should a viewer notice first? Which arrangement supports that intention? What would show that the message remains unclear?",
+      "subheading": "Message question / form question / evaluation question",
+      "detail": "Working record: Turn one broad challenge into three answerable design questions. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Turn one broad challenge into three answerable design questions.",
+      "image": 2,
+      "kind": "body",
+      "module": "问题拆分"
+    },
+    {
+      "section": "04 / PROJECT STUDIO",
+      "title": "Map the resources you have.",
+      "lead": "Separate supplied materials, borrowed references and missing information. This exercise provides illustrations and a document structure, not a real workshop inventory.",
+      "body": "A fictional resource list might contain paper, a pencil and an example image. A real making session would need its own material suitability and appropriate setting checks.",
+      "subheading": "Available / reference / missing / needs review",
+      "detail": "Working record: Build a resource map without presenting invented supplies as a real allocation. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Build a resource map without presenting invented supplies as a real allocation.",
+      "image": 2,
+      "kind": "body",
+      "module": "资源地图"
+    },
+    {
+      "section": "05 / PROJECT STUDIO",
+      "title": "Make the work visible.",
+      "lead": "Use a small task board to distinguish proposed work, work being tried and work ready for discussion. A status is a local learning record, not an official project approval.",
+      "body": "Move draft three labels from proposed to trying only after you begin the draft. Keep an unresolved question attached to work that is ready for feedback.",
+      "subheading": "Proposed / trying / discuss / unresolved",
+      "detail": "Working record: Place three learning tasks on the board and explain one status choice. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Place three learning tasks on the board and explain one status choice.",
+      "image": 3,
+      "kind": "body",
+      "module": "任务看板"
+    },
+    {
+      "section": "06 / PROJECT STUDIO",
+      "title": "Keep a process log.",
+      "lead": "Record a choice while its context is still available. A process log is more informative when it includes a rejected option and the reason for the rejection.",
+      "body": "Entry: tried a circular arrangement to suggest equal importance; rejected it because the starting point became hard to find. This is a design judgement, not a measured user result.",
+      "subheading": "Attempt / reason / observed issue / next move",
+      "detail": "Working record: Write two dated-by-version entries rather than inventing a real project calendar. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Write two dated-by-version entries rather than inventing a real project calendar.",
+      "image": 3,
+      "kind": "body",
+      "module": "过程日志"
+    },
+    {
+      "section": "07 / PROJECT STUDIO",
+      "title": "Ask for a focused critique.",
+      "lead": "Present the intention, one artifact and one question. Focused critique makes it easier to distinguish a preference from a concern about the stated goal.",
+      "body": "Instead of Do you like it? ask Which label did you notice first, and what in the arrangement drew your attention? Use invented peer responses for this document exercise.",
+      "subheading": "Intention / artifact / question / feedback note",
+      "detail": "Working record: Draft a critique request that a peer could answer specifically. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Draft a critique request that a peer could answer specifically.",
+      "image": 4,
+      "kind": "body",
+      "module": "评审记录"
+    },
+    {
+      "section": "08 / PROJECT STUDIO",
+      "title": "Compare an iteration.",
+      "lead": "Show what changed, why it changed and which question remains open. A later version is not automatically better; it may exchange one strength for another.",
+      "body": "Moving the first label upward may clarify the starting point while reducing symmetry. Record that trade-off rather than claiming the revision solved everything.",
+      "subheading": "Version A / version B / reason / trade-off",
+      "detail": "Working record: Document one change and one unresolved consequence. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Document one change and one unresolved consequence.",
+      "image": 4,
+      "kind": "body",
+      "module": "迭代比较"
+    },
+    {
+      "section": "09 / PROJECT STUDIO",
+      "title": "Explain the artifact.",
+      "lead": "A short outcome statement connects the challenge, the selected approach and the limits of the result. Do not claim real audience validation when the course used invented examples.",
+      "body": "The statement can describe the intended reading order and point to the layout that supports it. It should also say that no real audience study was supplied.",
+      "subheading": "Challenge / approach / supporting artifact / limit",
+      "detail": "Working record: Write an outcome statement that another learner can inspect against the artifact. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Write an outcome statement that another learner can inspect against the artifact.",
+      "image": 5,
+      "kind": "body",
+      "module": "成果陈述"
+    },
+    {
+      "section": "10 / PROJECT STUDIO",
+      "title": "Plan the next learning cycle.",
+      "lead": "Close by choosing a question that arose from the work rather than adding every possible improvement to an endless list. A focused next cycle is easier to evaluate.",
+      "body": "If the starting point remains unclear, the next exercise might compare two label arrangements using a consistent observation prompt. That is a proposed learning task, not a scheduled real study.",
+      "subheading": "Lesson / next question / proposed exercise / evidence need",
+      "detail": "Working record: Choose one next cycle and explain why it follows from this one. Keep your first attempt and your revised version so the change remains visible.",
+      "question": "Choose one next cycle and explain why it follows from this one.",
+      "image": 5,
+      "kind": "appendix",
+      "module": "复盘迁移"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated illustration for project-studio"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: swatch/01.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: open-shelf/03.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: tideline/09.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: swatch/05.jpg"
+    }
+  ]
+}

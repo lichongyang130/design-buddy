@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "exhibition-guide",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 17832,
+      "sha256": "62d18555165b1e3c62733765d2b4050c32e03c918742d133b101f3bd2d9fffbe"
+    },
+    {
+      "path": "content.js",
+      "bytes": 14087,
+      "sha256": "0d1112d71e8810db444317af88b6e4b2e8cfd521ebf8766498013ef7e7819bde"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 542,
+      "sha256": "a4b2a9937275da15ea6ddd7d4280aa7b398a69f685e4e6f0502b9ae9ca4a20e8"
+    },
+    {
+      "path": "exhibition-guide.docx",
+      "bytes": 863706,
+      "sha256": "ed681419d32e3a2d49c53c1c48d209e18b81cc05a3bf5a2f9f18df41c85ef559"
+    },
+    {
+      "path": "exhibition-guide.pdf",
+      "bytes": 937378,
+      "sha256": "6136ce5a6a3d6125a43d822471eaacf90e3735738661188b59e975529cf1d3f2"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 346,
+      "sha256": "e84004776edc2d90c2043ec557f3c097cb42be76a1bcc1d879f4e620d2f42867"
+    },
+    {
+      "path": "source.json",
+      "bytes": 1612,
+      "sha256": "ac0c575b3a00486b4d44b0f1b006bce18dd0f4c683430682b79e9fd70f1d0769"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 138952,
+      "sha256": "4dca2e4a5b8b308b3975ff5cbf93bce3123723cd4137cd97899661e82701be61"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 205264,
+      "sha256": "7d7c7d0f6a0cb664f45124754474fbb45c0b2154c8b90abeb5e9c5aeda541dfe"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 113232,
+      "sha256": "c0b779cc6a901e2db8bef9cc18c2f81bf322bf058cdf97b4a83004909a340b2a"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 201821,
+      "sha256": "1b61d651c9fe2ba5e910c63e8868537ec03529cd3ba3c7c64e46516fa0708593"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 195001,
+      "sha256": "d69648fa107d5e95ebbc4a27c0f9a1345d777f11162b03bdeb293632e7c4dacf"
+    }
+  ]
+}

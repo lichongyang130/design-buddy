@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "facilitator-guide",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 16628,
+      "sha256": "de31bcb070fd4614fb556b802953ee0fe3efcdaeb721aeb3e6ec292deec860f7"
+    },
+    {
+      "path": "content.js",
+      "bytes": 13167,
+      "sha256": "75f99c09818da9f6680686a8a8054ec9a329fc0941fea32b7430a0d855d2fe7e"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 542,
+      "sha256": "8345e42df77b5fd7ff589ce506fe0e24ea601a499895620991b3de2eae0d2b35"
+    },
+    {
+      "path": "facilitator-guide.docx",
+      "bytes": 1011554,
+      "sha256": "b413c539b250822a8568449c91287e16f905be434f5333d3395d8108f51d1c0b"
+    },
+    {
+      "path": "facilitator-guide.pdf",
+      "bytes": 1083195,
+      "sha256": "1d7ba1eeef5b54a9d8b177f78d38d4652cbd3b766750084ad74fa869a2f97867"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 158,
+      "sha256": "c5224f6ab42688c0e6365af447245b9d84cfa0503cb3bba8fefc89dff201750b"
+    },
+    {
+      "path": "source.json",
+      "bytes": 905,
+      "sha256": "df1f63b651d91cab1f7804dd31752f4bacf5047fce0e4a7e804182330b6616a5"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 212622,
+      "sha256": "b1ce2c89bb0ee32f1590ca61b97943f9f0455ae422046f0ca34a98f874f8af90"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 195073,
+      "sha256": "948d4146d31e3c4855c5db8a76d7b52b5f7fb16f74480a825bdf51c83a90e331"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 182854,
+      "sha256": "cce1754fb63f2258f296a9120a590b024aff91e760618a6241eeb70c0d3e2391"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 216536,
+      "sha256": "0fbeafc7d7db52d02498cb54735540fd5d5ba42c0bfdb4080a11b00c88729cc7"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 195001,
+      "sha256": "d69648fa107d5e95ebbc4a27c0f9a1345d777f11162b03bdeb293632e7c4dacf"
+    }
+  ]
+}

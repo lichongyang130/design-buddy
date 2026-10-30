@@ -1,0 +1,6 @@
+option,name,teaching_tokens,depends_on,status,actual_result
+O01,core-task,2,[],not-explored,
+O02,companion-worksheet,3,"[""O01""]",not-explored,
+O03,team-use-format,5,"[""O01"", ""O02""]",not-explored,
+O04,editorial-channel,4,"[""O01""]",not-explored,
+O05,partner-introduction,6,"[""O04""]",not-explored,

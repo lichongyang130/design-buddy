@@ -1,0 +1,7 @@
+extract_id,text,tags,invented
+E1,I can find the current card when its version is visible.,"[""findability"", ""version""]",True
+E2,I ask another reader when two cards look similar.,"[""findability"", ""clarification""]",True
+E3,A short example helps me understand what to write.,"[""example"", ""clarification""]",True
+E4,I keep the earlier version to compare the change.,"[""version""]",True
+E5,I want to know whom to ask about an unfamiliar term.,"[""clarification""]",True
+E6,An index lets me return to the card I used before.,"[""findability""]",True

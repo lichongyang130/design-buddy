@@ -1,0 +1,4 @@
+option,sequence,context_note,portable_set,review_trail
+sequence-folio,True,False,True,True
+context-card-box,False,True,True,False
+review-binder,True,True,False,True

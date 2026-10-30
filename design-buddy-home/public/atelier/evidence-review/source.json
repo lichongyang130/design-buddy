@@ -1,0 +1,70 @@
+{
+  "source": "deterministic-invented-teaching-records",
+  "synthetic": true,
+  "summary": {
+    "totalCards": 8,
+    "included": 5,
+    "excluded": 3,
+    "methodNotes": 2,
+    "exampleSheets": 2,
+    "reflections": 1
+  },
+  "records": [
+    {
+      "source_id": "S01",
+      "kind": "method-note",
+      "included": true,
+      "reason": "in-scope",
+      "theme": "clarity"
+    },
+    {
+      "source_id": "S02",
+      "kind": "example-sheet",
+      "included": true,
+      "reason": "in-scope",
+      "theme": "clarity"
+    },
+    {
+      "source_id": "S03",
+      "kind": "reflection",
+      "included": true,
+      "reason": "in-scope",
+      "theme": "context"
+    },
+    {
+      "source_id": "S04",
+      "kind": "method-note",
+      "included": true,
+      "reason": "in-scope",
+      "theme": "clarity"
+    },
+    {
+      "source_id": "S05",
+      "kind": "example-sheet",
+      "included": true,
+      "reason": "in-scope",
+      "theme": "context"
+    },
+    {
+      "source_id": "S06",
+      "kind": "opinion",
+      "included": false,
+      "reason": "unsupported-opinion",
+      "theme": "excluded"
+    },
+    {
+      "source_id": "S07",
+      "kind": "duplicate",
+      "included": false,
+      "reason": "duplicate-card",
+      "theme": "excluded"
+    },
+    {
+      "source_id": "S08",
+      "kind": "out-of-scope",
+      "included": false,
+      "reason": "outside-question",
+      "theme": "excluded"
+    }
+  ]
+}

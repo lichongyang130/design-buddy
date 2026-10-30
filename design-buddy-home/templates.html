@@ -7,10 +7,12 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e2b4d'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E" />
     <link rel="stylesheet" href="/src/styles.css" />
     <link rel="stylesheet" href="/src/templates.css" />
+    <link rel="stylesheet" href="/art/apps/fonts.css" />
+    <link rel="stylesheet" href="/src/rebuilt-library.css?v=20261030-rebuild-21" />
       <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#1e2b4d" />
   </head>
-  <body>
+  <body class="template-gallery">
     <div class="app">
       <!-- ============ 最左侧窄图标栏 ============ -->
       <nav class="rail" aria-label="模块导航" data-i18n-aria="aria.moduleNav">
@@ -27,8 +29,7 @@
           <a href="templates.html" class="rail-item rail-item-active" aria-current="page">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
             <span data-i18n="rail.templates">模板</span>
-          </a>
-          <a href="themes.html" class="rail-item">
+          </a>          <a href="themes.html" class="rail-item">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2a10 10 0 1 0 0 20 2.5 2.5 0 0 0 0-5 2.5 2.5 0 0 1 0-5h2a6 6 0 0 0 6-6 10 10 0 0 0-8-4z"/></svg>
             <span data-i18n="rail.themes">主题</span>
           </a>
@@ -42,8 +43,7 @@
               <span data-i18n="rail.more">更多</span>
             </button>
             <div class="more-pop" hidden>
-              <div class="more-flyout" role="menu" aria-label="更多功能" data-i18n-aria="aria.moreMenu">
-                <button class="menu-row" type="button" role="menuitem" data-more="技能">
+              <div class="more-flyout" role="menu" aria-label="更多功能" data-i18n-aria="aria.moreMenu">                <button class="menu-row" type="button" role="menuitem" data-more="技能">
                   <svg class="icon menu-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
                   <span class="menu-label" data-i18n="menu.skills">技能</span>
                 </button>
@@ -74,7 +74,7 @@
       <aside class="sidebar tpl-sidebar">
         <div class="sidebar-inner">
           <h2 class="side-title">工作区</h2>
-          <nav class="side-nav" aria-label="工作区">
+          <nav class="side-nav" data-library-nav="workspace" aria-label="工作区">
             <a href="#" class="nav-item" data-demo="工作区模板">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
               <span>工作区模板</span>
@@ -96,7 +96,7 @@
           <div class="nav-divider"></div>
 
           <h2 class="side-title">探索</h2>
-          <nav class="side-nav" aria-label="探索">
+          <nav class="side-nav" data-library-nav="explore" aria-label="探索">
             <a href="templates.html" class="nav-item nav-item-active" aria-current="page">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
               <span>探索模板</span>
@@ -130,6 +130,31 @@
                 <input type="radio" name="format" value="社交轮播卡片" />
                 <svg class="icon opt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
                 <span>社交轮播卡片</span>
+              </label>
+              <label class="filter-option">
+                <input type="radio" name="format" value="网站复刻" />
+                <svg class="icon opt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+                <span>网站复刻</span>
+              </label>
+              <label class="filter-option">
+                <input type="radio" name="format" value="App" />
+                <svg class="icon opt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="2" width="13" height="20" rx="2.5"/><line x1="10.5" y1="18.5" x2="13.5" y2="18.5"/><line x1="9" y1="5" x2="15" y2="5"/></svg>
+                <span>App</span>
+              </label>
+              <label class="filter-option">
+                <input type="radio" name="format" value="图片" />
+                <svg class="icon opt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="m21 15-4.5-4.5L6 21"/></svg>
+                <span>图片</span>
+              </label>
+              <label class="filter-option">
+                <input type="radio" name="format" value="实时产物" />
+                <svg class="icon opt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>
+                <span>实时产物</span>
+              </label>
+              <label class="filter-option">
+                <input type="radio" name="format" value="WebGL" />
+                <svg class="icon opt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg>
+                <span>WebGL</span>
               </label>
             </div>
           </section>
@@ -183,6 +208,6 @@
     </div>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    <script type="module" src="/src/templates.js"></script>
+    <script type="module" src="/src/rebuilt-library.js?v=20261030-rebuild-21"></script>
   </body>
 </html>

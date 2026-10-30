@@ -1,0 +1,28 @@
+{
+  "source": "authored-fictional-pitch-model",
+  "synthetic": true,
+  "notInvestmentOffer": true,
+  "summary": {
+    "conceptualStages": 3,
+    "validatedStages": 0,
+    "benchmark": null,
+    "deployedSystem": false
+  },
+  "records": [
+    {
+      "stage": "capture",
+      "design_intention": "Keep a reference with its source context.",
+      "evidence_status": "not-tested"
+    },
+    {
+      "stage": "link",
+      "design_intention": "Associate the reference with an intended passage.",
+      "evidence_status": "not-tested"
+    },
+    {
+      "stage": "review",
+      "design_intention": "Expose unresolved context to a human reviewer.",
+      "evidence_status": "not-tested"
+    }
+  ]
+}

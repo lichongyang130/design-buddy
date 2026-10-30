@@ -1,0 +1,296 @@
+{
+  "work": {
+    "id": "technical-thesis",
+    "title": "TECHNICAL THESIS",
+    "subtitle": "技术论点型融资稿",
+    "category": "融资演讲稿",
+    "layout": "technical",
+    "color": "#4a507f",
+    "wash": "#e9e9f5",
+    "framework": "技术论点与验证路线",
+    "scope": "Fictional fundraising speech template. Spoken drafts, ventures, people and illustrative models are invented; no real traction, validated impact, technical performance, securities offer, investment terms or committed funding is supplied.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "fundraising-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / TECHNICAL THESIS",
+      "title": "Make the technical thesis inspectable.",
+      "lead": "Trace Index is our fictional concept for making the relationship between a document passage and its source easier to inspect. The thesis is that a small, explicit reference structure could support better review. We are presenting a design intention, not claiming a deployed or independently tested system.",
+      "body": "Use the scope statement before any architecture discussion. No production software, performance benchmark, customer integration or proprietary technical advantage is supplied.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What would count as evidence that this design helps a real review task?",
+      "records": [
+        {
+          "label": "Technical thesis",
+          "prompt": "Trace Index proposes linking references to source context."
+        },
+        {
+          "label": "Intended review task",
+          "prompt": "Help a human inspect an unresolved source relationship."
+        },
+        {
+          "label": "Capability boundary",
+          "prompt": "A concept, not demonstrated code or validated performance."
+        }
+      ],
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / TECHNICAL THESIS",
+      "title": "Describe the technical problem narrowly.",
+      "lead": "A passage can travel farther than its source context. The problem we want to explore is how a reviewer locates that context and sees what it can support. We are not proposing that software can decide whether every statement is true.",
+      "body": "Avoid turning a broad information-quality concern into a claim of verified demand. The fictional problem statement needs real contextual evidence before it can describe an actual market or workflow.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "Which part of the problem should remain a human judgement?",
+      "records": [
+        {
+          "label": "Problem boundary",
+          "prompt": "A reviewer may lose the context of a reference."
+        },
+        {
+          "label": "Reviewer task",
+          "prompt": "Inspect the reference, intended passage and unresolved context."
+        },
+        {
+          "label": "Unsupported promise",
+          "prompt": "No claim of automated truth detection or full accuracy."
+        }
+      ],
+      "image": 1,
+      "kind": "body"
+    },
+    {
+      "section": "03 / TECHNICAL THESIS",
+      "title": "Compare a credible alternative.",
+      "lead": "A careful manual reference list may already solve part of the task. Our concept should be compared with that baseline, not with a deliberately weak alternative. The question is whether the proposed structure adds useful traceability without creating more maintenance than the task warrants.",
+      "body": "No comparative test has been performed. The baseline is an option for evaluation, not a claim that manual work is ineffective or that an actual competitor lacks capability.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What would make the simpler alternative preferable?",
+      "records": [
+        {
+          "label": "Manual baseline",
+          "prompt": "A person keeps source notes and reviews them manually."
+        },
+        {
+          "label": "Proposed difference",
+          "prompt": "A proposed explicit relationship between reference and passage."
+        },
+        {
+          "label": "Comparison question",
+          "prompt": "Does that relationship help review compared with a simple note?"
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / TECHNICAL THESIS",
+      "title": "Separate the architecture into roles.",
+      "lead": "The design has three proposed roles: capture a reference, link it to a passage and present it for review. These are conceptual stages, not an implemented pipeline. Each stage should have a clear input, an output and an explicit limit.",
+      "body": "The exported stage register contains three untested design hypotheses. It provides no code, deployment architecture, throughput figures or passing test results.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "Which stage has the most important untested assumption?",
+      "records": [
+        {
+          "label": "Stage input",
+          "prompt": "Capture a reference and its source context."
+        },
+        {
+          "label": "Proposed output",
+          "prompt": "Link the reference to a passage; expose review questions."
+        },
+        {
+          "label": "Validation gap",
+          "prompt": "All three conceptual stages remain not-tested."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / TECHNICAL THESIS",
+      "title": "Describe validation before quoting performance.",
+      "lead": "A useful proof plan would ask whether a reviewer can find the intended source, recognise a stale reference and understand an unresolved link. We have not run those checks, so we are not reporting accuracy, latency or reliability.",
+      "body": "All stage evidence statuses are not-tested. A proposed test is not a successful test, and a worked diagram is not a benchmark or a security review.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "Which failure would be most informative for the next design decision?",
+      "records": [
+        {
+          "label": "Validation question",
+          "prompt": "Can a reviewer identify and inspect a source relationship?"
+        },
+        {
+          "label": "Test material needed",
+          "prompt": "Appropriate examples, a manual baseline and an evaluation rule."
+        },
+        {
+          "label": "Result not supplied",
+          "prompt": "No benchmark, latency, accuracy or test result supplied."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / TECHNICAL THESIS",
+      "title": "State the limits of the mechanism.",
+      "lead": "A link can point to a source without establishing the quality of that source or the truth of a claim. Review also depends on context, permissions and interpretation. Those boundaries are part of the product idea rather than an inconvenient footnote.",
+      "body": "No guarantee of correctness, compliance, safety, privacy or security is provided. Appropriate independent review would be required for any real implementation.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What conclusion must the interface avoid making automatically?",
+      "records": [
+        {
+          "label": "Mechanism limit",
+          "prompt": "A reference link cannot prove that a statement is true."
+        },
+        {
+          "label": "Human review role",
+          "prompt": "A person must assess meaning and source appropriateness."
+        },
+        {
+          "label": "Specialist review question",
+          "prompt": "Security, privacy and specialist review remain unresolved."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / TECHNICAL THESIS",
+      "title": "Connect the mechanism to a use situation.",
+      "lead": "Imagine a reader asking why a passage supports a proposal. The concept would aim to show the associated reference and the unresolved question. That is a proposed use situation, not a record of a customer successfully using a working product.",
+      "body": "The watercolor scenes are editorial illustrations, not interface captures or a product demonstration. Add real artifacts only with accurate provenance and verified capability descriptions.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What would a first demonstration need to make visible?",
+      "records": [
+        {
+          "label": "Use situation",
+          "prompt": "A writer checks a passage before sharing a document."
+        },
+        {
+          "label": "Proposed interaction",
+          "prompt": "Inspect the proposed reference link and its context."
+        },
+        {
+          "label": "Real artifact needed",
+          "prompt": "An inspectable prototype, not an asserted deployed system."
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / TECHNICAL THESIS",
+      "title": "Identify the capability needed to build.",
+      "lead": "The work would need product judgement, implementation expertise and appropriate review of how source material is handled. We can name those roles without pretending that the team is staffed or that specialist approvals already exist.",
+      "body": "No biographies, patents, proprietary rights or appointments are supplied. Verify any real team or intellectual-property statement independently before adding it to a financing narrative.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "Which missing capability could change the technical scope?",
+      "records": [
+        {
+          "label": "Build responsibility",
+          "prompt": "Implement the smallest inspectable source-link interaction."
+        },
+        {
+          "label": "Review responsibility",
+          "prompt": "Design evaluation and retain unresolved failure cases."
+        },
+        {
+          "label": "Unconfirmed role",
+          "prompt": "No named technical team or confirmed appointments supplied."
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / TECHNICAL THESIS",
+      "title": "Frame the next technical gate.",
+      "lead": "The next gate should answer one decision-relevant question using suitable material, not promise a launch date unsupported by the work. Resources would be discussed against that gate and its dependencies. No actual funding amount or implementation commitment is supplied here.",
+      "body": "Keep proposed architecture, test plans and financing terms separate. There is no evidence of a deployed system or an investment arrangement in the stage register.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What result would justify moving beyond the current concept?",
+      "records": [
+        {
+          "label": "Gate question",
+          "prompt": "Can a prototype make source context easier to inspect?"
+        },
+        {
+          "label": "Required artifact",
+          "prompt": "A bounded prototype with documented limitations and test material."
+        },
+        {
+          "label": "Funding discussion boundary",
+          "prompt": "No actual funding ask, valuation or investment terms supplied."
+        }
+      ],
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / TECHNICAL THESIS",
+      "title": "Close on a falsifiable direction.",
+      "lead": "The useful invitation is to challenge the thesis: can a small reference structure help a defined review task enough to justify its cost and maintenance? We should be prepared for a simpler approach to win. That is the discipline we want the next conversation to examine.",
+      "body": "Preserve the untested status of every stage and the absence of benchmarks. This fictional script is not an investment recommendation or a technical certification.",
+      "subheading": "Speaker / evidence note — not a performance claim",
+      "detail": "Keep the fictional status visible. Replace illustrative material only with appropriately sourced, verified information; proposed questions are not completed diligence.",
+      "question": "What evidence could persuade you that the proposed approach is unnecessary?",
+      "records": [
+        {
+          "label": "Thesis challenge",
+          "prompt": "Does the explicit link help more than the manual baseline?"
+        },
+        {
+          "label": "Alternative outcome",
+          "prompt": "If not, revise the mechanism or reject the hypothesis."
+        },
+        {
+          "label": "Next proof conversation",
+          "prompt": "Discuss the smallest credible test, not promised performance."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for technical-thesis"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: swatch/01.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: tideline/12.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: afterglow/11.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: open-shelf/03.jpg"
+    }
+  ]
+}

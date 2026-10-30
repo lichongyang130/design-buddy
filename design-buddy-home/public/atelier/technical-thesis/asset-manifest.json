@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "technical-thesis",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 15484,
+      "sha256": "827dd87001e64d15000bd9d97190e41589bcdebe7b5f67e96d85f24edf53dd8a"
+    },
+    {
+      "path": "content.js",
+      "bytes": 12955,
+      "sha256": "749236c30c565cb8ab9195bbe996e9f7689ce5fea46093bc64daea6bda949121"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 510,
+      "sha256": "8b6fc9accd073b210363c4c899be7efeb1f475178eb948a1b81baa055ce927ac"
+    },
+    {
+      "path": "technical-thesis.docx",
+      "bytes": 786152,
+      "sha256": "ab8a1a3199a6aa1c7bc0695de4d4700a738ac0dfd4bab7470d1b7f92d2150565"
+    },
+    {
+      "path": "technical-thesis.pdf",
+      "bytes": 856944,
+      "sha256": "ce90d2b7391e194e9d8880190066624ccbb9edfa5d83c4dc64aeba047d73c7a5"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 231,
+      "sha256": "b33d23893273922063071a5bfcf9ed6115d1f131782007ddeaad73b9e9278578"
+    },
+    {
+      "path": "source.json",
+      "bytes": 696,
+      "sha256": "2fa5450df77ee7d98b1776d27b0879cc977c6dbd00817bc7074b51e38a59dd43"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 151875,
+      "sha256": "b2b5a84fc8c9e8f77a60326551c21e5909108b2d3da242b9236c277cb987cf9e"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 190875,
+      "sha256": "310f3553ba1a7c46c08183fbfb9f8c4e8cc0d0b81adb968a39e3e1f0348adc82"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 176804,
+      "sha256": "06a65d63f06e6a0050407afb5248fbf22a4717006481de4db84d47fe81ea0b0c"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 166028,
+      "sha256": "5479a0d50adcd7e7b6f336e1861adf8c32ae6c4d068eed65cd8740cfdb415f78"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 92465,
+      "sha256": "c521d63a3826932557ca35a89cb2c3c3b3a8d141e20c898738a030c4b6220b56"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+node,parent,kind,statement,status,actual_evidence
+O00,,outcome,Make the passage-note relationship inspectable,intended,
+O01,O00,opportunity,Recover relevant source context,unvalidated,
+O02,O00,opportunity,Understand revision status,unvalidated,
+H11,O01,hypothesis,An adjacent excerpt may support context recovery,untested,
+H12,O01,hypothesis,A source link may support context recovery,untested,
+H21,O02,hypothesis,A visible status label may explain revision state,untested,
+H22,O02,hypothesis,A change note may explain revision meaning,untested,

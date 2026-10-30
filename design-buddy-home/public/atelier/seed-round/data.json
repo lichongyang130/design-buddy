@@ -1,0 +1,152 @@
+{
+  "work": {
+    "id": "seed-round",
+    "title": "SEED ROUND",
+    "subtitle": "虚构社区项目融资叙事稿",
+    "category": "融资演讲稿",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "framework": "pitch: Claim and qualification / distinct native A4 document layout",
+    "scope": "Fictional fundraising narrative exercise. No real company, traction, valuation, investment offer, securities advice or secured funding.",
+    "layout": "pitch",
+    "color": "#743e69",
+    "wash": "#f0e4ed"
+  },
+  "pages": [
+    {
+      "section": "01 / SEED ROUND",
+      "title": "Open with a bounded ambition.",
+      "lead": "This narrative practises explaining an imagined community venture to a reader. It is a document script, not a real investment offering or a claim that funds have been raised.",
+      "body": "The ambition is to investigate a useful shared service. Every claim about demand, delivery and finance remains provisional unless replaced by appropriately sourced information.",
+      "subheading": "Claim and qualification",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What can the opening honestly promise to explore?",
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / SEED ROUND",
+      "title": "Give the reader a clear route.",
+      "lead": "The script follows problem, proposed response, alternatives, evidence gaps, a fictional resource model, risk and the response sought.",
+      "body": "Read the script aloud as a writing exercise if useful, but no speaking time is promised. Ten pages are document sections, not a prescribed presentation duration.",
+      "subheading": "Claim and qualification",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which claim needs qualification before it is spoken?",
+      "image": 1,
+      "kind": "contents"
+    },
+    {
+      "section": "03 / SEED ROUND",
+      "title": "Name a problem without manufacturing traction.",
+      "lead": "The fictional premise is that a local shared service might make a recurring task easier. It does not establish market size, willingness to pay or user demand.",
+      "body": "Avoid invented customer counts or testimonials. A strong problem statement can admit that evidence is missing and specify what would need to be learned.",
+      "subheading": "Claim and qualification",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which source would establish actual demand?",
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / SEED ROUND",
+      "title": "Explain the proposed response.",
+      "lead": "Describe the intended experience in ordinary language before naming features. The imagined service should be understandable without implying that it has been built or tested.",
+      "body": "A concept can suggest a useful direction while remaining uncertain. Do not describe a drawing, informal conversation or internal preference as product-market fit.",
+      "subheading": "Claim and qualification",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What remains untested in the response?",
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / SEED ROUND",
+      "title": "Keep the alternative visible.",
+      "lead": "A responsible narrative acknowledges that people may already address the task in other ways. This exercise supplies no competitor research or verified market comparison.",
+      "body": "Discuss the kind of alternative that should be investigated, rather than inventing a ranking. A preferred story is not proof of differentiation.",
+      "subheading": "Claim and qualification",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What real comparison would be relevant?",
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / SEED ROUND",
+      "title": "Show a transparent fictional resource split.",
+      "lead": "Use 100 teaching units only: 40 for exploration, 35 for a bounded pilot question and 25 held as an unresolved reserve. The total is 100.",
+      "body": "These are invented units, not currency, an ask, a budget quote or a valuation. No allocation authorises spending or establishes a real funding requirement.",
+      "subheading": "Claim and qualification",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which omitted category could change a real resource plan?",
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / SEED ROUND",
+      "title": "Separate a signal from a result.",
+      "lead": "A conversation, an expression of interest or an internal sketch could motivate a next question. None automatically establishes revenue, retention or a funded commitment.",
+      "body": "The template supplies no actual traction. A real narrative should state how evidence was obtained, what it measures and what it cannot establish.",
+      "subheading": "Claim and qualification",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What would make a claimed signal verifiable?",
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / SEED ROUND",
+      "title": "State risk without a decorative disclaimer.",
+      "lead": "Relevant unknowns include whether the problem is meaningful, whether a suitable response is feasible and whether responsible delivery arrangements exist.",
+      "body": "Risks belong beside the intended next step, not only in tiny print. This writing exercise does not assess legal, financial or operational suitability for a real venture.",
+      "subheading": "Claim and qualification",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which assumption could invalidate the preferred story?",
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / SEED ROUND",
+      "title": "Ask for the right response.",
+      "lead": "The fictional request is for source-aware feedback on the next learning question. It is not a request to purchase securities or transfer money.",
+      "body": "Invite the reader to identify missing evidence or a responsible reviewer. Do not imply that a meeting, positive comment or local note is a commitment.",
+      "subheading": "Claim and qualification",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "What non-financial response would help clarify the idea?",
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / SEED ROUND",
+      "title": "Close without claiming a transaction.",
+      "lead": "Summarise the intention, evidence gap and proposed learning question. Keep fictional status visible in any exported script or excerpt.",
+      "body": "No round, investor, valuation, contract or funding outcome exists in this example. Replace the content responsibly before considering any real-world use.",
+      "subheading": "Claim and qualification",
+      "detail": "Use this section to record a bounded response to the question below. Retain the distinction between the fictional example, your interpretation and any separate evidence a real use would require.",
+      "question": "Which phrase could accidentally imply secured funding?",
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for this case"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: swatch/09.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: tideline/15.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: afterglow/13.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: common-ground/04.jpg"
+    }
+  ]
+}

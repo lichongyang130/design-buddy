@@ -1,0 +1,6 @@
+interface,capability,from_role,to_role,input_artifact,output_artifact,status,delegated_authority,actual_assignment
+1,intake,owner,author,scoped brief,draft,proposed,False,
+2,explanation,author,coordinator,draft,source-status note,proposed,False,
+3,source-coordination,coordinator,reviewer,source-status note,review question,proposed,False,
+4,review,reviewer,author,review question,revision rationale,proposed,False,
+5,revision,author,owner,revision rationale,revised explanation,proposed,False,

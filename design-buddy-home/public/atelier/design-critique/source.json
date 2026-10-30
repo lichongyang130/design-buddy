@@ -1,0 +1,69 @@
+{
+  "source": "authored-fictional-product-specification",
+  "synthetic": true,
+  "notActualProductEvidence": true,
+  "summary": {
+    "alternatives": 2,
+    "principles": 3,
+    "scoreCells": 6,
+    "rubric": {
+      "0": "not represented",
+      "1": "partly represented",
+      "2": "coherently represented"
+    },
+    "ordinalNotInterval": true,
+    "actualReviewers": null,
+    "actualScores": null,
+    "approval": null
+  },
+  "records": [
+    {
+      "alternative": "A",
+      "principle": "P01",
+      "criterion": "context traceability",
+      "score": null,
+      "status": "unassessed",
+      "actual_rationale": null
+    },
+    {
+      "alternative": "A",
+      "principle": "P02",
+      "criterion": "recovery clarity",
+      "score": null,
+      "status": "unassessed",
+      "actual_rationale": null
+    },
+    {
+      "alternative": "A",
+      "principle": "P03",
+      "criterion": "reading economy",
+      "score": null,
+      "status": "unassessed",
+      "actual_rationale": null
+    },
+    {
+      "alternative": "B",
+      "principle": "P01",
+      "criterion": "context traceability",
+      "score": null,
+      "status": "unassessed",
+      "actual_rationale": null
+    },
+    {
+      "alternative": "B",
+      "principle": "P02",
+      "criterion": "recovery clarity",
+      "score": null,
+      "status": "unassessed",
+      "actual_rationale": null
+    },
+    {
+      "alternative": "B",
+      "principle": "P03",
+      "criterion": "reading economy",
+      "score": null,
+      "status": "unassessed",
+      "actual_rationale": null
+    }
+  ]
+}

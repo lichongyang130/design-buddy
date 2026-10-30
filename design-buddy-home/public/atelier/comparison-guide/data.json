@@ -1,0 +1,396 @@
+{
+  "work": {
+    "id": "comparison-guide",
+    "title": "COMPARISON GUIDE",
+    "subtitle": "A task-first option decision workbook",
+    "category": "营销材料",
+    "layout": "compare",
+    "color": "#5b386e",
+    "wash": "#eee4f6",
+    "framework": "需求到选项对照",
+    "scope": "Three fictional note-organising concepts, with assumed capabilities for teaching comparison. Not verified products, procurement advice, prices or market research.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "marketing-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / COMPARISON GUIDE",
+      "title": "Start with the decision task.",
+      "lead": "Choose a way to keep working material understandable when you return to it. This guide compares three fictional approaches, not real competing products.",
+      "body": "Begin with the task and the constraints that would make an option unsuitable. The point is to expose trade-offs, not to manufacture a winner or imply that a larger feature count means greater value.",
+      "subheading": "Decision before feature counting",
+      "detail": "The comparison uses authored assumptions. Validate any real product capability and procurement requirement independently before adapting the guide.",
+      "question": "What must the chosen approach help the reader do?",
+      "records": [
+        {
+          "label": "Task",
+          "prompt": "Return to material with enough context to use it."
+        },
+        {
+          "label": "Decision scope",
+          "prompt": "Compare fictional organising approaches."
+        },
+        {
+          "label": "Non-goal",
+          "prompt": "No ranking of actual vendors or products."
+        }
+      ],
+      "image": 1,
+      "kind": "cover",
+      "evidenceRows": [
+        [
+          "ASSUMED OPTION",
+          "sequence-folio"
+        ],
+        [
+          "COMPARISON MODEL",
+          "3 concepts × 4 flags / 8 yes cells / not verified products."
+        ]
+      ]
+    },
+    {
+      "section": "02 / COMPARISON GUIDE",
+      "title": "Turn needs into checkable criteria.",
+      "lead": "A useful criterion describes a task condition: keep an order, add a context note, or carry a small set of material without a network connection.",
+      "body": "Separate essential constraints from preferences. A reader may care more about portability than indexing, while another may need a clear review trail. Those differences should remain visible rather than disappear inside an unexplained score.",
+      "subheading": "Needs without arbitrary weights",
+      "detail": "The guide supplies four binary assumptions for illustration. It does not assign importance on behalf of a buyer or claim that the assumptions are verified.",
+      "question": "Which requirement would rule out an otherwise appealing option?",
+      "records": [
+        {
+          "label": "Essential",
+          "prompt": "Define the task condition that cannot be compromised."
+        },
+        {
+          "label": "Preference",
+          "prompt": "Record a benefit that may be traded off."
+        },
+        {
+          "label": "Unknown",
+          "prompt": "Check requirements that the current model does not address."
+        }
+      ],
+      "image": 1,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "ASSUMED OPTION",
+          "context-card-box"
+        ],
+        [
+          "COMPARISON MODEL",
+          "3 concepts × 4 flags / 8 yes cells / not verified products."
+        ]
+      ]
+    },
+    {
+      "section": "03 / COMPARISON GUIDE",
+      "title": "Use the same comparison rules.",
+      "lead": "The three concepts are a sequence folio, a context-card box and a review binder. Each is described using the same four capability assumptions.",
+      "body": "A yes means assumed present in this fictional model; a no means assumed absent. Neither means independently tested, universally available or unsuitable for every reader. Unknown real-world facts must not be silently converted into no.",
+      "subheading": "A visible comparison key",
+      "detail": "The four dimensions are sequence, context note, portable set and review trail. They are not a comprehensive product specification.",
+      "question": "Would another reviewer interpret each flag the same way?",
+      "records": [
+        {
+          "label": "Yes",
+          "prompt": "Assumed present in this illustrative concept."
+        },
+        {
+          "label": "No",
+          "prompt": "Assumed absent, not a verified product limitation."
+        },
+        {
+          "label": "Unknown real fact",
+          "prompt": "Requires checking; do not replace it with a model flag."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "ASSUMED OPTION",
+          "review-binder"
+        ],
+        [
+          "COMPARISON MODEL",
+          "3 concepts × 4 flags / 8 yes cells / not verified products."
+        ]
+      ]
+    },
+    {
+      "section": "04 / COMPARISON GUIDE",
+      "title": "Describe the options in plain language.",
+      "lead": "The sequence folio keeps material in an intended order. The context-card box emphasises a question beside a note. The review binder keeps a structured review trail.",
+      "body": "These are design concepts, not offers for sale. Their descriptions explain a comparison lens without implying construction quality, security, support or compatibility.",
+      "subheading": "Three different organising priorities",
+      "detail": "A useful description helps the reader picture the task. Keep promotional superlatives out of a guide that is meant to support a considered choice.",
+      "question": "Which organising priority matches the task rather than the headline?",
+      "records": [
+        {
+          "label": "Sequence folio",
+          "prompt": "Ordered material with a portable set."
+        },
+        {
+          "label": "Context-card box",
+          "prompt": "Context notes with a portable set."
+        },
+        {
+          "label": "Review binder",
+          "prompt": "Ordered material, context notes and a review trail."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "ASSUMED OPTION",
+          "sequence-folio"
+        ],
+        [
+          "COMPARISON MODEL",
+          "3 concepts × 4 flags / 8 yes cells / not verified products."
+        ]
+      ]
+    },
+    {
+      "section": "05 / COMPARISON GUIDE",
+      "title": "Read the matrix without a score.",
+      "lead": "The fictional matrix contains eight yes flags across twelve cells. The total describes the model only; it is not a quality rating or a market statistic.",
+      "body": "Sequence folio has sequence, portable set and review trail. Context-card box has context note and portable set. Review binder has sequence, context note and review trail, but not portable set. These are authored assumptions, not tested product capabilities.",
+      "subheading": "Assumptions are inspectable",
+      "detail": "Check source CSV or JSON for every flag. Do not add a feature to the narrative without changing the source register and rebuilding the guide.",
+      "question": "Which individual flag matters to this reader’s task?",
+      "records": [
+        {
+          "label": "Sequence folio",
+          "prompt": "Sequence, portable set and review trail assumed."
+        },
+        {
+          "label": "Context-card box",
+          "prompt": "Context note and portable set assumed."
+        },
+        {
+          "label": "Review binder",
+          "prompt": "Sequence, context note and review trail assumed."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "ASSUMED OPTION",
+          "context-card-box"
+        ],
+        [
+          "COMPARISON MODEL",
+          "3 concepts × 4 flags / 8 yes cells / not verified products."
+        ]
+      ]
+    },
+    {
+      "section": "06 / COMPARISON GUIDE",
+      "title": "Match a scenario before recommending.",
+      "lead": "For a person carrying a small set of references, portability may matter first. For a person explaining why a passage was saved, a context note may matter more.",
+      "body": "The scenarios show how priorities change the conversation. They do not establish a universally best option. A real recommendation needs actual constraints, verified capabilities and the reader’s informed judgement.",
+      "subheading": "Scenario routes",
+      "detail": "Use a scenario to ask what would happen in practice. If two options remain plausible, identify the smallest appropriate comparison activity.",
+      "question": "Which scenario is closest to the actual task?",
+      "records": [
+        {
+          "label": "Carry a small set",
+          "prompt": "Check the portable-set assumption first."
+        },
+        {
+          "label": "Recover the reason",
+          "prompt": "Check the context-note assumption first."
+        },
+        {
+          "label": "Review a sequence",
+          "prompt": "Check sequence and review-trail assumptions together."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "ASSUMED OPTION",
+          "review-binder"
+        ],
+        [
+          "COMPARISON MODEL",
+          "3 concepts × 4 flags / 8 yes cells / not verified products."
+        ]
+      ]
+    },
+    {
+      "section": "07 / COMPARISON GUIDE",
+      "title": "Treat cost as an unanswered question.",
+      "lead": "No prices, implementation effort or support conditions are supplied. A lower apparent purchase price would not by itself establish lower total cost.",
+      "body": "Ask about setup, maintenance, storage, accessibility and the work of changing an existing practice. Keep monetary amounts unknown until an appropriate, current source supports them.",
+      "subheading": "Commercial information not supplied",
+      "detail": "The source model contains capabilities only. It cannot justify an affordability claim, a savings figure or a procurement budget.",
+      "question": "Which ongoing responsibility could change the cost conversation?",
+      "records": [
+        {
+          "label": "Purchase terms",
+          "prompt": "No price or commercial offer supplied."
+        },
+        {
+          "label": "Ongoing effort",
+          "prompt": "Setup and maintenance need investigation."
+        },
+        {
+          "label": "Comparison boundary",
+          "prompt": "Capability flags do not establish total cost."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "ASSUMED OPTION",
+          "sequence-folio"
+        ],
+        [
+          "COMPARISON MODEL",
+          "3 concepts × 4 flags / 8 yes cells / not verified products."
+        ]
+      ]
+    },
+    {
+      "section": "08 / COMPARISON GUIDE",
+      "title": "Make omissions visible.",
+      "lead": "The model says nothing about durability, privacy, accessibility or specialist requirements. Those omissions may matter more than the four displayed dimensions.",
+      "body": "A comparison guide should tell a reader what it does not cover. Do not use a neat matrix to imply a complete assessment, certification or suitability decision.",
+      "subheading": "Unassessed dimensions",
+      "detail": "If an omitted condition is essential, pause the choice and obtain the relevant information. A blank in the evidence is not permission to assume a favourable answer.",
+      "question": "Which missing dimension should prevent a decision today?",
+      "records": [
+        {
+          "label": "Unassessed",
+          "prompt": "Durability and accessibility are not evaluated."
+        },
+        {
+          "label": "Unverified",
+          "prompt": "No actual product, vendor or test result supplied."
+        },
+        {
+          "label": "Pause condition",
+          "prompt": "An essential requirement lacks appropriate evidence."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "ASSUMED OPTION",
+          "context-card-box"
+        ],
+        [
+          "COMPARISON MODEL",
+          "3 concepts × 4 flags / 8 yes cells / not verified products."
+        ]
+      ]
+    },
+    {
+      "section": "09 / COMPARISON GUIDE",
+      "title": "Write a provisional choice record.",
+      "lead": "A good decision record states the task, the option considered and the unresolved condition that could change the choice. It need not pretend certainty.",
+      "body": "Use the three fields below as a working decision note. The example favours no real product and does not replace organisational procurement, specialist review or a buyer’s own evaluation.",
+      "subheading": "A choice that can be revisited",
+      "detail": "Keep the evidence version with the record. If an assumed capability changes, revisit the reasoning rather than preserving the old conclusion for consistency.",
+      "question": "What new fact would cause this provisional choice to change?",
+      "records": [
+        {
+          "label": "Task condition",
+          "prompt": "A portable set is essential for this scenario."
+        },
+        {
+          "label": "Options to inspect",
+          "prompt": "Sequence folio and context-card box remain plausible."
+        },
+        {
+          "label": "Open condition",
+          "prompt": "Verify actual context and review requirements."
+        }
+      ],
+      "image": 5,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "ASSUMED OPTION",
+          "review-binder"
+        ],
+        [
+          "COMPARISON MODEL",
+          "3 concepts × 4 flags / 8 yes cells / not verified products."
+        ]
+      ]
+    },
+    {
+      "section": "10 / COMPARISON GUIDE",
+      "title": "Ask for the missing information.",
+      "lead": "Before committing, ask a provider or maker to demonstrate the exact task and explain the limits of the proposed option. Request current, attributable information.",
+      "body": "This guide supplies no live consultation destination or purchasing service. Use its questions to structure a real evaluation, and preserve the distinction between an authored model and verified product evidence.",
+      "subheading": "Next-step conversation",
+      "detail": "A useful enquiry describes the task and the unresolved criterion. Avoid asking only whether an option is best, because the comparison has not defined a universal winner.",
+      "question": "What demonstration would reduce the most important uncertainty?",
+      "records": [
+        {
+          "label": "Question to send",
+          "prompt": "Show how the option handles this specific task."
+        },
+        {
+          "label": "Evidence to request",
+          "prompt": "Current capability information and relevant conditions."
+        },
+        {
+          "label": "Commitment boundary",
+          "prompt": "No purchase or procurement approval established."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix",
+      "evidenceRows": [
+        [
+          "ASSUMED OPTION",
+          "sequence-folio"
+        ],
+        [
+          "COMPARISON MODEL",
+          "3 concepts × 4 flags / 8 yes cells / not verified products."
+        ]
+      ]
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for comparison-guide"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: visual-literacy/01.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: form-study/02.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: landscape-scan/01.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: technical-thesis/01.jpg"
+    }
+  ]
+}

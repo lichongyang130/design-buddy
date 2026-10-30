@@ -1,0 +1,70 @@
+{
+  "source": "authored-fictional-business-model",
+  "synthetic": true,
+  "notActualForecast": true,
+  "summary": {
+    "interfaces": 5,
+    "roles": 4,
+    "implementedInterfaces": 0,
+    "actualAppointments": null,
+    "actualPerformance": null,
+    "operatingAuthority": null
+  },
+  "records": [
+    {
+      "interface": 1,
+      "capability": "intake",
+      "from_role": "owner",
+      "to_role": "author",
+      "input_artifact": "scoped brief",
+      "output_artifact": "draft",
+      "status": "proposed",
+      "delegated_authority": false,
+      "actual_assignment": null
+    },
+    {
+      "interface": 2,
+      "capability": "explanation",
+      "from_role": "author",
+      "to_role": "coordinator",
+      "input_artifact": "draft",
+      "output_artifact": "source-status note",
+      "status": "proposed",
+      "delegated_authority": false,
+      "actual_assignment": null
+    },
+    {
+      "interface": 3,
+      "capability": "source-coordination",
+      "from_role": "coordinator",
+      "to_role": "reviewer",
+      "input_artifact": "source-status note",
+      "output_artifact": "review question",
+      "status": "proposed",
+      "delegated_authority": false,
+      "actual_assignment": null
+    },
+    {
+      "interface": 4,
+      "capability": "review",
+      "from_role": "reviewer",
+      "to_role": "author",
+      "input_artifact": "review question",
+      "output_artifact": "revision rationale",
+      "status": "proposed",
+      "delegated_authority": false,
+      "actual_assignment": null
+    },
+    {
+      "interface": 5,
+      "capability": "revision",
+      "from_role": "author",
+      "to_role": "owner",
+      "input_artifact": "revision rationale",
+      "output_artifact": "revised explanation",
+      "status": "proposed",
+      "delegated_authority": false,
+      "actual_assignment": null
+    }
+  ]
+}

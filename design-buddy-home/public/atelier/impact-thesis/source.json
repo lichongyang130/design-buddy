@@ -1,0 +1,44 @@
+{
+  "source": "authored-fictional-pitch-model",
+  "synthetic": true,
+  "notInvestmentOffer": true,
+  "summary": {
+    "impactHypotheses": 3,
+    "commercialHypotheses": 3,
+    "validatedHypotheses": 0,
+    "measuredImpact": null,
+    "revenue": null
+  },
+  "records": [
+    {
+      "path": "impact",
+      "hypothesis": "resource-availability",
+      "evidence_status": "unverified"
+    },
+    {
+      "path": "impact",
+      "hypothesis": "contextual-adaptation",
+      "evidence_status": "unverified"
+    },
+    {
+      "path": "impact",
+      "hypothesis": "appropriate-use",
+      "evidence_status": "unverified"
+    },
+    {
+      "path": "commercial",
+      "hypothesis": "defined-offering",
+      "evidence_status": "unverified"
+    },
+    {
+      "path": "commercial",
+      "hypothesis": "adopting-organisation",
+      "evidence_status": "unverified"
+    },
+    {
+      "path": "commercial",
+      "hypothesis": "sustainable-payment",
+      "evidence_status": "unverified"
+    }
+  ]
+}

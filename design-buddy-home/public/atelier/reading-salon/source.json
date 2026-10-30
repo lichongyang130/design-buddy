@@ -1,0 +1,97 @@
+{
+  "source": "authored-fictional-event-register",
+  "synthetic": true,
+  "notActualEvent": true,
+  "summary": {
+    "passages": 3,
+    "rounds": 3,
+    "discussionCells": 9,
+    "originalExerciseTexts": true,
+    "externalPublication": null,
+    "actualReaderResponses": null,
+    "actualAttendance": null
+  },
+  "records": [
+    {
+      "passage_id": "P01",
+      "title": "The Place at the Table",
+      "passage": "The light moved across the table. Mira left a cup beside a folded letter. When she returned, the room looked unchanged, but the place she intended to sit no longer felt like hers.",
+      "round": "first-response",
+      "status": "unrecorded",
+      "actual_response": null,
+      "recording_permission": null
+    },
+    {
+      "passage_id": "P01",
+      "title": "The Place at the Table",
+      "passage": "The light moved across the table. Mira left a cup beside a folded letter. When she returned, the room looked unchanged, but the place she intended to sit no longer felt like hers.",
+      "round": "closer-reading",
+      "status": "unrecorded",
+      "actual_response": null,
+      "recording_permission": null
+    },
+    {
+      "passage_id": "P01",
+      "title": "The Place at the Table",
+      "passage": "The light moved across the table. Mira left a cup beside a folded letter. When she returned, the room looked unchanged, but the place she intended to sit no longer felt like hers.",
+      "round": "comparison",
+      "status": "unrecorded",
+      "actual_response": null,
+      "recording_permission": null
+    },
+    {
+      "passage_id": "P02",
+      "title": "The Sign at the Fork",
+      "passage": "At the fork, the sign named two places but pointed to neither. I stayed beside it until the footsteps behind me faded. Then the silence seemed less like an answer than another direction.",
+      "round": "first-response",
+      "status": "unrecorded",
+      "actual_response": null,
+      "recording_permission": null
+    },
+    {
+      "passage_id": "P02",
+      "title": "The Sign at the Fork",
+      "passage": "At the fork, the sign named two places but pointed to neither. I stayed beside it until the footsteps behind me faded. Then the silence seemed less like an answer than another direction.",
+      "round": "closer-reading",
+      "status": "unrecorded",
+      "actual_response": null,
+      "recording_permission": null
+    },
+    {
+      "passage_id": "P02",
+      "title": "The Sign at the Fork",
+      "passage": "At the fork, the sign named two places but pointed to neither. I stayed beside it until the footsteps behind me faded. Then the silence seemed less like an answer than another direction.",
+      "round": "comparison",
+      "status": "unrecorded",
+      "actual_response": null,
+      "recording_permission": null
+    },
+    {
+      "passage_id": "P03",
+      "title": "The Box of Relations",
+      "passage": "The box held a key, a ribbon and a label from an empty drawer. I kept them together, not because they were valuable, but because each changed what the others seemed to mean.",
+      "round": "first-response",
+      "status": "unrecorded",
+      "actual_response": null,
+      "recording_permission": null
+    },
+    {
+      "passage_id": "P03",
+      "title": "The Box of Relations",
+      "passage": "The box held a key, a ribbon and a label from an empty drawer. I kept them together, not because they were valuable, but because each changed what the others seemed to mean.",
+      "round": "closer-reading",
+      "status": "unrecorded",
+      "actual_response": null,
+      "recording_permission": null
+    },
+    {
+      "passage_id": "P03",
+      "title": "The Box of Relations",
+      "passage": "The box held a key, a ribbon and a label from an empty drawer. I kept them together, not because they were valuable, but because each changed what the others seemed to mean.",
+      "round": "comparison",
+      "status": "unrecorded",
+      "actual_response": null,
+      "recording_permission": null
+    }
+  ]
+}

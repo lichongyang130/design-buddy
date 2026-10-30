@@ -1,0 +1,396 @@
+{
+  "work": {
+    "id": "service-economics",
+    "title": "SERVICE ECONOMICS",
+    "subtitle": "A demand-capacity and unit-model workbook",
+    "category": "商业规划",
+    "layout": "capacity",
+    "color": "#9b4d32",
+    "wash": "#f7e3d8",
+    "framework": "容量需求与单位模型",
+    "scope": "A fictional Review Sessions capacity model. Minutes and teaching credits are illustrative; credits are not currency, prices, revenue or profit, and no actual service, staffing or demand is supplied.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "business-expansion",
+    "newIllustrations": 0,
+    "curatedIllustrations": 5
+  },
+  "pages": [
+    {
+      "section": "01 / SERVICE ECONOMICS",
+      "title": "Define one service unit before doing arithmetic.",
+      "lead": "The fictional service unit is one bounded document-review session lasting forty-five teaching minutes. It examines a passage and its source question, not the correctness of every claim in a document.",
+      "body": "Specify what is included and what remains outside the unit. This workbook establishes no operating service, professional verification, appointment availability or commercial contract. A real service definition needs appropriate responsibility and scope.",
+      "subheading": "Unit definition",
+      "detail": "The model uses one arbitrary planning window. Neither the duration nor the resource assumptions are validated observations of actual work.",
+      "question": "What must be clear before a request can count as one service unit?",
+      "records": [
+        {
+          "label": "Unit",
+          "prompt": "One bounded review of a passage and source question."
+        },
+        {
+          "label": "Duration assumption",
+          "prompt": "45 teaching minutes per completed session."
+        },
+        {
+          "label": "Exclusion",
+          "prompt": "No guarantee of correctness or full-document approval."
+        }
+      ],
+      "image": 1,
+      "kind": "cover",
+      "evidenceRows": [
+        [
+          "CAPACITY MODEL",
+          "(450 − 90) ÷ 45 = 8 whole sessions"
+        ],
+        [
+          "UNIT MODEL",
+          "10 − 4 = 6 credits / ceil(20 ÷ 6) = 4; not financial break-even."
+        ]
+      ]
+    },
+    {
+      "section": "02 / SERVICE ECONOMICS",
+      "title": "Keep demand assumptions separate from bookings.",
+      "lead": "The three model demand cases contain six, eight and ten requested sessions. They are authored planning inputs, not a waiting list, booked work or a measure of customer interest.",
+      "body": "An actual demand assessment would need a defined request, a relevant window and an appropriate source. Counting enquiries as completed work would conceal both uncertainty and the delivery constraint.",
+      "subheading": "Demand register",
+      "detail": "Demand above the model’s capacity produces an unmet count, not automatic permission to shorten sessions or make commitments.",
+      "question": "Which definition would distinguish a request from a confirmed suitable booking?",
+      "records": [
+        {
+          "label": "Lower case",
+          "prompt": "6 hypothetical requests."
+        },
+        {
+          "label": "Reference case",
+          "prompt": "8 hypothetical requests."
+        },
+        {
+          "label": "Higher case",
+          "prompt": "10 hypothetical requests, not actual bookings."
+        }
+      ],
+      "image": 1,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CAPACITY MODEL",
+          "(450 − 90) ÷ 45 = 8 whole sessions"
+        ],
+        [
+          "UNIT MODEL",
+          "10 − 4 = 6 credits / ceil(20 ÷ 6) = 4; not financial break-even."
+        ]
+      ]
+    },
+    {
+      "section": "03 / SERVICE ECONOMICS",
+      "title": "Derive capacity from the stated time assumptions.",
+      "lead": "The model starts with four hundred and fifty available teaching minutes and reserves ninety. That leaves three hundred and sixty minutes for the defined service units.",
+      "body": "At forty-five minutes each, floor of 360 divided by 45 gives eight sessions. The reserve is a modelling boundary, not spare time that the workbook authorises someone to consume. No actual staffing arrangement is supplied.",
+      "subheading": "Capacity calculation",
+      "detail": "Changing a unit’s duration or the reserve changes the model. Preserve the original assumption and examine whether the service scope would still be appropriate.",
+      "question": "Which assumption must be checked before calling eight sessions feasible?",
+      "records": [
+        {
+          "label": "Available / reserve",
+          "prompt": "450 minutes less 90 reserved = 360."
+        },
+        {
+          "label": "Unit / capacity",
+          "prompt": "360 ÷ 45 = 8 whole sessions."
+        },
+        {
+          "label": "Feasibility boundary",
+          "prompt": "No observed duration, staff availability or workload approval."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CAPACITY MODEL",
+          "(450 − 90) ÷ 45 = 8 whole sessions"
+        ],
+        [
+          "UNIT MODEL",
+          "10 − 4 = 6 credits / ceil(20 ÷ 6) = 4; not financial break-even."
+        ]
+      ]
+    },
+    {
+      "section": "04 / SERVICE ECONOMICS",
+      "title": "Map the work around the session.",
+      "lead": "Before a session, clarify the passage and relevant source. During it, inspect the stated question. After it, retain an appropriately agreed note about what remains unresolved.",
+      "body": "The time model does not separately measure preparation, coordination or follow-up. If those activities draw on the same available minutes, the capacity calculation must be revised rather than quietly treating them as free.",
+      "subheading": "Service workflow",
+      "detail": "The ninety-minute reserve is not an itemised estimate of all supporting work. Real delivery needs a more complete account of tasks and responsibilities.",
+      "question": "Which supporting task could make the simple capacity assumption misleading?",
+      "records": [
+        {
+          "label": "Before",
+          "prompt": "Clarify scope and source availability."
+        },
+        {
+          "label": "During",
+          "prompt": "Review the bounded passage-question relationship."
+        },
+        {
+          "label": "After",
+          "prompt": "Record the remaining question under an appropriate agreement."
+        }
+      ],
+      "image": 2,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CAPACITY MODEL",
+          "(450 − 90) ÷ 45 = 8 whole sessions"
+        ],
+        [
+          "UNIT MODEL",
+          "10 − 4 = 6 credits / ceil(20 ÷ 6) = 4; not financial break-even."
+        ]
+      ]
+    },
+    {
+      "section": "05 / SERVICE ECONOMICS",
+      "title": "Use a unit model without pretending it is money.",
+      "lead": "Each completed session receives ten benefit credits and uses four variable resource credits. The unit contribution is six credits; fixed resources are twenty credits per teaching window.",
+      "body": "Credits are arbitrary non-monetary quantities used to illustrate structure. Net credits equal six times completed sessions minus twenty. They are not prices, sales, wages, cash flow or profit.",
+      "subheading": "Unit model / teaching credits",
+      "detail": "The smallest whole number covering the model’s fixed credits is ceiling of 20 divided by 6, which is four completed sessions. This is a teaching threshold, not a real financial break-even.",
+      "question": "What evidence would be needed before constructing an actual commercial unit model?",
+      "records": [
+        {
+          "label": "Unit contribution",
+          "prompt": "10 − 4 = 6 teaching credits."
+        },
+        {
+          "label": "Window net",
+          "prompt": "6 × completed sessions − 20 fixed credits."
+        },
+        {
+          "label": "Teaching threshold",
+          "prompt": "ceil(20 ÷ 6) = 4 sessions; not financial break-even."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CAPACITY MODEL",
+          "(450 − 90) ÷ 45 = 8 whole sessions"
+        ],
+        [
+          "UNIT MODEL",
+          "10 − 4 = 6 credits / ceil(20 ÷ 6) = 4; not financial break-even."
+        ]
+      ]
+    },
+    {
+      "section": "06 / SERVICE ECONOMICS",
+      "title": "Distinguish fixed assumptions from fixed obligations.",
+      "lead": "The model holds twenty fixed credits and a ninety-minute reserve unchanged across the three cases. That is a comparison choice, not evidence of an actual obligation or a complete operating cost base.",
+      "body": "A real service may have resources that change in steps, shared capacity or commitments outside the planning window. Identify those conditions before translating a simple unit model into a decision.",
+      "subheading": "Fixed-resource questions",
+      "detail": "There are no rent, salary, tax, technology or insurance figures in this workbook. Do not interpret the teaching total as an actual cost estimate.",
+      "question": "Which supposedly fixed resource might change when the delivery arrangement changes?",
+      "records": [
+        {
+          "label": "Model assumption",
+          "prompt": "20 fixed teaching credits per window."
+        },
+        {
+          "label": "Time boundary",
+          "prompt": "90 minutes reserved in the capacity model."
+        },
+        {
+          "label": "Missing costs",
+          "prompt": "No actual spending, rates or contractual obligations supplied."
+        }
+      ],
+      "image": 3,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CAPACITY MODEL",
+          "(450 − 90) ÷ 45 = 8 whole sessions"
+        ],
+        [
+          "UNIT MODEL",
+          "10 − 4 = 6 credits / ceil(20 ÷ 6) = 4; not financial break-even."
+        ]
+      ]
+    },
+    {
+      "section": "07 / SERVICE ECONOMICS",
+      "title": "Compare the three demand cases.",
+      "lead": "Demand six, eight and ten produces delivery six, eight and eight under the capacity ceiling. Unmet counts are zero, zero and two. Unused service minutes are ninety, zero and zero.",
+      "body": "Net teaching credits are sixteen, twenty-eight and twenty-eight. The higher demand case cannot raise delivery or net credits without changing another assumption. No actual utilisation or financial performance is reported.",
+      "subheading": "Constrained case comparison",
+      "detail": "Service minutes are delivered sessions times forty-five. Unused service minutes exclude the ninety-minute reserve, which remains separate in every case.",
+      "question": "Which total stops changing when the capacity ceiling is reached?",
+      "records": [
+        {
+          "label": "Lower case",
+          "prompt": "6 delivered; 90 unused service minutes; net 16."
+        },
+        {
+          "label": "Reference case",
+          "prompt": "8 delivered; 0 unused service minutes; net 28."
+        },
+        {
+          "label": "Higher case",
+          "prompt": "8 delivered; 2 unmet requests; net remains 28."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CAPACITY MODEL",
+          "(450 − 90) ÷ 45 = 8 whole sessions"
+        ],
+        [
+          "UNIT MODEL",
+          "10 − 4 = 6 credits / ceil(20 ÷ 6) = 4; not financial break-even."
+        ]
+      ]
+    },
+    {
+      "section": "08 / SERVICE ECONOMICS",
+      "title": "Treat quality as a condition, not an automatic output.",
+      "lead": "Completing eight units in the model says nothing about the suitability or quality of an actual review. A capacity equation cannot establish whether a participant had enough context or support.",
+      "body": "Do not shorten a session merely to make the arithmetic fit more requests. Consider task complexity, access arrangements and the agreed review boundary before changing the unit definition or reserve.",
+      "subheading": "Quality and capacity trade-off",
+      "detail": "The workbook provides no quality score, satisfaction result or validated duration. Any real trade-off requires relevant information and appropriate responsibility.",
+      "question": "What could be lost if the unit were compressed without changing its scope?",
+      "records": [
+        {
+          "label": "Scope check",
+          "prompt": "The task remains bounded and understandable."
+        },
+        {
+          "label": "Support check",
+          "prompt": "Relevant access and review conditions are considered."
+        },
+        {
+          "label": "Evidence gap",
+          "prompt": "No actual service-quality or duration observations supplied."
+        }
+      ],
+      "image": 4,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CAPACITY MODEL",
+          "(450 − 90) ÷ 45 = 8 whole sessions"
+        ],
+        [
+          "UNIT MODEL",
+          "10 − 4 = 6 credits / ceil(20 ÷ 6) = 4; not financial break-even."
+        ]
+      ]
+    },
+    {
+      "section": "09 / SERVICE ECONOMICS",
+      "title": "Build a validation checklist around the unknowns.",
+      "lead": "Before using a similar model, examine the request definition, actual task duration, supporting work, appropriate reserve and commercial conditions. Each needs a source rather than a confident guess.",
+      "body": "Validate the meaning of the unit before seeking a precise number. A carefully calculated result can still be irrelevant if the service scope or planning window has changed.",
+      "subheading": "Validation sequence",
+      "detail": "Start with scope and responsibility, then inspect time and demand information. Only use actual financial inputs when they are available and appropriately defined.",
+      "question": "Which unknown would most change the interpretation of the model?",
+      "records": [
+        {
+          "label": "Scope evidence",
+          "prompt": "An agreed definition of the service and exclusions."
+        },
+        {
+          "label": "Time evidence",
+          "prompt": "Appropriate observations of the full task, not just contact time."
+        },
+        {
+          "label": "Commercial evidence",
+          "prompt": "Actual terms and costs; none supplied here."
+        }
+      ],
+      "image": 5,
+      "kind": "body",
+      "evidenceRows": [
+        [
+          "CAPACITY MODEL",
+          "(450 − 90) ÷ 45 = 8 whole sessions"
+        ],
+        [
+          "UNIT MODEL",
+          "10 − 4 = 6 credits / ceil(20 ÷ 6) = 4; not financial break-even."
+        ]
+      ]
+    },
+    {
+      "section": "10 / SERVICE ECONOMICS",
+      "title": "Turn the workbook into operating questions.",
+      "lead": "The useful questions are whether the unit is meaningful, whether the time boundary is defensible and what happens when suitable requests exceed capacity. The point model cannot answer those questions alone.",
+      "body": "This document remains a fictional planning example. No actual service, pricing decision, staffing approval or profitability claim follows from its calculations. Record which source would be needed for a more consequential decision.",
+      "subheading": "Next planning discussion",
+      "detail": "Carry forward one uncertainty about scope, one about resources and one about demand. Keep the teaching calculation available for inspection without upgrading it into a forecast.",
+      "question": "What should be learned before the service concept is developed further?",
+      "records": [
+        {
+          "label": "Scope question",
+          "prompt": "What work is included and appropriately supported?"
+        },
+        {
+          "label": "Resource question",
+          "prompt": "What actually constrains delivery in the relevant setting?"
+        },
+        {
+          "label": "Demand question",
+          "prompt": "Which requests represent a suitable, defined need?"
+        }
+      ],
+      "image": 5,
+      "kind": "appendix",
+      "evidenceRows": [
+        [
+          "CAPACITY MODEL",
+          "(450 − 90) ÷ 45 = 8 whole sessions"
+        ],
+        [
+          "UNIT MODEL",
+          "10 − 4 = 6 credits / ceil(20 ÷ 6) = 4; not financial break-even."
+        ]
+      ]
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "Curated existing AI-generated illustration: research-commission/01.jpg"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: service-blueprint/01.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: founder-narrative/01.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: roundtable-brief/01.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: interview-synthesis/01.jpg"
+    }
+  ]
+}

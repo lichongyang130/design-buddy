@@ -1,0 +1,162 @@
+{
+  "source": "deterministic-invented-teaching-records",
+  "synthetic": true,
+  "summary": {
+    "total": 24,
+    "perCondition": 12,
+    "completedA": 8,
+    "completedB": 9,
+    "totalCompleted": 17,
+    "meanCompletedA": 11.5,
+    "meanCompletedB": 11,
+    "medianCompletedA": 11.5,
+    "medianCompletedB": 11,
+    "timeUnit": "arbitrary-teaching-unit"
+  },
+  "records": [
+    {
+      "task_id": "T01",
+      "condition": "A",
+      "completed": true,
+      "time_units": 8
+    },
+    {
+      "task_id": "T02",
+      "condition": "A",
+      "completed": true,
+      "time_units": 9
+    },
+    {
+      "task_id": "T03",
+      "condition": "A",
+      "completed": true,
+      "time_units": 10
+    },
+    {
+      "task_id": "T04",
+      "condition": "A",
+      "completed": true,
+      "time_units": 11
+    },
+    {
+      "task_id": "T05",
+      "condition": "A",
+      "completed": true,
+      "time_units": 12
+    },
+    {
+      "task_id": "T06",
+      "condition": "A",
+      "completed": true,
+      "time_units": 13
+    },
+    {
+      "task_id": "T07",
+      "condition": "A",
+      "completed": true,
+      "time_units": 14
+    },
+    {
+      "task_id": "T08",
+      "condition": "A",
+      "completed": true,
+      "time_units": 15
+    },
+    {
+      "task_id": "T09",
+      "condition": "A",
+      "completed": false,
+      "time_units": null
+    },
+    {
+      "task_id": "T10",
+      "condition": "A",
+      "completed": false,
+      "time_units": null
+    },
+    {
+      "task_id": "T11",
+      "condition": "A",
+      "completed": false,
+      "time_units": null
+    },
+    {
+      "task_id": "T12",
+      "condition": "A",
+      "completed": false,
+      "time_units": null
+    },
+    {
+      "task_id": "T13",
+      "condition": "B",
+      "completed": true,
+      "time_units": 7
+    },
+    {
+      "task_id": "T14",
+      "condition": "B",
+      "completed": true,
+      "time_units": 8
+    },
+    {
+      "task_id": "T15",
+      "condition": "B",
+      "completed": true,
+      "time_units": 9
+    },
+    {
+      "task_id": "T16",
+      "condition": "B",
+      "completed": true,
+      "time_units": 10
+    },
+    {
+      "task_id": "T17",
+      "condition": "B",
+      "completed": true,
+      "time_units": 11
+    },
+    {
+      "task_id": "T18",
+      "condition": "B",
+      "completed": true,
+      "time_units": 12
+    },
+    {
+      "task_id": "T19",
+      "condition": "B",
+      "completed": true,
+      "time_units": 13
+    },
+    {
+      "task_id": "T20",
+      "condition": "B",
+      "completed": true,
+      "time_units": 14
+    },
+    {
+      "task_id": "T21",
+      "condition": "B",
+      "completed": true,
+      "time_units": 15
+    },
+    {
+      "task_id": "T22",
+      "condition": "B",
+      "completed": false,
+      "time_units": null
+    },
+    {
+      "task_id": "T23",
+      "condition": "B",
+      "completed": false,
+      "time_units": null
+    },
+    {
+      "task_id": "T24",
+      "condition": "B",
+      "completed": false,
+      "time_units": null
+    }
+  ]
+}

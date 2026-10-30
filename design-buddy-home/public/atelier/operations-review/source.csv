@@ -1,0 +1,7 @@
+period,opening,received,closed,ending,flag
+P1,10,40,36,14,True
+P2,14,44,42,16,False
+P3,16,39,40,15,False
+P4,15,48,44,19,True
+P5,19,46,48,17,False
+P6,17,51,49,19,False

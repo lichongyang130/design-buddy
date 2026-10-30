@@ -38,13 +38,13 @@ await tick()
 
 check('picking 导入 persists the type', readState(storage).ui.type === '导入')
 check('import workbench keeps the greeting headline',
-  $('.hero-title').textContent.startsWith('很高兴见到您'))
+  $('.hero-title').textContent.startsWith('DesignBuddy'))
 check('import workbench uses the same artwork as the screenshot',
   $('.hero-photo').getAttribute('src') === '/covers/hero-beautify.jpg')
 check('import placeholder matches the screenshot',
   $('#prompt-input').placeholder === '添加要导入的文件，或从下方选择任务')
 check('quick types and recommended templates step aside',
-  $('#quick-types').hidden === true && $('#rec-templates').hidden === true)
+  $('#quick-types').hidden === true && !$('#rec-templates'))
 
 /* ---------- 2. 虚线投放区 ---------- */
 
@@ -85,7 +85,8 @@ check('right toolbar keeps 标准 / mic / send but hides the image icon',
 check('send arrow is blue in the workbench', $('#send-btn').classList.contains('is-ready'))
 check('import mode hides examples / templates / tabs',
   $('.examples').hidden === true && $('.template-cta').hidden === true
-  && $('.work-tabs').hidden === true && $('#template-row').hidden === true)
+  )
+check('import mode hides workbench grid', $('#work-grid').hidden === true)
 
 /* ---------- 4. 更多选择 ---------- */
 

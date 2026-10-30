@@ -1,0 +1,46 @@
+{
+  "source": "authored-fictional-training-register",
+  "synthetic": true,
+  "notCertification": true,
+  "summary": {
+    "proposedSteps": 4,
+    "roles": 3,
+    "completedRehearsals": 0,
+    "actualImprovement": null,
+    "operatingAuthority": null
+  },
+  "records": [
+    {
+      "step": 1,
+      "lane": "writer",
+      "activity": "prepare",
+      "input_artifact": "invented passage",
+      "output_artifact": "draft with question",
+      "status": "not-rehearsed"
+    },
+    {
+      "step": 2,
+      "lane": "coordinator",
+      "activity": "check",
+      "input_artifact": "draft with question",
+      "output_artifact": "source-gap note",
+      "status": "not-rehearsed"
+    },
+    {
+      "step": 3,
+      "lane": "reviewer",
+      "activity": "inspect",
+      "input_artifact": "source-gap note",
+      "output_artifact": "review question",
+      "status": "not-rehearsed"
+    },
+    {
+      "step": 4,
+      "lane": "writer",
+      "activity": "return",
+      "input_artifact": "review question",
+      "output_artifact": "clarification needed",
+      "status": "not-rehearsed"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "source": "authored-fictional-business-model",
+  "synthetic": true,
+  "notActualForecast": true,
+  "summary": {
+    "cases": 3,
+    "capacity": 8,
+    "unitContributionCredits": 6,
+    "fixedCredits": 20,
+    "teachingThresholdSessions": 4,
+    "creditsNotCurrency": true,
+    "actualDemand": null,
+    "actualProfit": null
+  },
+  "records": [
+    {
+      "case": "lower",
+      "demand": 6,
+      "available_minutes": 450,
+      "reserve_minutes": 90,
+      "session_minutes": 45,
+      "capacity": 8,
+      "delivered": 6,
+      "unmet": 0,
+      "unused_service_minutes": 90,
+      "benefit_credits": 60,
+      "variable_credits": 24,
+      "fixed_credits": 20,
+      "net_credits": 16
+    },
+    {
+      "case": "reference",
+      "demand": 8,
+      "available_minutes": 450,
+      "reserve_minutes": 90,
+      "session_minutes": 45,
+      "capacity": 8,
+      "delivered": 8,
+      "unmet": 0,
+      "unused_service_minutes": 0,
+      "benefit_credits": 80,
+      "variable_credits": 32,
+      "fixed_credits": 20,
+      "net_credits": 28
+    },
+    {
+      "case": "higher",
+      "demand": 10,
+      "available_minutes": 450,
+      "reserve_minutes": 90,
+      "session_minutes": 45,
+      "capacity": 8,
+      "delivered": 8,
+      "unmet": 2,
+      "unused_service_minutes": 0,
+      "benefit_credits": 80,
+      "variable_credits": 32,
+      "fixed_credits": 20,
+      "net_credits": 28
+    }
+  ]
+}

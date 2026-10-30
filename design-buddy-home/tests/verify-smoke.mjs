@@ -182,7 +182,9 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   seed.storage.setItem('design-buddy-state-v1', JSON.stringify(st))
   const { doc, w, errors, storage } = await loadPage('/index.html', { storage: seed.storage, freshCopy: true })
   await tick(150)
-  check('smart suggest hides template row', doc.querySelector('.template-row')?.hidden === true)
+  check('smart suggest off shows the default home',
+    doc.querySelector('#quick-types')?.hidden === false &&
+    JSON.parse(storage.getItem('design-buddy-state-v1')).ui.type === null)
 
   const before = JSON.parse(storage.getItem('design-buddy-state-v1')).gammas.length
   // 已移除"从空白新建"按钮，跳过此测试
@@ -326,10 +328,22 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
 
 /* ---------------- 模板：详情弹层交互 + 空态 ---------------- */
 {
-  const { doc, w, errors } = await loadPage('/templates.html')
+  const mem = new Map()
+  const storage = {
+    getItem: (k) => (mem.has(k) ? mem.get(k) : null),
+    setItem: (k, v) => mem.set(k, String(v)),
+    removeItem: (k) => mem.delete(k),
+    clear: () => mem.clear(),
+  }
+  storage.setItem('design-buddy-state-v1', JSON.stringify({
+    customTemplates: [
+      { id: 'ct-smoke', name: '烟雾测试模板', a: 'Smoke Deck', b: 'SMOKE', cover: '', format: '演示文稿', cats: ['培训'] },
+    ],
+  }))
+  const { doc, w, errors } = await loadPage('/templates.html', { storage, freshCopy: true })
   click(w, [...doc.querySelectorAll('[data-demo]')].find((n) => n.dataset.demo === '由您创建'))
   await tick()
-  check('mine view empty state', doc.querySelector('#tpl-empty')?.hidden === false)
+  check('mine view shows the custom template', doc.querySelector('#tpl-empty')?.hidden === true)
   // 回到工作区模板视图再打开详情
   click(w, [...doc.querySelectorAll('[data-demo]')].find((n) => n.dataset.demo === '工作区模板'))
   await tick()
@@ -344,7 +358,7 @@ const check = (name, ok, extra) => results.push([name, !!ok, extra])
   click(w, doc.querySelectorAll('.td-style-card')[2])
   await tick()
   check('style card selection persisted',
-    JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).templateStyles['渔港日记'] === 2)
+    JSON.parse(w.localStorage.getItem('design-buddy-state-v1')).templateStyles['烟雾测试模板'] === 2)
   check('style card shows picked ring', doc.querySelectorAll('.td-style-card')[2].classList.contains('is-picked'))
   // 底部其他案例缩略图行已移除
   check('other-cases strip removed',

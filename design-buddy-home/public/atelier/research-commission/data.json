@@ -1,0 +1,296 @@
+{
+  "work": {
+    "id": "research-commission",
+    "title": "RESEARCH COMMISSION",
+    "subtitle": "研究委托提案",
+    "category": "提案",
+    "layout": "commission",
+    "color": "#3f6274",
+    "wash": "#e6eef1",
+    "framework": "研究问题与方法矩阵",
+    "scope": "Fictional research scoping proposal. No actual recruitment, personal data, research approval, commissioned contract or empirical findings are supplied.",
+    "format": "文档",
+    "status": "published",
+    "pages": 10,
+    "illustrations": 5,
+    "expectedIllustrations": 5,
+    "expansion": "documents-50",
+    "expansionBatch": "proposal-expansion",
+    "newIllustrations": 1,
+    "curatedIllustrations": 4
+  },
+  "pages": [
+    {
+      "section": "01 / RESEARCH COMMISSION",
+      "title": "Commission a question, not a conclusion.",
+      "lead": "This proposal scopes a fictional inquiry into how readers interpret a discussion prompt. The requested decision is whether the research question and proposed approach are suitable for further review.",
+      "body": "The proposal does not promise that the prompt works. It defines the uncertainty, possible sources, intended analysis and limits so a prospective commissioner can challenge the approach before any real study is considered.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What decision could the proposed inquiry inform without promising a particular result?",
+      "records": [
+        {
+          "label": "Commission question",
+          "prompt": "Draft commission question: not yet confirmed."
+        },
+        {
+          "label": "Decision sought",
+          "prompt": "Draft decision sought: not yet confirmed."
+        },
+        {
+          "label": "Intended use",
+          "prompt": "Draft intended use: not yet confirmed."
+        }
+      ],
+      "image": 1,
+      "kind": "cover"
+    },
+    {
+      "section": "02 / RESEARCH COMMISSION",
+      "title": "Describe the knowledge gap.",
+      "lead": "A useful background section explains what is unknown and why it matters to the intended decision. Distinguish available context from a claim that a full literature review has been completed.",
+      "body": "In this example, the wording of a prompt is available but its interpretation in a real setting is unknown. The proposal includes no literature search or empirical source, so those gaps must remain explicit.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which missing source would most affect the proposed research scope?",
+      "records": [
+        {
+          "label": "Known material",
+          "prompt": "Draft known material: not yet confirmed."
+        },
+        {
+          "label": "Knowledge gap",
+          "prompt": "Draft knowledge gap: not yet confirmed."
+        },
+        {
+          "label": "Source still needed",
+          "prompt": "Draft source still needed: not yet confirmed."
+        }
+      ],
+      "image": 1,
+      "kind": "body"
+    },
+    {
+      "section": "03 / RESEARCH COMMISSION",
+      "title": "Arrange the research questions.",
+      "lead": "Separate the main question from supporting questions about language, context and possible misunderstanding. Each question should have a clear relationship to the proposed decision.",
+      "body": "Main question: what interpretations might the prompt invite? Supporting questions could examine ambiguous terms and missing context. These are questions to investigate, not findings about what any participant actually thinks.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which supporting question can be removed without weakening the main inquiry?",
+      "records": [
+        {
+          "label": "Main question",
+          "prompt": "Draft main question: not yet confirmed."
+        },
+        {
+          "label": "Supporting question",
+          "prompt": "Draft supporting question: not yet confirmed."
+        },
+        {
+          "label": "Decision link",
+          "prompt": "Draft decision link: not yet confirmed."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "04 / RESEARCH COMMISSION",
+      "title": "Choose a method for the question.",
+      "lead": "Match the kind of uncertainty to the kind of material a method could produce. A method label alone does not establish suitability or permission to carry it out.",
+      "body": "A desk review could inspect wording; an appropriately reviewed interview study could explore interpretation in context. The first would not supply participant views, while the second would require real arrangements not provided by this document.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What would the candidate method be unable to tell the commissioner?",
+      "records": [
+        {
+          "label": "Question",
+          "prompt": "Draft question: not yet confirmed."
+        },
+        {
+          "label": "Candidate method",
+          "prompt": "Draft candidate method: not yet confirmed."
+        },
+        {
+          "label": "Method limitation",
+          "prompt": "Draft method limitation: not yet confirmed."
+        }
+      ],
+      "image": 2,
+      "kind": "body"
+    },
+    {
+      "section": "05 / RESEARCH COMMISSION",
+      "title": "Define the material boundary.",
+      "lead": "State which documents or proposed sources are within scope and which are excluded. Keep source availability separate from the right to access, retain or reuse material.",
+      "body": "The fictional desk scope could include the draft prompt and version notes. It excludes personal records and actual interview data. Any real research involving people or their information would need appropriate consent, review and safeguards outside this template.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What material boundary should remain attached to every research artifact?",
+      "records": [
+        {
+          "label": "Included material",
+          "prompt": "Draft included material: not yet confirmed."
+        },
+        {
+          "label": "Excluded material",
+          "prompt": "Draft excluded material: not yet confirmed."
+        },
+        {
+          "label": "Access question",
+          "prompt": "Draft access question: not yet confirmed."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "06 / RESEARCH COMMISSION",
+      "title": "Explain the analysis plan.",
+      "lead": "Describe how material would be organised before deciding what it means. A transparent analysis plan makes it easier to notice when an interpretation outruns the source.",
+      "body": "For a desk review, passages could be grouped by ambiguous term, missing instruction and implied assumption. The categories are proposed analytic tools, not validated codes or a summary of real collected data.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "How would a reviewer trace an interpretation back to the material that prompted it?",
+      "records": [
+        {
+          "label": "Analysis unit",
+          "prompt": "Draft analysis unit: not yet confirmed."
+        },
+        {
+          "label": "Proposed category",
+          "prompt": "Draft proposed category: not yet confirmed."
+        },
+        {
+          "label": "Interpretation boundary",
+          "prompt": "Draft interpretation boundary: not yet confirmed."
+        }
+      ],
+      "image": 3,
+      "kind": "body"
+    },
+    {
+      "section": "07 / RESEARCH COMMISSION",
+      "title": "Expose the limitations early.",
+      "lead": "List limitations in terms of their effect on the decision, not as a generic disclaimer added after a conclusion. A narrow study can still be useful if its boundary is understood.",
+      "body": "A wording review could identify candidate ambiguities but could not establish prevalence, preference or learning outcomes. A later study would need its own suitable design if the commissioner requires a different kind of answer.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which desired conclusion would be unjustified even if the proposed analysis were completed?",
+      "records": [
+        {
+          "label": "Limitation",
+          "prompt": "Draft limitation: not yet confirmed."
+        },
+        {
+          "label": "Consequence",
+          "prompt": "Draft consequence: not yet confirmed."
+        },
+        {
+          "label": "Possible follow-up",
+          "prompt": "Draft possible follow-up: not yet confirmed."
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "08 / RESEARCH COMMISSION",
+      "title": "Identify resources and dependencies.",
+      "lead": "State what would need to be available before the work could be responsibly commissioned. Resource categories should include review and context, not only analyst time.",
+      "body": "The proposal leaves actual staffing, fee, schedule, permissions and source access unconfirmed. A real commission would need those conditions to be agreed independently rather than inferred from a complete-looking methods page.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "Which dependency could require changing the research question or method?",
+      "records": [
+        {
+          "label": "Dependency",
+          "prompt": "Draft dependency: not yet confirmed."
+        },
+        {
+          "label": "Confirmation needed",
+          "prompt": "Draft confirmation needed: not yet confirmed."
+        },
+        {
+          "label": "Effect on scope",
+          "prompt": "Draft effect on scope: not yet confirmed."
+        }
+      ],
+      "image": 4,
+      "kind": "body"
+    },
+    {
+      "section": "09 / RESEARCH COMMISSION",
+      "title": "Define a useful delivery.",
+      "lead": "Describe the deliverable and the quality questions a commissioner could use to review it. A useful research handoff preserves the distinction between source material, interpretation and recommendation.",
+      "body": "A proposed desk-review package might contain a question map, annotated prompt and limitations note. It should not be described as an empirical report or validated recommendation. No actual study output is supplied by this proposal.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What should the receiving reviewer be able to inspect rather than merely trust?",
+      "records": [
+        {
+          "label": "Deliverable",
+          "prompt": "Draft deliverable: not yet confirmed."
+        },
+        {
+          "label": "Review criterion",
+          "prompt": "Draft review criterion: not yet confirmed."
+        },
+        {
+          "label": "Required source trace",
+          "prompt": "Draft required source trace: not yet confirmed."
+        }
+      ],
+      "image": 5,
+      "kind": "body"
+    },
+    {
+      "section": "10 / RESEARCH COMMISSION",
+      "title": "Request a scope decision.",
+      "lead": "Offer a bounded choice: refine the question, review the proposed method or defer the commission. A positive response to the proposal is not approval to recruit participants or collect data.",
+      "body": "Record the question accepted for further discussion, the conditions still open and the role authorised to make a real commissioning decision. Appropriate contracts and review processes remain outside this fictional template.",
+      "subheading": "Working proposal record",
+      "detail": "Record a draft response in each labelled field. Keep unknowns visible and distinguish a proposal from an accepted commitment.",
+      "question": "What must be resolved before this becomes a real research commission?",
+      "records": [
+        {
+          "label": "Scope response",
+          "prompt": "Draft scope response: not yet confirmed."
+        },
+        {
+          "label": "Open condition",
+          "prompt": "Draft open condition: not yet confirmed."
+        },
+        {
+          "label": "Authorised role to confirm",
+          "prompt": "Draft authorised role to confirm: not yet confirmed."
+        }
+      ],
+      "image": 5,
+      "kind": "appendix"
+    }
+  ],
+  "provenance": [
+    {
+      "image": 1,
+      "source": "New AI-generated editorial illustration for research-commission"
+    },
+    {
+      "image": 2,
+      "source": "Curated existing AI-generated illustration: tideline/11.jpg"
+    },
+    {
+      "image": 3,
+      "source": "Curated existing AI-generated illustration: tideline/12.jpg"
+    },
+    {
+      "image": 4,
+      "source": "Curated existing AI-generated illustration: common-ground/02.jpg"
+    },
+    {
+      "image": 5,
+      "source": "Curated existing AI-generated illustration: open-shelf/06.jpg"
+    }
+  ]
+}

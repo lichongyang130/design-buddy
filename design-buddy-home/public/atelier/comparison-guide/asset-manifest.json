@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "comparison-guide",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 16114,
+      "sha256": "e9555c5ee58b53e6ecda6d1bf550a73ebbd732b0c15121bd8eb91d53170c80ea"
+    },
+    {
+      "path": "content.js",
+      "bytes": 12663,
+      "sha256": "88f2456d7ad2452719b45d7e53fef343d3fcbb3cc4c81723cd1216da6dc2dad1"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 532,
+      "sha256": "935e7c4a4f021ed8e0a9b83c5841362d6ecaab3e17230d8cece8e517e6a10f3d"
+    },
+    {
+      "path": "comparison-guide.docx",
+      "bytes": 811698,
+      "sha256": "44628c55ed2567b9b48f636b641d47c035b3b821dec36294e8f7d620b1c0d174"
+    },
+    {
+      "path": "comparison-guide.pdf",
+      "bytes": 880277,
+      "sha256": "53be4731be548a8cb689a2208e3e70b709be697fc063eb386372ea7df644ad02"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 165,
+      "sha256": "7e1c56dcfa6b149a6cc5d65e1f75bd3c75d1b139c7e8eff5850f8b2345562781"
+    },
+    {
+      "path": "source.json",
+      "bytes": 750,
+      "sha256": "de5fbb9e2bb32751e70ca08844da34baee826a37e8fac49f4c455a1d7adcde4b"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 205349,
+      "sha256": "3901b0fd18452ff74f7588cfaf86db0a3840198a68fe8b2557c180ce41a6477a"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 138952,
+      "sha256": "4dca2e4a5b8b308b3975ff5cbf93bce3123723cd4137cd97899661e82701be61"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 128793,
+      "sha256": "cf59b57cb96e818635e00116d6e155ebf29224f6bf037056716ad4a8b4c7f971"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 178050,
+      "sha256": "ee75efa54cb12266933d5a3b5caace0db3103dd3f83281a32328d70b41f203b1"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 151862,
+      "sha256": "9e71f2a336be9ef0d70ee6343a4af838c14fd6161ef0caade3a25cf3c7da94b7"
+    }
+  ]
+}

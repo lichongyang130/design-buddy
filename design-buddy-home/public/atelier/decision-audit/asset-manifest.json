@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "decision-audit",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 17035,
+      "sha256": "2b5bd28894cfa98c11ae26618c7a38e51aecd123c057bfd4c2db865988df9f06"
+    },
+    {
+      "path": "content.js",
+      "bytes": 13601,
+      "sha256": "2373d206623c00ae02ec2ba4ec09ab7a984814a8bb074eee028cb5e90e4536e0"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 515,
+      "sha256": "e3fd12374cfce39e569f5fcc06286cbb3d37829d4405899d515bdea4eb869838"
+    },
+    {
+      "path": "decision-audit.docx",
+      "bytes": 952840,
+      "sha256": "c4e91f4ea11951e4daa73949d6cd706140397837be4c0e0f47c5024911e7a528"
+    },
+    {
+      "path": "decision-audit.pdf",
+      "bytes": 1035681,
+      "sha256": "ff23a9afdc31da1d366b0d369443f20751d7e11375f3398c49f9533bb1b6fdbf"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 353,
+      "sha256": "b5763a1cab5a2b17ab0227e8cbaade0f5c10b58e35b36af8f931420c52bfaec2"
+    },
+    {
+      "path": "source.json",
+      "bytes": 1097,
+      "sha256": "5f49f5fa5781ac12fe499229d4ddf30729c927098c060ba7ab0f514ff8e06a66"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 176385,
+      "sha256": "600a70c029c40501b9f350854d81b24e096c3e462cc945b50c4301952796e579"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 164705,
+      "sha256": "980447005bde46bfd6574c84b759487afbd32fec5c295ac92dc02c3b1a0907ec"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 201643,
+      "sha256": "d8f25509bd9b9e305ec30fd7e5aeddee30e49daa55a584e625a46948b33b4243"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 200180,
+      "sha256": "ec7b88a120cd4808bb1593d72ad8e90a765d42e1196758b0558c32d4f6aab16c"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 201642,
+      "sha256": "cd7c0039cc2712196a0ba99c053c49f2bac9ce44e72b74681f657580460d41b4"
+    }
+  ]
+}

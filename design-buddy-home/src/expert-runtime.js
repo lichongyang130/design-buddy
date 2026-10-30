@@ -1098,6 +1098,18 @@ export const EXPERT_CAPS = {
   'ec-team-launch': { kind: 'pipeline', pipeline: ['outline', 'art', 'carousel'], label: '一次出全套物料', sample: '下月发布一款智能硬件，需要主视觉、发布会 deck 和社媒轮播' },
   'ec-team-rebrand': { kind: 'pipeline', pipeline: ['tokens', 'art', 'delivery'], label: '焕新并回刷', sample: '品牌色从 #f2711c 换成 #1e2b4d，要三个月回刷全部存量物料' },
   'ec-team-handover': { kind: 'pipeline', pipeline: ['delivery', 'importFix'], label: '质检后交接', sample: '项目收尾，要交给客户和工程两边，含源文件、导出件和素材授权' },
+  /* 办公问题专家团队（Gamma 研究架构） */
+  'ec-manager': { kind: 'pipeline', pipeline: ['brief', 'outline', 'delivery'], label: '拆解并调度', sample: '下季度经营分析汇报：三个部门的月报，要一页纸摘要和 12 页汇报' },
+  'ec-office-admin': { kind: 'doc', label: '汇总成报告', sample: '把市场、运营、财务三个部门的 Excel 合并成一张汇总表，标出缺失和重复' },
+  'ec-automation': { kind: 'pipeline', pipeline: ['outline', 'layout', 'delivery'], label: '批量自动处理', sample: '每周五汇总各渠道销售数据、生成周报并发送，失败要重试' },
+  'ec-research': { kind: 'chart', label: '分析出结论', sample: '一月 32，二月 45，三月 38，四月 61，五月 74，六月 69' },
+  'ec-ppt': { kind: 'outline', label: '生成逐页大纲', sample: '给管理层汇报数字化转型进展，12 页，只有 15 分钟' },
+  'ec-doc': { kind: 'doc', label: '拆章节与字数', sample: '基于三个部门月报和会议记录，写 4000 字项目进展报告' },
+  'ec-content': { kind: 'rewrite', label: '改稿并给对比', sample: '众所周知，我们非常有效地利用了各种各样的先进工具，可以说在很大程度上充分提升了整体的工作效率，毫无疑问这是一个十分值得注意的重大突破。' },
+  'ec-visual': { kind: 'layout', label: '排出三种版式', sample: '这一页有 6 个要点、2 张图和一段说明，读者反馈看不下去' },
+  'ec-ai-image': { kind: 'art', label: '生成配图方案', sample: '面向制造业客户的品牌焕新提案，整体要专业克制' },
+  'ec-brand': { kind: 'tokens', label: '推导设计令牌', sample: 'B 端 SaaS，主色 #1e2b4d，需要一套能在演示/文档/网页复用的规范' },
+  'ec-qa': { kind: 'delivery', label: '跑一遍交付质检', sample: '明天交付的 12 页方案和数据表，帮我看看有没有硬伤' },
 }
 
 const runKind = (kind, ctx, id) => {

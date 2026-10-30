@@ -1,0 +1,4 @@
+variant,context_visible,action_enabled,action_label,reason_required,implemented
+default,False,True,Show context,False,False
+expanded,True,True,Hide context,False,False
+unavailable,False,False,,True,False

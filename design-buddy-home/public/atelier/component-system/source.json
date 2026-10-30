@@ -1,0 +1,51 @@
+{
+  "source": "authored-fictional-product-specification",
+  "synthetic": true,
+  "notActualProductEvidence": true,
+  "summary": {
+    "slots": [
+      "heading",
+      "source",
+      "body",
+      "action",
+      "status"
+    ],
+    "requiredContent": [
+      "heading",
+      "source",
+      "body"
+    ],
+    "variants": 3,
+    "version": "0.1",
+    "exclusiveVariants": true,
+    "shippedPackage": null,
+    "verifiedConsumers": null,
+    "accessibilityConformance": null
+  },
+  "records": [
+    {
+      "variant": "default",
+      "context_visible": false,
+      "action_enabled": true,
+      "action_label": "Show context",
+      "reason_required": false,
+      "implemented": false
+    },
+    {
+      "variant": "expanded",
+      "context_visible": true,
+      "action_enabled": true,
+      "action_label": "Hide context",
+      "reason_required": false,
+      "implemented": false
+    },
+    {
+      "variant": "unavailable",
+      "context_visible": false,
+      "action_enabled": false,
+      "action_label": null,
+      "reason_required": true,
+      "implemented": false
+    }
+  ]
+}

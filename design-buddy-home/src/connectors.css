@@ -741,3 +741,25 @@
   opacity: 1;
   transform: translateX(2px);
 }
+
+/* Focused connector management: six entries, real endpoint status, advanced legacy settings. */
+.cn-section-title { margin: 28px 0 8px; font-size: 19px; }
+.connectors-page > p { color: var(--text-2); line-height: 1.6; }
+.cn-grid .cn-card { height: auto; min-height: 200px; cursor: default; align-items: flex-start; }
+.cn-configure, .cn-panel-actions button, #cn-test button, .cn-advanced button { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; background: var(--surface); cursor: pointer; }
+.cn-configure { margin-top: 14px; display: block; }
+.cn-verified, .cn-text small { display: block; margin-top: 8px; }
+.cn-panel-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0; }
+.cn-advanced { margin-top: 30px; border-top: 1px solid var(--line); padding: 20px 0; }
+.cn-advanced summary { cursor: pointer; font-weight: 700; }
+.cn-legacy-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.cn-permissions label { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; }
+.cn-permissions select { max-width: 55%; }
+#cn-test pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 400px; overflow: auto; }
+#cn-test p { line-height: 1.65; margin: 10px 0; }
+#cn-test button:disabled { opacity: .5; cursor: not-allowed; }
+#cn-test .cn-tools { display: grid; gap: 12px; }
+#cn-test .cn-tool { padding: 14px; border: 1px solid var(--line); border-radius: 10px; }
+#cn-test textarea { width: 100%; }
+@media (min-width: 1100px) { .connectors-page .cn-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+@media (max-width: 600px) { .connectors-page { padding: 16px; } .connectors-page .cn-grid { grid-template-columns: 1fr; } .cn-text { overflow-wrap: anywhere; } }

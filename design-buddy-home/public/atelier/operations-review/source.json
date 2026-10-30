@@ -1,0 +1,65 @@
+{
+  "source": "deterministic-invented-teaching-records",
+  "synthetic": true,
+  "summary": {
+    "periods": 6,
+    "opening": 10,
+    "received": 268,
+    "closed": 259,
+    "ending": 19,
+    "flaggedPeriods": [
+      "P1",
+      "P4"
+    ]
+  },
+  "records": [
+    {
+      "period": "P1",
+      "opening": 10,
+      "received": 40,
+      "closed": 36,
+      "ending": 14,
+      "flag": true
+    },
+    {
+      "period": "P2",
+      "opening": 14,
+      "received": 44,
+      "closed": 42,
+      "ending": 16,
+      "flag": false
+    },
+    {
+      "period": "P3",
+      "opening": 16,
+      "received": 39,
+      "closed": 40,
+      "ending": 15,
+      "flag": false
+    },
+    {
+      "period": "P4",
+      "opening": 15,
+      "received": 48,
+      "closed": 44,
+      "ending": 19,
+      "flag": true
+    },
+    {
+      "period": "P5",
+      "opening": 19,
+      "received": 46,
+      "closed": 48,
+      "ending": 17,
+      "flag": false
+    },
+    {
+      "period": "P6",
+      "opening": 17,
+      "received": 51,
+      "closed": 49,
+      "ending": 19,
+      "flag": false
+    }
+  ]
+}

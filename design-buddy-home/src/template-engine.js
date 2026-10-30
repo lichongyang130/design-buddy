@@ -35,7 +35,7 @@ const int = (rng, min, max) => min + Math.floor(rng() * (max - min + 1))
 
 /* ---------------- 类别 ---------------- */
 
-export const VISIBLE_CATS = ['课程', '提案', '报告', '融资演讲稿', '营销材料', '培训', '商业规划', '活动']
+export const VISIBLE_CATS = ['课程', '提案', '报告', '融资演讲稿', '营销材料', '培训', '商业规划', '活动', '技术文档']
 export const HIDDEN_CATS = ['作品集', '品牌设计', '教育', '科技', '医疗健康', '艺术', '文化', '旅游', '餐饮', '零售', '建筑']
 export const CATEGORY_LIST = [...VISIBLE_CATS, ...HIDDEN_CATS]
 
@@ -43,13 +43,13 @@ export const CAT_EN = {
   课程: 'Courses', 提案: 'Proposals', 报告: 'Reports', 融资演讲稿: 'Fundraising', 营销材料: 'Marketing',
   培训: 'Training', 商业规划: 'Business Planning', 活动: 'Events', 作品集: 'Portfolios', 品牌设计: 'Brand Design',
   教育: 'Education', 科技: 'Technology', 医疗健康: 'Healthcare', 艺术: 'Art', 文化: 'Culture',
-  旅游: 'Travel', 餐饮: 'F&B', 零售: 'Retail', 建筑: 'Architecture',
+  旅游: 'Travel', 餐饮: 'F&B', 零售: 'Retail', 建筑: 'Architecture', 技术文档: 'Technical Docs',
 }
 export const catLabel = (cat, locale) => (locale === 'en' ? (CAT_EN[cat] ?? cat) : cat)
 
 /* ---------------- 调色板（20 套：bg/paper/ink/muted/accent/accent2） ---------------- */
 
-const PALETTES = [
+export const PALETTES = [
   ['#f4f1ea', '#fffdf7', '#1f2a30', '#6b7780', '#1f5f6b', '#e08a3c'],
   ['#0f1b2d', '#16263f', '#eef3fb', '#9db0c8', '#5b82f5', '#7fd1c4'],
   ['#f6efe4', '#fffaf1', '#33281d', '#8a7a66', '#b0563a', '#d9a441'],
@@ -74,7 +74,7 @@ const PALETTES = [
 
 /* ---------------- 字体搭配 ---------------- */
 
-const FONT_PAIRS = [
+export const FONT_PAIRS = [
   { head: '"Noto Serif SC", Georgia, "Songti SC", serif', body: '"PingFang SC", "Microsoft YaHei", sans-serif' },
   { head: '"PingFang SC", "Microsoft YaHei", sans-serif', body: '"PingFang SC", "Microsoft YaHei", sans-serif' },
   { head: 'Georgia, "Times New Roman", "Noto Serif SC", serif', body: 'Georgia, "Noto Serif SC", serif' },
@@ -466,6 +466,10 @@ const CURATED_EN = {
 }
 
 export function displayTpl(tpl, locale = 'zh') {
+  if (tpl.presentation) {
+    const name = locale === 'en' ? tpl.name : (tpl.zh || tpl.name)
+    return { name, a: tpl.a, b: tpl.b }
+  }
   if (locale !== 'en') return { name: tpl.name, a: tpl.a, b: tpl.b }
   if (tpl.gen) {
     const ci = CATEGORY_LIST.indexOf(tpl.cats[0])
@@ -481,41 +485,8 @@ export function displayTpl(tpl, locale = 'zh') {
 }
 
 export function buildCatalog() {
-  if (catalogCache.length) return catalogCache
-  let serial = 0
-  for (let ci = 0; ci < CATEGORY_LIST.length; ci++) {
-    const primary = CATEGORY_LIST[ci]
-    const nouns = CAT_NOUNS[primary]
-    const fwOrder = [...FRAMEWORKS.keys()]
-    const catRng = mulberry32(hashStr(`cat:${primary}`))
-    for (let i = fwOrder.length - 1; i > 0; i--) {
-      const j = Math.floor(catRng() * (i + 1))
-      ;[fwOrder[i], fwOrder[j]] = [fwOrder[j], fwOrder[i]]
-    }
-    for (let i = 0; i < 50; i++) {
-      const seed = hashStr(`${primary}:${i}`)
-      const rng = mulberry32(seed)
-      const name = `${ADJ[i % ADJ.length]}${nouns[i % nouns.length]}`
-      catalogCache.push({
-        id: `tpl-gen-${ci}-${i}`,
-        serial: serial++,
-        name,
-        a: `${name} · ${primary}`,
-        b: `${EN_A[i % EN_A.length]} ${EN_B[(i * 3) % EN_B.length]}`.toUpperCase(),
-        cls: null,
-        gen: true,
-        format: ['演示文稿', '演示文稿', '演示文稿', '文档', '社交轮播卡片'][int(rng, 0, 4)],
-        cats: [primary],
-        seed,
-        fw: fwOrder[i],
-        pal: int(rng, 0, PALETTES.length - 1),
-        font: int(rng, 0, FONT_PAIRS.length - 1),
-        pageCount: 20 + int(rng, 0, 10),
-        imgCount: 10 + int(rng, 0, 5),
-      })
-    }
-  }
-  return catalogCache
+  // 示例目录已全部清空（保留引擎供自定义模板复用）；如需恢复展示可注释掉此返回
+  return []
 }
 
 export function buildDeck(rawTpl, locale = 'zh') {

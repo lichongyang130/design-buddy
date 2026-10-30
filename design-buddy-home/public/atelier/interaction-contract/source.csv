@@ -1,0 +1,7 @@
+from_state,event,to_state,source_type,implemented
+draft,review,review,authored-contract,False
+review,edit,draft,authored-contract,False
+review,save-ok,saved,authored-contract,False
+review,save-fail,error,authored-contract,False
+error,retry,review,authored-contract,False
+saved,edit,draft,authored-contract,False

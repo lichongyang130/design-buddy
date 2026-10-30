@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "work": "prototype-study",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 16455,
+      "sha256": "21709a20b34f0c1ed818b2818f6b3541c2f3728f60c2e4698dcff3f16e5ee750"
+    },
+    {
+      "path": "content.js",
+      "bytes": 12986,
+      "sha256": "69572e7dfc3b98599aee7c76e20334663a4149cd52804355d9ef2d9a2cef069a"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 550,
+      "sha256": "128f948b7480af230a766bf7b3f2ca3edc7d53e1b46ea07b03daeb3f5b545158"
+    },
+    {
+      "path": "prototype-study.docx",
+      "bytes": 978318,
+      "sha256": "6242ef347b856cedf102b4f159bd24de0f813eb6d00fe2426a470dd2a53b85d5"
+    },
+    {
+      "path": "prototype-study.pdf",
+      "bytes": 1047321,
+      "sha256": "82cfd400fd7ab6ac0ecc4db49db07fd33fec611980b0f698c0148e037f5eaa34"
+    },
+    {
+      "path": "source.csv",
+      "bytes": 763,
+      "sha256": "a7d38ff915ffde6814a00ad0abe6d361fa49bea7860e870b9df2058dd50ed6cb"
+    },
+    {
+      "path": "source.json",
+      "bytes": 2376,
+      "sha256": "bf159db9e11cfaefaee02a230abcfd377ab6d68e94752c8cd7153b5a841b6d45"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 162622,
+      "sha256": "7517f79071c938d7e19efc565ce4f97929c8eb8a6e431ff8486eb4ae10e31570"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 204036,
+      "sha256": "9f11d785aafe00ad67aa4fd6321b7cffc2d89cb2eddcd92934c0b84eede18915"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 205264,
+      "sha256": "7d7c7d0f6a0cb664f45124754474fbb45c0b2154c8b90abeb5e9c5aeda541dfe"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 195001,
+      "sha256": "d69648fa107d5e95ebbc4a27c0f9a1345d777f11162b03bdeb293632e7c4dacf"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 201821,
+      "sha256": "1b61d651c9fe2ba5e910c63e8868537ec03529cd3ba3c7c64e46516fa0708593"
+    }
+  ]
+}

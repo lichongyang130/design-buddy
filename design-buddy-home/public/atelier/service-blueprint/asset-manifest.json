@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "work": "service-blueprint",
+  "status": "published",
+  "format": "文档",
+  "pages": 10,
+  "mainIllustrations": 5,
+  "expectedIllustrations": 5,
+  "files": [
+    {
+      "path": "data.json",
+      "bytes": 14251,
+      "sha256": "cfb316fed38019ab05607790b99c81047160c83c9ad7db8f3514c8fbc56d6adb"
+    },
+    {
+      "path": "content.js",
+      "bytes": 11717,
+      "sha256": "9ab9c9ca1d79e7d764438dc78e1e4e3a9947f2d9a90acfa2e0437c170eb382a8"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 515,
+      "sha256": "967cfccbb5fc79e0692503a976ce526f69d9f9df1fd7214e0f3f7d65758c36cc"
+    },
+    {
+      "path": "service-blueprint.docx",
+      "bytes": 1138276,
+      "sha256": "1d4cd21fcefc9eaf4595be81020caf264d0a293e96bf18a4f21b45a5ae93d5e5"
+    },
+    {
+      "path": "service-blueprint.pdf",
+      "bytes": 1236773,
+      "sha256": "50e66ac3d62f4b9b1c0e6a405d250b2c49b9e6d494b66a9c6e593bc2900f4e19"
+    },
+    {
+      "path": "images/01.jpg",
+      "bytes": 253201,
+      "sha256": "0fb798296ed1ba0cea5a6dd5b66495d63559b61cf136d3bf950b98996eec8eca"
+    },
+    {
+      "path": "images/02.jpg",
+      "bytes": 110232,
+      "sha256": "828822cc6cde40b7b6fb1c34f3076df916d9bd8e70b9e7128a95b33e370a2462"
+    },
+    {
+      "path": "images/03.jpg",
+      "bytes": 223714,
+      "sha256": "3e41a4c2d60230b3ab1612a89351d9ac7abe3d5f1f8a7966ff8dcd0aa918f1cc"
+    },
+    {
+      "path": "images/04.jpg",
+      "bytes": 282018,
+      "sha256": "9bc115d01fdacd048f85c9636288e48845faee0a915fef8b662a136f234cbcc4"
+    },
+    {
+      "path": "images/05.jpg",
+      "bytes": 261304,
+      "sha256": "4aadb8be3106a51c38ca1436c91721abf7b81fde7a2ec849ac047ff3d64488b3"
+    }
+  ]
+}
