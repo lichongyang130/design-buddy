@@ -1,7 +1,7 @@
 import ExcelJS from 'exceljs'
 import {checkOfficeZip,loadWorkbook,MIME_XLSX,MIME_DOCX} from './office-file-engines.js'
 import {openPdf,extractPdf} from './pdf-file-engine.js'
-import {create,openDB} from 'idb'
+import {openDB} from 'idb'
 import mammoth from 'mammoth'
 import {uiText} from './ui-language.js'
 
