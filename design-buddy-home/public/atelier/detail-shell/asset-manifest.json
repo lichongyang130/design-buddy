@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "path": "app.js",
+      "bytes": 10583,
+      "sha256": "6bc25a7bbf185effd7fe9a78eb31e8fd723903f2fe9918fa13752abb527e77c9"
+    },
+    {
+      "path": "style.css",
+      "bytes": 10393,
+      "sha256": "afaed979f466da05500b480f0bb9bf0c429841f87f2beb246c421197e9675d43"
+    }
+  ]
+}
