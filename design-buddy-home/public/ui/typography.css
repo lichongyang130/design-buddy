@@ -62,3 +62,27 @@
   body[data-db-ui] .apps-filters>button { min-height: 40px }
   body[data-db-ui] .tpl-title { font-size: max(20px, calc(22px * var(--font-scale, 1))) }
 }
+
+/* Compact type for the expert / skill / connector management surfaces only. */
+@media screen {
+  body[data-db-ui] :is(.experts-page,.skills-page,.connectors-page) {
+    --db-section: max(12px, calc(16px * var(--font-scale, 1)));
+    --db-card: max(12px, calc(14px * var(--font-scale, 1)));
+  }
+  body[data-db-ui] :is(.experts-page,.skills-page,.connectors-page) .ex-top-tab {
+    font-size: max(12px, calc(14px * var(--font-scale, 1)));
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  body[data-db-ui] :is(.experts-page,.skills-page,.connectors-page) .ex-top-tab.is-active { font-weight: 600 }
+  body[data-db-ui] :is(.experts-page,.skills-page,.connectors-page) .ex-top-tab svg { width: 16px; height: 16px }
+  body[data-db-ui] :is(.experts-page,.skills-page,.connectors-page) :is(.ex-card-name,.ex-card-name-text,.sk-card-title,.cn-name) {
+    font-size: var(--db-card); font-weight: 600; line-height: 1.5;
+  }
+  body[data-db-ui] :is(.experts-page,.skills-page,.connectors-page) :is(.sk-section-title,.cn-section-title) {
+    font-size: var(--db-section); font-weight: 600; line-height: 1.5;
+  }
+  body[data-db-ui] :is(.experts-page,.skills-page,.connectors-page) :is(.ex-card-desc,.sk-card-desc,.cn-desc) {
+    font-size: max(12px, calc(12px * var(--font-scale, 1))); line-height: 1.65;
+  }
+}

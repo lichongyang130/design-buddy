@@ -34,6 +34,11 @@ try {
       return {family:getComputedStyle(document.body).fontFamily, small:small.slice(0,5).map(e=>[e.className,e.textContent.slice(0,24),getComputedStyle(e).fontSize]), zoom:document.body.style.zoom}
     })
     assert.match(result.family, /Inter Variable/); assert.deepEqual(result.small, [], name+' small UI text'); assert(!result.zoom)
+    if (['experts','skills','connectors'].includes(name)) {
+      const tab = page.locator('.ex-top-tab.is-active')
+      assert.equal(await tab.evaluate(e=>getComputedStyle(e).fontSize), '14px')
+      assert.equal(await tab.evaluate(e=>getComputedStyle(e).fontWeight), '600')
+    }
   }
   // Real platform font names prove that the downloaded font actually renders glyphs,
   // rather than merely appearing first in a CSS fallback stack.
